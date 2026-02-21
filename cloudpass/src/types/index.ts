@@ -1,0 +1,73 @@
+export interface Question {
+  id: string
+  domainId: 1 | 2 | 3 | 4
+  domainName: string
+  question: string
+  options: {
+    A: string
+    B: string
+    C: string
+    D: string
+    E?: string
+  }
+  answer: string | string[]
+  explanation: string
+  source: string
+  isMultiAnswer: boolean
+}
+
+export interface ExamAttempt {
+  id: string
+  user_id: string
+  attempted_at: string
+  score_percent: number
+  scaled_score: number
+  passed: boolean
+  time_taken_seconds: number
+  total_questions: number
+  correct_answers: number
+  domain_1_score: number
+  domain_2_score: number
+  domain_3_score: number
+  domain_4_score: number
+}
+
+export interface AttemptQuestion {
+  id: string
+  attempt_id: string
+  question_id: string
+  user_answer: string | null
+  correct_answer: string
+  is_correct: boolean
+  was_flagged: boolean
+  domain_id: number
+}
+
+export interface DomainProgress {
+  domain_id: number
+  domain_name: string
+  questions_attempted: number
+  questions_correct: number
+  mastery_percent: number
+}
+
+export interface WeakSpot {
+  question_id: string
+  incorrect_count: number
+  correct_streak: number
+  is_cleared: boolean
+}
+
+export const DOMAINS = {
+  1: 'Cloud Concepts',
+  2: 'Security & Compliance',
+  3: 'Cloud Technology & Services',
+  4: 'Billing, Pricing & Support',
+} as const
+
+export const DOMAIN_COLORS = {
+  1: '#3B82F6',
+  2: '#EF4444',
+  3: '#22C55E',
+  4: '#F59E0B',
+} as const

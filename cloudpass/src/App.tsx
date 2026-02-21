@@ -1,0 +1,37 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Footer } from './components/Footer'
+import { Login } from './pages/Login'
+import { ResetPassword } from './pages/ResetPassword'
+import { Dashboard } from './pages/Dashboard'
+import { MockExam } from './pages/MockExam'
+import { DomainPractice } from './pages/DomainPractice'
+import { WeakSpot } from './pages/WeakSpot'
+import { Scenarios } from './pages/Scenarios'
+import { History } from './pages/History'
+import { Credits } from './pages/Credits'
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <div className="flex-1">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/credits" element={<Credits />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/mock-exam" element={<MockExam />} />
+        <Route path="/domain-practice" element={<DomainPractice />} />
+        <Route path="/weak-spot" element={<WeakSpot />} />
+        <Route path="/scenarios" element={<Scenarios />} />
+        <Route path="/history" element={<History />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  )
+}
+
+export default App
