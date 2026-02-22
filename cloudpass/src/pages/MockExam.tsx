@@ -427,19 +427,19 @@ export function MockExam() {
               <span className="text-sm">View All Questions →</span>
             </button>
 
-            <div className="bg-bg-card rounded-lg p-6 mb-6">
-              <div className="hidden lg:flex items-center justify-end mb-4">
-                <span className="text-text-muted">Question {currentIndex + 1} of {questions.length}</span>
+            <div className="bg-bg-card rounded-lg p-2.5 md:p-3 lg:p-4 mb-3">
+              <div className="hidden lg:flex items-center justify-end mb-2">
+                <span className="text-text-muted text-xs md:text-sm">Question {currentIndex + 1} of {questions.length}</span>
               </div>
 
-              <h2 className="text-xl text-text-primary mb-6">
+              <h2 className="text-base md:text-lg text-text-primary mb-3 md:mb-4">
                 {currentQuestion.question}
                 {currentQuestion.isMultiAnswer && (
                   <span className="text-aws-orange font-semibold ml-2">(Select 2)</span>
                 )}
               </h2>
 
-              <div className="space-y-2 md:space-y-3 mb-6">
+              <div className="space-y-2 md:space-y-3 mb-4">
                 {Object.entries(currentQuestion.options).map(([key, value]) => {
                   const isSelected = currentQuestion.isMultiAnswer
                     ? Array.isArray(currentState?.userAnswer) && currentState.userAnswer.includes(key)
@@ -464,7 +464,7 @@ export function MockExam() {
               </div>
 
               {currentQuestion.isMultiAnswer && (
-                <div className="mb-4 text-sm text-text-muted">
+                <div className="mb-3 text-xs md:text-sm text-text-muted">
                   {Array.isArray(currentState?.userAnswer) && currentState.userAnswer.length > 0 ? (
                     <span className="text-aws-orange font-medium">
                       {currentState.userAnswer.length}/2 answers selected
@@ -477,14 +477,14 @@ export function MockExam() {
 
               <button
                 onClick={toggleFlag}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg transition-colors text-sm ${
                   currentState?.flagged
                     ? 'bg-warning/20 text-warning border border-warning'
                     : 'bg-bg-dark text-text-muted hover:text-text-primary'
                 }`}
               >
-                <Flag className={`w-5 h-5 ${currentState?.flagged ? 'fill-warning' : ''}`} />
-                <span className="font-medium">{currentState?.flagged ? 'Flagged for Review' : 'Flag for Review'}</span>
+                <Flag className={`w-4 h-4 md:w-5 md:h-5 ${currentState?.flagged ? 'fill-warning' : ''}`} />
+                <span className="font-medium text-xs md:text-sm">{currentState?.flagged ? 'Flagged for Review' : 'Flag for Review'}</span>
               </button>
             </div>
 

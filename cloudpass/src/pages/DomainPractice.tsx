@@ -40,6 +40,7 @@ export function DomainPractice() {
   const [results, setResults] = useState<boolean[]>([])
   const [questionResults, setQuestionResults] = useState<QuestionResult[]>([])
   const [questionHistory, setQuestionHistory] = useState<Map<string, QuestionHistory>>(new Map())
+  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0)
 
   function selectDomain(domainId: number) {
     setSelectedDomain(domainId)
@@ -305,43 +306,69 @@ export function DomainPractice() {
   }
 
   if (screen === 'results') {
+    const currentResult = questionResults[selectedQuestionIndex]
+    
     return (
       <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-4xl mx-auto">
             {/* Summary Header */}
-            <div className="bg-bg-card rounded-lg p-6 md:p-8 text-center mb-6">
-              <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">Practice session complete!</h1>
-              <p className="text-xl md:text-2xl text-text-muted">
+            <div className="bg-bg-card rounded-lg p-4 md:p-5 text-center mb-4">
+              <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">Practice session complete!</h1>
+              <p className="text-lg md:text-xl text-text-muted">
                 You got <span className="text-success font-bold">{correctCount}/{results.length}</span> correct ({Math.round((correctCount / results.length) * 100)}%)
               </p>
             </div>
 
-            {/* Question Review */}
-            <div className="space-y-4">
-              {questionResults.map((result, idx) => {
-                const userAnswerArray = Array.isArray(result.userAnswer) ? result.userAnswer : [result.userAnswer]
-                const correctAnswerArray = Array.isArray(result.question.answer) ? result.question.answer : [result.question.answer]
+            {/* Question Number Grid */}
+            <div className="bg-bg-card rounded-lg p-3 md:p-4 mb-4">
+              <h3 className="text-xs md:text-sm font-semibold text-text-muted mb-2 text-center">Questions:</h3>
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(40px,40px))] gap-1.5 md:gap-2 justify-center">
+                {questionResults.map((result, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedQuestionIndex(idx)}
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-md font-semibold text-xs md:text-sm transition-all flex items-center justify-center ${
+                      selectedQuestionIndex === idx
+                        ? 'ring-2 ring-aws-orange'
+                        : ''
+                    } ${
+                      result.isCorrect
+                        ? 'bg-success/20 text-success hover:bg-success/30'
+                        : 'bg-danger/20 text-danger hover:bg-danger/30'
+                    }`}
+                  >
+                    {idx + 1}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Single Question View */}
+            <div className="bg-bg-card rounded-lg p-3 md:p-4 lg:p-5 mb-4">
+              {currentResult && (() => {
+                const userAnswerArray = Array.isArray(currentResult.userAnswer) ? currentResult.userAnswer : [currentResult.userAnswer]
+                const correctAnswerArray = Array.isArray(currentResult.question.answer) ? currentResult.question.answer : [currentResult.question.answer]
                 
                 return (
-                  <div key={idx} className="bg-bg-card rounded-lg p-4 md:p-6">
+                  <div>
                     {/* Question Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-base md:text-lg font-semibold text-text-primary mb-2 flex items-center justify-between">
-                        Question {idx + 1} of {questionResults.length}
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-sm md:text-base font-semibold text-text-primary flex items-center justify-between">
+                        Question {selectedQuestionIndex + 1} of {questionResults.length}
                       </h3>
-                      <div className={`${result.isCorrect ? 'text-success' : 'text-danger'}`}>
-                        {result.isCorrect ? <Check className="w-6 h-6 md:w-7 md:h-7" /> : <X className="w-6 h-6 md:w-7 md:h-7" />}
+                      <div className={`${currentResult.isCorrect ? 'text-success' : 'text-danger'}`}>
+                        {currentResult.isCorrect ? <Check className="w-5 h-5 md:w-6 md:h-6" /> : <X className="w-5 h-5 md:w-6 md:h-6" />}
                       </div>
                     </div>
 
                     {/* Question Text */}
-                    <p className="text-base md:text-lg text-text-primary mb-4">{result.question.question}</p>
+                    <p className="text-sm md:text-base text-text-primary mb-3">{currentResult.question.question}</p>
 
                     {/* Answer Options */}
-                    <div className="space-y-2 mb-4">
-                      {Object.entries(result.question.options).map(([key, value]) => {
+                    <div className="space-y-1.5 md:space-y-2 mb-3">
+                      {Object.entries(currentResult.question.options).map(([key, value]) => {
                         const isUserAnswer = userAnswerArray.includes(key)
                         const isCorrectAnswer = correctAnswerArray.includes(key)
                         
@@ -368,7 +395,7 @@ export function DomainPractice() {
                         return (
                           <div
                             key={key}
-                            className={`p-3 rounded-lg border-2 ${bgColor} ${textColor} text-sm md:text-base`}
+                            className={`p-2 md:p-2.5 rounded-lg border-2 ${bgColor} ${textColor} text-xs md:text-sm`}
                           >
                             <span className="font-semibold">{key}.</span> {value}{label}
                           </div>
@@ -377,12 +404,30 @@ export function DomainPractice() {
                     </div>
 
                     {/* Explanation Placeholder */}
-                    <div className="bg-bg-dark rounded-lg p-4 text-sm md:text-base">
+                    <div className="bg-bg-dark rounded-lg p-2.5 md:p-3 text-xs md:text-sm">
                       <p className="text-text-muted italic">Explanation: [Will be added in next phase]</p>
                     </div>
                   </div>
                 )
-              })}
+              })()}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex gap-3 mb-4">
+              <button
+                onClick={() => setSelectedQuestionIndex(Math.max(0, selectedQuestionIndex - 1))}
+                disabled={selectedQuestionIndex === 0}
+                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                ← Previous
+              </button>
+              <button
+                onClick={() => setSelectedQuestionIndex(Math.min(questionResults.length - 1, selectedQuestionIndex + 1))}
+                disabled={selectedQuestionIndex === questionResults.length - 1}
+                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Next →
+              </button>
             </div>
 
             {/* Action Buttons */}
@@ -412,18 +457,11 @@ export function DomainPractice() {
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-3xl mx-auto">
-          {/* Header with Back Button */}
-          <div className="flex items-center justify-between mb-6">
-            <button
-              onClick={() => navigate('/')}
-              className="px-4 py-2 bg-bg-card hover:bg-bg-card-hover text-text-primary font-medium rounded-lg transition-colors"
-            >
-              ← Back to Home
-            </button>
-            <h2 className="text-xl font-semibold text-text-primary">
+          {/* Header */}
+          <div className="flex items-center justify-center mb-6">
+            <h2 className="text-base md:text-lg lg:text-xl font-semibold text-text-primary">
               {DOMAINS[selectedDomain as keyof typeof DOMAINS]}
             </h2>
-            <div className="w-20"></div>
           </div>
 
           {/* Progress */}
@@ -437,15 +475,15 @@ export function DomainPractice() {
           </div>
 
           {/* Question */}
-          <div className="bg-bg-card rounded-lg p-6 mb-6">
-            <h3 className="text-xl text-text-primary mb-6">
+          <div className="bg-bg-card rounded-lg p-2.5 md:p-3 lg:p-4 mb-3">
+            <h3 className="text-base md:text-lg text-text-primary mb-3 md:mb-4">
               {currentQuestion.question}
               {currentQuestion.isMultiAnswer && (
                 <span className="text-aws-orange font-semibold ml-2">(Select 2)</span>
               )}
             </h3>
 
-            <div className="space-y-2 md:space-y-3 mb-6">
+            <div className="space-y-2 md:space-y-3 mb-4">
               {Object.entries(currentQuestion.options).map(([key, value]) => {
                 const isSelected = currentQuestion.isMultiAnswer
                   ? Array.isArray(userAnswer) && userAnswer.includes(key)
@@ -485,7 +523,7 @@ export function DomainPractice() {
             </div>
 
             {currentQuestion.isMultiAnswer && !showFeedback && (
-              <div className="mb-4 text-sm text-text-muted">
+              <div className="mb-3 text-xs md:text-sm text-text-muted">
                 {Array.isArray(userAnswer) && userAnswer.length > 0 ? (
                   <span className="text-aws-orange font-medium">
                     {userAnswer.length}/2 answers selected
@@ -500,21 +538,21 @@ export function DomainPractice() {
               <button
                 onClick={() => checkAnswer()}
                 disabled={!userAnswer || (Array.isArray(userAnswer) && userAnswer.length === 0)}
-                className="w-full px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-2 md:px-6 md:py-2.5 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
               >
                 Submit Answer
               </button>
             )}
 
             {showFeedback && (
-              <div className={`mt-6 p-4 rounded-lg ${isCorrect ? 'bg-success/10 border border-success' : 'bg-danger/10 border border-danger'}`}>
-                <div className={`font-semibold mb-3 flex items-center gap-2 ${isCorrect ? 'text-success' : 'text-danger'}`}>
-                  {isCorrect ? <Check className="w-5 h-5" /> : <X className="w-5 h-5" />}
+              <div className={`mt-3 p-2.5 md:p-3 rounded-lg ${isCorrect ? 'bg-success/10 border border-success' : 'bg-danger/10 border border-danger'}`}>
+                <div className={`font-semibold mb-2 flex items-center gap-2 text-sm md:text-base ${isCorrect ? 'text-success' : 'text-danger'}`}>
+                  {isCorrect ? <Check className="w-4 h-4 md:w-5 md:h-5" /> : <X className="w-4 h-4 md:w-5 md:h-5" />}
                   <p>{isCorrect ? 'Correct!' : 'Incorrect'}</p>
                 </div>
                 
                 {!isCorrect && (
-                  <div className="mb-3 text-sm">
+                  <div className="mb-2 text-xs md:text-sm">
                     <p className="text-danger font-medium mb-1">
                       Your answer: {currentQuestion.isMultiAnswer 
                         ? (Array.isArray(userAnswer) ? userAnswer.join(', ') : '')
@@ -529,9 +567,9 @@ export function DomainPractice() {
                 )}
                 
                 {currentQuestion.explanation && (
-                  <div className="border-t border-text-muted/20 pt-3 mt-3">
-                    <p className="text-text-muted text-sm font-medium mb-1">Explanation:</p>
-                    <p className="text-text-muted text-sm">{currentQuestion.explanation}</p>
+                  <div className="border-t border-text-muted/20 pt-2 mt-2">
+                    <p className="text-text-muted text-xs md:text-sm font-medium mb-1">Explanation:</p>
+                    <p className="text-text-muted text-xs md:text-sm">{currentQuestion.explanation}</p>
                   </div>
                 )}
               </div>
@@ -541,7 +579,7 @@ export function DomainPractice() {
           {showFeedback && (
             <button
               onClick={nextQuestion}
-              className="w-full px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors"
+              className="w-full px-4 py-2 md:px-6 md:py-2.5 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors text-sm md:text-base"
             >
               {currentIndex < questions.length - 1 ? 'Next Question →' : 'Finish Session'}
             </button>
