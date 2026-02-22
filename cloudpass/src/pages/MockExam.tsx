@@ -82,8 +82,13 @@ export function MockExam() {
       let newAnswers: string[]
       
       if (currentAnswers.includes(answer)) {
+        // Allow deselection
         newAnswers = currentAnswers.filter(a => a !== answer)
       } else {
+        // Enforce max 2 selections
+        if (currentAnswers.length >= 2) {
+          return // Don't allow more than 2 selections
+        }
         newAnswers = [...currentAnswers, answer]
       }
       
@@ -427,13 +432,23 @@ export function MockExam() {
                 <span className="text-text-muted">Question {currentIndex + 1} of {questions.length}</span>
               </div>
 
-              <h2 className="text-xl text-text-primary mb-6">{currentQuestion.question}</h2>
+              <h2 className="text-xl text-text-primary mb-6">
+                {currentQuestion.question}
+                {currentQuestion.isMultiAnswer && (
+                  <span className="text-aws-orange font-semibold ml-2">(Select 2)</span>
+                )}
+              </h2>
 
               <div className="space-y-3 mb-6">
                 {Object.entries(currentQuestion.options).map(([key, value]) => {
                   const isSelected = currentQuestion.isMultiAnswer
                     ? Array.isArray(currentState?.userAnswer) && currentState.userAnswer.includes(key)
                     : currentState?.userAnswer === key
+                  
+                  const currentSelections = currentQuestion.isMultiAnswer && Array.isArray(currentState?.userAnswer) 
+                    ? currentState.userAnswer.length 
+                    : 0
+                  const isDisabled = currentQuestion.isMultiAnswer && !isSelected && currentSelections >= 2
                   
                   return (
                     <AnswerButton
@@ -442,10 +457,23 @@ export function MockExam() {
                       text={value}
                       state={isSelected ? 'selected' : 'default'}
                       onClick={() => handleAnswer(key)}
+                      disabled={isDisabled}
                     />
                   )
                 })}
               </div>
+
+              {currentQuestion.isMultiAnswer && (
+                <div className="mb-4 text-sm text-text-muted">
+                  {Array.isArray(currentState?.userAnswer) && currentState.userAnswer.length > 0 ? (
+                    <span className="text-aws-orange font-medium">
+                      {currentState.userAnswer.length}/2 answers selected
+                    </span>
+                  ) : (
+                    <span>Select 2 answers</span>
+                  )}
+                </div>
+              )}
 
               <button
                 onClick={toggleFlag}

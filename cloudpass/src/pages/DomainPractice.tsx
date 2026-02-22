@@ -95,8 +95,13 @@ export function DomainPractice() {
       let newAnswers: string[]
       
       if (currentAnswers.includes(answer)) {
+        // Allow deselection
         newAnswers = currentAnswers.filter(a => a !== answer)
       } else {
+        // Enforce max 2 selections
+        if (currentAnswers.length >= 2) {
+          return // Don't allow more than 2 selections
+        }
         newAnswers = [...currentAnswers, answer]
       }
       
@@ -433,13 +438,23 @@ export function DomainPractice() {
 
           {/* Question */}
           <div className="bg-bg-card rounded-lg p-6 mb-6">
-            <h3 className="text-xl text-text-primary mb-6">{currentQuestion.question}</h3>
+            <h3 className="text-xl text-text-primary mb-6">
+              {currentQuestion.question}
+              {currentQuestion.isMultiAnswer && (
+                <span className="text-aws-orange font-semibold ml-2">(Select 2)</span>
+              )}
+            </h3>
 
             <div className="space-y-3 mb-6">
               {Object.entries(currentQuestion.options).map(([key, value]) => {
                 const isSelected = currentQuestion.isMultiAnswer
                   ? Array.isArray(userAnswer) && userAnswer.includes(key)
                   : userAnswer === key
+                
+                const currentSelections = currentQuestion.isMultiAnswer && Array.isArray(userAnswer) 
+                  ? userAnswer.length 
+                  : 0
+                const isLimitReached = currentQuestion.isMultiAnswer && !isSelected && currentSelections >= 2
                 
                 let state: 'default' | 'selected' | 'correct' | 'wrong' = 'default'
                 
@@ -463,11 +478,23 @@ export function DomainPractice() {
                     text={value}
                     state={state}
                     onClick={() => !showFeedback && handleAnswer(key)}
-                    disabled={showFeedback}
+                    disabled={showFeedback || isLimitReached}
                   />
                 )
               })}
             </div>
+
+            {currentQuestion.isMultiAnswer && !showFeedback && (
+              <div className="mb-4 text-sm text-text-muted">
+                {Array.isArray(userAnswer) && userAnswer.length > 0 ? (
+                  <span className="text-aws-orange font-medium">
+                    {userAnswer.length}/2 answers selected
+                  </span>
+                ) : (
+                  <span>Select 2 answers</span>
+                )}
+              </div>
+            )}
 
             {currentQuestion.isMultiAnswer && !showFeedback && (
               <button
