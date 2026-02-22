@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#232F3E"/>
+  
+  <!-- Cloud emoji -->
+  <text x="600" y="280" font-size="180" text-anchor="middle">☁️</text>
+  
+  <!-- Title -->
+  <text x="600" y="400" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="Arial, sans-serif">CloudCertPrep</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="460" font-size="32" fill="#FF9900" text-anchor="middle" font-family="Arial, sans-serif">AWS Cloud Practitioner Exam Prep</text>
+  
+  <!-- Description -->
+  <text x="600" y="520" font-size="24" fill="#AAAAAA" text-anchor="middle" font-family="Arial, sans-serif">588 Practice Questions • Mock Exams • 100% Free</text>
+</svg>
