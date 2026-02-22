@@ -28,6 +28,7 @@ export function History() {
   const [loading, setLoading] = useState(true)
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
   const [filter, setFilter] = useState<'all' | 'passed' | 'failed'>('all')
+  const [expandedAttempt, setExpandedAttempt] = useState<string | null>(null)
 
   useEffect(() => {
     loadHistory()
@@ -80,66 +81,136 @@ export function History() {
     ? Math.round(attempts.reduce((sum, a) => sum + a.scaled_score, 0) / attempts.length)
     : 0
 
+  function getTimeGroup(dateString: string): string {
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    
+    if (diffDays === 0) return 'Today'
+    if (diffDays < 7) return 'This Week'
+    if (diffDays < 30) return 'This Month'
+    return 'Older'
+  }
+
+  function groupAttemptsByTime(attempts: ExamAttempt[]) {
+    const groups: Record<string, ExamAttempt[]> = {
+      'Today': [],
+      'This Week': [],
+      'This Month': [],
+      'Older': []
+    }
+    
+    attempts.forEach(attempt => {
+      const group = getTimeGroup(attempt.attempted_at)
+      groups[group].push(attempt)
+    })
+    
+    return groups
+  }
+
+  function formatRelativeDate(dateString: string): string {
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
+    const diffMinutes = Math.floor(diffMs / (1000 * 60))
+
+    if (diffMinutes < 60) {
+      return diffMinutes === 1 ? '1 minute ago' : `${diffMinutes} minutes ago`
+    } else if (diffHours < 24) {
+      return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`
+    } else if (diffDays === 0) {
+      return 'Today'
+    } else if (diffDays === 1) {
+      return 'Yesterday'
+    } else if (diffDays < 7) {
+      return `${diffDays} days ago`
+    } else {
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+    }
+  }
+
   return (
     <div className="min-h-screen bg-bg-dark flex flex-col">
       <Header showNav={true} />
       <div className="flex-1 p-4 md:p-8">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-text-primary mb-8">Exam History</h1>
+          <h1 className="text-4xl font-bold text-text-primary mb-8">Mock Exam Attempts History</h1>
 
-        {/* Stats Summary */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-2">Total Attempts</p>
-            <p className="text-2xl md:text-4xl font-bold text-text-primary">{totalAttempts}</p>
+        {/* Stats Summary - Only show for logged in users */}
+        {user && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+            <div className="bg-bg-card rounded-lg p-4 md:p-6">
+              <p className="text-text-muted text-xs md:text-sm mb-2">Total Attempts</p>
+              <p className="text-2xl md:text-4xl font-bold text-text-primary">
+                {totalAttempts} <span className="text-lg md:text-2xl text-success">({passedAttempts} passed)</span>
+              </p>
+              <p className="text-text-muted text-sm mt-2">Pass Rate: <span className="text-success font-semibold">{passRate}%</span></p>
+            </div>
+            <div className="bg-bg-card rounded-lg p-4 md:p-6">
+              <p className="text-text-muted text-xs md:text-sm mb-2">Best Score</p>
+              <p className="text-2xl md:text-4xl font-bold text-aws-orange">{bestScore}</p>
+            </div>
+            <div className="bg-bg-card rounded-lg p-4 md:p-6">
+              <p className="text-text-muted text-xs md:text-sm mb-2">Average Score</p>
+              <p className="text-2xl md:text-4xl font-bold text-text-primary">{averageScore}</p>
+            </div>
           </div>
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-2">Pass Rate</p>
-            <p className="text-2xl md:text-4xl font-bold text-success">{passRate}%</p>
-          </div>
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-2">Best Score</p>
-            <p className="text-2xl md:text-4xl font-bold text-aws-orange">{bestScore}</p>
-          </div>
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-2">Average Score</p>
-            <p className="text-2xl md:text-4xl font-bold text-text-primary">{averageScore}</p>
-          </div>
-        </div>
+        )}
 
-        {/* Filter Tabs */}
-        <div className="flex gap-2 mb-6">
-          <button
-            onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-              filter === 'all'
-                ? 'bg-aws-orange text-white'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
-            }`}
-          >
-            All ({attempts.length})
-          </button>
-          <button
-            onClick={() => setFilter('passed')}
-            className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-              filter === 'passed'
-                ? 'bg-success text-white'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
-            }`}
-          >
-            Passed ({passedAttempts})
-          </button>
-          <button
-            onClick={() => setFilter('failed')}
-            className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-              filter === 'failed'
-                ? 'bg-danger text-white'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
-            }`}
-          >
-            Failed ({attempts.length - passedAttempts})
-          </button>
-        </div>
+        {/* Filter Tabs - Only show for logged in users */}
+        {user && (
+          <div className="flex gap-2 mb-6">
+            <button
+              onClick={() => setFilter('all')}
+              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                filter === 'all'
+                  ? 'bg-aws-orange text-white'
+                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+              }`}
+            >
+              All ({attempts.length})
+            </button>
+            <button
+              onClick={() => setFilter('passed')}
+              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                filter === 'passed'
+                  ? 'bg-success text-white'
+                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+              }`}
+            >
+              Passed ({passedAttempts})
+            </button>
+            <button
+              onClick={() => setFilter('failed')}
+              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                filter === 'failed'
+                  ? 'bg-danger text-white'
+                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+              }`}
+            >
+              Failed ({attempts.length - passedAttempts})
+            </button>
+          </div>
+        )}
+
+        {/* Guest User Empty State */}
+        {!user && (
+          <div className="mb-6 p-6 bg-warning/10 border border-warning rounded-lg">
+            <p className="text-warning font-semibold mb-2">📊 Track Your Progress</p>
+            <p className="text-text-muted text-sm mb-4">
+              Sign in to track your mock exam history and monitor your progress over time.
+            </p>
+            <button
+              onClick={() => navigate('/login')}
+              className="px-6 py-2 bg-aws-orange hover:bg-aws-orange/90 text-white font-medium rounded-lg transition-colors"
+            >
+              Sign In
+            </button>
+          </div>
+        )}
 
         {/* Attempts List */}
         {filteredAttempts.length === 0 ? (
@@ -159,9 +230,14 @@ export function History() {
             )}
           </div>
         ) : (
-          <div className="space-y-4">
-            {filteredAttempts.map(attempt => (
-              <div key={attempt.id} className="bg-bg-card rounded-lg p-6">
+          <div className="space-y-6">
+            {Object.entries(groupAttemptsByTime(filteredAttempts)).map(([group, groupAttempts]) => (
+              groupAttempts.length > 0 && (
+                <div key={group}>
+                  <h2 className="text-lg font-semibold text-text-primary mb-4">{group}</h2>
+                  <div className="space-y-4">
+                    {groupAttempts.map(attempt => (
+                      <div key={attempt.id} className="bg-bg-card rounded-lg p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div className={`w-16 h-16 rounded-full flex items-center justify-center ${attempt.passed ? 'bg-success/20' : 'bg-danger/20'}`}>
@@ -174,7 +250,7 @@ export function History() {
                         {attempt.passed ? 'Passed' : 'Failed'}
                       </h3>
                       <p className="text-text-muted text-sm">
-                        {new Date(attempt.attempted_at).toLocaleString()}
+                        {formatRelativeDate(attempt.attempted_at)}
                       </p>
                     </div>
                   </div>
@@ -224,7 +300,29 @@ export function History() {
                     })}
                   </div>
                 </div>
-              </div>
+
+                {/* View Details Button */}
+                <div className="mt-4 pt-4 border-t border-bg-dark">
+                  <button
+                    onClick={() => setExpandedAttempt(expandedAttempt === attempt.id ? null : attempt.id)}
+                    className="w-full px-4 py-2 bg-bg-dark hover:bg-bg-dark/70 text-aws-orange font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                  >
+                    {expandedAttempt === attempt.id ? '▼' : '▶'} View Details
+                  </button>
+                  
+                  {expandedAttempt === attempt.id && (
+                    <div className="mt-4 p-4 bg-bg-dark rounded-lg">
+                      <p className="text-text-muted text-sm">
+                        Question-by-question review will be available in a future update. This will show all 65 questions with your answers and explanations.
+                      </p>
+                    </div>
+                  )}
+                </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
             ))}
           </div>
         )}
