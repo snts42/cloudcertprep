@@ -13,6 +13,7 @@ import { supabase } from '../lib/supabase'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
+import { Flag, AlertCircle } from 'lucide-react'
 
 type ExamScreen = 'start' | 'exam' | 'results'
 
@@ -282,7 +283,10 @@ export function MockExam() {
           </div>
 
           <div className="bg-warning/10 border border-warning rounded-lg p-3 md:p-4 mb-6 md:mb-8">
-            <p className="text-sm md:text-base text-warning font-medium">⚠️ Once started, the timer cannot be paused</p>
+            <div className="flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 md:w-5 md:h-5 text-warning flex-shrink-0" />
+              <p className="text-sm md:text-base text-warning font-medium">Once started, the timer cannot be paused</p>
+            </div>
           </div>
 
           <button
@@ -447,11 +451,11 @@ export function MockExam() {
                 onClick={toggleFlag}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentState?.flagged
-                    ? 'bg-aws-orange text-white'
+                    ? 'bg-warning/20 text-warning border border-warning'
                     : 'bg-bg-dark text-text-muted hover:text-text-primary'
                 }`}
               >
-                <span className="text-xl">🚩</span>
+                <Flag className={`w-5 h-5 ${currentState?.flagged ? 'fill-warning' : ''}`} />
                 <span className="font-medium">{currentState?.flagged ? 'Flagged for Review' : 'Flag for Review'}</span>
               </button>
             </div>
@@ -499,7 +503,7 @@ export function MockExam() {
                     >
                       {idx + 1}
                       {isFlagged && (
-                        <span className="absolute -top-1 -right-1 text-xs">🚩</span>
+                        <Flag className="absolute -top-1 -right-1 w-3 h-3 text-warning fill-warning" />
                       )}
                     </button>
                   )
@@ -540,7 +544,7 @@ export function MockExam() {
                   >
                     {idx + 1}
                     {isFlagged && (
-                      <span className="absolute -top-1 -right-1 text-xs">🚩</span>
+                      <Flag className="absolute -top-1 -right-1 w-3 h-3 text-warning fill-warning" />
                     )}
                   </button>
                 )

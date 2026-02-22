@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import { formatDuration } from '../lib/scoring'
+import { TrendingUp, Check, X } from 'lucide-react'
 
 interface ExamAttempt {
   id: string
@@ -199,7 +200,10 @@ export function History() {
         {/* Guest User Empty State */}
         {!user && (
           <div className="mb-6 p-6 bg-warning/10 border border-warning rounded-lg">
-            <p className="text-warning font-semibold mb-2">📊 Track Your Progress</p>
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-5 h-5 text-warning" />
+              <p className="text-warning font-semibold">Track Your Progress</p>
+            </div>
             <p className="text-text-muted text-sm mb-4">
               Sign in to track your mock exam history and monitor your progress over time.
             </p>
@@ -241,9 +245,11 @@ export function History() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div className={`w-16 h-16 rounded-full flex items-center justify-center ${attempt.passed ? 'bg-success/20' : 'bg-danger/20'}`}>
-                      <span className={`text-3xl ${attempt.passed ? 'text-success' : 'text-danger'}`}>
-                        {attempt.passed ? '✓' : '✗'}
-                      </span>
+                      {attempt.passed ? (
+                        <Check className="w-8 h-8 text-success" />
+                      ) : (
+                        <X className="w-8 h-8 text-danger" />
+                      )}
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-text-primary mb-1">

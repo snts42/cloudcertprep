@@ -66,8 +66,8 @@ export const DOMAINS = {
 } as const
 
 export const DOMAIN_COLORS = {
-  1: '#3B82F6',
-  2: '#EF4444',
-  3: '#22C55E',
-  4: '#F59E0B',
+  1: '#FF9900', // AWS Orange
+  2: '#FF9900', // AWS Orange
+  3: '#FF9900', // AWS Orange
+  4: '#FF9900', // AWS Orange
 } as const

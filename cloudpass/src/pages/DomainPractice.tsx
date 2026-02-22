@@ -10,6 +10,7 @@ import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
 import { isAnswerCorrect } from '../lib/scoring'
 import { calculateDomainMastery } from '../lib/domainStats'
+import { Check, X } from 'lucide-react'
 
 type Screen = 'selection' | 'config' | 'practice' | 'results'
 
@@ -322,11 +323,11 @@ export function DomainPractice() {
                   <div key={idx} className="bg-bg-card rounded-lg p-4 md:p-6">
                     {/* Question Header */}
                     <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-sm md:text-base text-text-muted">
+                      <h3 className="text-base md:text-lg font-semibold text-text-primary mb-2 flex items-center justify-between">
                         Question {idx + 1} of {questionResults.length}
                       </h3>
-                      <div className={`text-2xl ${result.isCorrect ? 'text-success' : 'text-danger'}`}>
-                        {result.isCorrect ? '✓' : '✗'}
+                      <div className={`${result.isCorrect ? 'text-success' : 'text-danger'}`}>
+                        {result.isCorrect ? <Check className="w-6 h-6 md:w-7 md:h-7" /> : <X className="w-6 h-6 md:w-7 md:h-7" />}
                       </div>
                     </div>
 
@@ -346,15 +347,15 @@ export function DomainPractice() {
                         if (isUserAnswer && isCorrectAnswer) {
                           bgColor = 'bg-success/10 border-success'
                           textColor = 'text-success'
-                          label = ' ✓ (Your answer - Correct!)'
+                          label = ' (Your answer - Correct!)'
                         } else if (isUserAnswer && !isCorrectAnswer) {
                           bgColor = 'bg-danger/10 border-danger'
                           textColor = 'text-danger'
-                          label = ' ✗ (Your answer - Incorrect)'
+                          label = ' (Your answer - Incorrect)'
                         } else if (!isUserAnswer && isCorrectAnswer) {
                           bgColor = 'bg-success/10 border-success'
                           textColor = 'text-success'
-                          label = ' ✓ (Correct answer)'
+                          label = ' (Correct answer)'
                         } else {
                           bgColor = 'bg-bg-dark border-text-muted/20'
                         }
@@ -480,9 +481,10 @@ export function DomainPractice() {
 
             {showFeedback && (
               <div className={`mt-6 p-4 rounded-lg ${isCorrect ? 'bg-success/10 border border-success' : 'bg-danger/10 border border-danger'}`}>
-                <p className={`font-semibold mb-3 ${isCorrect ? 'text-success' : 'text-danger'}`}>
-                  {isCorrect ? '✓ Correct!' : '✗ Incorrect'}
-                </p>
+                <div className={`font-semibold mb-3 flex items-center gap-2 ${isCorrect ? 'text-success' : 'text-danger'}`}>
+                  {isCorrect ? <Check className="w-5 h-5" /> : <X className="w-5 h-5" />}
+                  <p>{isCorrect ? 'Correct!' : 'Incorrect'}</p>
+                </div>
                 
                 {!isCorrect && (
                   <div className="mb-3 text-sm">
