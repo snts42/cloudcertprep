@@ -35,10 +35,16 @@ export function History() {
 
   async function loadHistory() {
     try {
+      if (!user?.id) {
+        setAttempts([])
+        setLoading(false)
+        return
+      }
+
       const { data, error } = await supabase
         .from('exam_attempts')
         .select('*')
-        .eq('user_id', user?.id)
+        .eq('user_id', user.id)
         .order('attempted_at', { ascending: false })
 
       if (error) throw error

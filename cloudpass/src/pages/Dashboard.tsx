@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import { formatDuration } from '../lib/scoring'
+import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
 
 interface DomainProgress {
   domain_id: number
@@ -172,7 +173,7 @@ export function Dashboard() {
                           {DOMAINS[domainId as keyof typeof DOMAINS]}
                         </h3>
                         <p className="text-text-muted text-xs md:text-sm">
-                          {progress?.questions_attempted || 0} attempted • {progress?.questions_correct || 0} correct
+                          {progress?.questions_attempted || 0}/{DOMAIN_QUESTION_COUNTS[domainId as keyof typeof DOMAIN_QUESTION_COUNTS]} attempted • {progress?.questions_correct || 0} correct
                         </p>
                       </div>
                       <div 
