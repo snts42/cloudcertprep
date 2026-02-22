@@ -27,12 +27,12 @@ export function AnswerButton({ label, text, state, onClick, disabled }: AnswerBu
     <button
       onClick={onClick}
       disabled={disabled || state === 'disabled'}
-      className={`w-full min-h-[60px] p-4 border-2 rounded-lg transition-all duration-200 text-left flex items-start gap-4 ${stateStyles[state]}`}
+      className={`w-full min-h-[44px] p-2.5 md:p-4 lg:p-5 border-2 rounded-lg transition-all duration-200 text-left flex items-start gap-2.5 md:gap-3 lg:gap-4 text-sm md:text-base ${stateStyles[state]}`}
     >
-      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${labelStyles[state]}`}>
+      <div className={`flex-shrink-0 w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm ${labelStyles[state]}`}>
         {label}
       </div>
-      <div className="flex-1 text-text-primary pt-1">
+      <div className="flex-1 text-text-primary pt-0.5 md:pt-1">
         {text}
       </div>
     </button>

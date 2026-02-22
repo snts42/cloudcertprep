@@ -235,7 +235,7 @@ export function DomainPractice() {
             onClick={() => navigate('/')}
             className="w-full bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
-            ← Back to Dashboard
+            ← Back to Home
           </button>
           </div>
         </div>
@@ -391,7 +391,7 @@ export function DomainPractice() {
                 onClick={() => navigate('/')}
                 className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
               >
-                Back to Dashboard
+                Back to Home
               </button>
               <button
                 onClick={() => selectDomain(selectedDomain!)}
@@ -418,7 +418,7 @@ export function DomainPractice() {
               onClick={() => navigate('/')}
               className="px-4 py-2 bg-bg-card hover:bg-bg-card-hover text-text-primary font-medium rounded-lg transition-colors"
             >
-              ← Back
+              ← Back to Home
             </button>
             <h2 className="text-xl font-semibold text-text-primary">
               {DOMAINS[selectedDomain as keyof typeof DOMAINS]}
@@ -445,7 +445,7 @@ export function DomainPractice() {
               )}
             </h3>
 
-            <div className="space-y-3 mb-6">
+            <div className="space-y-2 md:space-y-3 mb-6">
               {Object.entries(currentQuestion.options).map(([key, value]) => {
                 const isSelected = currentQuestion.isMultiAnswer
                   ? Array.isArray(userAnswer) && userAnswer.includes(key)

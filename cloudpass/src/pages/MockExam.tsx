@@ -305,7 +305,7 @@ export function MockExam() {
             onClick={() => navigate('/')}
             className="w-full mt-3 md:mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
-            Back to Dashboard
+            ← Back to Home
           </button>
         </div>
       </div>
@@ -373,7 +373,7 @@ export function MockExam() {
               onClick={() => navigate('/')}
               className="flex-1 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold py-3 rounded-lg transition-colors"
             >
-              Back to Dashboard
+              ← Back to Home
             </button>
             <button
               onClick={() => {
@@ -439,7 +439,7 @@ export function MockExam() {
                 )}
               </h2>
 
-              <div className="space-y-3 mb-6">
+              <div className="space-y-2 md:space-y-3 mb-6">
                 {Object.entries(currentQuestion.options).map(([key, value]) => {
                   const isSelected = currentQuestion.isMultiAnswer
                     ? Array.isArray(currentState?.userAnswer) && currentState.userAnswer.includes(key)
