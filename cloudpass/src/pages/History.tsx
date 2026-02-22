@@ -66,6 +66,10 @@ export function History() {
 
   const totalAttempts = attempts.length
   const passedAttempts = attempts.filter(a => a.passed).length
+  const passRate = totalAttempts > 0 ? Math.round((passedAttempts / totalAttempts) * 100) : 0
+  const bestScore = attempts.length > 0
+    ? Math.max(...attempts.map(a => a.scaled_score))
+    : 0
   const averageScore = attempts.length > 0
     ? Math.round(attempts.reduce((sum, a) => sum + a.scaled_score, 0) / attempts.length)
     : 0
@@ -78,18 +82,22 @@ export function History() {
           <h1 className="text-4xl font-bold text-text-primary mb-8">Exam History</h1>
 
         {/* Stats Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-bg-card rounded-lg p-6">
-            <p className="text-text-muted text-sm mb-2">Total Attempts</p>
-            <p className="text-4xl font-bold text-text-primary">{totalAttempts}</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+          <div className="bg-bg-card rounded-lg p-4 md:p-6">
+            <p className="text-text-muted text-xs md:text-sm mb-2">Total Attempts</p>
+            <p className="text-2xl md:text-4xl font-bold text-text-primary">{totalAttempts}</p>
           </div>
-          <div className="bg-bg-card rounded-lg p-6">
-            <p className="text-text-muted text-sm mb-2">Passed</p>
-            <p className="text-4xl font-bold text-success">{passedAttempts}</p>
+          <div className="bg-bg-card rounded-lg p-4 md:p-6">
+            <p className="text-text-muted text-xs md:text-sm mb-2">Pass Rate</p>
+            <p className="text-2xl md:text-4xl font-bold text-success">{passRate}%</p>
           </div>
-          <div className="bg-bg-card rounded-lg p-6">
-            <p className="text-text-muted text-sm mb-2">Average Score</p>
-            <p className="text-4xl font-bold text-aws-orange">{averageScore}</p>
+          <div className="bg-bg-card rounded-lg p-4 md:p-6">
+            <p className="text-text-muted text-xs md:text-sm mb-2">Best Score</p>
+            <p className="text-2xl md:text-4xl font-bold text-aws-orange">{bestScore}</p>
+          </div>
+          <div className="bg-bg-card rounded-lg p-4 md:p-6">
+            <p className="text-text-muted text-xs md:text-sm mb-2">Average Score</p>
+            <p className="text-2xl md:text-4xl font-bold text-text-primary">{averageScore}</p>
           </div>
         </div>
 

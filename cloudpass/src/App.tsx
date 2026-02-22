@@ -5,8 +5,6 @@ import { ResetPassword } from './pages/ResetPassword'
 import { Dashboard } from './pages/Dashboard'
 import { MockExam } from './pages/MockExam'
 import { DomainPractice } from './pages/DomainPractice'
-import { WeakSpot } from './pages/WeakSpot'
-import { Scenarios } from './pages/Scenarios'
 import { History } from './pages/History'
 import { Credits } from './pages/Credits'
 
@@ -22,8 +20,6 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/mock-exam" element={<MockExam />} />
         <Route path="/domain-practice" element={<DomainPractice />} />
-        <Route path="/weak-spot" element={<WeakSpot />} />
-        <Route path="/scenarios" element={<Scenarios />} />
         <Route path="/history" element={<History />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

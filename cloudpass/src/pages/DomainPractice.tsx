@@ -9,6 +9,7 @@ import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
 import { isAnswerCorrect } from '../lib/scoring'
+import { calculateDomainMastery } from '../lib/domainStats'
 
 type Screen = 'selection' | 'config' | 'practice' | 'results'
 
@@ -136,17 +137,28 @@ export function DomainPractice() {
 
   async function finishPractice() {
     const correctCount = results.filter(r => r).length
-    const masteryPercent = (correctCount / results.length) * 100
 
     // Only save to database if user is logged in
     if (user) {
       try {
+        // Get existing progress
+        const { data: existingProgress } = await supabase
+          .from('domain_progress')
+          .select('*')
+          .eq('user_id', user.id)
+          .eq('domain_id', selectedDomain)
+          .single()
+
+        const newAttempted = (existingProgress?.questions_attempted || 0) + results.length
+        const newCorrect = (existingProgress?.questions_correct || 0) + correctCount
+        const newMastery = calculateDomainMastery(newCorrect, selectedDomain as 1 | 2 | 3 | 4)
+
         await supabase.from('domain_progress').upsert({
           user_id: user.id,
           domain_id: selectedDomain,
-          questions_attempted: results.length,
-          questions_correct: correctCount,
-          mastery_percent: masteryPercent,
+          questions_attempted: newAttempted,
+          questions_correct: newCorrect,
+          mastery_percent: newMastery,
         }, {
           onConflict: 'user_id,domain_id',
         })

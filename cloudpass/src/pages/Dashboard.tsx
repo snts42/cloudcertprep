@@ -29,8 +29,6 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [domainProgress, setDomainProgress] = useState<DomainProgress[]>([])
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([])
-  const [totalAttempts, setTotalAttempts] = useState(0)
-  const [passRate, setPassRate] = useState(0)
 
   useEffect(() => {
     loadDashboardData()
@@ -38,7 +36,7 @@ export function Dashboard() {
 
   async function loadDashboardData() {
     try {
-      const [progressRes, attemptsRes, statsRes] = await Promise.all([
+      const [progressRes, attemptsRes] = await Promise.all([
         supabase
           .from('domain_progress')
           .select('*')
@@ -49,10 +47,6 @@ export function Dashboard() {
           .eq('user_id', user?.id)
           .order('attempted_at', { ascending: false })
           .limit(5),
-        supabase
-          .from('exam_attempts')
-          .select('passed')
-          .eq('user_id', user?.id),
       ])
 
       if (progressRes.data) {
@@ -61,12 +55,6 @@ export function Dashboard() {
 
       if (attemptsRes.data) {
         setRecentAttempts(attemptsRes.data)
-      }
-
-      if (statsRes.data) {
-        setTotalAttempts(statsRes.data.length)
-        const passedCount = statsRes.data.filter(a => a.passed).length
-        setPassRate(statsRes.data.length > 0 ? (passedCount / statsRes.data.length) * 100 : 0)
       }
     } catch (error) {
       console.error('Error loading dashboard:', error)
@@ -83,9 +71,6 @@ export function Dashboard() {
     )
   }
 
-  const overallMastery = domainProgress.length > 0
-    ? domainProgress.reduce((sum, d) => sum + d.mastery_percent, 0) / domainProgress.length
-    : 0
 
   return (
     <div className="min-h-screen bg-bg-dark flex flex-col">
@@ -101,25 +86,6 @@ export function Dashboard() {
             </div>
           )}
 
-        {/* Stats Overview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8">
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-1 md:mb-2">Overall Mastery</p>
-            <p className="text-2xl md:text-4xl font-bold text-aws-orange">{Math.round(overallMastery)}%</p>
-          </div>
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-1 md:mb-2">Total Attempts</p>
-            <p className="text-2xl md:text-4xl font-bold text-text-primary">{totalAttempts}</p>
-          </div>
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-1 md:mb-2">Pass Rate</p>
-            <p className="text-2xl md:text-4xl font-bold text-success">{Math.round(passRate)}%</p>
-          </div>
-          <div className="bg-bg-card rounded-lg p-4 md:p-6">
-            <p className="text-text-muted text-xs md:text-sm mb-1 md:mb-2">Questions Bank</p>
-            <p className="text-2xl md:text-4xl font-bold text-text-primary">588</p>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
@@ -144,24 +110,6 @@ export function Dashboard() {
                   <div className="text-3xl md:text-4xl mb-2">🎯</div>
                   <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Domain Practice</h3>
                   <p className="text-text-muted text-xs md:text-sm">Practice by domain</p>
-                </Link>
-                
-                <Link
-                  to="/weak-spot"
-                  className="bg-bg-card hover:bg-bg-card-hover p-4 md:p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all"
-                >
-                  <div className="text-3xl md:text-4xl mb-2">⚡</div>
-                  <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Weak Spot Trainer</h3>
-                  <p className="text-text-muted text-xs md:text-sm">Focus on mistakes</p>
-                </Link>
-                
-                <Link
-                  to="/scenarios"
-                  className="bg-bg-card hover:bg-bg-card-hover p-4 md:p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all"
-                >
-                  <div className="text-3xl md:text-4xl mb-2">💡</div>
-                  <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Scenario Practice</h3>
-                  <p className="text-text-muted text-xs md:text-sm">Real-world scenarios</p>
                 </Link>
               </div>
             </div>
@@ -224,7 +172,7 @@ export function Dashboard() {
                           {DOMAINS[domainId as keyof typeof DOMAINS]}
                         </h3>
                         <p className="text-text-muted text-xs md:text-sm">
-                          {progress?.questions_attempted || 0} attempted
+                          {progress?.questions_attempted || 0} attempted • {progress?.questions_correct || 0} correct
                         </p>
                       </div>
                       <div 

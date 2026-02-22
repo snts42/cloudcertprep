@@ -8,6 +8,7 @@ import { Modal } from '../components/Modal'
 import { PassFailBanner } from '../components/PassFailBanner'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, formatTime, formatDuration, isAnswerCorrect } from '../lib/scoring'
+import { calculateDomainMastery } from '../lib/domainStats'
 import { supabase } from '../lib/supabase'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
@@ -28,7 +29,26 @@ export function MockExam() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Map<number, QuestionState>>(new Map())
   const [showEndModal, setShowEndModal] = useState(false)
-  const [results, setResults] = useState<any>(null)
+  const [results, setResults] = useState<{
+    scaledScore: number
+    percentScore: number
+    passed: boolean
+    correctCount: number
+    totalQuestions: number
+    timeTaken: number
+    domain1Score: number
+    domain2Score: number
+    domain3Score: number
+    domain4Score: number
+    questionResults: Array<{
+      questionId: string
+      domainId: number
+      userAnswer: string | string[]
+      correctAnswer: string | string[]
+      isCorrect: boolean
+      wasFlagged: boolean
+    }>
+  } | null>(null)
   const [loading, setLoading] = useState(false)
   const [startTime, setStartTime] = useState<number>(0)
 
@@ -164,6 +184,7 @@ export function MockExam() {
 
       if (questionsError) throw questionsError
 
+      // Update weak spots
       for (const result of results) {
         if (!result.isCorrect) {
           await supabase.from('weak_spots').upsert({
@@ -175,6 +196,38 @@ export function MockExam() {
           }, {
             onConflict: 'user_id,question_id',
             ignoreDuplicates: false,
+          })
+        }
+      }
+
+      // Update domain progress for all 4 domains
+      for (let domainId = 1; domainId <= 4; domainId++) {
+        const domainResults = results.filter(r => r.domainId === domainId)
+        const domainCorrect = domainResults.filter(r => r.isCorrect).length
+        const domainTotal = domainResults.length
+
+        if (domainTotal > 0) {
+          // Get existing progress
+          const { data: existingProgress } = await supabase
+            .from('domain_progress')
+            .select('*')
+            .eq('user_id', user?.id)
+            .eq('domain_id', domainId)
+            .single()
+
+          const newAttempted = (existingProgress?.questions_attempted || 0) + domainTotal
+          const newCorrect = (existingProgress?.questions_correct || 0) + domainCorrect
+          const newMastery = calculateDomainMastery(newCorrect, domainId as 1 | 2 | 3 | 4)
+
+          await supabase.from('domain_progress').upsert({
+            user_id: user?.id,
+            domain_id: domainId,
+            domain_name: DOMAINS[domainId as keyof typeof DOMAINS],
+            questions_attempted: newAttempted,
+            questions_correct: newCorrect,
+            mastery_percent: newMastery,
+          }, {
+            onConflict: 'user_id,domain_id',
           })
         }
       }
