@@ -133,11 +133,11 @@ export function History() {
   }
 
   return (
-    <div className="min-h-screen bg-bg-dark flex flex-col">
+    <div className="bg-bg-dark flex flex-col">
       <Header showNav={true} />
-      <div className="flex-1 p-4 md:p-8">
+      <div className="p-4 md:p-8">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-text-primary mb-8">Mock Exam Attempts History</h1>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-6 md:mb-8">Mock Exam Attempts History</h1>
 
         {/* Stats Summary - Only show for logged in users */}
         {user && (

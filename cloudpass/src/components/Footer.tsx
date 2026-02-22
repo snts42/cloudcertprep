@@ -1,10 +1,10 @@
 export function Footer() {
   return (
     <footer className="bg-bg-card border-t border-text-muted/20 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-4 py-4 md:py-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-3 md:gap-4 text-center lg:text-left">
           {/* Copyright */}
-          <div className="text-text-muted text-sm">
+          <div className="text-text-muted text-xs md:text-sm">
             © {new Date().getFullYear()} <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Alex Santonastaso</a>. All rights reserved.
           </div>
 

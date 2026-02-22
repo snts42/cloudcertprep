@@ -66,7 +66,7 @@ export function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
+      <div className="bg-bg-dark flex items-center justify-center p-8">
         <LoadingSpinner text="Loading dashboard..." />
       </div>
     )
@@ -74,9 +74,9 @@ export function Dashboard() {
 
 
   return (
-    <div className="min-h-screen bg-bg-dark flex flex-col">
+    <div className="bg-bg-dark flex flex-col">
       <Header showNav={true} />
-      <div className="flex-1 p-4 md:p-8">
+      <div className="p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
           {!user && (
             <div className="mb-6 p-4 bg-warning/10 border border-warning rounded-lg">

@@ -12,18 +12,18 @@ export function Header({ showNav = false }: HeaderProps) {
 
   return (
     <header className="bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 py-3 md:py-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0">
+      <div className="max-w-7xl mx-auto px-4 py-2 md:py-4 lg:py-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3 lg:gap-0">
           {/* Logo and Title */}
           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="w-8 h-8 md:w-12 md:h-12 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-xl md:text-3xl font-bold text-aws-orange">☁️</span>
+            <div className="w-8 h-8 md:w-10 lg:w-12 md:h-10 lg:h-12 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+              <span className="text-xl md:text-2xl lg:text-3xl font-bold text-aws-orange">☁️</span>
             </div>
             <div>
-              <h1 className="text-xl md:text-3xl font-bold text-white tracking-tight">
+              <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
                 CloudCertPrep
               </h1>
-              <p className="text-xs md:text-sm text-white/90 font-medium hidden md:block">
+              <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
                 AWS Cloud Practitioner Exam Prep
               </p>
             </div>
@@ -31,17 +31,17 @@ export function Header({ showNav = false }: HeaderProps) {
           
           {/* Navigation and Auth */}
           {showNav && (
-            <div className="flex items-center justify-between md:justify-end gap-3 md:gap-6">
-              <nav className="flex items-center gap-3 md:gap-6">
+            <div className="flex items-center justify-between md:justify-end gap-2 md:gap-4 lg:gap-6">
+              <nav className="flex items-center gap-2 md:gap-4 lg:gap-6">
                 <Link 
                   to="/" 
-                  className="text-white/90 hover:text-white font-medium transition-colors text-xs md:text-base"
+                  className="text-white/90 hover:text-white font-medium transition-colors text-xs md:text-sm lg:text-base"
                 >
-                  Dashboard
+                  Home
                 </Link>
                 <Link 
                   to="/history" 
-                  className="text-white/90 hover:text-white font-medium transition-colors text-xs md:text-base"
+                  className="text-white/90 hover:text-white font-medium transition-colors text-xs md:text-sm lg:text-base"
                 >
                   History
                 </Link>
@@ -53,14 +53,14 @@ export function Header({ showNav = false }: HeaderProps) {
                     supabase.auth.signOut()
                     navigate('/login')
                   }}
-                  className="px-2 py-1 md:px-4 md:py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors text-xs md:text-base whitespace-nowrap"
+                  className="px-3 py-1.5 md:px-4 md:py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors text-xs md:text-sm lg:text-base whitespace-nowrap"
                 >
                   Sign Out
                 </button>
               ) : (
                 <button
                   onClick={() => navigate('/login')}
-                  className="px-2 py-1 md:px-4 md:py-2 bg-white hover:bg-white/90 text-aws-orange font-medium rounded-lg transition-colors text-xs md:text-base whitespace-nowrap"
+                  className="px-3 py-1.5 md:px-4 md:py-2 bg-white hover:bg-white/90 text-aws-orange font-medium rounded-lg transition-colors text-xs md:text-sm lg:text-base whitespace-nowrap"
                 >
                   Sign In
                 </button>

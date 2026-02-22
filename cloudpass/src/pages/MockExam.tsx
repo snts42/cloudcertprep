@@ -29,6 +29,7 @@ export function MockExam() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Map<number, QuestionState>>(new Map())
   const [showEndModal, setShowEndModal] = useState(false)
+  const [showQuestionNav, setShowQuestionNav] = useState(false)
   const [results, setResults] = useState<{
     scaledScore: number
     percentScore: number
@@ -263,16 +264,16 @@ export function MockExam() {
 
   if (screen === 'start') {
     return (
-      <div className="min-h-screen bg-bg-dark flex flex-col">
+      <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
-        <div className="flex-1 flex items-center justify-center p-4">
-          <div className="max-w-2xl w-full bg-bg-card rounded-lg p-8">
-          <h1 className="text-4xl font-bold text-text-primary mb-4">Mock Exam</h1>
-          <p className="text-text-muted mb-8">65 questions — 90 minutes — No answer feedback during exam</p>
+        <div className="p-4 md:p-8">
+          <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-3 md:mb-4">Mock Exam</h1>
+          <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">65 questions — 90 minutes — No answer feedback during exam</p>
           
-          <div className="bg-bg-dark rounded-lg p-6 mb-8">
-            <h2 className="text-xl font-semibold text-text-primary mb-4">Domain Breakdown</h2>
-            <div className="space-y-2 text-text-muted">
+          <div className="bg-bg-dark rounded-lg p-4 md:p-6 mb-6 md:mb-8">
+            <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3 md:mb-4">Domain Breakdown</h2>
+            <div className="space-y-1.5 md:space-y-2 text-sm md:text-base text-text-muted">
               <p>• 16 Cloud Concepts (24%)</p>
               <p>• 20 Security & Compliance (30%)</p>
               <p>• 22 Cloud Technology & Services (34%)</p>
@@ -280,20 +281,20 @@ export function MockExam() {
             </div>
           </div>
 
-          <div className="bg-warning/10 border border-warning rounded-lg p-4 mb-8">
-            <p className="text-warning font-medium">⚠️ Once started, the timer cannot be paused</p>
+          <div className="bg-warning/10 border border-warning rounded-lg p-3 md:p-4 mb-6 md:mb-8">
+            <p className="text-sm md:text-base text-warning font-medium">⚠️ Once started, the timer cannot be paused</p>
           </div>
 
           <button
             onClick={startExam}
-            className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-bold py-4 rounded-lg transition-colors text-lg"
+            className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-bold py-3 md:py-4 rounded-lg transition-colors text-base md:text-lg"
           >
             Start Exam
           </button>
 
           <button
             onClick={() => navigate('/')}
-            className="w-full mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-3 rounded-lg transition-colors"
+            className="w-full mt-3 md:mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
             Back to Dashboard
           </button>
@@ -305,9 +306,9 @@ export function MockExam() {
 
   if (screen === 'results' && results) {
     return (
-      <div className="min-h-screen bg-bg-dark flex flex-col">
+      <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
-        <div className="flex-1 p-4 md:p-8">
+        <div className="p-4 md:p-8">
           <div className="max-w-4xl mx-auto">
           <PassFailBanner
             passed={results.passed}
@@ -382,20 +383,23 @@ export function MockExam() {
   }
 
   if (screen === 'exam' && currentQuestion) {
-    const timerColor = timer.seconds < 600 ? (timer.seconds < 300 ? 'text-danger' : 'text-warning') : 'text-text-primary'
-    
     return (
-      <div className="min-h-screen bg-bg-dark">
+      <div className="bg-bg-dark">
         {/* Header */}
-        <div className="fixed top-0 left-0 right-0 bg-bg-card border-b border-text-muted/20 z-40">
-          <div className="flex items-center justify-between px-6 py-4">
-            <h1 className="text-xl font-bold text-aws-orange">CloudCertPrep</h1>
-            <div className={`text-2xl font-mono font-bold ${timerColor} ${timer.seconds < 600 ? 'animate-pulse' : ''}`}>
+        <div className="fixed top-0 left-0 right-0 bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg z-40">
+          <div className="flex items-center justify-between px-3 md:px-6 py-2 md:py-4">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-6 h-6 md:w-8 md:h-8 bg-white rounded-lg flex items-center justify-center shadow-md">
+                <span className="text-base md:text-xl font-bold text-aws-orange">☁️</span>
+              </div>
+              <h1 className="text-sm md:text-lg font-bold text-white">CloudCertPrep</h1>
+            </div>
+            <div className={`text-base md:text-xl font-mono font-bold text-white ${timer.seconds < 600 ? 'animate-pulse' : ''}`}>
               {formatTime(timer.seconds)}
             </div>
             <button
               onClick={() => setShowEndModal(true)}
-              className="px-6 py-2 bg-danger hover:bg-danger/90 text-white font-semibold rounded-lg transition-colors"
+              className="px-3 py-1.5 md:px-5 md:py-2 bg-white/20 hover:bg-white/30 text-white text-xs md:text-sm font-semibold rounded-lg transition-colors"
             >
               End Exam
             </button>
@@ -405,8 +409,17 @@ export function MockExam() {
         <div className="pt-20 pb-6 px-4 md:px-8 flex gap-6">
           {/* Main Content */}
           <div className="flex-1 max-w-3xl mx-auto">
+            {/* Mobile Question Navigation Button */}
+            <button
+              onClick={() => setShowQuestionNav(true)}
+              className="lg:hidden w-full mb-4 px-4 py-2 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors flex items-center justify-between"
+            >
+              <span>Question {currentIndex + 1} of {questions.length}</span>
+              <span className="text-sm">View All Questions →</span>
+            </button>
+
             <div className="bg-bg-card rounded-lg p-6 mb-6">
-              <div className="flex items-center justify-end mb-4">
+              <div className="hidden lg:flex items-center justify-end mb-4">
                 <span className="text-text-muted">Question {currentIndex + 1} of {questions.length}</span>
               </div>
 
@@ -495,6 +508,46 @@ export function MockExam() {
             </div>
           </div>
         </div>
+
+        {/* Question Navigation Modal (Mobile/Tablet) */}
+        <Modal isOpen={showQuestionNav} title="Questions" onClose={() => setShowQuestionNav(false)}>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between text-sm text-text-muted mb-4">
+              <span>Answered: {answeredCount}/{questions.length}</span>
+              <span>Flagged: {flaggedCount}</span>
+            </div>
+            <div className="grid grid-cols-5 gap-2 max-h-96 overflow-y-auto">
+              {questions.map((_, idx) => {
+                const state = answers.get(idx)
+                const isAnswered = state?.userAnswer !== null && state?.userAnswer !== undefined && (Array.isArray(state.userAnswer) ? state.userAnswer.length > 0 : state.userAnswer !== '')
+                const isFlagged = state?.flagged || false
+                const isCurrent = idx === currentIndex
+
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      goToQuestion(idx)
+                      setShowQuestionNav(false)
+                    }}
+                    className={`relative w-full aspect-square rounded text-sm font-medium transition-colors ${
+                      isCurrent
+                        ? 'bg-aws-orange text-white'
+                        : isAnswered
+                        ? 'bg-aws-orange/30 text-text-primary hover:bg-aws-orange/50'
+                        : 'bg-bg-dark text-text-muted hover:bg-bg-card-hover'
+                    }`}
+                  >
+                    {idx + 1}
+                    {isFlagged && (
+                      <span className="absolute -top-1 -right-1 text-xs">🚩</span>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        </Modal>
 
         {/* End Exam Modal */}
         <Modal isOpen={showEndModal} title="End Exam" onClose={() => setShowEndModal(false)}>

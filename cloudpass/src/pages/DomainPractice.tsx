@@ -189,14 +189,14 @@ export function DomainPractice() {
 
   if (screen === 'selection') {
     return (
-      <div className="min-h-screen bg-bg-dark flex flex-col">
+      <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
-        <div className="flex-1 p-4 md:p-8">
-          <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-text-primary mb-2">Domain Practice</h1>
-          <p className="text-text-muted mb-8">Choose a domain to practice</p>
+        <div className="p-4 md:p-8">
+          <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-3 md:mb-4">Domain Practice</h1>
+          <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Practice questions from a specific domain</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
             {[1, 2, 3, 4].map(domainId => {
               const totalQuestions = (masterQuestions as Question[]).filter(q => q.domainId === domainId).length
               
@@ -204,20 +204,20 @@ export function DomainPractice() {
                 <button
                   key={domainId}
                   onClick={() => selectDomain(domainId)}
-                  className="bg-bg-card hover:bg-bg-card-hover p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all text-left"
+                  className="bg-bg-dark hover:bg-bg-card-hover p-4 md:p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all text-left"
                 >
-                  <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-3 md:gap-4">
                     <div 
-                      className="w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold"
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold flex-shrink-0"
                       style={{ backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] + '20', color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] }}
                     >
                       {domainId}
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-text-primary">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm md:text-base lg:text-lg font-semibold text-text-primary">
                         {DOMAINS[domainId as keyof typeof DOMAINS]}
                       </h3>
-                      <p className="text-sm text-text-muted">{totalQuestions} questions</p>
+                      <p className="text-xs md:text-sm text-text-muted">{totalQuestions} questions</p>
                     </div>
                   </div>
                 </button>
@@ -227,7 +227,7 @@ export function DomainPractice() {
 
           <button
             onClick={() => navigate('/')}
-            className="mt-8 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-medium rounded-lg transition-colors"
+            className="w-full bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
             ← Back to Dashboard
           </button>
@@ -239,15 +239,15 @@ export function DomainPractice() {
 
   if (screen === 'config') {
     return (
-      <div className="min-h-screen bg-bg-dark flex flex-col">
+      <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
-        <div className="flex-1 p-4 md:p-8">
+        <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto">
-          <div className="bg-bg-card rounded-lg p-8">
-            <h1 className="text-3xl font-bold text-text-primary mb-2">
+          <div className="bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-text-primary mb-2">
               {DOMAINS[selectedDomain as keyof typeof DOMAINS]}
             </h1>
-            <p className="text-text-muted mb-8">Configure your practice session</p>
+            <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Configure your practice session</p>
 
             <div className="mb-8">
               <label className="block text-text-primary font-medium mb-4">
@@ -300,9 +300,9 @@ export function DomainPractice() {
 
   if (screen === 'results') {
     return (
-      <div className="min-h-screen bg-bg-dark flex flex-col">
+      <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
-        <div className="flex-1 p-4 md:p-8">
+        <div className="p-4 md:p-8">
           <div className="max-w-4xl mx-auto">
             {/* Summary Header */}
             <div className="bg-bg-card rounded-lg p-6 md:p-8 text-center mb-6">
@@ -402,9 +402,9 @@ export function DomainPractice() {
 
   if (screen === 'practice' && currentQuestion) {
     return (
-      <div className="min-h-screen bg-bg-dark flex flex-col">
+      <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
-        <div className="flex-1 p-4 md:p-8">
+        <div className="p-4 md:p-8">
           <div className="max-w-3xl mx-auto">
           {/* Header with Back Button */}
           <div className="flex items-center justify-between mb-6">
