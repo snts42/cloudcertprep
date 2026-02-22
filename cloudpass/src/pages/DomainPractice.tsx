@@ -20,6 +20,12 @@ interface QuestionHistory {
   lastSeen: number
 }
 
+interface QuestionResult {
+  question: Question
+  userAnswer: string | string[]
+  isCorrect: boolean
+}
+
 export function DomainPractice() {
   const navigate = useNavigate()
   const { user } = useAuth()
@@ -31,6 +37,7 @@ export function DomainPractice() {
   const [userAnswer, setUserAnswer] = useState<string | string[] | null>(null)
   const [showFeedback, setShowFeedback] = useState(false)
   const [results, setResults] = useState<boolean[]>([])
+  const [questionResults, setQuestionResults] = useState<QuestionResult[]>([])
   const [questionHistory, setQuestionHistory] = useState<Map<string, QuestionHistory>>(new Map())
 
   function selectDomain(domainId: number) {
@@ -75,6 +82,7 @@ export function DomainPractice() {
     setUserAnswer(null)
     setShowFeedback(false)
     setResults([])
+    setQuestionResults([])
     setScreen('practice')
   }
 
@@ -104,6 +112,11 @@ export function DomainPractice() {
     const correct = isAnswerCorrect(answerToCheck!, current.answer, current.isMultiAnswer)
     
     setResults([...results, correct])
+    setQuestionResults([...questionResults, {
+      question: current,
+      userAnswer: answerToCheck!,
+      isCorrect: correct
+    }])
     setShowFeedback(true)
 
     // Update question history
@@ -290,45 +303,97 @@ export function DomainPractice() {
       <div className="min-h-screen bg-bg-dark flex flex-col">
         <Header showNav={true} />
         <div className="flex-1 p-4 md:p-8">
-          <div className="max-w-2xl mx-auto">
-          <div className="bg-bg-card rounded-lg p-8 text-center">
-            <h1 className="text-4xl font-bold text-text-primary mb-4">Session Complete!</h1>
-            
-            <div className="my-8">
-              <div className="text-6xl font-bold" style={{ color: DOMAIN_COLORS[selectedDomain as keyof typeof DOMAIN_COLORS] }}>
-                {Math.round((correctCount / results.length) * 100)}%
-              </div>
-              <p className="text-text-muted mt-2">Mastery</p>
+          <div className="max-w-4xl mx-auto">
+            {/* Summary Header */}
+            <div className="bg-bg-card rounded-lg p-6 md:p-8 text-center mb-6">
+              <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">Practice session complete!</h1>
+              <p className="text-xl md:text-2xl text-text-muted">
+                You got <span className="text-success font-bold">{correctCount}/{results.length}</span> correct ({Math.round((correctCount / results.length) * 100)}%)
+              </p>
             </div>
 
-            <div className="bg-bg-dark rounded-lg p-6 mb-6">
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <p className="text-text-muted text-sm mb-1">Correct</p>
-                  <p className="text-3xl font-bold text-success">{correctCount}</p>
-                </div>
-                <div>
-                  <p className="text-text-muted text-sm mb-1">Total</p>
-                  <p className="text-3xl font-bold text-text-primary">{results.length}</p>
-                </div>
-              </div>
+            {/* Question Review */}
+            <div className="space-y-4">
+              {questionResults.map((result, idx) => {
+                const userAnswerArray = Array.isArray(result.userAnswer) ? result.userAnswer : [result.userAnswer]
+                const correctAnswerArray = Array.isArray(result.question.answer) ? result.question.answer : [result.question.answer]
+                
+                return (
+                  <div key={idx} className="bg-bg-card rounded-lg p-4 md:p-6">
+                    {/* Question Header */}
+                    <div className="flex items-start justify-between mb-4">
+                      <h3 className="text-sm md:text-base text-text-muted">
+                        Question {idx + 1} of {questionResults.length}
+                      </h3>
+                      <div className={`text-2xl ${result.isCorrect ? 'text-success' : 'text-danger'}`}>
+                        {result.isCorrect ? '✓' : '✗'}
+                      </div>
+                    </div>
+
+                    {/* Question Text */}
+                    <p className="text-base md:text-lg text-text-primary mb-4">{result.question.question}</p>
+
+                    {/* Answer Options */}
+                    <div className="space-y-2 mb-4">
+                      {Object.entries(result.question.options).map(([key, value]) => {
+                        const isUserAnswer = userAnswerArray.includes(key)
+                        const isCorrectAnswer = correctAnswerArray.includes(key)
+                        
+                        let bgColor = ''
+                        let textColor = 'text-text-primary'
+                        let label = ''
+                        
+                        if (isUserAnswer && isCorrectAnswer) {
+                          bgColor = 'bg-success/10 border-success'
+                          textColor = 'text-success'
+                          label = ' ✓ (Your answer - Correct!)'
+                        } else if (isUserAnswer && !isCorrectAnswer) {
+                          bgColor = 'bg-danger/10 border-danger'
+                          textColor = 'text-danger'
+                          label = ' ✗ (Your answer - Incorrect)'
+                        } else if (!isUserAnswer && isCorrectAnswer) {
+                          bgColor = 'bg-success/10 border-success'
+                          textColor = 'text-success'
+                          label = ' ✓ (Correct answer)'
+                        } else {
+                          bgColor = 'bg-bg-dark border-text-muted/20'
+                        }
+                        
+                        return (
+                          <div
+                            key={key}
+                            className={`p-3 rounded-lg border-2 ${bgColor} ${textColor} text-sm md:text-base`}
+                          >
+                            <span className="font-semibold">{key}.</span> {value}{label}
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {/* Explanation Placeholder */}
+                    <div className="bg-bg-dark rounded-lg p-4 text-sm md:text-base">
+                      <p className="text-text-muted italic">Explanation: [Will be added in next phase]</p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
-            <div className="flex gap-4">
+            {/* Action Buttons */}
+            <div className="flex flex-col md:flex-row gap-4 mt-6">
               <button
-                onClick={() => setScreen('selection')}
-                className="flex-1 px-6 py-3 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
+                onClick={() => navigate('/')}
+                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
               >
-                Choose Another Domain
+                Back to Dashboard
               </button>
               <button
                 onClick={() => selectDomain(selectedDomain!)}
                 className="flex-1 px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors"
               >
-                Retry Domain
+                Practice Again
               </button>
             </div>
-          </div>
           </div>
         </div>
       </div>

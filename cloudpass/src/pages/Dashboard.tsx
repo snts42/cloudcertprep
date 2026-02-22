@@ -90,9 +90,9 @@ export function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Quick Access */}
+            {/* Practice Modes */}
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">Quick Access</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">Practice Modes</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <Link
                   to="/mock-exam"
