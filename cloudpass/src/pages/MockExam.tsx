@@ -336,9 +336,10 @@ export function MockExam() {
             <h3 className="text-xl font-semibold text-text-primary mb-4">Domain Breakdown</h3>
             <div className="space-y-4">
               {[1, 2, 3, 4].map(domainId => {
-                const score = results[`domain${domainId}Score`]
-                const domainQuestions = results.questionResults.filter((r: any) => r.domainId === domainId)
-                const correct = domainQuestions.filter((r: any) => r.isCorrect).length
+                const domainScores = [results.domain1Score, results.domain2Score, results.domain3Score, results.domain4Score]
+                const score = domainScores[domainId - 1]
+                const domainQuestions = results.questionResults.filter(r => r.domainId === domainId)
+                const correct = domainQuestions.filter(r => r.isCorrect).length
                 
                 return (
                   <div key={domainId} className="flex items-center justify-between">
