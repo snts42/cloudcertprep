@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Heart } from 'lucide-react'
 
 interface HeaderProps {
   showNav?: boolean
@@ -69,7 +69,7 @@ export function Header({ showNav = false }: HeaderProps) {
                       supabase.auth.signOut()
                       navigate('/login')
                     }}
-                    className="px-5 py-3 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
+                    className="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
                   >
                     Sign Out
                   </button>
@@ -125,7 +125,7 @@ export function Header({ showNav = false }: HeaderProps) {
                       )}
                     </nav>
 
-                    {/* Auth Button - Moved higher for visibility */}
+                    {/* Auth Button */}
                     <div className="p-4 border-t border-white/10">
                       {user ? (
                         <button
@@ -134,7 +134,7 @@ export function Header({ showNav = false }: HeaderProps) {
                             navigate('/login')
                             setMobileMenuOpen(false)
                           }}
-                          className="w-full px-4 py-3.5 bg-danger/20 hover:bg-danger/30 text-danger border border-danger/50 font-semibold rounded-lg transition-colors"
+                          className="w-full px-4 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold rounded-lg transition-colors"
                         >
                           Sign Out
                         </button>
@@ -151,8 +151,21 @@ export function Header({ showNav = false }: HeaderProps) {
                       )}
                     </div>
 
-                    {/* Spacer to push content up */}
+                    {/* Spacer to push donate link to bottom */}
                     <div className="flex-1"></div>
+
+                    {/* Donate Link - Bottom of Drawer */}
+                    <div className="p-4 border-t border-white/10">
+                      <a 
+                        href="https://ko-fi.com/alexsantonastaso" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 text-text-muted hover:text-aws-orange transition-colors text-sm"
+                      >
+                        <Heart className="w-4 h-4" />
+                        Support the developer
+                      </a>
+                    </div>
                   </div>
                 </>
               )}

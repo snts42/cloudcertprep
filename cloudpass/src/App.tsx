@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Footer } from './components/Footer'
+import { DonateButton } from './components/DonateButton'
 import { Login } from './pages/Login'
 import { ResetPassword } from './pages/ResetPassword'
 import { Dashboard } from './pages/Dashboard'
@@ -25,6 +26,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
+        <DonateButton />
       </div>
     </BrowserRouter>
   )
