@@ -156,32 +156,67 @@ export function DomainPractice() {
   }
 
   async function finishPractice() {
-    const correctCount = results.filter(r => r).length
-
     // Only save to database if user is logged in
     if (user) {
       try {
-        // Get existing progress
-        const { data: existingProgress } = await supabase
-          .from('domain_progress')
-          .select('*')
+        // Save each question result to attempt_questions table (without attempt_id for practice mode)
+        const questionRecords = questions.map((q, idx) => ({
+          attempt_id: null, // Practice mode doesn't have an exam attempt
+          user_id: user.id,
+          question_id: q.id,
+          user_answer: Array.isArray(questionResults[idx]?.userAnswer) 
+            ? questionResults[idx].userAnswer.join(',') 
+            : questionResults[idx]?.userAnswer || '',
+          correct_answer: Array.isArray(q.answer) ? q.answer.join(',') : q.answer,
+          is_correct: results[idx] || false,
+          was_flagged: false,
+          domain_id: selectedDomain,
+        }))
+
+        // Insert practice question results
+        const { error: questionsError } = await supabase
+          .from('attempt_questions')
+          .insert(questionRecords)
+
+        if (questionsError) throw questionsError
+
+        // Get count of UNIQUE questions attempted for this domain (across all attempts)
+        const { data: uniqueQuestions } = await supabase
+          .from('attempt_questions')
+          .select('question_id')
           .eq('user_id', user.id)
           .eq('domain_id', selectedDomain)
-          .single()
 
-        const newAttempted = (existingProgress?.questions_attempted || 0) + results.length
-        const newCorrect = (existingProgress?.questions_correct || 0) + correctCount
-        const newMastery = calculateDomainMastery(newCorrect, selectedDomain as 1 | 2 | 3 | 4)
+        // Count distinct question IDs
+        const uniqueQuestionIds = new Set(uniqueQuestions?.map(q => q.question_id) || [])
+        const totalUniqueAttempted = uniqueQuestionIds.size
 
-        await supabase.from('domain_progress').upsert({
+        // Get count of UNIQUE questions answered correctly for this domain
+        const { data: correctQuestions } = await supabase
+          .from('attempt_questions')
+          .select('question_id')
+          .eq('user_id', user.id)
+          .eq('domain_id', selectedDomain)
+          .eq('is_correct', true)
+
+        const uniqueCorrectIds = new Set(correctQuestions?.map(q => q.question_id) || [])
+        const totalUniqueCorrect = uniqueCorrectIds.size
+
+        const newMastery = calculateDomainMastery(totalUniqueCorrect, selectedDomain as 1 | 2 | 3 | 4)
+
+        const { error: progressError } = await supabase.from('domain_progress').upsert({
           user_id: user.id,
           domain_id: selectedDomain,
-          questions_attempted: newAttempted,
-          questions_correct: newCorrect,
+          questions_attempted: totalUniqueAttempted,
+          questions_correct: totalUniqueCorrect,
           mastery_percent: newMastery,
         }, {
           onConflict: 'user_id,domain_id',
         })
+
+        if (progressError) {
+          console.error(`Error updating domain ${selectedDomain} progress:`, progressError)
+        }
       } catch (error) {
         console.error('Error saving domain progress:', error)
       }

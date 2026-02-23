@@ -15,7 +15,7 @@ import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
 import { Flag, AlertCircle } from 'lucide-react'
 
-type ExamScreen = 'start' | 'exam' | 'results'
+type ExamScreen = 'start' | 'exam' | 'results' | 'review'
 
 interface QuestionState {
   userAnswer: string | string[] | null
@@ -53,6 +53,9 @@ export function MockExam() {
   } | null>(null)
   const [loading, setLoading] = useState(false)
   const [startTime, setStartTime] = useState<number>(0)
+  const [reviewFilter, setReviewFilter] = useState<'all' | 'incorrect' | 'flagged'>('all')
+  const [reviewDomainFilter, setReviewDomainFilter] = useState<number | null>(null)
+  const [reviewQuestionIndex, setReviewQuestionIndex] = useState(0)
 
   const timer = useTimer({
     initialSeconds: 90 * 60, // 90 minutes
@@ -210,32 +213,45 @@ export function MockExam() {
       // Update domain progress for all 4 domains
       for (let domainId = 1; domainId <= 4; domainId++) {
         const domainResults = results.filter(r => r.domainId === domainId)
-        const domainCorrect = domainResults.filter(r => r.isCorrect).length
-        const domainTotal = domainResults.length
 
-        if (domainTotal > 0) {
-          // Get existing progress
-          const { data: existingProgress } = await supabase
-            .from('domain_progress')
-            .select('*')
+        if (domainResults.length > 0) {
+          // Get count of UNIQUE questions attempted for this domain (across all attempts)
+          const { data: uniqueQuestions } = await supabase
+            .from('attempt_questions')
+            .select('question_id')
             .eq('user_id', user?.id)
             .eq('domain_id', domainId)
-            .single()
 
-          const newAttempted = (existingProgress?.questions_attempted || 0) + domainTotal
-          const newCorrect = (existingProgress?.questions_correct || 0) + domainCorrect
-          const newMastery = calculateDomainMastery(newCorrect, domainId as 1 | 2 | 3 | 4)
+          // Count distinct question IDs
+          const uniqueQuestionIds = new Set(uniqueQuestions?.map(q => q.question_id) || [])
+          const totalUniqueAttempted = uniqueQuestionIds.size
 
-          await supabase.from('domain_progress').upsert({
+          // Get count of UNIQUE questions answered correctly for this domain
+          const { data: correctQuestions } = await supabase
+            .from('attempt_questions')
+            .select('question_id')
+            .eq('user_id', user?.id)
+            .eq('domain_id', domainId)
+            .eq('is_correct', true)
+
+          const uniqueCorrectIds = new Set(correctQuestions?.map(q => q.question_id) || [])
+          const totalUniqueCorrect = uniqueCorrectIds.size
+
+          const newMastery = calculateDomainMastery(totalUniqueCorrect, domainId as 1 | 2 | 3 | 4)
+
+          const { error: progressError } = await supabase.from('domain_progress').upsert({
             user_id: user?.id,
             domain_id: domainId,
-            domain_name: DOMAINS[domainId as keyof typeof DOMAINS],
-            questions_attempted: newAttempted,
-            questions_correct: newCorrect,
+            questions_attempted: totalUniqueAttempted,
+            questions_correct: totalUniqueCorrect,
             mastery_percent: newMastery,
           }, {
             onConflict: 'user_id,domain_id',
           })
+
+          if (progressError) {
+            console.error(`Error updating domain ${domainId} progress:`, progressError)
+          }
         }
       }
     }
@@ -368,22 +384,35 @@ export function MockExam() {
             </div>
           </div>
 
-          <div className="mt-6 flex gap-4">
-            <button
-              onClick={() => navigate('/')}
-              className="flex-1 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold py-3 rounded-lg transition-colors"
-            >
-              ← Back to Home
-            </button>
+          <div className="mt-6 space-y-3">
             <button
               onClick={() => {
-                setScreen('start')
-                setResults(null)
+                setReviewFilter('all')
+                setReviewDomainFilter(null)
+                setReviewQuestionIndex(0)
+                setScreen('review')
               }}
-              className="flex-1 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold py-3 rounded-lg transition-colors"
+              className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold py-3 rounded-lg transition-colors"
             >
-              Retake Exam
+              Review Exam Questions
             </button>
+            <div className="flex gap-4">
+              <button
+                onClick={() => navigate('/')}
+                className="flex-1 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold py-3 rounded-lg transition-colors"
+              >
+                ← Back to Home
+              </button>
+              <button
+                onClick={() => {
+                  setScreen('start')
+                  setResults(null)
+                }}
+                className="flex-1 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold py-3 rounded-lg transition-colors"
+              >
+                Retake Exam
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -609,6 +638,311 @@ export function MockExam() {
             )}
           </div>
         </Modal>
+      </div>
+    )
+  }
+
+  // Review screen
+  if (screen === 'review' && results) {
+    const filteredQuestions = results.questionResults.filter(result => {
+      // Apply filters
+      if (reviewFilter === 'incorrect' && result.isCorrect) return false
+      if (reviewFilter === 'flagged' && !result.wasFlagged) return false
+      if (reviewDomainFilter !== null && result.domainId !== reviewDomainFilter) return false
+      return true
+    })
+
+    if (filteredQuestions.length === 0) {
+      return (
+        <div className="bg-bg-dark flex flex-col min-h-screen">
+          <Header showNav={true} />
+          <div className="p-4 md:p-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-bg-card rounded-lg p-8 text-center">
+                <p className="text-text-muted text-lg mb-6">No questions match the selected filters.</p>
+                <button
+                  onClick={() => {
+                    setReviewFilter('all')
+                    setReviewDomainFilter(null)
+                  }}
+                  className="px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    const currentReviewQuestion = filteredQuestions[reviewQuestionIndex]
+    const originalQuestion = questions.find(q => q.id === currentReviewQuestion.questionId)!
+
+    return (
+      <div className="bg-bg-dark flex flex-col min-h-screen">
+        <Header showNav={true} />
+        <div className="p-4 md:p-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Filter Controls */}
+            <div className="bg-bg-card rounded-lg p-4 mb-4">
+              <div className="space-y-3">
+                {/* Filter Buttons */}
+                <div>
+                  <span className="text-text-muted text-xs md:text-sm font-medium mb-2 block">Filter:</span>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => {
+                        setReviewFilter('all')
+                        setReviewQuestionIndex(0)
+                      }}
+                      className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
+                        reviewFilter === 'all'
+                          ? 'bg-aws-orange text-white'
+                          : 'bg-bg-dark text-text-muted hover:text-text-primary'
+                      }`}
+                    >
+                      All ({results.questionResults.length})
+                    </button>
+                    <button
+                      onClick={() => {
+                        const incorrectCount = results.questionResults.filter(r => !r.isCorrect).length
+                        if (incorrectCount > 0) {
+                          setReviewFilter('incorrect')
+                          setReviewQuestionIndex(0)
+                        }
+                      }}
+                      disabled={results.questionResults.filter(r => !r.isCorrect).length === 0}
+                      className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
+                        reviewFilter === 'incorrect'
+                          ? 'bg-aws-orange text-white'
+                          : results.questionResults.filter(r => !r.isCorrect).length === 0
+                          ? 'bg-bg-dark text-text-muted opacity-50 cursor-not-allowed'
+                          : 'bg-bg-dark text-text-muted hover:text-text-primary'
+                      }`}
+                    >
+                      Incorrect ({results.questionResults.filter(r => !r.isCorrect).length})
+                    </button>
+                    <button
+                      onClick={() => {
+                        const flaggedCount = results.questionResults.filter(r => r.wasFlagged).length
+                        if (flaggedCount > 0) {
+                          setReviewFilter('flagged')
+                          setReviewQuestionIndex(0)
+                        }
+                      }}
+                      disabled={results.questionResults.filter(r => r.wasFlagged).length === 0}
+                      className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
+                        reviewFilter === 'flagged'
+                          ? 'bg-aws-orange text-white'
+                          : results.questionResults.filter(r => r.wasFlagged).length === 0
+                          ? 'bg-bg-dark text-text-muted opacity-50 cursor-not-allowed'
+                          : 'bg-bg-dark text-text-muted hover:text-text-primary'
+                      }`}
+                    >
+                      Flagged ({results.questionResults.filter(r => r.wasFlagged).length})
+                    </button>
+                  </div>
+                </div>
+
+                {/* Domain Filter Buttons */}
+                <div>
+                  <span className="text-text-muted text-xs md:text-sm font-medium mb-2 block">Domain:</span>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => {
+                        setReviewDomainFilter(null)
+                        setReviewQuestionIndex(0)
+                      }}
+                      className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
+                        reviewDomainFilter === null
+                          ? 'bg-aws-orange text-white'
+                          : 'bg-bg-dark text-text-muted hover:text-text-primary'
+                      }`}
+                    >
+                      All Domains
+                    </button>
+                    {[1, 2, 3, 4].map(domainId => (
+                      <button
+                        key={domainId}
+                        onClick={() => {
+                          setReviewDomainFilter(reviewDomainFilter === domainId ? null : domainId)
+                          setReviewQuestionIndex(0)
+                        }}
+                        className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
+                          reviewDomainFilter === domainId
+                            ? 'text-white'
+                            : 'bg-bg-dark text-text-muted hover:text-text-primary'
+                        }`}
+                        style={reviewDomainFilter === domainId ? { backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] } : {}}
+                      >
+                        {DOMAINS[domainId as keyof typeof DOMAINS]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Question Number Grid */}
+                <div>
+                  <h3 className="text-xs md:text-sm font-semibold text-text-muted mb-2 text-center">Questions:</h3>
+                  <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(40px,40px))] gap-1.5 md:gap-2 justify-center">
+                    {results.questionResults.map((result, idx) => {
+                      const isCurrentQuestion = filteredQuestions[reviewQuestionIndex]?.questionId === result.questionId
+                      const isInFilteredSet = filteredQuestions.some(fq => fq.questionId === result.questionId)
+                      
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            const filteredIdx = filteredQuestions.findIndex(fq => fq.questionId === result.questionId)
+                            if (filteredIdx !== -1) {
+                              setReviewQuestionIndex(filteredIdx)
+                            }
+                          }}
+                          disabled={!isInFilteredSet}
+                          className={`w-8 h-8 md:w-10 md:h-10 rounded text-xs md:text-sm font-medium transition-all ${
+                            isCurrentQuestion
+                              ? 'ring-2 ring-aws-orange ring-offset-2 ring-offset-bg-card'
+                              : ''
+                          } ${
+                            !isInFilteredSet
+                              ? 'opacity-30 cursor-not-allowed'
+                              : 'hover:scale-110'
+                          } ${
+                            result.isCorrect
+                              ? 'bg-success text-white'
+                              : 'bg-danger text-white'
+                          } ${
+                            result.wasFlagged
+                              ? 'ring-2 ring-warning'
+                              : ''
+                          }`}
+                        >
+                          {idx + 1}
+                        </button>
+                      )
+                    })}
+                  </div>
+                  <div className="mt-2 flex items-center justify-center gap-4 text-xs text-text-muted">
+                    <span className="flex items-center gap-1">
+                      <span className="w-3 h-3 bg-success rounded"></span> Correct
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-3 h-3 bg-danger rounded"></span> Incorrect
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-3 h-3 bg-bg-dark rounded ring-2 ring-warning"></span> Flagged
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question Display */}
+            <div className="bg-bg-card rounded-lg p-4 md:p-6 mb-4">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-text-muted text-sm">
+                    Question {reviewQuestionIndex + 1} of {filteredQuestions.length}
+                  </span>
+                  {currentReviewQuestion.wasFlagged && (
+                    <span className="flex items-center gap-1 px-2 py-1 bg-warning/20 text-warning rounded text-xs font-medium">
+                      <Flag className="w-3 h-3 fill-warning" />
+                      Flagged
+                    </span>
+                  )}
+                </div>
+                <div className={`px-3 py-1 rounded-lg font-semibold text-sm ${
+                  currentReviewQuestion.isCorrect
+                    ? 'bg-success/20 text-success'
+                    : 'bg-danger/20 text-danger'
+                }`}>
+                  {currentReviewQuestion.isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}
+                </div>
+              </div>
+
+              <div className="mb-3">
+                <span className="text-xs font-medium px-2 py-1 rounded" style={{ 
+                  backgroundColor: `${DOMAIN_COLORS[currentReviewQuestion.domainId as keyof typeof DOMAIN_COLORS]}20`,
+                  color: DOMAIN_COLORS[currentReviewQuestion.domainId as keyof typeof DOMAIN_COLORS]
+                }}>
+                  {DOMAINS[currentReviewQuestion.domainId as keyof typeof DOMAINS]}
+                </span>
+              </div>
+
+              <h3 className="text-base md:text-lg text-text-primary mb-4">
+                {originalQuestion.question}
+                {originalQuestion.isMultiAnswer && (
+                  <span className="text-aws-orange font-semibold ml-2">(Multi-answer)</span>
+                )}
+              </h3>
+
+              <div className="space-y-2 mb-6">
+                {Object.entries(originalQuestion.options).map(([key, value]) => {
+                  const userAnswerArray = Array.isArray(currentReviewQuestion.userAnswer) 
+                    ? currentReviewQuestion.userAnswer 
+                    : [currentReviewQuestion.userAnswer]
+                  const correctAnswerArray = Array.isArray(currentReviewQuestion.correctAnswer)
+                    ? currentReviewQuestion.correctAnswer
+                    : [currentReviewQuestion.correctAnswer]
+                  
+                  const isUserAnswer = userAnswerArray.includes(key)
+                  const isCorrectAnswer = correctAnswerArray.includes(key)
+                  
+                  let state: 'default' | 'selected' | 'correct' | 'wrong' = 'default'
+                  if (isCorrectAnswer) {
+                    state = 'correct'
+                  } else if (isUserAnswer) {
+                    state = 'wrong'
+                  }
+
+                  return (
+                    <AnswerButton
+                      key={key}
+                      label={key as any}
+                      text={value}
+                      state={state}
+                      onClick={() => {}}
+                      disabled={true}
+                    />
+                  )
+                })}
+              </div>
+
+              {originalQuestion.explanation && (
+                <div className="bg-bg-dark rounded-lg p-4 border-l-4 border-aws-orange">
+                  <h4 className="text-sm font-semibold text-text-primary mb-2">Explanation:</h4>
+                  <p className="text-sm text-text-muted">{originalQuestion.explanation}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Navigation */}
+            <div className="flex gap-3 mb-4">
+              <button
+                onClick={() => setReviewQuestionIndex(Math.max(0, reviewQuestionIndex - 1))}
+                disabled={reviewQuestionIndex === 0}
+                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                ← Previous
+              </button>
+              <button
+                onClick={() => setReviewQuestionIndex(Math.min(filteredQuestions.length - 1, reviewQuestionIndex + 1))}
+                disabled={reviewQuestionIndex === filteredQuestions.length - 1}
+                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Next →
+              </button>
+            </div>
+
+            <button
+              onClick={() => setScreen('results')}
+              className="w-full px-6 py-3 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
+            >
+              ← Back to Results
+            </button>
+          </div>
+        </div>
       </div>
     )
   }
