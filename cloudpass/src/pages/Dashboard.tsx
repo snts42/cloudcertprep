@@ -65,6 +65,35 @@ export function Dashboard() {
     }
   }
 
+  function formatRelativeDate(dateString: string): string {
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
+    const diffMinutes = Math.floor(diffMs / (1000 * 60))
+
+    if (diffMinutes < 60) {
+      return diffMinutes === 1 ? '1 minute ago' : `${diffMinutes} minutes ago`
+    } else if (diffHours < 24) {
+      return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`
+    } else if (diffDays === 0) {
+      return 'Today'
+    } else if (diffDays === 1) {
+      return 'Yesterday'
+    } else if (diffDays < 7) {
+      return `${diffDays} days ago`
+    } else if (diffDays < 30) {
+      const weeks = Math.floor(diffDays / 7)
+      return weeks === 1 ? '1 week ago' : `${weeks} weeks ago`
+    } else if (diffDays < 365) {
+      const months = Math.floor(diffDays / 30)
+      return months === 1 ? '1 month ago' : `${months} months ago`
+    } else {
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+    }
+  }
+
   if (loading) {
     return (
       <div className="bg-bg-dark flex items-center justify-center p-8">
@@ -135,7 +164,7 @@ export function Dashboard() {
                               {attempt.passed ? 'Passed' : 'Failed'} • {attempt.scaled_score}/1000
                             </p>
                             <p className="text-text-muted text-sm">
-                              {new Date(attempt.attempted_at).toLocaleDateString()} • {formatDuration(attempt.time_taken_seconds)}
+                              {formatRelativeDate(attempt.attempted_at)} • {formatDuration(attempt.time_taken_seconds)}
                             </p>
                           </div>
                         </div>

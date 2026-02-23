@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
+import { Menu, X } from 'lucide-react'
 
 interface HeaderProps {
   showNav?: boolean
@@ -9,18 +11,19 @@ interface HeaderProps {
 export function Header({ showNav = false }: HeaderProps) {
   const navigate = useNavigate()
   const { user } = useAuth()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg">
+    <header className="bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg relative z-30">
       <div className="max-w-7xl mx-auto px-4 py-2 md:py-4 lg:py-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3 lg:gap-0">
+        <div className="flex items-center justify-between md:gap-3 lg:gap-0">
           {/* Logo and Title */}
           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="w-8 h-8 md:w-10 lg:w-12 md:h-10 lg:h-12 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-xl md:text-2xl lg:text-3xl font-bold text-aws-orange">☁️</span>
+            <div className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+              <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-aws-orange">☁️</span>
             </div>
             <div>
-              <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
                 CloudCertPrep
               </h1>
               <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
@@ -29,43 +32,131 @@ export function Header({ showNav = false }: HeaderProps) {
             </div>
           </Link>
           
-          {/* Navigation and Auth */}
+          {/* Hamburger Menu (Mobile) and Desktop Navigation */}
           {showNav && (
-            <div className="flex items-center justify-between md:justify-end gap-2 md:gap-4 lg:gap-6">
-              <nav className="flex items-center gap-2 md:gap-4 lg:gap-6">
-                <Link 
-                  to="/" 
-                  className="text-white/90 hover:text-white font-medium transition-colors text-xs md:text-sm lg:text-base"
-                >
-                  Home
-                </Link>
-                <Link 
-                  to="/history" 
-                  className="text-white/90 hover:text-white font-medium transition-colors text-xs md:text-sm lg:text-base"
-                >
-                  History
-                </Link>
-              </nav>
-              
-              {user ? (
-                <button
-                  onClick={() => {
-                    supabase.auth.signOut()
-                    navigate('/login')
-                  }}
-                  className="px-3 py-1.5 md:px-4 md:py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors text-xs md:text-sm lg:text-base whitespace-nowrap"
-                >
-                  Sign Out
-                </button>
-              ) : (
-                <button
-                  onClick={() => navigate('/login')}
-                  className="px-3 py-1.5 md:px-4 md:py-2 bg-white hover:bg-white/90 text-aws-orange font-medium rounded-lg transition-colors text-xs md:text-sm lg:text-base whitespace-nowrap"
-                >
-                  Sign In
-                </button>
+            <>
+              {/* Hamburger Button - Mobile Only */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+
+              {/* Desktop Navigation - Hidden on Mobile */}
+              <div className="hidden md:flex items-center gap-4 lg:gap-6">
+                <nav className="flex items-center gap-4 lg:gap-6">
+                  <Link 
+                    to="/" 
+                    className="text-white/90 hover:text-white font-medium transition-colors text-base lg:text-lg"
+                  >
+                    Home
+                  </Link>
+                  {user && (
+                    <Link 
+                      to="/history" 
+                      className="text-white/90 hover:text-white font-medium transition-colors text-base lg:text-lg"
+                    >
+                      History
+                    </Link>
+                  )}
+                </nav>
+                
+                {user ? (
+                  <button
+                    onClick={() => {
+                      supabase.auth.signOut()
+                      navigate('/login')
+                    }}
+                    className="px-5 py-3 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
+                  >
+                    Sign Out
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => navigate('/login')}
+                    className="px-5 py-3 bg-white hover:bg-white/90 text-aws-orange font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
+                  >
+                    Sign In
+                  </button>
+                )}
+              </div>
+
+              {/* Mobile Menu Drawer */}
+              {mobileMenuOpen && (
+                <>
+                  {/* Overlay */}
+                  <div 
+                    className="md:hidden fixed inset-0 bg-black/60 z-[100]"
+                    onClick={() => setMobileMenuOpen(false)}
+                  />
+                  
+                  {/* Drawer */}
+                  <div className="md:hidden fixed top-0 right-0 bottom-0 w-64 bg-bg-card shadow-2xl z-[101] flex flex-col">
+                    {/* Drawer Header */}
+                    <div className="flex items-center justify-between p-4 border-b border-white/10">
+                      <h2 className="text-lg font-semibold text-white">Menu</h2>
+                      <button
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+
+                    {/* Navigation Links */}
+                    <nav className="flex flex-col p-4 gap-2">
+                      <Link
+                        to="/"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                      >
+                        Home
+                      </Link>
+                      {user && (
+                        <Link
+                          to="/history"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                        >
+                          History
+                        </Link>
+                      )}
+                    </nav>
+
+                    {/* Auth Button - Moved higher for visibility */}
+                    <div className="p-4 border-t border-white/10">
+                      {user ? (
+                        <button
+                          onClick={() => {
+                            supabase.auth.signOut()
+                            navigate('/login')
+                            setMobileMenuOpen(false)
+                          }}
+                          className="w-full px-4 py-3.5 bg-danger/20 hover:bg-danger/30 text-danger border border-danger/50 font-semibold rounded-lg transition-colors"
+                        >
+                          Sign Out
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            navigate('/login')
+                            setMobileMenuOpen(false)
+                          }}
+                          className="w-full px-4 py-3.5 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors shadow-lg"
+                        >
+                          Sign In
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Spacer to push content up */}
+                    <div className="flex-1"></div>
+                  </div>
+                </>
               )}
-            </div>
+            </>
           )}
         </div>
       </div>

@@ -5,14 +5,8 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ percent, color, showLabel = true }: ProgressBarProps) {
-  const getColor = () => {
-    if (color) return color
-    if (percent < 40) return '#EF4444' // danger
-    if (percent < 70) return '#F59E0B' // warning
-    return '#22C55E' // success
-  }
-
-  const barColor = getColor()
+  // Always use AWS orange for consistency, unless a specific color is provided
+  const barColor = color || '#FF9900' // AWS orange
 
   return (
     <div className="w-full">
