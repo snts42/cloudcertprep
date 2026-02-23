@@ -30,10 +30,17 @@ export function History() {
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
   const [filter, setFilter] = useState<'all' | 'passed' | 'failed'>('all')
   const [expandedAttempt, setExpandedAttempt] = useState<string | null>(null)
+  const [itemsPerPage, setItemsPerPage] = useState(3)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     loadHistory()
   }, [user])
+
+  // Reset to page 1 when filter or items per page changes
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [filter, itemsPerPage])
 
   async function loadHistory() {
     try {
@@ -72,43 +79,13 @@ export function History() {
     return true
   })
 
-  const totalAttempts = attempts.length
+  // Pagination logic
+  const totalPages = itemsPerPage === 999999 ? 1 : Math.ceil(filteredAttempts.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = itemsPerPage === 999999 ? filteredAttempts.length : startIndex + itemsPerPage
+  const paginatedAttempts = filteredAttempts.slice(startIndex, endIndex)
+
   const passedAttempts = attempts.filter(a => a.passed).length
-  const passRate = totalAttempts > 0 ? Math.round((passedAttempts / totalAttempts) * 100) : 0
-  const bestScore = attempts.length > 0
-    ? Math.max(...attempts.map(a => a.scaled_score))
-    : 0
-  const averageScore = attempts.length > 0
-    ? Math.round(attempts.reduce((sum, a) => sum + a.scaled_score, 0) / attempts.length)
-    : 0
-
-  function getTimeGroup(dateString: string): string {
-    const date = new Date(dateString)
-    const now = new Date()
-    const diffMs = now.getTime() - date.getTime()
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-    
-    if (diffDays === 0) return 'Today'
-    if (diffDays < 7) return 'This Week'
-    if (diffDays < 30) return 'This Month'
-    return 'Older'
-  }
-
-  function groupAttemptsByTime(attempts: ExamAttempt[]) {
-    const groups: Record<string, ExamAttempt[]> = {
-      'Today': [],
-      'This Week': [],
-      'This Month': [],
-      'Older': []
-    }
-    
-    attempts.forEach(attempt => {
-      const group = getTimeGroup(attempt.attempted_at)
-      groups[group].push(attempt)
-    })
-    
-    return groups
-  }
 
   function formatRelativeDate(dateString: string): string {
     const date = new Date(dateString)
@@ -137,33 +114,13 @@ export function History() {
     <div className="bg-bg-dark flex flex-col">
       <Header showNav={true} />
       <div className="p-4 md:p-8">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-6 md:mb-8">Mock Exam Attempts History</h1>
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-xl md:text-2xl font-semibold text-text-primary mb-4 md:mb-6">Mock Exam History</h1>
 
-        {/* Stats Summary - Only show for logged in users */}
+        {/* Filter Tabs and Pagination Controls - Only show for logged in users */}
         {user && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
-            <div className="bg-bg-card rounded-lg p-4 md:p-6">
-              <p className="text-text-muted text-xs md:text-sm mb-2">Total Attempts</p>
-              <p className="text-2xl md:text-4xl font-bold text-text-primary">
-                {totalAttempts} <span className="text-lg md:text-2xl text-success">({passedAttempts} passed)</span>
-              </p>
-              <p className="text-text-muted text-sm mt-2">Pass Rate: <span className="text-success font-semibold">{passRate}%</span></p>
-            </div>
-            <div className="bg-bg-card rounded-lg p-4 md:p-6">
-              <p className="text-text-muted text-xs md:text-sm mb-2">Best Score</p>
-              <p className="text-2xl md:text-4xl font-bold text-aws-orange">{bestScore}</p>
-            </div>
-            <div className="bg-bg-card rounded-lg p-4 md:p-6">
-              <p className="text-text-muted text-xs md:text-sm mb-2">Average Score</p>
-              <p className="text-2xl md:text-4xl font-bold text-text-primary">{averageScore}</p>
-            </div>
-          </div>
-        )}
-
-        {/* Filter Tabs - Only show for logged in users */}
-        {user && (
-          <div className="flex gap-2 mb-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <div className="flex gap-2">
             <button
               onClick={() => setFilter('all')}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
@@ -194,6 +151,23 @@ export function History() {
             >
               Failed ({attempts.length - passedAttempts})
             </button>
+            </div>
+
+            {/* Items per page dropdown */}
+            <div className="flex items-center gap-2">
+              <span className="text-text-muted text-sm">Show:</span>
+              <select
+                value={itemsPerPage}
+                onChange={(e) => setItemsPerPage(Number(e.target.value))}
+                className="px-3 py-2 bg-bg-card text-text-primary rounded-lg border border-bg-dark hover:border-aws-orange/50 transition-colors text-sm"
+              >
+                <option value={3}>3 per page</option>
+                <option value={5}>5 per page</option>
+                <option value={10}>10 per page</option>
+                <option value={25}>25 per page</option>
+                <option value={999999}>All</option>
+              </select>
+            </div>
           </div>
         )}
 
@@ -216,6 +190,13 @@ export function History() {
           </div>
         )}
 
+        {/* Showing counter */}
+        {user && filteredAttempts.length > 0 && (
+          <div className="mb-4 text-sm text-text-muted">
+            Showing {startIndex + 1}-{Math.min(endIndex, filteredAttempts.length)} of {filteredAttempts.length} attempts
+          </div>
+        )}
+
         {/* Attempts List */}
         {filteredAttempts.length === 0 ? (
           <div className="bg-bg-card rounded-lg p-12 text-center">
@@ -234,69 +215,64 @@ export function History() {
             )}
           </div>
         ) : (
-          <div className="space-y-6">
-            {Object.entries(groupAttemptsByTime(filteredAttempts)).map(([group, groupAttempts]) => (
-              groupAttempts.length > 0 && (
-                <div key={group}>
-                  <h2 className="text-lg font-semibold text-text-primary mb-4">{group}</h2>
-                  <div className="space-y-4">
-                    {groupAttempts.map(attempt => (
-                      <div key={attempt.id} className="bg-bg-card rounded-lg p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center ${attempt.passed ? 'bg-success/20' : 'bg-danger/20'}`}>
+          <div className="space-y-3">
+            {paginatedAttempts.map(attempt => (
+              <div key={attempt.id} className="bg-bg-card rounded-lg p-4 md:p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center ${attempt.passed ? 'bg-success/20' : 'bg-danger/20'}`}>
                       {attempt.passed ? (
-                        <Check className="w-8 h-8 text-success" />
+                        <Check className="w-6 h-6 md:w-7 md:h-7 text-success" />
                       ) : (
-                        <X className="w-8 h-8 text-danger" />
+                        <X className="w-6 h-6 md:w-7 md:h-7 text-danger" />
                       )}
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-text-primary mb-1">
+                      <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1">
                         {attempt.passed ? 'Passed' : 'Failed'}
                       </h3>
-                      <p className="text-text-muted text-sm">
+                      <p className="text-text-muted text-xs md:text-sm">
                         {formatRelativeDate(attempt.attempted_at)}
                       </p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-text-primary mb-1">{attempt.scaled_score}</p>
-                    <p className="text-text-muted text-sm">/ 1000</p>
+                    <p className="text-2xl md:text-3xl font-bold text-text-primary mb-1">{attempt.scaled_score}</p>
+                    <p className="text-text-muted text-xs">/ 1000</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                  <div className="bg-bg-dark rounded-lg p-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-3">
+                  <div className="bg-bg-dark rounded-lg p-2 md:p-3">
                     <p className="text-text-muted text-xs mb-1">Score</p>
-                    <p className="text-xl font-bold text-text-primary">{Math.round(attempt.score_percent)}%</p>
+                    <p className="text-base md:text-lg font-bold text-text-primary">{Math.round(attempt.score_percent)}%</p>
                   </div>
-                  <div className="bg-bg-dark rounded-lg p-3">
+                  <div className="bg-bg-dark rounded-lg p-2 md:p-3">
                     <p className="text-text-muted text-xs mb-1">Correct</p>
-                    <p className="text-xl font-bold text-text-primary">{attempt.correct_answers}/{attempt.total_questions}</p>
+                    <p className="text-base md:text-lg font-bold text-text-primary">{attempt.correct_answers}/{attempt.total_questions}</p>
                   </div>
-                  <div className="bg-bg-dark rounded-lg p-3">
+                  <div className="bg-bg-dark rounded-lg p-2 md:p-3">
                     <p className="text-text-muted text-xs mb-1">Time</p>
-                    <p className="text-xl font-bold text-text-primary">{formatDuration(attempt.time_taken_seconds)}</p>
+                    <p className="text-base md:text-lg font-bold text-text-primary">{formatDuration(attempt.time_taken_seconds)}</p>
                   </div>
-                  <div className="bg-bg-dark rounded-lg p-3">
+                  <div className="bg-bg-dark rounded-lg p-2 md:p-3">
                     <p className="text-text-muted text-xs mb-1">Pass Mark</p>
-                    <p className="text-xl font-bold text-text-primary">700</p>
+                    <p className="text-base md:text-lg font-bold text-text-primary">700</p>
                   </div>
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold text-text-primary mb-3">Domain Breakdown</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <p className="text-xs md:text-sm font-semibold text-text-primary mb-2">Domain Breakdown</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {[1, 2, 3, 4].map(domainId => {
                       const score = attempt[`domain_${domainId}_score` as keyof ExamAttempt] as number
                       return (
                         <div key={domainId} className="flex items-center justify-between">
-                          <span className="text-text-muted text-sm">
+                          <span className="text-text-muted text-xs md:text-sm">
                             {DOMAINS[domainId as keyof typeof DOMAINS]}
                           </span>
                           <span 
-                            className="text-lg font-bold"
+                            className="text-sm md:text-base font-bold"
                             style={{ color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] }}
                           >
                             {score}%
@@ -308,28 +284,74 @@ export function History() {
                 </div>
 
                 {/* View Details Button */}
-                <div className="mt-4 pt-4 border-t border-bg-dark">
+                <div className="mt-3 pt-3 border-t border-bg-dark">
                   <button
                     onClick={() => setExpandedAttempt(expandedAttempt === attempt.id ? null : attempt.id)}
-                    className="w-full px-4 py-2 bg-bg-dark hover:bg-bg-dark/70 text-aws-orange font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                    className="w-full px-4 py-2 bg-bg-dark hover:bg-bg-dark/70 text-aws-orange font-medium rounded-lg transition-colors flex items-center justify-center gap-2 text-sm"
                   >
                     {expandedAttempt === attempt.id ? '▼' : '▶'} View Details
                   </button>
                   
                   {expandedAttempt === attempt.id && (
-                    <div className="mt-4 p-4 bg-bg-dark rounded-lg">
-                      <p className="text-text-muted text-sm">
+                    <div className="mt-3 p-3 bg-bg-dark rounded-lg">
+                      <p className="text-text-muted text-xs md:text-sm">
                         Question-by-question review will be available in a future update. This will show all 65 questions with your answers and explanations.
                       </p>
                     </div>
                   )}
                 </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
+              </div>
             ))}
+          </div>
+        )}
+
+        {/* Page Navigation */}
+        {user && filteredAttempts.length > 0 && totalPages > 1 && (
+          <div className="mt-6 flex items-center justify-center gap-2">
+            <button
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-bg-card hover:bg-bg-card-hover text-text-primary rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
+            >
+              ← Previous
+            </button>
+            
+            <div className="flex gap-1">
+              {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                let pageNum
+                if (totalPages <= 5) {
+                  pageNum = i + 1
+                } else if (currentPage <= 3) {
+                  pageNum = i + 1
+                } else if (currentPage >= totalPages - 2) {
+                  pageNum = totalPages - 4 + i
+                } else {
+                  pageNum = currentPage - 2 + i
+                }
+                
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`w-10 h-10 rounded-lg font-medium transition-colors text-sm ${
+                      currentPage === pageNum
+                        ? 'bg-aws-orange text-white'
+                        : 'bg-bg-card hover:bg-bg-card-hover text-text-primary'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                )
+              })}
+            </div>
+            
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-bg-card hover:bg-bg-card-hover text-text-primary rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
+            >
+              Next →
+            </button>
           </div>
         )}
         </div>

@@ -106,9 +106,9 @@ export function Dashboard() {
               </div>
             </div>
 
-            {/* Recent Attempts - Only show for logged-in users */}
+            {/* Recent Attempts - Only show for logged-in users on desktop */}
             {user && (
-              <div>
+              <div className="hidden lg:block">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-xl md:text-2xl font-semibold text-text-primary">Recent Attempts</h2>
                   <Link to="/history" className="text-aws-orange hover:text-aws-orange/80 text-xs md:text-sm font-medium">
