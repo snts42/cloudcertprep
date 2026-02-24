@@ -121,7 +121,7 @@ export function Dashboard() {
           <div className={user ? "lg:col-span-2 space-y-8" : "space-y-8"}>
             {/* Practice Modes */}
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">Practice Modes</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">CLF-C02 Practice Modes</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <Link
                   to="/mock-exam"
@@ -138,7 +138,7 @@ export function Dashboard() {
                 >
                   <Target className="w-8 h-8 md:w-10 md:h-10 text-aws-orange mb-2" />
                   <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Domain Practice</h3>
-                  <p className="text-text-muted text-xs md:text-sm">Practice by domain</p>
+                  <p className="text-text-muted text-xs md:text-sm">Practice by domain • Instant feedback</p>
                 </Link>
               </div>
             </div>
