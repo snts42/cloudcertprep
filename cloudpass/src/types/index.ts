@@ -51,13 +51,6 @@ export interface DomainProgress {
   mastery_percent: number
 }
 
-export interface WeakSpot {
-  question_id: string
-  incorrect_count: number
-  correct_streak: number
-  is_cleared: boolean
-}
-
 export const DOMAINS = {
   1: 'Cloud Concepts',
   2: 'Security & Compliance',
