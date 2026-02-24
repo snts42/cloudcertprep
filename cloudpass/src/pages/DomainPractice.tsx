@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { Header } from '../components/Header'
@@ -33,6 +33,21 @@ export function DomainPractice() {
   const [screen, setScreen] = useState<Screen>('selection')
   const [selectedDomain, setSelectedDomain] = useState<number | null>(null)
   const [questionCount, setQuestionCount] = useState(20)
+
+  // Set dynamic page title based on screen and domain
+  useEffect(() => {
+    if (screen === 'selection' || screen === 'config') {
+      document.title = "Domain Practice | CloudCertPrep"
+    } else if (screen === 'practice' && selectedDomain !== null) {
+      const domainName = DOMAINS[selectedDomain as keyof typeof DOMAINS]
+      document.title = `${domainName} Practice | CloudCertPrep`
+    } else if (screen === 'results') {
+      document.title = "Practice Results | CloudCertPrep"
+    }
+    return () => {
+      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    }
+  }, [screen, selectedDomain])
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [userAnswer, setUserAnswer] = useState<string | string[] | null>(null)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { Header } from '../components/Header'
@@ -6,6 +6,20 @@ import { Header } from '../components/Header'
 export function Login() {
   const [isSignUp, setIsSignUp] = useState(false)
   const [isForgotPassword, setIsForgotPassword] = useState(false)
+
+  // Set page title based on mode
+  useEffect(() => {
+    if (isForgotPassword) {
+      document.title = "Reset Password | CloudCertPrep"
+    } else if (isSignUp) {
+      document.title = "Sign Up | CloudCertPrep"
+    } else {
+      document.title = "Sign In | CloudCertPrep"
+    }
+    return () => {
+      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    }
+  }, [isSignUp, isForgotPassword])
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')

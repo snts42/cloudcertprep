@@ -28,6 +28,14 @@ interface RecentAttempt {
 export function Dashboard() {
   const navigate = useNavigate()
   const { user } = useAuth()
+
+  // Set page title
+  useEffect(() => {
+    document.title = user ? "Home | CloudCertPrep" : "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    return () => {
+      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    }
+  }, [user])
   const [loading, setLoading] = useState(true)
   const [domainProgress, setDomainProgress] = useState<DomainProgress[]>([])
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([])

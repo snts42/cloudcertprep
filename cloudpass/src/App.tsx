@@ -7,7 +7,6 @@ import { Dashboard } from './pages/Dashboard'
 import { MockExam } from './pages/MockExam'
 import { DomainPractice } from './pages/DomainPractice'
 import { History } from './pages/History'
-import { Credits } from './pages/Credits'
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/credits" element={<Credits />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/mock-exam" element={<MockExam />} />
         <Route path="/domain-practice" element={<DomainPractice />} />

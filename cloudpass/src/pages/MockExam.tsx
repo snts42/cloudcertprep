@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Cloud, Check } from 'lucide-react'
 import { useTimer } from '../hooks/useTimer'
@@ -62,6 +62,22 @@ export function MockExam() {
     initialSeconds: 90 * 60, // 90 minutes
     onComplete: handleTimeUp,
   })
+
+  // Set dynamic page title based on screen and question
+  useEffect(() => {
+    if (screen === 'start') {
+      document.title = "Mock Exam | CloudCertPrep"
+    } else if (screen === 'exam') {
+      document.title = `Question ${currentIndex + 1} of 65 | CloudCertPrep Mock Exam`
+    } else if (screen === 'results') {
+      document.title = "Exam Results | CloudCertPrep"
+    } else if (screen === 'review') {
+      document.title = "Review Exam | CloudCertPrep"
+    }
+    return () => {
+      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    }
+  }, [screen, currentIndex])
 
   function handleTimeUp() {
     handleSubmitExam()

@@ -28,6 +28,14 @@ export function History() {
   const { user } = useAuth()
   const [loading, setLoading] = useState(true)
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
+
+  // Set page title
+  useEffect(() => {
+    document.title = "My Exam History | CloudCertPrep"
+    return () => {
+      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    }
+  }, [])
   const [filter, setFilter] = useState<'all' | 'passed' | 'failed'>('all')
   const [expandedAttempt, setExpandedAttempt] = useState<string | null>(null)
   const [itemsPerPage, setItemsPerPage] = useState(3)
