@@ -115,10 +115,10 @@ export function Dashboard() {
     <div className="bg-bg-dark flex flex-col">
       <Header showNav={true} />
       <div className="p-4 md:p-8">
-        <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column */}
-          <div className="lg:col-span-2 space-y-8">
+        <div className={user ? "max-w-7xl mx-auto" : "max-w-4xl mx-auto"}>
+        <div className={user ? "grid grid-cols-1 lg:grid-cols-3 gap-8" : ""}>
+          {/* Main Content */}
+          <div className={user ? "lg:col-span-2 space-y-8" : "space-y-8"}>
             {/* Practice Modes */}
             <div>
               <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">Practice Modes</h2>
@@ -242,49 +242,52 @@ export function Dashboard() {
             )}
           </div>
 
-          {/* Right Column - Domain Mastery */}
-          <div>
-            <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">Domain Mastery</h2>
-            <div className="space-y-3 md:space-y-6">
-              {[1, 2, 3, 4].map(domainId => {
-                const progress = domainProgress.find(d => d.domain_id === domainId)
-                const mastery = progress?.mastery_percent || 0
-                
-                return (
-                  <div key={domainId} className="bg-bg-card rounded-lg p-4 md:p-6">
-                    <div className="flex items-center justify-between mb-3 md:mb-4">
-                      <div className="flex-1 min-w-0 pr-3">
-                        <h3 className="text-sm md:text-lg font-semibold text-text-primary mb-1 truncate">
-                          {DOMAINS[domainId as keyof typeof DOMAINS]}
-                        </h3>
-                        <p className="text-text-muted text-xs md:text-sm">
-                          {progress?.questions_attempted || 0}/{DOMAIN_QUESTION_COUNTS[domainId as keyof typeof DOMAIN_QUESTION_COUNTS]} attempted • {progress?.questions_correct || 0} correct
-                        </p>
+          {/* Right Column - Domain Mastery (only for logged-in users) */}
+          {user && (
+            <div>
+              <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">Domain Mastery</h2>
+              
+              <div className="space-y-3 md:space-y-6">
+                {[1, 2, 3, 4].map(domainId => {
+                  const progress = domainProgress.find(d => d.domain_id === domainId)
+                  const mastery = progress?.mastery_percent || 0
+                  
+                  return (
+                    <div key={domainId} className="bg-bg-card rounded-lg p-4 md:p-6">
+                      <div className="flex items-center justify-between mb-3 md:mb-4">
+                        <div className="flex-1 min-w-0 pr-3">
+                          <h3 className="text-sm md:text-lg font-semibold text-text-primary mb-1 truncate">
+                            {DOMAINS[domainId as keyof typeof DOMAINS]}
+                          </h3>
+                          <p className="text-text-muted text-xs md:text-sm">
+                            {progress?.questions_attempted || 0}/{DOMAIN_QUESTION_COUNTS[domainId as keyof typeof DOMAIN_QUESTION_COUNTS]} attempted • {progress?.questions_correct || 0} correct
+                          </p>
+                        </div>
+                        <div 
+                          className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-base md:text-xl font-bold flex-shrink-0"
+                          style={{ 
+                            backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] + '20',
+                            color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS]
+                          }}
+                        >
+                          {Math.round(mastery)}%
+                        </div>
                       </div>
-                      <div 
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-base md:text-xl font-bold flex-shrink-0"
-                        style={{ 
-                          backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] + '20',
-                          color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS]
-                        }}
-                      >
-                        {Math.round(mastery)}%
+                      <div className="w-full h-2 bg-bg-dark rounded-full overflow-hidden">
+                        <div 
+                          className="h-full transition-all duration-500"
+                          style={{ 
+                            width: `${mastery}%`,
+                            backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS]
+                          }}
+                        />
                       </div>
                     </div>
-                    <div className="w-full h-2 bg-bg-dark rounded-full overflow-hidden">
-                      <div 
-                        className="h-full transition-all duration-500"
-                        style={{ 
-                          width: `${mastery}%`,
-                          backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS]
-                        }}
-                      />
-                    </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
