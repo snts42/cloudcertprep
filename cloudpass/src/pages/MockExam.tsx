@@ -145,6 +145,7 @@ export function MockExam() {
 
     const timeTaken = Math.floor((Date.now() - startTime) / 1000)
     const isGuest = !user
+    const isTooShort = timeTaken < 60
     
     const results = questions.map((q, idx) => {
       const state = answers.get(idx)
@@ -172,8 +173,8 @@ export function MockExam() {
     const domain4Score = getDomainScore(results, 4)
 
     try {
-      // Only save to database if user is logged in
-      if (!isGuest) {
+      // Only save to database if user is logged in AND exam took at least 60 seconds
+      if (!isGuest && !isTooShort) {
         const { data: attemptData, error: attemptError } = await supabase
         .from('exam_attempts')
         .insert({
@@ -210,22 +211,6 @@ export function MockExam() {
         .insert(questionRecords)
 
       if (questionsError) throw questionsError
-
-      // Update weak spots
-      for (const result of results) {
-        if (!result.isCorrect) {
-          await supabase.from('weak_spots').upsert({
-            user_id: user?.id,
-            question_id: result.questionId,
-            incorrect_count: 1,
-            correct_streak: 0,
-            is_cleared: false,
-          }, {
-            onConflict: 'user_id,question_id',
-            ignoreDuplicates: false,
-          })
-        }
-      }
 
       // Update domain progress for all 4 domains
       for (let domainId = 1; domainId <= 4; domainId++) {
