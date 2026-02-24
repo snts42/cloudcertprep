@@ -1,16 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <!-- Background -->
-  <rect width="1200" height="630" fill="#232F3E"/>
+  <rect width="1200" height="630" fill="#0F1923"/>
   
-  <!-- Cloud emoji -->
-  <text x="600" y="280" font-size="180" text-anchor="middle">☁️</text>
+  <!-- Logo container (white rounded square) -->
+  <rect x="480" y="100" width="240" height="240" rx="24" fill="#FFFFFF"/>
+  
+  <!-- AWS Orange Cloud (Lucide Cloud icon, scaled and centered in logo container) -->
+  <g transform="translate(516, 136) scale(7)">
+    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" fill="#FF9900" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- White Checkmark (Lucide Check icon, scaled and centered in logo container) -->
+  <g transform="translate(516, 136) scale(7)">
+    <path d="M20 6 9 17l-5-5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
   
   <!-- Title -->
-  <text x="600" y="400" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="Arial, sans-serif">CloudCertPrep</text>
+  <text x="600" y="400" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif">CloudCertPrep</text>
   
   <!-- Subtitle -->
-  <text x="600" y="460" font-size="32" fill="#FF9900" text-anchor="middle" font-family="Arial, sans-serif">AWS Cloud Practitioner Exam Prep</text>
+  <text x="600" y="460" font-size="32" fill="#FF9900" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif">AWS Cloud Practitioner Exam Prep</text>
   
   <!-- Description -->
-  <text x="600" y="520" font-size="24" fill="#AAAAAA" text-anchor="middle" font-family="Arial, sans-serif">588 Practice Questions • Mock Exams • 100% Free</text>
+  <text x="600" y="520" font-size="24" fill="#94A3B8" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif">588 Practice Questions • Mock Exams • 100% Free</text>
 </svg>

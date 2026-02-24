@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Cloud, Check } from 'lucide-react'
 import { useTimer } from '../hooks/useTimer'
 import { useAuth } from '../hooks/useAuth'
 import { Header } from '../components/Header'
@@ -425,28 +426,39 @@ export function MockExam() {
       <div className="bg-bg-dark">
         {/* Header */}
         <div className="fixed top-0 left-0 right-0 bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg z-40">
-          <div className="flex items-center justify-between px-3 md:px-6 py-2 md:py-4">
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-6 h-6 md:w-8 md:h-8 bg-white rounded-lg flex items-center justify-center shadow-md">
-                <span className="text-base md:text-xl font-bold text-aws-orange">☁️</span>
+          <div className="max-w-7xl mx-auto px-4 py-2 md:py-4 lg:py-6">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 bg-white rounded-lg flex items-center justify-center shadow-md relative">
+                  <Cloud className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-aws-orange" fill="currentColor" />
+                  <Check className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white absolute" strokeWidth={3} />
+                </div>
+                <div>
+                  <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">CloudCertPrep</h1>
+                  <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
+                    AWS Cloud Practitioner Exam Prep
+                  </p>
+                </div>
               </div>
-              <h1 className="text-sm md:text-lg font-bold text-white">CloudCertPrep</h1>
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className={`text-lg md:text-xl lg:text-2xl font-mono font-bold text-white ${timer.seconds < 600 ? 'animate-pulse' : ''}`}>
+                  {formatTime(timer.seconds)}
+                </div>
+                <button
+                  onClick={() => setShowEndModal(true)}
+                  className="px-4 py-2 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold rounded-lg transition-colors text-sm md:text-base"
+                >
+                  End Exam
+                </button>
+              </div>
             </div>
-            <div className={`text-base md:text-xl font-mono font-bold text-white ${timer.seconds < 600 ? 'animate-pulse' : ''}`}>
-              {formatTime(timer.seconds)}
-            </div>
-            <button
-              onClick={() => setShowEndModal(true)}
-              className="px-3 py-1.5 md:px-5 md:py-2 bg-white/20 hover:bg-white/30 text-white text-xs md:text-sm font-semibold rounded-lg transition-colors"
-            >
-              End Exam
-            </button>
           </div>
         </div>
 
-        <div className="pt-20 pb-6 px-4 md:px-8 flex gap-6">
-          {/* Main Content */}
-          <div className="flex-1 max-w-3xl mx-auto">
+        <div className="pt-24 md:pt-28 lg:pt-32 pb-6 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto flex gap-6">
+            {/* Main Content */}
+            <div className="flex-1">
             {/* Mobile Question Navigation Button */}
             <button
               onClick={() => setShowQuestionNav(true)}
@@ -533,10 +545,10 @@ export function MockExam() {
                 Next →
               </button>
             </div>
-          </div>
+            </div>
 
-          {/* Question Grid Sidebar */}
-          <div className="hidden lg:block w-64">
+            {/* Question Grid Sidebar */}
+            <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-24 bg-bg-card rounded-lg p-4">
               <h3 className="text-sm font-semibold text-text-primary mb-3">Questions</h3>
               <div className="grid grid-cols-5 gap-2">
@@ -566,6 +578,7 @@ export function MockExam() {
                   )
                 })}
               </div>
+            </div>
             </div>
           </div>
         </div>

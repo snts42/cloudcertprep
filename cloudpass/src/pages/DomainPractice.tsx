@@ -291,25 +291,28 @@ export function DomainPractice() {
             </h1>
             <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Configure your practice session</p>
 
-            <div className="mb-8">
-              <label className="block text-text-primary font-medium mb-4">
-                Number of Questions: {questionCount}
+            <div className="flex items-center justify-between mb-8">
+              <label className="text-text-primary font-medium">
+                Number of Questions:
               </label>
-              <input
-                type="range"
-                min="10"
-                max="50"
-                step="5"
-                value={questionCount}
-                onChange={(e) => setQuestionCount(Number(e.target.value))}
-                className="w-full h-2 bg-bg-dark rounded-lg appearance-none cursor-pointer"
-                style={{
-                  background: `linear-gradient(to right, #FF9900 0%, #FF9900 ${((questionCount - 10) / 40) * 100}%, #1A2332 ${((questionCount - 10) / 40) * 100}%, #1A2332 100%)`
-                }}
-              />
-              <div className="flex justify-between text-sm text-text-muted mt-2">
-                <span>10</span>
-                <span>50</span>
+              <div className="flex items-center gap-3 md:gap-4">
+                <button
+                  onClick={() => setQuestionCount(Math.max(10, questionCount - 5))}
+                  disabled={questionCount <= 10}
+                  className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-bg-dark hover:bg-bg-card-hover text-text-primary text-xl md:text-2xl font-bold rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  −
+                </button>
+                <span className="text-2xl md:text-3xl font-bold text-text-primary w-12 md:w-16 text-center">
+                  {questionCount}
+                </span>
+                <button
+                  onClick={() => setQuestionCount(Math.min(50, questionCount + 5))}
+                  disabled={questionCount >= 50}
+                  className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-bg-dark hover:bg-bg-card-hover text-text-primary text-xl md:text-2xl font-bold rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  +
+                </button>
               </div>
             </div>
 

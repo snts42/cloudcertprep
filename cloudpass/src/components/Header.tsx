@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
-import { Menu, X, Heart } from 'lucide-react'
+import { Menu, X, Heart, Cloud, Check } from 'lucide-react'
 
 interface HeaderProps {
   showNav?: boolean
@@ -19,8 +19,9 @@ export function Header({ showNav = false }: HeaderProps) {
         <div className="flex items-center justify-between md:gap-3 lg:gap-0">
           {/* Logo and Title */}
           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-aws-orange">☁️</span>
+            <div className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 bg-white rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow relative">
+              <Cloud className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-aws-orange" fill="currentColor" />
+              <Check className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white absolute" strokeWidth={3} />
             </div>
             <div>
               <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">

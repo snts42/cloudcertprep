@@ -10,7 +10,7 @@ export function DonateButton() {
   }
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 group">
+    <div className="hidden md:block fixed bottom-6 left-6 z-40 group">
       <a
         href="https://ko-fi.com/alexsantonastaso"
         target="_blank"
