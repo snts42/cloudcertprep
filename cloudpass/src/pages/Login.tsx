@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { Header } from '../components/Header'
+import { BookOpen, FileText, Target, TrendingUp, CheckCircle } from 'lucide-react'
 
 export function Login() {
   const [isSignUp, setIsSignUp] = useState(false)
@@ -112,23 +113,80 @@ export function Login() {
     <div className="min-h-screen bg-bg-dark flex flex-col">
       <Header />
       <div className="flex-1 flex items-center justify-center px-4">
-        <div className="bg-bg-card p-8 rounded-lg shadow-xl max-w-md w-full">
+        <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left Column - Features/Benefits */}
+          <div className="hidden lg:flex flex-col justify-center space-y-6 lg:pr-8">
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-3">
+                  Master the AWS Cloud Practitioner Exam
+                </h1>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-aws-orange/10 flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-5 h-5 text-aws-orange" />
+                  </div>
+                  <div>
+                    <h3 className="text-text-primary font-semibold mb-1">588 Practice Questions</h3>
+                    <p className="text-text-muted text-sm">Comprehensive coverage of all CLF-C02 exam domains</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-aws-orange/10 flex items-center justify-center flex-shrink-0">
+                    <FileText className="w-5 h-5 text-aws-orange" />
+                  </div>
+                  <div>
+                    <h3 className="text-text-primary font-semibold mb-1">Full Mock Exams</h3>
+                    <p className="text-text-muted text-sm">65 questions, 90 minutes - authentic exam simulation</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-aws-orange/10 flex items-center justify-center flex-shrink-0">
+                    <Target className="w-5 h-5 text-aws-orange" />
+                  </div>
+                  <div>
+                    <h3 className="text-text-primary font-semibold mb-1">Domain Practice</h3>
+                    <p className="text-text-muted text-sm">Focus on specific areas with instant feedback</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-aws-orange/10 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-5 h-5 text-aws-orange" />
+                  </div>
+                  <div>
+                    <h3 className="text-text-primary font-semibold mb-1">Progress Tracking</h3>
+                    <p className="text-text-muted text-sm">Monitor your mastery across all domains over time</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-aws-orange/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-aws-orange" />
+                  </div>
+                  <div>
+                    <h3 className="text-text-primary font-semibold mb-1">100% Free</h3>
+                    <p className="text-text-muted text-sm">No hidden fees, no premium tiers, no paywalls</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {/* Right Column - Auth Form */}
+          <div className="bg-bg-card p-6 md:p-8 rounded-lg shadow-xl flex flex-col justify-center">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-text-primary mb-2">
               {isForgotPassword ? 'Reset Password' : isSignUp ? 'Create Account' : 'Sign In'}
             </h2>
-            <p className="text-text-muted text-sm">
-              {isForgotPassword ? 'Enter your email to receive a reset link' : 'Start practicing for your AWS certification'}
-            </p>
-          </div>
-
-          {!isForgotPassword && (
-            <div className="mb-6 p-4 bg-aws-orange/10 border border-aws-orange/30 rounded-lg">
-              <p className="text-sm text-text-muted text-center">
-                <span className="font-semibold text-aws-orange">Note:</span> Login required to save your progress and track your exam history.
+            {isForgotPassword && (
+              <p className="text-text-muted text-sm">
+                Enter your email to receive a reset link
               </p>
-            </div>
-          )}
+            )}
+          </div>
 
           <form onSubmit={isForgotPassword ? handlePasswordReset : handleEmailAuth} className="space-y-4">
           <div>
@@ -293,14 +351,12 @@ export function Login() {
               >
                 Continue as Guest
               </button>
-              <p className="text-xs text-text-muted text-center mt-2">
-                Guest mode: Progress will not be saved
-              </p>
             </>
           )}
         </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   )
 }
