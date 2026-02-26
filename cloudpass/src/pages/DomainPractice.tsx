@@ -9,17 +9,11 @@ import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
 import { isAnswerCorrect } from '../lib/scoring'
-import { calculateDomainMastery } from '../lib/domainStats'
+import { calculateDomainMastery, DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
+import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
 import { Check, X } from 'lucide-react'
 
 type Screen = 'selection' | 'config' | 'practice' | 'results'
-
-interface QuestionHistory {
-  questionId: string
-  correctCount: number
-  incorrectCount: number
-  lastSeen: number
-}
 
 interface QuestionResult {
   question: Question
@@ -54,8 +48,8 @@ export function DomainPractice() {
   const [showFeedback, setShowFeedback] = useState(false)
   const [results, setResults] = useState<boolean[]>([])
   const [questionResults, setQuestionResults] = useState<QuestionResult[]>([])
-  const [questionHistory, setQuestionHistory] = useState<Map<string, QuestionHistory>>(new Map())
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0)
+  const { selectQuestions } = useSpacedRepetition(user?.id ?? null, selectedDomain)
 
   function selectDomain(domainId: number) {
     setSelectedDomain(domainId)
@@ -63,36 +57,12 @@ export function DomainPractice() {
   }
 
   async function startPractice() {
-    // Load question history from localStorage
-    const historyKey = `domain_${selectedDomain}_history`
-    const savedHistory = localStorage.getItem(historyKey)
-    const history: Map<string, QuestionHistory> = savedHistory 
-      ? new Map(JSON.parse(savedHistory))
-      : new Map()
-    
-    setQuestionHistory(history)
-
     // Get all questions for this domain
     const allDomainQuestions = (masterQuestions as Question[])
       .filter(q => q.domainId === selectedDomain)
 
-    // Sort questions by priority (wrong answers first, then least seen)
-    const sortedQuestions = allDomainQuestions.sort((a, b) => {
-      const histA = history.get(a.id)
-      const histB = history.get(b.id)
-      
-      // Prioritize questions with more incorrect answers
-      const scoreA = (histA?.incorrectCount || 0) - (histA?.correctCount || 0)
-      const scoreB = (histB?.incorrectCount || 0) - (histB?.correctCount || 0)
-      
-      if (scoreA !== scoreB) return scoreB - scoreA
-      
-      // Then by least recently seen
-      return (histA?.lastSeen || 0) - (histB?.lastSeen || 0)
-    })
-
-    // Take the requested number of questions
-    const selectedQuestions = sortedQuestions.slice(0, questionCount)
+    // Use spaced repetition for authenticated users, random shuffle for guests
+    const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
     
     setQuestions(selectedQuestions)
     setCurrentIndex(0)
@@ -140,24 +110,6 @@ export function DomainPractice() {
       isCorrect: correct
     }])
     setShowFeedback(true)
-
-    // Update question history
-    const newHistory = new Map(questionHistory)
-    const existing = newHistory.get(current.id) || { questionId: current.id, correctCount: 0, incorrectCount: 0, lastSeen: 0 }
-    
-    if (correct) {
-      existing.correctCount++
-    } else {
-      existing.incorrectCount++
-    }
-    existing.lastSeen = Date.now()
-    
-    newHistory.set(current.id, existing)
-    setQuestionHistory(newHistory)
-
-    // Save to localStorage
-    const historyKey = `domain_${selectedDomain}_history`
-    localStorage.setItem(historyKey, JSON.stringify(Array.from(newHistory.entries())))
   }
 
   function nextQuestion() {
@@ -255,7 +207,7 @@ export function DomainPractice() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
             {[1, 2, 3, 4].map(domainId => {
-              const totalQuestions = (masterQuestions as Question[]).filter(q => q.domainId === domainId).length
+              const totalQuestions = DOMAIN_QUESTION_COUNTS[domainId as keyof typeof DOMAIN_QUESTION_COUNTS]
               
               return (
                 <button
