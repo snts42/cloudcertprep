@@ -195,7 +195,7 @@ export function Dashboard() {
                     <div className="flex items-start gap-3">
                       <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-text-primary font-medium text-sm md:text-base">588 Practice Questions</p>
+                        <p className="text-text-primary font-medium text-sm md:text-base">1,054 Practice Questions</p>
                         <p className="text-text-muted text-xs md:text-sm">Comprehensive AWS CLF-C02 exam coverage</p>
                       </div>
                     </div>
@@ -289,8 +289,8 @@ export function Dashboard() {
             </div>
           )}
         </div>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

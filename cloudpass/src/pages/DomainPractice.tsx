@@ -456,9 +456,19 @@ export function DomainPractice() {
                       })}
                     </div>
 
-                    {/* Explanation Placeholder */}
-                    <div className="bg-bg-dark rounded-lg p-2.5 md:p-3 text-xs md:text-sm">
-                      <p className="text-text-muted italic">Explanation: [Will be added in next phase]</p>
+                    {/* Explanation */}
+                    <div className="bg-bg-dark rounded-lg p-2.5 md:p-3">
+                      {currentResult.question.source === 'ai-generated' && (
+                        <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
+                          <span>✦</span> AI Generated
+                        </span>
+                      )}
+                      <p className="text-sm text-gray-300 mt-3 leading-relaxed">{currentResult.question.explanation}</p>
+                    </div>
+
+                    {/* Question ID */}
+                    <div className="mt-3 pt-2 border-t border-gray-700">
+                      <span className="text-xs text-gray-600 font-mono">{currentResult.question.id}</span>
                     </div>
                   </div>
                 )
@@ -621,12 +631,22 @@ export function DomainPractice() {
                 
                 {currentQuestion.explanation && (
                   <div className="border-t border-text-muted/20 pt-2 mt-2">
+                    {currentQuestion.source === 'ai-generated' && (
+                      <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
+                        <span>✦</span> AI Generated
+                      </span>
+                    )}
                     <p className="text-text-muted text-xs md:text-sm font-medium mb-1">Explanation:</p>
                     <p className="text-text-muted text-xs md:text-sm">{currentQuestion.explanation}</p>
                   </div>
                 )}
               </div>
             )}
+
+            {/* Question ID */}
+            <div className="mt-3 pt-2 border-t border-gray-700">
+              <span className="text-xs text-gray-600 font-mono">{currentQuestion.id}</span>
+            </div>
           </div>
 
           {showFeedback && (

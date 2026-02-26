@@ -1,9 +1,9 @@
 // Total questions per domain in master_questions.json
 export const DOMAIN_QUESTION_COUNTS = {
-  1: 99,   // Cloud Concepts
-  2: 66,   // Security & Compliance
-  3: 356,  // Cloud Technology & Services
-  4: 67,   // Billing, Pricing & Support
+  1: 196,  // Cloud Concepts
+  2: 220,  // Security & Compliance
+  3: 408,  // Cloud Technology & Services
+  4: 230,  // Billing, Pricing & Support
 } as const
 
 /**
