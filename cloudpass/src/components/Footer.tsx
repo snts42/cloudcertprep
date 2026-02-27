@@ -1,12 +1,19 @@
+import { Link } from 'react-router-dom'
+
 export function Footer() {
   return (
     <footer className="bg-bg-card border-t border-text-muted/20 mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-4 md:py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 text-text-muted text-xs leading-relaxed text-center md:text-left">
-          {/* Left Column: Copyright */}
+          {/* Left Column: Copyright + Legal Links */}
           <div>
             <p>
               © {new Date().getFullYear()} <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Alex Santonastaso</a>. All rights reserved.
+            </p>
+            <p className="mt-1">
+              <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Privacy Policy</Link>
+              <span className="mx-2">·</span>
+              <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Terms of Service</Link>
             </p>
           </div>
 

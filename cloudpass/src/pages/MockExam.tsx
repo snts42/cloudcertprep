@@ -255,7 +255,7 @@ export function MockExam() {
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-3 md:mb-4">Mock Exam</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">Mock Exam</h1>
           <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">65 questions — 90 minutes — No answer feedback during exam</p>
           
           <div className="bg-bg-dark rounded-lg p-4 md:p-6 mb-6 md:mb-8">

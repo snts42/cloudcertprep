@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { Header } from '../components/Header'
 import { BookOpen, FileText, Target, TrendingUp, CheckCircle } from 'lucide-react'
@@ -354,6 +354,13 @@ export function Login() {
               >
                 Continue as Guest
               </button>
+
+              <p className="mt-4 text-xs text-text-muted">
+                By signing up, you agree to our{' '}
+                <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Terms of Service</Link>
+                {' '}and{' '}
+                <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Privacy Policy</Link>.
+              </p>
             </>
           )}
         </div>
