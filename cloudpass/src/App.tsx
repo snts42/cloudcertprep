@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { DonateButton } from './components/DonateButton'
 import { LoadingSpinner } from './components/LoadingSpinner'
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <div className="flex-1">
-          <Suspense fallback={<div className="flex-1 flex items-center justify-center p-8"><LoadingSpinner /></div>}>
+          <Suspense fallback={<><Header showNav={true} /><div className="flex-1 flex items-center justify-center p-8"><LoadingSpinner /></div></>}>
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/reset-password" element={<ResetPassword />} />

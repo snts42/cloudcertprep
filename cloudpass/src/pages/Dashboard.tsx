@@ -77,8 +77,11 @@ export function Dashboard() {
 
   if (authLoading) {
     return (
-      <div className="bg-bg-dark flex items-center justify-center p-8">
-        <LoadingSpinner text="Loading dashboard..." />
+      <div className="bg-bg-dark flex flex-col">
+        <Header showNav={true} />
+        <div className="flex-1 flex items-center justify-center p-8">
+          <LoadingSpinner text="Loading dashboard..." />
+        </div>
       </div>
     )
   }
