@@ -1,88 +1,73 @@
-# ☁️ CloudCertPrep
+# React + TypeScript + Vite
 
-**Free AWS Cloud Practitioner (CLF-C02) Practice Exam Platform**
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://cloudcertprep.netlify.app)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+Currently, two official plugins are available:
 
-A comprehensive exam preparation platform with **588 practice questions** across all AWS Cloud Practitioner certification domains.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-**Live Demo:** [cloudcertprep.netlify.app](https://cloudcertprep.netlify.app)
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## ✨ Features
+## Expanding the ESLint configuration
 
-**Practice Modes**
-- **Mock Exam** - Full 65-question timed exam with AWS scaled scoring (100-1000)
-- **Domain Practice** - Focus on specific domains with intelligent question repetition
-- **Weak Spot Trainer** - Automatically targets previously missed questions
-- **Scenario Practice** - Real-world scenario-based questions
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-**Smart Learning**
-- Intelligent repetition algorithm prioritizes weak areas
-- Immediate feedback with detailed explanations
-- Progress tracking across all four domains
-- Complete exam history with performance analytics
-- Guest mode available (no account required)
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
----
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## 🏗️ Tech Stack
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-**Frontend**
-- React 18 + TypeScript
-- Tailwind CSS
-- React Router
-- Vite
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-**Backend**
-- Supabase (PostgreSQL + Auth + Real-time)
-- Row Level Security
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-**Deployment**
-- Netlify (CI/CD + Hosting)
-
----
-
-## 📊 Question Bank
-
-- **588 Total Questions**
-- Domain 1: Cloud Concepts (24%)
-- Domain 2: Security & Compliance (30%)
-- Domain 3: Cloud Technology & Services (34%)
-- Domain 4: Billing, Pricing & Support (12%)
-
-All questions include multiple choice/multi-select formats with detailed explanations.
-
----
-
-## 🗄️ Database Schema
-
-**exam_attempts** - Mock exam results and scores  
-**domain_progress** - Mastery tracking per domain  
-**weak_spots** - Incorrect questions (cleared after 3 correct answers)  
-**users** - Authentication and profiles (Supabase Auth)
-
----
-
-##  License
-
-MIT License - see [LICENSE](LICENSE) file
-
----
-
-## ⚠️ Disclaimer
-
-Not affiliated with Amazon Web Services (AWS) or Amazon.com, Inc. AWS and the AWS logo are trademarks of Amazon.com, Inc. or its affiliates.
-
----
-
-## 👨‍💻 Author
-
-**Alex Santonastaso**  
-Portfolio: [santonastaso.codes](https://santonastaso.codes)
-
----
-
-**Happy Studying! 🎓☁️**
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
