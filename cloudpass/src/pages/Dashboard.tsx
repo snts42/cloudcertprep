@@ -27,7 +27,7 @@ interface RecentAttempt {
 
 export function Dashboard() {
   const navigate = useNavigate()
-  const { user } = useAuth()
+  const { user, loading: authLoading } = useAuth()
 
   // Set page title
   useEffect(() => {
@@ -36,13 +36,15 @@ export function Dashboard() {
       document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
     }
   }, [user])
-  const [loading, setLoading] = useState(true)
   const [domainProgress, setDomainProgress] = useState<DomainProgress[]>([])
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([])
 
   useEffect(() => {
-    loadDashboardData()
-  }, [user])
+    // Only load data for authenticated users
+    if (!authLoading && user) {
+      loadDashboardData()
+    }
+  }, [user, authLoading])
 
   async function loadDashboardData() {
     try {
@@ -50,11 +52,11 @@ export function Dashboard() {
         supabase
           .from('domain_progress')
           .select('*')
-          .eq('user_id', user?.id),
+          .eq('user_id', user!.id),
         supabase
           .from('exam_attempts')
           .select('*')
-          .eq('user_id', user?.id)
+          .eq('user_id', user!.id)
           .order('attempted_at', { ascending: false })
           .limit(5),
       ])
@@ -68,8 +70,6 @@ export function Dashboard() {
       }
     } catch (error) {
       console.error('Error loading dashboard:', error)
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -102,7 +102,7 @@ export function Dashboard() {
     }
   }
 
-  if (loading) {
+  if (authLoading) {
     return (
       <div className="bg-bg-dark flex items-center justify-center p-8">
         <LoadingSpinner text="Loading dashboard..." />
