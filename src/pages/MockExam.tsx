@@ -13,7 +13,7 @@ import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
-import masterQuestions from '../data/master_questions.json'
+import { loadAllQuestions } from '../data/questions'
 import { Flag, AlertCircle } from 'lucide-react'
 
 type ExamScreen = 'start' | 'exam' | 'results' | 'review'
@@ -83,14 +83,17 @@ export function MockExam() {
     handleSubmitExam()
   }
 
-  function startExam() {
-    const selectedQuestions = selectExamQuestions(masterQuestions as Question[])
+  async function startExam() {
+    setLoading(true)
+    const allQuestions = await loadAllQuestions()
+    const selectedQuestions = selectExamQuestions(allQuestions)
     setQuestions(selectedQuestions)
     setAnswers(new Map())
     setCurrentIndex(0)
     setScreen('exam')
     setStartTime(Date.now())
     timer.start()
+    setLoading(false)
   }
 
   function handleAnswer(answer: string) {
@@ -900,7 +903,7 @@ export function MockExam() {
 
               {/* Question ID */}
               <div className="mt-3 pt-2 border-t border-text-muted/20">
-                <span className="text-xs text-text-muted/50 font-mono">{originalQuestion.id}</span>
+                <span className="text-xs text-text-muted/70 font-mono">{originalQuestion.id}</span>
               </div>
             </div>
 

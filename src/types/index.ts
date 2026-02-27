@@ -1,7 +1,6 @@
 export interface Question {
   id: string
   domainId: 1 | 2 | 3 | 4
-  domainName: string
   question: string
   options: {
     A: string

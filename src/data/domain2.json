@@ -1,0 +1,3538 @@
+[
+  {
+    "id": "q003",
+    "domainId": 2,
+    "question": "You have noticed that several critical Amazon EC2 instances have been terminated. Which of the following AWS services would help you determine who took this action?",
+    "options": {
+      "A": "Amazon Inspector.",
+      "B": "AWS CloudTrail.",
+      "C": "AWS Trusted Advisor.",
+      "D": "EC2 Instance Usage Report."
+    },
+    "answer": "B",
+    "explanation": "AWS CloudTrail records all API calls and account activity, making it the go-to service for auditing who performed actions like terminating EC2 instances.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q011",
+    "domainId": 2,
+    "question": "An organization has a large number of technical employees who operate their AWS Cloud infrastructure. What does AWS provide to help organize them into teams and then assign the appropriate permissions for each team?",
+    "options": {
+      "A": "IAM roles.",
+      "B": "IAM users.",
+      "C": "IAM user groups.",
+      "D": "AWS Organizations."
+    },
+    "answer": "C",
+    "explanation": "IAM user groups let you group multiple users together and assign permissions once at the group level, making it easy to manage access for teams without configuring each user individually.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q022",
+    "domainId": 2,
+    "question": "What does the \"Principle of Least Privilege\" refer to?",
+    "options": {
+      "A": "You should grant your users only the permissions they need when they need them and nothing more.",
+      "B": "All IAM users should have at least the necessary permissions to access the core AWS services.",
+      "C": "All trusted IAM users should have access to any AWS service in the respective AWS account.",
+      "D": "IAM users should not be granted any permissions; to keep your account safe."
+    },
+    "answer": "A",
+    "explanation": "The Principle of Least Privilege means granting users only the exact permissions they need to do their job, and nothing beyond that, to minimize the risk of accidental or malicious misuse.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q026",
+    "domainId": 2,
+    "question": "Hundreds of thousands of DDoS attacks are recorded every month worldwide. What service does AWS provide to help protect AWS Customers from these attacks? (Choose TWO)",
+    "options": {
+      "A": "AWS Shield.",
+      "B": "AWS Config.",
+      "C": "Amazon Cognito.",
+      "D": "AWS WAF.",
+      "E": "AWS KMS."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS Shield provides managed DDoS protection at the network and transport layers, while AWS WAF allows you to create rules that filter malicious web traffic at the application layer — together they defend against DDoS attacks.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q031",
+    "domainId": 2,
+    "question": "Which of the following services allows customers to manage their agreements with AWS?",
+    "options": {
+      "A": "AWS Artifact.",
+      "B": "AWS Certificate Manager.",
+      "C": "AWS Systems Manager.",
+      "D": "AWS Organizations."
+    },
+    "answer": "A",
+    "explanation": "AWS Artifact is a self-service portal where customers can access and manage AWS compliance reports and agreements, including NDA and BAA documents.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q036",
+    "domainId": 2,
+    "question": "Which of the following must an IAM user provide to interact with AWS services using the AWS Command Line Interface (AWS CLI)?",
+    "options": {
+      "A": "Access keys.",
+      "B": "Secret token.",
+      "C": "UserID.",
+      "D": "User name and password."
+    },
+    "answer": "A",
+    "explanation": "The AWS CLI uses access keys (an Access Key ID and Secret Access Key) to authenticate API requests programmatically, unlike the Management Console which uses username and password.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q037",
+    "domainId": 2,
+    "question": "You have AWS Basic support, and you have discovered that some AWS resources are being used maliciously, and those resources could potentially compromise your data. What should you do?",
+    "options": {
+      "A": "Contact the AWS Customer Service team.",
+      "B": "Contact the AWS Abuse team.",
+      "C": "Contact the AWS Concierge team.",
+      "D": "Contact the AWS Security team."
+    },
+    "answer": "B",
+    "explanation": "The AWS Abuse team handles reports of AWS infrastructure being used for malicious activity such as hacking, spam, or unauthorized use — this is available regardless of your support tier.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q058",
+    "domainId": 2,
+    "question": "Which security service automatically recognizes and classifies sensitive data or intellectual property on AWS?",
+    "options": {
+      "A": "Amazon GuardDuty.",
+      "B": "Amazon Macie.",
+      "C": "Amazon Inspector.",
+      "D": "AWS Shield."
+    },
+    "answer": "B",
+    "explanation": "Amazon Macie uses machine learning to automatically discover, classify, and protect sensitive data (such as PII and intellectual property) stored in S3. GuardDuty detects threats; Inspector checks for vulnerabilities; Shield protects against DDoS.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q075",
+    "domainId": 2,
+    "question": "Access keys in AWS Identity and Access Management (IAM) are used to:",
+    "options": {
+      "A": "Log in to the AWS Management Console.",
+      "B": "Make programmatic calls to AWS from AWS APIs.",
+      "C": "Log in to Amazon EC2 instances.",
+      "D": "Authenticate to AWS CodeCommit repositories."
+    },
+    "answer": "B",
+    "explanation": "IAM access keys (access key ID + secret access key) are used to authenticate programmatic calls to AWS APIs via the CLI, SDKs, or direct HTTP requests. Console logins use username/password; EC2 instance access uses key pairs.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q090",
+    "domainId": 2,
+    "question": "Which AWS IAM feature allows developers to access AWS services through the AWS CLI?",
+    "options": {
+      "A": "API keys.",
+      "B": "Access keys.",
+      "C": "User names/Passwords.",
+      "D": "SSH keys."
+    },
+    "answer": "B",
+    "explanation": "IAM access keys (access key ID + secret access key) are the credentials used to authenticate CLI commands. API keys is not an AWS term; username/password is for console access; SSH keys are for EC2 instance access.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q103",
+    "domainId": 2,
+    "question": "Which of the following will enhance the security of access to the AWS Management Console’? (Select TWO)",
+    "options": {
+      "A": "AWS Secrets Manager.",
+      "B": "AWS Certificate Manager.",
+      "C": "AWS Multi-Factor Authentication (AWS MFA).",
+      "D": "Security groups.",
+      "E": "Password policies."
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "MFA adds a second authentication factor beyond a password, and strong password policies enforce complexity and rotation—both directly protect console logins. Secrets Manager, Certificate Manager, and security groups do not control console authentication.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q105",
+    "domainId": 2,
+    "question": "For which auditing process does AWS have sole responsibility?",
+    "options": {
+      "A": "AWS IAM policies.",
+      "B": "Physical security.",
+      "C": "Amazon S3 bucket policies.",
+      "D": "AWS CloudTrail Logs."
+    },
+    "answer": "B",
+    "explanation": "Under the shared responsibility model, AWS has sole responsibility for physical security of its data centers, including controls such as perimeter security, surveillance, and hardware disposal. IAM policies, S3 bucket policies, and CloudTrail logs are customer-managed.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q117",
+    "domainId": 2,
+    "question": "Which of the following Identity and Access Management (IAM) entities is associated with an access key ID and secret access key when using AWS Command Line Interface (AWS CLI)?",
+    "options": {
+      "A": "IAM group.",
+      "B": "IAM user.",
+      "C": "IAM role.",
+      "D": "IAM policy."
+    },
+    "answer": "B",
+    "explanation": "IAM users are the entities that have access keys (access key ID + secret access key) associated with them for programmatic CLI access. IAM groups, roles, and policies themselves do not have access keys; roles use temporary credentials.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q120",
+    "domainId": 2,
+    "question": "What credential components are required to gain programmatic access to an AWS account? (Select TWO)",
+    "options": {
+      "A": "An access key ID.",
+      "B": "A primary key.",
+      "C": "A secret access key.",
+      "D": "A user ID.",
+      "E": "A secondary key."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Programmatic AWS access requires an access key ID and a secret access key together to authenticate API requests via the CLI or SDKs. A primary key, user ID, or secondary key are not valid AWS credential components.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q126",
+    "domainId": 2,
+    "question": "Which of the following security measures protect access to an AWS account? (Select TWO)",
+    "options": {
+      "A": "Enable AWS CloudTrail.",
+      "B": "Grant least privilege access to IAM users.",
+      "C": "Create one IAM user and share with many developers and users.",
+      "D": "Enable Amazon CloudFront.",
+      "E": "Activate multi-factor authentication (MFA) for privileged users."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Granting least privilege access ensures users only have the permissions they need, reducing the blast radius of a compromise, and enabling MFA for privileged users adds a critical second authentication factor. CloudTrail logs activity but doesn't prevent unauthorized access; sharing IAM users is a security anti-pattern.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q163",
+    "domainId": 2,
+    "question": "AWS supports which of the following methods to add security to Identity and Access Management (IAM) users? (Select TWO)",
+    "options": {
+      "A": "Implementing Amazon Rekognition.",
+      "B": "Using AWS Shield-protected resources.",
+      "C": "Blocking access with Security Groups.",
+      "D": "Using Multi-Factor Authentication (MFA).",
+      "E": "Enforcing password strength and expiration."
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "MFA adds a second authentication factor beyond a password, and enforcing password strength and expiration policies reduce the risk of credential compromise. Rekognition is image/video analysis; Shield is DDoS protection; security groups control network traffic, not IAM authentication.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q169",
+    "domainId": 2,
+    "question": "A Cloud Practitioner must determine if any security groups in an AWS account have been provisioned to allow unrestricted access for specific ports. What is the SIMPLEST way to do this?",
+    "options": {
+      "A": "Review the inbound rules for each security group in the Amazon EC2 management console to check for port 0.0.0.0/0.",
+      "B": "Run AWS Trusted Advisor and review the findings.",
+      "C": "Open the AWS IAM console and check the inbound rule filters for open access.",
+      "D": "In AWS Config, create a custom rule that invokes an AWS Lambda function to review firewall rules for inbound access."
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor automatically scans your account and flags security groups with unrestricted access (0.0.0.0/0) to specific ports as part of its Security checks, making it the simplest approach. Manually reviewing each security group in the console is tedious; IAM console manages identities, not security groups; creating a custom Config rule requires significant setup effort.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q171",
+    "domainId": 2,
+    "question": "Which of the following services have Distributed Denial of Service (DDoS) mitigation features? (Select TWO)",
+    "options": {
+      "A": "AWS WAF.",
+      "B": "Amazon DynamoDB.",
+      "C": "Amazon EC2.",
+      "D": "Amazon CloudFront.",
+      "E": "Amazon Inspector."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS WAF filters malicious HTTP/S traffic at the application layer, and Amazon CloudFront integrates with AWS Shield to absorb volumetric DDoS attacks at the edge. DynamoDB, EC2, and Inspector do not provide inherent DDoS mitigation features.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q175",
+    "domainId": 2,
+    "question": "What can users access from AWS Artifact?",
+    "options": {
+      "A": "AWS security and compliance documents.",
+      "B": "A download of configuration management details for all AWS resources.",
+      "C": "Training materials for AWS services.",
+      "D": "A security assessment of the applications deployed in the AWS Cloud."
+    },
+    "answer": "A",
+    "explanation": "AWS Artifact is a self-service portal that provides on-demand access to AWS security and compliance documents such as SOC reports, ISO certifications, and PCI attestations. Inspector assesses application security; CloudTrail logs API activity; Certificate Manager manages SSL/TLS certificates.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q181",
+    "domainId": 2,
+    "question": "Where are AWS compliance documents, such as an SOC 1 report, located?",
+    "options": {
+      "A": "Amazon Inspector.",
+      "B": "AWS CloudTrail.",
+      "C": "AWS Artifact.",
+      "D": "AWS Certificate Manager."
+    },
+    "answer": "C",
+    "explanation": "AWS Artifact is the dedicated portal for accessing AWS compliance documentation, including SOC 1, SOC 2, ISO 27001, and PCI DSS reports. Inspector assesses application vulnerabilities; CloudTrail logs API activity; Certificate Manager is for SSL/TLS certificates.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q200",
+    "domainId": 2,
+    "question": "What is the AWS feature that provides an additional level of security above the default authentication mechanism of usernames and passwords?",
+    "options": {
+      "A": "Encrypted keys.",
+      "B": "Email verification.",
+      "C": "AWS KMS.",
+      "D": "AWS MFA."
+    },
+    "answer": "D",
+    "explanation": "AWS Multi-Factor Authentication (MFA) adds a second layer of security by requiring a one-time code from a hardware or virtual device in addition to a username and password. KMS manages encryption keys; encrypted keys and email verification are not AWS authentication mechanisms.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q204",
+    "domainId": 2,
+    "question": "According to the AWS Acceptable Use Policy, which of the following statements is true regarding penetration testing of EC2 instances?",
+    "options": {
+      "A": "Penetration testing is not allowed in AWS.",
+      "B": "Penetration testing is performed automatically by AWS to determine vulnerabilities in your AWS infrastructure.",
+      "C": "Penetration testing can be performed by the customer on their own instances without prior authorization from AWS.",
+      "D": "The AWS customers are only allowed to perform penetration testing on services managed by AWS."
+    },
+    "answer": "C",
+    "explanation": "AWS's Acceptable Use Policy allows customers to perform penetration testing on their own EC2 instances and certain other services without prior authorization. AWS does not perform penetration testing on customers' behalf, and testing is not prohibited—it is permitted subject to AWS policy conditions.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q211",
+    "domainId": 2,
+    "question": "Which of the following is equivalent to a user name and password and is used to authenticate your programmatic access to AWS services and APIs?",
+    "options": {
+      "A": "Instance Password.",
+      "B": "Key pairs.",
+      "C": "Access Keys.",
+      "D": "MFA."
+    },
+    "answer": "C",
+    "explanation": "AWS Access Keys (an access key ID plus a secret access key) are the credentials used to authenticate programmatic API calls—functioning like a username and password for AWS SDKs and CLI. Key pairs are used for EC2 SSH access; MFA is an additional authentication factor, not a primary credential pair.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q219",
+    "domainId": 2,
+    "question": "Which of the following services can help protect your web applications from SQL injection and other vulnerabilities in your application code?",
+    "options": {
+      "A": "Amazon Cognito.",
+      "B": "AWS IAM.",
+      "C": "Amazon Aurora.",
+      "D": "AWS WAF."
+    },
+    "answer": "D",
+    "explanation": "AWS WAF (Web Application Firewall) lets you create rules to inspect and filter HTTP/S traffic, blocking common web exploits like SQL injection and cross-site scripting before they reach your application. Cognito handles user authentication; IAM manages AWS resource access; Aurora is a relational database engine.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q223",
+    "domainId": 2,
+    "question": "What are the default security credentials that are required to access the AWS management console for an IAM user account?",
+    "options": {
+      "A": "MFA.",
+      "B": "Security tokens.",
+      "C": "A user name and password.",
+      "D": "Access keys."
+    },
+    "answer": "C",
+    "explanation": "IAM user console access is secured with a user name and password combination. MFA is an optional additional factor layered on top; security tokens are temporary credentials used by IAM roles; access keys are for programmatic (CLI/API) access, not console login.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q226",
+    "domainId": 2,
+    "question": "Which of the following aspects of security are managed by AWS? (Choose TWO)",
+    "options": {
+      "A": "Encryption of EBS volumes.",
+      "B": "VPC security.",
+      "C": "Access permissions.",
+      "D": "Hardware patching.",
+      "E": "Securing global physical infrastructure."
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Patching and maintaining the physical hardware and servers, and securing the global physical infrastructure (data centers, power, networking), are entirely AWS's responsibility. Encrypting EBS volumes, configuring VPC security, and managing access permissions are customer responsibilities.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q231",
+    "domainId": 2,
+    "question": "Which of the following services will help businesses ensure compliance in AWS?",
+    "options": {
+      "A": "CloudFront.",
+      "B": "CloudEndure Migration.",
+      "C": "CloudWatch.",
+      "D": "CloudTrail."
+    },
+    "answer": "D",
+    "explanation": "AWS CloudTrail logs all API activity and account events, creating an audit trail that helps organizations demonstrate compliance with regulatory requirements and investigate security incidents. CloudFront is a CDN; CloudEndure Migration is a migration tool; CloudWatch is a monitoring and alerting service.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q236",
+    "domainId": 2,
+    "question": "Which of the following AWS security features is associated with an EC2 instance and functions to filter incoming traffic requests?",
+    "options": {
+      "A": "AWS X-Ray.",
+      "B": "Network ACL.",
+      "C": "Security Groups.",
+      "D": "VPC Flow logs."
+    },
+    "answer": "C",
+    "explanation": "Security Groups act as a stateful virtual firewall at the EC2 instance level, evaluating and filtering inbound (and outbound) traffic based on rules you define—directly associated with the instance. AWS X-Ray traces requests; Network ACLs operate at the subnet level (stateless); VPC Flow Logs capture traffic metadata for analysis but do not filter traffic.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q252",
+    "domainId": 2,
+    "question": "An organization runs many systems and uses many AWS products. Which of the following services enables them to control how each developer interacts with these products?",
+    "options": {
+      "A": "AWS Identity and Access Management.",
+      "B": "Amazon RDS.",
+      "C": "Network Access Control Lists.",
+      "D": "Amazon EMR."
+    },
+    "answer": "A",
+    "explanation": "AWS IAM allows administrators to create users, groups, and roles with fine-grained permission policies that control exactly which AWS services and actions each developer or system can access. RDS is a database; NACLs control network traffic; EMR is for big data processing—none manage developer-level AWS service permissions.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q269",
+    "domainId": 2,
+    "question": "Which of the following can help protect your EC2 instances from DDoS attacks? (Choose TWO)",
+    "options": {
+      "A": "AWS CloudHSM.",
+      "B": "Security Groups.",
+      "C": "AWS Batch.",
+      "D": "AWS IAM.",
+      "E": "Network Access Control Lists (Network ACLs)."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Security Groups act as stateful instance-level firewalls that can block unwanted traffic before it reaches your EC2 instance. Network ACLs (NACLs) are stateless subnet-level controls that can block volumetric attack traffic at the network perimeter. CloudHSM is a hardware security module for key management; Batch is for batch computing; IAM manages access permissions—none directly mitigate DDoS traffic.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q279",
+    "domainId": 2,
+    "question": "What is the minimum level of AWS support that provides 24x7 access to technical support engineers via phone and chat?",
+    "options": {
+      "A": "Enterprise Support.",
+      "B": "Developer Support.",
+      "C": "Basic Support.",
+      "D": "Business Support."
+    },
+    "answer": "D",
+    "explanation": "AWS Business Support is the minimum plan that includes 24/7 phone and chat access to Cloud Support Engineers, with a one-hour response SLA for production system-down cases. Enterprise Support also provides this but at a higher price point. Developer Support only offers email during business hours; Basic has no technical case support.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q280",
+    "domainId": 2,
+    "question": "Which of the following is used to control network traffic in AWS? (Choose TWO)",
+    "options": {
+      "A": "Network Access Control Lists (NACLs).",
+      "B": "Key Pairs.",
+      "C": "Access Keys.",
+      "D": "IAM Policies.",
+      "E": "Security Groups."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Network ACLs (NACLs) are stateless subnet-level firewalls that evaluate all inbound and outbound traffic based on numbered rules. Security Groups are stateful instance-level firewalls that control traffic to and from EC2 instances. Key pairs are for SSH authentication; Access Keys are for API authentication; IAM Policies control AWS resource permissions, not network traffic.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q292",
+    "domainId": 2,
+    "question": "Data security is one of the top priorities of AWS. How does AWS deal with old storage devices that have reached the end of their useful life?",
+    "options": {
+      "A": "AWS sells the old devices to other hosting providers.",
+      "B": "AWS destroys the old devices in accordance with industry-standard practices.",
+      "C": "AWS sends the old devices for remanufacturing.",
+      "D": "AWS stores the old devices in a secure place."
+    },
+    "answer": "B",
+    "explanation": "AWS follows industry-standard practices for decommissioning storage devices, including degaussing and physical destruction, to ensure that no customer data can be recovered from retired hardware. AWS does not sell, remanufacture, or store old devices in a way that risks data exposure.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q293",
+    "domainId": 2,
+    "question": "A developer needs to set up an SSL security certificate for a client's eCommerce website in order to use the HTTPS protocol. Which of the following AWS services can be used to deploy the required SSL server certificates? (Choose TWO)",
+    "options": {
+      "A": "Amazon Route 53.",
+      "B": "AWS ACM.",
+      "C": "AWS Directory Service.",
+      "D": "AWS Identity & Access Management.",
+      "E": "AWS Data Pipeline."
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "SSL/TLS certificates for an eCommerce website can be provisioned via AWS Certificate Manager (ACM), which issues and manages free public SSL/TLS certificates, and via Amazon Route 53, which can also manage and deploy certificates for domains it hosts. AWS Directory Service manages identities; IAM can store server certificates but is not the primary service; Data Pipeline orchestrates data movement.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q300",
+    "domainId": 2,
+    "question": "Which AWS Service is used to manage user permissions?",
+    "options": {
+      "A": "Security Groups.",
+      "B": "Amazon ECS.",
+      "C": "AWS IAM.",
+      "D": "AWS Support."
+    },
+    "answer": "C",
+    "explanation": "AWS Identity and Access Management (IAM) is the service used to create and manage users, groups, roles, and permission policies that control who can access which AWS resources and actions. Security Groups control EC2 network traffic; ECS manages containers; AWS Support provides technical assistance—none manage user permissions.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q305",
+    "domainId": 2,
+    "question": "What is the AWS’ recommendation regarding access keys?",
+    "options": {
+      "A": "Delete all access keys and use passwords instead.",
+      "B": "Only share them with trusted people.",
+      "C": "Rotate them regularly.",
+      "D": "Save them within your application code."
+    },
+    "answer": "C",
+    "explanation": "AWS recommends rotating access keys regularly to limit the impact of a compromised key, reducing the window during which a leaked key could be used for unauthorized access.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q306",
+    "domainId": 2,
+    "question": "What is the AWS IAM feature that provides an additional layer of security on top of user-name and password authentication?",
+    "options": {
+      "A": "Key Pair.",
+      "B": "Access Keys.",
+      "C": "SDK.",
+      "D": "MFA."
+    },
+    "answer": "D",
+    "explanation": "Multi-Factor Authentication (MFA) adds a second verification step beyond username and password, requiring a time-based code from a physical or virtual device to confirm the user's identity.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q316",
+    "domainId": 2,
+    "question": "A company has discovered that multiple S3 buckets were deleted, but it is unclear who deleted the buckets. Which of the following can the company use to determine the identity that deleted the buckets?",
+    "options": {
+      "A": "SNS logs.",
+      "B": "SQS logs.",
+      "C": "CloudWatch Logs.",
+      "D": "CloudTrail logs."
+    },
+    "answer": "D",
+    "explanation": "AWS CloudTrail logs all API calls made in your account, including S3 bucket deletions, recording who performed the action, when, and from what IP address.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q321",
+    "domainId": 2,
+    "question": "Which of the below are responsibilities of the customer when using Amazon EC2? (Choose TWO)",
+    "options": {
+      "A": "Protecting sensitive data.",
+      "B": "Patching of the underlying infrastructure.",
+      "C": "Setup and operation of managed databases.",
+      "D": "Maintaining consistent hardware components.",
+      "E": "Installing and configuring third-party software."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "When using Amazon EC2, customers are responsible for protecting sensitive data stored on or processed by their instances, and for installing, configuring, and maintaining any third-party software running on those instances.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q323",
+    "domainId": 2,
+    "question": "Which of the following AWS services can help you perform security analysis and regulatory compliance auditing? (Choose TWO)",
+    "options": {
+      "A": "Amazon Inspector.",
+      "B": "AWS Virtual Private Gateway.",
+      "C": "AWS Batch.",
+      "D": "Amazon ECS.",
+      "E": "AWS Config."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Amazon Inspector automatically assesses applications for vulnerabilities and deviations from best practices, while AWS Config continuously monitors resource configurations and evaluates them against compliance rules.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q332",
+    "domainId": 2,
+    "question": "Which of the following can be used to protect data at rest on Amazon S3? (Choose TWO)",
+    "options": {
+      "A": "Versioning.",
+      "B": "Deduplication.",
+      "C": "Permissions.",
+      "D": "Decryption.",
+      "E": "Conversion."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Amazon S3 supports multiple methods to protect data at rest: SSE-S3 (server-side encryption with S3-managed keys), SSE-KMS (server-side encryption with KMS-managed keys), and client-side encryption (encrypting data before upload). The best two answers are A and C as they are AWS-managed server-side options. ACM manages SSL/TLS certificates for data in transit; WAF is a web application firewall.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q336",
+    "domainId": 2,
+    "question": "When running a workload in AWS, the customer is NOT responsible for: (Select TWO)",
+    "options": {
+      "A": "Running penetration tests.",
+      "B": "Reserving capacity.",
+      "C": "Data center operations.",
+      "D": "Auditing and regulatory compliance.",
+      "E": "Infrastructure security."
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "Data center operations (physical facility management) and infrastructure security (hardware, networking, hypervisor) are entirely AWS responsibilities under the Shared Responsibility Model, not the customer's.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q341",
+    "domainId": 2,
+    "question": "Which AWS service or feature is used to manage the keys used to encrypt customer data?",
+    "options": {
+      "A": "AWS KMS.",
+      "B": "AWS Service Control Policies (SCPs).",
+      "C": "Multi-Factor Authentication (MFA).",
+      "D": "Amazon Macie."
+    },
+    "answer": "A",
+    "explanation": "AWS Key Management Service (KMS) lets you create, manage, and control cryptographic keys used to encrypt your data across AWS services, providing centralized key management with audit logging via CloudTrail.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q342",
+    "domainId": 2,
+    "question": "Which AWS Service allows customers to download AWS SOC & PCI reports?",
+    "options": {
+      "A": "AWS Well-Architected Tool.",
+      "B": "AWS Artifact.",
+      "C": "AWS Glue.",
+      "D": "Amazon Chime."
+    },
+    "answer": "B",
+    "explanation": "AWS Artifact is a self-service portal for on-demand access to AWS compliance reports, including SOC and PCI reports, and agreements like BAA and NDA documents.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q348",
+    "domainId": 2,
+    "question": "Which methods can be used by customers to interact with AWS Identity and Access Management (IAM)? (Choose TWO)",
+    "options": {
+      "A": "AWS CLI.",
+      "B": "AWS Security Groups.",
+      "C": "AWS SDKs.",
+      "D": "AWS Network Access Control Lists.",
+      "E": "AWS CodeCommit."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Customers can interact with AWS IAM through the AWS CLI for command-line access and AWS SDKs for programmatic integration in application code, both using IAM credentials for authentication.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q349",
+    "domainId": 2,
+    "question": "Which of the following are types of AWS Identity and Access Management (IAM) identities? (Choose TWO)",
+    "options": {
+      "A": "AWS Resource Groups.",
+      "B": "IAM Policies.",
+      "C": "IAM Roles.",
+      "D": "IAM Users.",
+      "E": "AWS Organizations."
+    },
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "IAM Users represent individual people or applications with specific credentials, and IAM Roles provide temporary security credentials that can be assumed by users, applications, or AWS services. Both are IAM identity types.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q352",
+    "domainId": 2,
+    "question": "Which IAM entity can best be used to grant temporary access to your AWS resources?",
+    "options": {
+      "A": "IAM Users.",
+      "B": "Key Pair.",
+      "C": "IAM Roles.",
+      "D": "IAM Groups."
+    },
+    "answer": "C",
+    "explanation": "IAM Roles provide temporary security credentials that expire automatically, making them the best choice for granting short-term or temporary access to AWS resources without sharing long-term credentials.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q355",
+    "domainId": 2,
+    "question": "A company is seeking to better secure its AWS account from unauthorized access. Which of the below options can the customer use to achieve this goal?",
+    "options": {
+      "A": "Restrict any API call made through SDKs or CLI.",
+      "B": "Create one IAM account for each department in the company (Development, QA, Production), and share it across all staff in that department.",
+      "C": "Require Multi-Factor Authentication (MFA) for all IAM User access.",
+      "D": "Set up two login passwords."
+    },
+    "answer": "C",
+    "explanation": "Requiring Multi-Factor Authentication (MFA) for all IAM users adds a second layer of verification beyond passwords, significantly reducing the risk of unauthorized access even if credentials are compromised.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q361",
+    "domainId": 2,
+    "question": "Which of the following are examples of the customer’s responsibility to implement “security IN the cloud”? (Choose TWO)",
+    "options": {
+      "A": "Building a schema for an application.",
+      "B": "Replacing physical hardware.",
+      "C": "Creating a new hypervisor.",
+      "D": "Patch management of the underlying infrastructure.",
+      "E": "File system encryption."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Under the Shared Responsibility Model, customers are responsible for security in the cloud, which includes designing application schemas and encrypting their file systems to protect data.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q362",
+    "domainId": 2,
+    "question": "Which of the following is a type of MFA device that customers can use to protect their AWS resources?",
+    "options": {
+      "A": "AWS CloudHSM.",
+      "B": "U2F Security Key.",
+      "C": "AWS Access Keys.",
+      "D": "AWS Key Pair."
+    },
+    "answer": "B",
+    "explanation": "A U2F (Universal 2nd Factor) Security Key is a physical MFA device that plugs into a USB port and provides cryptographic authentication, adding a hardware-based second factor to protect AWS accounts.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q367",
+    "domainId": 2,
+    "question": "You have just hired a skilled sys-admin to join your team. As usual, you have created a new IAM user for him to interact with AWS services. On his first day, you ask him to create snapshots of all existing Amazon EBS volumes and save them in a new Amazon S3 bucket. However, the new member reports back that he is unable to create neither EBS snapshots nor S3 buckets. What might prevent him from doing this simple task?",
+    "options": {
+      "A": "EBS and S3 are accessible only to the root account owner.",
+      "B": "The systems administrator must contact AWS Support first to activate his new IAM account.",
+      "C": "There is not enough space in S3 to store the snapshots.",
+      "D": "There is a non-explicit deny to all new users."
+    },
+    "answer": "D",
+    "explanation": "By default, new IAM users have no permissions (implicit deny). Until explicit permissions are attached via IAM policies, the user cannot perform any actions on AWS resources.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q368",
+    "domainId": 2,
+    "question": "An external auditor is requesting a log of all accesses to the AWS resources in the company’s account. Which of the following services will provide the auditor with the requested information?",
+    "options": {
+      "A": "AWS CloudTrail.",
+      "B": "Amazon CloudFront.",
+      "C": "AWS CloudFormation.",
+      "D": "Amazon CloudWatch."
+    },
+    "answer": "A",
+    "explanation": "AWS CloudTrail records all API calls and management events in your AWS account, providing a complete audit log of who accessed which resources, when, and from where.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q375",
+    "domainId": 2,
+    "question": "Which AWS service enables you to quickly purchase and deploy SSL/TLS certificates?",
+    "options": {
+      "A": "Amazon GuardDuty.",
+      "B": "AWS ACM.",
+      "C": "Amazon Detective.",
+      "D": "AWS WAF."
+    },
+    "answer": "B",
+    "explanation": "AWS Certificate Manager (ACM) lets you provision, manage, and deploy SSL/TLS certificates for use with AWS services, with free public certificates that automatically renew.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q380",
+    "domainId": 2,
+    "question": "A company wants to grant a new employee long-term access to manage Amazon DynamoDB databases. Which of the following is a recommended best-practice when granting these permissions?",
+    "options": {
+      "A": "Create an IAM role and attach a policy with Amazon DynamoDB access permissions.",
+      "B": "Create an IAM role and attach a policy with Administrator access permissions.",
+      "C": "Create an IAM user and attach a policy with Amazon DynamoDB access permissions.",
+      "D": "Create an IAM user and attach a policy with Administrator access permissions."
+    },
+    "answer": "C",
+    "explanation": "For a specific employee needing long-term access, create an IAM user (not a role, which is for temporary access) and attach a policy scoped only to DynamoDB, following the principle of least privilege.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q381",
+    "domainId": 2,
+    "question": "When granting permissions to applications running on Amazon EC2 instances, which of the following is considered best practice?",
+    "options": {
+      "A": "Generate new IAM access keys every time you delegate permissions.",
+      "B": "Store the required AWS credentials directly within the application code.",
+      "C": "Use temporary security credentials (IAM roles) instead of long-term access keys.",
+      "D": "Do nothing; Applications that run on Amazon EC2 instances do not need permission to interact with other AWS services or resources."
+    },
+    "answer": "C",
+    "explanation": "IAM Roles provide temporary security credentials that are automatically rotated, eliminating the need to embed long-term access keys in application code and reducing the risk of credential exposure.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q403",
+    "domainId": 2,
+    "question": "There is a requirement to grant a DevOps team full administrative access to all resources in an AWS account. Who can grant them these permissions?",
+    "options": {
+      "A": "AWS account owner.",
+      "B": "AWS technical account manager.",
+      "C": "AWS security team.",
+      "D": "AWS cloud support engineers."
+    },
+    "answer": "A",
+    "explanation": "The AWS account owner (root user) has full administrative access to all resources and is the only entity that can grant full administrative permissions to other users or teams via IAM policies.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q414",
+    "domainId": 2,
+    "question": "Which of the following strategies helps protect your AWS root account?",
+    "options": {
+      "A": "Delete root user access keys if you do not need them.",
+      "B": "Apply MFA for the root account and use it for all of your work.",
+      "C": "Access the root account only from your personal Mobile Phone.",
+      "D": "Only share your AWS account password or access keys with trusted persons."
+    },
+    "answer": "A",
+    "explanation": "Deleting root user access keys removes a potential attack vector, since the root account has unrestricted access. AWS best practice is to use IAM users for daily tasks and eliminate root access keys entirely.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q416",
+    "domainId": 2,
+    "question": "You have just set up your AWS environment and have created six IAM user accounts for the DevOps team. What is the AWS recommendation when granting permissions to these IAM accounts?",
+    "options": {
+      "A": "Attach a separate IAM policy for each individual account.",
+      "B": "Apply the Principle of Least Privilege.",
+      "C": "For security purposes, you should not grant any permission to the DevOps team.",
+      "D": "Create six different IAM passwords."
+    },
+    "answer": "B",
+    "explanation": "The Principle of Least Privilege means granting each IAM user only the minimum permissions necessary to perform their job, reducing the blast radius of any accidental or malicious action.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q424",
+    "domainId": 2,
+    "question": "Which of the following services provide real-time auditing for compliance and vulnerabilities? (Choose TWO)",
+    "options": {
+      "A": "AWS Config.",
+      "B": "Amazon Redshift.",
+      "C": "Amazon MQ.",
+      "D": "AWS Trusted Advisor.",
+      "E": "Amazon Cognito."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS Config continuously monitors and records resource configurations for compliance evaluation, and AWS Trusted Advisor provides real-time checks across security, performance, cost, and fault tolerance categories.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q428",
+    "domainId": 2,
+    "question": "What best describes penetration testing?",
+    "options": {
+      "A": "Testing your application’s response time from different locations.",
+      "B": "Testing your network to find security vulnerabilities that an attacker could exploit.",
+      "C": "Testing your instances to check for the unhealthy ones.",
+      "D": "Testing your software for bugs and errors."
+    },
+    "answer": "B",
+    "explanation": "Penetration testing is the practice of simulating cyberattacks against your own systems to find security vulnerabilities before a malicious attacker can exploit them. AWS allows customers to perform penetration testing on specific services.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q450",
+    "domainId": 2,
+    "question": "Which of the following services gives you access to all AWS auditor-issued reports and certifications?",
+    "options": {
+      "A": "AWS Artifact.",
+      "B": "AWS Config.",
+      "C": "Amazon CloudWatch.",
+      "D": "AWS CloudTrail."
+    },
+    "answer": "A",
+    "explanation": "AWS Artifact provides on-demand access to AWS security and compliance reports, including auditor-issued certifications like SOC, PCI, and ISO, directly from the AWS Management Console.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q455",
+    "domainId": 2,
+    "question": "For compliance and regulatory purposes, a government agency requires that their applications must run on hardware that is dedicated to them only. How can you meet this requirement?",
+    "options": {
+      "A": "Use EC2 Dedicated Hosts.",
+      "B": "Use EC2 Reserved Instances.",
+      "C": "Use EC2 Spot Instances.",
+      "D": "Use EC2 On-demand Instances."
+    },
+    "answer": "A",
+    "explanation": "EC2 Dedicated Hosts provide physical servers fully dedicated to your use, giving you visibility and control over instance placement on hardware that is not shared with other AWS customers, meeting strict compliance requirements.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q458",
+    "domainId": 2,
+    "question": "What can you use to assign permissions directly to an IAM user?",
+    "options": {
+      "A": "IAM Identity.",
+      "B": "IAM Group.",
+      "C": "IAM Role.",
+      "D": "IAM Policy."
+    },
+    "answer": "D",
+    "explanation": "An IAM Policy is a JSON document that defines permissions (allow or deny actions on resources) and can be attached directly to an IAM user to grant specific access rights.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q463",
+    "domainId": 2,
+    "question": "Which of the following would you use to manage your encryption keys in the AWS Cloud? (Choose TWO)",
+    "options": {
+      "A": "AWS KMS.",
+      "B": "AWS Certificate Manager.",
+      "C": "AWS CodeDeploy.",
+      "D": "AWS CodeCommit.",
+      "E": "CloudHSM."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "AWS KMS manages encryption keys through a centralized, software-based service, while AWS CloudHSM provides dedicated hardware security modules for customers who need hardware-based key storage for regulatory compliance.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q469",
+    "domainId": 2,
+    "question": "Which of the following services enables you to easily generate and use your own encryption keys in the AWS Cloud?",
+    "options": {
+      "A": "AWS Shield.",
+      "B": "AWS Certificate Manager.",
+      "C": "AWS CloudHSM.",
+      "D": "AWS WAF."
+    },
+    "answer": "C",
+    "explanation": "AWS CloudHSM provides dedicated, single-tenant hardware security modules (HSMs) in the AWS Cloud, giving you full control over encryption key generation and management with FIPS 140-2 Level 3 validated hardware.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q479",
+    "domainId": 2,
+    "question": "How does AWS help customers achieve compliance in the cloud?",
+    "options": {
+      "A": "It's not possible to meet regulatory compliance requirements in the Cloud.",
+      "B": "AWS applies the most common Cloud security standards, and is responsible for complying with customers’ applicable laws and regulations.",
+      "C": "AWS has many common assurance certifications such as ISO 9001 and HIPAA.",
+      "D": "Many AWS services are assessed regularly to comply with local laws and regulations."
+    },
+    "answer": "C",
+    "explanation": "AWS maintains many common assurance certifications including ISO 9001, ISO 27001, SOC 1/2/3, PCI DSS, and HIPAA eligibility, helping customers meet their compliance requirements by building on a pre-certified foundation.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q480",
+    "domainId": 2,
+    "question": "Who is responsible for scaling a DynamoDB database in the AWS Shared Responsibility Model?",
+    "options": {
+      "A": "Your security team.",
+      "B": "Your development team.",
+      "C": "AWS.",
+      "D": "Your internal DevOps team."
+    },
+    "answer": "C",
+    "explanation": "Amazon DynamoDB is a fully managed service where AWS handles all scaling automatically, including read/write capacity adjustments. Customers do not need to manage database scaling themselves.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q489",
+    "domainId": 2,
+    "question": "What can you access by visiting the URL: <http://status.aws.amazon.com>?",
+    "options": {
+      "A": "AWS Billing Dashboard.",
+      "B": "AWS Cost Dashboard.",
+      "C": "AWS Service Health Dashboard.",
+      "D": "AWS Security Dashboard."
+    },
+    "answer": "C",
+    "explanation": "The AWS Service Health Dashboard at status.aws.amazon.com provides real-time and historical information about the availability and health of all AWS services across all Regions.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q493",
+    "domainId": 2,
+    "question": "What is the main benefit of attaching security groups to an Amazon RDS instance?",
+    "options": {
+      "A": "Manages user access and encryption keys.",
+      "B": "Controls what IP address ranges can connect to your database instance.",
+      "C": "Deploys SSL/TLS certificates for use with your database instance.",
+      "D": "Distributes incoming traffic across multiple targets."
+    },
+    "answer": "B",
+    "explanation": "Security groups attached to an RDS instance act as a virtual firewall that controls which IP address ranges and EC2 instances are allowed to connect to the database, restricting network access.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q494",
+    "domainId": 2,
+    "question": "A company wants to use Amazon Elastic Container Service (Amazon ECS) to run its containerized applications. For compliance reasons, the company wants to retain complete visibility and control over the underlying server cluster. Which Amazon ECS launch type will satisfy these requirements?",
+    "options": {
+      "A": "EC2 launch type.",
+      "B": "Fargate launch type.",
+      "C": "Lightsail launch type.",
+      "D": "Lambda launch type."
+    },
+    "answer": "A",
+    "explanation": "The EC2 launch type for Amazon ECS runs containers on EC2 instances that you manage, giving you full visibility and control over the underlying server cluster, unlike Fargate which abstracts the infrastructure.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q496",
+    "domainId": 2,
+    "question": "You have been tasked with auditing the security of your VPC. As part of this process, you need to start by analyzing what inbound and outbound traffic is allowed on your EC2 instances. What two parts of the VPC do you need to check to accomplish this task?",
+    "options": {
+      "A": "Network ACLs and Traffic Manager.",
+      "B": "Network ACLs and Subnets.",
+      "C": "Security Groups and Internet Gateways.",
+      "D": "Security Groups and Network ACLs."
+    },
+    "answer": "D",
+    "explanation": "Security Groups control inbound and outbound traffic at the instance level, and Network ACLs control traffic at the subnet level. Together they define the complete traffic rules for your EC2 instances.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q507",
+    "domainId": 2,
+    "question": "What are the main differences between an IAM user and an IAM role in AWS? (Choose TWO)",
+    "options": {
+      "A": "An IAM user is uniquely associated with only one person, however a role is intended to be assumable by anyone who needs it.",
+      "B": "An IAM user has permanent credentials associated with it, however a role has temporary credentials associated with it.",
+      "C": "IAM users are more cost effective than IAM roles.",
+      "D": "A role is uniquely associated with only one person, however an IAM user is intended to be assumable by anyone who needs it.",
+      "E": "An IAM user has temporary credentials associated with it, however a role has permanent credentials associated with it."
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "An IAM user is a permanent identity associated with one person and has long-term credentials (password, access keys), while an IAM role provides temporary credentials and can be assumed by anyone or any service that needs it.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q509",
+    "domainId": 2,
+    "question": "What does Amazon GuardDuty do to protect AWS accounts and workloads?",
+    "options": {
+      "A": "Notifies AWS customers about abuse events once they are reported.",
+      "B": "Continuously monitors AWS infrastructure and helps detect threats such as attacker reconnaissance or account compromise.",
+      "C": "Helps AWS customers identify the root cause of potential security issues.",
+      "D": "Checks security groups for rules that allow unrestricted access to AWS. resources."
+    },
+    "answer": "B",
+    "explanation": "Amazon GuardDuty is a threat detection service that continuously monitors your AWS accounts and workloads, using machine learning and threat intelligence to identify suspicious activity like attacker reconnaissance or compromised instances.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q516",
+    "domainId": 2,
+    "question": "Which of the following requires an access key ID and a secret access key to get long-lived programmatic access to AWS resources? (Choose TWO)",
+    "options": {
+      "A": "IAM group.",
+      "B": "IAM user.",
+      "C": "IAM role.",
+      "D": "AWS account root user.",
+      "E": "TAM."
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "IAM users and the AWS root user account can both have access key IDs and secret access keys for long-lived programmatic access. IAM roles use temporary credentials, and IAM groups cannot have access keys.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q523",
+    "domainId": 2,
+    "question": "Which of the following AWS services integrates with AWS Shield and AWS Web Application Firewall (AWS WAF) to protect against network and application layer DDoS attacks?",
+    "options": {
+      "A": "Amazon EFS.",
+      "B": "AWS Secrets Manager.",
+      "C": "AWS Systems Manager.",
+      "D": "Amazon CloudFront."
+    },
+    "answer": "D",
+    "explanation": "Amazon CloudFront integrates natively with AWS Shield (for DDoS protection) and AWS WAF (for application-layer filtering), providing a layered defense against both network and application layer attacks at the edge.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q524",
+    "domainId": 2,
+    "question": "Which of the following services is used when encrypting EBS volumes?",
+    "options": {
+      "A": "AWS WAF.",
+      "B": "AWS KMS.",
+      "C": "Amazon Macie.",
+      "D": "Amazon GuardDuty."
+    },
+    "answer": "B",
+    "explanation": "AWS Key Management Service (KMS) manages the encryption keys used to encrypt EBS volumes. When you enable EBS encryption, KMS generates and controls the data encryption keys.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q525",
+    "domainId": 2,
+    "question": "The AWS account administrator of your company has been fired. With the permissions granted to him as an administrator, he was able to create multiple IAM user accounts and access keys. Additionally, you are not sure whether he has access to the AWS root account or not. What should you do immediately to protect your AWS infrastructure? (Choose TWO)",
+    "options": {
+      "A": "Download all the attached policies in a safe place.",
+      "B": "Delete all IAM accounts and recreate them.",
+      "C": "Use the CloudWatch service to check all API calls that have been made in your account since the administrator was fired.",
+      "D": "Rotate all access keys.",
+      "E": "Change the email address and password of the root user account and enable MFA."
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Immediately rotate all access keys to invalidate any keys the former administrator may have copied, and change the root account email and password with MFA enabled to prevent root-level access.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q535",
+    "domainId": 2,
+    "question": "Which of the following steps should be taken by a customer when conducting penetration testing on AWS?",
+    "options": {
+      "A": "Conduct penetration testing using Amazon Inspector, and then notify AWS support.",
+      "B": "Request and wait for approval from the customer’s internal security team, and then conduct testing.",
+      "C": "Notify AWS support, and then conduct testing immediately.",
+      "D": "Request and wait for approval from AWS support, and then conduct testing."
+    },
+    "answer": "B",
+    "explanation": "Since 2019, AWS allows customers to perform penetration testing on permitted services (EC2, RDS, Aurora, CloudFront, API Gateway, Lambda, Lightsail, Elastic Beanstalk) without prior AWS approval. Customers should follow their own internal security review processes before conducting tests.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q547",
+    "domainId": 2,
+    "question": "Which of the following can limit Amazon Simple Storage Service (Amazon S3) bucket access to specific users?",
+    "options": {
+      "A": "A public and private key-pair.",
+      "B": "Amazon Inspector.",
+      "C": "AWS Identity and Access Management (IAM) policies.",
+      "D": "Security Groups."
+    },
+    "answer": "C",
+    "explanation": "AWS Identity and Access Management (IAM) policies define permissions that control which users or roles can access specific S3 buckets and objects, providing fine-grained access control.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q555",
+    "domainId": 2,
+    "question": "Which AWS service identifies security groups that allow unrestricted access to a user’s AWS resources?",
+    "options": {
+      "A": "AWS Trusted Advisor.",
+      "B": "Amazon Inspector.",
+      "C": "Amazon CloudWatch.",
+      "D": "AWS CloudTrail."
+    },
+    "answer": "A",
+    "explanation": "AWS Trusted Advisor checks your security groups for rules that allow unrestricted access (0.0.0.0/0) to specific ports, flagging potential security risks in its Security category.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q559",
+    "domainId": 2,
+    "question": "Which mechanism allows developers to access AWS services from application code?",
+    "options": {
+      "A": "AWS Software Development Kit.",
+      "B": "AWS Management Console.",
+      "C": "AWS CodePipeline.",
+      "D": "AWS Config."
+    },
+    "answer": "A",
+    "explanation": "The AWS Software Development Kit (SDK) provides language-specific APIs that allow developers to interact with AWS services directly from their application code in languages like Python, Java, Node.js, and .NET.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q576",
+    "domainId": 2,
+    "question": "Where can AWS compliance and certification reports be downloaded?",
+    "options": {
+      "A": "AWS Artifact.",
+      "B": "AWS Concierge.",
+      "C": "AWS Certificate Manager.",
+      "D": "AWS Trusted Advisor."
+    },
+    "answer": "A",
+    "explanation": "AWS Artifact is the self-service portal where customers can download AWS compliance and certification reports, including SOC, PCI, ISO, and other auditor-issued documents.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q587",
+    "domainId": 2,
+    "question": "Which AWS service would you use to obtain compliance reports and certificates?",
+    "options": {
+      "A": "AWS Artifact.",
+      "B": "AWS Lambda.",
+      "C": "Amazon Inspector.",
+      "D": "AWS Certificate Manager."
+    },
+    "answer": "A",
+    "explanation": "AWS Artifact provides on-demand access to AWS compliance reports and certifications, including SOC, PCI DSS, ISO, and HIPAA documents, available directly from the AWS Management Console.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q589",
+    "domainId": 2,
+    "question": "How would an AWS customer easily apply common access controls to a large set of users?",
+    "options": {
+      "A": "Apply an IAM policy to an IAM group.",
+      "B": "Apply an IAM policy to an IAM role.",
+      "C": "Apply the same IAM policy to all IAM users with access to the same workload.",
+      "D": "Apply an IAM policy to an Amazon Cognito user pool."
+    },
+    "answer": "A",
+    "explanation": "Attaching an IAM policy to an IAM group applies those permissions to all users in the group at once, making it the easiest way to manage common access controls for a large set of users.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q601",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following activities are the customer's responsibility? (Select TWO.)",
+    "options": {
+      "A": "Patching operating system components for Amazon Relational Database Server (Amazon RDS)",
+      "B": "Encrypting data on the client-side",
+      "C": "Training the data center staff",
+      "D": "Configuring Network Access Control Lists (ACL)",
+      "E": "Maintaining environmental controls within a data center"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Customers are responsible for encrypting data on the client side before sending it to AWS, and for configuring Network ACLs to control traffic at the subnet level. AWS handles RDS OS patching, data center staffing, and environmental controls.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q602",
+    "domainId": 2,
+    "question": "AWS supports which of the following methods to add security to Identity and Access Management (IAM) users? (Select TWO.)",
+    "options": {
+      "A": "Implementing Amazon Rekognition",
+      "B": "Using AWS Shield-protected resources",
+      "C": "Blocking access with Security Groups",
+      "D": "Using Multi-Factor Authentication (MFA)",
+      "E": "Enforcing password strength and expiration"
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Multi-Factor Authentication (MFA) adds a second verification layer beyond passwords, and enforcing password strength and expiration policies ensures credentials meet minimum security standards. Both directly secure IAM user access.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q605",
+    "domainId": 2,
+    "question": "Which of the following is the customer's responsibility under the AWS shared responsibility model?",
+    "options": {
+      "A": "Patching underlying infrastructure",
+      "B": "Physical security",
+      "C": "Patching Amazon EC2 instances",
+      "D": "Patching network infrastructure"
+    },
+    "answer": "C",
+    "explanation": "Under the Shared Responsibility Model, customers are responsible for patching the guest operating system and applications on their Amazon EC2 instances. AWS patches the underlying host infrastructure.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q612",
+    "domainId": 2,
+    "question": "Which of the following security-related services does AWS offer? (Select TWO.)",
+    "options": {
+      "A": "Multi-factor authentication physical tokens",
+      "B": "AWS Trusted Advisor security checks",
+      "C": "Data encryption",
+      "D": "Automated penetration testing",
+      "E": "Amazon S3 copyrighted content detection"
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "AWS Trusted Advisor performs automated security checks that identify configuration risks, and AWS provides data encryption services (KMS, S3 encryption, EBS encryption) to protect data at rest and in transit.",
+    "source": "practice-exam-14.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q617",
+    "domainId": 2,
+    "question": "Which of the following security measures protect access to an AWS account? (Select TWO.)",
+    "options": {
+      "A": "Enable AWS CloudTrail.",
+      "B": "Grant least privilege access to IAM users.",
+      "C": "Create one IAM user and share with many developers and users.",
+      "D": "Enable Amazon CloudFront.",
+      "E": "Activate multi-factor authentication (MFA) for privileged users."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Granting least privilege access ensures IAM users only have the permissions they need, and enabling MFA for privileged users adds a second authentication factor, both significantly reducing the risk of unauthorized access.",
+    "source": "practice-exam-14.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q618",
+    "domainId": 2,
+    "question": "Which of the following is a component of the shared responsibility model managed entirely by AWS?",
+    "options": {
+      "A": "Patching operating system software",
+      "B": "Encrypting data",
+      "C": "Enforcing multi-factor authentication",
+      "D": "Auditing physical data center assets"
+    },
+    "answer": "D",
+    "explanation": "Auditing physical data center assets — including hardware inventory, physical security checks, and facility inspections — is entirely AWS's responsibility. Customers never have access to AWS data centers.",
+    "source": "practice-exam-14.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q619",
+    "domainId": 2,
+    "question": "Which options does AWS make available for customers who want to learn about security in the cloud in an instructor-led setting? (Select TWO.)",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Online Tech Talks",
+      "C": "AWS Blog",
+      "D": "AWS Forums",
+      "E": "AWS Classroom Training"
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "AWS Online Tech Talks provide live, instructor-led virtual sessions on AWS topics, and AWS Classroom Training offers structured, in-person or virtual instructor-led courses for hands-on cloud security learning.",
+    "source": "practice-exam-14.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q622",
+    "domainId": 2,
+    "question": "Which AWS services can be used to gather information about AWS account activity? (Select TWO.)",
+    "options": {
+      "A": "Amazon CloudFront",
+      "B": "AWS Cloud9",
+      "C": "AWS CloudTrail",
+      "D": "AWS CloudHSM",
+      "E": "Amazon CloudWatch"
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "AWS CloudTrail records API calls and account activity for audit purposes, and Amazon CloudWatch monitors resource utilization and operational metrics. Together they provide comprehensive visibility into account activity.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q623",
+    "domainId": 2,
+    "question": "Which of the following common IT tasks can AWS cover to free up company IT resources? (Select TWO.)",
+    "options": {
+      "A": "Patching databases software",
+      "B": "Testing application releases",
+      "C": "Backing up databases",
+      "D": "Creating database schema",
+      "E": "Running penetration tests"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS handles patching database software for managed services like Amazon RDS, and automates database backups through built-in backup features, freeing up company IT staff to focus on business-specific tasks.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q626",
+    "domainId": 2,
+    "question": "Under the shared responsibility model, which of the following tasks are the responsibility of the AWS customer? (Select TWO.)",
+    "options": {
+      "A": "Ensuring that application data is encrypted at rest",
+      "B": "Ensuring that AWS NTP servers are set to the correct time",
+      "C": "Ensuring that users have received security training in the use of AWS services",
+      "D": "Ensuring that access to data centers is restricted",
+      "E": "Ensuring that hardware is disposed of properly"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Customers are responsible for encrypting application data at rest using AWS tools like KMS or S3 encryption, and for ensuring their personnel receive proper security training on using AWS services.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q628",
+    "domainId": 2,
+    "question": "Which of the following is entirely the responsibility of AWS, according to the AWS shared responsibility model?",
+    "options": {
+      "A": "Patching of the guest operating system",
+      "B": "Security awareness and training",
+      "C": "Physical and environmental controls",
+      "D": "Development of an IAM password policy"
+    },
+    "answer": "C",
+    "explanation": "Physical and environmental controls — including data center security, cooling, fire suppression, and power management — are entirely AWS's responsibility under the Shared Responsibility Model.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q631",
+    "domainId": 2,
+    "question": "Which of the following services falls under the responsibility of the customer to maintain operating system configuration, security patching, and networking?",
+    "options": {
+      "A": "Amazon RDS",
+      "B": "Amazon EC2",
+      "C": "Amazon ElastiCache",
+      "D": "AWS Fargate"
+    },
+    "answer": "B",
+    "explanation": "Amazon EC2 gives customers full control over the operating system, requiring them to handle OS configuration, security patching, and networking. RDS, ElastiCache, and Fargate are managed services where AWS handles these tasks.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q632",
+    "domainId": 2,
+    "question": "According to the AWS shared responsibility model, what is the sole responsibility of AWS?",
+    "options": {
+      "A": "Application security",
+      "B": "Edge location management",
+      "C": "Patch management",
+      "D": "Client-side data"
+    },
+    "answer": "B",
+    "explanation": "Managing edge locations — the physical infrastructure powering CloudFront and other global services — is solely AWS's responsibility. Customers have no access to or control over edge location infrastructure.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q633",
+    "domainId": 2,
+    "question": "Which AWS IAM feature is used to associate a set of permissions with multiple users?",
+    "options": {
+      "A": "Multi-factor authentication",
+      "B": "Groups",
+      "C": "Password policies",
+      "D": "Access keys"
+    },
+    "answer": "B",
+    "explanation": "IAM Groups let you attach a set of permissions (via IAM policies) to the group, and all users in that group automatically inherit those permissions, simplifying access management for multiple users.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q635",
+    "domainId": 2,
+    "question": "Which of the following can a customer use to enable single sign-on (SSO) to the AWS Console?",
+    "options": {
+      "A": "Amazon Connect",
+      "B": "AWS Directory Service",
+      "C": "Amazon Pinpoint",
+      "D": "Amazon Rekognition"
+    },
+    "answer": "B",
+    "explanation": "AWS Directory Service integrates with Microsoft Active Directory, enabling single sign-on (SSO) to the AWS Management Console using existing corporate credentials without creating separate IAM users.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q637",
+    "domainId": 2,
+    "question": "Which of the following benefits does the AWS Compliance program provide to AWS customers? (Choose two.)",
+    "options": {
+      "A": "It verifies that hosted workloads are automatically compliant with the controls of supported compliance frameworks.",
+      "B": "AWS is responsible for the maintenance of common compliance framework documentation.",
+      "C": "It assures customers that AWS is maintaining physical security and data protection.",
+      "D": "It ensures the use of compliance frameworks that are being used by other cloud providers.",
+      "E": "It will adopt new compliance frameworks as they become relevant to customer workloads."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "The AWS Compliance program verifies that hosted workloads can meet the controls of supported compliance frameworks, and assures customers that AWS maintains physical security and data protection standards.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q638",
+    "domainId": 2,
+    "question": "Which of the following services provides on-demand access to AWS compliance reports?",
+    "options": {
+      "A": "AWS IAM",
+      "B": "AWS Artifact",
+      "C": "Amazon GuardDuty",
+      "D": "AWS KMS"
+    },
+    "answer": "B",
+    "explanation": "AWS Artifact provides on-demand, self-service access to AWS compliance reports and certifications, including SOC, PCI DSS, ISO, and HIPAA documents, directly from the AWS Console.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q639",
+    "domainId": 2,
+    "question": "As part of the AWS shared responsibility model, which of the following operational controls do users fully inherit from AWS?",
+    "options": {
+      "A": "Security management of data center",
+      "B": "Patch management",
+      "C": "Configuration management",
+      "D": "User and access management"
+    },
+    "answer": "A",
+    "explanation": "Security management of the data center is an operational control customers fully inherit from AWS. AWS handles all physical security — guards, surveillance, access controls — and customers benefit from this protection without any action. Patch management and configuration management are shared controls, while user and access management is the customer's responsibility.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q641",
+    "domainId": 2,
+    "question": "Under the shared responsibility model, which of the following tasks are the responsibility of the customer? (Choose two.)",
+    "options": {
+      "A": "Maintaining the underlying Amazon EC2 hardware.",
+      "B": "Managing the VPC network access control lists.",
+      "C": "Encrypting data in transit and at rest.",
+      "D": "Replacing failed hard disk drives.",
+      "E": "Deploying hardware in different Availability Zones."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "Customers are responsible for managing VPC Network ACLs to control subnet-level traffic, and for encrypting data in transit and at rest. AWS handles the underlying hardware, including failed drives and AZ deployments.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q646",
+    "domainId": 2,
+    "question": "What function do security groups serve related Amazon Elastic Compute Cloud (Amazon EC2) instance security?",
+    "options": {
+      "A": "Act as a virtual firewall for the Amazon EC2 instance.",
+      "B": "Secure AWS user accounts with AWS identity and Access Management (IAM) policies.",
+      "C": "Provide DDoS protection with AWS Shield.",
+      "D": "Use Amazon CloudFront to protect the Amazon EC2 instance."
+    },
+    "answer": "A",
+    "explanation": "Security groups act as a virtual firewall for EC2 instances, controlling inbound and outbound traffic at the instance level by evaluating rules based on protocol, port, and source/destination.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q652",
+    "domainId": 2,
+    "question": "How is asset management on AWS easier than asset management in a physical data center?",
+    "options": {
+      "A": "AWS provides a Configuration Management Database that users can maintain.",
+      "B": "AWS performs infrastructure discovery scans on the customer's behalf.",
+      "C": "Amazon EC2 automatically generates an asset report and places it in the customer's specified Amazon S3 bucket.",
+      "D": "Users can gather asset metadata reliably with a few API calls."
+    },
+    "answer": "D",
+    "explanation": "On AWS, users can gather asset metadata reliably with a few API calls using services like AWS Config, Systems Manager, and the AWS CLI. This is far easier than physical data center asset management, which requires manual hardware inventory, tagging, and tracking.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q654",
+    "domainId": 2,
+    "question": "Using AWS Identity and Access Management (IAM) to grant access only to the resources needed to perform a task is a concept known as:",
+    "options": {
+      "A": "restricted access.",
+      "B": "as-needed access.",
+      "C": "least privilege access.",
+      "D": "token access."
+    },
+    "answer": "C",
+    "explanation": "Least privilege access means granting IAM users only the minimum permissions they need to perform their specific tasks, reducing the risk of accidental or intentional misuse of AWS resources.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q656",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, customer responsibilities include which one of the following?",
+    "options": {
+      "A": "Securing the hardware, software, facilities, and networks that run all products and services.",
+      "B": "Providing certificates, reports, and other documentation directly to AWS customers under NDA.",
+      "C": "Configuring the operating system, network, and firewall.",
+      "D": "Obtaining industry certifications and independent third-party attestations."
+    },
+    "answer": "C",
+    "explanation": "Customers are responsible for configuring the operating system, network, and firewall settings on their EC2 instances. AWS handles the physical infrastructure, hardware, and global network.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q657",
+    "domainId": 2,
+    "question": "Which managed AWS service provides real-time guidance on AWS security best practices?",
+    "options": {
+      "A": "AWS X-Ray",
+      "B": "AWS Trusted Advisor",
+      "C": "Amazon CloudWatch",
+      "D": "AWS Systems Manager"
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor provides real-time guidance on AWS best practices across security, cost optimization, performance, fault tolerance, and service limits, including specific security recommendations.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q659",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, customers are responsible for which aspects of security in the cloud? (Choose two.)",
+    "options": {
+      "A": "Visualization management",
+      "B": "Hardware management",
+      "C": "Encryption management",
+      "D": "Facilities management",
+      "E": "Firewall management"
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "Customers are responsible for encryption management (choosing what to encrypt and managing keys) and firewall management (configuring security groups and NACLs). AWS manages the physical hardware and facilities.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q661",
+    "domainId": 2,
+    "question": "What is a responsibility of AWS in the shared responsibility model?",
+    "options": {
+      "A": "Updating the network ACLs to block traffic to vulnerable ports.",
+      "B": "Patching operating systems running on Amazon EC2 instances.",
+      "C": "Updating the firmware on the underlying EC2 hosts.",
+      "D": "Updating the security group rules to block traffic to the vulnerable ports."
+    },
+    "answer": "C",
+    "explanation": "Updating the firmware on the underlying EC2 host hardware is AWS's responsibility. Customers manage their own instances, including OS patching, network ACLs, and security group rules.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q663",
+    "domainId": 2,
+    "question": "What does it mean to grant least privilege to AWS IAM users?",
+    "options": {
+      "A": "It is granting permissions to a single user only.",
+      "B": "It is granting permissions using AWS IAM policies only.",
+      "C": "It is granting AdministratorAccess policy permissions to trustworthy users.",
+      "D": "It is granting only the permissions required to perform a given task."
+    },
+    "answer": "D",
+    "explanation": "Least privilege means granting only the permissions required to perform a specific task — no more, no less — minimizing the potential damage from compromised credentials or accidental actions.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q665",
+    "domainId": 2,
+    "question": "A director has been tasked with investigating hybrid cloud architecture. The company currently accesses AWS over the public internet. Which service will facilitate private hybrid connectivity?",
+    "options": {
+      "A": "Amazon Virtual Private Cloud (Amazon VPC) NAT Gateway",
+      "B": "AWS Direct Connect",
+      "C": "Amazon Simple Storage Service (Amazon S3) Transfer Acceleration",
+      "D": "AWS Web Application Firewall (AWS WAF)"
+    },
+    "answer": "B",
+    "explanation": "AWS Direct Connect establishes a dedicated, private network connection from your on-premises data center to AWS, bypassing the public internet for more consistent performance and enhanced security in hybrid architectures.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q667",
+    "domainId": 2,
+    "question": "How can a customer increase security to AWS account logons? (Choose two.)",
+    "options": {
+      "A": "Configure AWS Certificate Manager",
+      "B": "Enable Multi-Factor Authentication (MFA)",
+      "C": "Use Amazon Cognito to manage access",
+      "D": "Configure a strong password policy",
+      "E": "Enable AWS Organizations"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Enabling MFA adds a second authentication factor beyond passwords, and configuring a strong password policy enforces minimum complexity requirements. Both directly strengthen account logon security.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q672",
+    "domainId": 2,
+    "question": "What is an advantage of using the AWS Cloud over a traditional on-premises solution?",
+    "options": {
+      "A": "Users do not have to guess about future capacity needs.",
+      "B": "Users can utilize existing hardware contracts for purchases.",
+      "C": "Users can fix costs no matter what their traffic is.",
+      "D": "Users can avoid audits by using reports from AWS."
+    },
+    "answer": "A",
+    "explanation": "AWS eliminates the need to guess future capacity needs by providing on-demand scaling — you provision exactly what you need now and scale up or down in minutes as requirements change.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q683",
+    "domainId": 2,
+    "question": "Which AWS service provides a self-service portal for on-demand access to AWS compliance reports?",
+    "options": {
+      "A": "AWS Config",
+      "B": "AWS Certificate Manager",
+      "C": "Amazon Inspector",
+      "D": "AWS Artifact"
+    },
+    "answer": "D",
+    "explanation": "AWS Artifact is a self-service portal providing on-demand access to AWS compliance reports and certifications, including SOC, PCI, ISO, and other security and compliance documents.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q689",
+    "domainId": 2,
+    "question": "Which of the following services have Distributed Denial of Service (DDoS) mitigation features? (Choose two.)",
+    "options": {
+      "A": "AWS WAF",
+      "B": "Amazon DynamoDB",
+      "C": "Amazon EC2",
+      "D": "Amazon CloudFront",
+      "E": "Amazon Inspector"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS WAF filters malicious web traffic at the application layer with customizable rules, and Amazon CloudFront integrates with AWS Shield to provide DDoS mitigation at edge locations. Both help defend against DDoS attacks.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q692",
+    "domainId": 2,
+    "question": "According to the AWS shared responsibility model, what is AWS responsible for?",
+    "options": {
+      "A": "Configuring Amazon VPC",
+      "B": "Managing application code",
+      "C": "Maintaining application traffic",
+      "D": "Managing the network infrastructure"
+    },
+    "answer": "D",
+    "explanation": "AWS is responsible for managing the network infrastructure, including routers, switches, and the physical network connecting data centers and Availability Zones within the global AWS network.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q694",
+    "domainId": 2,
+    "question": "Which AWS tool will identify security groups that grant unrestricted Internet access to a limited list of ports?",
+    "options": {
+      "A": "AWS Organizations",
+      "B": "AWS Trusted Advisor",
+      "C": "AWS Usage Report",
+      "D": "Amazon EC2 dashboard"
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor scans your security groups and flags those that grant unrestricted internet access (0.0.0.0/0) to specific ports, helping you identify and close potential security vulnerabilities.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q697",
+    "domainId": 2,
+    "question": "Which of the following is the responsibility of AWS?",
+    "options": {
+      "A": "Setting up AWS Identity and Access Management (IAM) users and groups",
+      "B": "Physically destroying storage media at end of life",
+      "C": "Patching guest operating systems",
+      "D": "Configuring security settings on Amazon EC2 instances"
+    },
+    "answer": "B",
+    "explanation": "AWS is responsible for physically destroying storage media at end of life to prevent data leakage, following industry standards for secure decommissioning of hardware in their data centers.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q698",
+    "domainId": 2,
+    "question": "Which of the following is an advantage of using AWS?",
+    "options": {
+      "A": "AWS audits user data.",
+      "B": "Data is automatically secure.",
+      "C": "There is no guessing on capacity needs.",
+      "D": "AWS manages compliance needs."
+    },
+    "answer": "C",
+    "explanation": "AWS eliminates the need to guess capacity needs by providing on-demand scaling. You can provision exactly what you need and adjust in minutes, rather than committing to fixed hardware months in advance.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q702",
+    "domainId": 2,
+    "question": "What tasks should a customer perform when that customer suspects an AWS account has been compromised? (Choose two.)",
+    "options": {
+      "A": "Rotate passwords and access keys.",
+      "B": "Remove MFA tokens.",
+      "C": "Move resources to a different AWS Region.",
+      "D": "Delete AWS CloudTrail Resources.",
+      "E": "Contact AWS Support."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "When an account is suspected compromised, immediately rotate all passwords and access keys to invalidate potentially stolen credentials, and contact AWS Support for assistance with the investigation and remediation.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q705",
+    "domainId": 2,
+    "question": "What is an AWS Identity and Access Management (IAM) role?",
+    "options": {
+      "A": "A user associated with an AWS resource",
+      "B": "A group associated with an AWS resource",
+      "C": "An entity that defines a set of permissions for use with an AWS resource",
+      "D": "An authentication credential associated with a multi-factor authentication (MFA) token"
+    },
+    "answer": "C",
+    "explanation": "An IAM role is an entity that defines a set of permissions for making AWS service requests. Unlike an IAM user, a role does not have permanent credentials — it provides temporary security credentials when assumed.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q716",
+    "domainId": 2,
+    "question": "Under the shared responsibility model; which of the following areas are the customer's responsibility? (Choose two.)",
+    "options": {
+      "A": "Firmware upgrades of network infrastructure",
+      "B": "Patching of operating systems",
+      "C": "Patching of the underlying hypervisor",
+      "D": "Physical security of data centers",
+      "E": "Configuration of the security group"
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Customers are responsible for patching operating systems on their EC2 instances and configuring security groups to control network access. AWS handles hypervisor patching, firmware upgrades, and physical security.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q717",
+    "domainId": 2,
+    "question": "Which service enables customers to audit and monitor changes in AWS resources?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "Amazon GuardDuty",
+      "C": "Amazon Inspector",
+      "D": "AWS Config"
+    },
+    "answer": "D",
+    "explanation": "AWS Config continuously monitors and records AWS resource configurations, tracking changes over time and evaluating them against desired configurations for auditing and compliance.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q718",
+    "domainId": 2,
+    "question": "Which AWS service identifies security groups that allow unrestricted access to a user's AWS resources?",
+    "options": {
+      "A": "AWS CloudTrail",
+      "B": "AWS Trusted Advisor",
+      "C": "Amazon CloudWatch",
+      "D": "Amazon Inspector"
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor checks security groups for rules that allow unrestricted access (0.0.0.0/0) to specific ports, flagging potential security risks in its automated security checks.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q719",
+    "domainId": 2,
+    "question": "According to the AWS shared responsibility model, who is responsible for configuration management?",
+    "options": {
+      "A": "It is solely the responsibility of the customer.",
+      "B": "It is solely the responsibility of AWS.",
+      "C": "It is shared between AWS and the customer.",
+      "D": "It is not part of the AWS shared responsibility model."
+    },
+    "answer": "C",
+    "explanation": "Configuration management is a shared responsibility: AWS configures and manages its infrastructure components, while customers configure their own applications, operating systems, and security settings.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q722",
+    "domainId": 2,
+    "question": "A user is running an application on AWS and notices that one or more AWS-owned IP addresses is involved in a distributed denial-of-service (DDoS) attack. Who should the user contact FIRST about this situation?",
+    "options": {
+      "A": "AWS Premium Support",
+      "B": "AWS Technical Account Manager",
+      "C": "AWS Solutions Architect",
+      "D": "AWS Abuse team"
+    },
+    "answer": "D",
+    "explanation": "The AWS Abuse team handles reports of AWS resources being used in malicious activities like DDoS attacks. They should be the first point of contact when AWS-owned IP addresses are involved in abuse.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q723",
+    "domainId": 2,
+    "question": "Which of the following are benefits of hosting infrastructure in the AWS Cloud? (Choose two.)",
+    "options": {
+      "A": "There are no upfront commitments.",
+      "B": "AWS manages all security in the cloud.",
+      "C": "Users have the ability to provision resources on demand.",
+      "D": "Users have access to free and unlimited storage.",
+      "E": "Users have control over the physical infrastructure."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS requires no upfront commitments for most services, and customers can provision resources on demand in minutes. Both eliminate the constraints of traditional infrastructure procurement.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q727",
+    "domainId": 2,
+    "question": "Which AWS service offers on-demand access to AWS security and compliance reports?",
+    "options": {
+      "A": "AWS CloudTrail",
+      "B": "AWS Artifact",
+      "C": "AWS Health",
+      "D": "Amazon CloudWatch"
+    },
+    "answer": "B",
+    "explanation": "AWS Artifact provides on-demand access to AWS security and compliance reports, including SOC, PCI, ISO, and other certifications, available directly from the AWS Management Console.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q730",
+    "domainId": 2,
+    "question": "Which AWS service provides inbound and outbound network ACLs to harden external connectivity to Amazon EC2?",
+    "options": {
+      "A": "AWS IAM",
+      "B": "Amazon Connect",
+      "C": "Amazon VPC",
+      "D": "Amazon API Gateway"
+    },
+    "answer": "C",
+    "explanation": "Amazon VPC provides Network Access Control Lists (NACLs) that act as stateless firewalls at the subnet level, controlling inbound and outbound traffic to harden network connectivity for EC2 instances.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q733",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, AWS is responsible for which security-related task?",
+    "options": {
+      "A": "Lifecycle management of IAM credentials",
+      "B": "Physical security of global infrastructure",
+      "C": "Encryption of Amazon EBS volumes",
+      "D": "Firewall configuration"
+    },
+    "answer": "B",
+    "explanation": "AWS is responsible for the physical security of its global infrastructure, including data centers, networking hardware, and the facilities that house them. Customers manage their own IAM credentials, encryption, and firewalls.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q735",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following is an example of security in the AWS Cloud?",
+    "options": {
+      "A": "Managing edge locations",
+      "B": "Physical security",
+      "C": "Firewall configuration",
+      "D": "Global infrastructure"
+    },
+    "answer": "C",
+    "explanation": "Firewall configuration (security groups, NACLs) is an example of security in the cloud, which is the customer's responsibility. Managing edge locations, physical security, and global infrastructure are AWS's responsibility.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q740",
+    "domainId": 2,
+    "question": "A web application running on AWS has been spammed with malicious requests from a recurring set of IP addresses. Which AWS service can help secure the application and block the malicious traffic?",
+    "options": {
+      "A": "AWS IAM",
+      "B": "Amazon GuardDuty",
+      "C": "Amazon Simple Notification Service (Amazon SNS)",
+      "D": "AWS WAF"
+    },
+    "answer": "D",
+    "explanation": "AWS WAF lets you create rules to block requests from specific IP addresses or IP ranges, providing application-layer protection against malicious traffic patterns like spam or attacks.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q746",
+    "domainId": 2,
+    "question": "A user needs an automated security assessment report that will identify unintended network access to Amazon EC2 instances and vulnerabilities on those instances. Which AWS service will provide this assessment report?",
+    "options": {
+      "A": "EC2 security groups",
+      "B": "AWS Config",
+      "C": "Amazon Macie",
+      "D": "Amazon Inspector"
+    },
+    "answer": "D",
+    "explanation": "Amazon Inspector automatically assesses EC2 instances for unintended network access and known software vulnerabilities, generating detailed security assessment reports with prioritized findings.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q747",
+    "domainId": 2,
+    "question": "How can a company isolate the costs of production and non-production workloads on AWS?",
+    "options": {
+      "A": "Create Identity and Access Management (IAM) roles for production and non-production workloads.",
+      "B": "Use different accounts for production and non-production expenses.",
+      "C": "Use Amazon EC2 for non-production workloads and other services for production workloads.",
+      "D": "Use Amazon CloudWatch to monitor the use of services."
+    },
+    "answer": "B",
+    "explanation": "Using separate AWS accounts for production and non-production workloads naturally isolates costs, making it easy to track and attribute expenses to each environment independently.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q748",
+    "domainId": 2,
+    "question": "Where can users find a catalog of AWS-recognized providers of third-party security solutions?",
+    "options": {
+      "A": "AWS Service Catalog",
+      "B": "AWS Marketplace",
+      "C": "AWS Quick Start",
+      "D": "AWS CodeDeploy"
+    },
+    "answer": "B",
+    "explanation": "AWS Marketplace is a digital catalog where users can find and purchase third-party security solutions that are vetted and recognized by AWS, ready to deploy on AWS infrastructure.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q755",
+    "domainId": 2,
+    "question": "Within the AWS shared responsibility model, who is responsible for security and compliance?",
+    "options": {
+      "A": "The customer is responsible.",
+      "B": "AWS is responsible.",
+      "C": "AWS and the customer share responsibility.",
+      "D": "AWS shares responsibility with the relevant governing body."
+    },
+    "answer": "C",
+    "explanation": "Security and compliance is a shared responsibility between AWS and the customer. AWS secures the infrastructure, while customers secure their data, applications, and configurations in the cloud.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q756",
+    "domainId": 2,
+    "question": "To use the AWS CLI, users are required to generate:",
+    "options": {
+      "A": "a password policy.",
+      "B": "an access/secret key.",
+      "C": "a managed policy.",
+      "D": "an API key."
+    },
+    "answer": "B",
+    "explanation": "To use the AWS CLI for programmatic access, users must generate an access key ID and secret access key pair, which authenticate API requests made from the command line.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q757",
+    "domainId": 2,
+    "question": "Which AWS service is used to provide encryption for Amazon EBS?",
+    "options": {
+      "A": "AWS Certificate Manager",
+      "B": "AWS Systems Manager",
+      "C": "AWS KMS",
+      "D": "AWS Config"
+    },
+    "answer": "C",
+    "explanation": "AWS Key Management Service (KMS) manages the encryption keys used for Amazon EBS volume encryption, handling key creation, rotation, and access control.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q760",
+    "domainId": 2,
+    "question": "What does AWS Shield Standard provide?",
+    "options": {
+      "A": "WAF rules",
+      "B": "DDoS protection",
+      "C": "Identity and Access Management (IAM) permissions and access to resources",
+      "D": "Data encryption"
+    },
+    "answer": "B",
+    "explanation": "AWS Shield Standard provides automatic DDoS protection at no extra cost for all AWS customers, defending against the most common network and transport layer attacks.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q761",
+    "domainId": 2,
+    "question": "A company wants to build its new application workloads in the AWS Cloud instead of using on-premises resources. What expense can be reduced using the AWS Cloud?",
+    "options": {
+      "A": "The cost of writing custom-built Java or Node .js code",
+      "B": "Penetration testing for security",
+      "C": "hardware required to support new applications",
+      "D": "Writing specific test cases for third-party applications."
+    },
+    "answer": "C",
+    "explanation": "Moving to AWS eliminates the cost of purchasing, installing, and maintaining physical hardware for new applications. Software development, testing, and penetration testing costs remain regardless of platform.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q765",
+    "domainId": 2,
+    "question": "When comparing the total cost of ownership (TCO) of an on-premises infrastructure to a cloud architecture, what costs should be considered? (Choose two.)",
+    "options": {
+      "A": "The credit card processing fees for application transactions in the cloud.",
+      "B": "The cost of purchasing and installing server hardware in the on-premises data.",
+      "C": "The cost of administering the infrastructure, including operating system and software installations, patches, backups, and recovering from failures.",
+      "D": "The costs of third-party penetration testing.",
+      "E": "The advertising costs associated with an ongoing enterprise-wide campaign."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "TCO comparisons should include the cost of purchasing and installing server hardware on-premises, and the cost of administering infrastructure including OS installations, patches, backups, and failure recovery.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q766",
+    "domainId": 2,
+    "question": "What is one of the customer's responsibilities according to the AWS shared responsibility model?",
+    "options": {
+      "A": "Virtualization infrastructure",
+      "B": "Network infrastructure",
+      "C": "Application security",
+      "D": "Physical security of hardware"
+    },
+    "answer": "C",
+    "explanation": "Application security — including securing application code, data access controls, and authentication — is the customer's responsibility under the Shared Responsibility Model.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q770",
+    "domainId": 2,
+    "question": "Where should users report that AWS resources are being used for malicious purposes?",
+    "options": {
+      "A": "AWS Abuse team",
+      "B": "AWS Shield",
+      "C": "AWS Support",
+      "D": "AWS Developer Forums"
+    },
+    "answer": "A",
+    "explanation": "The AWS Abuse team should be contacted when AWS resources are being used for malicious purposes like spam, DDoS attacks, or hosting illegal content from AWS IP addresses.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q775",
+    "domainId": 2,
+    "question": "Which AWS offering enables customers to find, buy, and immediately start using software solutions in their AWS environment?",
+    "options": {
+      "A": "AWS Config",
+      "B": "AWS OpsWorks",
+      "C": "AWS SDK",
+      "D": "AWS Marketplace"
+    },
+    "answer": "D",
+    "explanation": "AWS Marketplace is a digital catalog where customers can find, buy, and immediately deploy software solutions on AWS, with flexible pricing and 1-Click launch capabilities.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q777",
+    "domainId": 2,
+    "question": "Which of the following is AWS's responsibility under the AWS shared responsibility model?",
+    "options": {
+      "A": "Configuring third-party applications",
+      "B": "Maintaining physical hardware",
+      "C": "Securing application access and data",
+      "D": "Managing custom Amazon Machine Images (AMIs)"
+    },
+    "answer": "B",
+    "explanation": "Maintaining physical hardware — including servers, storage devices, and networking equipment in data centers — is AWS's responsibility under the Shared Responsibility Model.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q779",
+    "domainId": 2,
+    "question": "How would a system administrator add an additional layer of login security to a user's AWS Management Console?",
+    "options": {
+      "A": "Use AWS Cloud Directory",
+      "B": "Audit AWS Identity and Access Management (IAM) roles",
+      "C": "Enable Multi-Factor Authentication",
+      "D": "Enable AWS CloudTrail"
+    },
+    "answer": "C",
+    "explanation": "Enabling Multi-Factor Authentication (MFA) adds a second verification layer beyond passwords, requiring a code from a physical or virtual device to complete login to the AWS Management Console.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q781",
+    "domainId": 2,
+    "question": "Which service would you use to send alerts based on Amazon CloudWatch alarms?",
+    "options": {
+      "A": "Amazon Simple Notification Service (Amazon SNS)",
+      "B": "AWS CloudTrail",
+      "C": "AWS Trusted Advisor",
+      "D": "Amazon Route 53"
+    },
+    "answer": "A",
+    "explanation": "Amazon Simple Notification Service (SNS) delivers alert notifications triggered by CloudWatch alarms, sending messages via email, SMS, HTTP endpoints, or Lambda functions.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q782",
+    "domainId": 2,
+    "question": "Where can a customer find information about prohibited actions on AWS infrastructure?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Identity and Access Management (IAM)",
+      "C": "AWS Billing Console",
+      "D": "AWS Acceptable Use Policy"
+    },
+    "answer": "D",
+    "explanation": "The AWS Acceptable Use Policy defines prohibited actions on AWS infrastructure, including activities like sending spam, hosting malicious content, or conducting network attacks.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q786",
+    "domainId": 2,
+    "question": "Which of the following are recommended practices for managing IAM users? (Choose two.)",
+    "options": {
+      "A": "Require IAM users to change their passwords after a specified period of time",
+      "B": "Prevent IAM users from reusing previous passwords",
+      "C": "Recommend that the same password be used on AWS and other sites",
+      "D": "Require IAM users to store their passwords in raw text",
+      "E": "Disable multi-factor authentication (MFA) for IAM users"
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Requiring password rotation after a specified period and preventing password reuse are IAM best practices that reduce the risk of compromised credentials being used for extended periods.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q796",
+    "domainId": 2,
+    "question": "Which of the following are components of Amazon VPC? (Choose two.)",
+    "options": {
+      "A": "Objects",
+      "B": "Subnets",
+      "C": "Buckets",
+      "D": "Internet gateways",
+      "E": "Access key"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Subnets divide a VPC's IP address range into segments for organizing resources, and internet gateways enable communication between VPC resources and the internet. Both are core VPC components.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q798",
+    "domainId": 2,
+    "question": "Which of the following will enhance the security of access to the AWS Management Console? (Choose two.)",
+    "options": {
+      "A": "AWS Secrets Manager",
+      "B": "AWS Certificate Manager",
+      "C": "AWS Multi-Factor Authentication (AWS MFA)",
+      "D": "Security groups",
+      "E": "Password policies"
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "Multi-Factor Authentication (MFA) adds a second authentication factor, and password policies enforce complexity and rotation requirements. Both enhance the security of AWS Management Console access.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q799",
+    "domainId": 2,
+    "question": "The AWS Trusted Advisor checks include recommendations regarding which of the following? (Choose two.)",
+    "options": {
+      "A": "Information on Amazon S3 bucket permissions",
+      "B": "AWS service outages",
+      "C": "Multi-factor authentication enabled on the AWS account root user",
+      "D": "Available software patches",
+      "E": "Number of users in the account"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Trusted Advisor checks S3 bucket permissions to identify overly permissive access, and verifies that MFA is enabled on the root user account, both falling under its security recommendations.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q800",
+    "domainId": 2,
+    "question": "Which functions can users perform using AWS KMS?",
+    "options": {
+      "A": "Create and manage AWS access keys for the AWS account root user",
+      "B": "Create and manage AWS access keys for an AWS account IAM user",
+      "C": "Create and manage keys for encryption and decryption of data",
+      "D": "Create and manage keys for multi-factor authentication"
+    },
+    "answer": "C",
+    "explanation": "AWS KMS lets users create and manage cryptographic keys for encrypting and decrypting data across AWS services, providing centralized key management with audit capabilities via CloudTrail.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q804",
+    "domainId": 2,
+    "question": "Which AWS services provide a user with connectivity between the AWS Cloud and on-premises resources? (Choose two.)",
+    "options": {
+      "A": "AWS VPN",
+      "B": "Amazon Connect",
+      "C": "Amazon Cognito",
+      "D": "AWS Direct Connect",
+      "E": "AWS Managed Services"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS VPN creates an encrypted tunnel over the public internet, and AWS Direct Connect establishes a dedicated private connection. Both provide connectivity between the AWS Cloud and on-premises resources.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q806",
+    "domainId": 2,
+    "question": "Which Amazon VPC feature enables users to capture information about the IP traffic that reaches Amazon EC2 instances?",
+    "options": {
+      "A": "Security groups",
+      "B": "Elastic network interfaces",
+      "C": "Network ACLs",
+      "D": "VPC Flow Logs"
+    },
+    "answer": "D",
+    "explanation": "VPC Flow Logs capture information about IP traffic going to and from network interfaces in your VPC, providing visibility into network traffic patterns reaching your EC2 instances.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q808",
+    "domainId": 2,
+    "question": "Which AWS service will provide a way to generate encryption keys that can be used to encrypt data? (Choose two.)",
+    "options": {
+      "A": "Amazon Macie",
+      "B": "AWS Certificate Manager",
+      "C": "AWS Key Management Service (AWS KMS)",
+      "D": "AWS Secrets Manager",
+      "E": "AWS CloudHSM"
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "AWS KMS generates and manages encryption keys through a software-based service, and AWS CloudHSM provides dedicated hardware security modules for key generation. Both can create keys for data encryption.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q811",
+    "domainId": 2,
+    "question": "Which AWS service helps users meet contractual and regulatory compliance requirements for data security by using dedicated hardware appliances within the AWS Cloud?",
+    "options": {
+      "A": "AWS Secrets Manager",
+      "B": "AWS CloudHSM",
+      "C": "AWS Key Management Service (AWS KMS)",
+      "D": "AWS Directory Service"
+    },
+    "answer": "B",
+    "explanation": "AWS CloudHSM provides dedicated, single-tenant hardware security modules (HSMs) within the AWS Cloud, meeting strict contractual and regulatory compliance requirements like FIPS 140-2 Level 3 for data security.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q812",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, the customer manages which of the following? (Choose two.)",
+    "options": {
+      "A": "Decommissioning of physical storage devices",
+      "B": "Security group and ACL configuration",
+      "C": "Patch management of an Amazon RDS instance operating system",
+      "D": "Controlling physical access to data centers",
+      "E": "Patch management of an Amazon EC2 instance operating system"
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Customers manage security group and ACL configuration to control network access, and patch management for EC2 instance operating systems. AWS handles RDS OS patching, physical security, and hardware decommissioning.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q815",
+    "domainId": 2,
+    "question": "What is a user responsible for when running an application in the AWS Cloud?",
+    "options": {
+      "A": "Managing physical hardware",
+      "B": "Updating the underlying hypervisor",
+      "C": "Providing a list of users approved for data center access",
+      "D": "Managing application software updates"
+    },
+    "answer": "D",
+    "explanation": "When running applications in the AWS Cloud, users are responsible for managing application software updates, including patches, version upgrades, and security fixes for their own application code.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q819",
+    "domainId": 2,
+    "question": "Which AWS service helps identify malicious or unauthorized activities in AWS accounts and workloads?",
+    "options": {
+      "A": "Amazon Rekognition",
+      "B": "AWS Trusted Advisor",
+      "C": "Amazon GuardDuty",
+      "D": "Amazon CloudWatch"
+    },
+    "answer": "C",
+    "explanation": "Amazon GuardDuty is a threat detection service that continuously monitors AWS accounts and workloads for malicious or unauthorized activity using machine learning, anomaly detection, and threat intelligence.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q822",
+    "domainId": 2,
+    "question": "A company is hosting a web application in a Docker container on Amazon EC2. AWS is responsible for which of the following tasks?",
+    "options": {
+      "A": "Scaling the web application and services developed with Docker",
+      "B": "Provisioning or scheduling containers to run on clusters and maintain their availability",
+      "C": "Performing hardware maintenance in the AWS facilities that run the AWS Cloud",
+      "D": "Managing the guest operating system, including updates and security patches"
+    },
+    "answer": "C",
+    "explanation": "AWS is responsible for performing hardware maintenance in AWS facilities, including server repairs, disk replacements, and network equipment upkeep. Customers manage their own applications, containers, and guest OS.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q824",
+    "domainId": 2,
+    "question": "Which actions represent best practices for using AWS IAM? (Choose two.)",
+    "options": {
+      "A": "Configure a strong password policy",
+      "B": "Share the security credentials among users of AWS accounts who are in the same Region",
+      "C": "Use access keys to log in to the AWS Management Console",
+      "D": "Rotate access keys on a regular basis",
+      "E": "Avoid using IAM roles to delegate permissions"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Configuring a strong password policy enforces minimum security standards for credentials, and rotating access keys regularly limits the window of exposure if keys are compromised. Both are IAM best practices.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q825",
+    "domainId": 2,
+    "question": "Which AWS feature or service can be used to capture information about incoming and outgoing traffic in an AWS VPC infrastructure?",
+    "options": {
+      "A": "AWS Config",
+      "B": "VPC Flow Logs",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS CloudTrail"
+    },
+    "answer": "B",
+    "explanation": "VPC Flow Logs capture detailed information about incoming and outgoing IP traffic in your VPC infrastructure, including source/destination IPs, ports, protocols, and whether traffic was accepted or rejected.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q827",
+    "domainId": 2,
+    "question": "According to the AWS Well-Architected Framework, what change management steps should be taken to achieve reliability in the AWS Cloud? (Choose two.)",
+    "options": {
+      "A": "Use AWS Config to generate an inventory of AWS resources",
+      "B": "Use service limits to prevent users from creating or making changes to AWS resources",
+      "C": "Use AWS CloudTrail to record AWS API calls into an auditable log file",
+      "D": "Use AWS Certificate Manager to whitelist approved AWS resources and services",
+      "E": "Use Amazon GuardDuty to validate configuration changes made to AWS resources"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS Config generates an inventory of AWS resources and tracks configuration changes over time, and AWS CloudTrail records API calls into auditable logs. Both support change management for reliability.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q828",
+    "domainId": 2,
+    "question": "Which service can be used to monitor and receive alerts for AWS account root user AWS Management Console sign-in events?",
+    "options": {
+      "A": "Amazon CloudWatch",
+      "B": "AWS Config",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS IAM"
+    },
+    "answer": "A",
+    "explanation": "Amazon CloudWatch can monitor CloudTrail events for root user console sign-ins and trigger alarms via SNS, providing immediate alerts when the root account is accessed.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q829",
+    "domainId": 2,
+    "question": "Which design principle should be considered when architecting in the AWS Cloud?",
+    "options": {
+      "A": "Think of servers as non-disposable resources",
+      "B": "Use synchronous integration of services",
+      "C": "Design loosely coupled components",
+      "D": "Implement the least permissive rules for security groups"
+    },
+    "answer": "C",
+    "explanation": "Designing loosely coupled components ensures that changes or failures in one component do not cascade to others, improving system resilience and enabling independent scaling and deployment.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q839",
+    "domainId": 2,
+    "question": "Which tasks are the customer's responsibility in the AWS shared responsibility model? (Choose two.)",
+    "options": {
+      "A": "Infrastructure facilities access management",
+      "B": "Cloud infrastructure hardware lifecycle management",
+      "C": "Configuration management of user's applications",
+      "D": "Networking infrastructure protection",
+      "E": "Security groups configuration"
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "Customers are responsible for configuration management of their applications and security groups configuration. AWS manages infrastructure facilities, hardware lifecycle, and networking infrastructure protection.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q841",
+    "domainId": 2,
+    "question": "Which AWS service or feature can enhance network security by blocking requests from a particular network for a web application on AWS? (Choose two.)",
+    "options": {
+      "A": "AWS WAF",
+      "B": "AWS Trusted Advisor",
+      "C": "AWS Direct Connect",
+      "D": "AWS Organizations",
+      "E": "Network ACLs"
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "AWS WAF creates rules to block requests from specific IP addresses or networks at the application layer, and Network ACLs filter traffic at the subnet level. Both block unwanted network traffic.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q843",
+    "domainId": 2,
+    "question": "A web application is hosted on AWS using an Elastic Load Balancer, multiple Amazon EC2 instances, and Amazon RDS. Which security measures fall under the responsibility of AWS? (Choose two.)",
+    "options": {
+      "A": "Running a virus scan on EC2 instances",
+      "B": "Protecting against IP spoofing and packet sniffing",
+      "C": "Installing the latest security patches on the RDS instance",
+      "D": "Encrypting communication between the EC2 instances and the Elastic Load Balancer",
+      "E": "Configuring a security group and a network access control list (NACL) for EC2"
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "AWS is responsible for protecting against IP spoofing and packet sniffing at the infrastructure level, and for installing security patches on managed RDS instances. Customers handle virus scans, encryption, and security group configuration.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q846",
+    "domainId": 2,
+    "question": "A company needs an Amazon S3 bucket that cannot have any public objects due to compliance requirements. How can this be accomplished?",
+    "options": {
+      "A": "Enable S3 Block Public Access from the AWS Management Console.",
+      "B": "Hold a team meeting to discuss the importance if only uploading private S3 objects.",
+      "C": "Require all S3 objects to be manually approved before uploading.",
+      "D": "Create a service to monitor all S3 uploads and remove any public uploads."
+    },
+    "answer": "A",
+    "explanation": "S3 Block Public Access is an account-level or bucket-level setting that overrides any policies or ACLs that would grant public access, ensuring no objects in the bucket can be made public.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q849",
+    "domainId": 2,
+    "question": "Who is responsible for patching the guest operating system for Amazon RDS?",
+    "options": {
+      "A": "The AWS Product team",
+      "B": "The customer Database Administrator",
+      "C": "Managed partners",
+      "D": "AWS Support"
+    },
+    "answer": "A",
+    "explanation": "For Amazon RDS, AWS (the AWS Product team) is responsible for patching the guest operating system. This is a key benefit of RDS as a managed service — customers do not have OS-level access and AWS handles all OS patching automatically.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q855",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following is a customer responsibility?",
+    "options": {
+      "A": "Installing security patches for the Xen and KVM hypervisors",
+      "B": "Installing operating system patches for Amazon DynamoDB",
+      "C": "Installing operating system security patches for Amazon EC2 database instances",
+      "D": "Installing operating system security patches for Amazon RDS database instances"
+    },
+    "answer": "C",
+    "explanation": "Customers are responsible for installing OS security patches on their EC2 instances, including database instances running on EC2. AWS handles hypervisor patching and OS patching for managed services like DynamoDB and RDS.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q857",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, the security and patching of the guest operating system is the responsibility of:",
+    "options": {
+      "A": "AWS Support",
+      "B": "the customer",
+      "C": "AWS Systems Manager",
+      "D": "AWS Config"
+    },
+    "answer": "B",
+    "explanation": "Under the Shared Responsibility Model, the customer is responsible for security and patching of the guest operating system on EC2 instances, including applying security updates and configuring the OS.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q858",
+    "domainId": 2,
+    "question": "Which AWS service makes it easy to create and manage AWS users and groups, and provide them with secure access to AWS resources at no charge?",
+    "options": {
+      "A": "AWS Direct Connect",
+      "B": "Amazon Connect",
+      "C": "AWS Identity and Access Management (IAM)",
+      "D": "AWS Firewall Manager"
+    },
+    "answer": "C",
+    "explanation": "AWS Identity and Access Management (IAM) is a free service that lets you create and manage users, groups, and roles, and define permissions to control access to AWS resources.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q859",
+    "domainId": 2,
+    "question": "Which AWS service provides on-demand of AWS security and compliance documentation?",
+    "options": {
+      "A": "AWS Directory Service",
+      "B": "AWS Artifact",
+      "C": "AWS Trusted Advisor",
+      "D": "Amazon Inspector"
+    },
+    "answer": "B",
+    "explanation": "AWS Artifact provides on-demand access to AWS security and compliance documentation, including audit reports, certifications, and agreements, directly from the AWS Management Console.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q862",
+    "domainId": 2,
+    "question": "A user needs to generate a report that outlines the status of key security checks in an AWS account. The report must include: (The status of Amazon S3 bucket permissions, Whether multi-factor authentication is enabled for the AWS account root user, If any security groups are configured to allow unrestricted access.) Where can all this information be found in one location?",
+    "options": {
+      "A": "Amazon QuickSight dashboard",
+      "B": "AWS CloudTrail trails",
+      "C": "AWS Trusted Advisor report",
+      "D": "IAM credential report"
+    },
+    "answer": "C",
+    "explanation": "AWS Trusted Advisor provides a single report covering S3 bucket permissions, root user MFA status, and unrestricted security group access, all as part of its automated security checks.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q873",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following are customer responsibilities? (Choose two.)",
+    "options": {
+      "A": "Setting up server-side encryption on an Amazon S3 bucket",
+      "B": "Amazon RDS instance patching",
+      "C": "Network and firewall configurations",
+      "D": "Physical security of data center facilities",
+      "E": "Compute capacity availability"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Customers are responsible for setting up server-side encryption on S3 buckets to protect data at rest, and for configuring network and firewall settings (security groups, NACLs) to control traffic.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q880",
+    "domainId": 2,
+    "question": "Which of the following acts as a virtual firewall at the Amazon EC2 instance level to control traffic for one or more instances?",
+    "options": {
+      "A": "Access keys",
+      "B": "Virtual private gateways",
+      "C": "Security groups",
+      "D": "Access Control Lists (ACL)"
+    },
+    "answer": "C",
+    "explanation": "Security groups act as a virtual firewall at the EC2 instance level, controlling inbound and outbound traffic for one or more instances by evaluating rules based on protocol, port, and source/destination.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q883",
+    "domainId": 2,
+    "question": "Which AWS service or feature helps restrict the AWS services, resources, and individual API actions the users and roles in each member account can access?",
+    "options": {
+      "A": "Amazon Cognito",
+      "B": "AWS Organizations",
+      "C": "AWS Shield",
+      "D": "AWS Firewall Manager"
+    },
+    "answer": "B",
+    "explanation": "AWS Organizations uses Service Control Policies (SCPs) to restrict which AWS services, resources, and API actions users and roles in member accounts can access, enforcing organization-wide guardrails.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q884",
+    "domainId": 2,
+    "question": "What is the best resource for a user to find compliance-related information and reports about AWS?",
+    "options": {
+      "A": "AWS Artifact",
+      "B": "AWS Marketplace",
+      "C": "Amazon Inspector",
+      "D": "AWS Support"
+    },
+    "answer": "A",
+    "explanation": "AWS Artifact is the best resource for compliance-related information, providing on-demand access to AWS security and compliance reports, certifications, and agreements.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q889",
+    "domainId": 2,
+    "question": "A user would like to encrypt data that is received, stored, and managed by AWS CloudTrail. Which AWS service will provide this capability?",
+    "options": {
+      "A": "AWS Secrets Manager",
+      "B": "AWS Systems Manager",
+      "C": "AWS Key Management Service (AWS KMS)",
+      "D": "AWS Certificate Manager"
+    },
+    "answer": "C",
+    "explanation": "AWS KMS provides encryption for CloudTrail log files, managing the encryption keys used to protect the data that CloudTrail receives, stores, and delivers to your S3 bucket.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q890",
+    "domainId": 2,
+    "question": "What credential components are required to gain programmatic access to an AWS account? (Choose two.)",
+    "options": {
+      "A": "An access key ID",
+      "B": "A primary key",
+      "C": "A secret access key",
+      "D": "A user ID",
+      "E": "A secondary key"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Programmatic access to an AWS account requires an access key ID and a secret access key, which together authenticate API requests made through the CLI, SDKs, or direct API calls.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q895",
+    "domainId": 2,
+    "question": "Which AWS service provides the ability to detect inadvertent data leaks of personally identifiable information (PII) and user credential data?",
+    "options": {
+      "A": "Amazon GuardDuty",
+      "B": "Amazon Inspector",
+      "C": "Amazon Macie",
+      "D": "AWS Shield"
+    },
+    "answer": "C",
+    "explanation": "Amazon Macie uses machine learning to discover, classify, and protect sensitive data like PII and credentials stored in Amazon S3, detecting inadvertent data leaks and exposure.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q898",
+    "domainId": 2,
+    "question": "Which of the following describes a security best practice that can be implemented using AWS IAM?",
+    "options": {
+      "A": "Disable AWS Management Console access for all users",
+      "B": "Generate secret keys for every IAM user",
+      "C": "Grant permissions to users who are required to perform a given task only",
+      "D": "Store AWS credentials within Amazon EC2 instances"
+    },
+    "answer": "C",
+    "explanation": "Granting permissions only to users who need them to perform a specific task implements the principle of least privilege, which is a core IAM security best practice.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q899",
+    "domainId": 2,
+    "question": "What can be used to automate and manage secure, well-architected, multi-account AWS environments?",
+    "options": {
+      "A": "AWS shared responsibility model",
+      "B": "AWS Control Tower",
+      "C": "AWS Security Hub",
+      "D": "AWS Well-Architected Tool"
+    },
+    "answer": "B",
+    "explanation": "AWS Control Tower automates the setup and governance of secure, well-architected, multi-account environments using a landing zone with pre-configured guardrails and compliance rules.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q901",
+    "domainId": 2,
+    "question": "A company needs protection from expanded distributed denial of service (DDoS) attacks on its website and assistance from AWS experts during such events. Which AWS managed service will meet these requirements?",
+    "options": {
+      "A": "AWS Shield Advanced",
+      "B": "AWS Firewall Manager",
+      "C": "AWS WAF",
+      "D": "Amazon GuardDuty"
+    },
+    "answer": "A",
+    "explanation": "AWS Shield Advanced provides expanded DDoS protection with 24/7 access to the AWS DDoS Response Team (DRT) for expert assistance during attacks, along with cost protection and advanced detection.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q903",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, what are the customer's responsibilities? (Choose two.)",
+    "options": {
+      "A": "Physical and environmental security",
+      "B": "Physical network devices including firewalls",
+      "C": "Storage device decommissioning",
+      "D": "Security of data in transit",
+      "E": "Data integrity authentication"
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Customers are responsible for security of data in transit (using encryption like TLS/SSL) and data integrity authentication (verifying data hasn't been tampered with). AWS manages physical security and hardware.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q906",
+    "domainId": 2,
+    "question": "Which of the following allows an application running on an Amazon EC2 instance to securely write data to an Amazon S3 bucket without using long term credentials?",
+    "options": {
+      "A": "Amazon Cognito",
+      "B": "AWS Shield",
+      "C": "AWS IAM role",
+      "D": "AWS IAM user access key"
+    },
+    "answer": "C",
+    "explanation": "An IAM role attached to an EC2 instance provides temporary security credentials that are automatically rotated, allowing the application to securely access S3 without embedding long-term access keys.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q912",
+    "domainId": 2,
+    "question": "Which of the following tasks can only be performed after signing in with AWS account root user credentials? (Choose two.)",
+    "options": {
+      "A": "Closing an AWS account",
+      "B": "Creating a new IAM policy",
+      "C": "Changing AWS Support plans",
+      "D": "Attaching a role to an Amazon EC2 instance",
+      "E": "Generating access keys for IAM users"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Closing an AWS account and changing the AWS Support plan are tasks that can only be performed by the root user. IAM policies, role attachments, and access key generation can be done by IAM users with appropriate permissions.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q917",
+    "domainId": 2,
+    "question": "A company is launching an e-commerce site that will store and process credit card data. The company requires information about AWS compliance reports and AWS agreements. Which AWS service provides on-demand access to these items?",
+    "options": {
+      "A": "AWS Certificate Manager",
+      "B": "AWS Config",
+      "C": "AWS Artifact",
+      "D": "AWS CloudTrail"
+    },
+    "answer": "C",
+    "explanation": "AWS Artifact provides on-demand access to AWS compliance reports (like PCI DSS) and agreements (like BAA), which are essential for companies handling credit card data.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q919",
+    "domainId": 2,
+    "question": "Which AWS service can be used to track unauthorized API calls?",
+    "options": {
+      "A": "AWS Config",
+      "B": "AWS CloudTrail",
+      "C": "AWS Trusted Advisor",
+      "D": "Amazon Inspector"
+    },
+    "answer": "B",
+    "explanation": "AWS CloudTrail records all API calls made in your AWS account, providing a complete audit trail that can be analyzed to identify unauthorized or suspicious API activity.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q920",
+    "domainId": 2,
+    "question": "A user needs to regularly audit and evaluate the setup of all AWS resources, identify non-compliant accounts, and be notified when a resource changes. Which AWS service can be used to meet these requirements?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Config",
+      "C": "AWS Resource Access Manager",
+      "D": "AWS Systems Manager"
+    },
+    "answer": "B",
+    "explanation": "AWS Config continuously monitors resource configurations, evaluates them against compliance rules, tracks changes over time, and sends notifications when resources change or become non-compliant.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q923",
+    "domainId": 2,
+    "question": "What is the recommended method to request penetration testing on AWS resources?",
+    "options": {
+      "A": "Open a support case",
+      "B": "Fill out the Penetration Testing Request Form",
+      "C": "Request a penetration test from your technical account manager",
+      "D": "Contact your AWS sales representative"
+    },
+    "answer": "B",
+    "explanation": "AWS updated its penetration testing policy in 2019. Customers can now perform penetration testing on eight permitted services (EC2, NAT Gateways, ELB, RDS, CloudFront, Aurora, API Gateway, Lambda, Lightsail, Elastic Beanstalk) without prior approval or filling out a form. For services not on the permitted list, customers should submit a request through the AWS Support portal.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q924",
+    "domainId": 2,
+    "question": "A user needs to automatically discover, classify, and protect sensitive data stored in Amazon S3. Which AWS service can meet these requirements?",
+    "options": {
+      "A": "Amazon Inspector",
+      "B": "Amazon Macie",
+      "C": "Amazon GuardDuty",
+      "D": "AWS Secrets Manager"
+    },
+    "answer": "B",
+    "explanation": "Amazon Macie uses machine learning to automatically discover, classify, and protect sensitive data like PII stored in Amazon S3, providing visibility into data security risks.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q928",
+    "domainId": 2,
+    "question": "What is the MOST effective resource for staying up to date on AWS security announcements?",
+    "options": {
+      "A": "AWS Personal Health Dashboard",
+      "B": "AWS Secrets Manager",
+      "C": "AWS Security Bulletins",
+      "D": "Amazon Inspector"
+    },
+    "answer": "C",
+    "explanation": "AWS Security Bulletins are the most effective resource for staying current on security announcements, providing notifications about security vulnerabilities and recommended actions for AWS services.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q931",
+    "domainId": 2,
+    "question": "Which AWS service allows users to download security and compliance reports about the AWS infrastructure on demand?",
+    "options": {
+      "A": "Amazon GuardDuty",
+      "B": "AWS Security Hub",
+      "C": "AWS Artifact",
+      "D": "AWS Shield"
+    },
+    "answer": "C",
+    "explanation": "AWS Artifact allows users to download security and compliance reports about AWS infrastructure on demand, including SOC, PCI, ISO, and other audit certifications.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q936",
+    "domainId": 2,
+    "question": "During a compliance review, one of the auditors requires a copy of the AWS SOC 2 report. Which service should be used to submit this request?",
+    "options": {
+      "A": "AWS Personal Health Dashboard",
+      "B": "AWS Trusted Advisor",
+      "C": "AWS Artifact",
+      "D": "Amazon S3"
+    },
+    "answer": "C",
+    "explanation": "AWS Artifact provides on-demand access to AWS SOC 2 reports and other compliance documents, allowing auditors to download them directly without needing to request them through support.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q941",
+    "domainId": 2,
+    "question": "A company wants to allow full access to an Amazon S3 bucket for a particular user. Which element in the S3 bucket policy holds the user details that describe who needs access to the S3 bucket?",
+    "options": {
+      "A": "Principal",
+      "B": "Action",
+      "C": "Resource",
+      "D": "Statement"
+    },
+    "answer": "A",
+    "explanation": "The Principal element in an S3 bucket policy specifies who (which user, account, service, or entity) is allowed or denied access to the S3 resource defined in the policy.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q945",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following is a responsibility of AWS?",
+    "options": {
+      "A": "Enabling server-side encryption for objects stored in S3",
+      "B": "Applying AWS IAM security policies",
+      "C": "Patching the operating system on an Amazon EC2 instance",
+      "D": "Applying updates to the hypervisor"
+    },
+    "answer": "D",
+    "explanation": "Applying updates to the hypervisor is AWS's responsibility under the Shared Responsibility Model. Customers handle S3 encryption settings, IAM policies, and EC2 OS patching.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q954",
+    "domainId": 2,
+    "question": "Which AWS service can be used to track resource changes and establish compliance?",
+    "options": {
+      "A": "Amazon CloudWatch",
+      "B": "AWS Config",
+      "C": "AWS CloudTrail",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "B",
+    "explanation": "AWS Config continuously tracks resource configuration changes and evaluates them against compliance rules, providing a detailed history of configurations for auditing and compliance purposes.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q958",
+    "domainId": 2,
+    "question": "Which of the following are benefits of using AWS Trusted Advisor? (Choose two.)",
+    "options": {
+      "A": "Providing high-performance container orchestration",
+      "B": "Creating and rotating encryption keys",
+      "C": "Detecting underutilized resources to save costs",
+      "D": "Improving security by proactively monitoring the AWS environment",
+      "E": "Implementing enforced tagging across AWS resources"
+    },
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "Trusted Advisor detects underutilized resources (like idle EC2 instances or unattached EBS volumes) to save costs, and improves security by proactively monitoring for configuration risks like open security groups.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q959",
+    "domainId": 2,
+    "question": "A developer has been hired by a large company and needs AWS credentials. Which are security best practices that should be followed? (Choose two.)",
+    "options": {
+      "A": "Grant the developer access to only the AWS resources needed to perform the job.",
+      "B": "Share the AWS account root user credentials with the developer.",
+      "C": "Add the developer to the administrator's group in AWS IAM.",
+      "D": "Configure a password policy that ensures the developer's password cannot be changed.",
+      "E": "Ensure the account password policy requires a minimum length."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Granting access only to needed resources follows the principle of least privilege, and ensuring a minimum password length enforces credential security. Both are IAM security best practices for new developers.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q962",
+    "domainId": 2,
+    "question": "A user is planning to migrate an application workload to the AWS Cloud. Which control becomes the responsibility of AWS once the migration is complete?",
+    "options": {
+      "A": "Patching the guest operating system",
+      "B": "Maintaining physical and environmental controls",
+      "C": "Protecting communications and maintaining zone security",
+      "D": "Patching specific applications"
+    },
+    "answer": "B",
+    "explanation": "Maintaining physical and environmental controls — including data center power, cooling, fire suppression, and physical security — becomes AWS's responsibility once you migrate to the cloud.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q969",
+    "domainId": 2,
+    "question": "A company wants to ensure that AWS Management Console users are meeting password complexity requirements. How can the company configure password complexity?",
+    "options": {
+      "A": "Using an AWS IAM user policy",
+      "B": "Using an AWS Organizations service control policy (SCP)",
+      "C": "Using an AWS IAM account password policy",
+      "D": "Using an AWS Security Hub managed insight"
+    },
+    "answer": "C",
+    "explanation": "An AWS IAM account password policy lets you configure complexity requirements including minimum length, character types, expiration periods, and password reuse prevention for all IAM users.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q970",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following is the customer's responsibility?",
+    "options": {
+      "A": "Patching guest OS and applications",
+      "B": "Patching and fixing flaws in the infrastructure",
+      "C": "Physical and environmental controls",
+      "D": "Configuration of AWS infrastructure devices"
+    },
+    "answer": "A",
+    "explanation": "Customers are responsible for patching the guest operating system and applications on their EC2 instances. AWS handles infrastructure patching, physical controls, and device configuration.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q971",
+    "domainId": 2,
+    "question": "Which of the following tasks is required to deploy a PCI-compliant workload on AWS?",
+    "options": {
+      "A": "Use any AWS service and implement PCI controls at the application layer",
+      "B": "Use an AWS service that is in-scope for PCI compliance and raise an AWS support ticket to enable PCI compliance at the application layer",
+      "C": "Use any AWS service and raise an AWS support ticket to enable PCI compliance on that service",
+      "D": "Use an AWS service that is in scope for PCI compliance and apply PCI controls at the application layer"
+    },
+    "answer": "D",
+    "explanation": "Deploying a PCI-compliant workload requires using AWS services that are in scope for PCI compliance and applying PCI controls at the application layer, as AWS provides the compliant foundation but customers configure their workloads.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q977",
+    "domainId": 2,
+    "question": "A web developer is concerned that a DDoS attack could target an application. Which AWS services or features can help protect against such an attack? (Choose two.)",
+    "options": {
+      "A": "AWS Shield",
+      "B": "AWS CloudTrail",
+      "C": "Amazon CloudFront",
+      "D": "AWS Support Center",
+      "E": "AWS Service Health Dashboard"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS Shield provides automatic DDoS protection for all AWS resources, and Amazon CloudFront absorbs DDoS attacks at edge locations before they reach your origin. Both help protect against DDoS attacks.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q978",
+    "domainId": 2,
+    "question": "Which AWS service gives users on-demand, self-service access to AWS compliance control reports?",
+    "options": {
+      "A": "AWS Config",
+      "B": "Amazon GuardDuty",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS Artifact"
+    },
+    "answer": "D",
+    "explanation": "AWS Artifact gives users on-demand, self-service access to AWS compliance control reports, including SOC, PCI, ISO, and other security certifications and audit documents.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q979",
+    "domainId": 2,
+    "question": "A company wants to provide one of its employees with access to Amazon RDS. The company also wants to limit the interaction to only the AWS CLI and AWS software development kits (SDKs). Which combination of actions should the company take to meet these requirements while following the principles of least privilege? (Choose two.)",
+    "options": {
+      "A": "Create an IAM user and provide AWS Management Console access only.",
+      "B": "Create an IAM user and provide programmatic access only.",
+      "C": "Create an IAM role and provide AWS Management Console access only.",
+      "D": "Create an IAM policy with administrator access and attach it to the IAM user.",
+      "E": "Create an IAM policy with Amazon RDS access and attach it to the IAM user."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Creating an IAM user with programmatic access only (no console access) restricts interaction to CLI and SDKs, and attaching a policy scoped only to Amazon RDS follows the principle of least privilege.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q980",
+    "domainId": 2,
+    "question": "A company has a compliance requirement to record and evaluate configuration changes, as well as perform remediation actions on AWS resources. Which AWS service should the company use?",
+    "options": {
+      "A": "AWS Config",
+      "B": "AWS Secrets Manager",
+      "C": "AWS CloudTrail",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "A",
+    "explanation": "AWS Config records configuration changes, evaluates them against compliance rules, and can trigger automated remediation actions when resources become non-compliant, meeting all compliance requirements.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q984",
+    "domainId": 2,
+    "question": "Which of the following is the customer's responsibility when using Amazon RDS?",
+    "options": {
+      "A": "Patching the operating system of underlying hardware",
+      "B": "Controlling traffic to and from the database through security groups",
+      "C": "Running backups that enable point-in-time recovery of a DB instance",
+      "D": "Replacing failed DB instances"
+    },
+    "answer": "B",
+    "explanation": "When using Amazon RDS, customers are responsible for controlling traffic to and from the database by configuring security groups. AWS handles OS patching, backups, and instance replacement.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q985",
+    "domainId": 2,
+    "question": "What is the customer's responsibility when using AWS Lambda?",
+    "options": {
+      "A": "Operating system configuration",
+      "B": "Application management",
+      "C": "Platform management",
+      "D": "Code encryption"
+    },
+    "answer": "B",
+    "explanation": "With AWS Lambda, customers are responsible for application management — writing, testing, and maintaining the function code. AWS manages the operating system, platform, and runtime environment.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q992",
+    "domainId": 2,
+    "question": "Which AWS service should a cloud practitioner use to identify security vulnerabilities of an AWS account?",
+    "options": {
+      "A": "AWS Secrets Manager",
+      "B": "Amazon Cognito",
+      "C": "Amazon Macie",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "D",
+    "explanation": "AWS Trusted Advisor identifies security vulnerabilities in your AWS account by checking for issues like open security groups, missing MFA on root accounts, and overly permissive IAM policies.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q997",
+    "domainId": 2,
+    "question": "Which AWS service can be used to retrieve compliance reports on demand?",
+    "options": {
+      "A": "AWS Secrets Manager",
+      "B": "AWS Artifact",
+      "C": "AWS Security Hub",
+      "D": "AWS Certificate Manager"
+    },
+    "answer": "B",
+    "explanation": "AWS Artifact provides on-demand access to AWS compliance reports including SOC, PCI, ISO, and other certifications, available for download directly from the AWS Management Console.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q998",
+    "domainId": 2,
+    "question": "A company has an AWS-hosted website located behind an Application Load Balancer. The company wants to safeguard the website from SQL injection or cross-site scripting. Which AWS service should the company use?",
+    "options": {
+      "A": "Amazon GuardDuty",
+      "B": "AWS WAF",
+      "C": "AWS Trusted Advisor",
+      "D": "Amazon Inspector"
+    },
+    "answer": "B",
+    "explanation": "AWS WAF protects web applications behind Application Load Balancers from common exploits like SQL injection and cross-site scripting (XSS) by filtering malicious HTTP requests based on custom rules.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1001",
+    "domainId": 2,
+    "question": "An external auditor has requested that a company provide a list of all its IAM users, including the status of users' credentials and access keys. What it the SIMPLEST way to provide this information?",
+    "options": {
+      "A": "Create an IAM user account for the auditor, granting the auditor administrator permissions.",
+      "B": "Take a screenshot of each user's page in the AWS Management Console, then provide the screenshots to the auditor.",
+      "C": "Download the IAM credential report, then provide the report to the auditor.",
+      "D": "Download the AWS Trusted Advisor report, then provide the report to the auditor."
+    },
+    "answer": "C",
+    "explanation": "The IAM credential report is a downloadable CSV that lists all IAM users and the status of their credentials and access keys, providing exactly what the auditor needs in the simplest way.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1004",
+    "domainId": 2,
+    "question": "A company wants to track AWS resource configuration changes for compliance reasons. Which AWS feature can be used to meet this requirement?",
+    "options": {
+      "A": "AWS Cost and Usage Report",
+      "B": "AWS Organizations service control policies (SCPs)",
+      "C": "AWS Config rules",
+      "D": "VPC Flow Logs"
+    },
+    "answer": "C",
+    "explanation": "AWS Config rules track resource configuration changes and evaluate compliance, providing a detailed change history and alerting when configurations drift from desired states.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1006",
+    "domainId": 2,
+    "question": "The AWS IAM best practice for granting least privilege is to:",
+    "options": {
+      "A": "apply an IAM policy to an IAM group and limit the size of the group.",
+      "B": "require multi-factor authentication (MFA) for all IAM users.",
+      "C": "require each IAM user who has different permissions to have multiple passwords.",
+      "D": "apply an IAM policy only to IAM users who require it."
+    },
+    "answer": "D",
+    "explanation": "Applying IAM policies only to users who require them ensures each user gets only the permissions they need, which is the practical implementation of the least privilege principle.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1010",
+    "domainId": 2,
+    "question": "Which AWS service or feature can be used to prevent SQL injection attacks?",
+    "options": {
+      "A": "Security groups",
+      "B": "Network ACLs",
+      "C": "AWS WAF",
+      "D": "IAM policy"
+    },
+    "answer": "C",
+    "explanation": "AWS WAF can be configured with SQL injection match conditions that inspect incoming requests and block those containing SQL injection patterns, protecting web applications from this common attack vector.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  }
+]

@@ -357,9 +357,9 @@ export function Login() {
 
               <p className="mt-4 text-xs text-text-muted">
                 By signing up, you agree to our{' '}
-                <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Terms of Service</Link>
+                <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>
                 {' '}and{' '}
-                <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Privacy Policy</Link>.
+                <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>.
               </p>
             </>
           )}

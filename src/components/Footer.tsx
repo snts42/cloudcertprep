@@ -8,12 +8,12 @@ export function Footer() {
           {/* Left Column: Copyright + Legal Links */}
           <div>
             <p>
-              © {new Date().getFullYear()} <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Alex Santonastaso</a>. All rights reserved.
+              © {new Date().getFullYear()} <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Alex Santonastaso</a>. All rights reserved.
             </p>
             <p className="mt-1">
-              <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Privacy Policy</Link>
+              <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>
               <span className="mx-2">·</span>
-              <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Terms of Service</Link>
+              <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>
             </p>
           </div>
 

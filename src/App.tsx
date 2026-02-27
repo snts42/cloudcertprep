@@ -48,9 +48,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
-        <div className="flex-1">
+        <main className="flex-1">
           <AppRoutes />
-        </div>
+        </main>
         <Footer />
         <DonateButton />
       </div>

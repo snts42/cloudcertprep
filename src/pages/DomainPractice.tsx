@@ -8,7 +8,7 @@ import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
-import masterQuestions from '../data/master_questions.json'
+import { loadDomainQuestions } from '../data/questions'
 import { isAnswerCorrect } from '../lib/scoring'
 import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
@@ -58,9 +58,8 @@ export function DomainPractice() {
   }
 
   async function startPractice() {
-    // Get all questions for this domain
-    const allDomainQuestions = (masterQuestions as Question[])
-      .filter(q => q.domainId === selectedDomain)
+    // Load only the selected domain's questions (separate chunk)
+    const allDomainQuestions = await loadDomainQuestions(selectedDomain!)
 
     // Use spaced repetition for authenticated users, random shuffle for guests
     const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
@@ -385,7 +384,7 @@ export function DomainPractice() {
 
                     {/* Question ID */}
                     <div className="mt-3 pt-2 border-t border-text-muted/20">
-                      <span className="text-xs text-text-muted/50 font-mono">{currentResult.question.id}</span>
+                      <span className="text-xs text-text-muted/70 font-mono">{currentResult.question.id}</span>
                     </div>
                   </div>
                 )
@@ -562,7 +561,7 @@ export function DomainPractice() {
 
             {/* Question ID */}
             <div className="mt-3 pt-2 border-t border-text-muted/20">
-              <span className="text-xs text-text-muted/50 font-mono">{currentQuestion.id}</span>
+              <span className="text-xs text-text-muted/70 font-mono">{currentQuestion.id}</span>
             </div>
           </div>
 

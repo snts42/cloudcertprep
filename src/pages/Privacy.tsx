@@ -22,7 +22,7 @@ export function Privacy() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Who we are</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                CloudCertPrep is a free AWS Cloud Practitioner (CLF-C02) exam preparation tool built and maintained by <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Alex Santonastaso</a>. You can reach us at <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 transition-colors">alex@santonastaso.codes</a>.
+                CloudCertPrep is a free AWS Cloud Practitioner (CLF-C02) exam preparation tool built and maintained by <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Alex Santonastaso</a>. You can reach us at <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a>.
               </p>
             </section>
 
@@ -81,14 +81,14 @@ export function Privacy() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Where data is stored</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                Authentication and database are handled by <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Supabase</a>, hosted on AWS infrastructure in the EU West region (Ireland). All data is encrypted at rest and in transit.
+                Authentication and database are handled by <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Supabase</a>, hosted on AWS infrastructure in the EU West region (Ireland). All data is encrypted at rest and in transit.
               </p>
             </section>
 
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Your rights and data deletion</h2>
               <p className="text-text-muted text-sm leading-relaxed mb-3">
-                You can request deletion of your account and all associated data at any time by emailing <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 transition-colors">alex@santonastaso.codes</a>. We will delete your data within 30 days.
+                You can request deletion of your account and all associated data at any time by emailing <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a>. We will delete your data within 30 days.
               </p>
               <p className="text-text-muted text-sm leading-relaxed">
                 If you are in the EU/EEA, you also have the right to access, correct, and port your data under GDPR. Contact us at the same address.
@@ -111,7 +111,7 @@ export function Privacy() {
 
             <div className="pt-4 border-t border-text-muted/20">
               <p className="text-text-muted text-sm">
-                Questions? Email <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 transition-colors">alex@santonastaso.codes</a> or read our <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 transition-colors">Terms of Service</Link>.
+                Questions? Email <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a> or read our <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>.
               </p>
             </div>
           </div>

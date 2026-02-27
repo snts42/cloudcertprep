@@ -1,0 +1,3630 @@
+[
+  {
+    "id": "q006",
+    "domainId": 4,
+    "question": "You have set up consolidated billing for several AWS accounts. One of the accounts has purchased a number of reserved instances for 3 years. Which of the following is true regarding this scenario?",
+    "options": {
+      "A": "The Reserved Instance discounts can only be shared with the master account.",
+      "B": "All accounts can receive the hourly cost benefit of the Reserved Instances.",
+      "C": "The purchased instances will have better performance than On-demand instances.",
+      "D": "There are no cost benefits from using consolidated billing; It is for informational purposes only."
+    },
+    "answer": "B",
+    "explanation": "With consolidated billing, Reserved Instance discounts are automatically shared across all accounts in the organization, so any account can benefit from the hourly cost savings.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q009",
+    "domainId": 4,
+    "question": "A company has an AWS Enterprise Support plan. They want quick and efficient guidance with their billing and account inquiries. Which of the following should the company use?",
+    "options": {
+      "A": "AWS Health Dashboard.",
+      "B": "AWS Support Concierge.",
+      "C": "AWS Customer Service.",
+      "D": "AWS Operations Support."
+    },
+    "answer": "B",
+    "explanation": "The AWS Support Concierge, available on the Enterprise plan, is a dedicated team specifically for billing and account inquiries, providing fast and personalized assistance.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q016",
+    "domainId": 4,
+    "question": "Which of the following helps a customer view the Amazon EC2 billing activity for the past month?",
+    "options": {
+      "A": "AWS Budgets.",
+      "B": "AWS Pricing Calculator.",
+      "C": "AWS Systems Manager.",
+      "D": "AWS Cost & Usage Reports."
+    },
+    "answer": "D",
+    "explanation": "AWS Cost & Usage Reports provide the most detailed and comprehensive breakdown of actual AWS spending, including EC2 billing activity, by time period and resource.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q017",
+    "domainId": 4,
+    "question": "What do you gain from setting up consolidated billing for five different AWS accounts under another master account?",
+    "options": {
+      "A": "AWS services’ costs will be reduced to half the original price.",
+      "B": "The consolidated billing feature is just for organizational purpose.",
+      "C": "Each AWS account gets volume discounts.",
+      "D": "Each AWS account gets five times the free-tier services capacity."
+    },
+    "answer": "C",
+    "explanation": "Consolidated billing aggregates usage across all accounts, which can push the combined usage into higher volume tiers and unlock volume discounts that individual accounts would not reach on their own.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q020",
+    "domainId": 4,
+    "question": "A startup company is operating on limited funds and is extremely concerned about cost overruns. Which of the below options can be used to notify the company when their monthly AWS bill exceeds $2000? (Choose TWO)",
+    "options": {
+      "A": "Setup a CloudWatch billing alarm that triggers an SNS notification when the threshold is exceeded.",
+      "B": "Configure the Amazon Simple Email Service to send billing alerts to their email address on a daily basis.",
+      "C": "Configure the AWS Budgets Service to alert the company when the threshold is exceeded.",
+      "D": "Configure AWS CloudTrail to automatically delete all AWS resources when the threshold is exceeded.",
+      "E": "Configure the Amazon Connect Service to alert the company when the threshold is exceeded."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "A CloudWatch billing alarm triggers an SNS notification when costs exceed a set threshold, and AWS Budgets lets you set custom cost thresholds with automatic alerts — both are native AWS tools for cost monitoring.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q028",
+    "domainId": 4,
+    "question": "You want to run a questionnaire application for only one day (without interruption), which Amazon EC2 purchase option should you use?",
+    "options": {
+      "A": "Reserved instances.",
+      "B": "Spot instances.",
+      "C": "Dedicated instances.",
+      "D": "On-demand instances."
+    },
+    "answer": "D",
+    "explanation": "On-Demand instances let you run workloads for any duration without long-term commitments or interruptions, making them ideal for short, one-time tasks where continuous availability is required.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q029",
+    "domainId": 4,
+    "question": "You are working on a project that involves creating thumbnails of millions of images. Consistent uptime is not an issue, and continuous processing is not required. Which EC2 buying option would be the most cost-effective?",
+    "options": {
+      "A": "Reserved Instances.",
+      "B": "On-demand Instances.",
+      "C": "Dedicated Instances.",
+      "D": "Spot Instances."
+    },
+    "answer": "D",
+    "explanation": "Spot Instances use spare AWS capacity at steep discounts and are perfect for fault-tolerant batch jobs like image processing, where interruptions are acceptable and uptime is not critical.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q034",
+    "domainId": 4,
+    "question": "As part of the Enterprise support plan, who is the primary point of contact for ongoing support needs?",
+    "options": {
+      "A": "AWS Identity and Access Management (IAM) user.",
+      "B": "Infrastructure Event Management (IEM) engineer.",
+      "C": "AWS Consulting Partners.",
+      "D": "Technical Account Manager (TAM)."
+    },
+    "answer": "D",
+    "explanation": "The Technical Account Manager (TAM) is included in the Enterprise Support plan as the primary dedicated contact who provides proactive guidance and coordinates AWS support across your account.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q035",
+    "domainId": 4,
+    "question": "How can you view the distribution of AWS spending in one of your AWS accounts?",
+    "options": {
+      "A": "By using Amazon VPC console.",
+      "B": "By contacting the AWS Support team.",
+      "C": "By using AWS Cost Explorer.",
+      "D": "By contacting the AWS Finance team."
+    },
+    "answer": "C",
+    "explanation": "AWS Cost Explorer provides interactive charts and reports that visualize your AWS spending patterns over time, broken down by service, account, or tag.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q050",
+    "domainId": 4,
+    "question": "An organization has decided to purchase an Amazon EC2 Reserved Instance (RI) for three years in order to reduce costs. It is possible that the application workloads could change during the reservation period. What is the EC2 Reserved Instance (RI) type that will allow the company to exchange the purchased reserved instance for another reserved instance with higher computing power if they need to?",
+    "options": {
+      "A": "Elastic RI.",
+      "B": "Premium RI.",
+      "C": "Standard RI.",
+      "D": "Convertible RI."
+    },
+    "answer": "D",
+    "explanation": "Convertible Reserved Instances allow you to exchange your reservation for one with different attributes (instance type, OS, tenancy) during the term, providing flexibility when workload requirements change.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q052",
+    "domainId": 4,
+    "question": "Which of the following Reserved Instance (RI) pricing models provides the highest average savings compared to On-Demand pricing?",
+    "options": {
+      "A": "One-year, No Upfront, Standard RI pricing.",
+      "B": "One-year, All Upfront, Convertible RI pricing.",
+      "C": "Three-year, All Upfront, Standard RI pricing.",
+      "D": "Three-year, No Upfront, Convertible RI pricing."
+    },
+    "answer": "C",
+    "explanation": "Three-year All Upfront Standard RIs combine the longest commitment term with full prepayment and the Standard (non-convertible) type, which together yield the deepest discount compared to On-Demand pricing.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q059",
+    "domainId": 4,
+    "question": "Which of the following BEST describe the AWS pricing model? (Select TWO)",
+    "options": {
+      "A": "Fixed-term.",
+      "B": "Pay-as-you-go.",
+      "C": "Colocation.",
+      "D": "Planned.",
+      "E": "Variable cost."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "AWS pricing is pay-as-you-go (you pay only for what you use) and variable cost (costs fluctuate with usage). There are no fixed terms required, no colocation fees, and no mandatory upfront plans.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q061",
+    "domainId": 4,
+    "question": "A customer is using multiple AWS accounts with separate billing. How can the customer take advantage of volume discounts with minimal impact to the AWS resources?",
+    "options": {
+      "A": "Create one global AWS account and move all AWS resources to that account.",
+      "B": "Sign up for three years of Reserved Instance pricing up front.",
+      "C": "Use the consolidated billing feature from AWS Organizations.",
+      "D": "Sign up for the AWS Enterprise support plan to get volume discounts."
+    },
+    "answer": "C",
+    "explanation": "AWS Organizations consolidated billing aggregates usage across all member accounts, qualifying the organization for volume pricing tiers without requiring resource consolidation or upfront RI commitments.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q062",
+    "domainId": 4,
+    "question": "Which Amazon EC2 pricing model offers the MOST significant discount when compared to OnDemand Instances?",
+    "options": {
+      "A": "A Partial Upfront Reserved Instances for a 1-year term.",
+      "B": "All Upfront Reserved instances for a 1 year form.",
+      "C": "All Upfront Reserved Instances for a 3 year term.",
+      "D": "No Upfront Reserved Instances for a 3 year term."
+    },
+    "answer": "C",
+    "explanation": "All Upfront Reserved Instances for a 3-year term provide the maximum possible EC2 discount because you combine the longest commitment (3 years) with full prepayment, unlike shorter terms or partial/no upfront options.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q066",
+    "domainId": 4,
+    "question": "Which benefits are included with the AWS Business Support plan? (Select TWO)",
+    "options": {
+      "A": "24/7 assistance by way of live chat or a telephone call.",
+      "B": "Support from a dedicated AWS Technical Account Manager.",
+      "C": "An unlimited number of cases and contacts.",
+      "D": "15-minute response time for production system interruption cases.",
+      "E": "Annual operational reviews with AWS Solutions Architects."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS Business Support includes 24/7 access to Cloud Support Engineers via phone, email, and chat, plus an unlimited number of support cases and contacts. A dedicated TAM and annual operational reviews are Enterprise-only features.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q068",
+    "domainId": 4,
+    "question": "A user must meet compliance and software licensing requirements that state a workload must be hosted on a physical server. When Amazon EC2 instance pricing option will meet these requirements?",
+    "options": {
+      "A": "Dedicated Hosts.",
+      "B": "Dedicated Instances.",
+      "C": "Spot Instances.",
+      "D": "Reserved Instances."
+    },
+    "answer": "A",
+    "explanation": "EC2 Dedicated Hosts give you a physical server dedicated to your use, which is required for server-bound software licensing (BYOL) and certain compliance requirements. Dedicated Instances run on dedicated hardware but don't give visibility into the specific host.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q069",
+    "domainId": 4,
+    "question": "Which of the Reserved Instance (RI) pricing models can change the attributes of the RI as long as the exchange results in the creation of RIs of equal or greater value?",
+    "options": {
+      "A": "Dedicated RIs.",
+      "B": "Scheduled RIs.",
+      "C": "Convertible RIs.",
+      "D": "Standard RIs."
+    },
+    "answer": "C",
+    "explanation": "Convertible RIs allow you to exchange them for other Convertible RIs of equal or greater value, letting you change instance family, OS, tenancy, or payment option over the term. Standard RIs cannot be exchanged.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q071",
+    "domainId": 4,
+    "question": "When should a company consider using Amazon EC2 Spot Instances? (Select TWO)",
+    "options": {
+      "A": "For non-production applications.",
+      "B": "For stateful workloads.",
+      "C": "For applications that cannot have interruptions.",
+      "D": "For fault-tolerant flexible applications.",
+      "E": "For sensitive database applications."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Spot Instances are best for non-production applications that can tolerate interruptions and for fault-tolerant, flexible workloads that can checkpoint and resume. Stateful, high-uptime, or sensitive database workloads should not use Spot.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q072",
+    "domainId": 4,
+    "question": "Which AWS tools assist with estimating costs? (Select three)",
+    "options": {
+      "A": "Detailed billing report.",
+      "B": "Cost allocation tags.",
+      "C": "AWS Simple Monthly Calculator.",
+      "D": "AWS Total Cost of Ownership (TCO) Calculator.",
+      "E": "Cost Estimator."
+    },
+    "answer": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "Cost allocation tags let you label resources and break down costs by project or team. The AWS Simple Monthly Calculator estimates service costs before provisioning. The TCO Calculator compares on-premises vs. AWS costs. Detailed billing reports show past costs but are not estimation tools.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q074",
+    "domainId": 4,
+    "question": "Which is the minimum AWS Support plan that includes Infrastructure Event Management without additional costs?",
+    "options": {
+      "A": "Enterprise.",
+      "B": "Business.",
+      "C": "Developer.",
+      "D": "Basic."
+    },
+    "answer": "A",
+    "explanation": "Infrastructure Event Management (IEM) is included at no extra cost only with the Enterprise Support plan. Business plan customers can purchase IEM for an additional fee.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q080",
+    "domainId": 4,
+    "question": "A user wants guidance on possible savings when migrating from on-premises to AWS. Which tool is suitable for this scenario?",
+    "options": {
+      "A": "AWS Budgets.",
+      "B": "Cost Explorer.",
+      "C": "AWS Total Cost of Ownership (TCO) Calculator.",
+      "D": "AWS Well-Architected Tool."
+    },
+    "answer": "C",
+    "explanation": "The AWS TCO Calculator is designed specifically to compare total cost of ownership between on-premises infrastructure and AWS, helping users understand potential savings from migration.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q082",
+    "domainId": 4,
+    "question": "The use of what AWS feature or service allows companies to track and categorize spending on a detailed level?",
+    "options": {
+      "A": "Cost allocation tags.",
+      "B": "Consolidated billing.",
+      "C": "AWS Budgets.",
+      "D": "AWS Marketplace."
+    },
+    "answer": "A",
+    "explanation": "Cost allocation tags are key-value labels attached to AWS resources that enable you to organize and track spending at a granular level by project, team, or environment in Cost Explorer and billing reports.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q092",
+    "domainId": 4,
+    "question": "Which AWS support plan includes a dedicated Technical Account Manager?",
+    "options": {
+      "A": "Developer.",
+      "B": "Enterprise.",
+      "C": "Business.",
+      "D": "Basic."
+    },
+    "answer": "B",
+    "explanation": "A dedicated Technical Account Manager (TAM) who provides proactive guidance and acts as a primary contact is exclusively available with the AWS Enterprise Support plan.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q097",
+    "domainId": 4,
+    "question": "A customer would like to design and build a new workload on AWS Cloud but does not have the AWS-related software technical expertise in-house. Which of the following AWS programs can a customer take advantage of to achieve that outcome?",
+    "options": {
+      "A": "AWS Partner Network Technology Partners.",
+      "B": "AWS Marketplace.",
+      "C": "AWS Partner Network Consulting Partners.",
+      "D": "AWS Service Catalog."
+    },
+    "answer": "C",
+    "explanation": "AWS Partner Network (APN) Consulting Partners are professional services firms that help customers design, build, migrate, and manage AWS workloads. Technology Partners provide software/tools; the Marketplace is for purchasing software.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q101",
+    "domainId": 4,
+    "question": "How can a company reduce its Total Cost of Ownership (TCO) using AWS?",
+    "options": {
+      "A": "By minimizing large capital expenditures.",
+      "B": "By having no responsibility for third-party license costs.",
+      "C": "By having no operational expenditures.",
+      "D": "By having AWS manage applications."
+    },
+    "answer": "A",
+    "explanation": "AWS shifts infrastructure spending from large upfront capital expenditures (buying servers) to smaller, ongoing operational expenses (paying for usage), directly reducing TCO by eliminating the need to over-provision for peak demand.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q106",
+    "domainId": 4,
+    "question": "Which of the following are advantages of AWS consolidated billing? (Select TWO)",
+    "options": {
+      "A": "The ability to receive one bill for multiple accounts.",
+      "B": "Service limits increasing by default in all accounts.",
+      "C": "A fixed discount on the monthly bill.",
+      "D": "Potential volume discounts, as usage in all accounts is combined.",
+      "E": "The automatic extension of the master account’s AWS support plan to all accounts."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Consolidated billing produces a single combined invoice for all accounts in an AWS Organization, and it pools usage across all accounts to qualify for volume pricing tiers. Support plans are not shared, service limits are not automatically increased, and discounts are not fixed.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q110",
+    "domainId": 4,
+    "question": "Which is the MINIMUM AWS Support plan that allows for one-hour target response time for support cases?",
+    "options": {
+      "A": "Enterprise.",
+      "B": "Business.",
+      "C": "Developer",
+      "D": "Basic"
+    },
+    "answer": "B",
+    "explanation": "AWS Business Support guarantees a one-hour response time for production system-down cases and provides 24/7 phone, email, and chat access. Developer Support offers business-hours email only; Basic has no case support; Enterprise offers faster response but at higher cost.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q111",
+    "domainId": 4,
+    "question": "What is the lowest-cost, durable storage option for retaining database backups for immediate retrieval?",
+    "options": {
+      "A": "Amazon S3.",
+      "B": "Amazon Glacier.",
+      "C": "Amazon EBS.",
+      "D": "Amazon EC2 Instance Store."
+    },
+    "answer": "A",
+    "explanation": "Amazon S3 Standard provides durable, highly available object storage with immediate retrieval, and is more cost-effective than EBS for backup storage. Glacier requires retrieval time (minutes to hours); EC2 instance store is ephemeral and disappears when the instance stops.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q113",
+    "domainId": 4,
+    "question": "A company needs 24/7 phone email and chat access with a response time of less than 1 hour if a production system has a service interruption Which AWS Support plan meets these requirements at the LOWEST cost?",
+    "options": {
+      "A": "Basic.",
+      "B": "Developer.",
+      "C": "Business.",
+      "D": "Enterprise."
+    },
+    "answer": "C",
+    "explanation": "AWS Business Support is the lowest-cost plan that provides 24/7 phone, email, and chat access with a one-hour response SLA for production system interruptions. Developer Support only offers business-hours email; Basic has no technical case support.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q115",
+    "domainId": 4,
+    "question": "How does AWS Trusted Advisor provide guidance to users of the AWS Cloud? (Select TWO)",
+    "options": {
+      "A": "It identifies software vulnerabilities in applications running on AWS.",
+      "B": "It provides a list of cost optimization recommendations based on current AWS usage.",
+      "C": "It detects potential security vulnerabilities caused by permissions settings on account resources.",
+      "D": "It automatically corrects potential security issues caused by permissions settings on account resources.",
+      "E": "It provides proactive alerting whenever an Amazon EC2 instance has been compromised."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "Trusted Advisor analyzes your AWS environment and provides cost optimization recommendations based on current usage patterns, and it flags potential security issues caused by overly permissive IAM or resource settings. It does not automatically remediate issues or alert on compromised instances.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q123",
+    "domainId": 4,
+    "question": "Which of the following is an advantage of consolidated billing on AWS?",
+    "options": {
+      "A": "Volume pricing qualification.",
+      "B": "Shared access permissions.",
+      "C": "Multiple bills per account.",
+      "D": "Eliminates the need for tagging."
+    },
+    "answer": "A",
+    "explanation": "Consolidated billing combines usage from all member accounts in an AWS Organization, qualifying the organization for volume pricing tiers (e.g., S3 storage discounts) that individual accounts might not reach on their own. It does not share permissions, create multiple bills, or eliminate the need for tags.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q125",
+    "domainId": 4,
+    "question": "Which of the following Amazon EC2 pricing models allow customers to use existing server-bound software licenses?",
+    "options": {
+      "A": "Spot Instances.",
+      "B": "Reserved Instances.",
+      "C": "Dedicated Hosts.",
+      "D": "On-Demand Instances."
+    },
+    "answer": "C",
+    "explanation": "EC2 Dedicated Hosts provide a physical server dedicated to your use, which is required to use existing per-socket, per-core, or per-VM software licenses (BYOL). Spot, Reserved, and On-Demand all run on shared or unspecified hardware and do not support license binding to specific physical hosts.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q131",
+    "domainId": 4,
+    "question": "AWS Enterprise Support users have access to which service or feature that is not available to users with other AWS Support plans?",
+    "options": {
+      "A": "AWS Trusted Advisor.",
+      "B": "AWS Support case.",
+      "C": "Concierge team.",
+      "D": "Amazon Connect."
+    },
+    "answer": "C",
+    "explanation": "The AWS Support Concierge team—dedicated billing and account experts who provide personalized guidance—is available exclusively to Enterprise Support customers. Trusted Advisor and support cases are available on lower-tier plans; Amazon Connect is a contact center service.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q133",
+    "domainId": 4,
+    "question": "When performing a cost analysis that supports physical isolation of a customer workload, which compute hosting model should be accounted for in the Total Cost of Ownership (TCO)?",
+    "options": {
+      "A": "Dedicated Hosts",
+      "B": "Reserved Instances",
+      "C": "On-Demand Instances",
+      "D": "No Upfront Reserved Instances"
+    },
+    "answer": "A",
+    "explanation": "EC2 Dedicated Hosts provide physical isolation of the workload on a server dedicated entirely to one customer, which is required for certain compliance mandates or licensing models. This hosting model has a higher cost that must be factored into TCO calculations.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q134",
+    "domainId": 4,
+    "question": "Which AWS service should be used for long-term, low-cost storage of data backups?",
+    "options": {
+      "A": "Amazon RDS.",
+      "B": "Amazon Glacier.",
+      "C": "AWS Snowball.",
+      "D": "AWS EBS."
+    },
+    "answer": "B",
+    "explanation": "Amazon S3 Glacier is designed for long-term archival and data backup at very low storage costs, making it the ideal service for retaining backups cheaply. RDS is for active databases; Snowball is for data migration; EBS is block storage attached to EC2.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q135",
+    "domainId": 4,
+    "question": "Which is the MINIMUM AWS Support plan that provides technical support through phone calls?",
+    "options": {
+      "A": "Enterprise.",
+      "B": "Business.",
+      "C": "Developer.",
+      "D": "Basic."
+    },
+    "answer": "B",
+    "explanation": "AWS Business Support is the minimum plan that includes 24/7 phone support with a dedicated team of Cloud Support Engineers. Developer Support only provides email during business hours; Basic has no technical phone or case support.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q136",
+    "domainId": 4,
+    "question": "Which Amazon EC2 instance pricing model can provide discounts of up to 90%?",
+    "options": {
+      "A": "Reserved Instances.",
+      "B": "On-Demand.",
+      "C": "Dedicated Hosts.",
+      "D": "Spot Instances."
+    },
+    "answer": "D",
+    "explanation": "Spot Instances use spare AWS capacity and can offer discounts of up to 90% compared to On-Demand prices. Reserved Instances offer up to ~72% discount; On-Demand is the baseline price; Dedicated Hosts typically cost more than standard options.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q139",
+    "domainId": 4,
+    "question": "A company is planning to migrate from on-premises to the AWS Cloud. When AWS tool or service provides detailed reports on estimated cost savings after migration?",
+    "options": {
+      "A": "AWS Total Cost of Ownership (TCO) Calculator.",
+      "B": "Cost Explorer.",
+      "C": "AWS Budgets.",
+      "D": "AWS Migration Hub."
+    },
+    "answer": "A",
+    "explanation": "The AWS TCO Calculator is specifically designed to model and compare the total cost of on-premises vs. AWS deployments, producing detailed reports on estimated savings from migration. Cost Explorer and Budgets track actual spending; Migration Hub tracks migration progress.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q142",
+    "domainId": 4,
+    "question": "How can an AWS user with an AWS Basic Support plan obtain technical assistance from AWS?",
+    "options": {
+      "A": "AWS Senior Support Engineers.",
+      "B": "AWS Technical Account Managers.",
+      "C": "AWS Trusted Advisor.",
+      "D": "AWS Discussion Forums."
+    },
+    "answer": "D",
+    "explanation": "AWS Basic Support includes access to AWS documentation, whitepapers, and community Discussion Forums where other users and AWS staff may respond to questions. TAMs are Enterprise-only; Senior Support Engineers are Business/Enterprise-only; Trusted Advisor is limited to basic checks on the free plan.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q145",
+    "domainId": 4,
+    "question": "In which scenario should Amazon EC2 Spot Instances be used?",
+    "options": {
+      "A": "A company wants to move its main website to AWS from an on-premises web server.",
+      "B": "A company has a number of application services whose Service Level Agreement (SLA) requires 99.999% uptime.",
+      "C": "A company’s heavily used legacy database is currently running on-premises.",
+      "D": "A company has a number of infrequent, interruptible jobs that are currently using On-Demand Instances."
+    },
+    "answer": "D",
+    "explanation": "Spot Instances are ideal for flexible, interruptible workloads that can tolerate being interrupted when capacity is reclaimed. High-availability services (99.999% SLA), production websites, and legacy databases all require consistent availability that Spot Instances cannot guarantee.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q152",
+    "domainId": 4,
+    "question": "One benefit of On-Demand Amazon Elastic Compute Cloud (Amazon EC2) pricing is:",
+    "options": {
+      "A": "The ability to bid for a lower hourly cost.",
+      "B": "Paying a daily rate regardless of time used.",
+      "C": "Paying only for time used.",
+      "D": "Pre-paying for instances and paying a lower hourly rate."
+    },
+    "answer": "C",
+    "explanation": "On-Demand pricing means you pay only for the compute time you actually use, with no upfront costs or long-term commitments. Bidding is a Spot Instance feature; daily rate billing and pre-payment are characteristics of other pricing models.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q157",
+    "domainId": 4,
+    "question": "A company is migrating an application that is running non-interruptible workloads for a three-year time frame. Which pricing construct would provide the MOST cost-effective solution?",
+    "options": {
+      "A": "Amazon EC2 Spot Instances.",
+      "B": "Amazon EC2 Dedicated Instances.",
+      "C": "Amazon EC2 On-Demand Instances.",
+      "D": "Amazon EC2 Reserved Instances."
+    },
+    "answer": "D",
+    "explanation": "For steady-state, non-interruptible workloads running over a three-year period, Reserved Instances offer the largest discount (up to ~72%) compared to On-Demand. Spot Instances can be interrupted; On-Demand has no discount; Dedicated Instances are for isolation, not cost savings.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q160",
+    "domainId": 4,
+    "question": "How can one AWS account use Reserved Instances from another AWS account?",
+    "options": {
+      "A": "By using Amazon EC2 Dedicated Instances.",
+      "B": "By using AWS Organizations consolidated billing.",
+      "C": "By using the AWS Cost Explorer tool.",
+      "D": "By using AWS Budgets."
+    },
+    "answer": "B",
+    "explanation": "AWS Organizations consolidated billing pools Reserved Instance usage across all member accounts, so unused RIs in one account can automatically apply to matching usage in another, reducing costs across the organization. Cost Explorer, Budgets, and Dedicated Instances don't facilitate RI sharing between accounts.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q167",
+    "domainId": 4,
+    "question": "Which Amazon EC2 pricing model adjusts based on supply and demand of EC2 instances?",
+    "options": {
+      "A": "On-Demand Instances.",
+      "B": "Reserved Instances.",
+      "C": "Spot Instances.",
+      "D": "Convertible Reserved Instances."
+    },
+    "answer": "C",
+    "explanation": "Spot Instance pricing fluctuates in real time based on the available supply of spare EC2 capacity and customer demand, which can result in prices up to 90% lower than On-Demand. On-Demand and Reserved Instance prices are set by AWS and do not fluctuate with supply and demand.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q176",
+    "domainId": 4,
+    "question": "Compared with costs in traditional and virtualized data centers, AWS has:",
+    "options": {
+      "A": "Greater variable costs and greater upfront costs.",
+      "B": "Fixed usage costs and lower upfront costs.",
+      "C": "Lower variable costs and greater upfront costs.",
+      "D": "Lower variable costs and lower upfront costs."
+    },
+    "answer": "D",
+    "explanation": "AWS leverages economies of scale and a shared infrastructure model to deliver lower variable costs per unit than traditional or virtualized data centers, and its pay-as-you-go model eliminates large upfront capital costs—resulting in both lower variable costs and lower upfront costs.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q180",
+    "domainId": 4,
+    "question": "How should a customer forecast the future costs for running a new web application?",
+    "options": {
+      "A": "Amazon Aurora Backtrack.",
+      "B": "Amazon CloudWatch Billing Alarms.",
+      "C": "AWS Simple Monthly Calculator.",
+      "D": "AWS Cost and Usage report."
+    },
+    "answer": "C",
+    "explanation": "The AWS Simple Monthly Calculator (now superseded by the AWS Pricing Calculator) allows customers to model and estimate future costs for AWS services before deploying them. CloudWatch Billing Alarms alert on actual spend; Cost and Usage Reports show historical costs; Aurora Backtrack is a database point-in-time restore feature.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q191",
+    "domainId": 4,
+    "question": "Which of the following are advantages of AWS consolidated billing? (Choose two)",
+    "options": {
+      "A": "The ability to receive one bill for multiple accounts.",
+      "B": "Service limits increasing by default in all accounts.",
+      "C": "A fixed discount on the monthly bill.",
+      "D": "Potential volume discounts, as usage in all accounts is combined.",
+      "E": "The automatic extension of the master account’s AWS support plan to all accounts."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Consolidated billing generates a single invoice for all accounts in an AWS Organization, and it combines usage across all accounts to qualify for volume pricing tiers. It does not automatically increase service limits, provide fixed discounts, or extend support plans to member accounts.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q192",
+    "domainId": 4,
+    "question": "A company is considering using AWS for a self-hosted database that requires a nightly shutdown for maintenance and cost-saving purposes. Which service should the company use?",
+    "options": {
+      "A": "Amazon Redshift.",
+      "B": "Amazon DynamoDB.",
+      "C": "Amazon Elastic Compute Cloud (Amazon EC2) with Amazon EC2 instance store.",
+      "D": "Amazon EC2 with Amazon Elastic Block Store (Amazon EBS)."
+    },
+    "answer": "D",
+    "explanation": "EC2 with EBS is the right choice because EBS volumes persist independently from the instance—when the instance is stopped nightly, the data on EBS is retained. EC2 instance store is ephemeral (data lost on stop); DynamoDB and Redshift are managed database services that can't be 'stopped' like an EC2 instance.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q193",
+    "domainId": 4,
+    "question": "A global company with a large number of AWS accounts is seeking a way in which they can centrally manage billing and security policies across all accounts. Which AWS Service will assist them in meeting these goals?",
+    "options": {
+      "A": "AWS Organizations.",
+      "B": "AWS Trusted Advisor.",
+      "C": "IAM User Groups.",
+      "D": "AWS Config."
+    },
+    "answer": "A",
+    "explanation": "AWS Organizations provides centralized management of multiple AWS accounts, including consolidated billing and the ability to apply Service Control Policies (SCPs) as security guardrails across all accounts. Trusted Advisor advises within a single account; IAM User Groups and Config operate at the account level.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q195",
+    "domainId": 4,
+    "question": "A company is concerned that they are spending money on underutilized compute resources in AWS. Which AWS feature will help ensure that their applications are automatically adding/removing EC2 compute capacity to closely match the required demand?",
+    "options": {
+      "A": "AWS Elastic Load Balancer.",
+      "B": "AWS Budgets.",
+      "C": "AWS Auto Scaling.",
+      "D": "AWS Cost Explorer."
+    },
+    "answer": "C",
+    "explanation": "AWS Auto Scaling monitors application metrics and automatically adjusts the number of EC2 instances to match demand, ensuring you're not paying for idle capacity. ELB distributes traffic but doesn't change instance count; Budgets and Cost Explorer are financial management tools.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q198",
+    "domainId": 4,
+    "question": "Which of the following is NOT correct regarding Amazon EC2 On-demand instances?",
+    "options": {
+      "A": "You have to pay a start-up fee when launching a new instance for the first time.",
+      "B": "The on-demand instances follow the AWS pay-as-you-go pricing model.",
+      "C": "With on-demand instances, no longer-term commitments or upfront payments are needed.",
+      "D": "When using on-demand Linux instances, you are charged per second based on an hourly rate."
+    },
+    "answer": "A",
+    "explanation": "On-Demand EC2 instances have no start-up fee—you simply pay for the compute time you use with no upfront charges. On-Demand instances follow pay-as-you-go pricing, require no commitments, and Linux instances are billed per second.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q201",
+    "domainId": 4,
+    "question": "A company is introducing a new product to their customers, and is expecting a surge in traffic to their web application. As part of their Enterprise Support plan, which of the following provides the company with architectural and scaling guidance?",
+    "options": {
+      "A": "AWS Knowledge Center.",
+      "B": "AWS Health Dashboard.",
+      "C": "Infrastructure Event Management.",
+      "D": "AWS Support Concierge Service."
+    },
+    "answer": "C",
+    "explanation": "Infrastructure Event Management (IEM) is an Enterprise Support feature that provides architectural guidance and real-time support during planned events such as product launches and traffic spikes. AWS Knowledge Center and the Health Dashboard are self-service resources; the Concierge Service focuses on billing and account questions, not architectural scaling.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q214",
+    "domainId": 4,
+    "question": "Which of the following EC2 instance purchasing options supports the Bring Your Own License (BYOL) model for almost every BYOL scenario?",
+    "options": {
+      "A": "Dedicated Instances.",
+      "B": "Dedicated Hosts.",
+      "C": "On-demand Instances.",
+      "D": "Reserved Instances."
+    },
+    "answer": "B",
+    "explanation": "EC2 Dedicated Hosts provide a physical server dedicated entirely to your use with visibility into sockets and cores, which is required to bring existing per-socket or per-core software licenses (BYOL). Dedicated Instances run on dedicated hardware but without host-level visibility needed for most BYOL licensing. On-Demand and Reserved Instances run on shared infrastructure and do not support all BYOL scenarios.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q232",
+    "domainId": 4,
+    "question": "Which of the following procedures will help reduce your Amazon S3 costs?",
+    "options": {
+      "A": "Use the Import/Export feature to move old files automatically to Amazon Glacier.",
+      "B": "Use the right combination of storage classes based on different use cases.",
+      "C": "Pick the right Availability Zone for your S3 bucket.",
+      "D": "Move all the data stored in S3 standard to EBS."
+    },
+    "answer": "B",
+    "explanation": "Using the right S3 storage class for each use case (e.g., Standard for frequently accessed data, S3-IA for infrequent access, Glacier for archival) is the most effective way to reduce S3 costs. Import/Export is a legacy service; S3 availability zone selection does not directly reduce cost; moving data to EBS would increase costs.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q234",
+    "domainId": 4,
+    "question": "Which of the following activities may help reduce your AWS monthly costs?",
+    "options": {
+      "A": "Enabling Amazon EC2 Auto Scaling for all of your workloads.",
+      "B": "Using the AWS Network Load Balancer (NLB) to load balance the incoming HTTP requests.",
+      "C": "Removing all of your Cost Allocation Tags.",
+      "D": "Deploying your AWS resources across multiple Availability Zones."
+    },
+    "answer": "A",
+    "explanation": "EC2 Auto Scaling ensures you run only the capacity you need—scaling in during low demand and out during high demand—which directly reduces costs by eliminating over-provisioning. Network Load Balancer choice does not reduce costs; removing cost allocation tags reduces visibility, not cost; multi-AZ deployment improves availability but typically increases cost.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q245",
+    "domainId": 4,
+    "question": "Which of the following describes the payment model that AWS makes available for customers that can commit to using Amazon EC2 over a one or 3-year term to reduce their total computing costs?",
+    "options": {
+      "A": "Pay less as AWS grows.",
+      "B": "Pay as you go.",
+      "C": "Pay less by using more.",
+      "D": "Save when you reserve."
+    },
+    "answer": "D",
+    "explanation": "The AWS pricing construct for committing to EC2 usage over one or three years in exchange for reduced rates is called Reserved Instances and aligns with the principle of 'Save when you reserve.' 'Pay as you go' describes On-Demand; 'Pay less by using more' describes volume discounts; 'Pay less as AWS grows' describes long-term price reductions.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q246",
+    "domainId": 4,
+    "question": "A company is migrating its on-premises database to Amazon RDS. What should the company do to ensure Amazon RDS costs are kept to a minimum?",
+    "options": {
+      "A": "Right-size before and after migration.",
+      "B": "Use a Multi-Region Active-Passive architecture.",
+      "C": "Combine On-demand Capacity Reservations with Saving Plans.",
+      "D": "Use a Multi-Region Active-Active architecture."
+    },
+    "answer": "A",
+    "explanation": "Right-sizing—choosing the most appropriate instance type and size for your actual workload—both before migration (to plan correctly) and after (to tune based on real usage) is the most effective way to minimize RDS costs without sacrificing performance. Multi-Region active architectures and Capacity Reservations increase cost rather than minimize it.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q260",
+    "domainId": 4,
+    "question": "A company needs to host a database in Amazon RDS for at least three years. Which of the following options would be the most cost-effective solution?",
+    "options": {
+      "A": "Reserved instances     - No Upfront.",
+      "B": "Reserved instances     - Partial Upfront.",
+      "C": "On-Demand instances.",
+      "D": "Spot Instances."
+    },
+    "answer": "B",
+    "explanation": "For a three-year database commitment, Reserved Instances with Partial Upfront payment offers the best balance of discount depth and manageable cash flow—deeper than No Upfront RIs and more cost-effective than On-Demand over the full term. On-Demand has no discount; Spot Instances are not available for RDS; All Upfront would offer a slightly deeper discount but requires full prepayment.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q262",
+    "domainId": 4,
+    "question": "Savings Plans are available for which of the following AWS compute services? (Choose TWO)",
+    "options": {
+      "A": "AWS Batch.",
+      "B": "AWS Outposts.",
+      "C": "Amazon Lightsail.",
+      "D": "Amazon EC2.",
+      "E": "AWS Lambda."
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "AWS Savings Plans are flexible pricing models available for Amazon EC2 (Compute Savings Plans and EC2 Instance Savings Plans) and AWS Lambda, offering up to 66% savings over On-Demand in exchange for a one- or three-year usage commitment. AWS Batch, Outposts, and Lightsail are not covered by Savings Plans.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q272",
+    "domainId": 4,
+    "question": "How are AWS customers billed for Linux-based Amazon EC2 usage?",
+    "options": {
+      "A": "EC2 instances will be billed on one second increments, with a minimum of one minute.",
+      "B": "EC2 instances will be billed on one hour increments, with a minimum of one day.",
+      "C": "EC2 instances will be billed on one minute increments, with a minimum of one hour.",
+      "D": "EC2 instances will be billed on one day increments, with a minimum of one month."
+    },
+    "answer": "A",
+    "explanation": "Linux-based EC2 instances are billed per second of actual usage, with a minimum charge of one full minute. This granular billing model means short-lived workloads are not over-charged, unlike older hourly billing models.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q273",
+    "domainId": 4,
+    "question": "Which of the following will impact the price paid for an EC2 instance? (Choose TWO)",
+    "options": {
+      "A": "Instance type.",
+      "B": "The Availability Zone where the instance is provisioned.",
+      "C": "Load balancing.",
+      "D": "Number of buckets.",
+      "E": "Number of private IPs."
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "The EC2 instance type (size, family, and capabilities) determines the base rate, and the Availability Zone where the instance is provisioned can affect pricing because Spot Instance prices vary by AZ and some On-Demand regional prices differ. Load balancing, number of S3 buckets, and private IP addresses do not factor into EC2 instance pricing.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q275",
+    "domainId": 4,
+    "question": "A company uses AWS Organizations to manage all of its AWS accounts. Which of the following allows the company to restrict what services and actions are allowed in each individual account?",
+    "options": {
+      "A": "IAM Principals.",
+      "B": "AWS Service Control Policies (SCPs).",
+      "C": "IAM policies.",
+      "D": "AWS Fargate."
+    },
+    "answer": "B",
+    "explanation": "Service Control Policies (SCPs) in AWS Organizations are permission guardrails applied to accounts or organizational units that restrict which AWS services and actions are available within those accounts, even for root users. IAM Principals are entities (users, roles, groups); IAM policies grant permissions within an account; Fargate is a serverless container runtime.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q281",
+    "domainId": 4,
+    "question": "A company has developed a media transcoding application in AWS. The application is designed to recover quickly from hardware failures. Which one of the following types of instance would be the most cost-effective choice to use?",
+    "options": {
+      "A": "Reserved instances.",
+      "B": "Spot Instances.",
+      "C": "On-Demand instances.",
+      "D": "Dedicated instances."
+    },
+    "answer": "B",
+    "explanation": "Spot Instances are ideal for workloads that are fault-tolerant and can handle interruptions—such as media transcoding, which can checkpoint and resume. Since the application is designed to recover quickly from hardware failures, it tolerates interruptions, making Spot Instances the most cost-effective choice. Reserved Instances require a one-year minimum commitment; On-Demand and Dedicated Instances cost significantly more.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q286",
+    "domainId": 4,
+    "question": "Which AWS service provides cost-optimization recommendations?",
+    "options": {
+      "A": "AWS Trusted Advisor.",
+      "B": "AWS Pricing Calculator.",
+      "C": "Amazon QuickSight.",
+      "D": "AWS X-Ray."
+    },
+    "answer": "A",
+    "explanation": "AWS Trusted Advisor continuously analyzes your AWS environment and provides specific cost-optimization recommendations such as identifying underutilized EC2 instances, idle load balancers, and unattached EBS volumes. The Pricing Calculator estimates future costs; QuickSight is a business intelligence service; X-Ray traces application performance.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q288",
+    "domainId": 4,
+    "question": "What is one benefit and one drawback of buying a reserved EC2 instance? (Select TWO)",
+    "options": {
+      "A": "Instances can be shut down by AWS at any time with no notification.",
+      "B": "Reserved instances require at least a one-year pricing commitment.",
+      "C": "There is no additional charge for using dedicated instances.",
+      "D": "Reserved instances provide a significant discount compared to on-demand instances.",
+      "E": "Reserved instances are best suited for periodic workloads."
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Reserved Instances require a minimum one-year commitment (or three years), which is the primary drawback for teams that need flexibility. The key benefit is a significant discount (up to ~72%) compared to On-Demand pricing. Spot Instances (not RIs) can be interrupted by AWS; Dedicated Instances have additional charges; RIs are best suited for steady-state, not periodic, workloads.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q290",
+    "domainId": 4,
+    "question": "What is the most cost-effective purchasing option for running a set of EC2 instances that must always be available for a period of two months?",
+    "options": {
+      "A": "On-Demand Instances.",
+      "B": "Spot Instances.",
+      "C": "Reserved Instances     - All Upfront.",
+      "D": "Reserved Instances     - No Upfront."
+    },
+    "answer": "A",
+    "explanation": "For a workload that must always be available but only for two months, On-Demand Instances are the best choice—you pay only for what you use with no commitment. Spot Instances can be interrupted, violating the 'always available' requirement. Reserved Instances (one- or three-year terms) would cost more over just two months because the commitment term far exceeds the workload duration.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q299",
+    "domainId": 4,
+    "question": "A company plans to migrate a large amount of archived data to AWS. The archived data must be maintained for a period of 5 years and must be retrievable within 5 hours of a request. What is the most cost-effective AWS storage service to use?",
+    "options": {
+      "A": "Amazon S3 Glacier.",
+      "B": "Amazon EFS.",
+      "C": "Amazon S3 Standard.",
+      "D": "Amazon EBS."
+    },
+    "answer": "A",
+    "explanation": "Amazon S3 Glacier provides low-cost archival storage with retrieval options including Expedited (1–5 minutes), Standard (3–5 hours), and Bulk (5–12 hours). For a five-hour retrieval requirement, S3 Glacier Standard retrieval meets the SLA at the lowest cost. EFS and S3 Standard are more expensive for infrequently accessed data; EBS is block storage attached to EC2, not archival.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q301",
+    "domainId": 4,
+    "question": "Which support plan includes AWS Support Concierge Service?",
+    "options": {
+      "A": "Premium Support.",
+      "B": "Business Support.",
+      "C": "Enterprise Support.",
+      "D": "Standard Support."
+    },
+    "answer": "C",
+    "explanation": "The AWS Support Concierge is a dedicated billing and account expert available exclusively to Enterprise Support plan customers, providing personalized assistance with billing inquiries and account best practices.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q309",
+    "domainId": 4,
+    "question": "How can AWS customers track and avoid over-spending on underutilized reserved instances?",
+    "options": {
+      "A": "Customers can add all AWS accounts to an AWS Organization, enable Consolidated Billing, and turn off Reserved Instance sharing.",
+      "B": "Customers can use Amazon Neptune to track and analyze their usage patterns, detect underutilized reserved instances, and then sell them on the Amazon EC2 Reserved Instance Marketplace.",
+      "C": "Customers can use the AWS Budgets service to track the reserved instances usage and set up alert notifications when their utilization drops below the threshold that they define.",
+      "D": "Customers can use Amazon CloudTrail to automatically check for unused reservations and get recommendations to reduce their bill."
+    },
+    "answer": "C",
+    "explanation": "AWS Budgets lets you set custom utilization thresholds for Reserved Instances and sends alert notifications when utilization drops below your defined level, helping you identify and address underutilized reservations.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q314",
+    "domainId": 4,
+    "question": "A company is trying to analyze the costs applied to their AWS account recently. Which of the following provides them the most granular data about their AWS costs and usage?",
+    "options": {
+      "A": "Amazon Machine Image.",
+      "B": "AWS Cost Explorer.",
+      "C": "AWS Cost & Usage Report.",
+      "D": "Amazon CloudWatch."
+    },
+    "answer": "C",
+    "explanation": "AWS Cost & Usage Reports provide the most granular data available about AWS costs, breaking down charges by hour, service, resource, and tags for detailed analysis and auditing.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q327",
+    "domainId": 4,
+    "question": "What is the framework created by AWS Professional Services that helps organizations design a road map to successful cloud adoption?",
+    "options": {
+      "A": "AWS Secrets Manager.",
+      "B": "AWS WAF.",
+      "C": "AWS CAF.",
+      "D": "Amazon EFS."
+    },
+    "answer": "C",
+    "explanation": "The AWS Cloud Adoption Framework (CAF) is a guidance framework created by AWS Professional Services that helps organizations plan and execute their cloud adoption journey across six perspectives: Business, People, Governance, Platform, Security, and Operations.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q334",
+    "domainId": 4,
+    "question": "AWS recommends some practices to help organizations avoid unexpected charges on their bill. Which of the following is NOT one of these practices?",
+    "options": {
+      "A": "Deleting unused EBS volumes after terminating an EC2instance.",
+      "B": "Deleting unused AutoScaling launch configuration.",
+      "C": "Deleting unused Elastic Load Balancers.",
+      "D": "Releasing unused Elastic IPs after terminating an EC2instance."
+    },
+    "answer": "B",
+    "explanation": "Deleting unused Auto Scaling launch configurations does not generate AWS charges, so it is not a cost-saving practice. In contrast, unused EBS volumes, Elastic Load Balancers, and Elastic IPs all incur ongoing charges that should be cleaned up.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q335",
+    "domainId": 4,
+    "question": "What is the AWS tool that can help a company visualize their AWS spending in the last few months?",
+    "options": {
+      "A": "AWS Cost Explorer.",
+      "B": "AWS Pricing Calculator.",
+      "C": "AWS Budgets.",
+      "D": "AWS Consolidated Billing."
+    },
+    "answer": "A",
+    "explanation": "AWS Cost Explorer provides interactive visualizations of your AWS spending over time, allowing you to filter by service, account, tag, or time period to identify trends and anomalies.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q339",
+    "domainId": 4,
+    "question": "One of the major advantages of using AWS is cost savings. What does AWS provide to reduce the cost of running Amazon EC2 instances?",
+    "options": {
+      "A": "Low monthly instance maintenance costs.",
+      "B": "Low-cost instance tagging.",
+      "C": "Per-second instance billing.",
+      "D": "Low instance start-up fees."
+    },
+    "answer": "C",
+    "explanation": "Amazon EC2 offers per-second billing (with a one-minute minimum), so customers pay only for the exact compute time they use rather than rounding up to the nearest hour, directly reducing costs.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q340",
+    "domainId": 4,
+    "question": "Which AWS Group assists customers in achieving their desired business outcomes?",
+    "options": {
+      "A": "AWS Security Team.",
+      "B": "AWS Professional Services.",
+      "C": "AWS Trusted Advisor.",
+      "D": "AWS Concierge Support Team."
+    },
+    "answer": "B",
+    "explanation": "AWS Professional Services is a team of experts that works directly with customers to help them achieve their desired business outcomes through cloud strategy, architecture guidance, and migration support.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q344",
+    "domainId": 4,
+    "question": "You decide to buy a reserved instance for a term of one year. Which option provides the largest total discount?",
+    "options": {
+      "A": "All up-front reservation.",
+      "B": "All reserved instance payment options provide the same discount level.",
+      "C": "Partial up-front reservation.",
+      "D": "No up-front reservation."
+    },
+    "answer": "A",
+    "explanation": "The All Upfront payment option for Reserved Instances provides the largest discount because you pay the entire term cost at the beginning, reducing AWS's billing risk and earning you the maximum savings.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q346",
+    "domainId": 4,
+    "question": "An AWS customer has used one Amazon Linux instance for 2 hours, 5 minutes and 9 seconds, and one CentOS instance for 4 hours, 23 minutes and 7 seconds. How much time will the customer be billed for?",
+    "options": {
+      "A": "3 hours for the Linux instance and 5 hours for the CentOS instance.",
+      "B": "2 hours, 5 minutes and 9 seconds for the Linux instance and 4 hours, 23 minutes and 7 seconds for the CentOS instance.",
+      "C": "2 hours, 5 minutes and 9 seconds for the Linux instance and 5 hours for the CentOS instance.",
+      "D": "3 hours for the Linux instance and 4 hours, 23 minutes and 7 seconds for the CentOS instance."
+    },
+    "answer": "C",
+    "explanation": "Amazon Linux instances are billed per second (with a one-minute minimum), so 2 hours, 5 minutes, and 9 seconds is the exact billable time. CentOS instances on the AWS Marketplace are billed per hour rounded up, resulting in 5 hours.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q356",
+    "domainId": 4,
+    "question": "Which AWS Service offers volume discounts based on usage?",
+    "options": {
+      "A": "Amazon VPC.",
+      "B": "Amazon S3.",
+      "C": "Amazon Lightsail.",
+      "D": "AWS Cost Explorer."
+    },
+    "answer": "B",
+    "explanation": "Amazon S3 uses a tiered pricing model where the per-GB storage cost decreases as your total usage increases, automatically providing volume discounts to customers who store more data.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q360",
+    "domainId": 4,
+    "question": "The TCO gap between AWS infrastructure and traditional infrastructure has widened over the recent years. Which of the following could be the reason for that?",
+    "options": {
+      "A": "AWS helps customers invest more in capital expenditures.",
+      "B": "AWS automates all infrastructure operations, so customers save more on human resources costs.",
+      "C": "AWS continues to lower the cost of cloud computing for its customers.",
+      "D": "AWS secures AWS resources at no additional charge."
+    },
+    "answer": "C",
+    "explanation": "AWS continuously reduces pricing as it achieves greater economies of scale, passing savings to customers, which widens the total cost of ownership gap compared to traditional on-premises infrastructure.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q364",
+    "domainId": 4,
+    "question": "Which of the following is NOT a factor when estimating the costs of Amazon EC2? (Choose TWO)",
+    "options": {
+      "A": "The amount of time the instances will be running.",
+      "B": "Number of security groups.",
+      "C": "Allocated Elastic IP Addresses.",
+      "D": "Number of Hosted Zones.",
+      "E": "Number of instances."
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Security groups and Hosted Zones do not factor into EC2 pricing. EC2 costs are determined by instance type, running time, number of instances, storage, and data transfer.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q366",
+    "domainId": 4,
+    "question": "A company is building an online cloud storage platform. They need a storage service that can scale capacity automatically, while minimizing cost. Which AWS storage service should the company use to meet these requirements?",
+    "options": {
+      "A": "Amazon Simple Storage Service.",
+      "B": "Amazon Elastic Block Store.",
+      "C": "Amazon Elastic Container Service.",
+      "D": "AWS Storage Gateway."
+    },
+    "answer": "A",
+    "explanation": "Amazon S3 provides virtually unlimited object storage that scales automatically with usage and charges only for what you store, making it ideal for cloud storage platforms that need elastic capacity at low cost.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q370",
+    "domainId": 4,
+    "question": "A user has opened a \"Production System Down\" support case to get help from AWS Support after a production system disruption. What is the expected response time for this type of support case?",
+    "options": {
+      "A": "12 hours.",
+      "B": "15 minutes.",
+      "C": "24 hours.",
+      "D": "One hour."
+    },
+    "answer": "D",
+    "explanation": "For a Production System Down case on the Business or Enterprise Support plan, the expected response time is one hour, ensuring critical production outages receive rapid attention from AWS Support.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q373",
+    "domainId": 4,
+    "question": "Your company requires a response time of less than 15 minutes from support interactions about their business-critical systems that are hosted on AWS if those systems go down. Which AWS Support Plan should this company use?",
+    "options": {
+      "A": "AWS Basic Support.",
+      "B": "AWS Developer Support.",
+      "C": "AWS Business Support.",
+      "D": "AWS Enterprise Support."
+    },
+    "answer": "D",
+    "explanation": "AWS Enterprise Support provides a 15-minute response time for business-critical system down cases, which is the fastest response SLA available across all AWS Support plans.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q379",
+    "domainId": 4,
+    "question": "A company is migrating a web application to AWS. The application’s compute capacity is continually utilized throughout the year. Which of the below options offers the company the most cost-effective solution?",
+    "options": {
+      "A": "On-demand Instances.",
+      "B": "Dedicated Hosts.",
+      "C": "Spot Instances.",
+      "D": "Reserved Instances."
+    },
+    "answer": "D",
+    "explanation": "Reserved Instances provide significant discounts (up to 72%) compared to On-Demand pricing in exchange for a 1 or 3-year commitment, making them the most cost-effective option for steady, predictable workloads.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q382",
+    "domainId": 4,
+    "question": "Which of the following will help AWS customers save on costs when migrating their workloads to AWS?",
+    "options": {
+      "A": "Use servers instead of managed services.",
+      "B": "Use existing third-party software licenses on AWS.",
+      "C": "Migrate production workloads to AWS edge locations instead of AWS Regions.",
+      "D": "Use AWS Outposts to run all workloads in a cost-optimized environment."
+    },
+    "answer": "B",
+    "explanation": "AWS supports Bring Your Own License (BYOL), allowing customers to reuse existing third-party software licenses on AWS, which avoids paying for new licenses and reduces migration costs.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q386",
+    "domainId": 4,
+    "question": "A company is planning to use Amazon S3 and Amazon CloudFront to distribute its video courses globally. What tool can the company use to estimate the costs of these services?",
+    "options": {
+      "A": "AWS Cost Explorer.",
+      "B": "AWS Pricing Calculator.",
+      "C": "AWS Budgets.",
+      "D": "AWS Cost & Usage Report."
+    },
+    "answer": "B",
+    "explanation": "AWS Pricing Calculator lets you estimate costs for AWS services before you use them, allowing you to model configurations for S3 storage and CloudFront distribution to forecast monthly expenses.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q394",
+    "domainId": 4,
+    "question": "Which features are included in the AWS Business Support Plan? (Choose TWO)",
+    "options": {
+      "A": "24x7 access to customer service.",
+      "B": "Access to Cloud Support Engineers via email only during business hours.",
+      "C": "Access to the Infrastructure Event Management (IEM) feature for additional fee.",
+      "D": "24x7 access to the TAM feature.",
+      "E": "Partial access to the core Trusted Advisor checks."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "The Business Support plan includes 24x7 access to customer service via phone, chat, and email, and access to Infrastructure Event Management (IEM) for an additional fee to support planned events like launches.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q402",
+    "domainId": 4,
+    "question": "A company’s AWS workflow requires that it periodically perform large-scale image and video processing jobs. The customer is seeking to minimize cost and has stated that the amount of time it takes to process these jobs is not critical, but that cost minimization is the most important factor in designing the solution. Which EC2 instance class is best suited for this processing?",
+    "options": {
+      "A": "EC2 On-Demand Instances.",
+      "B": "EC2 Reserved Instances     - No Upfront.",
+      "C": "EC2 Spot Instances.",
+      "D": "EC2 Reserved Instances     - All Upfront."
+    },
+    "answer": "C",
+    "explanation": "EC2 Spot Instances offer up to 90% discounts by using spare AWS capacity, making them the most cost-effective option for workloads that are flexible on timing and can tolerate interruptions, like batch image processing.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q411",
+    "domainId": 4,
+    "question": "What does AWS Cost Explorer provide to help manage your AWS spend?",
+    "options": {
+      "A": "Cost comparisons between AWS Cloud environments and on-premises environments.",
+      "B": "Accurate estimates of AWS service costs based on your expected usage.",
+      "C": "Consolidated billing.",
+      "D": "Highly accurate cost forecasts for up to 12 months ahead."
+    },
+    "answer": "D",
+    "explanation": "AWS Cost Explorer uses historical spending data to generate highly accurate cost forecasts for up to 12 months ahead, helping organizations plan budgets and anticipate future AWS spending.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q413",
+    "domainId": 4,
+    "question": "You are using several on-demand EC2 Instances to run your development environment. What is the best way to reduce your charges when these instances are not in use?",
+    "options": {
+      "A": "Deleting all EBS volumes attached to the instances.",
+      "B": "You cannot minimize charges for on-demand instances.",
+      "C": "Terminating the instances.",
+      "D": "Stopping the instances."
+    },
+    "answer": "D",
+    "explanation": "Stopping On-Demand EC2 instances halts compute charges while preserving the instance and its EBS volumes, so you can restart later without losing your configuration or data.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q415",
+    "domainId": 4,
+    "question": "Which of the following are factors should be considered for Amazon EBS pricing? (Choose TWO)",
+    "options": {
+      "A": "The size of volumes provisioned per month.",
+      "B": "The compute capacity you consume.",
+      "C": "The amount of data you have stored in snapshots.",
+      "D": "The compute time you consume.",
+      "E": "The number of Snowball storage devices you request."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Amazon EBS pricing is based on the size of provisioned volumes per month and the amount of data stored in EBS snapshots, which are incremental backups stored in Amazon S3.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q417",
+    "domainId": 4,
+    "question": "Which of the following has the greatest impact on cost? (Choose TWO)",
+    "options": {
+      "A": "Compute charges.",
+      "B": "The number of services used.",
+      "C": "Data Transfer In charges.",
+      "D": "Data Transfer Out charges.",
+      "E": "The number of IAM roles provisioned."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Compute charges (EC2, Lambda, etc.) and Data Transfer Out charges are typically the two largest cost drivers in AWS. Data Transfer In is free, and IAM roles have no associated cost.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q418",
+    "domainId": 4,
+    "question": "Who from the following will get the largest discount?",
+    "options": {
+      "A": "A user who chooses to buy On-demand, Convertible, Partial upfront instances.",
+      "B": "A user who chooses to buy Reserved, Convertible, All upfront instances.",
+      "C": "A user who chooses to buy Reserved, Standard, No upfront instances.",
+      "D": "A user who chooses to buy Reserved, Standard, All upfront instances."
+    },
+    "answer": "D",
+    "explanation": "Reserved, Standard, All Upfront instances provide the deepest discount because Standard RIs offer larger savings than Convertible RIs, and paying everything upfront gives the maximum reduction over partial or no upfront options.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q419",
+    "domainId": 4,
+    "question": "Which of the following is an available option when purchasing Amazon EC2 instances?",
+    "options": {
+      "A": "The ability to bid to get the lowest possible prices.",
+      "B": "The ability to register EC2 instances to get volume discounts on every hour the instances are running.",
+      "C": "The ability to buy Dedicated Instances for up to 90% discount.",
+      "D": "The ability to pay upfront to get lower hourly costs."
+    },
+    "answer": "D",
+    "explanation": "Reserved Instances allow you to pay upfront (all, partial, or no upfront) in exchange for lower hourly rates over a 1 or 3-year term, providing predictable savings for steady-state workloads.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q432",
+    "domainId": 4,
+    "question": "Which statement best describes the AWS Pay-As-You-Go pricing model?",
+    "options": {
+      "A": "With AWS, you replace low upfront expenses with large variable payments.",
+      "B": "With AWS, you replace low upfront expenses with large fixed payments.",
+      "C": "With AWS, you replace large upfront expenses with low fixed payments.",
+      "D": "With AWS, you replace large capital expenses with low variable payments."
+    },
+    "answer": "D",
+    "explanation": "The Pay-As-You-Go model replaces large upfront capital expenses (buying hardware) with low variable payments based on actual consumption, so you only pay for the resources you use.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q434",
+    "domainId": 4,
+    "question": "Which of the following strategies help analyze costs in AWS?",
+    "options": {
+      "A": "Using tags to group resources.",
+      "B": "Using AWS CloudFormation to automate the deployment of resources.",
+      "C": "Deploying resources of the same type in different regions.",
+      "D": "Configuring Amazon Inspector to automatically analyze costs and email reports."
+    },
+    "answer": "A",
+    "explanation": "Using tags to group and label AWS resources by project, department, or environment enables detailed cost analysis and allocation through AWS Cost Explorer and Cost & Usage Reports.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q437",
+    "domainId": 4,
+    "question": "To protect against data loss, you need to backup your database regularly. What is the most cost-effective storage option that provides immediate retrieval of your backups?",
+    "options": {
+      "A": "Amazon S3 Glacier Deep Archive.",
+      "B": "Amazon S3 Standard-Infrequent Access.",
+      "C": "Amazon S3 Glacier.",
+      "D": "Instance Store."
+    },
+    "answer": "B",
+    "explanation": "Amazon S3 Standard-Infrequent Access offers lower storage costs than S3 Standard while still providing immediate, millisecond retrieval, making it cost-effective for backups that are accessed infrequently but need to be available instantly.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q445",
+    "domainId": 4,
+    "question": "Which of the following will affect how much you are charged for storing objects in S3? (Choose TWO)",
+    "options": {
+      "A": "Using default encryption for any number of S3 buckets.",
+      "B": "The number of EBS volumes attached to your instances.",
+      "C": "The storage class used for the objects stored.",
+      "D": "Creating and deleting S3 buckets.",
+      "E": "The total size in gigabytes of all objects stored."
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "S3 pricing depends on the storage class used (Standard, IA, Glacier, etc.) and the total size of all objects stored. Creating buckets, using encryption, and EBS volumes do not affect S3 storage charges.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q448",
+    "domainId": 4,
+    "question": "You have migrated your application to AWS recently. How can you view the AWS costs applied to your account?",
+    "options": {
+      "A": "Using the AWS Cost & Usage Report.",
+      "B": "Using the AWS Total Cost of Ownership (TCO) dashboard.",
+      "C": "Using the AWS CloudWatch logs dashboard.",
+      "D": "Using the Amazon VPC dashboard."
+    },
+    "answer": "A",
+    "explanation": "The AWS Cost & Usage Report provides the most comprehensive view of your actual AWS costs, breaking down charges by service, resource, and time period so you can see exactly what you are being charged for.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q449",
+    "domainId": 4,
+    "question": "Which of the following are valid Amazon EC2 Reserved Instance types? (Choose TWO)",
+    "options": {
+      "A": "Convertible.",
+      "B": "Expedited.",
+      "C": "Bulk.",
+      "D": "Spot.",
+      "E": "Standard."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Standard Reserved Instances provide the highest discount but are locked to a specific instance family, while Convertible Reserved Instances offer flexibility to change instance types at a slightly lower discount. Both are valid RI types.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q456",
+    "domainId": 4,
+    "question": "Which AWS Cost Governance best practice recommends refining workloads regularly to make the most of existing AWS resources and reduce costs?",
+    "options": {
+      "A": "Tagging Enforcement.",
+      "B": "Architecture Optimization.",
+      "C": "Budgeting Processes.",
+      "D": "Resource Controls."
+    },
+    "answer": "B",
+    "explanation": "Architecture Optimization involves regularly reviewing and refining workloads to ensure they use the most efficient AWS resource types, sizes, and configurations, directly reducing costs while maintaining performance.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q472",
+    "domainId": 4,
+    "question": "Which of the following factors affect Amazon CloudFront cost? (Choose TWO)",
+    "options": {
+      "A": "Number of Requests.",
+      "B": "Traffic Distribution.",
+      "C": "Number of Volumes.",
+      "D": "Instance type.",
+      "E": "Storage Class."
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Amazon CloudFront pricing is based on the number of requests served and the geographic distribution of traffic (different edge location regions have different pricing tiers).",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q477",
+    "domainId": 4,
+    "question": "Which of the following AWS support plans provides access to only the seven core AWS Trusted Advisor checks?",
+    "options": {
+      "A": "Business & Enterprise Support.",
+      "B": "Basic & Developer Support.",
+      "C": "Developer & Enterprise Support.",
+      "D": "Developer & Business Support."
+    },
+    "answer": "B",
+    "explanation": "Basic and Developer Support plans provide access to only the seven core Trusted Advisor checks. The full set of Trusted Advisor checks requires a Business or Enterprise Support plan.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q482",
+    "domainId": 4,
+    "question": "What are the benefits of the AWS Organizations service? (Choose TWO)",
+    "options": {
+      "A": "Control access to AWS services.",
+      "B": "Help organizations design and maintain an accelerated path to successful cloud adoption.",
+      "C": "Manage your organization’s payment methods.",
+      "D": "Help organization achieve their desired business outcomes with AWS.",
+      "E": "Consolidate billing across multiple AWS accounts."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "AWS Organizations enables centralized control over AWS service access using Service Control Policies (SCPs), and consolidates billing across multiple AWS accounts to simplify payment and unlock volume discounts.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q492",
+    "domainId": 4,
+    "question": "A company is migrating production workloads to AWS, and they are concerned about cost management across different departments. Which option should the company implement to categorize and track AWS spending?",
+    "options": {
+      "A": "Use the AWS Pricing Calculator service to monitor the costs incurred by each department.",
+      "B": "Use Amazon Aurora to forecast AWS spending based on usage.",
+      "C": "Apply cost allocation tags to segment AWS costs by different e projects and departments.",
+      "D": "Configure AWS Price List API to receive billing updates for each department automatically."
+    },
+    "answer": "C",
+    "explanation": "Cost allocation tags are key-value metadata that you apply to AWS resources, enabling you to segment and categorize costs by project, department, or environment in AWS Cost Explorer and Cost & Usage Reports.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q497",
+    "domainId": 4,
+    "question": "What does the AWS \"Business\" support plan provide? (Choose TWO)",
+    "options": {
+      "A": "Access to the full set of Trusted Advisor checks.",
+      "B": "Support Concierge Service.",
+      "C": "Less than 15 minutes response-time support if your business critical system goes down.",
+      "D": "AWS Support API.",
+      "E": "Proactive Technical Account Management."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "The Business Support plan provides access to the full set of Trusted Advisor checks and the AWS Support API for programmatic case management. Concierge and TAM are Enterprise-only features.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q501",
+    "domainId": 4,
+    "question": "Which statement is true regarding AWS pricing? (Choose TWO)",
+    "options": {
+      "A": "With the AWS pay-as-you-go pricing model, you don't have to pay any upfront fee.",
+      "B": "You have no responsibility for third-party software license costs.",
+      "C": "You only pay for the individual services that you need with no long-term contracts.",
+      "D": "For some services, you have to pay a startup fee in order to get the service running.",
+      "E": "There are no reservations on AWS, you only pay for what you use."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS pay-as-you-go pricing requires no upfront fees or long-term contracts. You pay only for the individual services you consume, scaling costs up or down with actual usage.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q506",
+    "domainId": 4,
+    "question": "What factors determine how you are charged when using AWS Lambda? (Choose TWO)",
+    "options": {
+      "A": "Storage consumed.",
+      "B": "Number of requests to your functions.",
+      "C": "Number of volumes.",
+      "D": "Placement groups.",
+      "E": "Compute time consumed."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "AWS Lambda pricing is based on the number of requests to your functions and the compute time consumed (measured in GB-seconds), so you only pay when your code is actually running.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q508",
+    "domainId": 4,
+    "question": "Which of the following actions may reduce Amazon EBS costs? (Choose TWO)",
+    "options": {
+      "A": "Deleting unused buckets.",
+      "B": "Using reservations.",
+      "C": "Deleting unnecessary snapshots.",
+      "D": "Changing the type of the volume.",
+      "E": "Distributing requests to multiple volumes."
+    },
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "Deleting unnecessary EBS snapshots removes storage costs for backups you no longer need, and changing volume types (e.g., from io2 to gp3) can reduce costs when high-performance IOPS are not required.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q515",
+    "domainId": 4,
+    "question": "Which of the following AWS Support Plans gives you 24/7 access to Cloud Support Engineers via email & phone? (Choose TWO)",
+    "options": {
+      "A": "Developer.",
+      "B": "Premium.",
+      "C": "Enterprise.",
+      "D": "Standard.",
+      "E": "Business."
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "The Business and Enterprise Support plans both provide 24/7 access to Cloud Support Engineers via phone, email, and chat. Developer Support only offers email access during business hours.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q522",
+    "domainId": 4,
+    "question": "You are planning to launch an advertising campaign over the coming weekend to promote a new digital product. It is expected that there will be heavy spikes in load during the campaign period, and you can’t afford any downtime. You need additional compute resources to handle the additional load. What is the most cost-effective EC2 instance purchasing option for this job?",
+    "options": {
+      "A": "Savings Plans.",
+      "B": "Spot Instances.",
+      "C": "Reserved Instances.",
+      "D": "On-Demand Instances."
+    },
+    "answer": "D",
+    "explanation": "On-Demand Instances are the best choice for short-term, unpredictable workloads where downtime is unacceptable. Spot Instances can be interrupted, and Reserved Instances require long-term commitments that don't suit a weekend campaign.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q528",
+    "domainId": 4,
+    "question": "What are some of the benefits of using On-Demand EC2 instances? (Choose TWO)",
+    "options": {
+      "A": "They provide free capacity when testing your new applications.",
+      "B": "They are cheaper than all other EC2 options.",
+      "C": "They remove the need to buy “safety net” capacity to handle periodic traffic spikes.",
+      "D": "They only require 1-2 days for setup and configuration.",
+      "E": "You can increase or decrease your compute capacity depending on the demands of your application."
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "On-Demand Instances eliminate the need to pre-purchase capacity for traffic spikes, and let you increase or decrease compute capacity instantly based on application demand, with no long-term commitments.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q536",
+    "domainId": 4,
+    "question": "Which AWS Cost Management tool allows you to view the most granular data about your AWS bill?",
+    "options": {
+      "A": "AWS Cost Explorer.",
+      "B": "AWS Budgets.",
+      "C": "AWS Cost and Usage report.",
+      "D": "AWS Billing dashboard."
+    },
+    "answer": "C",
+    "explanation": "The AWS Cost and Usage Report provides the most granular billing data available, breaking down costs by hour, service, resource ID, and tags for detailed cost analysis and auditing.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q542",
+    "domainId": 4,
+    "question": "Which AWS characteristics make AWS cost effective for a workload with dynamic user demand? (Select TWO)",
+    "options": {
+      "A": "High availability.",
+      "B": "Shared security model.",
+      "C": "Elasticity.",
+      "D": "Pay-as-you-go pricing.",
+      "E": "Reliability."
+    },
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "Elasticity lets you automatically scale resources up or down with demand, and pay-as-you-go pricing ensures you only pay for what you actually use, making both ideal for workloads with unpredictable, dynamic demand.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q551",
+    "domainId": 4,
+    "question": "Which of the following security-related actions are available at no cost?",
+    "options": {
+      "A": "Calling AWS Support.",
+      "B": "Contacting AWS Professional Services to request a workshop.",
+      "C": "Accessing forums, blogs, and whitepapers.",
+      "D": "Attending AWS classes at a local university."
+    },
+    "answer": "C",
+    "explanation": "AWS forums, blogs, and whitepapers are publicly available security resources that anyone can access at no cost, providing guidance on best practices, architecture, and security configurations.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q560",
+    "domainId": 4,
+    "question": "Which AWS feature will reduce the customer’s total cost of ownership (TCO)?",
+    "options": {
+      "A": "Shared responsibility security model.",
+      "B": "Single tenancy.",
+      "C": "Elastic computing.",
+      "D": "Encryption."
+    },
+    "answer": "C",
+    "explanation": "Elastic computing allows customers to scale resources up or down based on actual demand, eliminating the need to invest in peak-capacity hardware that sits idle most of the time, directly reducing TCO.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q562",
+    "domainId": 4,
+    "question": "Which of the following are categories of AWS Trusted Advisor? (Select TWO)",
+    "options": {
+      "A": "Fault Tolerance.",
+      "B": "Instance Usage.",
+      "C": "Infrastructure.",
+      "D": "Performance.",
+      "E": "Storage Capacity."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS Trusted Advisor provides recommendations across five categories: Cost Optimization, Performance, Security, Fault Tolerance, and Service Limits. Fault Tolerance and Performance are two of them.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q566",
+    "domainId": 4,
+    "question": "Which AWS service is used to pay AWS bills, and monitor usage and budget costs?",
+    "options": {
+      "A": "AWS Billing and Cost Management.",
+      "B": "Consolidated billing.",
+      "C": "Amazon CloudWatch.",
+      "D": "Amazon QuickSight."
+    },
+    "answer": "A",
+    "explanation": "AWS Billing and Cost Management is the central service for paying AWS bills, monitoring usage, and managing budgets, providing dashboards and reports for comprehensive cost visibility.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q568",
+    "domainId": 4,
+    "question": "Which AWS feature allows a company to take advantage of usage tiers for services across multiple member accounts?",
+    "options": {
+      "A": "Service control policies (SCPs).",
+      "B": "Consolidated billing.",
+      "C": "All Upfront Reserved Instances.",
+      "D": "AWS Cost Explorer."
+    },
+    "answer": "B",
+    "explanation": "Consolidated billing through AWS Organizations combines usage across all member accounts, allowing the organization to reach higher volume pricing tiers and unlock discounts that individual accounts could not achieve alone.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q577",
+    "domainId": 4,
+    "question": "The financial benefits of using AWS are: (Select TWO)",
+    "options": {
+      "A": "Reduced Total Cost of Ownership (TCO).",
+      "B": "Increased capital expenditure (capex).",
+      "C": "Reduced operational expenditure ( opex ).",
+      "D": "Deferred payment plans for startups.",
+      "E": "Business credit lines for startups."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS reduces Total Cost of Ownership by eliminating data center capital expenses, and reduces operational expenditure through pay-as-you-go pricing and managed services that lower staffing and maintenance costs.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q582",
+    "domainId": 4,
+    "question": "If each department within a company has its own AWS account, what is one way to enable consolidated billing?",
+    "options": {
+      "A": "Use AWS Budgets on each account to pay only to budget.",
+      "B": "Contact AWS Support for a monthly bill.",
+      "C": "Create an AWS Organization from the payer account and invite the other accounts to join.",
+      "D": "Put all invoices into one Amazon Simple Storage Service (Amazon S3) bucket, load data into Amazon Redshift, and then run a billing report."
+    },
+    "answer": "C",
+    "explanation": "Creating an AWS Organization from the payer (management) account and inviting other accounts to join enables consolidated billing, combining all accounts' usage into a single bill with potential volume discounts.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q591",
+    "domainId": 4,
+    "question": "Which service allows a company with multiple AWS accounts to combine its usage to obtain volume discounts?",
+    "options": {
+      "A": "AWS Server Migration Service.",
+      "B": "AWS Organizations.",
+      "C": "AWS Budgets.",
+      "D": "AWS Trusted Advisor."
+    },
+    "answer": "B",
+    "explanation": "AWS Organizations with consolidated billing combines usage across all member accounts, allowing the organization to qualify for volume discounts based on aggregate consumption across services like S3 and EC2.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q594",
+    "domainId": 4,
+    "question": "Which of the following inspects AWS environments to find opportunities that can save money for users and also improve system performance ?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Trusted Advisor",
+      "C": "Consolidated billing",
+      "D": "Detailed billing"
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor inspects your AWS environment and provides actionable recommendations to save money, improve performance, close security gaps, and improve fault tolerance.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q595",
+    "domainId": 4,
+    "question": "Which of the following Amazon EC2 pricing models allow customers to use existing server-bound software license ?",
+    "options": {
+      "A": "Spot Instances",
+      "B": "Reserved Instances",
+      "C": "Dedicated Hosts",
+      "D": "On-Demand Instances"
+    },
+    "answer": "C",
+    "explanation": "EC2 Dedicated Hosts provide physical servers dedicated to your use, allowing you to use your existing server-bound software licenses (like Windows Server or SQL Server) that require per-socket or per-core licensing.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q598",
+    "domainId": 4,
+    "question": "Which AWS tools assist with estimating costs? (Select three.)",
+    "options": {
+      "A": "Detailed billing report",
+      "B": "Cost allocation tags",
+      "C": "AWS Simple Monthly Calculator",
+      "D": "AWS Total Cost of Ownership (TCO) Calculator",
+      "E": "Cost Eliminator"
+    },
+    "answer": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "Cost allocation tags categorize and track AWS spending; the AWS Simple Monthly Calculator (now AWS Pricing Calculator) estimates monthly costs for planned workloads; and the AWS TCO Calculator compares on-premises vs. cloud costs. All three assist with estimating or understanding costs.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q599",
+    "domainId": 4,
+    "question": "Which of the following are advantages of AWS consolidated billing? (Select TWO.)",
+    "options": {
+      "A": "The ability to receive one bill for multiple accounts",
+      "B": "Service limits increasing by default in all accounts",
+      "C": "A fixed discount on the monthly bill",
+      "D": "Potential volume discounts, as usage in all accounts is combined",
+      "E": "The automatic extension of the master account's AWS support plan to all accounts"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Consolidated billing provides a single bill for all accounts in an AWS Organization, simplifying financial management, and aggregates usage across accounts to unlock potential volume discounts.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q627",
+    "domainId": 4,
+    "question": "The financial benefits of using AWS are: (Select TWO.)",
+    "options": {
+      "A": "reduced Total Cost of Ownership (TCO).",
+      "B": "increased capital expenditure (capex).",
+      "C": "reduced operational expenditure (opex).",
+      "D": "deferred payment plans for startups.",
+      "E": "business credit lines for stratups."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS reduces Total Cost of Ownership by eliminating capital expenditure on hardware and facilities, and lowers operational expenditure through pay-as-you-go pricing and managed services that reduce staffing needs.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q643",
+    "domainId": 4,
+    "question": "When is it beneficial for a company to use a Spot Instance?",
+    "options": {
+      "A": "When there is flexibility in when an application needs to run.",
+      "B": "When there are mission-critical workloads.",
+      "C": "When dedicated capacity is needed.",
+      "D": "When an instance should not be stopped."
+    },
+    "answer": "A",
+    "explanation": "Spot Instances are ideal when there is flexibility in when an application needs to run, because they use spare EC2 capacity at steep discounts but can be interrupted with two minutes' notice.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q645",
+    "domainId": 4,
+    "question": "How does AWS charge for AWS Lambda?",
+    "options": {
+      "A": "Users bid on the maximum price they are willing to pay per hour.",
+      "B": "Users choose a 1-, 3- or 5-year upfront payment term.",
+      "C": "Users pay for the required permanent storage on a file system or in a database.",
+      "D": "Users pay based on the number of requests and consumed compute resources."
+    },
+    "answer": "D",
+    "explanation": "AWS Lambda charges based on the number of requests and the compute resources consumed (measured in GB-seconds of execution time), with no charges when code is not running.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q647",
+    "domainId": 4,
+    "question": "What will help a company perform a cost benefit analysis of migrating to the AWS Cloud?",
+    "options": {
+      "A": "Cost Explorer",
+      "B": "AWS Total Cost of Ownership (TCO) Calculator",
+      "C": "AWS Simple Monthly Calculator",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "B",
+    "explanation": "The AWS TCO Calculator helps organizations compare the cost of running workloads on-premises versus on AWS, factoring in infrastructure, labor, and operational expenses for a comprehensive cost-benefit analysis.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q648",
+    "domainId": 4,
+    "question": "Which of the following provides the ability to share the cost benefits of Reserved Instances across AWS accounts?",
+    "options": {
+      "A": "AWS Cost Explorer between AWS accounts",
+      "B": "Linked accounts and consolidated billing",
+      "C": "Amazon Elastic Compute Cloud (Amazon EC2) Reserved Instance Utilization Report",
+      "D": "Amazon EC2 Instance Usage Report between AWS accounts"
+    },
+    "answer": "B",
+    "explanation": "Linked accounts under consolidated billing in AWS Organizations automatically share Reserved Instance cost benefits across all accounts, allowing unused RI capacity in one account to be applied to matching usage in another.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q649",
+    "domainId": 4,
+    "question": "A company has multiple AWS accounts and wants to simplify and consolidate its billing process. Which AWS service will achieve this?",
+    "options": {
+      "A": "AWS Cost and Usage Reports",
+      "B": "AWS Organizations",
+      "C": "AWS Cost Explorer",
+      "D": "AWS Budgets"
+    },
+    "answer": "B",
+    "explanation": "AWS Organizations provides consolidated billing, combining multiple AWS accounts under a single payer account to simplify billing management and potentially unlock volume discounts.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q655",
+    "domainId": 4,
+    "question": "Which methods can be used to identify AWS costs by departments? (Choose two.)",
+    "options": {
+      "A": "Enable multi-factor authentication for the AWS account root user.",
+      "B": "Create separate accounts for each department.",
+      "C": "Use Reserved Instances whenever possible.",
+      "D": "Use tags to associate each instance with a particular department.",
+      "E": "Pay bills using purchase orders."
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Creating separate AWS accounts per department isolates costs naturally, and applying tags to resources allows cost allocation and tracking by department within shared accounts. Both enable department-level cost identification.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q668",
+    "domainId": 4,
+    "question": "What AWS service would be used to centrally manage AWS access across multiple accounts?",
+    "options": {
+      "A": "AWS Service Catalog",
+      "B": "AWS Config",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS Organizations"
+    },
+    "answer": "D",
+    "explanation": "AWS Organizations provides centralized management of multiple AWS accounts, including Service Control Policies (SCPs) that define permission guardrails across all member accounts from a single management account.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q669",
+    "domainId": 4,
+    "question": "Which AWS service can a customer use to set up an alert notification when the account is approaching a particular dollar amount?",
+    "options": {
+      "A": "AWS Cost and Usage reports",
+      "B": "AWS Budgets",
+      "C": "AWS Cost Explorer",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "B",
+    "explanation": "AWS Budgets lets you set custom spending thresholds and sends alert notifications via email or SNS when your actual or forecasted costs approach or exceed the defined dollar amount.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q670",
+    "domainId": 4,
+    "question": "Which is the MINIMUM AWS Support plan that provides designated Technical Account Managers?",
+    "options": {
+      "A": "Enterprise",
+      "B": "Business",
+      "C": "Developer",
+      "D": "Basic"
+    },
+    "answer": "A",
+    "explanation": "The Enterprise Support plan is the minimum tier that includes a designated Technical Account Manager (TAM) who provides proactive guidance and serves as your primary point of contact with AWS.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q673",
+    "domainId": 4,
+    "question": "Which Amazon EC2 pricing model is the MOST cost efficient for an uninterruptible workload that runs once a year for 24 hours?",
+    "options": {
+      "A": "On-Demand Instances",
+      "B": "Reserved Instances",
+      "C": "Spot Instances",
+      "D": "Dedicated Instances"
+    },
+    "answer": "A",
+    "explanation": "On-Demand Instances are most cost-efficient for a short, uninterruptible workload that runs once a year, since there's no long-term commitment and Spot Instances risk interruption.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q677",
+    "domainId": 4,
+    "question": "A company is considering migrating its applications to AWS. The company wants to compare the cost of running the workload on-premises to running the equivalent workload on the AWS platform. Which tool can be used to perform this comparison?",
+    "options": {
+      "A": "AWS Simple Monthly Calculator",
+      "B": "AWS Total Cost of Ownership (TCO) Calculator",
+      "C": "AWS Billing and Cost Management console",
+      "D": "Cost Explorer"
+    },
+    "answer": "B",
+    "explanation": "The AWS TCO Calculator compares the cost of running workloads on-premises versus on AWS, factoring in infrastructure, labor, facilities, and operational costs for a comprehensive cost comparison.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q678",
+    "domainId": 4,
+    "question": "Which AWS service provides a secure, fast, and cost-effective way to migrate or transport exabyte-scale datasets into AWS?",
+    "options": {
+      "A": "AWS Batch",
+      "B": "AWS Snowball",
+      "C": "AWS Migration Hub",
+      "D": "AWS Snowmobile"
+    },
+    "answer": "D",
+    "explanation": "AWS Snowmobile is an exabyte-scale data transfer service using a 45-foot shipping container that can move up to 100 PB per trip, designed for the largest possible data migrations to AWS.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q679",
+    "domainId": 4,
+    "question": "Which of the following BEST describe the AWS pricing model? (Choose two.)",
+    "options": {
+      "A": "Fixed-term",
+      "B": "Pay-as-you-go",
+      "C": "Colocation",
+      "D": "Planned",
+      "E": "Variable cost"
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "AWS uses a pay-as-you-go model where you pay only for what you consume, resulting in variable costs that scale with usage. There are no fixed-term commitments required for most services.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q685",
+    "domainId": 4,
+    "question": "What exclusive benefit is provided to users with Enterprise Support?",
+    "options": {
+      "A": "Access to a Technical Project Manager",
+      "B": "Access to a Technical Account Manager",
+      "C": "Access to a Cloud Support Engineer",
+      "D": "Access to a Solutions Architect"
+    },
+    "answer": "B",
+    "explanation": "A Technical Account Manager (TAM) is exclusively available with the Enterprise Support plan, providing dedicated proactive guidance, architectural reviews, and operational support for your AWS environment.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q686",
+    "domainId": 4,
+    "question": "How does AWS MOST effectively reduce computing costs for a growing start-up company?",
+    "options": {
+      "A": "It provides on-demand resources for peak usage.",
+      "B": "It automates the provisioning of individual developer environments.",
+      "C": "It automates customer relationship management.",
+      "D": "It implements a fixed monthly computing budget."
+    },
+    "answer": "A",
+    "explanation": "AWS provides on-demand resources that can be provisioned instantly for peak usage and released when not needed, so a growing startup only pays for the compute capacity it actually uses.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q688",
+    "domainId": 4,
+    "question": "Which AWS Support plan provides a full set of AWS Trusted Advisor checks?",
+    "options": {
+      "A": "Business and Developer Support",
+      "B": "Business and Basic Support",
+      "C": "Enterprise and Developer Support",
+      "D": "Enterprise and Business Support"
+    },
+    "answer": "D",
+    "explanation": "The full set of AWS Trusted Advisor checks is available with Enterprise and Business Support plans. Developer and Basic plans only provide access to the seven core checks.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q693",
+    "domainId": 4,
+    "question": "Which service should be used to estimate the costs of running a new project on AWS?",
+    "options": {
+      "A": "AWS TCO Calculator",
+      "B": "AWS Simple Monthly Calculator",
+      "C": "AWS Cost Explorer API",
+      "D": "AWS Budgets"
+    },
+    "answer": "B",
+    "explanation": "The AWS Simple Monthly Calculator (now AWS Pricing Calculator) is designed to estimate costs for new projects by configuring specific AWS services and their expected usage. Cost Explorer analyzes historical spending data from existing resources and is not suited for estimating costs of projects that haven't been deployed yet.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q695",
+    "domainId": 4,
+    "question": "Which AWS service can be used to generate alerts based on an estimated monthly bill?",
+    "options": {
+      "A": "AWS Config",
+      "B": "Amazon CloudWatch",
+      "C": "AWS X-Ray",
+      "D": "AWS CloudTrail"
+    },
+    "answer": "B",
+    "explanation": "Amazon CloudWatch can monitor your estimated AWS charges and trigger billing alarms when costs exceed defined thresholds, sending notifications through Amazon SNS.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q696",
+    "domainId": 4,
+    "question": "Which Amazon EC2 pricing model offers the MOST significant discount when compared to On-Demand Instances?",
+    "options": {
+      "A": "Partial Upfront Reserved Instances for a 1-year term",
+      "B": "All Upfront Reserved Instances for a 1-year term",
+      "C": "All Upfront Reserved Instances for a 3-year term",
+      "D": "No Upfront Reserved Instances for a 3-year term"
+    },
+    "answer": "C",
+    "explanation": "All Upfront Reserved Instances for a 3-year term offer the deepest discount compared to On-Demand, because the longest commitment with full upfront payment gives AWS the most pricing certainty.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q706",
+    "domainId": 4,
+    "question": "What are the advantages of Reserved Instances? (Choose two.)",
+    "options": {
+      "A": "They provide a discount over on-demand pricing.",
+      "B": "They provide access to additional instance types.",
+      "C": "They provide additional networking capability.",
+      "D": "Customers can upgrade instances as new types become available.",
+      "E": "Customers can reserve capacity in an Availability Zone."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Reserved Instances provide significant discounts over On-Demand pricing (up to 72%), and they guarantee capacity reservation in a specific Availability Zone, ensuring resources are available when needed.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q707",
+    "domainId": 4,
+    "question": "A customer runs an On-Demand Amazon Linux EC2 instance for 3 hours, 5 minutes, and 6 seconds. For how much time will the customer be billed?",
+    "options": {
+      "A": "3 hours, 5 minutes",
+      "B": "3 hours, 5 minutes, and 6 seconds",
+      "C": "3 hours, 6 minutes",
+      "D": "4 hours"
+    },
+    "answer": "B",
+    "explanation": "Amazon Linux EC2 instances are billed per second with a one-minute minimum. The customer is billed for the exact duration of 3 hours, 5 minutes, and 6 seconds.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q714",
+    "domainId": 4,
+    "question": "Which tool can be used to compare the costs of running a web application in a traditional hosting environment to running it on AWS?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Budgets",
+      "C": "AWS Cost and Usage report",
+      "D": "AWS Total Cost of Ownership (TCO) Calculator"
+    },
+    "answer": "D",
+    "explanation": "The AWS TCO Calculator compares the total cost of running workloads in a traditional hosting environment against AWS, accounting for infrastructure, labor, facilities, and operational expenses.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q715",
+    "domainId": 4,
+    "question": "What is the value of using third-party software from AWS Marketplace instead of installing third-party software on Amazon EC2? (Choose two.)",
+    "options": {
+      "A": "Users pay for software by the hour or month depending on licensing.",
+      "B": "AWS Marketplace enables the user to launch applications with 1-Click.",
+      "C": "AWS Marketplace data encryption is managed by a third-party vendor.",
+      "D": "AWS Marketplace eliminates the need to upgrade to newer software versions.",
+      "E": "Users can deploy third-party software without testing."
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "AWS Marketplace offers flexible hourly or monthly licensing for third-party software, and enables 1-Click deployment that eliminates manual installation and configuration steps.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q724",
+    "domainId": 4,
+    "question": "What AWS service would be used to centrally manage AWS access policies across multiple accounts?",
+    "options": {
+      "A": "AWS Service Catalog",
+      "B": "AWS Config",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS Organizations"
+    },
+    "answer": "D",
+    "explanation": "AWS Organizations provides centralized management of access policies across multiple AWS accounts through Service Control Policies (SCPs), enabling consistent governance at scale.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q725",
+    "domainId": 4,
+    "question": "What is AWS Trusted Advisor?",
+    "options": {
+      "A": "It is an AWS staff member who provides recommendations and best practices on how to use AWS.",
+      "B": "It is a network of AWS partners who provide recommendations and best practices on how to use AWS.",
+      "C": "It is an online tool with a set of automated checks that provides recommendations on cost optimization, performance, and security.",
+      "D": "It is another name for AWS Technical Account Managers who provide recommendations on cost optimization, performance, and security."
+    },
+    "answer": "C",
+    "explanation": "AWS Trusted Advisor is an online tool that runs automated checks against your AWS environment and provides actionable recommendations on cost optimization, performance, security, fault tolerance, and service limits.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q726",
+    "domainId": 4,
+    "question": "Which AWS service or feature allows a company to visualize, understand, and manage AWS costs and usage over time?",
+    "options": {
+      "A": "AWS Budgets",
+      "B": "AWS Cost Explorer",
+      "C": "AWS Organizations",
+      "D": "Consolidated billing"
+    },
+    "answer": "B",
+    "explanation": "AWS Cost Explorer provides interactive visualizations that let you understand, analyze, and manage your AWS costs and usage over time, with filtering by service, account, tag, and time period.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q732",
+    "domainId": 4,
+    "question": "The pay-as-you-go pricing model for AWS services:",
+    "options": {
+      "A": "reduces capital expenditures.",
+      "B": "requires payment up front for AWS services.",
+      "C": "is relevant only for Amazon EC2, Amazon S3, and Amazon RDS.",
+      "D": "reduces operational expenditures."
+    },
+    "answer": "A",
+    "explanation": "Pay-as-you-go pricing reduces capital expenditures by eliminating the need to purchase hardware upfront. Instead of large capital investments, you pay variable operational costs based on actual usage.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q734",
+    "domainId": 4,
+    "question": "Which AWS service enables users to consolidate billing across multiple accounts?",
+    "options": {
+      "A": "Amazon QuickSight",
+      "B": "AWS Organizations",
+      "C": "AWS Budgets",
+      "D": "Amazon Forecast"
+    },
+    "answer": "B",
+    "explanation": "AWS Organizations enables consolidated billing across multiple accounts, providing a single payment method and combined usage for potential volume discounts.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q737",
+    "domainId": 4,
+    "question": "After selecting an Amazon EC2 Dedicated Host reservation, which pricing option would provide the largest discount?",
+    "options": {
+      "A": "No upfront payment",
+      "B": "Hourly on-demand payment",
+      "C": "Partial upfront payment",
+      "D": "All upfront payment"
+    },
+    "answer": "D",
+    "explanation": "All upfront payment for a Dedicated Host reservation provides the largest discount because paying the full cost at the start reduces AWS's billing risk and earns the maximum savings.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q738",
+    "domainId": 4,
+    "question": "A Cloud Practitioner is asked how to estimate the cost of using a new application on AWS. What is the MOST appropriate response?",
+    "options": {
+      "A": "Inform the user that AWS pricing allows for on-demand pricing.",
+      "B": "Direct the user to the AWS Simple Monthly Calculator for an estimate.",
+      "C": "Use Amazon QuickSight to analyze current spending on-premises.",
+      "D": "Use Amazon AppStream 2.0 for real-time pricing analytics."
+    },
+    "answer": "B",
+    "explanation": "The AWS Simple Monthly Calculator (now AWS Pricing Calculator) lets users estimate monthly costs by configuring the specific AWS services and resources they plan to use for a new application.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q749",
+    "domainId": 4,
+    "question": "A Cloud Practitioner needs to store data for 7 years to meet regulatory requirements. Which AWS service will meet this requirement at the LOWEST cost?",
+    "options": {
+      "A": "Amazon S3",
+      "B": "AWS Snowball",
+      "C": "Amazon Redshift",
+      "D": "Amazon S3 Glacier"
+    },
+    "answer": "D",
+    "explanation": "Amazon S3 Glacier provides the lowest-cost storage for long-term data archival, ideal for regulatory data that must be retained for years but is rarely accessed.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q758",
+    "domainId": 4,
+    "question": "How does AWS charge for AWS Lambda usage once the free tier has been exceeded? (Choose two.)",
+    "options": {
+      "A": "By the time it takes for the Lambda function to execute.",
+      "B": "By the number of versions of a specific Lambda function.",
+      "C": "By the number of requests made for a given Lambda function.",
+      "D": "By the programming language that is used for the Lambda function.",
+      "E": "By the total number of Lambda functions in an AWS account."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS Lambda charges are based on the execution time of the function (measured in GB-seconds) and the number of requests made. Language choice, number of versions, and total functions do not affect pricing.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q768",
+    "domainId": 4,
+    "question": "Which AWS service provides a quick and automated way to create and manage AWS accounts?",
+    "options": {
+      "A": "AWS QuickSight",
+      "B": "Amazon Lightsail",
+      "C": "AWS Organizations",
+      "D": "Amazon Connect"
+    },
+    "answer": "C",
+    "explanation": "AWS Organizations provides automated account creation and centralized management of multiple AWS accounts, including applying policies and consolidating billing across the organization.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q773",
+    "domainId": 4,
+    "question": "Why is AWS more economical than traditional data centers for applications with varying compute workloads?",
+    "options": {
+      "A": "Amazon Elastic Compute Cloud (Amazon EC2) costs are billed on a monthly basis.",
+      "B": "Customers retain full administrative access to their Amazon EC2 instances.",
+      "C": "Amazon EC2 instances can be launched on-demand when needed.",
+      "D": "Customers can permanently run enough instances to handle peak workloads."
+    },
+    "answer": "C",
+    "explanation": "EC2 instances can be launched on demand when needed and terminated when no longer required, so you only pay for compute during actual usage rather than maintaining hardware for peak capacity.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q783",
+    "domainId": 4,
+    "question": "Which of the following is an example of how moving to the AWS Cloud reduces upfront cost?",
+    "options": {
+      "A": "By replacing large variable costs with lower capital investments",
+      "B": "By replacing large capital investments with lower variable costs",
+      "C": "By allowing the provisioning of compute and storage at a fixed level to meet peak demand",
+      "D": "By replacing the repeated scaling of virtual servers with a simpler fixed-scale model"
+    },
+    "answer": "B",
+    "explanation": "Moving to AWS replaces large upfront capital investments in hardware and facilities with lower, variable pay-as-you-go costs based on actual resource consumption.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q788",
+    "domainId": 4,
+    "question": "How does the AWS Enterprise Support Concierge team help users?",
+    "options": {
+      "A": "Supporting application development",
+      "B": "Providing architecture guidance",
+      "C": "Answering billing and account inquires",
+      "D": "Answering questions regarding technical support cases"
+    },
+    "answer": "C",
+    "explanation": "The AWS Enterprise Support Concierge team specializes in answering billing and account inquiries, helping Enterprise customers with payment issues, account structure, and cost optimization guidance.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q791",
+    "domainId": 4,
+    "question": "Which AWS tool is used to compare the cost of running an application on-premises to running the application in the AWS Cloud?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Simple Monthly Calculator",
+      "C": "AWS Pricing Calculator",
+      "D": "Cost Explorer"
+    },
+    "answer": "C",
+    "explanation": "AWS Pricing Calculator (formerly Simple Monthly Calculator) helps compare the cost of running applications on-premises versus in the AWS Cloud by estimating AWS service costs for your workload.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q792",
+    "domainId": 4,
+    "question": "A company has multiple AWS accounts within AWS Organizations and wants to apply the Amazon EC2 Reserved Instances benefit to a single account only. Which action should be taken?",
+    "options": {
+      "A": "Purchase the Reserved Instances from master payer account and turn off Reserved Instance sharing.",
+      "B": "Enable billing alerts in the AWS Billing and Cost Management console.",
+      "C": "Purchase the Reserved Instances in individual linked accounts and turn off Reserved Instance sharing from the payer level.",
+      "D": "Enable Reserved Instance sharing in the AWS Billing and Cost Management console."
+    },
+    "answer": "A",
+    "explanation": "To restrict Reserved Instance benefits to a single account, purchase the RIs from the master payer account and turn off RI sharing, preventing the discount from being applied across other linked accounts.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q797",
+    "domainId": 4,
+    "question": "AWS Budgets can be used to:",
+    "options": {
+      "A": "prevent a given user from creating a resource",
+      "B": "send an alert when the utilization of Reserved Instances drops below a certain percentage",
+      "C": "set resource limits in AWS accounts to prevent overspending",
+      "D": "split an AWS bill across multiple forms of payment"
+    },
+    "answer": "C",
+    "explanation": "AWS Budgets allows you to set custom cost and usage limits for your AWS accounts, sending alerts and optionally taking automated actions when thresholds are approached or exceeded.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q801",
+    "domainId": 4,
+    "question": "How does AWS Trusted Advisor provide guidance to users of the AWS Cloud? (Choose two.)",
+    "options": {
+      "A": "It identifies software vulnerabilities in applications running on AWS",
+      "B": "It provides a list of cost optimization recommendations based on current AWS usage",
+      "C": "It detects potential security vulnerabilities caused by permissions settings on account resources",
+      "D": "It automatically corrects potential security issues caused by permissions settings on account resources",
+      "E": "It provides proactive alerting whenever an Amazon EC2 instance has been compromised"
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "Trusted Advisor provides cost optimization recommendations based on current usage patterns, and detects potential security vulnerabilities caused by overly permissive IAM and resource permissions settings.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q807",
+    "domainId": 4,
+    "question": "A company wants to migrate a MySQL database to AWS but does not have the budget for Database Administrators to handle routine tasks including provisioning, patching, and performing backups. Which AWS service will support this use case?",
+    "options": {
+      "A": "Amazon RDS",
+      "B": "Amazon DynamoDB",
+      "C": "Amazon DocumentDB",
+      "D": "Amazon ElastiCache"
+    },
+    "answer": "A",
+    "explanation": "Amazon RDS is a managed MySQL-compatible database service that handles routine tasks like provisioning, patching, backups, and recovery, eliminating the need for dedicated Database Administrators.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q809",
+    "domainId": 4,
+    "question": "A company is planning to migrate from on-premises to the AWS Cloud. Which AWS tool or service provides detailed reports on estimated cost savings after migration?",
+    "options": {
+      "A": "AWS Total Cost of Ownership (TCO) Calculator",
+      "B": "Cost Explorer",
+      "C": "AWS Budgets",
+      "D": "AWS Migration Hub"
+    },
+    "answer": "A",
+    "explanation": "The AWS TCO Calculator provides detailed reports comparing on-premises infrastructure costs against AWS costs, showing estimated savings from migration across compute, storage, and operational categories.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q817",
+    "domainId": 4,
+    "question": "Which features or services can be used to monitor costs and expenses for an AWS account? (Choose two.)",
+    "options": {
+      "A": "AWS Cost and Usage report",
+      "B": "AWS product pages",
+      "C": "AWS Simple Monthly Calculator",
+      "D": "Billing alerts and Amazon CloudWatch alarms",
+      "E": "AWS Price List API"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "The AWS Cost and Usage Report provides detailed billing data for monitoring expenses, and billing alerts with CloudWatch alarms notify you when costs exceed thresholds. Both help monitor account spending.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q821",
+    "domainId": 4,
+    "question": "Which AWS service should be used to create a billing alarm?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS CloudTrail",
+      "C": "Amazon CloudWatch",
+      "D": "Amazon QuickSight"
+    },
+    "answer": "C",
+    "explanation": "Amazon CloudWatch can create billing alarms that monitor your estimated AWS charges and send notifications through Amazon SNS when spending exceeds defined thresholds.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q832",
+    "domainId": 4,
+    "question": "Each department within a company has its own independent AWS account and its own payment method. New company leadership wants to centralize departmental governance and consolidate payments. How can this be achieved using AWS services or features?",
+    "options": {
+      "A": "Forward monthly invoices for each account. Then create IAM roles to allow cross-account access.",
+      "B": "Create a new AWS account. Then configure AWS Organizations and invite all existing accounts to join.",
+      "C": "Configure AWS Organizations in each of the existing accounts. Then link all accounts together.",
+      "D": "Use Cost Explorer to combine costs from all accounts. Then replicate IAM policies across accounts."
+    },
+    "answer": "B",
+    "explanation": "Creating a new AWS account and configuring AWS Organizations allows you to invite existing accounts to join, enabling centralized governance through SCPs and consolidated billing through a single payer.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q836",
+    "domainId": 4,
+    "question": "Which tool is used to forecast AWS spending?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Organizations",
+      "C": "Cost Explorer",
+      "D": "Amazon Inspector"
+    },
+    "answer": "C",
+    "explanation": "AWS Cost Explorer provides cost forecasting capabilities that use historical spending data to project future AWS expenses, helping organizations plan budgets and anticipate costs.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q847",
+    "domainId": 4,
+    "question": "A Cloud Practitioner identifies a billing issue after examining the AWS Cost and Usage report in the AWS Management Console. Which action can be taken to resolve this?",
+    "options": {
+      "A": "Open a detailed case related to billing and submit it to AWS Support for help.",
+      "B": "Upload data describing the issue to a new object in a private Amazon S3 bucket.",
+      "C": "Create a pricing application and deploy it to a right-sized Amazon EC2 instance for more information.",
+      "D": "Proceed with creating a new dashboard in Amazon QuickSight."
+    },
+    "answer": "A",
+    "explanation": "Opening a detailed billing support case with AWS Support is the appropriate action to resolve billing issues, as AWS Support can investigate charges, apply credits, and provide explanations.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q848",
+    "domainId": 4,
+    "question": "What does the AWS Simple Monthly Calculator do?",
+    "options": {
+      "A": "Compares on-premises costs to colocation environments",
+      "B": "Estimates monthly billing based on projected usage",
+      "C": "Estimates power consumption at existing data centers",
+      "D": "Estimates CPU utilization"
+    },
+    "answer": "B",
+    "explanation": "The AWS Simple Monthly Calculator (now AWS Pricing Calculator) estimates monthly billing based on projected usage of AWS services, helping users forecast costs before deploying resources.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q852",
+    "domainId": 4,
+    "question": "A user who wants to get help with billing and reactivate a suspended account should submit an account and billing request to:",
+    "options": {
+      "A": "the AWS Support forum",
+      "B": "AWS Abuse",
+      "C": "an AWS Solutions Architect",
+      "D": "AWS Support"
+    },
+    "answer": "D",
+    "explanation": "AWS Support handles billing inquiries and account reactivation requests. Users should submit an account and billing support case to get help with suspended accounts and payment issues.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q854",
+    "domainId": 4,
+    "question": "Which method helps to optimize costs of users moving to the AWS Cloud?",
+    "options": {
+      "A": "Paying only for what is used",
+      "B": "Purchasing hardware before it is needed",
+      "C": "Manually provisioning cloud resources",
+      "D": "Purchasing for the maximum possible load"
+    },
+    "answer": "A",
+    "explanation": "The pay-as-you-go model optimizes costs by ensuring you only pay for the resources you actually consume, eliminating waste from over-provisioning or purchasing hardware in advance.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q856",
+    "domainId": 4,
+    "question": "The AWS Cost Management tools give users the ability to do which of the following? (Choose two.)",
+    "options": {
+      "A": "Terminate all AWS resources automatically if budget thresholds are exceeded.",
+      "B": "Break down AWS costs by day, service, and linked AWS account.",
+      "C": "Create budgets and receive notifications if current of forecasted usage exceeds the budgets.",
+      "D": "Switch automatically to Reserved Instances or Spot Instances, whichever is most cost-effective.",
+      "E": "Move data stored in Amazon S3 to a more cost-effective storage class."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "AWS Cost Management tools break down costs by day, service, and linked account for detailed analysis, and allow you to create budgets with notifications when usage exceeds thresholds.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q863",
+    "domainId": 4,
+    "question": "Which Amazon EC2 pricing model should be used to comply with per-core software license requirements?",
+    "options": {
+      "A": "Dedicated Hosts",
+      "B": "On-Demand Instances",
+      "C": "Spot Instances",
+      "D": "Reserved Instances"
+    },
+    "answer": "A",
+    "explanation": "EC2 Dedicated Hosts provide visibility into the physical server's sockets and cores, allowing you to use existing per-core or per-socket software licenses that require specific hardware allocation.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q868",
+    "domainId": 4,
+    "question": "Which features and benefits does the AWS Organizations service provide? (Choose two.)",
+    "options": {
+      "A": "Establishing real-time communications between members of an internal team",
+      "B": "Facilitating the use of NoSQL databases",
+      "C": "Providing automated security checks",
+      "D": "Implementing consolidated billing",
+      "E": "Enforcing the governance of AWS accounts"
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "AWS Organizations implements consolidated billing to combine multiple accounts under one payment, and enforces governance of AWS accounts through Service Control Policies (SCPs) that set permission guardrails.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q870",
+    "domainId": 4,
+    "question": "Which tool is best suited for combining the billing of AWS accounts that were previously independent from one another?",
+    "options": {
+      "A": "Detailed billing report",
+      "B": "Consolidated billing",
+      "C": "AWS Cost and Usage report",
+      "D": "Cost allocation report"
+    },
+    "answer": "B",
+    "explanation": "Consolidated billing through AWS Organizations combines previously independent accounts under a single payer, simplifying billing management and aggregating usage for potential volume discounts.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q871",
+    "domainId": 4,
+    "question": "The AWS Total Cost of Ownership (TCO) Calculator is used to:",
+    "options": {
+      "A": "receive reports that break down AWS Cloud compute costs by duration, resource, or tags",
+      "B": "estimate savings when comparing the AWS Cloud to an on-premises environment",
+      "C": "estimate a monthly bill for the AWS Cloud resources that will be used",
+      "D": "enable billing alerts to monitor actual AWS costs compared to estimated costs"
+    },
+    "answer": "B",
+    "explanation": "The AWS TCO Calculator estimates savings by comparing the total cost of running workloads on-premises (including hardware, facilities, labor) against the equivalent AWS Cloud costs.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q874",
+    "domainId": 4,
+    "question": "What is the MINIMUM AWS Support plan level that will provide users with access to the AWS Support API?",
+    "options": {
+      "A": "Developer",
+      "B": "Enterprise",
+      "C": "Business",
+      "D": "Basic"
+    },
+    "answer": "C",
+    "explanation": "The Business Support plan is the minimum tier that provides access to the AWS Support API, enabling programmatic management of support cases. Developer and Basic plans do not include API access.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q877",
+    "domainId": 4,
+    "question": "An Amazon EC2 instance runs only when needed yet must remain active for the duration of the process. What is the most appropriate purchasing option?",
+    "options": {
+      "A": "Dedicated Instances",
+      "B": "Spot Instances",
+      "C": "On-Demand Instances",
+      "D": "Reserved Instances"
+    },
+    "answer": "C",
+    "explanation": "On-Demand Instances are ideal for workloads that run only when needed but must not be interrupted, since they have no long-term commitment and cannot be terminated by AWS (unlike Spot Instances).",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q878",
+    "domainId": 4,
+    "question": "Which AWS dashboard displays relevant and timely information to help users manage events in progress, and provides proactive notifications to help plan for scheduled activities?",
+    "options": {
+      "A": "AWS Service Health Dashboard",
+      "B": "AWS Personal Health Dashboard",
+      "C": "AWS Trusted Advisor dashboard",
+      "D": "Amazon CloudWatch dashboard"
+    },
+    "answer": "B",
+    "explanation": "AWS Personal Health Dashboard provides personalized, timely information about events affecting your AWS resources, along with proactive notifications for scheduled maintenance and other planned activities.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q882",
+    "domainId": 4,
+    "question": "Which AWS Support plan provides access to architectural and operational reviews, as well as 24/7 access to Senior Cloud Support Engineers through email, online chat, and phone?",
+    "options": {
+      "A": "Basic",
+      "B": "Business",
+      "C": "Developer",
+      "D": "Enterprise"
+    },
+    "answer": "D",
+    "explanation": "The Enterprise Support plan provides access to architectural and operational reviews (including Well-Architected reviews), 24/7 access to Senior Cloud Support Engineers, and a Technical Account Manager.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q892",
+    "domainId": 4,
+    "question": "How can a company separate costs for network traffic, Amazon EC2, Amazon S3, and other AWS services by department?",
+    "options": {
+      "A": "Add department-specific tags to each resource",
+      "B": "Create a separate VPC for each department",
+      "C": "Create a separate AWS account for each department",
+      "D": "Use AWS Organizations"
+    },
+    "answer": "C",
+    "explanation": "Creating a separate AWS account for each department provides the cleanest cost separation, as all charges within each account are automatically attributed to that department.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q893",
+    "domainId": 4,
+    "question": "What is a benefit of consolidated billing for AWS accounts?",
+    "options": {
+      "A": "Access to AWS Personal Health Dashboard",
+      "B": "Combined usage volume discounts",
+      "C": "Improved account security",
+      "D": "Centralized AWS IAM"
+    },
+    "answer": "B",
+    "explanation": "Consolidated billing combines usage across all member accounts in an AWS Organization, allowing the organization to reach higher volume pricing tiers and receive combined usage discounts.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q894",
+    "domainId": 4,
+    "question": "Which AWS service will allow a user to set custom cost and usage limits, and will alert when the thresholds are exceeded?",
+    "options": {
+      "A": "AWS Organizations",
+      "B": "AWS Budgets",
+      "C": "Cost Explorer",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "B",
+    "explanation": "AWS Budgets lets you set custom cost and usage thresholds with configurable alerts that notify you via email or SNS when actual or forecasted spending exceeds your defined limits.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q896",
+    "domainId": 4,
+    "question": "Which tool can be used to monitor AWS service limits?",
+    "options": {
+      "A": "AWS Total Cost of Ownership (TCO) Calculator",
+      "B": "AWS Trusted Advisor",
+      "C": "AWS Personal Health Dashboard",
+      "D": "AWS Cost and Usage report"
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor monitors service limits across your AWS account and alerts you when you approach or reach limits, helping you request increases before hitting constraints.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q902",
+    "domainId": 4,
+    "question": "A company's application has flexible start and end times. Which Amazon EC2 pricing model will be the MOST cost-effective?",
+    "options": {
+      "A": "On-Demand Instances",
+      "B": "Spot Instances",
+      "C": "Reserved Instances",
+      "D": "Dedicated Hosts"
+    },
+    "answer": "B",
+    "explanation": "Spot Instances offer up to 90% savings over On-Demand pricing and are ideal for applications with flexible start and end times that can tolerate interruptions.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q904",
+    "domainId": 4,
+    "question": "A cloud practitioner has a data analysis workload that is infrequently executed and can be interrupted without harm. To optimize for cost, which Amazon EC2 purchasing option should be used?",
+    "options": {
+      "A": "On-Demand Instances",
+      "B": "Reserved Instances",
+      "C": "Spot Instances",
+      "D": "Dedicated Hosts"
+    },
+    "answer": "C",
+    "explanation": "Spot Instances provide the deepest discounts for workloads that are infrequently executed and can be interrupted, making them the most cost-effective option for interruptible data analysis jobs.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q907",
+    "domainId": 4,
+    "question": "A company with a Developer-level AWS Support plan provisioned an Amazon RDS database and cannot connect to it. Who should the developer contact for this level of support?",
+    "options": {
+      "A": "AWS Support using a support case",
+      "B": "AWS Professional Services",
+      "C": "AWS technical account manager",
+      "D": "AWS consulting partners"
+    },
+    "answer": "A",
+    "explanation": "With a Developer Support plan, the developer should contact AWS Support by opening a support case through the AWS Management Console to get technical assistance with the RDS connection issue.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q911",
+    "domainId": 4,
+    "question": "AWS Trusted Advisor provides recommendations on which of the following? (Choose two.)",
+    "options": {
+      "A": "Cost optimization",
+      "B": "Auditing",
+      "C": "Serverless architecture",
+      "D": "Performance",
+      "E": "Scalability"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS Trusted Advisor provides recommendations across five categories: Cost Optimization, Performance, Security, Fault Tolerance, and Service Limits. Cost optimization and performance are two of them.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q914",
+    "domainId": 4,
+    "question": "A company operating in the AWS Cloud requires separate invoices for specific environments, such as development, testing, and production. How can this be achieved?",
+    "options": {
+      "A": "Use multiple AWS accounts",
+      "B": "Use resource tagging",
+      "C": "Use multiple VPCs",
+      "D": "Use Cost Explorer"
+    },
+    "answer": "A",
+    "explanation": "Using multiple AWS accounts — one per environment — provides completely separate invoices for development, testing, and production, with no cost allocation ambiguity.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q916",
+    "domainId": 4,
+    "question": "What can be used to reduce the cost of running Amazon EC2 instances? (Choose two.)",
+    "options": {
+      "A": "Spot Instances for stateless and flexible workloads",
+      "B": "Memory optimized instances for high-compute workloads",
+      "C": "On-Demand Instances for high-cost and sustained workloads",
+      "D": "Reserved Instances for sustained workloads",
+      "E": "Spend limits set using AWS Budgets"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Spot Instances provide deep discounts for flexible, stateless workloads, and Reserved Instances offer significant savings for sustained workloads with predictable usage. Both reduce EC2 costs.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q922",
+    "domainId": 4,
+    "question": "Which AWS Cloud service can send alerts to customers if custom spending thresholds are exceeded?",
+    "options": {
+      "A": "AWS Budgets",
+      "B": "AWS Cost Explorer",
+      "C": "AWS Cost Allocation Tags",
+      "D": "AWS Organizations"
+    },
+    "answer": "A",
+    "explanation": "AWS Budgets sends alert notifications when actual or forecasted spending exceeds custom thresholds you define, enabling proactive cost management before overspending occurs.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q926",
+    "domainId": 4,
+    "question": "Which Amazon EC2 pricing option is best suited for applications with short-term, spiky, or unpredictable workloads that cannot be interrupted?",
+    "options": {
+      "A": "Spot Instances",
+      "B": "Dedicated Hosts",
+      "C": "On-Demand Instances",
+      "D": "Reserved Instances"
+    },
+    "answer": "C",
+    "explanation": "On-Demand Instances are best for short-term, spiky, or unpredictable workloads that cannot be interrupted, since they have no commitment and guaranteed availability unlike Spot Instances.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q930",
+    "domainId": 4,
+    "question": "Which of the following allows AWS users to manage cost allocations for billing?",
+    "options": {
+      "A": "Tagging resources",
+      "B": "Limiting who can create resources",
+      "C": "Adding a secondary payment method",
+      "D": "Running all operations on a single AWS account"
+    },
+    "answer": "A",
+    "explanation": "Tagging resources with key-value pairs (like department names) enables cost allocation tracking through AWS Cost Explorer and Cost & Usage Reports, attributing spending to specific departments.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q934",
+    "domainId": 4,
+    "question": "Which requirement must be met for a member account to be unlinked from an AWS Organizations account?",
+    "options": {
+      "A": "The linked account must be actively compliant with AWS System and Organization Controls (SOC).",
+      "B": "The payer and the linked account must both create AWS Support cases to request that the member account be unlinked from the organization.",
+      "C": "The member account must meet the requirements of a standalone account.",
+      "D": "The payer account must be used to remove the linked account from the organization."
+    },
+    "answer": "C",
+    "explanation": "To unlink a member account from AWS Organizations, the account must meet the requirements of a standalone account, including having a valid payment method and the necessary account information.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q938",
+    "domainId": 4,
+    "question": "A company has a 500 TB image repository that needs to be transported to AWS for processing. Which AWS service can import this data MOST cost-effectively?",
+    "options": {
+      "A": "AWS Snowball",
+      "B": "AWS Direct Connect",
+      "C": "AWS VPN",
+      "D": "Amazon S3"
+    },
+    "answer": "A",
+    "explanation": "AWS Snowball can transport up to 80 TB per device, making it the most cost-effective way to physically move 500 TB of data to AWS without relying on slow or expensive network transfers.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q940",
+    "domainId": 4,
+    "question": "Which of the following assist in identifying costs by department? (Choose two.)",
+    "options": {
+      "A": "Using tags on resources",
+      "B": "Using multiple AWS accounts",
+      "C": "Using an account manager",
+      "D": "Using AWS Trusted Advisor",
+      "E": "Using Consolidated Billing"
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Using tags on resources enables cost allocation by department through Cost Explorer reports, and using multiple AWS accounts provides natural cost separation per department. Both help identify departmental costs.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q942",
+    "domainId": 4,
+    "question": "Which AWS service allows for effective cost management of multiple AWS accounts?",
+    "options": {
+      "A": "AWS Organizations",
+      "B": "AWS Trusted Advisor",
+      "C": "AWS Direct Connect",
+      "D": "Amazon Connect"
+    },
+    "answer": "A",
+    "explanation": "AWS Organizations provides consolidated billing and Service Control Policies for effective cost management across multiple AWS accounts, enabling volume discounts and centralized governance.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q943",
+    "domainId": 4,
+    "question": "A company is piloting a new customer-facing application on Amazon Elastic Compute Cloud (Amazon EC2) for one month. What pricing model is appropriate?",
+    "options": {
+      "A": "Reserved Instances",
+      "B": "Spot Instances",
+      "C": "On-Demand Instances",
+      "D": "Dedicated Hosts"
+    },
+    "answer": "C",
+    "explanation": "On-Demand Instances are appropriate for a one-month pilot because they require no long-term commitment, the customer-facing nature means interruptions are unacceptable (ruling out Spot), and the duration is too short for Reserved Instances.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q944",
+    "domainId": 4,
+    "question": "Which AWS tools automatically forecast future AWS costs?",
+    "options": {
+      "A": "AWS Support Center",
+      "B": "AWS Total Cost of Ownership (TCO) Calculator",
+      "C": "AWS Simple Monthly Calculator",
+      "D": "Cost Explorer"
+    },
+    "answer": "D",
+    "explanation": "AWS Cost Explorer automatically forecasts future AWS costs based on historical spending data, projecting expenses up to 12 months ahead to help with budget planning.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q946",
+    "domainId": 4,
+    "question": "A user is able to set up a master payer account to view consolidated billing reports through:",
+    "options": {
+      "A": "AWS Budgets.",
+      "B": "Amazon Macie.",
+      "C": "Amazon QuickSight.",
+      "D": "AWS Organizations."
+    },
+    "answer": "D",
+    "explanation": "AWS Organizations enables a master payer account to view consolidated billing reports across all member accounts, providing a unified view of spending and usage.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q952",
+    "domainId": 4,
+    "question": "What does the Amazon S3 Intelligent-Tiering storage class offer?",
+    "options": {
+      "A": "Payment flexibility by reserving storage capacity",
+      "B": "Long-term retention of data by copying the data to an encrypted Amazon Elastic Block Store (Amazon EBS) volume",
+      "C": "Automatic cost savings by moving objects between tiers based on access pattern changes",
+      "D": "Secure, durable, and lowest cost storage for data archival"
+    },
+    "answer": "C",
+    "explanation": "S3 Intelligent-Tiering automatically moves objects between frequent and infrequent access tiers based on changing access patterns, optimizing costs without performance impact or operational overhead.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q956",
+    "domainId": 4,
+    "question": "A user has a stateful workload that will run on Amazon EC2 for the next 3 years. What is the MOST cost-effective pricing model for this workload?",
+    "options": {
+      "A": "On-Demand Instances",
+      "B": "Reserved Instances",
+      "C": "Dedicated Instances",
+      "D": "Spot Instances"
+    },
+    "answer": "B",
+    "explanation": "Reserved Instances provide the most cost-effective pricing for a 3-year stateful workload with predictable, steady-state usage, offering up to 72% savings compared to On-Demand pricing.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q957",
+    "domainId": 4,
+    "question": "A cloud practitioner needs an Amazon EC2 instance to launch and run for 7 hours without interruptions. What is the most suitable and cost-effective option for this task?",
+    "options": {
+      "A": "On-Demand Instance",
+      "B": "Reserved Instance",
+      "C": "Dedicated Host",
+      "D": "Spot Instance"
+    },
+    "answer": "A",
+    "explanation": "On-Demand Instances are most suitable for a short 7-hour task that cannot be interrupted. Spot Instances risk interruption, and Reserved Instances require longer commitments that don't suit a few hours of use.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q964",
+    "domainId": 4,
+    "question": "Which AWS service can be used to provide an on-demand, cloud-based contact center?",
+    "options": {
+      "A": "AWS Direct Connect",
+      "B": "Amazon Connect",
+      "C": "AWS Support Center",
+      "D": "AWS Managed Services"
+    },
+    "answer": "B",
+    "explanation": "Amazon Connect is a cloud-based contact center service that can be set up in minutes, providing on-demand scalability with pay-per-use pricing for customer service operations.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q965",
+    "domainId": 4,
+    "question": "What tool enables customers without an AWS account to estimate costs for almost all AWS services?",
+    "options": {
+      "A": "Cost Explorer",
+      "B": "TCO Calculator",
+      "C": "AWS Budgets",
+      "D": "AWS Pricing Calculator"
+    },
+    "answer": "D",
+    "explanation": "AWS Pricing Calculator is available to anyone (no AWS account required) and lets you estimate costs for virtually all AWS services by configuring resources and usage parameters.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q967",
+    "domainId": 4,
+    "question": "Which pricing model would result in maximum Amazon Elastic Compute Cloud (Amazon EC2) savings for a database server that must be online for one year?",
+    "options": {
+      "A": "Spot Instance",
+      "B": "On-Demand Instance",
+      "C": "Partial Upfront Reserved Instance",
+      "D": "No Upfront Reserved Instance"
+    },
+    "answer": "C",
+    "explanation": "A Partial Upfront Reserved Instance for one year provides meaningful savings over On-Demand while requiring less cash upfront than All Upfront, making it the best balance for a year-long database server.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q973",
+    "domainId": 4,
+    "question": "AnyCompany recently purchased Example Corp. Both companies use AWS resources, and AnyCompany wants a single aggregated bill. Which option allows AnyCompany to receive a single bill?",
+    "options": {
+      "A": "Example Corp. must submit a request to its AWS solutions architect or AWS technical account manager to link the accounts and consolidate billing.",
+      "B": "AnyCompany must create a new support case in the AWS Support Center requesting that both bills be combined.",
+      "C": "Send an invitation to join the organization from AnyCompany's AWS Organizations master account to Example Corp.",
+      "D": "Migrate the Example Corp. VPCs, Amazon EC2 instances, and other resources into the AnyCompany AWS account."
+    },
+    "answer": "C",
+    "explanation": "Sending an invitation from AnyCompany's AWS Organizations master account to Example Corp. adds them to the organization, enabling consolidated billing with a single aggregated bill.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q974",
+    "domainId": 4,
+    "question": "Which tool can be used to create alerts when the actual or forecasted cost of AWS services exceeds a certain threshold?",
+    "options": {
+      "A": "Cost Explorer",
+      "B": "AWS Budgets",
+      "C": "AWS Cost and Usage Report",
+      "D": "AWS CloudTrail"
+    },
+    "answer": "B",
+    "explanation": "AWS Budgets creates alerts when actual or forecasted costs exceed defined thresholds, sending notifications via email or SNS to enable proactive cost management.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q976",
+    "domainId": 4,
+    "question": "Which AWS Trusted Advisor check is available to all AWS users?",
+    "options": {
+      "A": "Core checks",
+      "B": "All checks",
+      "C": "Cost optimization checks",
+      "D": "Fault tolerance checks"
+    },
+    "answer": "A",
+    "explanation": "All AWS users, including those on the Basic (free) support plan, have access to the seven core Trusted Advisor checks covering basic security and service limit recommendations.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q982",
+    "domainId": 4,
+    "question": "A workload on AWS will run for the foreseeable future by using a consistent number of Amazon EC2 instances. What pricing model will minimize cost while ensuring that compute resources remain available?",
+    "options": {
+      "A": "Dedicated Hosts",
+      "B": "On-Demand Instances",
+      "C": "Spot Instances",
+      "D": "Reserved Instances"
+    },
+    "answer": "D",
+    "explanation": "Reserved Instances are the most cost-effective option for a consistent, long-running workload, providing significant discounts over On-Demand while guaranteeing compute capacity availability.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q983",
+    "domainId": 4,
+    "question": "Which tool can be used to identify scheduled changes to the AWS infrastructure?",
+    "options": {
+      "A": "AWS Personal Health Dashboard",
+      "B": "AWS Trusted Advisor",
+      "C": "Billing Dashboard",
+      "D": "AWS Config"
+    },
+    "answer": "A",
+    "explanation": "AWS Personal Health Dashboard identifies scheduled changes to AWS infrastructure that may affect your resources, providing proactive notifications and remediation guidance for planned maintenance.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q986",
+    "domainId": 4,
+    "question": "A company wants to be notified when its AWS Cloud costs or usage exceed defined thresholds. Which AWS service will support these requirements?",
+    "options": {
+      "A": "AWS Budgets",
+      "B": "Cost Explorer",
+      "C": "AWS CloudTrail",
+      "D": "Amazon Macie"
+    },
+    "answer": "A",
+    "explanation": "AWS Budgets sends notifications when AWS costs or usage exceed custom-defined thresholds, enabling proactive spending management before costs get out of control.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q988",
+    "domainId": 4,
+    "question": "Which AWS service allows customers to purchase unused Amazon EC2 capacity at an often discounted rate?",
+    "options": {
+      "A": "Reserved Instances",
+      "B": "On-Demand Instances",
+      "C": "Dedicated Instances",
+      "D": "Spot Instances"
+    },
+    "answer": "D",
+    "explanation": "Spot Instances allow customers to purchase unused EC2 capacity at discounts of up to 90% compared to On-Demand pricing, ideal for fault-tolerant and flexible workloads.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1000",
+    "domainId": 4,
+    "question": "A company is running a self-managed Oracle database directly on Amazon EC2 for its steady-state database. The company wants to reduce compute costs. Which option should the company use to maximize savings over a 3-year term?",
+    "options": {
+      "A": "EC2 Dedicated Instances",
+      "B": "EC2 Spot Instances",
+      "C": "EC2 Reserved Instances",
+      "D": "EC2 On-Demand Instances"
+    },
+    "answer": "C",
+    "explanation": "EC2 Reserved Instances provide the maximum savings for a steady-state, 3-year workload, offering up to 72% discount over On-Demand pricing for the committed term.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1002",
+    "domainId": 4,
+    "question": "What are the benefits of consolidated billing for AWS Cloud services? (Choose two.)",
+    "options": {
+      "A": "Volume discounts",
+      "B": "A minimal additional fee for use",
+      "C": "One bill for multiple accounts",
+      "D": "Installment payment options",
+      "E": "Custom cost and usage budget creation"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Consolidated billing provides volume discounts by aggregating usage across all accounts, and delivers one bill for multiple accounts, simplifying financial management for organizations.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1003",
+    "domainId": 4,
+    "question": "A company is expecting a short-term spike in internet traffic for its application. During the traffic increase, the application cannot be interrupted. The company also needs to minimize cost and maximize flexibility. Which Amazon EC2 instance type should the company use to meet these requirements?",
+    "options": {
+      "A": "On-Demand Instances",
+      "B": "Spot Instances",
+      "C": "Reserved Instances",
+      "D": "Dedicated Hosts"
+    },
+    "answer": "A",
+    "explanation": "On-Demand Instances are best for short-term traffic spikes that cannot be interrupted, providing maximum flexibility with no commitment while guaranteeing availability unlike Spot Instances.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1009",
+    "domainId": 4,
+    "question": "How can AWS enable a company to control expenses as an application's usage changes unpredictably?",
+    "options": {
+      "A": "AWS will refund the cost difference if a customer moves to larger servers.",
+      "B": "The application can be built to scale up or down automatically as resources are needed",
+      "C": "Spot instances will automatically be used if the price is lower than on-demand instances.",
+      "D": "Amazon CloudWatch will automatically predict what resources are needed."
+    },
+    "answer": "B",
+    "explanation": "AWS enables expense control through auto-scaling, which automatically adjusts resources up or down based on actual demand, ensuring you only pay for what you use even as usage changes unpredictably.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1019",
+    "domainId": 4,
+    "question": "A company wants to use machine learning to analyze the configuration and utilization of their AWS resources and receive recommendations to right-size their workloads. Which AWS service provides this capability?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Cost Explorer",
+      "C": "AWS Compute Optimizer",
+      "D": "AWS Budgets"
+    },
+    "answer": "C",
+    "explanation": "AWS Compute Optimizer uses machine learning to analyze historical utilization metrics and provide recommendations for optimal AWS resource configurations (EC2 instances, EBS volumes, Lambda functions). Trusted Advisor provides broader best practice checks, Cost Explorer visualizes costs, and Budgets sets spending alerts.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1020",
+    "domainId": 4,
+    "question": "Which AWS service analyzes the configuration and utilization metrics of Amazon EC2 instances and provides recommendations for optimal instance types?",
+    "options": {
+      "A": "Amazon Inspector",
+      "B": "AWS Compute Optimizer",
+      "C": "AWS Config",
+      "D": "AWS Cost Explorer"
+    },
+    "answer": "B",
+    "explanation": "AWS Compute Optimizer recommends optimal AWS resource configurations by analyzing utilization data using machine learning. It covers EC2, Auto Scaling groups, EBS, and Lambda. Inspector is for security vulnerability assessment, Config tracks resource configuration changes, and Cost Explorer is for cost visualization.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1021",
+    "domainId": 4,
+    "question": "A company wants to automatically detect unusual spending patterns in their AWS account and receive alerts when anomalies are found. Which AWS service uses machine learning to monitor costs and detect anomalies?",
+    "options": {
+      "A": "AWS Budgets",
+      "B": "AWS Cost Anomaly Detection",
+      "C": "AWS Trusted Advisor",
+      "D": "Amazon GuardDuty"
+    },
+    "answer": "B",
+    "explanation": "AWS Cost Anomaly Detection uses machine learning to continuously monitor cost and usage patterns and detect unusual spending. It sends alerts when anomalies are detected. Budgets sets fixed thresholds, Trusted Advisor checks for general best practices, and GuardDuty monitors for security threats.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1022",
+    "domainId": 4,
+    "question": "Which AWS service leverages machine learning models to identify unexpected changes in AWS spending without requiring users to define spending thresholds?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Budgets",
+      "C": "AWS Cost Anomaly Detection",
+      "D": "AWS Pricing Calculator"
+    },
+    "answer": "C",
+    "explanation": "AWS Cost Anomaly Detection automatically learns spending patterns and alerts on anomalies without manual threshold configuration. Cost Explorer visualizes spending trends, Budgets requires manual threshold setup, and Pricing Calculator estimates costs for planned workloads.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1040",
+    "domainId": 4,
+    "question": "Which AWS pricing model provides flexible pricing with savings of up to 72% on compute usage, regardless of instance family, size, OS, or tenancy?",
+    "options": {
+      "A": "Reserved Instances",
+      "B": "Spot Instances",
+      "C": "Savings Plans",
+      "D": "Dedicated Hosts"
+    },
+    "answer": "C",
+    "explanation": "AWS Savings Plans offer flexible pricing with up to 72% savings on compute usage in exchange for a commitment to a consistent amount of usage (measured in $/hour) for 1 or 3 years. Unlike Reserved Instances, Compute Savings Plans are not limited to specific instance families or Regions. Spot Instances offer discounts for unused capacity, and Dedicated Hosts provide dedicated physical servers.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1041",
+    "domainId": 4,
+    "question": "What is a key difference between AWS Savings Plans and Reserved Instances?",
+    "options": {
+      "A": "Savings Plans require a 5-year commitment while Reserved Instances require 1 or 3 years",
+      "B": "Savings Plans apply across instance families and Regions while Standard Reserved Instances are specific to an instance type and Region",
+      "C": "Reserved Instances offer greater discounts than Savings Plans",
+      "D": "Savings Plans can only be used with Amazon EC2 while Reserved Instances work with all compute services"
+    },
+    "answer": "B",
+    "explanation": "Compute Savings Plans provide flexibility across instance families, sizes, OS, tenancy, and Regions, while Standard Reserved Instances are locked to a specific instance type in a specific Region. Both offer 1 or 3-year terms, and savings are comparable. Savings Plans also apply to Fargate and Lambda, while Reserved Instances are available for EC2, RDS, ElastiCache, and other services.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1055",
+    "domainId": 4,
+    "question": "A company with multiple business units wants to map AWS costs to each department for internal chargeback. Which AWS feature allows them to create custom cost categories?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Cost Categories",
+      "C": "AWS Cost Allocation Tags",
+      "D": "AWS Budgets"
+    },
+    "answer": "B",
+    "explanation": "AWS Cost Categories allows you to create custom groupings of your cost and usage data by mapping your costs into meaningful categories based on your organizational needs. Cost Explorer visualizes costs, Cost Allocation Tags are metadata on resources, and Budgets sets spending alerts.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  }
+]
