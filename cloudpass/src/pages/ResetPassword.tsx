@@ -9,6 +9,14 @@ export function ResetPassword() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
+  // Set page title
+  useEffect(() => {
+    document.title = "Reset Password | CloudCertPrep"
+    return () => {
+      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
+    }
+  }, [])
+
   useEffect(() => {
     supabase.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY') {

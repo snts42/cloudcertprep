@@ -290,7 +290,7 @@ export function Login() {
             <button
               onClick={handleGoogleAuth}
               disabled
-              className="mt-4 w-full bg-white text-gray-900 font-semibold py-3 rounded-lg flex items-center justify-center gap-2 opacity-40 cursor-not-allowed pointer-events-none"
+              className="mt-4 w-full bg-white text-bg-dark font-semibold py-3 rounded-lg flex items-center justify-center gap-2 opacity-40 cursor-not-allowed pointer-events-none"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
@@ -312,7 +312,7 @@ export function Login() {
               </svg>
               Continue with Google
             </button>
-            <p className="text-xs text-gray-500 text-center mt-1">
+            <p className="text-xs text-text-muted text-center mt-1">
               Google sign-in temporarily unavailable — use email or continue as guest
             </p>
           </div>

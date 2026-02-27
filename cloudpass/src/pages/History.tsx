@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import { formatDuration } from '../lib/scoring'
+import { formatRelativeDate } from '../lib/formatting'
 import { TrendingUp, Check, X } from 'lucide-react'
 
 interface ExamAttempt {
@@ -75,8 +76,11 @@ export function History() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
-        <LoadingSpinner text="Loading history..." />
+      <div className="bg-bg-dark flex flex-col">
+        <Header showNav={true} />
+        <div className="flex-1 flex items-center justify-center p-8">
+          <LoadingSpinner text="Loading history..." />
+        </div>
       </div>
     )
   }
@@ -95,28 +99,6 @@ export function History() {
 
   const passedAttempts = attempts.filter(a => a.passed).length
 
-  function formatRelativeDate(dateString: string): string {
-    const date = new Date(dateString)
-    const now = new Date()
-    const diffMs = now.getTime() - date.getTime()
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
-    const diffMinutes = Math.floor(diffMs / (1000 * 60))
-
-    if (diffMinutes < 60) {
-      return diffMinutes === 1 ? '1 minute ago' : `${diffMinutes} minutes ago`
-    } else if (diffHours < 24) {
-      return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`
-    } else if (diffDays === 0) {
-      return 'Today'
-    } else if (diffDays === 1) {
-      return 'Yesterday'
-    } else if (diffDays < 7) {
-      return `${diffDays} days ago`
-    } else {
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-    }
-  }
 
   return (
     <div className="bg-bg-dark flex flex-col">

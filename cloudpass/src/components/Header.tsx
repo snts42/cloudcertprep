@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { supabase } from '../lib/supabase'
 import { Menu, X, Heart, Cloud, Check } from 'lucide-react'
 
 interface HeaderProps {
@@ -10,7 +9,7 @@ interface HeaderProps {
 
 export function Header({ showNav = false }: HeaderProps) {
   const navigate = useNavigate()
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -67,7 +66,7 @@ export function Header({ showNav = false }: HeaderProps) {
                 {user ? (
                   <button
                     onClick={() => {
-                      supabase.auth.signOut()
+                      signOut()
                       navigate('/login')
                     }}
                     className="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
@@ -131,7 +130,7 @@ export function Header({ showNav = false }: HeaderProps) {
                       {user ? (
                         <button
                           onClick={() => {
-                            supabase.auth.signOut()
+                            signOut()
                             navigate('/login')
                             setMobileMenuOpen(false)
                           }}

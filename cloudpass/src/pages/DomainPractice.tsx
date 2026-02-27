@@ -5,11 +5,12 @@ import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { ProgressBar } from '../components/ProgressBar'
 import { supabase } from '../lib/supabase'
+import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
 import { isAnswerCorrect } from '../lib/scoring'
-import { calculateDomainMastery, DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
+import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
 import { Check, X } from 'lucide-react'
 
@@ -147,43 +148,7 @@ export function DomainPractice() {
 
         if (questionsError) throw questionsError
 
-        // Get count of UNIQUE questions attempted for this domain (across all attempts)
-        const { data: uniqueQuestions } = await supabase
-          .from('attempt_questions')
-          .select('question_id')
-          .eq('user_id', user.id)
-          .eq('domain_id', selectedDomain)
-
-        // Count distinct question IDs
-        const uniqueQuestionIds = new Set(uniqueQuestions?.map(q => q.question_id) || [])
-        const totalUniqueAttempted = uniqueQuestionIds.size
-
-        // Get count of UNIQUE questions answered correctly for this domain
-        const { data: correctQuestions } = await supabase
-          .from('attempt_questions')
-          .select('question_id')
-          .eq('user_id', user.id)
-          .eq('domain_id', selectedDomain)
-          .eq('is_correct', true)
-
-        const uniqueCorrectIds = new Set(correctQuestions?.map(q => q.question_id) || [])
-        const totalUniqueCorrect = uniqueCorrectIds.size
-
-        const newMastery = calculateDomainMastery(totalUniqueCorrect, selectedDomain as 1 | 2 | 3 | 4)
-
-        const { error: progressError } = await supabase.from('domain_progress').upsert({
-          user_id: user.id,
-          domain_id: selectedDomain,
-          questions_attempted: totalUniqueAttempted,
-          questions_correct: totalUniqueCorrect,
-          mastery_percent: newMastery,
-        }, {
-          onConflict: 'user_id,domain_id',
-        })
-
-        if (progressError) {
-          console.error(`Error updating domain ${selectedDomain} progress:`, progressError)
-        }
+        await updateDomainProgress(user.id, selectedDomain!)
       } catch (error) {
         console.error('Error saving domain progress:', error)
       }
@@ -415,12 +380,12 @@ export function DomainPractice() {
                           <span>✦</span> AI Generated
                         </span>
                       )}
-                      <p className="text-sm text-gray-300 mt-3 leading-relaxed">{currentResult.question.explanation}</p>
+                      <p className="text-sm text-text-muted mt-3 leading-relaxed">{currentResult.question.explanation}</p>
                     </div>
 
                     {/* Question ID */}
-                    <div className="mt-3 pt-2 border-t border-gray-700">
-                      <span className="text-xs text-gray-600 font-mono">{currentResult.question.id}</span>
+                    <div className="mt-3 pt-2 border-t border-text-muted/20">
+                      <span className="text-xs text-text-muted/50 font-mono">{currentResult.question.id}</span>
                     </div>
                   </div>
                 )
@@ -596,8 +561,8 @@ export function DomainPractice() {
             )}
 
             {/* Question ID */}
-            <div className="mt-3 pt-2 border-t border-gray-700">
-              <span className="text-xs text-gray-600 font-mono">{currentQuestion.id}</span>
+            <div className="mt-3 pt-2 border-t border-text-muted/20">
+              <span className="text-xs text-text-muted/50 font-mono">{currentQuestion.id}</span>
             </div>
           </div>
 

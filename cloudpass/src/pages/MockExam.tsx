@@ -9,8 +9,8 @@ import { Modal } from '../components/Modal'
 import { PassFailBanner } from '../components/PassFailBanner'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, formatTime, formatDuration, isAnswerCorrect } from '../lib/scoring'
-import { calculateDomainMastery } from '../lib/domainStats'
 import { supabase } from '../lib/supabase'
+import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
 import masterQuestions from '../data/master_questions.json'
@@ -215,45 +215,8 @@ export function MockExam() {
       // Update domain progress for all 4 domains
       for (let domainId = 1; domainId <= 4; domainId++) {
         const domainResults = results.filter(r => r.domainId === domainId)
-
         if (domainResults.length > 0) {
-          // Get count of UNIQUE questions attempted for this domain (across all attempts)
-          const { data: uniqueQuestions } = await supabase
-            .from('attempt_questions')
-            .select('question_id')
-            .eq('user_id', user?.id)
-            .eq('domain_id', domainId)
-
-          // Count distinct question IDs
-          const uniqueQuestionIds = new Set(uniqueQuestions?.map(q => q.question_id) || [])
-          const totalUniqueAttempted = uniqueQuestionIds.size
-
-          // Get count of UNIQUE questions answered correctly for this domain
-          const { data: correctQuestions } = await supabase
-            .from('attempt_questions')
-            .select('question_id')
-            .eq('user_id', user?.id)
-            .eq('domain_id', domainId)
-            .eq('is_correct', true)
-
-          const uniqueCorrectIds = new Set(correctQuestions?.map(q => q.question_id) || [])
-          const totalUniqueCorrect = uniqueCorrectIds.size
-
-          const newMastery = calculateDomainMastery(totalUniqueCorrect, domainId as 1 | 2 | 3 | 4)
-
-          const { error: progressError } = await supabase.from('domain_progress').upsert({
-            user_id: user?.id,
-            domain_id: domainId,
-            questions_attempted: totalUniqueAttempted,
-            questions_correct: totalUniqueCorrect,
-            mastery_percent: newMastery,
-          }, {
-            onConflict: 'user_id,domain_id',
-          })
-
-          if (progressError) {
-            console.error(`Error updating domain ${domainId} progress:`, progressError)
-          }
+          await updateDomainProgress(user!.id, domainId)
         }
       }
     }
@@ -936,8 +899,8 @@ export function MockExam() {
               )}
 
               {/* Question ID */}
-              <div className="mt-3 pt-2 border-t border-gray-700">
-                <span className="text-xs text-gray-600 font-mono">{originalQuestion.id}</span>
+              <div className="mt-3 pt-2 border-t border-text-muted/20">
+                <span className="text-xs text-text-muted/50 font-mono">{originalQuestion.id}</span>
               </div>
             </div>
 
