@@ -98,7 +98,7 @@ export function Terms() {
 
             <div className="pt-4 border-t border-text-muted/20">
               <p className="text-text-muted text-sm">
-                Questions? Email <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a> or read our <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>.
+                Questions? Email <a href="mailto:alex@cloudcertprep.io" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@cloudcertprep.io</a> or read our <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>.
               </p>
             </div>
           </div>

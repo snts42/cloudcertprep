@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { Menu, X, Heart, Cloud, Check } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
+import { Menu, X, Heart, Cloud, Check, Sun, Moon } from 'lucide-react'
 
 interface HeaderProps {
   showNav?: boolean
@@ -10,6 +11,7 @@ interface HeaderProps {
 export function Header({ showNav = false }: HeaderProps) {
   const navigate = useNavigate()
   const { user, signOut } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -69,14 +71,14 @@ export function Header({ showNav = false }: HeaderProps) {
                       signOut()
                       navigate('/login')
                     }}
-                    className="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
+                    className="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium rounded-lg text-base lg:text-lg whitespace-nowrap"
                   >
                     Sign Out
                   </button>
                 ) : (
                   <button
                     onClick={() => navigate('/login')}
-                    className="px-5 py-3 bg-white hover:bg-white/90 text-aws-orange font-medium rounded-lg transition-colors text-base lg:text-lg whitespace-nowrap"
+                    className="px-5 py-3 bg-white hover:bg-white/90 text-aws-orange font-medium rounded-lg text-base lg:text-lg whitespace-nowrap"
                   >
                     Sign In
                   </button>
@@ -95,11 +97,11 @@ export function Header({ showNav = false }: HeaderProps) {
                   {/* Drawer */}
                   <div className="md:hidden fixed top-0 right-0 bottom-0 w-64 bg-bg-card shadow-2xl z-[101] flex flex-col">
                     {/* Drawer Header */}
-                    <div className="flex items-center justify-between p-4 border-b border-white/10">
-                      <h2 className="text-lg font-semibold text-white">Menu</h2>
+                    <div className="flex items-center justify-between p-4 border-b border-text-muted/20">
+                      <h2 className="text-lg font-semibold text-text-primary">Menu</h2>
                       <button
                         onClick={() => setMobileMenuOpen(false)}
-                        className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                        className="p-2 text-text-muted hover:text-text-primary hover:bg-bg-dark rounded-lg transition-colors"
                       >
                         <X className="w-5 h-5" />
                       </button>
@@ -110,7 +112,7 @@ export function Header({ showNav = false }: HeaderProps) {
                       <Link
                         to="/"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                        className="px-4 py-3 text-text-primary hover:bg-bg-dark rounded-lg transition-colors font-medium"
                       >
                         Home
                       </Link>
@@ -118,15 +120,22 @@ export function Header({ showNav = false }: HeaderProps) {
                         <Link
                           to="/history"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                          className="px-4 py-3 text-text-primary hover:bg-bg-dark rounded-lg transition-colors font-medium"
                         >
                           History
                         </Link>
                       )}
+                      <button
+                        onClick={toggleTheme}
+                        className="px-4 py-3 text-text-primary hover:bg-bg-dark rounded-lg transition-colors font-medium flex items-center gap-3 w-full text-left"
+                      >
+                        {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                      </button>
                     </nav>
 
                     {/* Auth Button */}
-                    <div className="p-4 border-t border-white/10">
+                    <div className="p-4 border-t border-text-muted/20">
                       {user ? (
                         <button
                           onClick={() => {
@@ -134,7 +143,7 @@ export function Header({ showNav = false }: HeaderProps) {
                             navigate('/login')
                             setMobileMenuOpen(false)
                           }}
-                          className="w-full px-4 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold rounded-lg transition-colors"
+                          className="w-full px-4 py-3.5 bg-bg-dark hover:bg-bg-dark/70 text-text-primary border border-text-muted/20 font-semibold rounded-lg transition-colors"
                         >
                           Sign Out
                         </button>
@@ -155,7 +164,7 @@ export function Header({ showNav = false }: HeaderProps) {
                     <div className="flex-1"></div>
 
                     {/* Donate Link - Bottom of Drawer */}
-                    <div className="p-4 border-t border-white/10">
+                    <div className="p-4 border-t border-text-muted/20">
                       <a 
                         href="https://ko-fi.com/alexsantonastaso" 
                         target="_blank" 

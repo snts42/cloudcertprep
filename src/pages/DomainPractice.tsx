@@ -166,7 +166,7 @@ export function DomainPractice() {
       <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
         <div className="p-4 md:p-8">
-          <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
+          <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
           <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">Domain Practice</h1>
           <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Practice questions from a specific domain</p>
 
@@ -217,7 +217,7 @@ export function DomainPractice() {
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto">
-          <div className="bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
+          <div className="bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-text-primary mb-2">
               {DOMAINS[selectedDomain as keyof typeof DOMAINS]}
             </h1>
@@ -284,7 +284,7 @@ export function DomainPractice() {
         <div className="p-4 md:p-8">
           <div className="max-w-4xl mx-auto">
             {/* Summary Header */}
-            <div className="bg-bg-card rounded-lg p-4 md:p-5 text-center mb-4">
+            <div className="bg-bg-card rounded-lg p-4 md:p-5 text-center mb-4 shadow-card">
               <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">Practice session complete!</h1>
               <p className="text-lg md:text-xl text-text-muted">
                 You got <span className="text-success font-bold">{correctCount}/{results.length}</span> correct ({Math.round((correctCount / results.length) * 100)}%)
@@ -292,7 +292,7 @@ export function DomainPractice() {
             </div>
 
             {/* Question Number Grid */}
-            <div className="bg-bg-card rounded-lg p-3 md:p-4 mb-4">
+            <div className="bg-bg-card rounded-lg p-3 md:p-4 mb-4 shadow-card">
               <h3 className="text-xs md:text-sm font-semibold text-text-muted mb-2 text-center">Questions:</h3>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(36px,36px))] gap-0.5 md:gap-1 justify-center">
                 {questionResults.map((result, idx) => (
@@ -373,7 +373,7 @@ export function DomainPractice() {
           </div>
 
           {/* Question */}
-          <div className="bg-bg-card rounded-lg p-2.5 md:p-3 lg:p-4 mb-3">
+          <div className="bg-bg-card rounded-lg p-2.5 md:p-3 lg:p-4 mb-3 shadow-card">
             <h3 className="text-base md:text-lg text-text-primary mb-3 md:mb-4">
               {currentQuestion.question}
               {currentQuestion.isMultiAnswer && (
@@ -468,7 +468,7 @@ export function DomainPractice() {
                 {currentQuestion.explanation && (
                   <div className="border-t border-text-muted/20 pt-2 mt-2">
                     {currentQuestion.source === 'ai-generated' && (
-                      <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
+                      <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 mb-2">
                         <span>✦</span> AI Generated
                       </span>
                     )}

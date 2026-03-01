@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useTheme } from '../hooks/useTheme'
+import { Sun, Moon } from 'lucide-react'
 
 export function Footer() {
+  const { theme, toggleTheme } = useTheme()
+
   return (
     <footer className="bg-bg-card border-t border-text-muted/20 mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-4 md:py-6">
@@ -10,10 +14,19 @@ export function Footer() {
             <p>
               © {new Date().getFullYear()} <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Alex Santonastaso</a>. All rights reserved.
             </p>
-            <p className="mt-1">
+            <p className="mt-1 flex items-center justify-center md:justify-start gap-2 flex-wrap">
               <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>
-              <span className="mx-2">·</span>
+              <span>·</span>
               <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>
+              <span className="hidden md:inline">·</span>
+              <button
+                onClick={toggleTheme}
+                className="hidden md:inline-flex items-center gap-1 text-text-muted hover:text-aws-orange transition-colors"
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                {theme === 'dark' ? <Sun className="w-3 h-3" /> : <Moon className="w-3 h-3" />}
+                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </button>
             </p>
           </div>
 

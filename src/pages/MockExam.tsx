@@ -258,7 +258,7 @@ export function MockExam() {
       <div className="bg-bg-dark flex flex-col">
         <Header showNav={true} />
         <div className="p-4 md:p-8">
-          <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8">
+          <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
           <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">Mock Exam</h1>
           <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">65 questions — 90 minutes — No answer feedback during exam</p>
           
@@ -310,7 +310,7 @@ export function MockExam() {
             percent={results.percentScore}
           />
 
-          <div className="mt-8 bg-bg-card rounded-lg p-6">
+          <div className="mt-8 bg-bg-card rounded-lg p-6 shadow-card">
             <div className="bg-aws-orange/10 border border-aws-orange/30 rounded-lg p-4 mb-6">
               <p className="text-sm text-text-muted">
                 <span className="font-semibold text-aws-orange">AWS Scaled Scoring:</span> Scores range from 100-1000, where 100 is the minimum (0% correct) and 1000 is the maximum (100% correct). You need 700+ to pass.
@@ -436,7 +436,7 @@ export function MockExam() {
               <span className="text-sm">View All Questions →</span>
             </button>
 
-            <div className="bg-bg-card rounded-lg p-2.5 md:p-3 lg:p-4 mb-3">
+            <div className="bg-bg-card rounded-lg p-2.5 md:p-3 lg:p-4 mb-3 shadow-card">
               <div className="hidden lg:flex items-center justify-end mb-2">
                 <span className="text-text-muted text-xs md:text-sm">Question {currentIndex + 1} of {questions.length}</span>
               </div>
@@ -517,7 +517,7 @@ export function MockExam() {
 
             {/* Question Grid Sidebar */}
             <div className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24 bg-bg-card rounded-lg p-4">
+            <div className="sticky top-24 bg-bg-card rounded-lg p-4 shadow-card">
               <h3 className="text-sm font-semibold text-text-primary mb-3">Questions</h3>
               <div className="grid grid-cols-5 gap-2">
                 {questions.map((_, idx) => {
@@ -639,7 +639,7 @@ export function MockExam() {
           <Header showNav={true} />
           <div className="p-4 md:p-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-bg-card rounded-lg p-8 text-center">
+              <div className="bg-bg-card rounded-lg p-8 text-center shadow-card">
                 <p className="text-text-muted text-lg mb-6">No questions match the selected filters.</p>
                 <button
                   onClick={() => {
@@ -666,7 +666,7 @@ export function MockExam() {
         <div className="p-4 md:p-8">
           <div className="max-w-4xl mx-auto">
             {/* Filter Controls */}
-            <div className="bg-bg-card rounded-lg p-4 mb-4">
+            <div className="bg-bg-card rounded-lg p-4 mb-4 shadow-card">
               <div className="space-y-3">
                 {/* Filter Buttons */}
                 <div>

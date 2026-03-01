@@ -304,7 +304,7 @@ export function History() {
 
         {/* Attempts List */}
         {filteredAttempts.length === 0 ? (
-          <div className="bg-bg-card rounded-lg p-12 text-center">
+          <div className="bg-bg-card rounded-lg p-12 text-center shadow-card">
             <p className="text-text-muted text-lg">
               {filter === 'all' 
                 ? 'No exam attempts yet. Take your first mock exam!' 
@@ -322,7 +322,7 @@ export function History() {
         ) : (
           <div className="space-y-3">
             {paginatedAttempts.map(attempt => (
-              <div key={attempt.id} className="bg-bg-card rounded-lg p-4 md:p-6">
+              <div key={attempt.id} className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center ${attempt.passed ? 'bg-success/20' : 'bg-danger/20'}`}>

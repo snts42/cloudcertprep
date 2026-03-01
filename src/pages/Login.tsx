@@ -176,7 +176,7 @@ export function Login() {
             </div>
 
           {/* Right Column - Auth Form */}
-          <div className="bg-bg-card p-6 md:p-8 rounded-lg shadow-xl flex flex-col justify-center">
+          <div className="bg-bg-card p-6 md:p-8 rounded-lg shadow-card flex flex-col justify-center border border-text-muted/10">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-text-primary mb-2">
               {isForgotPassword ? 'Reset Password' : isSignUp ? 'Create Account' : 'Sign In'}
@@ -290,7 +290,7 @@ export function Login() {
             <button
               onClick={handleGoogleAuth}
               disabled
-              className="mt-4 w-full bg-white text-bg-dark font-semibold py-3 rounded-lg flex items-center justify-center gap-2 opacity-40 cursor-not-allowed pointer-events-none"
+              className="mt-4 w-full bg-bg-dark border border-text-muted/30 text-text-muted font-semibold py-3 rounded-lg flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
@@ -312,7 +312,7 @@ export function Login() {
               </svg>
               Continue with Google
             </button>
-            <p className="text-xs text-text-muted text-center mt-1">
+            <p className="text-xs text-text-muted/70 text-center mt-1">
               Google sign-in temporarily unavailable — use email or continue as guest
             </p>
           </div>

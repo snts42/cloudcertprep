@@ -23,7 +23,7 @@ export function MasteryRing({ percent, size = 120 }: MasteryRingProps) {
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#1A2332"
+          stroke="rgb(var(--color-bg-dark))"
           strokeWidth="8"
           fill="none"
         />

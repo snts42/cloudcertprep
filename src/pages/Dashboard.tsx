@@ -130,13 +130,13 @@ export function Dashboard() {
                 </div>
                 
                 {recentAttempts.length === 0 ? (
-                  <div className="bg-bg-card rounded-lg p-8 text-center">
+                  <div className="bg-bg-card rounded-lg p-8 text-center shadow-card">
                     <p className="text-text-muted">No exam attempts yet. Start with a mock exam!</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {recentAttempts.map(attempt => (
-                      <div key={attempt.id} className="bg-bg-card rounded-lg p-4 flex items-center justify-between">
+                      <div key={attempt.id} className="bg-bg-card rounded-lg p-4 flex items-center justify-between shadow-card">
                         <div className="flex items-center gap-4">
                           <div className={`w-12 h-12 rounded-full flex items-center justify-center ${attempt.passed ? 'bg-success/20' : 'bg-danger/20'}`}>
                             <span className={`text-2xl ${attempt.passed ? 'text-success' : 'text-danger'}`}>
@@ -166,7 +166,7 @@ export function Dashboard() {
             {!user && (
               <div>
                 <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">About CloudCertPrep</h2>
-                <div className="bg-bg-card rounded-lg p-4 md:p-6">
+                <div className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
                   <div className="space-y-3 md:space-y-4">
                     <div className="flex items-start gap-3">
                       <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
@@ -229,7 +229,7 @@ export function Dashboard() {
                   const mastery = progress?.mastery_percent || 0
                   
                   return (
-                    <div key={domainId} className="bg-bg-card rounded-lg p-4 md:p-6">
+                    <div key={domainId} className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
                       <div className="flex items-center justify-between mb-3 md:mb-4">
                         <div className="flex-1 min-w-0 pr-3">
                           <h3 className="text-sm md:text-lg font-semibold text-text-primary mb-1 truncate">

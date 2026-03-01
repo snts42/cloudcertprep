@@ -60,6 +60,9 @@
     </script>
   </head>
   <body>
+    <script>
+      (function(){var t=localStorage.getItem('cloudcertprep_theme');if(t==='light')return;if(t==='dark'||!window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.classList.add('dark')}})();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

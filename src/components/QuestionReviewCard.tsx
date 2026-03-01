@@ -24,7 +24,7 @@ export function QuestionReviewCard({
   const correctAnswerArray = Array.isArray(question.answer) ? question.answer : [question.answer]
 
   return (
-    <div className="bg-bg-card rounded-lg p-3 md:p-4">
+    <div className="bg-bg-card rounded-lg p-3 md:p-4 shadow-card">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -86,7 +86,7 @@ export function QuestionReviewCard({
       {question.explanation && (
         <div className="bg-bg-dark rounded-lg p-3 border-l-4 border-aws-orange">
           {question.source === 'ai-generated' && (
-            <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
+            <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 mb-2">
               <span>✦</span> AI Generated
             </span>
           )}

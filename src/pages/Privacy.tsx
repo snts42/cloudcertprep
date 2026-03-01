@@ -22,7 +22,7 @@ export function Privacy() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Who we are</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                CloudCertPrep is a free AWS Cloud Practitioner (CLF-C02) exam preparation tool built and maintained by <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Alex Santonastaso</a>. You can reach us at <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a>.
+                CloudCertPrep is a free AWS Cloud Practitioner (CLF-C02) exam preparation tool built and maintained by <a href="https://santonastaso.codes" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Alex Santonastaso</a>. You can reach us at <a href="mailto:alex@cloudcertprep.io" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@cloudcertprep.io</a>.
               </p>
             </section>
 
@@ -88,7 +88,7 @@ export function Privacy() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Your rights and data deletion</h2>
               <p className="text-text-muted text-sm leading-relaxed mb-3">
-                You can request deletion of your account and all associated data at any time by emailing <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a>. We will delete your data within 30 days.
+                You can request deletion of your account and all associated data at any time by emailing <a href="mailto:alex@cloudcertprep.io" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@cloudcertprep.io</a>. We will delete your data within 30 days.
               </p>
               <p className="text-text-muted text-sm leading-relaxed">
                 If you are in the EU/EEA, you also have the right to access, correct, and port your data under GDPR. Contact us at the same address.
@@ -111,7 +111,7 @@ export function Privacy() {
 
             <div className="pt-4 border-t border-text-muted/20">
               <p className="text-text-muted text-sm">
-                Questions? Email <a href="mailto:alex@santonastaso.codes" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@santonastaso.codes</a> or read our <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>.
+                Questions? Email <a href="mailto:alex@cloudcertprep.io" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">alex@cloudcertprep.io</a> or read our <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>.
               </p>
             </div>
           </div>
