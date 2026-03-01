@@ -8,6 +8,7 @@ import { AnswerButton } from '../components/AnswerButton'
 import { Modal } from '../components/Modal'
 import { PassFailBanner } from '../components/PassFailBanner'
 import { LoadingSpinner } from '../components/LoadingSpinner'
+import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, formatTime, formatDuration, isAnswerCorrect } from '../lib/scoring'
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
@@ -765,7 +766,7 @@ export function MockExam() {
                 {/* Question Number Grid */}
                 <div>
                   <h3 className="text-xs md:text-sm font-semibold text-text-muted mb-2 text-center">Questions:</h3>
-                  <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(40px,40px))] gap-1.5 md:gap-2 justify-center">
+                  <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(36px,36px))] gap-0.5 md:gap-1 justify-center">
                     {results.questionResults.map((result, idx) => {
                       const isCurrentQuestion = filteredQuestions[reviewQuestionIndex]?.questionId === result.questionId
                       const isInFilteredSet = filteredQuestions.some(fq => fq.questionId === result.questionId)
@@ -780,9 +781,9 @@ export function MockExam() {
                             }
                           }}
                           disabled={!isInFilteredSet}
-                          className={`w-8 h-8 md:w-10 md:h-10 rounded text-xs md:text-sm font-medium transition-all ${
+                          className={`w-8 h-8 md:w-9 md:h-9 rounded text-[10px] md:text-xs font-medium transition-all ${
                             isCurrentQuestion
-                              ? 'ring-2 ring-aws-orange ring-offset-2 ring-offset-bg-card'
+                              ? 'ring-2 ring-aws-orange ring-offset-1 ring-offset-bg-card'
                               : ''
                           } ${
                             !isInFilteredSet
@@ -819,110 +820,15 @@ export function MockExam() {
             </div>
 
             {/* Question Display */}
-            <div className="bg-bg-card rounded-lg p-4 md:p-6 mb-4">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-text-muted text-sm">
-                    Question {reviewQuestionIndex + 1} of {filteredQuestions.length}
-                  </span>
-                  {currentReviewQuestion.wasFlagged && (
-                    <span className="flex items-center gap-1 px-2 py-1 bg-warning/20 text-warning rounded text-xs font-medium">
-                      <Flag className="w-3 h-3 fill-warning" />
-                      Flagged
-                    </span>
-                  )}
-                </div>
-                <div className={`px-3 py-1 rounded-lg font-semibold text-sm ${
-                  currentReviewQuestion.isCorrect
-                    ? 'bg-success/20 text-success'
-                    : 'bg-danger/20 text-danger'
-                }`}>
-                  {currentReviewQuestion.isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}
-                </div>
-              </div>
-
-              <div className="mb-3">
-                <span className="text-xs font-medium px-2 py-1 rounded" style={{ 
-                  backgroundColor: `${DOMAIN_COLORS[currentReviewQuestion.domainId as keyof typeof DOMAIN_COLORS]}20`,
-                  color: DOMAIN_COLORS[currentReviewQuestion.domainId as keyof typeof DOMAIN_COLORS]
-                }}>
-                  {DOMAINS[currentReviewQuestion.domainId as keyof typeof DOMAINS]}
-                </span>
-              </div>
-
-              <h3 className="text-base md:text-lg text-text-primary mb-4">
-                {originalQuestion.question}
-                {originalQuestion.isMultiAnswer && (
-                  <span className="text-aws-orange font-semibold ml-2">(Multi-answer)</span>
-                )}
-              </h3>
-
-              <div className="space-y-2 mb-6">
-                {Object.entries(originalQuestion.options).map(([key, value]) => {
-                  const userAnswerArray = Array.isArray(currentReviewQuestion.userAnswer) 
-                    ? currentReviewQuestion.userAnswer 
-                    : [currentReviewQuestion.userAnswer]
-                  const correctAnswerArray = Array.isArray(currentReviewQuestion.correctAnswer)
-                    ? currentReviewQuestion.correctAnswer
-                    : [currentReviewQuestion.correctAnswer]
-                  
-                  const isUserAnswer = userAnswerArray.includes(key)
-                  const isCorrectAnswer = correctAnswerArray.includes(key)
-                  
-                  let state: 'default' | 'selected' | 'correct' | 'wrong' = 'default'
-                  if (isCorrectAnswer) {
-                    state = 'correct'
-                  } else if (isUserAnswer) {
-                    state = 'wrong'
-                  }
-
-                  return (
-                    <AnswerButton
-                      key={key}
-                      label={key as any}
-                      text={value}
-                      state={state}
-                      onClick={() => {}}
-                      disabled={true}
-                    />
-                  )
-                })}
-              </div>
-
-              {originalQuestion.explanation && (
-                <div className="bg-bg-dark rounded-lg p-4 border-l-4 border-aws-orange">
-                  {originalQuestion.source === 'ai-generated' && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
-                      <span>✦</span> AI Generated
-                    </span>
-                  )}
-                  <h4 className="text-sm font-semibold text-text-primary mb-2">Explanation:</h4>
-                  <p className="text-sm text-text-muted">{originalQuestion.explanation}</p>
-                </div>
-              )}
-
-              {/* Question ID */}
-              <div className="mt-3 pt-2 border-t border-text-muted/20">
-                <span className="text-xs text-text-muted/70 font-mono">{originalQuestion.id}</span>
-              </div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex gap-3 mb-4">
-              <button
-                onClick={() => setReviewQuestionIndex(Math.max(0, reviewQuestionIndex - 1))}
-                disabled={reviewQuestionIndex === 0}
-                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                ← Previous
-              </button>
-              <button
-                onClick={() => setReviewQuestionIndex(Math.min(filteredQuestions.length - 1, reviewQuestionIndex + 1))}
-                disabled={reviewQuestionIndex === filteredQuestions.length - 1}
-                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Next →
-              </button>
+            <div className="mb-4">
+              <QuestionReviewCard
+                question={originalQuestion}
+                userAnswer={currentReviewQuestion.userAnswer}
+                isCorrect={currentReviewQuestion.isCorrect}
+                wasFlagged={currentReviewQuestion.wasFlagged}
+                questionNumber={reviewQuestionIndex + 1}
+                totalQuestions={filteredQuestions.length}
+              />
             </div>
 
             <button

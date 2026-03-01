@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth'
 import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { ProgressBar } from '../components/ProgressBar'
+import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
@@ -293,19 +294,19 @@ export function DomainPractice() {
             {/* Question Number Grid */}
             <div className="bg-bg-card rounded-lg p-3 md:p-4 mb-4">
               <h3 className="text-xs md:text-sm font-semibold text-text-muted mb-2 text-center">Questions:</h3>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(40px,40px))] gap-1.5 md:gap-2 justify-center">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(36px,36px))] gap-0.5 md:gap-1 justify-center">
                 {questionResults.map((result, idx) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedQuestionIndex(idx)}
-                    className={`w-8 h-8 md:w-10 md:h-10 rounded-md font-semibold text-xs md:text-sm transition-all flex items-center justify-center ${
+                    className={`w-8 h-8 md:w-9 md:h-9 rounded text-[10px] md:text-xs font-medium transition-all ${
                       selectedQuestionIndex === idx
-                        ? 'ring-2 ring-aws-orange'
+                        ? 'ring-2 ring-aws-orange ring-offset-1 ring-offset-bg-card'
                         : ''
                     } ${
                       result.isCorrect
-                        ? 'bg-success/20 text-success hover:bg-success/30'
-                        : 'bg-danger/20 text-danger hover:bg-danger/30'
+                        ? 'bg-success text-white hover:bg-success/80'
+                        : 'bg-danger text-white hover:bg-danger/80'
                     }`}
                   >
                     {idx + 1}
@@ -315,99 +316,17 @@ export function DomainPractice() {
             </div>
 
             {/* Single Question View */}
-            <div className="bg-bg-card rounded-lg p-3 md:p-4 lg:p-5 mb-4">
-              {currentResult && (() => {
-                const userAnswerArray = Array.isArray(currentResult.userAnswer) ? currentResult.userAnswer : [currentResult.userAnswer]
-                const correctAnswerArray = Array.isArray(currentResult.question.answer) ? currentResult.question.answer : [currentResult.question.answer]
-                
-                return (
-                  <div>
-                    {/* Question Header */}
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-sm md:text-base font-semibold text-text-primary flex items-center justify-between">
-                        Question {selectedQuestionIndex + 1} of {questionResults.length}
-                      </h3>
-                      <div className={`${currentResult.isCorrect ? 'text-success' : 'text-danger'}`}>
-                        {currentResult.isCorrect ? <Check className="w-5 h-5 md:w-6 md:h-6" /> : <X className="w-5 h-5 md:w-6 md:h-6" />}
-                      </div>
-                    </div>
-
-                    {/* Question Text */}
-                    <p className="text-sm md:text-base text-text-primary mb-3">{currentResult.question.question}</p>
-
-                    {/* Answer Options */}
-                    <div className="space-y-1.5 md:space-y-2 mb-3">
-                      {Object.entries(currentResult.question.options).map(([key, value]) => {
-                        const isUserAnswer = userAnswerArray.includes(key)
-                        const isCorrectAnswer = correctAnswerArray.includes(key)
-                        
-                        let bgColor = ''
-                        let textColor = 'text-text-primary'
-                        let label = ''
-                        
-                        if (isUserAnswer && isCorrectAnswer) {
-                          bgColor = 'bg-success/10 border-success'
-                          textColor = 'text-success'
-                          label = ' (Your answer - Correct!)'
-                        } else if (isUserAnswer && !isCorrectAnswer) {
-                          bgColor = 'bg-danger/10 border-danger'
-                          textColor = 'text-danger'
-                          label = ' (Your answer - Incorrect)'
-                        } else if (!isUserAnswer && isCorrectAnswer) {
-                          bgColor = 'bg-success/10 border-success'
-                          textColor = 'text-success'
-                          label = ' (Correct answer)'
-                        } else {
-                          bgColor = 'bg-bg-dark border-text-muted/20'
-                        }
-                        
-                        return (
-                          <div
-                            key={key}
-                            className={`p-2 md:p-2.5 rounded-lg border-2 ${bgColor} ${textColor} text-xs md:text-sm`}
-                          >
-                            <span className="font-semibold">{key}.</span> {value}{label}
-                          </div>
-                        )
-                      })}
-                    </div>
-
-                    {/* Explanation */}
-                    <div className="bg-bg-dark rounded-lg p-2.5 md:p-3">
-                      {currentResult.question.source === 'ai-generated' && (
-                        <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
-                          <span>✦</span> AI Generated
-                        </span>
-                      )}
-                      <p className="text-sm text-text-muted mt-3 leading-relaxed">{currentResult.question.explanation}</p>
-                    </div>
-
-                    {/* Question ID */}
-                    <div className="mt-3 pt-2 border-t border-text-muted/20">
-                      <span className="text-xs text-text-muted/70 font-mono">{currentResult.question.id}</span>
-                    </div>
-                  </div>
-                )
-              })()}
-            </div>
-
-            {/* Navigation Buttons */}
-            <div className="flex gap-3 mb-4">
-              <button
-                onClick={() => setSelectedQuestionIndex(Math.max(0, selectedQuestionIndex - 1))}
-                disabled={selectedQuestionIndex === 0}
-                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                ← Previous
-              </button>
-              <button
-                onClick={() => setSelectedQuestionIndex(Math.min(questionResults.length - 1, selectedQuestionIndex + 1))}
-                disabled={selectedQuestionIndex === questionResults.length - 1}
-                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Next →
-              </button>
-            </div>
+            {currentResult && (
+              <div className="mb-4">
+                <QuestionReviewCard
+                  question={currentResult.question}
+                  userAnswer={currentResult.userAnswer}
+                  isCorrect={currentResult.isCorrect}
+                  questionNumber={selectedQuestionIndex + 1}
+                  totalQuestions={questionResults.length}
+                />
+              </div>
+            )}
 
             {/* Action Buttons */}
             <div className="flex flex-col md:flex-row gap-4 mt-6">
@@ -462,7 +381,7 @@ export function DomainPractice() {
               )}
             </h3>
 
-            <div className="space-y-2 md:space-y-3 mb-4">
+            <div className="space-y-1.5 mb-3">
               {Object.entries(currentQuestion.options).map(([key, value]) => {
                 const isSelected = currentQuestion.isMultiAnswer
                   ? Array.isArray(userAnswer) && userAnswer.includes(key)
@@ -496,6 +415,7 @@ export function DomainPractice() {
                     state={state}
                     onClick={() => !showFeedback && handleAnswer(key)}
                     disabled={showFeedback || isLimitReached}
+                    compact={true}
                   />
                 )
               })}
@@ -559,9 +479,20 @@ export function DomainPractice() {
               </div>
             )}
 
-            {/* Question ID */}
-            <div className="mt-3 pt-2 border-t border-text-muted/20">
+            {/* Question ID + Disclaimer */}
+            <div className="mt-3 pt-2 border-t border-text-muted/20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
               <span className="text-xs text-text-muted/70 font-mono">{currentQuestion.id}</span>
+              <span className="text-[10px] text-text-muted/60">
+                Found an error?{' '}
+                <a 
+                  href="https://github.com/snts42/cloudcertprep/issues" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-aws-orange hover:text-aws-orange/80 hover:underline"
+                >
+                  Report on GitHub
+                </a>
+              </span>
             </div>
           </div>
 

@@ -9,6 +9,12 @@ export function useTimer({ initialSeconds, onComplete }: UseTimerOptions) {
   const [seconds, setSeconds] = useState(initialSeconds)
   const [isRunning, setIsRunning] = useState(false)
   const intervalRef = useRef<number | null>(null)
+  const onCompleteRef = useRef(onComplete)
+
+  // Keep ref in sync with latest callback without triggering effect re-runs
+  useEffect(() => {
+    onCompleteRef.current = onComplete
+  }, [onComplete])
 
   useEffect(() => {
     if (isRunning && seconds > 0) {
@@ -16,7 +22,7 @@ export function useTimer({ initialSeconds, onComplete }: UseTimerOptions) {
         setSeconds((prev) => {
           if (prev <= 1) {
             setIsRunning(false)
-            if (onComplete) onComplete()
+            if (onCompleteRef.current) onCompleteRef.current()
             return 0
           }
           return prev - 1
@@ -29,7 +35,7 @@ export function useTimer({ initialSeconds, onComplete }: UseTimerOptions) {
         clearInterval(intervalRef.current)
       }
     }
-  }, [isRunning, seconds, onComplete])
+  }, [isRunning, seconds])
 
   const start = () => setIsRunning(true)
   const pause = () => setIsRunning(false)

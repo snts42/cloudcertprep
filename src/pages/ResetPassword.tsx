@@ -6,6 +6,7 @@ export function ResetPassword() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -48,8 +49,8 @@ export function ResetPassword() {
 
       if (error) throw error
 
-      alert('Password updated successfully!')
-      navigate('/login')
+      setSuccess(true)
+      setTimeout(() => navigate('/login'), 2000)
     } catch (err: any) {
       setError(err.message || 'An error occurred')
     } finally {
@@ -94,6 +95,12 @@ export function ResetPassword() {
               placeholder="••••••••"
             />
           </div>
+
+          {success && (
+            <div className="bg-success/10 border border-success text-success px-4 py-3 rounded-lg text-sm">
+              Password updated successfully! Redirecting to sign in...
+            </div>
+          )}
 
           {error && (
             <div className="bg-danger/10 border border-danger text-danger px-4 py-3 rounded-lg text-sm">
