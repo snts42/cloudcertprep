@@ -15,6 +15,7 @@ import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import type { Question } from '../types'
 import { loadAllQuestions } from '../data/questions'
+import { trackEvent } from '../lib/analytics'
 import { Flag, AlertCircle } from 'lucide-react'
 
 type ExamScreen = 'start' | 'exam' | 'results' | 'review'
@@ -94,6 +95,7 @@ export function MockExam() {
     setScreen('exam')
     setStartTime(Date.now())
     timer.start()
+    trackEvent('exam_started')
     setLoading(false)
   }
 
@@ -240,6 +242,7 @@ export function MockExam() {
       })
 
       setScreen('results')
+      trackEvent('exam_completed', { passed, scaled_score: scaledScore, score_percent: Math.round(percentScore) })
     } catch (error) {
       console.error('Error saving exam attempt:', error)
       alert('Error saving exam results. Please try again.')

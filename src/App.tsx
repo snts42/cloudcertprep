@@ -1,9 +1,10 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { DonateButton } from './components/DonateButton'
 import { LoadingSpinner } from './components/LoadingSpinner'
+import { trackPageView } from './lib/analytics'
 
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })))
 const ResetPassword = lazy(() => import('./pages/ResetPassword').then(m => ({ default: m.ResetPassword })))
@@ -16,6 +17,10 @@ const Terms = lazy(() => import('./pages/Terms').then(m => ({ default: m.Terms }
 
 function AppRoutes() {
   const location = useLocation()
+
+  useEffect(() => {
+    trackPageView(location.pathname)
+  }, [location.pathname])
 
   return (
     <Suspense

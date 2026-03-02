@@ -12,6 +12,7 @@ import type { Question } from '../types'
 import { loadDomainQuestions } from '../data/questions'
 import { isAnswerCorrect } from '../lib/scoring'
 import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
+import { trackEvent } from '../lib/analytics'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
 import { Check, X } from 'lucide-react'
 
@@ -72,6 +73,7 @@ export function DomainPractice() {
     setResults([])
     setQuestionResults([])
     setScreen('practice')
+    trackEvent('practice_started', { domain_id: selectedDomain, question_count: questionCount })
   }
 
   function handleAnswer(answer: string) {
@@ -154,6 +156,7 @@ export function DomainPractice() {
       }
     }
 
+    trackEvent('practice_completed', { domain_id: selectedDomain, correct: results.filter(r => r).length, total: questions.length })
     setScreen('results')
   }
 

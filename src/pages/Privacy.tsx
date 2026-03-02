@@ -16,7 +16,7 @@ export function Privacy() {
       <div className="p-4 md:p-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-2">Privacy Policy</h1>
-          <p className="text-text-muted text-sm mb-8">Last updated: February 2026</p>
+          <p className="text-text-muted text-sm mb-8">Last updated: March 2026</p>
 
           <div className="space-y-8">
             <section>
@@ -96,9 +96,13 @@ export function Privacy() {
             </section>
 
             <section>
-              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Local storage</h2>
+              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Local storage and analytics</h2>
+              <p className="text-text-muted text-sm leading-relaxed mb-3">
+                We use browser local storage to keep your authentication session active and to remember your theme preference (light or dark mode).
+              </p>
               <p className="text-text-muted text-sm leading-relaxed">
-                We use browser local storage to keep your authentication session active. We do not use cookies, tracking pixels, or any third-party analytics.
+                We use Google Analytics (GA4) to understand how people use the app — which pages are visited and how exam and practice sessions are used. This data is collected anonymously and is not linked to your account or email address. No personally identifiable information is sent to Google. You can opt out using the{' '}
+                <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Google Analytics Opt-out Add-on</a>.
               </p>
             </section>
 

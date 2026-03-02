@@ -58,6 +58,11 @@
       }
     }
     </script>
+
+    <!-- Google Analytics (only loads if VITE_GA_MEASUREMENT_ID is set at build time) -->
+    <script>
+      (function(){var id='%VITE_GA_MEASUREMENT_ID%';if(!id||id.charAt(0)==='%')return;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());window.gtag('config',id);var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);})();
+    </script>
   </head>
   <body>
     <script>
