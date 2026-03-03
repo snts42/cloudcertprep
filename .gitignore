@@ -39,3 +39,6 @@ lerna-debug.log*
 # Private prompts and documentation
 .prompts/
 *_Prompt_*.md
+
+# Local-only templates (email HTML, etc.)
+templates/
