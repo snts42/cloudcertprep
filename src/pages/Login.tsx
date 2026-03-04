@@ -3,11 +3,12 @@ import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { Header } from '../components/Header'
 import { trackEvent } from '../lib/analytics'
-import { BookOpen, FileText, Target, TrendingUp, CheckCircle } from 'lucide-react'
+import { BookOpen, FileText, Target, TrendingUp, CheckCircle, Mail } from 'lucide-react'
 
 export function Login() {
   const [isSignUp, setIsSignUp] = useState(false)
   const [isForgotPassword, setIsForgotPassword] = useState(false)
+  const [signUpSuccess, setSignUpSuccess] = useState(false)
 
   // Set page title based on mode
   useEffect(() => {
@@ -55,7 +56,10 @@ export function Login() {
 
         if (error) throw error
         trackEvent('sign_up', { method: 'email' })
-        navigate('/')
+        setPassword('')
+        setConfirmPassword('')
+        setSignUpSuccess(true)
+        return
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,
@@ -161,6 +165,23 @@ export function Login() {
 
           {/* Right Column - Auth Form */}
           <div className="bg-bg-card p-6 md:p-8 rounded-lg shadow-card flex flex-col justify-center border border-text-muted/10">
+
+          {signUpSuccess ? (
+            <div className="text-center">
+              <Mail className="w-12 h-12 text-aws-orange mx-auto mb-4" />
+              <h2 className="text-2xl font-bold text-text-primary mb-2">Check your inbox</h2>
+              <p className="text-text-muted text-sm leading-relaxed mb-6">
+                We sent a verification link to <span className="text-text-primary font-medium">{email}</span>. Click it to activate your account.
+              </p>
+              <button
+                onClick={() => { setSignUpSuccess(false); setIsSignUp(false) }}
+                className="w-full px-6 py-3 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium rounded-lg transition-colors border border-text-muted/30"
+              >
+                Back to Sign In
+              </button>
+            </div>
+          ) : (
+          <>
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-text-primary mb-2">
               {isForgotPassword ? 'Reset Password' : isSignUp ? 'Create Account' : 'Sign In'}
@@ -306,6 +327,8 @@ export function Login() {
             </>
           )}
         </div>
+          </>
+          )}
           </div>
         </div>
       </div>
