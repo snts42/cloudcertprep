@@ -14,6 +14,7 @@ const DomainPractice = lazy(() => import('./pages/DomainPractice').then(m => ({ 
 const History = lazy(() => import('./pages/History').then(m => ({ default: m.History })))
 const Privacy = lazy(() => import('./pages/Privacy').then(m => ({ default: m.Privacy })))
 const Terms = lazy(() => import('./pages/Terms').then(m => ({ default: m.Terms })))
+const Stats = lazy(() => import('./pages/Stats').then(m => ({ default: m.Stats })))
 
 function AppRoutes() {
   const location = useLocation()
@@ -43,6 +44,7 @@ function AppRoutes() {
         <Route path="/history" element={<History />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/stats" element={<Stats />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
@@ -52,14 +54,23 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col">
-        <main className="flex-1">
-          <AppRoutes />
-        </main>
-        <Footer />
-        <DonateButton />
-      </div>
+      <AppContent />
     </BrowserRouter>
+  )
+}
+
+function AppContent() {
+  const location = useLocation()
+  const hideFooter = location.pathname === '/mock-exam'
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1">
+        <AppRoutes />
+      </main>
+      {!hideFooter && <Footer />}
+      <DonateButton />
+    </div>
   )
 }
 

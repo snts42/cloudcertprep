@@ -16,7 +16,7 @@ export function Terms() {
       <div className="p-4 md:p-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-2">Terms of Service</h1>
-          <p className="text-text-muted text-sm mb-8">Last updated: February 2026</p>
+          <p className="text-text-muted text-sm mb-8">Last updated: March 2026</p>
 
           <div className="space-y-8">
             <section>
@@ -36,7 +36,7 @@ export function Terms() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">No warranty</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                CloudCertPrep is provided "as is" without warranty of any kind. We make no guarantees about uptime, accuracy of questions, or fitness for any particular purpose. The service may be interrupted, changed, or discontinued at any time without notice.
+                CloudCertPrep is provided "as is" without warranty of any kind, express or implied. We make no guarantees about uptime, accuracy of questions, or fitness for any particular purpose. The service may be interrupted, changed, or discontinued at any time without notice.
               </p>
             </section>
 
@@ -72,6 +72,10 @@ export function Terms() {
                   <span className="text-aws-orange mt-0.5">-</span>
                   <span>Create multiple accounts to circumvent any limitations</span>
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-aws-orange mt-0.5">-</span>
+                  <span>Use the service for any unlawful purpose</span>
+                </li>
               </ul>
             </section>
 
@@ -85,7 +89,21 @@ export function Terms() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Limitation of liability</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                To the maximum extent permitted by law, CloudCertPrep and its creator shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the service.
+                To the maximum extent permitted by applicable law, CloudCertPrep and its creator shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, the service. Nothing in these terms excludes or limits liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded by law.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Governing law</h2>
+              <p className="text-text-muted text-sm leading-relaxed">
+                These terms are governed by the laws of England and Wales. Any disputes arising from these terms or your use of the service shall be subject to the exclusive jurisdiction of the courts of England and Wales. If you are a consumer resident in the UK, you may also bring proceedings in the courts of your country of residence.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Consumer rights</h2>
+              <p className="text-text-muted text-sm leading-relaxed">
+                Nothing in these terms affects your statutory rights as a consumer under UK law, including rights under the Consumer Rights Act 2015. If any provision of these terms is found to be unenforceable, the remaining provisions will continue in effect.
               </p>
             </section>
 

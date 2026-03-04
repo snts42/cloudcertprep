@@ -8,7 +8,7 @@ import { formatRelativeDate } from '../lib/formatting'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
 import { formatDuration } from '../lib/scoring'
 import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
-import { FileText, Target, BookOpen, TrendingUp, Lock } from 'lucide-react'
+import { FileText, Target, BookOpen, TrendingUp, Lock, BarChart3 } from 'lucide-react'
 
 interface DomainProgress {
   domain_id: number
@@ -214,6 +214,25 @@ export function Dashboard() {
                     </button>
                   </div>
                 </div>
+
+                {/* Platform Stats Teaser */}
+                <Link
+                  to="/stats"
+                  className="block bg-gradient-to-r from-aws-orange/10 to-aws-orange/5 hover:from-aws-orange/15 hover:to-aws-orange/10 border border-aws-orange/20 hover:border-aws-orange/40 rounded-lg p-4 md:p-5 mt-6 transition-all group"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-aws-orange/20 flex items-center justify-center">
+                        <BarChart3 className="w-5 h-5 md:w-6 md:h-6 text-aws-orange" />
+                      </div>
+                      <div>
+                        <p className="text-text-primary font-semibold text-sm md:text-base">Platform Statistics</p>
+                        <p className="text-text-muted text-xs md:text-sm">See how the community is doing</p>
+                      </div>
+                    </div>
+                    <span className="text-aws-orange group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </Link>
               </div>
             )}
           </div>

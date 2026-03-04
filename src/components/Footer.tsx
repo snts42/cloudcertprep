@@ -18,6 +18,8 @@ export function Footer() {
               <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>
               <span>·</span>
               <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>
+              <span>·</span>
+              <Link to="/stats" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Stats</Link>
               <span className="hidden md:inline">·</span>
               <button
                 onClick={toggleTheme}

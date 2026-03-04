@@ -66,6 +66,24 @@ export function MockExam() {
     onComplete: handleTimeUp,
   })
 
+  // Track exam abandonment - fires when user leaves during active exam
+  useEffect(() => {
+    function handleBeforeUnload() {
+      if (screen === 'exam' && questions.length > 0) {
+        const answeredCount = Array.from(answers.values()).filter(s => 
+          s.userAnswer !== null && (Array.isArray(s.userAnswer) ? s.userAnswer.length > 0 : s.userAnswer !== '')
+        ).length
+        trackEvent('exam_abandoned', {
+          questions_answered: answeredCount,
+          total_questions: questions.length,
+          time_elapsed: Math.floor((Date.now() - startTime) / 1000)
+        })
+      }
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [screen, questions.length, answers, startTime])
+
   // Set dynamic page title based on screen and question
   useEffect(() => {
     if (screen === 'start') {
@@ -83,6 +101,13 @@ export function MockExam() {
   }, [screen, currentIndex])
 
   function handleTimeUp() {
+    const answeredCount = Array.from(answers.values()).filter(s => 
+      s.userAnswer !== null && (Array.isArray(s.userAnswer) ? s.userAnswer.length > 0 : s.userAnswer !== '')
+    ).length
+    trackEvent('timer_expired', {
+      questions_answered: answeredCount,
+      total_questions: questions.length
+    })
     handleSubmitExam()
   }
 
@@ -202,7 +227,15 @@ export function MockExam() {
 
       if (attemptError) throw attemptError
 
-      const questionRecords = results.map(r => ({
+      // Only save questions that were actually answered
+      const answeredResults = results.filter(r => {
+        if (Array.isArray(r.userAnswer)) {
+          return r.userAnswer.length > 0
+        }
+        return r.userAnswer !== null && r.userAnswer !== ''
+      })
+
+      const questionRecords = answeredResults.map(r => ({
         attempt_id: attemptData.id,
         user_id: user?.id,
         question_id: r.questionId,
@@ -213,11 +246,13 @@ export function MockExam() {
         domain_id: r.domainId,
       }))
 
-      const { error: questionsError } = await supabase
-        .from('attempt_questions')
-        .insert(questionRecords)
+      if (questionRecords.length > 0) {
+        const { error: questionsError } = await supabase
+          .from('attempt_questions')
+          .insert(questionRecords)
 
-      if (questionsError) throw questionsError
+        if (questionsError) throw questionsError
+      }
 
       // Update domain progress for all 4 domains
       for (let domainId = 1; domainId <= 4; domainId++) {
@@ -516,13 +551,21 @@ export function MockExam() {
               >
                 ← Previous
               </button>
-              <button
-                onClick={nextQuestion}
-                disabled={currentIndex === questions.length - 1}
-                className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Next →
-              </button>
+              {currentIndex === questions.length - 1 ? (
+                <button
+                  onClick={() => setShowEndModal(true)}
+                  className="flex-1 px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors"
+                >
+                  End Exam
+                </button>
+              ) : (
+                <button
+                  onClick={nextQuestion}
+                  className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
+                >
+                  Next →
+                </button>
+              )}
             </div>
             </div>
 

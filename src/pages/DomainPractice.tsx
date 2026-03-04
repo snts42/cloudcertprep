@@ -112,7 +112,20 @@ export function DomainPractice() {
       userAnswer: answerToCheck!,
       isCorrect: correct
     }])
-    setShowFeedback(true)
+    setShowFeedback(true)    
+    // Track individual question answer for analytics
+    trackEvent('question_answered', {
+      domain_id: selectedDomain,
+      question_id: current.id,
+      is_correct: correct,
+      mode: 'practice'
+    })    
+    trackEvent('question_answered', {
+      domain_id: selectedDomain,
+      correct,
+      question_number: currentIndex + 1,
+      total_questions: questions.length
+    })
   }
 
   function nextQuestion() {
