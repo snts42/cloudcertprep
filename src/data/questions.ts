@@ -11,7 +11,11 @@ export async function loadDomainQuestions(domainId: number): Promise<Question[]>
     3: () => import('./domain3.json'),
     4: () => import('./domain4.json'),
   }
-  const mod = await loaders[domainId]() as { default: Question[] }
+  const loader = loaders[domainId]
+  if (!loader) {
+    throw new Error(`Invalid domain ID: ${domainId}. Valid domains are 1-4.`)
+  }
+  const mod = await loader() as { default: Question[] }
   return mod.default
 }
 

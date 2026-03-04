@@ -35,7 +35,7 @@ export function useTimer({ initialSeconds, onComplete }: UseTimerOptions) {
         clearInterval(intervalRef.current)
       }
     }
-  }, [isRunning, seconds])
+  }, [isRunning])
 
   const start = () => setIsRunning(true)
   const pause = () => setIsRunning(false)

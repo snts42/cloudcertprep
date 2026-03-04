@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#FF9900" />
     
+    <!-- Preconnect to external origins (improves LCP) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
     <!-- Primary Meta Tags -->
     <title>CloudCertPrep | Free AWS CLF-C02 Practice Exams</title>
     <meta name="title" content="CloudCertPrep | Free AWS CLF-C02 Practice Exams" />
@@ -59,9 +63,9 @@
     }
     </script>
 
-    <!-- Google Analytics (only loads if VITE_GA_MEASUREMENT_ID is set at build time) -->
+    <!-- Google Analytics (deferred until page is interactive) -->
     <script>
-      (function(){var id='%VITE_GA_MEASUREMENT_ID%';if(!id||id.charAt(0)==='%')return;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());window.gtag('config',id);var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);})();
+      (function(){var id='%VITE_GA_MEASUREMENT_ID%';if(!id||id.charAt(0)==='%')return;function load(){window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());window.gtag('config',id);var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);}if('requestIdleCallback'in window){requestIdleCallback(load)}else{setTimeout(load,1)}})();
     </script>
   </head>
   <body>

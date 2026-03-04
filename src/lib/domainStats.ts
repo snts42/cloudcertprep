@@ -1,4 +1,4 @@
-// Total questions per domain in master_questions.json
+// Total questions per domain (update when adding/removing questions)
 export const DOMAIN_QUESTION_COUNTS = {
   1: 196,  // Cloud Concepts
   2: 220,  // Security & Compliance

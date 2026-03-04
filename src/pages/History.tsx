@@ -39,7 +39,7 @@ interface ExamAttempt {
 
 export function History() {
   const navigate = useNavigate()
-  const { user } = useAuth()
+  const { user, loading: authLoading } = useAuth()
   const [loading, setLoading] = useState(true)
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
 
@@ -66,8 +66,10 @@ export function History() {
   const [reviewQuestionIndex, setReviewQuestionIndex] = useState(0)
 
   useEffect(() => {
-    loadHistory()
-  }, [user])
+    if (!authLoading) {
+      loadHistory()
+    }
+  }, [user, authLoading])
 
   // Reset to page 1 when filter or items per page changes
   useEffect(() => {

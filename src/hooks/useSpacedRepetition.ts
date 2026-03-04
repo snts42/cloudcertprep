@@ -86,6 +86,7 @@ export function useSpacedRepetition(
           .from('question_mastery')
           .select('question_id, correct_streak, last_was_wrong, last_seen_at, is_mastered, in_exclusion_window, weight')
           .eq('user_id', userId)
+          .eq('domain_id', domainId)
 
         if (fetchError) throw fetchError
         if (cancelled) return

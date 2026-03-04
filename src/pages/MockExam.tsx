@@ -55,6 +55,7 @@ export function MockExam() {
     }>
   } | null>(null)
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [startTime, setStartTime] = useState<number>(0)
   const [reviewFilter, setReviewFilter] = useState<'all' | 'incorrect' | 'flagged'>('all')
   const [reviewDomainFilter, setReviewDomainFilter] = useState<number | null>(null)
@@ -226,29 +227,29 @@ export function MockExam() {
         }
       }
     }
-
-      setResults({
-        scaledScore,
-        percentScore,
-        passed,
-        correctCount,
-        totalQuestions: questions.length,
-        timeTaken,
-        domain1Score,
-        domain2Score,
-        domain3Score,
-        domain4Score,
-        questionResults: results,
-      })
-
-      setScreen('results')
-      trackEvent('exam_completed', { passed, scaled_score: scaledScore, score_percent: Math.round(percentScore) })
     } catch (error) {
       console.error('Error saving exam attempt:', error)
-      alert('Error saving exam results. Please try again.')
-    } finally {
-      setLoading(false)
+      setSubmitError('Your results could not be saved. You can still review your answers.')
     }
+
+    // Always show results even if save failed
+    setResults({
+      scaledScore,
+      percentScore,
+      passed,
+      correctCount,
+      totalQuestions: questions.length,
+      timeTaken,
+      domain1Score,
+      domain2Score,
+      domain3Score,
+      domain4Score,
+      questionResults: results,
+    })
+
+    setScreen('results')
+    trackEvent('exam_completed', { passed, scaled_score: scaledScore, score_percent: Math.round(percentScore) })
+    setLoading(false)
   }
 
   const currentQuestion = questions[currentIndex]
@@ -312,6 +313,13 @@ export function MockExam() {
             scaledScore={results.scaledScore}
             percent={results.percentScore}
           />
+
+          {submitError && (
+            <div className="mt-4 bg-warning/10 border border-warning rounded-lg p-4 flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 text-warning flex-shrink-0" />
+              <p className="text-sm text-text-primary">{submitError}</p>
+            </div>
+          )}
 
           <div className="mt-8 bg-bg-card rounded-lg p-6 shadow-card">
             <div className="bg-aws-orange/10 border border-aws-orange/30 rounded-lg p-4 mb-6">

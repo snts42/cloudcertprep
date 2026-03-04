@@ -10,26 +10,20 @@ export async function updateDomainProgress(
   userId: string,
   domainId: number
 ): Promise<void> {
-  // Get count of UNIQUE questions attempted for this domain (across all attempts)
-  const { data: uniqueQuestions } = await supabase
+  // Single query - fetch both question_id and is_correct
+  const { data: allQuestions } = await supabase
     .from('attempt_questions')
-    .select('question_id')
+    .select('question_id, is_correct')
     .eq('user_id', userId)
     .eq('domain_id', domainId)
 
-  // Count distinct question IDs
-  const uniqueQuestionIds = new Set(uniqueQuestions?.map(q => q.question_id) || [])
+  // Deduplicate in one pass
+  const uniqueQuestionIds = new Set(allQuestions?.map(q => q.question_id) || [])
   const totalUniqueAttempted = uniqueQuestionIds.size
 
-  // Get count of UNIQUE questions answered correctly for this domain
-  const { data: correctQuestions } = await supabase
-    .from('attempt_questions')
-    .select('question_id')
-    .eq('user_id', userId)
-    .eq('domain_id', domainId)
-    .eq('is_correct', true)
-
-  const uniqueCorrectIds = new Set(correctQuestions?.map(q => q.question_id) || [])
+  const uniqueCorrectIds = new Set(
+    allQuestions?.filter(q => q.is_correct).map(q => q.question_id) || []
+  )
   const totalUniqueCorrect = uniqueCorrectIds.size
 
   const newMastery = calculateDomainMastery(totalUniqueCorrect, domainId as 1 | 2 | 3 | 4)

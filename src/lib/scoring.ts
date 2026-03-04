@@ -1,6 +1,18 @@
 import type { Question } from '../types'
 
 /**
+ * Fisher-Yates shuffle for unbiased random ordering
+ */
+function fisherYatesShuffle<T>(arr: T[]): T[] {
+  const shuffled = [...arr]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
+/**
  * Calculate AWS scaled score (100-1000 range)
  * AWS uses a scaled scoring system where:
  * - Minimum score: 100
@@ -56,16 +68,15 @@ export function selectExamQuestions(allQuestions: Question[]): Question[] {
 
   // Select questions from each domain
   for (const [domainId, count] of Object.entries(targets)) {
-    const domainQs = allQuestions
-      .filter(q => q.domainId === Number(domainId))
-      .sort(() => Math.random() - 0.5) // Shuffle
-      .slice(0, count)
+    const domainQs = fisherYatesShuffle(
+      allQuestions.filter(q => q.domainId === Number(domainId))
+    ).slice(0, count)
     
     selected.push(...domainQs)
   }
 
   // Final shuffle to mix domains
-  return selected.sort(() => Math.random() - 0.5)
+  return fisherYatesShuffle(selected)
 }
 
 /**

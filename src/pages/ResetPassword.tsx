@@ -19,11 +19,15 @@ export function ResetPassword() {
   }, [])
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY') {
         // User has clicked the reset link
       }
     })
+
+    return () => {
+      subscription.unsubscribe()
+    }
   }, [])
 
   const handleResetPassword = async (e: React.FormEvent) => {
