@@ -11,7 +11,6 @@ export interface Question {
 
 export type OptionKey = 'A' | 'B' | 'C' | 'D' | 'E'
 export type DomainId = 1 | 2 | 3 | 4
-export const DOMAIN_IDS = [1, 2, 3, 4] as const
 
 export interface ExamAttempt {
   id: string
@@ -36,16 +35,5 @@ export interface DomainProgress {
   mastery_percent: number
 }
 
-export const DOMAINS: Record<DomainId, string> = {
-  1: 'Cloud Concepts',
-  2: 'Security & Compliance',
-  3: 'Cloud Technology & Services',
-  4: 'Billing, Pricing & Support',
-} as const
-
-export const DOMAIN_COLORS: Record<DomainId, string> = {
-  1: '#FF9900',
-  2: '#FF9900',
-  3: '#FF9900',
-  4: '#FF9900',
-} as const
+/** AWS orange used for all domain colors */
+export const DOMAIN_COLOR = '#FF9900'

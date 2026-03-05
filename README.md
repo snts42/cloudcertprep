@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# CloudCertPrep
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Free AWS certification practice exams at [cloudcertprep.io](https://www.cloudcertprep.io).
 
-Currently, two official plugins are available:
+## Supported Certifications
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **CLF-C02** (Cloud Practitioner) - 1,054 practice questions across 4 domains
+- **SAA-C03** (Solutions Architect Associate) - coming soon
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Timed mock exams matching real exam format (question count, time limit, passing score)
+- Domain-specific practice with instant feedback
+- Spaced repetition for logged-in users
+- Progress tracking and exam history
+- Community statistics
+- Dark/light theme
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19, TypeScript, Vite 7
+- Tailwind CSS 3.4
+- Supabase (auth, PostgreSQL, row-level security)
+- Deployed on Netlify
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  data/           # Certification configs and question JSON files
+  pages/          # Route-level page components
+  components/     # Shared UI components
+  hooks/          # Custom React hooks (auth, theme, timer, cert, spaced repetition)
+  lib/            # Utilities (scoring, analytics, Supabase client)
+  types/          # TypeScript type definitions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Adding a New Certification
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Add a config entry in `src/data/certifications.ts`
+2. Create question files in `src/data/<cert-code>/domain1.json`, etc.
+3. Register domain loaders in `src/data/questions.ts`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Questions use this format:
+
+```json
+{
+  "id": "clf-d1-001",
+  "domainId": 1,
+  "question": "...",
+  "options": { "A": "...", "B": "...", "C": "...", "D": "..." },
+  "answer": "B",
+  "explanation": "...",
+  "source": "community",
+  "isMultiAnswer": false
+}
 ```
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Requires a `.env` file with `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+
+## Contributing
+
+Open an issue or pull request on [GitHub](https://github.com/snts42/cloudcertprep).
+
+Question contributions are welcome. Follow the JSON format above and place files in the appropriate `src/data/<cert-code>/` directory.
+
+## License
+
+MIT

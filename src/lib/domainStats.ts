@@ -1,19 +1,16 @@
-// Total questions per domain (update when adding/removing questions)
-export const DOMAIN_QUESTION_COUNTS = {
-  1: 196,  // Cloud Concepts
-  2: 220,  // Security & Compliance
-  3: 408,  // Cloud Technology & Services
-  4: 230,  // Billing, Pricing & Support
-} as const
+import { getCertDomainCounts } from '../data/certifications'
 
 /**
- * Calculate domain mastery as coverage percentage based on correct answers
- * Mastery = (questions_correct / total_questions_in_domain) * 100
+ * Calculate domain mastery as coverage percentage based on correct answers.
+ * Mastery = (questionsCorrect / totalQuestionsInDomain) * 100
  */
 export function calculateDomainMastery(
   questionsCorrect: number,
-  domainId: 1 | 2 | 3 | 4
+  domainId: number,
+  certCode: string = 'clf-c02'
 ): number {
-  const totalQuestions = DOMAIN_QUESTION_COUNTS[domainId]
-  return Math.round((questionsCorrect / totalQuestions) * 100)
+  const counts = getCertDomainCounts(certCode)
+  const total = counts[domainId]
+  if (!total) return 0
+  return Math.round((questionsCorrect / total) * 100)
 }

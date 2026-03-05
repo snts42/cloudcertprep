@@ -1,5 +1,6 @@
 import { supabase } from './supabase'
 import { calculateDomainMastery } from './domainStats'
+import { DEFAULT_CERT_ID } from '../data/certifications'
 
 /**
  * Update domain progress for a single domain based on unique questions attempted/correct.
@@ -8,7 +9,8 @@ import { calculateDomainMastery } from './domainStats'
  */
 export async function updateDomainProgress(
   userId: string,
-  domainId: number
+  domainId: number,
+  certCode: string = DEFAULT_CERT_ID
 ): Promise<void> {
   // Single query - fetch both question_id and is_correct
   const { data: allQuestions } = await supabase
@@ -26,11 +28,12 @@ export async function updateDomainProgress(
   )
   const totalUniqueCorrect = uniqueCorrectIds.size
 
-  const newMastery = calculateDomainMastery(totalUniqueCorrect, domainId as 1 | 2 | 3 | 4)
+  const newMastery = calculateDomainMastery(totalUniqueCorrect, domainId, certCode)
 
   const { error: progressError } = await supabase.from('domain_progress').upsert({
     user_id: userId,
     domain_id: domainId,
+    cert_code: certCode,
     questions_attempted: totalUniqueAttempted,
     questions_correct: totalUniqueCorrect,
     mastery_percent: newMastery,

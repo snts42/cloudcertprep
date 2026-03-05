@@ -30,7 +30,7 @@ export function Header({ showNav = false }: HeaderProps) {
                 CloudCertPrep
               </h1>
               <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
-                AWS Cloud Practitioner Exam Prep
+                AWS Certification Exam Prep
               </p>
             </div>
           </Link>

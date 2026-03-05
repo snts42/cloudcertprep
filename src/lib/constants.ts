@@ -1,11 +1,9 @@
 // App-wide constants — single source of truth for repeated values.
+// Cert-specific values (question count, time, pass score) live in data/certifications.ts.
 
 export const APP_NAME = 'CloudCertPrep'
-export const DEFAULT_PAGE_TITLE = `${APP_NAME} | Free AWS CLF-C02 Practice Exams`
+export const DEFAULT_PAGE_TITLE = `${APP_NAME} | Free AWS Certification Practice Exams`
 
-export const EXAM_QUESTION_COUNT = 65
-export const EXAM_TIME_SECONDS = 90 * 60
-export const PASSING_SCORE = 700
 export const MIN_VALID_EXAM_SECONDS = 60
 export const MAX_MULTI_ANSWER = 2
 export const ANSWER_FEEDBACK_DELAY_MS = 300

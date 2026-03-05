@@ -1,4 +1,5 @@
 import type { Question } from '../types'
+import type { Certification } from '../data/certifications'
 import { fisherYatesShuffle } from './utils'
 
 /**
@@ -36,35 +37,36 @@ export function getDomainScore(
 }
 
 /**
- * Select 65 questions for mock exam with correct domain proportions
- * AWS CLF-C02 domain breakdown:
- * - Domain 1 (Cloud Concepts): 24% = ~16 questions
- * - Domain 2 (Security & Compliance): 30% = ~20 questions
- * - Domain 3 (Cloud Technology & Services): 34% = ~22 questions
- * - Domain 4 (Billing, Pricing & Support): 12% = ~8 questions
- * Total: 65 questions (with rounding adjustments)
+ * Select questions for a mock exam based on the certification's domain proportions.
+ * Domain breakdown is derived from cert config — no hardcoded values.
  */
-export function selectExamQuestions(allQuestions: Question[]): Question[] {
-  // Target distribution based on AWS exam blueprint
-  const targets: Record<number, number> = {
-    1: 16, // Cloud Concepts (24%)
-    2: 20, // Security & Compliance (30%)
-    3: 22, // Cloud Technology & Services (34%)
-    4: 7,  // Billing, Pricing & Support (12%) - adjusted to total 65
-  }
+export function selectExamQuestions(allQuestions: Question[], cert: Certification): Question[] {
+  const totalCount = cert.examQuestionCount
+  const targets: Record<number, number> = {}
+
+  // Calculate per-domain question targets from proportions
+  let assigned = 0
+  cert.domains.forEach((domain, i) => {
+    if (i === cert.domains.length - 1) {
+      // Last domain gets the remainder to guarantee exact total
+      targets[domain.id] = totalCount - assigned
+    } else {
+      const count = Math.round(totalCount * domain.examProportion)
+      targets[domain.id] = count
+      assigned += count
+    }
+  })
 
   const selected: Question[] = []
 
-  // Select questions from each domain
   for (const [domainId, count] of Object.entries(targets)) {
     const domainQs = fisherYatesShuffle(
       allQuestions.filter(q => q.domainId === Number(domainId))
     ).slice(0, count)
-    
+
     selected.push(...domainQs)
   }
 
-  // Final shuffle to mix domains
   return fisherYatesShuffle(selected)
 }
 

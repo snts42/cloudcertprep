@@ -28,7 +28,7 @@ export function Stats() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  usePageTitle('Platform Stats | CloudCertPrep')
+  usePageTitle('Community Statistics | CloudCertPrep')
 
   useEffect(() => {
     loadStats()
@@ -99,7 +99,7 @@ export function Stats() {
       <div className="p-4 md:p-8">
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}
-          <h1 className="text-xl md:text-2xl font-semibold text-text-primary">Platform Statistics</h1>
+          <h1 className="text-xl md:text-2xl font-semibold text-text-primary">Community Statistics</h1>
 
           {error && (
             <div className="bg-danger/10 border border-danger/20 rounded-lg p-4">

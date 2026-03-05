@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { usePageTitle } from '../hooks/usePageTitle'
+import { useCert } from '../hooks/useCert'
 import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
-import { DOMAINS, DOMAIN_COLORS } from '../types'
+import { DOMAIN_COLOR } from '../types'
 import type { Question, ExamAttempt } from '../types'
 import { formatDuration } from '../lib/scoring'
 import { formatRelativeDate } from '../lib/formatting'
 import { loadAllQuestions } from '../data/questions'
+import { getCertDomains } from '../data/certifications'
 import { Modal } from '../components/Modal'
 import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { TrendingUp, Check, X, Trash2, AlertTriangle } from 'lucide-react'
@@ -28,6 +30,7 @@ type ReviewFilter = 'all' | 'incorrect' | 'flagged'
 function AttemptReviewPanel({
   aqList,
   questionBank,
+  domains,
   reviewFilter,
   reviewDomainFilter,
   reviewQuestionIndex,
@@ -37,6 +40,7 @@ function AttemptReviewPanel({
 }: {
   aqList: AttemptQuestionRow[]
   questionBank: Question[]
+  domains: Record<number, string>
   reviewFilter: ReviewFilter
   reviewDomainFilter: number | null
   reviewQuestionIndex: number
@@ -91,18 +95,21 @@ function AttemptReviewPanel({
         >
           All Domains
         </button>
-        {[1, 2, 3, 4].map(domainId => (
+        {Object.entries(domains).map(([id, name]) => {
+          const domainId = Number(id)
+          return (
           <button
             key={domainId}
             onClick={() => { onDomainFilterChange(reviewDomainFilter === domainId ? null : domainId); onQuestionIndexChange(0) }}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               reviewDomainFilter === domainId ? 'text-white' : 'bg-bg-dark text-text-muted hover:text-text-primary'
             }`}
-            style={reviewDomainFilter === domainId ? { backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] } : {}}
+            style={reviewDomainFilter === domainId ? { backgroundColor: DOMAIN_COLOR } : {}}
           >
-            {DOMAINS[domainId as keyof typeof DOMAINS]}
+            {name}
           </button>
-        ))}
+          )
+        })}
       </div>
 
       {/* Question Number Grid */}
@@ -157,6 +164,8 @@ function AttemptReviewPanel({
 export function History() {
   const navigate = useNavigate()
   const { user, loading: authLoading } = useAuth()
+  const cert = useCert()
+  const domains = getCertDomains(cert.code)
   const [loading, setLoading] = useState(true)
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
 
@@ -230,7 +239,7 @@ export function History() {
       // Load question bank if not already loaded
       let bank = questionBank
       if (bank.length === 0) {
-        bank = await loadAllQuestions()
+        bank = await loadAllQuestions(cert.code)
         setQuestionBank(bank)
       }
 
@@ -469,16 +478,17 @@ export function History() {
                 <div>
                   <p className="text-xs md:text-sm font-semibold text-text-primary mb-2">Domain Breakdown</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {[1, 2, 3, 4].map(domainId => {
+                    {Object.entries(domains).map(([id, name]) => {
+                      const domainId = Number(id)
                       const score = attempt[`domain_${domainId}_score` as keyof ExamAttempt] as number
                       return (
                         <div key={domainId} className="flex items-center justify-between">
                           <span className="text-text-muted text-xs md:text-sm">
-                            {DOMAINS[domainId as keyof typeof DOMAINS]}
+                            {name}
                           </span>
                           <span 
                             className="text-sm md:text-base font-bold"
-                            style={{ color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] }}
+                            style={{ color: DOMAIN_COLOR }}
                           >
                             {score}%
                           </span>
@@ -507,6 +517,7 @@ export function History() {
                         <AttemptReviewPanel
                           aqList={attemptQuestions.get(attempt.id)!}
                           questionBank={questionBank}
+                          domains={domains}
                           reviewFilter={reviewFilter}
                           reviewDomainFilter={reviewDomainFilter}
                           reviewQuestionIndex={reviewQuestionIndex}

@@ -4,6 +4,7 @@ import { Cloud, Check, Flag, AlertCircle } from 'lucide-react'
 import { useTimer } from '../hooks/useTimer'
 import { useAuth } from '../hooks/useAuth'
 import { usePageTitle } from '../hooks/usePageTitle'
+import { useCert } from '../hooks/useCert'
 import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { Modal } from '../components/Modal'
@@ -13,11 +14,11 @@ import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, formatTime, formatDuration, isAnswerCorrect } from '../lib/scoring'
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
-import { DOMAINS, DOMAIN_COLORS } from '../types'
+import { DOMAIN_COLOR } from '../types'
 import type { Question, OptionKey } from '../types'
 import { loadAllQuestions } from '../data/questions'
 import { trackEvent } from '../lib/analytics'
-import { EXAM_QUESTION_COUNT, EXAM_TIME_SECONDS, PASSING_SCORE, MIN_VALID_EXAM_SECONDS, MAX_MULTI_ANSWER, TIMER_PULSE_THRESHOLD } from '../lib/constants'
+import { MIN_VALID_EXAM_SECONDS, MAX_MULTI_ANSWER, TIMER_PULSE_THRESHOLD } from '../lib/constants'
 
 type ExamScreen = 'start' | 'exam' | 'results' | 'review'
 
@@ -77,6 +78,7 @@ function ExamQuestionGrid({
 export function MockExam() {
   const navigate = useNavigate()
   const { user } = useAuth()
+  const cert = useCert()
   const [screen, setScreen] = useState<ExamScreen>('start')
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -111,16 +113,16 @@ export function MockExam() {
   const [reviewQuestionIndex, setReviewQuestionIndex] = useState(0)
 
   const timer = useTimer({
-    initialSeconds: EXAM_TIME_SECONDS,
+    initialSeconds: cert.examTimeSeconds,
     onComplete: handleTimeUp,
   })
 
   // Page title
   const pageTitle = screen === 'exam'
-    ? `Question ${currentIndex + 1} of ${EXAM_QUESTION_COUNT} | CloudCertPrep Mock Exam`
+    ? `Question ${currentIndex + 1} of ${cert.examQuestionCount} | CloudCertPrep Mock Exam`
     : screen === 'results' ? 'Exam Results | CloudCertPrep'
     : screen === 'review' ? 'Review Exam | CloudCertPrep'
-    : 'Mock Exam | CloudCertPrep'
+    : `${cert.shortName} Mock Exam | CloudCertPrep`
   usePageTitle(pageTitle)
 
   // Track exam abandonment - fires when user leaves during active exam
@@ -150,8 +152,8 @@ export function MockExam() {
 
   async function startExam() {
     setLoading(true)
-    const allQuestions = await loadAllQuestions()
-    const selectedQuestions = selectExamQuestions(allQuestions)
+    const allQuestions = await loadAllQuestions(cert.code)
+    const selectedQuestions = selectExamQuestions(allQuestions, cert)
     setQuestions(selectedQuestions)
     setAnswers(new Map())
     setCurrentIndex(0)
@@ -244,6 +246,7 @@ export function MockExam() {
         .from('exam_attempts')
         .insert({
           user_id: user?.id,
+          cert_code: cert.code,
           score_percent: percentScore,
           scaled_score: scaledScore,
           passed,
@@ -260,15 +263,8 @@ export function MockExam() {
 
       if (attemptError) throw attemptError
 
-      // Only save questions that were actually answered
-      const answeredResults = results.filter(r => {
-        if (Array.isArray(r.userAnswer)) {
-          return r.userAnswer.length > 0
-        }
-        return r.userAnswer !== null && r.userAnswer !== ''
-      })
-
-      const questionRecords = answeredResults.map(r => ({
+      // Save ALL questions (answered and unanswered) so history review shows the full exam
+      const questionRecords = results.map(r => ({
         attempt_id: attemptData.id,
         user_id: user?.id,
         question_id: r.questionId,
@@ -287,11 +283,11 @@ export function MockExam() {
         if (questionsError) throw questionsError
       }
 
-      // Update domain progress for all 4 domains
-      for (let domainId = 1; domainId <= 4; domainId++) {
-        const domainResults = results.filter(r => r.domainId === domainId)
+      // Update domain progress for all domains
+      for (const domain of cert.domains) {
+        const domainResults = results.filter(r => r.domainId === domain.id)
         if (domainResults.length > 0) {
-          await updateDomainProgress(user!.id, domainId)
+          await updateDomainProgress(user!.id, domain.id, cert.code)
         }
       }
     }
@@ -331,16 +327,15 @@ export function MockExam() {
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
-          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">Mock Exam</h1>
-          <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">{EXAM_QUESTION_COUNT} questions — 90 minutes — No answer feedback during exam</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">{cert.shortName} Mock Exam</h1>
+          <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">{cert.examQuestionCount} questions — {Math.round(cert.examTimeSeconds / 60)} minutes — No answer feedback during exam</p>
           
           <div className="bg-bg-dark rounded-lg p-4 md:p-6 mb-6 md:mb-8">
             <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3 md:mb-4">Domain Breakdown</h2>
             <div className="space-y-1.5 md:space-y-2 text-sm md:text-base text-text-muted">
-              <p>• 16 Cloud Concepts (24%)</p>
-              <p>• 20 Security & Compliance (30%)</p>
-              <p>• 22 Cloud Technology & Services (34%)</p>
-              <p>• 7 Billing, Pricing & Support (12%)</p>
+              {cert.domains.map(d => (
+                <p key={d.id}>• {Math.round(cert.examQuestionCount * d.examProportion)} {d.name} ({Math.round(d.examProportion * 100)}%)</p>
+              ))}
             </div>
           </div>
 
@@ -362,7 +357,7 @@ export function MockExam() {
             onClick={() => navigate('/')}
             className="w-full mt-3 md:mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
-            ← Back to Home
+            ← Back to Dashboard
           </button>
         </div>
       </div>
@@ -392,14 +387,14 @@ export function MockExam() {
           <div className="mt-8 bg-bg-card rounded-lg p-6 shadow-card">
             <div className="bg-aws-orange/10 border border-aws-orange/30 rounded-lg p-4 mb-6">
               <p className="text-sm text-text-muted">
-                <span className="font-semibold text-aws-orange">AWS Scaled Scoring:</span> Scores range from 100-1000, where 100 is the minimum (0% correct) and 1000 is the maximum (100% correct). You need 700+ to pass.
+                <span className="font-semibold text-aws-orange">AWS Scaled Scoring:</span> Scores range from 100-1000, where 100 is the minimum (0% correct) and 1000 is the maximum (100% correct). You need {cert.passingScore}+ to pass.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <p className="text-text-muted text-sm mb-1">Pass Mark</p>
-                <p className="text-2xl font-bold text-text-primary">{PASSING_SCORE}/1000</p>
+                <p className="text-2xl font-bold text-text-primary">{cert.passingScore}/1000</p>
               </div>
               <div>
                 <p className="text-text-muted text-sm mb-1">Time Taken</p>
@@ -409,20 +404,20 @@ export function MockExam() {
 
             <h3 className="text-xl font-semibold text-text-primary mb-4">Domain Breakdown</h3>
             <div className="space-y-4">
-              {[1, 2, 3, 4].map(domainId => {
+              {cert.domains.map(domain => {
                 const domainScores = [results.domain1Score, results.domain2Score, results.domain3Score, results.domain4Score]
-                const score = domainScores[domainId - 1]
-                const domainQuestions = results.questionResults.filter(r => r.domainId === domainId)
+                const score = domainScores[domain.id - 1]
+                const domainQuestions = results.questionResults.filter(r => r.domainId === domain.id)
                 const correct = domainQuestions.filter(r => r.isCorrect).length
                 
                 return (
-                  <div key={domainId} className="flex items-center justify-between">
+                  <div key={domain.id} className="flex items-center justify-between">
                     <div className="flex-1">
-                      <p className="text-text-primary font-medium">{DOMAINS[domainId as keyof typeof DOMAINS]}</p>
+                      <p className="text-text-primary font-medium">{domain.name}</p>
                       <p className="text-text-muted text-sm">{correct}/{domainQuestions.length} correct</p>
                     </div>
                     <div className="text-right">
-                      <span className="text-2xl font-bold" style={{ color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] }}>
+                      <span className="text-2xl font-bold" style={{ color: DOMAIN_COLOR }}>
                         {score}%
                       </span>
                     </div>
@@ -449,7 +444,7 @@ export function MockExam() {
                 onClick={() => navigate('/')}
                 className="flex-1 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold py-3 rounded-lg transition-colors"
               >
-                ← Back to Home
+                ← Back to Dashboard
               </button>
               <button
                 onClick={() => {
@@ -483,7 +478,7 @@ export function MockExam() {
                 <div>
                   <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">CloudCertPrep</h1>
                   <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
-                    AWS Cloud Practitioner Exam Prep
+                    {cert.name} Exam Prep
                   </p>
                 </div>
               </div>
@@ -791,21 +786,21 @@ export function MockExam() {
                     >
                       All Domains
                     </button>
-                    {[1, 2, 3, 4].map(domainId => (
+                    {cert.domains.map(domain => (
                       <button
-                        key={domainId}
+                        key={domain.id}
                         onClick={() => {
-                          setReviewDomainFilter(reviewDomainFilter === domainId ? null : domainId)
+                          setReviewDomainFilter(reviewDomainFilter === domain.id ? null : domain.id)
                           setReviewQuestionIndex(0)
                         }}
                         className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
-                          reviewDomainFilter === domainId
+                          reviewDomainFilter === domain.id
                             ? 'text-white'
                             : 'bg-bg-dark text-text-muted hover:text-text-primary'
                         }`}
-                        style={reviewDomainFilter === domainId ? { backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] } : {}}
+                        style={reviewDomainFilter === domain.id ? { backgroundColor: DOMAIN_COLOR } : {}}
                       >
-                        {DOMAINS[domainId as keyof typeof DOMAINS]}
+                        {domain.name}
                       </button>
                     ))}
                   </div>

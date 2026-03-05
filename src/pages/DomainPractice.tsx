@@ -2,17 +2,17 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { usePageTitle } from '../hooks/usePageTitle'
+import { useCert } from '../hooks/useCert'
 import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { ProgressBar } from '../components/ProgressBar'
 import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
-import { DOMAINS, DOMAIN_COLORS } from '../types'
+import { DOMAIN_COLOR } from '../types'
 import type { Question, OptionKey } from '../types'
 import { loadDomainQuestions } from '../data/questions'
 import { isAnswerCorrect } from '../lib/scoring'
-import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
 import { trackEvent } from '../lib/analytics'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
 import { MAX_MULTI_ANSWER, ANSWER_FEEDBACK_DELAY_MS, GITHUB_ISSUES_URL } from '../lib/constants'
@@ -29,13 +29,16 @@ interface QuestionResult {
 export function DomainPractice() {
   const navigate = useNavigate()
   const { user } = useAuth()
+  const cert = useCert()
   const [screen, setScreen] = useState<Screen>('selection')
   const [selectedDomain, setSelectedDomain] = useState<number | null>(null)
   const [questionCount, setQuestionCount] = useState(20)
 
+  const domains = cert ? Object.fromEntries(cert.domains.map(d => [d.id, d.name])) : {}
+
   // Set dynamic page title based on screen and domain
   const pageTitle = screen === 'practice' && selectedDomain !== null
-    ? `${DOMAINS[selectedDomain as keyof typeof DOMAINS]} Practice | CloudCertPrep`
+    ? `${domains[selectedDomain] ?? ''} Practice | CloudCertPrep`
     : screen === 'results' ? 'Practice Results | CloudCertPrep'
     : 'Domain Practice | CloudCertPrep'
   usePageTitle(pageTitle)
@@ -54,8 +57,9 @@ export function DomainPractice() {
   }
 
   async function startPractice() {
+    if (!cert) return
     // Load only the selected domain's questions (separate chunk)
-    const allDomainQuestions = await loadDomainQuestions(selectedDomain!)
+    const allDomainQuestions = await loadDomainQuestions(cert.code, selectedDomain!)
 
     // Use spaced repetition for authenticated users, random shuffle for guests
     const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
@@ -148,7 +152,7 @@ export function DomainPractice() {
 
         if (questionsError) throw questionsError
 
-        await updateDomainProgress(user.id, selectedDomain!)
+        await updateDomainProgress(user.id, selectedDomain!, cert.code)
       } catch (error) {
         console.error('Error saving domain progress:', error)
       }
@@ -172,27 +176,25 @@ export function DomainPractice() {
           <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Practice questions from a specific domain</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
-            {[1, 2, 3, 4].map(domainId => {
-              const totalQuestions = DOMAIN_QUESTION_COUNTS[domainId as keyof typeof DOMAIN_QUESTION_COUNTS]
-              
+            {cert.domains.map(domain => {
               return (
                 <button
-                  key={domainId}
-                  onClick={() => selectDomain(domainId)}
+                  key={domain.id}
+                  onClick={() => selectDomain(domain.id)}
                   className="bg-bg-dark hover:bg-bg-card-hover p-4 md:p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all text-left"
                 >
                   <div className="flex items-center gap-3 md:gap-4">
                     <div 
                       className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold flex-shrink-0"
-                      style={{ backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] + '20', color: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] }}
+                      style={{ backgroundColor: DOMAIN_COLOR + '20', color: DOMAIN_COLOR }}
                     >
-                      {domainId}
+                      {domain.id}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm md:text-base lg:text-lg font-semibold text-text-primary">
-                        {DOMAINS[domainId as keyof typeof DOMAINS]}
+                        {domain.name}
                       </h3>
-                      <p className="text-xs md:text-sm text-text-muted">{totalQuestions} questions</p>
+                      <p className="text-xs md:text-sm text-text-muted">{domain.questionCount} questions</p>
                     </div>
                   </div>
                 </button>
@@ -204,7 +206,7 @@ export function DomainPractice() {
             onClick={() => navigate('/')}
             className="w-full bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
-            ← Back to Home
+            ← Back to Dashboard
           </button>
           </div>
         </div>
@@ -220,7 +222,7 @@ export function DomainPractice() {
           <div className="max-w-2xl mx-auto">
           <div className="bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-text-primary mb-2">
-              {DOMAINS[selectedDomain as keyof typeof DOMAINS]}
+              {domains[selectedDomain!]}
             </h1>
             <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Configure your practice session</p>
 
@@ -335,7 +337,7 @@ export function DomainPractice() {
                 onClick={() => navigate('/')}
                 className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
               >
-                Back to Home
+                Back to Dashboard
               </button>
               <button
                 onClick={() => selectDomain(selectedDomain!)}
@@ -359,7 +361,7 @@ export function DomainPractice() {
           {/* Header */}
           <div className="flex items-center justify-center mb-6">
             <h2 className="text-base md:text-lg lg:text-xl font-semibold text-text-primary">
-              {DOMAINS[selectedDomain as keyof typeof DOMAINS]}
+              {domains[selectedDomain!]}
             </h2>
           </div>
 

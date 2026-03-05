@@ -1,6 +1,7 @@
 import { AnswerButton } from './AnswerButton'
-import { DOMAINS, DOMAIN_COLORS } from '../types'
+import { DOMAIN_COLOR } from '../types'
 import type { Question, OptionKey } from '../types'
+import { getCertDomains, DEFAULT_CERT_ID } from '../data/certifications'
 import { GITHUB_ISSUES_URL } from '../lib/constants'
 import { Flag } from 'lucide-react'
 
@@ -48,10 +49,10 @@ export function QuestionReviewCard({
       {/* Domain Badge */}
       <div className="mb-2">
         <span className="text-xs font-medium px-2 py-0.5 rounded" style={{
-          backgroundColor: `${DOMAIN_COLORS[question.domainId as keyof typeof DOMAIN_COLORS]}20`,
-          color: DOMAIN_COLORS[question.domainId as keyof typeof DOMAIN_COLORS]
+          backgroundColor: `${DOMAIN_COLOR}20`,
+          color: DOMAIN_COLOR
         }}>
-          {DOMAINS[question.domainId as keyof typeof DOMAINS]}
+          {getCertDomains(DEFAULT_CERT_ID)[question.domainId] ?? `Domain ${question.domainId}`}
         </span>
       </div>
 
