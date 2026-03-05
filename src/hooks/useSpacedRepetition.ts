@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import type { Question } from '../types'
+import { fisherYatesShuffle } from '../lib/utils'
 
 interface MasteryRow {
   question_id: string
@@ -10,32 +11,6 @@ interface MasteryRow {
   is_mastered: boolean
   in_exclusion_window: boolean
   weight: number | null
-}
-
-export interface MasteryStats {
-  newCount: number
-  learningCount: number
-  strugglingCount: number
-  masteredCount: number
-}
-
-interface UseSpacedRepetitionResult {
-  loading: boolean
-  error: string | null
-  masteryStats: MasteryStats | null
-  selectQuestions: (
-    allDomainQuestions: Question[],
-    count: number
-  ) => Question[]
-}
-
-function fisherYatesShuffle<T>(arr: T[]): T[] {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
 }
 
 function weightedDraw(pool: Array<{ question: Question; weight: number }>, count: number): Question[] {
@@ -62,25 +37,18 @@ function weightedDraw(pool: Array<{ question: Question; weight: number }>, count
 export function useSpacedRepetition(
   userId: string | null,
   domainId: number | null
-): UseSpacedRepetitionResult {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+) {
   const [masteryMap, setMasteryMap] = useState<Map<string, MasteryRow>>(new Map())
-  const [masteryStats, setMasteryStats] = useState<MasteryStats | null>(null)
 
   useEffect(() => {
     if (!userId || !domainId) {
       setMasteryMap(new Map())
-      setMasteryStats(null)
       return
     }
 
     let cancelled = false
 
     async function fetchMastery() {
-      setLoading(true)
-      setError(null)
-
       try {
         const { data, error: fetchError } = await supabase
           .from('question_mastery')
@@ -100,11 +68,7 @@ export function useSpacedRepetition(
         setMasteryMap(map)
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : 'Failed to load mastery data')
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false)
+          console.error('Failed to load mastery data:', err)
         }
       }
     }
@@ -112,10 +76,6 @@ export function useSpacedRepetition(
     fetchMastery()
     return () => { cancelled = true }
   }, [userId, domainId])
-
-  // Calculate stats whenever masteryMap or domainId changes
-  // Stats are computed in selectQuestions context, but we also expose them
-  // They get populated after selectQuestions is called with the domain questions
 
   function selectQuestions(allDomainQuestions: Question[], count: number): Question[] {
     // Guest: random shuffle
@@ -126,23 +86,13 @@ export function useSpacedRepetition(
     const activePool: Array<{ question: Question; weight: number }> = []
     const backfillPool: Array<{ question: Question; lastSeenAt: string }> = []
 
-    let newCount = 0
-    let learningCount = 0
-    let strugglingCount = 0
-    let masteredCount = 0
-
     for (const question of allDomainQuestions) {
       const row = masteryMap.get(question.id)
 
       if (!row) {
         // Never seen — weight 5
         activePool.push({ question, weight: 5 })
-        newCount++
         continue
-      }
-
-      if (row.is_mastered) {
-        masteredCount++
       }
 
       if (row.weight === null) {
@@ -151,16 +101,8 @@ export function useSpacedRepetition(
         continue
       }
 
-      if (row.last_was_wrong) {
-        strugglingCount++
-      } else if (row.correct_streak >= 1 && row.correct_streak < 3) {
-        learningCount++
-      }
-
       activePool.push({ question, weight: row.weight })
     }
-
-    setMasteryStats({ newCount, learningCount, strugglingCount, masteredCount })
 
     // Weighted draw from active pool
     let selected = weightedDraw(activePool, count)
@@ -179,5 +121,5 @@ export function useSpacedRepetition(
     return fisherYatesShuffle(selected)
   }
 
-  return { loading, error, masteryStats, selectQuestions }
+  return { selectQuestions }
 }

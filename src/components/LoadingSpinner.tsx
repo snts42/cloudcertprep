@@ -11,7 +11,7 @@ export function LoadingSpinner({ size = 'md', text }: LoadingSpinnerProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
+    <div className="flex flex-col items-center justify-center gap-4" role="status" aria-live="polite">
       <div className={`${sizeClasses[size]} relative`}>
         <div className="absolute inset-0 border-4 border-text-muted/20 rounded-full" />
         <div className="absolute inset-0 border-4 border-transparent border-t-aws-orange rounded-full animate-spin" />

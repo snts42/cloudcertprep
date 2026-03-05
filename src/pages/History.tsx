@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
-import type { Question } from '../types'
+import type { Question, ExamAttempt } from '../types'
 import { formatDuration } from '../lib/scoring'
 import { formatRelativeDate } from '../lib/formatting'
 import { loadAllQuestions } from '../data/questions'
@@ -22,19 +23,135 @@ interface AttemptQuestionRow {
   domain_id: number
 }
 
-interface ExamAttempt {
-  id: string
-  attempted_at: string
-  score_percent: number
-  scaled_score: number
-  passed: boolean
-  time_taken_seconds: number
-  total_questions: number
-  correct_answers: number
-  domain_1_score: number
-  domain_2_score: number
-  domain_3_score: number
-  domain_4_score: number
+type ReviewFilter = 'all' | 'incorrect' | 'flagged'
+
+function AttemptReviewPanel({
+  aqList,
+  questionBank,
+  reviewFilter,
+  reviewDomainFilter,
+  reviewQuestionIndex,
+  onFilterChange,
+  onDomainFilterChange,
+  onQuestionIndexChange,
+}: {
+  aqList: AttemptQuestionRow[]
+  questionBank: Question[]
+  reviewFilter: ReviewFilter
+  reviewDomainFilter: number | null
+  reviewQuestionIndex: number
+  onFilterChange: (f: ReviewFilter) => void
+  onDomainFilterChange: (d: number | null) => void
+  onQuestionIndexChange: (i: number) => void
+}) {
+  const filtered = aqList.filter(aq => {
+    if (reviewFilter === 'incorrect' && aq.is_correct) return false
+    if (reviewFilter === 'flagged' && !aq.was_flagged) return false
+    if (reviewDomainFilter !== null && aq.domain_id !== reviewDomainFilter) return false
+    return true
+  })
+  const currentAq = filtered[reviewQuestionIndex]
+  const originalQ = currentAq ? questionBank.find(q => q.id === currentAq.question_id) : null
+
+  return (
+    <div className="space-y-3">
+      {/* Review Filters */}
+      <div className="flex flex-wrap gap-2">
+        {(['all', 'incorrect', 'flagged'] as const).map(f => {
+          const count = f === 'all' ? aqList.length
+            : f === 'incorrect' ? aqList.filter(q => !q.is_correct).length
+            : aqList.filter(q => q.was_flagged).length
+          const isDisabled = f !== 'all' && count === 0
+          return (
+            <button
+              key={f}
+              onClick={() => { if (!isDisabled) { onFilterChange(f); onQuestionIndexChange(0) } }}
+              disabled={isDisabled}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                reviewFilter === f
+                  ? 'bg-aws-orange text-white'
+                  : isDisabled
+                  ? 'bg-bg-dark text-text-muted opacity-50 cursor-not-allowed'
+                  : 'bg-bg-dark text-text-muted hover:text-text-primary'
+              }`}
+            >
+              {f === 'all' ? 'All' : f === 'incorrect' ? 'Incorrect' : 'Flagged'} ({count})
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Domain Filter */}
+      <div className="flex flex-wrap gap-2">
+        <button
+          onClick={() => { onDomainFilterChange(null); onQuestionIndexChange(0) }}
+          className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            reviewDomainFilter === null ? 'bg-aws-orange text-white' : 'bg-bg-dark text-text-muted hover:text-text-primary'
+          }`}
+        >
+          All Domains
+        </button>
+        {[1, 2, 3, 4].map(domainId => (
+          <button
+            key={domainId}
+            onClick={() => { onDomainFilterChange(reviewDomainFilter === domainId ? null : domainId); onQuestionIndexChange(0) }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              reviewDomainFilter === domainId ? 'text-white' : 'bg-bg-dark text-text-muted hover:text-text-primary'
+            }`}
+            style={reviewDomainFilter === domainId ? { backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] } : {}}
+          >
+            {DOMAINS[domainId as keyof typeof DOMAINS]}
+          </button>
+        ))}
+      </div>
+
+      {/* Question Number Grid */}
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(36px,36px))] gap-0.5 md:gap-1 justify-center">
+        {aqList.map((aq, idx) => {
+          const isInFiltered = filtered.some(f => f.question_id === aq.question_id)
+          const isCurrent = currentAq?.question_id === aq.question_id
+          return (
+            <button
+              key={idx}
+              onClick={() => {
+                const fIdx = filtered.findIndex(f => f.question_id === aq.question_id)
+                if (fIdx !== -1) onQuestionIndexChange(fIdx)
+              }}
+              disabled={!isInFiltered}
+              className={`w-8 h-8 md:w-9 md:h-9 rounded text-[10px] md:text-xs font-medium transition-all ${
+                isCurrent ? 'ring-2 ring-aws-orange ring-offset-1 ring-offset-bg-card' : ''
+              } ${!isInFiltered ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'} ${
+                aq.is_correct ? 'bg-success text-white' : 'bg-danger text-white'
+              } ${aq.was_flagged ? 'ring-2 ring-warning' : ''}`}
+            >
+              {idx + 1}
+            </button>
+          )
+        })}
+      </div>
+      <div className="flex items-center justify-center gap-4 text-xs text-text-muted">
+        <span className="flex items-center gap-1"><span className="w-3 h-3 bg-success rounded"></span> Correct</span>
+        <span className="flex items-center gap-1"><span className="w-3 h-3 bg-danger rounded"></span> Incorrect</span>
+        <span className="flex items-center gap-1"><span className="w-3 h-3 bg-bg-dark rounded ring-2 ring-warning"></span> Flagged</span>
+      </div>
+
+      {/* Current Question Display */}
+      {currentAq && originalQ ? (
+        <QuestionReviewCard
+          question={originalQ}
+          userAnswer={currentAq.user_answer || ''}
+          isCorrect={currentAq.is_correct}
+          wasFlagged={currentAq.was_flagged}
+          questionNumber={reviewQuestionIndex + 1}
+          totalQuestions={filtered.length}
+        />
+      ) : filtered.length === 0 ? (
+        <div className="bg-bg-dark rounded-lg p-4 text-center">
+          <p className="text-text-muted text-sm">No questions match the selected filters.</p>
+        </div>
+      ) : null}
+    </div>
+  )
 }
 
 export function History() {
@@ -43,13 +160,7 @@ export function History() {
   const [loading, setLoading] = useState(true)
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
 
-  // Set page title
-  useEffect(() => {
-    document.title = "My Exam History | CloudCertPrep"
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [])
+  usePageTitle('My Exam History | CloudCertPrep')
   const [filter, setFilter] = useState<'all' | 'passed' | 'failed'>('all')
   const [expandedAttempt, setExpandedAttempt] = useState<string | null>(null)
   const [itemsPerPage, setItemsPerPage] = useState(3)
@@ -266,7 +377,7 @@ export function History() {
               <select
                 value={itemsPerPage}
                 onChange={(e) => setItemsPerPage(Number(e.target.value))}
-                className="px-3 py-2 bg-bg-card text-text-primary rounded-lg border border-bg-dark hover:border-aws-orange/50 transition-colors text-sm"
+                className="px-3 py-2 bg-bg-card text-text-primary rounded-lg border border-text-muted/30 hover:border-aws-orange focus:border-aws-orange focus:outline-none transition-colors text-sm"
               >
                 <option value={3}>3 per page</option>
                 <option value={5}>5 per page</option>
@@ -393,117 +504,16 @@ export function History() {
                           <LoadingSpinner text="Loading questions..." />
                         </div>
                       ) : attemptQuestions.has(attempt.id) ? (
-                        (() => {
-                          const aqList = attemptQuestions.get(attempt.id)!
-                          const filtered = aqList.filter(aq => {
-                            if (reviewFilter === 'incorrect' && aq.is_correct) return false
-                            if (reviewFilter === 'flagged' && !aq.was_flagged) return false
-                            if (reviewDomainFilter !== null && aq.domain_id !== reviewDomainFilter) return false
-                            return true
-                          })
-                          const currentAq = filtered[reviewQuestionIndex]
-                          const originalQ = currentAq ? questionBank.find(q => q.id === currentAq.question_id) : null
-
-                          return (
-                            <div className="space-y-3">
-                              {/* Review Filters */}
-                              <div className="flex flex-wrap gap-2">
-                                {(['all', 'incorrect', 'flagged'] as const).map(f => {
-                                  const count = f === 'all' ? aqList.length
-                                    : f === 'incorrect' ? aqList.filter(q => !q.is_correct).length
-                                    : aqList.filter(q => q.was_flagged).length
-                                  const isDisabled = f !== 'all' && count === 0
-                                  return (
-                                    <button
-                                      key={f}
-                                      onClick={() => { if (!isDisabled) { setReviewFilter(f); setReviewQuestionIndex(0) } }}
-                                      disabled={isDisabled}
-                                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                                        reviewFilter === f
-                                          ? 'bg-aws-orange text-white'
-                                          : isDisabled
-                                          ? 'bg-bg-dark text-text-muted opacity-50 cursor-not-allowed'
-                                          : 'bg-bg-dark text-text-muted hover:text-text-primary'
-                                      }`}
-                                    >
-                                      {f === 'all' ? 'All' : f === 'incorrect' ? 'Incorrect' : 'Flagged'} ({count})
-                                    </button>
-                                  )
-                                })}
-                              </div>
-
-                              {/* Domain Filter */}
-                              <div className="flex flex-wrap gap-2">
-                                <button
-                                  onClick={() => { setReviewDomainFilter(null); setReviewQuestionIndex(0) }}
-                                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                                    reviewDomainFilter === null ? 'bg-aws-orange text-white' : 'bg-bg-dark text-text-muted hover:text-text-primary'
-                                  }`}
-                                >
-                                  All Domains
-                                </button>
-                                {[1, 2, 3, 4].map(domainId => (
-                                  <button
-                                    key={domainId}
-                                    onClick={() => { setReviewDomainFilter(reviewDomainFilter === domainId ? null : domainId); setReviewQuestionIndex(0) }}
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                                      reviewDomainFilter === domainId ? 'text-white' : 'bg-bg-dark text-text-muted hover:text-text-primary'
-                                    }`}
-                                    style={reviewDomainFilter === domainId ? { backgroundColor: DOMAIN_COLORS[domainId as keyof typeof DOMAIN_COLORS] } : {}}
-                                  >
-                                    {DOMAINS[domainId as keyof typeof DOMAINS]}
-                                  </button>
-                                ))}
-                              </div>
-
-                              {/* Question Number Grid */}
-                              <div className="grid grid-cols-[repeat(auto-fit,minmax(32px,32px))] md:grid-cols-[repeat(auto-fit,minmax(36px,36px))] gap-0.5 md:gap-1 justify-center">
-                                {aqList.map((aq, idx) => {
-                                  const isInFiltered = filtered.some(f => f.question_id === aq.question_id)
-                                  const isCurrent = currentAq?.question_id === aq.question_id
-                                  return (
-                                    <button
-                                      key={idx}
-                                      onClick={() => {
-                                        const fIdx = filtered.findIndex(f => f.question_id === aq.question_id)
-                                        if (fIdx !== -1) setReviewQuestionIndex(fIdx)
-                                      }}
-                                      disabled={!isInFiltered}
-                                      className={`w-8 h-8 md:w-9 md:h-9 rounded text-[10px] md:text-xs font-medium transition-all ${
-                                        isCurrent ? 'ring-2 ring-aws-orange ring-offset-1 ring-offset-bg-card' : ''
-                                      } ${!isInFiltered ? 'opacity-30 cursor-not-allowed' : 'hover:scale-110'} ${
-                                        aq.is_correct ? 'bg-success text-white' : 'bg-danger text-white'
-                                      } ${aq.was_flagged ? 'ring-2 ring-warning' : ''}`}
-                                    >
-                                      {idx + 1}
-                                    </button>
-                                  )
-                                })}
-                              </div>
-                              <div className="flex items-center justify-center gap-4 text-xs text-text-muted">
-                                <span className="flex items-center gap-1"><span className="w-3 h-3 bg-success rounded"></span> Correct</span>
-                                <span className="flex items-center gap-1"><span className="w-3 h-3 bg-danger rounded"></span> Incorrect</span>
-                                <span className="flex items-center gap-1"><span className="w-3 h-3 bg-bg-dark rounded ring-2 ring-warning"></span> Flagged</span>
-                              </div>
-
-                              {/* Current Question Display */}
-                              {currentAq && originalQ ? (
-                                <QuestionReviewCard
-                                  question={originalQ}
-                                  userAnswer={currentAq.user_answer || ''}
-                                  isCorrect={currentAq.is_correct}
-                                  wasFlagged={currentAq.was_flagged}
-                                  questionNumber={reviewQuestionIndex + 1}
-                                  totalQuestions={filtered.length}
-                                />
-                              ) : filtered.length === 0 ? (
-                                <div className="bg-bg-dark rounded-lg p-4 text-center">
-                                  <p className="text-text-muted text-sm">No questions match the selected filters.</p>
-                                </div>
-                              ) : null}
-                            </div>
-                          )
-                        })()
+                        <AttemptReviewPanel
+                          aqList={attemptQuestions.get(attempt.id)!}
+                          questionBank={questionBank}
+                          reviewFilter={reviewFilter}
+                          reviewDomainFilter={reviewDomainFilter}
+                          reviewQuestionIndex={reviewQuestionIndex}
+                          onFilterChange={setReviewFilter}
+                          onDomainFilterChange={setReviewDomainFilter}
+                          onQuestionIndexChange={setReviewQuestionIndex}
+                        />
                       ) : null}
                     </div>
                   )}

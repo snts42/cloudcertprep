@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { AuthProvider } from './hooks/useAuth'
+import { ThemeProvider } from './hooks/useTheme'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { DonateButton } from './components/DonateButton'
@@ -54,7 +56,11 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <AuthProvider>
+        <ThemeProvider>
+          <AppContent />
+        </ThemeProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

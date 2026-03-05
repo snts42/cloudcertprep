@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Cloud, Check } from 'lucide-react'
+import { Cloud, Check, Flag, AlertCircle } from 'lucide-react'
 import { useTimer } from '../hooks/useTimer'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { Modal } from '../components/Modal'
@@ -13,16 +14,64 @@ import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, fo
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
-import type { Question } from '../types'
+import type { Question, OptionKey } from '../types'
 import { loadAllQuestions } from '../data/questions'
 import { trackEvent } from '../lib/analytics'
-import { Flag, AlertCircle } from 'lucide-react'
+import { EXAM_QUESTION_COUNT, EXAM_TIME_SECONDS, PASSING_SCORE, MIN_VALID_EXAM_SECONDS, MAX_MULTI_ANSWER, TIMER_PULSE_THRESHOLD } from '../lib/constants'
 
 type ExamScreen = 'start' | 'exam' | 'results' | 'review'
 
 interface QuestionState {
   userAnswer: string | string[] | null
   flagged: boolean
+}
+
+function isQuestionAnswered(state: QuestionState | undefined): boolean {
+  if (!state?.userAnswer) return false
+  return Array.isArray(state.userAnswer) ? state.userAnswer.length > 0 : state.userAnswer !== ''
+}
+
+function ExamQuestionGrid({
+  questions,
+  answers,
+  currentIndex,
+  onSelect,
+  variant = 'sidebar',
+}: {
+  questions: Question[]
+  answers: Map<number, QuestionState>
+  currentIndex: number
+  onSelect: (idx: number) => void
+  variant?: 'sidebar' | 'modal'
+}) {
+  return (
+    <div className={`grid grid-cols-5 gap-2${variant === 'modal' ? ' max-h-96 overflow-y-auto' : ''}`}>
+      {questions.map((_, idx) => {
+        const state = answers.get(idx)
+        const isAnswered = isQuestionAnswered(state)
+        const isFlagged = state?.flagged || false
+        const isCurrent = idx === currentIndex
+        return (
+          <button
+            key={idx}
+            onClick={() => onSelect(idx)}
+            className={`relative ${variant === 'sidebar' ? 'w-10 h-10' : 'w-full aspect-square'} rounded text-sm font-medium transition-colors ${
+              isCurrent
+                ? 'bg-aws-orange text-white'
+                : isAnswered
+                ? 'bg-aws-orange/30 text-text-primary hover:bg-aws-orange/50'
+                : 'bg-bg-dark text-text-muted hover:bg-bg-card-hover'
+            }`}
+          >
+            {idx + 1}
+            {isFlagged && (
+              <Flag className="absolute -top-1 -right-1 w-3 h-3 text-warning fill-warning" />
+            )}
+          </button>
+        )
+      })}
+    </div>
+  )
 }
 
 export function MockExam() {
@@ -62,17 +111,23 @@ export function MockExam() {
   const [reviewQuestionIndex, setReviewQuestionIndex] = useState(0)
 
   const timer = useTimer({
-    initialSeconds: 90 * 60, // 90 minutes
+    initialSeconds: EXAM_TIME_SECONDS,
     onComplete: handleTimeUp,
   })
+
+  // Page title
+  const pageTitle = screen === 'exam'
+    ? `Question ${currentIndex + 1} of ${EXAM_QUESTION_COUNT} | CloudCertPrep Mock Exam`
+    : screen === 'results' ? 'Exam Results | CloudCertPrep'
+    : screen === 'review' ? 'Review Exam | CloudCertPrep'
+    : 'Mock Exam | CloudCertPrep'
+  usePageTitle(pageTitle)
 
   // Track exam abandonment - fires when user leaves during active exam
   useEffect(() => {
     function handleBeforeUnload() {
       if (screen === 'exam' && questions.length > 0) {
-        const answeredCount = Array.from(answers.values()).filter(s => 
-          s.userAnswer !== null && (Array.isArray(s.userAnswer) ? s.userAnswer.length > 0 : s.userAnswer !== '')
-        ).length
+        const answeredCount = Array.from(answers.values()).filter(isQuestionAnswered).length
         trackEvent('exam_abandoned', {
           questions_answered: answeredCount,
           total_questions: questions.length,
@@ -84,26 +139,8 @@ export function MockExam() {
     return () => window.removeEventListener('beforeunload', handleBeforeUnload)
   }, [screen, questions.length, answers, startTime])
 
-  // Set dynamic page title based on screen and question
-  useEffect(() => {
-    if (screen === 'start') {
-      document.title = "Mock Exam | CloudCertPrep"
-    } else if (screen === 'exam') {
-      document.title = `Question ${currentIndex + 1} of 65 | CloudCertPrep Mock Exam`
-    } else if (screen === 'results') {
-      document.title = "Exam Results | CloudCertPrep"
-    } else if (screen === 'review') {
-      document.title = "Review Exam | CloudCertPrep"
-    }
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [screen, currentIndex])
-
   function handleTimeUp() {
-    const answeredCount = Array.from(answers.values()).filter(s => 
-      s.userAnswer !== null && (Array.isArray(s.userAnswer) ? s.userAnswer.length > 0 : s.userAnswer !== '')
-    ).length
+    const answeredCount = Array.from(answers.values()).filter(isQuestionAnswered).length
     trackEvent('timer_expired', {
       questions_answered: answeredCount,
       total_questions: questions.length
@@ -134,25 +171,21 @@ export function MockExam() {
       let newAnswers: string[]
       
       if (currentAnswers.includes(answer)) {
-        // Allow deselection
         newAnswers = currentAnswers.filter(a => a !== answer)
       } else {
-        // Enforce max 2 selections
-        if (currentAnswers.length >= 2) {
-          return // Don't allow more than 2 selections
-        }
+        if (currentAnswers.length >= MAX_MULTI_ANSWER) return
         newAnswers = [...currentAnswers, answer]
       }
       
-      setAnswers(new Map(answers.set(currentIndex, { ...currentState, userAnswer: newAnswers })))
+      setAnswers(prev => new Map(prev).set(currentIndex, { ...currentState, userAnswer: newAnswers }))
     } else {
-      setAnswers(new Map(answers.set(currentIndex, { ...currentState, userAnswer: answer })))
+      setAnswers(prev => new Map(prev).set(currentIndex, { ...currentState, userAnswer: answer }))
     }
   }
 
   function toggleFlag() {
     const currentState = answers.get(currentIndex) || { userAnswer: null, flagged: false }
-    setAnswers(new Map(answers.set(currentIndex, { ...currentState, flagged: !currentState.flagged })))
+    setAnswers(prev => new Map(prev).set(currentIndex, { ...currentState, flagged: !currentState.flagged }))
   }
 
   function goToQuestion(index: number) {
@@ -177,7 +210,7 @@ export function MockExam() {
 
     const timeTaken = Math.floor((Date.now() - startTime) / 1000)
     const isGuest = !user
-    const isTooShort = timeTaken < 60
+    const isTooShort = timeTaken < MIN_VALID_EXAM_SECONDS
     
     const results = questions.map((q, idx) => {
       const state = answers.get(idx)
@@ -289,7 +322,7 @@ export function MockExam() {
 
   const currentQuestion = questions[currentIndex]
   const currentState = answers.get(currentIndex)
-  const answeredCount = Array.from(answers.values()).filter(s => s.userAnswer !== null && (Array.isArray(s.userAnswer) ? s.userAnswer.length > 0 : s.userAnswer !== '')).length
+  const answeredCount = Array.from(answers.values()).filter(isQuestionAnswered).length
   const flaggedCount = Array.from(answers.values()).filter(s => s.flagged).length
 
   if (screen === 'start') {
@@ -299,7 +332,7 @@ export function MockExam() {
         <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
           <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">Mock Exam</h1>
-          <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">65 questions — 90 minutes — No answer feedback during exam</p>
+          <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">{EXAM_QUESTION_COUNT} questions — 90 minutes — No answer feedback during exam</p>
           
           <div className="bg-bg-dark rounded-lg p-4 md:p-6 mb-6 md:mb-8">
             <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3 md:mb-4">Domain Breakdown</h2>
@@ -366,7 +399,7 @@ export function MockExam() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <p className="text-text-muted text-sm mb-1">Pass Mark</p>
-                <p className="text-2xl font-bold text-text-primary">700/1000</p>
+                <p className="text-2xl font-bold text-text-primary">{PASSING_SCORE}/1000</p>
               </div>
               <div>
                 <p className="text-text-muted text-sm mb-1">Time Taken</p>
@@ -439,7 +472,7 @@ export function MockExam() {
     return (
       <div className="bg-bg-dark">
         {/* Header */}
-        <div className="fixed top-0 left-0 right-0 bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg z-40">
+        <div className="fixed top-0 left-0 right-0 bg-gradient-to-r from-aws-orange to-aws-orange-end shadow-lg z-40">
           <div className="max-w-7xl mx-auto px-4 py-2 md:py-4 lg:py-6">
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-2 md:gap-3">
@@ -455,7 +488,11 @@ export function MockExam() {
                 </div>
               </div>
               <div className="flex items-center gap-3 md:gap-4">
-                <div className={`text-lg md:text-xl lg:text-2xl font-mono font-bold text-white ${timer.seconds < 600 ? 'animate-pulse' : ''}`}>
+                <div
+                  aria-live="polite"
+                  aria-label={`Time remaining: ${formatTime(timer.seconds)}`}
+                  className={`text-lg md:text-xl lg:text-2xl font-mono font-bold text-white ${timer.seconds < TIMER_PULSE_THRESHOLD ? 'animate-pulse' : ''}`}
+                >
                   {formatTime(timer.seconds)}
                 </div>
                 <button
@@ -503,12 +540,12 @@ export function MockExam() {
                   const currentSelections = currentQuestion.isMultiAnswer && Array.isArray(currentState?.userAnswer) 
                     ? currentState.userAnswer.length 
                     : 0
-                  const isDisabled = currentQuestion.isMultiAnswer && !isSelected && currentSelections >= 2
+                  const isDisabled = currentQuestion.isMultiAnswer && !isSelected && currentSelections >= MAX_MULTI_ANSWER
                   
                   return (
                     <AnswerButton
                       key={key}
-                      label={key as any}
+                      label={key as OptionKey}
                       text={value}
                       state={isSelected ? 'selected' : 'default'}
                       onClick={() => handleAnswer(key)}
@@ -573,33 +610,12 @@ export function MockExam() {
             <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-24 bg-bg-card rounded-lg p-4 shadow-card">
               <h3 className="text-sm font-semibold text-text-primary mb-3">Questions</h3>
-              <div className="grid grid-cols-5 gap-2">
-                {questions.map((_, idx) => {
-                  const state = answers.get(idx)
-                  const isAnswered = state?.userAnswer !== null && state?.userAnswer !== undefined && (Array.isArray(state.userAnswer) ? state.userAnswer.length > 0 : state.userAnswer !== '')
-                  const isFlagged = state?.flagged || false
-                  const isCurrent = idx === currentIndex
-
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => goToQuestion(idx)}
-                      className={`relative w-10 h-10 rounded text-sm font-medium transition-colors ${
-                        isCurrent
-                          ? 'bg-aws-orange text-white'
-                          : isAnswered
-                          ? 'bg-aws-orange/30 text-text-primary hover:bg-aws-orange/50'
-                          : 'bg-bg-dark text-text-muted hover:bg-bg-card-hover'
-                      }`}
-                    >
-                      {idx + 1}
-                      {isFlagged && (
-                        <Flag className="absolute -top-1 -right-1 w-3 h-3 text-warning fill-warning" />
-                      )}
-                    </button>
-                  )
-                })}
-              </div>
+              <ExamQuestionGrid
+                questions={questions}
+                answers={answers}
+                currentIndex={currentIndex}
+                onSelect={goToQuestion}
+              />
             </div>
             </div>
           </div>
@@ -612,36 +628,13 @@ export function MockExam() {
               <span>Answered: {answeredCount}/{questions.length}</span>
               <span>Flagged: {flaggedCount}</span>
             </div>
-            <div className="grid grid-cols-5 gap-2 max-h-96 overflow-y-auto">
-              {questions.map((_, idx) => {
-                const state = answers.get(idx)
-                const isAnswered = state?.userAnswer !== null && state?.userAnswer !== undefined && (Array.isArray(state.userAnswer) ? state.userAnswer.length > 0 : state.userAnswer !== '')
-                const isFlagged = state?.flagged || false
-                const isCurrent = idx === currentIndex
-
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      goToQuestion(idx)
-                      setShowQuestionNav(false)
-                    }}
-                    className={`relative w-full aspect-square rounded text-sm font-medium transition-colors ${
-                      isCurrent
-                        ? 'bg-aws-orange text-white'
-                        : isAnswered
-                        ? 'bg-aws-orange/30 text-text-primary hover:bg-aws-orange/50'
-                        : 'bg-bg-dark text-text-muted hover:bg-bg-card-hover'
-                    }`}
-                  >
-                    {idx + 1}
-                    {isFlagged && (
-                      <Flag className="absolute -top-1 -right-1 w-3 h-3 text-warning fill-warning" />
-                    )}
-                  </button>
-                )
-              })}
-            </div>
+            <ExamQuestionGrid
+              questions={questions}
+              answers={answers}
+              currentIndex={currentIndex}
+              onSelect={(idx) => { goToQuestion(idx); setShowQuestionNav(false) }}
+              variant="modal"
+            />
           </div>
         </Modal>
 
@@ -686,6 +679,9 @@ export function MockExam() {
       if (reviewDomainFilter !== null && result.domainId !== reviewDomainFilter) return false
       return true
     })
+
+    const incorrectCount = results.questionResults.filter(r => !r.isCorrect).length
+    const flaggedReviewCount = results.questionResults.filter(r => r.wasFlagged).length
 
     if (filteredQuestions.length === 0) {
       return (
@@ -741,41 +737,39 @@ export function MockExam() {
                     </button>
                     <button
                       onClick={() => {
-                        const incorrectCount = results.questionResults.filter(r => !r.isCorrect).length
                         if (incorrectCount > 0) {
                           setReviewFilter('incorrect')
                           setReviewQuestionIndex(0)
                         }
                       }}
-                      disabled={results.questionResults.filter(r => !r.isCorrect).length === 0}
+                      disabled={incorrectCount === 0}
                       className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
                         reviewFilter === 'incorrect'
                           ? 'bg-aws-orange text-white'
-                          : results.questionResults.filter(r => !r.isCorrect).length === 0
+                          : incorrectCount === 0
                           ? 'bg-bg-dark text-text-muted opacity-50 cursor-not-allowed'
                           : 'bg-bg-dark text-text-muted hover:text-text-primary'
                       }`}
                     >
-                      Incorrect ({results.questionResults.filter(r => !r.isCorrect).length})
+                      Incorrect ({incorrectCount})
                     </button>
                     <button
                       onClick={() => {
-                        const flaggedCount = results.questionResults.filter(r => r.wasFlagged).length
-                        if (flaggedCount > 0) {
+                        if (flaggedReviewCount > 0) {
                           setReviewFilter('flagged')
                           setReviewQuestionIndex(0)
                         }
                       }}
-                      disabled={results.questionResults.filter(r => r.wasFlagged).length === 0}
+                      disabled={flaggedReviewCount === 0}
                       className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors ${
                         reviewFilter === 'flagged'
                           ? 'bg-aws-orange text-white'
-                          : results.questionResults.filter(r => r.wasFlagged).length === 0
+                          : flaggedReviewCount === 0
                           ? 'bg-bg-dark text-text-muted opacity-50 cursor-not-allowed'
                           : 'bg-bg-dark text-text-muted hover:text-text-primary'
                       }`}
                     >
-                      Flagged ({results.questionResults.filter(r => r.wasFlagged).length})
+                      Flagged ({flaggedReviewCount})
                     </button>
                   </div>
                 </div>
@@ -897,5 +891,9 @@ export function MockExam() {
     )
   }
 
-  return null
+  return (
+    <div className="min-h-screen bg-bg-dark flex items-center justify-center">
+      <p className="text-text-muted">Something went wrong. Please refresh the page.</p>
+    </div>
+  )
 }

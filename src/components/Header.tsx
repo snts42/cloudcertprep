@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useTheme } from '../hooks/useTheme'
+import { KOFI_URL } from '../lib/constants'
 import { Menu, X, Heart, Cloud, Check, Sun, Moon } from 'lucide-react'
 
 interface HeaderProps {
@@ -15,7 +16,7 @@ export function Header({ showNav = false }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-gradient-to-r from-aws-orange to-[#FF7700] shadow-lg relative z-30">
+    <header className="bg-gradient-to-r from-aws-orange to-aws-orange-end shadow-lg relative z-30">
       <div className="max-w-7xl mx-auto px-4 py-2 md:py-4 lg:py-6">
         <div className="flex items-center justify-between md:gap-3 lg:gap-0">
           {/* Logo and Title */}
@@ -166,7 +167,7 @@ export function Header({ showNav = false }: HeaderProps) {
                     {/* Donate Link - Bottom of Drawer */}
                     <div className="p-4 border-t border-text-muted/20">
                       <a 
-                        href="https://ko-fi.com/alexsantonastaso" 
+                        href={KOFI_URL}
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 text-text-muted hover:text-aws-orange transition-colors text-sm"

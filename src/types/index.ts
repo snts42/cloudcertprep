@@ -1,19 +1,17 @@
 export interface Question {
   id: string
-  domainId: 1 | 2 | 3 | 4
+  domainId: DomainId
   question: string
-  options: {
-    A: string
-    B: string
-    C: string
-    D: string
-    E?: string
-  }
+  options: Record<OptionKey, string> & { E?: string }
   answer: string | string[]
   explanation: string
   source: string
   isMultiAnswer: boolean
 }
+
+export type OptionKey = 'A' | 'B' | 'C' | 'D' | 'E'
+export type DomainId = 1 | 2 | 3 | 4
+export const DOMAIN_IDS = [1, 2, 3, 4] as const
 
 export interface ExamAttempt {
   id: string
@@ -31,35 +29,23 @@ export interface ExamAttempt {
   domain_4_score: number
 }
 
-export interface AttemptQuestion {
-  id: string
-  attempt_id: string
-  question_id: string
-  user_answer: string | null
-  correct_answer: string
-  is_correct: boolean
-  was_flagged: boolean
-  domain_id: number
-}
-
 export interface DomainProgress {
   domain_id: number
-  domain_name: string
   questions_attempted: number
   questions_correct: number
   mastery_percent: number
 }
 
-export const DOMAINS = {
+export const DOMAINS: Record<DomainId, string> = {
   1: 'Cloud Concepts',
   2: 'Security & Compliance',
   3: 'Cloud Technology & Services',
   4: 'Billing, Pricing & Support',
 } as const
 
-export const DOMAIN_COLORS = {
-  1: '#FF9900', // AWS Orange
-  2: '#FF9900', // AWS Orange
-  3: '#FF9900', // AWS Orange
-  4: '#FF9900', // AWS Orange
+export const DOMAIN_COLORS: Record<DomainId, string> = {
+  1: '#FF9900',
+  2: '#FF9900',
+  3: '#FF9900',
+  4: '#FF9900',
 } as const

@@ -1,5 +1,6 @@
 import { Heart } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
+import { KOFI_URL } from '../lib/constants'
 
 export function DonateButton() {
   const location = useLocation()
@@ -12,7 +13,7 @@ export function DonateButton() {
   return (
     <div className="hidden md:block fixed bottom-6 left-6 z-40 group">
       <a
-        href="https://ko-fi.com/alexsantonastaso"
+        href={KOFI_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-3 bg-aws-orange hover:bg-aws-orange/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"

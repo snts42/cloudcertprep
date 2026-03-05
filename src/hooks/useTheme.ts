@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react'
+import { createContext, useContext, useState, useCallback, createElement } from 'react'
+import type { ReactNode } from 'react'
 
 type Theme = 'light' | 'dark'
 
@@ -6,7 +7,14 @@ function getTheme(): Theme {
   return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
 }
 
-export function useTheme() {
+interface ThemeContextValue {
+  theme: Theme
+  toggleTheme: () => void
+}
+
+const ThemeContext = createContext<ThemeContextValue | null>(null)
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(getTheme)
 
   const toggleTheme = useCallback(() => {
@@ -29,5 +37,11 @@ export function useTheme() {
     })
   }, [])
 
-  return { theme, toggleTheme }
+  return createElement(ThemeContext.Provider, { value: { theme, toggleTheme } }, children)
+}
+
+export function useTheme() {
+  const ctx = useContext(ThemeContext)
+  if (!ctx) throw new Error('useTheme must be used within <ThemeProvider>')
+  return ctx
 }

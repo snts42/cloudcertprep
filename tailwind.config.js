@@ -9,6 +9,7 @@ export default {
       },
       colors: {
         'aws-orange': 'rgb(var(--color-aws-orange) / <alpha-value>)',
+        'aws-orange-end': 'rgb(var(--color-aws-orange-end) / <alpha-value>)',
         'bg-dark': 'rgb(var(--color-bg-dark) / <alpha-value>)',
         'bg-card': 'rgb(var(--color-bg-card) / <alpha-value>)',
         'bg-card-hover': 'rgb(var(--color-bg-card-hover) / <alpha-value>)',

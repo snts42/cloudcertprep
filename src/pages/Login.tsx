@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { Header } from '../components/Header'
 import { trackEvent } from '../lib/analytics'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { BookOpen, FileText, Target, TrendingUp, CheckCircle, Mail } from 'lucide-react'
 
 export function Login() {
@@ -11,18 +12,11 @@ export function Login() {
   const [signUpSuccess, setSignUpSuccess] = useState(false)
 
   // Set page title based on mode
-  useEffect(() => {
-    if (isForgotPassword) {
-      document.title = "Reset Password | CloudCertPrep"
-    } else if (isSignUp) {
-      document.title = "Sign Up | CloudCertPrep"
-    } else {
-      document.title = "Sign In | CloudCertPrep"
-    }
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [isSignUp, isForgotPassword])
+  usePageTitle(
+    isForgotPassword ? 'Reset Password | CloudCertPrep'
+    : isSignUp ? 'Sign Up | CloudCertPrep'
+    : 'Sign In | CloudCertPrep'
+  )
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -70,8 +64,8 @@ export function Login() {
         trackEvent('sign_in', { method: 'email' })
         navigate('/')
       }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -90,8 +84,8 @@ export function Login() {
 
       if (error) throw error
       setSuccess('Password reset link sent! Check your email.')
-    } catch (err: any) {
-      setError(err.message || 'An error occurred')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -99,7 +93,7 @@ export function Login() {
 
   return (
     <div className="min-h-screen bg-bg-dark flex flex-col">
-      <Header />
+      <Header showNav={true} />
       <div className="flex-1 flex items-center justify-center px-4">
         <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column - Features/Benefits */}
@@ -206,6 +200,7 @@ export function Login() {
               required
               className="w-full px-4 py-2 bg-bg-dark border border-text-muted/30 rounded-lg text-text-primary focus:outline-none focus:border-aws-orange transition-colors"
               placeholder="you@example.com"
+              autoComplete="email"
             />
           </div>
 
@@ -223,6 +218,7 @@ export function Login() {
                   required
                   className="w-full px-4 py-2 bg-bg-dark border border-text-muted/30 rounded-lg text-text-primary focus:outline-none focus:border-aws-orange transition-colors"
                   placeholder="••••••••"
+                  autoComplete={isSignUp ? 'new-password' : 'current-password'}
                 />
               </div>
 
@@ -239,6 +235,7 @@ export function Login() {
                     required
                     className="w-full px-4 py-2 bg-bg-dark border border-text-muted/30 rounded-lg text-text-primary focus:outline-none focus:border-aws-orange transition-colors"
                     placeholder="••••••••"
+                    autoComplete="new-password"
                   />
                 </div>
               )}

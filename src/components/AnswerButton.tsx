@@ -28,6 +28,7 @@ export function AnswerButton({ label, text, state, onClick, disabled, compact }:
     <button
       onClick={onClick}
       disabled={disabled || state === 'disabled'}
+      aria-pressed={state === 'selected'}
       className={`w-full border-2 rounded-lg transition-all duration-200 text-left flex items-start ${compact ? 'p-2 md:p-2.5 gap-2 text-xs md:text-sm' : 'min-h-[44px] p-2.5 md:p-4 lg:p-5 gap-2.5 md:gap-3 lg:gap-4 text-sm md:text-base'} ${stateStyles[state]}`}
     >
       <div className={`flex-shrink-0 rounded-full flex items-center justify-center font-bold ${compact ? 'w-6 h-6 text-xs' : 'w-7 h-7 md:w-8 md:h-8 text-xs md:text-sm'} ${labelStyles[state]}`}>

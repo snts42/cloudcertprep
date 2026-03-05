@@ -32,15 +32,22 @@ export function Modal({ isOpen, title, children, onClose }: ModalProps) {
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Modal */}
-      <div className="relative bg-bg-card rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        className="relative bg-bg-card rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-text-muted/20">
-          <h2 className="text-2xl font-bold text-text-primary">{title}</h2>
+          <h2 id="modal-title" className="text-2xl font-bold text-text-primary">{title}</h2>
           <button
             onClick={onClose}
+            aria-label="Close dialog"
             className="text-text-muted hover:text-text-primary transition-colors"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

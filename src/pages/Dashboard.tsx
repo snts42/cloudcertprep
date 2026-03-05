@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { formatRelativeDate } from '../lib/formatting'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
+import type { DomainProgress } from '../types'
 import { formatDuration } from '../lib/scoring'
 import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
 import { FileText, Target, BookOpen, TrendingUp, Lock, BarChart3 } from 'lucide-react'
-
-interface DomainProgress {
-  domain_id: number
-  mastery_percent: number
-  questions_attempted: number
-  questions_correct: number
-}
 
 interface RecentAttempt {
   id: string
@@ -30,13 +25,7 @@ export function Dashboard() {
   const navigate = useNavigate()
   const { user, loading: authLoading } = useAuth()
 
-  // Set page title
-  useEffect(() => {
-    document.title = user ? "Home | CloudCertPrep" : "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [user])
+  usePageTitle(user ? 'Home | CloudCertPrep' : 'CloudCertPrep | Free AWS CLF-C02 Practice Exams')
   const [domainProgress, setDomainProgress] = useState<DomainProgress[]>([])
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([])
 

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { ProgressBar } from '../components/ProgressBar'
@@ -8,12 +9,13 @@ import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
-import type { Question } from '../types'
+import type { Question, OptionKey } from '../types'
 import { loadDomainQuestions } from '../data/questions'
 import { isAnswerCorrect } from '../lib/scoring'
 import { DOMAIN_QUESTION_COUNTS } from '../lib/domainStats'
 import { trackEvent } from '../lib/analytics'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
+import { MAX_MULTI_ANSWER, ANSWER_FEEDBACK_DELAY_MS, GITHUB_ISSUES_URL } from '../lib/constants'
 import { Check, X } from 'lucide-react'
 
 type Screen = 'selection' | 'config' | 'practice' | 'results'
@@ -32,19 +34,11 @@ export function DomainPractice() {
   const [questionCount, setQuestionCount] = useState(20)
 
   // Set dynamic page title based on screen and domain
-  useEffect(() => {
-    if (screen === 'selection' || screen === 'config') {
-      document.title = "Domain Practice | CloudCertPrep"
-    } else if (screen === 'practice' && selectedDomain !== null) {
-      const domainName = DOMAINS[selectedDomain as keyof typeof DOMAINS]
-      document.title = `${domainName} Practice | CloudCertPrep`
-    } else if (screen === 'results') {
-      document.title = "Practice Results | CloudCertPrep"
-    }
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [screen, selectedDomain])
+  const pageTitle = screen === 'practice' && selectedDomain !== null
+    ? `${DOMAINS[selectedDomain as keyof typeof DOMAINS]} Practice | CloudCertPrep`
+    : screen === 'results' ? 'Practice Results | CloudCertPrep'
+    : 'Domain Practice | CloudCertPrep'
+  usePageTitle(pageTitle)
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [userAnswer, setUserAnswer] = useState<string | string[] | null>(null)
@@ -84,20 +78,16 @@ export function DomainPractice() {
       let newAnswers: string[]
       
       if (currentAnswers.includes(answer)) {
-        // Allow deselection
         newAnswers = currentAnswers.filter(a => a !== answer)
       } else {
-        // Enforce max 2 selections
-        if (currentAnswers.length >= 2) {
-          return // Don't allow more than 2 selections
-        }
+        if (currentAnswers.length >= MAX_MULTI_ANSWER) return
         newAnswers = [...currentAnswers, answer]
       }
       
       setUserAnswer(newAnswers)
     } else {
       setUserAnswer(answer)
-      setTimeout(() => checkAnswer(answer), 300)
+      setTimeout(() => checkAnswer(answer), ANSWER_FEEDBACK_DELAY_MS)
     }
   }
 
@@ -113,16 +103,11 @@ export function DomainPractice() {
       isCorrect: correct
     }])
     setShowFeedback(true)    
-    // Track individual question answer for analytics
     trackEvent('question_answered', {
       domain_id: selectedDomain,
       question_id: current.id,
       is_correct: correct,
-      mode: 'practice'
-    })    
-    trackEvent('question_answered', {
-      domain_id: selectedDomain,
-      correct,
+      mode: 'practice',
       question_number: currentIndex + 1,
       total_questions: questions.length
     })
@@ -406,7 +391,7 @@ export function DomainPractice() {
                 const currentSelections = currentQuestion.isMultiAnswer && Array.isArray(userAnswer) 
                   ? userAnswer.length 
                   : 0
-                const isLimitReached = currentQuestion.isMultiAnswer && !isSelected && currentSelections >= 2
+                const isLimitReached = currentQuestion.isMultiAnswer && !isSelected && currentSelections >= MAX_MULTI_ANSWER
                 
                 let state: 'default' | 'selected' | 'correct' | 'wrong' = 'default'
                 
@@ -426,7 +411,7 @@ export function DomainPractice() {
                 return (
                   <AnswerButton
                     key={key}
-                    label={key as any}
+                    label={key as OptionKey}
                     text={value}
                     state={state}
                     onClick={() => !showFeedback && handleAnswer(key)}
@@ -501,7 +486,7 @@ export function DomainPractice() {
               <span className="text-[10px] text-text-muted/60">
                 Found an error?{' '}
                 <a 
-                  href="https://github.com/snts42/cloudcertprep/issues" 
+                  href={GITHUB_ISSUES_URL}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-aws-orange hover:text-aws-orange/80 hover:underline"
@@ -526,5 +511,9 @@ export function DomainPractice() {
     )
   }
 
-  return null
+  return (
+    <div className="min-h-screen bg-bg-dark flex items-center justify-center">
+      <p className="text-text-muted">Something went wrong. Please refresh the page.</p>
+    </div>
+  )
 }

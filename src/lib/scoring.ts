@@ -1,16 +1,5 @@
 import type { Question } from '../types'
-
-/**
- * Fisher-Yates shuffle for unbiased random ordering
- */
-function fisherYatesShuffle<T>(arr: T[]): T[] {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
+import { fisherYatesShuffle } from './utils'
 
 /**
  * Calculate AWS scaled score (100-1000 range)
@@ -107,9 +96,6 @@ export function formatDuration(seconds: number): string {
   return `${minutes} minute${minutes !== 1 ? 's' : ''} ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`
 }
 
-/**
- * Check if an answer is correct for both single and multi-answer questions
- */
 export function isAnswerCorrect(
   userAnswer: string | string[],
   correctAnswer: string | string[],
@@ -133,4 +119,14 @@ export function isAnswerCorrect(
     // Single answer: simple string comparison
     return userAnswer === correctAnswer
   }
+}
+
+/**
+ * Format total minutes into compact "Xh Ym" display
+ */
+export function formatTotalTime(minutes: number): string {
+  if (minutes < 60) return `${minutes}m`
+  const hours = Math.floor(minutes / 60)
+  const mins = minutes % 60
+  return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`
 }

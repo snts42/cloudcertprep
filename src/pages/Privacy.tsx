@@ -1,14 +1,9 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
+import { usePageTitle } from '../hooks/usePageTitle'
 
 export function Privacy() {
-  useEffect(() => {
-    document.title = "Privacy Policy | CloudCertPrep"
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [])
+  usePageTitle('Privacy Policy | CloudCertPrep')
 
   return (
     <div className="bg-bg-dark flex flex-col">

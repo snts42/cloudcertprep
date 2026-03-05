@@ -1,6 +1,7 @@
 import { AnswerButton } from './AnswerButton'
 import { DOMAINS, DOMAIN_COLORS } from '../types'
-import type { Question } from '../types'
+import type { Question, OptionKey } from '../types'
+import { GITHUB_ISSUES_URL } from '../lib/constants'
 import { Flag } from 'lucide-react'
 
 interface QuestionReviewCardProps {
@@ -72,7 +73,7 @@ export function QuestionReviewCard({
           return (
             <AnswerButton
               key={key}
-              label={key as any}
+              label={key as OptionKey}
               text={value}
               state={state}
               disabled={true}
@@ -101,7 +102,7 @@ export function QuestionReviewCard({
         <span className="text-[10px] text-text-muted/60">
           Found an error?{' '}
           <a 
-            href="https://github.com/snts42/cloudcertprep/issues" 
+            href={GITHUB_ISSUES_URL}
             target="_blank" 
             rel="noopener noreferrer"
             className="text-aws-orange hover:text-aws-orange/80 hover:underline"

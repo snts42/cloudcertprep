@@ -9,7 +9,13 @@ export function ProgressBar({ percent, color, showLabel = true }: ProgressBarPro
 
   return (
     <div className="w-full">
-      <div className="w-full h-3 bg-bg-dark rounded-full overflow-hidden">
+      <div
+        className="w-full h-3 bg-bg-dark rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuenow={Math.round(percent)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
         <div
           className={`h-full transition-all duration-500 ease-out rounded-full ${!hasCustomColor ? 'bg-aws-orange' : ''}`}
           style={{

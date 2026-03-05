@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import { Header } from '../components/Header'
+import { usePageTitle } from '../hooks/usePageTitle'
 
 export function ResetPassword() {
   const [password, setPassword] = useState('')
@@ -10,13 +12,7 @@ export function ResetPassword() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  // Set page title
-  useEffect(() => {
-    document.title = "Reset Password | CloudCertPrep"
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [])
+  usePageTitle('Reset Password | CloudCertPrep')
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
@@ -55,17 +51,18 @@ export function ResetPassword() {
 
       setSuccess(true)
       setTimeout(() => navigate('/login'), 2000)
-    } catch (err: any) {
-      setError(err.message || 'An error occurred')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-bg-dark px-4">
-      <div className="bg-bg-card p-8 rounded-lg shadow-xl max-w-md w-full">
-        <h1 className="text-3xl font-bold text-aws-orange mb-2">CloudCertPrep</h1>
+    <div className="min-h-screen flex flex-col bg-bg-dark">
+      <Header showNav={true} />
+      <div className="flex-1 flex items-center justify-center px-4">
+      <div className="bg-bg-card p-8 rounded-lg shadow-card max-w-md w-full">
         <h2 className="text-xl font-semibold text-text-primary mb-2">Reset Password</h2>
         <p className="text-text-muted mb-8">Enter your new password</p>
 
@@ -82,6 +79,7 @@ export function ResetPassword() {
               required
               className="w-full px-4 py-2 bg-bg-dark border border-text-muted/30 rounded-lg text-text-primary focus:outline-none focus:border-aws-orange transition-colors"
               placeholder="••••••••"
+              autoComplete="new-password"
             />
           </div>
 
@@ -97,6 +95,7 @@ export function ResetPassword() {
               required
               className="w-full px-4 py-2 bg-bg-dark border border-text-muted/30 rounded-lg text-text-primary focus:outline-none focus:border-aws-orange transition-colors"
               placeholder="••••••••"
+              autoComplete="new-password"
             />
           </div>
 
@@ -120,6 +119,7 @@ export function ResetPassword() {
             {loading ? 'Updating...' : 'Update Password'}
           </button>
         </form>
+      </div>
       </div>
     </div>
   )

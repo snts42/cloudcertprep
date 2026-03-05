@@ -3,6 +3,8 @@ import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { formatRelativeDate } from '../lib/formatting'
+import { formatTime, formatTotalTime } from '../lib/scoring'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Trophy } from 'lucide-react'
 
 interface PlatformStats {
@@ -26,12 +28,7 @@ export function Stats() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    document.title = "Platform Stats | CloudCertPrep"
-    return () => {
-      document.title = "CloudCertPrep | Free AWS CLF-C02 Practice Exams"
-    }
-  }, [])
+  usePageTitle('Platform Stats | CloudCertPrep')
 
   useEffect(() => {
     loadStats()
@@ -57,54 +54,50 @@ export function Stats() {
         setStats(statsData)
       }
 
-      // Get this month's passes
+      // Run all exam_attempts queries in parallel
       const monthStart = new Date()
       monthStart.setDate(monthStart.getDate() - 30)
       const monthISO = monthStart.toISOString()
 
-      const { data: monthExams } = await supabase
-        .from('exam_attempts')
-        .select('passed')
-        .eq('passed', true)
-        .gte('attempted_at', monthISO)
+      const [monthExamsResult, fastestPassResult, winsResult, allExamsResult] = await Promise.all([
+        supabase
+          .from('exam_attempts')
+          .select('passed')
+          .eq('passed', true)
+          .gte('attempted_at', monthISO),
+        supabase
+          .from('exam_attempts')
+          .select('time_taken_seconds')
+          .eq('passed', true)
+          .order('time_taken_seconds', { ascending: true })
+          .limit(1)
+          .single(),
+        supabase
+          .from('exam_attempts')
+          .select('attempted_at, scaled_score')
+          .eq('passed', true)
+          .order('attempted_at', { ascending: false })
+          .limit(5),
+        supabase
+          .from('exam_attempts')
+          .select('time_taken_seconds'),
+      ])
 
-      setPassesThisMonth(monthExams?.length ?? 0)
+      setPassesThisMonth(monthExamsResult.data?.length ?? 0)
 
-      // Get fastest pass ever
-      const { data: fastestPass } = await supabase
-        .from('exam_attempts')
-        .select('time_taken_seconds')
-        .eq('passed', true)
-        .order('time_taken_seconds', { ascending: true })
-        .limit(1)
-        .single()
-
-      if (fastestPass) {
-        setFastestPassSeconds(fastestPass.time_taken_seconds)
+      if (fastestPassResult.data) {
+        setFastestPassSeconds(fastestPassResult.data.time_taken_seconds)
       }
 
-      // Load recent wins (last 5 passed exams)
-      const { data: wins } = await supabase
-        .from('exam_attempts')
-        .select('attempted_at, scaled_score')
-        .eq('passed', true)
-        .order('attempted_at', { ascending: false })
-        .limit(5)
-
-      if (wins) {
-        setRecentWins(wins.map(w => ({
+      if (winsResult.data) {
+        setRecentWins(winsResult.data.map(w => ({
           passed_at: w.attempted_at,
           scaled_score: w.scaled_score,
         })))
       }
 
-      // Calculate total time in exams
-      const { data: allExams } = await supabase
-        .from('exam_attempts')
-        .select('time_taken_seconds')
-
-      if (allExams && allExams.length > 0) {
-        const totalSeconds = allExams.reduce((sum, e) => sum + (e.time_taken_seconds || 0), 0)
+      if (allExamsResult.data && allExamsResult.data.length > 0) {
+        const totalSeconds = allExamsResult.data.reduce((sum, e) => sum + (e.time_taken_seconds || 0), 0)
         setTotalTimeMinutes(Math.round(totalSeconds / 60))
       }
 
@@ -114,19 +107,6 @@ export function Stats() {
     } finally {
       setLoading(false)
     }
-  }
-
-  function formatTime(seconds: number): string {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}:${secs.toString().padStart(2, '0')}`
-  }
-
-  function formatTotalTime(minutes: number): string {
-    if (minutes < 60) return `${minutes}m`
-    const hours = Math.floor(minutes / 60)
-    const mins = minutes % 60
-    return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`
   }
 
   const passRate = stats && stats.total_exams_attempted > 0 
@@ -252,5 +232,3 @@ export function Stats() {
     </div>
   )
 }
-
-export default Stats
