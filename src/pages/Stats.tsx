@@ -54,51 +54,20 @@ export function Stats() {
         setStats(statsData)
       }
 
-      // Run all exam_attempts queries in parallel
-      const monthStart = new Date()
-      monthStart.setDate(monthStart.getDate() - 30)
-      const monthISO = monthStart.toISOString()
+      // Load aggregate exam stats via SECURITY DEFINER RPC
+      // (works for both logged-in and anonymous users without exposing exam_attempts rows)
+      const { data: examStats, error: examStatsError } = await supabase
+        .rpc('get_public_exam_stats')
 
-      const [monthExamsResult, fastestPassResult, winsResult, allExamsResult] = await Promise.all([
-        supabase
-          .from('exam_attempts')
-          .select('passed')
-          .eq('passed', true)
-          .gte('attempted_at', monthISO),
-        supabase
-          .from('exam_attempts')
-          .select('time_taken_seconds')
-          .eq('passed', true)
-          .order('time_taken_seconds', { ascending: true })
-          .limit(1)
-          .single(),
-        supabase
-          .from('exam_attempts')
-          .select('attempted_at, scaled_score')
-          .eq('passed', true)
-          .order('attempted_at', { ascending: false })
-          .limit(5),
-        supabase
-          .from('exam_attempts')
-          .select('time_taken_seconds'),
-      ])
-
-      setPassesThisMonth(monthExamsResult.data?.length ?? 0)
-
-      if (fastestPassResult.data) {
-        setFastestPassSeconds(fastestPassResult.data.time_taken_seconds)
+      if (examStatsError) {
+        console.error('Error loading exam stats:', examStatsError)
       }
 
-      if (winsResult.data) {
-        setRecentWins(winsResult.data.map(w => ({
-          passed_at: w.attempted_at,
-          scaled_score: w.scaled_score,
-        })))
-      }
-
-      if (allExamsResult.data && allExamsResult.data.length > 0) {
-        const totalSeconds = allExamsResult.data.reduce((sum, e) => sum + (e.time_taken_seconds || 0), 0)
-        setTotalTimeMinutes(Math.round(totalSeconds / 60))
+      if (examStats) {
+        setPassesThisMonth(examStats.passes_this_month ?? 0)
+        setFastestPassSeconds(examStats.fastest_pass_seconds)
+        setTotalTimeMinutes(Math.round((examStats.total_exam_time_seconds ?? 0) / 60))
+        setRecentWins(examStats.recent_wins ?? [])
       }
 
     } catch (err) {
