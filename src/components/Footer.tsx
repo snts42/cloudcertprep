@@ -35,7 +35,7 @@ export function Footer() {
           {/* Right Column: Disclaimers */}
           <div>
             <p>
-              Not affiliated with AWS or Amazon.com, Inc. AWS and related trademarks belong to Amazon. This independent study tool does not guarantee success on the official AWS Cloud Practitioner exam.
+              Not affiliated with AWS or Amazon.com, Inc. AWS and related trademarks belong to Amazon. This independent study tool does not guarantee success on official AWS certification exams.
             </p>
           </div>
         </div>

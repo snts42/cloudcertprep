@@ -327,6 +327,7 @@ export function DomainPractice() {
                   isCorrect={currentResult.isCorrect}
                   questionNumber={selectedQuestionIndex + 1}
                   totalQuestions={questionResults.length}
+                  certCode={cert.code}
                 />
               </div>
             )}

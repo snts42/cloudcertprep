@@ -31,6 +31,7 @@ function AttemptReviewPanel({
   aqList,
   questionBank,
   domains,
+  certCode,
   reviewFilter,
   reviewDomainFilter,
   reviewQuestionIndex,
@@ -41,6 +42,7 @@ function AttemptReviewPanel({
   aqList: AttemptQuestionRow[]
   questionBank: Question[]
   domains: Record<number, string>
+  certCode: string
   reviewFilter: ReviewFilter
   reviewDomainFilter: number | null
   reviewQuestionIndex: number
@@ -151,6 +153,7 @@ function AttemptReviewPanel({
           wasFlagged={currentAq.was_flagged}
           questionNumber={reviewQuestionIndex + 1}
           totalQuestions={filtered.length}
+          certCode={certCode}
         />
       ) : filtered.length === 0 ? (
         <div className="bg-bg-dark rounded-lg p-4 text-center">
@@ -189,7 +192,7 @@ export function History() {
     if (!authLoading) {
       loadHistory()
     }
-  }, [user, authLoading])
+  }, [user, authLoading, cert.code])
 
   // Reset to page 1 when filter or items per page changes
   useEffect(() => {
@@ -208,6 +211,7 @@ export function History() {
         .from('exam_attempts')
         .select('*')
         .eq('user_id', user.id)
+        .eq('cert_code', cert.code)
         .order('attempted_at', { ascending: false })
 
       if (error) throw error
@@ -518,6 +522,7 @@ export function History() {
                           aqList={attemptQuestions.get(attempt.id)!}
                           questionBank={questionBank}
                           domains={domains}
+                          certCode={cert.code}
                           reviewFilter={reviewFilter}
                           reviewDomainFilter={reviewDomainFilter}
                           reviewQuestionIndex={reviewQuestionIndex}

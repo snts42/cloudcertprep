@@ -17,7 +17,7 @@ export function Terms() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">The short version</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                CloudCertPrep is a free study tool. Use it to prepare for your AWS Cloud Practitioner exam. It is provided as-is with no guarantees. Be respectful, don't abuse the service.
+                CloudCertPrep is a free study tool. Use it to prepare for your AWS certification exams. It is provided as-is with no guarantees. Be respectful, don't abuse the service.
               </p>
             </section>
 
@@ -38,7 +38,7 @@ export function Terms() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">No exam guarantee</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                Using CloudCertPrep does not guarantee you will pass the AWS Cloud Practitioner exam. You are responsible for your own study outcomes. Results vary depending on your prior knowledge, study habits, and effort.
+                Using CloudCertPrep does not guarantee you will pass AWS certification exams. You are responsible for your own study outcomes. Results vary depending on your prior knowledge, study habits, and effort.
               </p>
             </section>
 

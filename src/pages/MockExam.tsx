@@ -231,7 +231,7 @@ export function MockExam() {
 
     const correctCount = results.filter(r => r.isCorrect).length
     const scaledScore = calculateScaledScore(correctCount, questions.length)
-    const passed = isPassed(scaledScore)
+    const passed = isPassed(scaledScore, cert.passingScore)
     const percentScore = (correctCount / questions.length) * 100
 
     const domain1Score = getDomainScore(results, 1)
@@ -871,6 +871,7 @@ export function MockExam() {
                 wasFlagged={currentReviewQuestion.wasFlagged}
                 questionNumber={reviewQuestionIndex + 1}
                 totalQuestions={filteredQuestions.length}
+                certCode={cert.code}
               />
             </div>
 

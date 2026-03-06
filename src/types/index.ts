@@ -15,6 +15,7 @@ export type DomainId = 1 | 2 | 3 | 4
 export interface ExamAttempt {
   id: string
   user_id: string
+  cert_code: string
   attempted_at: string
   score_percent: number
   scaled_score: number
@@ -30,6 +31,7 @@ export interface ExamAttempt {
 
 export interface DomainProgress {
   domain_id: number
+  cert_code: string
   questions_attempted: number
   questions_correct: number
   mastery_percent: number

@@ -38,7 +38,7 @@ export async function updateDomainProgress(
     questions_correct: totalUniqueCorrect,
     mastery_percent: newMastery,
   }, {
-    onConflict: 'user_id,domain_id',
+    onConflict: 'user_id,domain_id,cert_code',
   })
 
   if (progressError) {

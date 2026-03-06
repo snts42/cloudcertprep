@@ -58,6 +58,13 @@ export function Dashboard() {
           .limit(5),
       ])
 
+      if (progressRes.error) {
+        console.error('Domain progress query error:', progressRes.error)
+      }
+      if (attemptsRes.error) {
+        console.error('Exam attempts query error:', attemptsRes.error)
+      }
+
       if (progressRes.data) {
         setDomainProgress(progressRes.data)
       }
@@ -184,54 +191,55 @@ export function Dashboard() {
 
             {/* Guest welcome */}
             {!user && (
-              <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">About {cert.shortName}</h2>
-                <div className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
-                  <div className="space-y-3 md:space-y-4">
-                    <div className="flex items-start gap-3">
-                      <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-text-primary font-medium text-sm md:text-base">{getCertTotalQuestions(cert.code).toLocaleString()} Practice Questions</p>
-                        <p className="text-text-muted text-xs md:text-sm">{cert.name} ({cert.shortName}) exam coverage</p>
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">About {cert.shortName}</h2>
+                  <div className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
+                    <div className="space-y-3 md:space-y-4">
+                      <div className="flex items-start gap-3">
+                        <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-text-primary font-medium text-sm md:text-base">{getCertTotalQuestions(cert.code).toLocaleString()} Practice Questions</p>
+                          <p className="text-text-muted text-xs md:text-sm">{cert.name} ({cert.shortName}) exam coverage</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <FileText className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-text-primary font-medium text-sm md:text-base">Full Mock Exams</p>
+                          <p className="text-text-muted text-xs md:text-sm">{cert.examQuestionCount} questions, {examMinutes} minutes, pass at {cert.passingScore}/1000</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Target className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-text-primary font-medium text-sm md:text-base">{cert.domains.length} Exam Domains</p>
+                          <p className="text-text-muted text-xs md:text-sm">Practice each domain individually with instant feedback</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-text-primary font-medium text-sm md:text-base">Progress Tracking</p>
+                          <p className="text-text-muted text-xs md:text-sm">Monitor your mastery across all domains</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <FileText className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-text-primary font-medium text-sm md:text-base">Full Mock Exams</p>
-                        <p className="text-text-muted text-xs md:text-sm">{cert.examQuestionCount} questions, {examMinutes} minutes, pass at {cert.passingScore}/1000</p>
+                    <div className="mt-6 p-3 md:p-4 bg-aws-orange/10 border border-aws-orange rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Lock className="w-4 h-4 md:w-5 md:h-5 text-aws-orange" />
+                        <p className="text-aws-orange font-medium text-sm md:text-base">Unlock All Features</p>
                       </div>
+                      <p className="text-text-muted text-xs md:text-sm mb-3">
+                        Sign in to save your progress, track exam history, and monitor your domain mastery over time.
+                      </p>
+                      <button 
+                        onClick={() => navigate('/login')}
+                        className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm md:text-base"
+                      >
+                        Sign In / Create Account
+                      </button>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <Target className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-text-primary font-medium text-sm md:text-base">{cert.domains.length} Exam Domains</p>
-                        <p className="text-text-muted text-xs md:text-sm">Practice each domain individually with instant feedback</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-text-primary font-medium text-sm md:text-base">Progress Tracking</p>
-                        <p className="text-text-muted text-xs md:text-sm">Monitor your mastery across all domains</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-6 p-3 md:p-4 bg-aws-orange/10 border border-aws-orange rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Lock className="w-4 h-4 md:w-5 md:h-5 text-aws-orange" />
-                      <p className="text-aws-orange font-medium text-sm md:text-base">Unlock All Features</p>
-                    </div>
-                    <p className="text-text-muted text-xs md:text-sm mb-3">
-                      Sign in to save your progress, track exam history, and monitor your domain mastery over time.
-                    </p>
-                    <button 
-                      onClick={() => navigate('/login')}
-                      className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm md:text-base"
-                    >
-                      Sign In / Create Account
-                    </button>
                   </div>
                 </div>
 

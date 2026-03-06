@@ -12,6 +12,7 @@ interface QuestionReviewCardProps {
   wasFlagged?: boolean
   questionNumber: number
   totalQuestions: number
+  certCode?: string
 }
 
 export function QuestionReviewCard({
@@ -21,6 +22,7 @@ export function QuestionReviewCard({
   wasFlagged,
   questionNumber,
   totalQuestions,
+  certCode = DEFAULT_CERT_ID,
 }: QuestionReviewCardProps) {
   const userAnswerArray = Array.isArray(userAnswer) ? userAnswer : userAnswer ? userAnswer.split(',') : []
   const correctAnswerArray = Array.isArray(question.answer) ? question.answer : [question.answer]
@@ -52,7 +54,7 @@ export function QuestionReviewCard({
           backgroundColor: `${DOMAIN_COLOR}20`,
           color: DOMAIN_COLOR
         }}>
-          {getCertDomains(DEFAULT_CERT_ID)[question.domainId] ?? `Domain ${question.domainId}`}
+          {getCertDomains(certCode)[question.domainId] ?? `Domain ${question.domainId}`}
         </span>
       </div>
 

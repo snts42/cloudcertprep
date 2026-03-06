@@ -17,10 +17,10 @@ export function calculateScaledScore(correct: number, total: number): number {
 
 /**
  * Determine if the exam was passed
- * AWS CLF-C02 passing score is 700/1000
+ * Pass threshold varies by certification (CLF-C02: 700, SAA-C03: 720)
  */
-export function isPassed(scaledScore: number): boolean {
-  return scaledScore >= 700
+export function isPassed(scaledScore: number, passingScore: number = 700): boolean {
+  return scaledScore >= passingScore
 }
 
 /**
