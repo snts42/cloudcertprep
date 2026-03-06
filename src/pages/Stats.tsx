@@ -3,9 +3,10 @@ import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { formatRelativeDate } from '../lib/formatting'
-import { formatTime, formatTotalTime } from '../lib/scoring'
+import { formatTime } from '../lib/scoring'
 import { usePageTitle } from '../hooks/usePageTitle'
-import { Trophy } from 'lucide-react'
+import { CERTIFICATIONS } from '../data/certifications'
+import { Trophy, TrendingUp, Clock } from 'lucide-react'
 
 interface PlatformStats {
   total_users: number
@@ -17,14 +18,30 @@ interface PlatformStats {
 interface RecentWin {
   passed_at: string
   scaled_score: number
+  cert_code?: string
+  time_taken_seconds?: number
+}
+
+interface CertStats {
+  cert_code: string
+  total_attempts: number
+  total_passes: number
+  avg_score: number
+  avg_time_minutes: number
+  fastest_pass_seconds: number | null
+  domain_stats: DomainStat[]
+  recent_passes: RecentWin[]
+}
+
+interface DomainStat {
+  domain_id: number
+  domain_name: string
+  avg_score: number
 }
 
 export function Stats() {
   const [stats, setStats] = useState<PlatformStats | null>(null)
-  const [recentWins, setRecentWins] = useState<RecentWin[]>([])
-  const [totalTimeMinutes, setTotalTimeMinutes] = useState<number>(0)
-  const [passesThisMonth, setPassesThisMonth] = useState<number>(0)
-  const [fastestPassSeconds, setFastestPassSeconds] = useState<number | null>(null)
+  const [certStats, setCertStats] = useState<Record<string, CertStats>>({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -63,11 +80,12 @@ export function Stats() {
         console.error('Error loading exam stats:', examStatsError)
       }
 
-      if (examStats) {
-        setPassesThisMonth(examStats.passes_this_month ?? 0)
-        setFastestPassSeconds(examStats.fastest_pass_seconds)
-        setTotalTimeMinutes(Math.round((examStats.total_exam_time_seconds ?? 0) / 60))
-        setRecentWins(examStats.recent_wins ?? [])
+      if (examStats?.cert_stats) {
+        const certStatsMap: Record<string, CertStats> = {}
+        for (const cs of examStats.cert_stats) {
+          certStatsMap[cs.cert_code] = cs
+        }
+        setCertStats(certStatsMap)
       }
 
     } catch (err) {
@@ -78,9 +96,7 @@ export function Stats() {
     }
   }
 
-  const passRate = stats && stats.total_exams_attempted > 0 
-    ? Math.round((stats.total_exams_passed / stats.total_exams_attempted) * 100)
-    : 0
+  const clfStats = certStats['clf-c02']
 
   if (loading) {
     return (
@@ -97,9 +113,9 @@ export function Stats() {
     <div className="bg-bg-dark flex flex-col">
       <Header showNav={true} />
       <div className="p-4 md:p-8">
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-8">
           {/* Header */}
-          <h1 className="text-xl md:text-2xl font-semibold text-text-primary">Community Statistics</h1>
+          <h1 className="text-xl md:text-2xl font-semibold text-text-primary">Community Progress</h1>
 
           {error && (
             <div className="bg-danger/10 border border-danger/20 rounded-lg p-4">
@@ -107,89 +123,151 @@ export function Stats() {
             </div>
           )}
 
-          {/* Hero Stat */}
-          <div className="bg-bg-card rounded-lg p-6 md:p-8 shadow-card">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-full bg-success/20 flex items-center justify-center">
-                <Trophy className="w-7 h-7 text-success" />
-              </div>
-              <div>
-                <p className="text-4xl md:text-5xl font-bold text-text-primary">
-                  {(stats?.total_exams_passed ?? 0).toLocaleString()}
-                </p>
-                <p className="text-text-muted text-sm">Exams Passed</p>
-              </div>
-            </div>
-
-            {/* Supporting Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-text-muted/10">
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-text-primary">{passRate}%</p>
-                <p className="text-text-muted text-xs">Pass Rate</p>
-              </div>
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-text-primary">{passesThisMonth}</p>
-                <p className="text-text-muted text-xs">Passes This Month</p>
-              </div>
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-text-primary">
-                  {fastestPassSeconds ? formatTime(fastestPassSeconds) : '—'}
-                </p>
-                <p className="text-text-muted text-xs">Fastest Pass</p>
-              </div>
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-text-primary">
-                  {formatTotalTime(totalTimeMinutes)}
-                </p>
-                <p className="text-text-muted text-xs">Total Time in Exams</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Community Stats */}
-          <div className="grid grid-cols-2 gap-3 md:gap-4">
+          {/* CLF-C02 Section */}
+          {clfStats && (
             <div className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
-              <p className="text-2xl md:text-3xl font-bold text-text-primary">
-                {(stats?.total_users ?? 0).toLocaleString()}
-              </p>
-              <p className="text-text-muted text-xs md:text-sm mt-1">Users Registered</p>
-            </div>
-            <div className="bg-bg-card rounded-lg p-4 md:p-6 shadow-card">
-              <p className="text-2xl md:text-3xl font-bold text-text-primary">
-                {(stats?.total_questions_answered ?? 0).toLocaleString()}
-              </p>
-              <p className="text-text-muted text-xs md:text-sm mt-1">Questions Answered</p>
-            </div>
-          </div>
-
-          {/* Recent Wins */}
-          {recentWins.length > 0 && (
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Recent Wins</h2>
-              <div className="space-y-2">
-                {recentWins.map((win, i) => (
-                  <div
-                    key={i}
-                    className="bg-bg-card rounded-lg p-4 flex items-center justify-between shadow-card"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-success/20 flex items-center justify-center">
-                        <span className="text-success text-lg">✓</span>
-                      </div>
-                      <div>
-                        <p className="text-text-primary font-medium text-sm md:text-base">Someone passed!</p>
-                        <p className="text-text-muted text-xs md:text-sm">{formatRelativeDate(win.passed_at)}</p>
-                      </div>
-                    </div>
-                    <p className="text-success font-bold text-sm md:text-base">{win.scaled_score}/1000</p>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2 py-1 rounded text-xs font-medium bg-success/20 text-success">ACTIVE</span>
+                    <h2 className="text-lg md:text-xl font-semibold text-text-primary">{CERTIFICATIONS['clf-c02'].shortName}</h2>
                   </div>
-                ))}
+                  <p className="text-text-muted text-xs md:text-sm">{CERTIFICATIONS['clf-c02'].name}</p>
+                </div>
               </div>
+
+              {/* Key Metrics */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-6">
+                <div>
+                  <p className="text-2xl md:text-3xl font-bold text-text-primary">{clfStats.total_attempts.toLocaleString()}</p>
+                  <p className="text-text-muted text-xs md:text-sm mt-1">Total Attempts</p>
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-bold text-text-primary">{clfStats.total_passes.toLocaleString()}</p>
+                  <p className="text-text-muted text-xs md:text-sm mt-1">Total Passes</p>
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-bold text-text-primary">
+                    {clfStats.total_attempts > 0 ? Math.round((clfStats.total_passes / clfStats.total_attempts) * 100) : 0}%
+                  </p>
+                  <p className="text-text-muted text-xs md:text-sm mt-1">Pass Rate</p>
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-bold text-text-primary">{Math.round(clfStats.avg_score)}</p>
+                  <p className="text-text-muted text-xs md:text-sm mt-1">Avg Score (Passed)</p>
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-bold text-text-primary">{Math.round(clfStats.avg_time_minutes)} min</p>
+                  <p className="text-text-muted text-xs md:text-sm mt-1">Avg Time (Passed)</p>
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-bold text-text-primary">
+                    {clfStats.fastest_pass_seconds ? formatTime(clfStats.fastest_pass_seconds) : '—'}
+                  </p>
+                  <p className="text-text-muted text-xs md:text-sm mt-1">Fastest Pass</p>
+                </div>
+              </div>
+
+              {/* Domain Difficulty Ranking */}
+              {clfStats.domain_stats && clfStats.domain_stats.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-sm md:text-base font-semibold text-text-primary mb-3">Domain Difficulty (Hardest First)</h3>
+                  <div className="space-y-3">
+                    {clfStats.domain_stats.map((ds, index) => (
+                      <div key={ds.domain_id}>
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-text-muted text-xs font-medium">#{index + 1}</span>
+                            <p className="text-text-primary text-xs md:text-sm font-medium">{ds.domain_name}</p>
+                          </div>
+                          <p className="text-text-muted text-xs md:text-sm">{Math.round(ds.avg_score)}% avg</p>
+                        </div>
+                        <div className="h-2 bg-bg-dark rounded-full overflow-hidden">
+                          <div 
+                            className="h-full transition-all"
+                            style={{ 
+                              width: `${Math.min(100, ds.avg_score)}%`,
+                              backgroundColor: ds.avg_score < 60 ? '#EF4444' : ds.avg_score < 75 ? '#F59E0B' : '#FF9900'
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Recent Passes */}
+              {clfStats.recent_passes && clfStats.recent_passes.length > 0 && (
+                <div>
+                  <h3 className="text-sm md:text-base font-semibold text-text-primary mb-3 flex items-center gap-2">
+                    <Trophy className="w-4 h-4 text-success" />
+                    Recent Passes
+                  </h3>
+                  <div className="space-y-2">
+                    {clfStats.recent_passes.map((pass, i) => (
+                      <div key={i} className="flex items-center justify-between p-3 bg-bg-dark rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
+                            <span className="text-success text-sm">✓</span>
+                          </div>
+                          <div>
+                            <p className="text-text-primary font-bold text-sm md:text-base">{pass.scaled_score}/1000</p>
+                            <div className="flex items-center gap-2 text-text-muted text-xs">
+                              <span>{formatRelativeDate(pass.passed_at)}</span>
+                              {pass.time_taken_seconds && (
+                                <>
+                                  <span>•</span>
+                                  <Clock className="w-3 h-3 inline" />
+                                  <span>{formatTime(pass.time_taken_seconds)}</span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* SAA-C03 Coming Soon Section */}
+          <div className="bg-gradient-to-r from-aws-orange/10 to-aws-orange/5 border border-aws-orange/20 rounded-lg p-4 md:p-6 shadow-card">
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="px-2 py-1 rounded text-xs font-medium bg-aws-orange/20 text-aws-orange">COMING SOON</span>
+                  <h2 className="text-lg md:text-xl font-semibold text-text-primary">{CERTIFICATIONS['saa-c03'].shortName}</h2>
+                </div>
+                <p className="text-text-muted text-xs md:text-sm">{CERTIFICATIONS['saa-c03'].name}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <TrendingUp className="w-5 h-5 text-aws-orange flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-text-primary text-sm md:text-base mb-1">
+                  {CERTIFICATIONS['saa-c03'].domains.reduce((sum, d) => sum + d.questionCount, 0)} practice questions available
+                </p>
+                <p className="text-text-muted text-xs md:text-sm">
+                  Full launch expected in 1-2 weeks. Community stats will appear here once users start taking exams.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Platform Totals */}
+          {stats && (
+            <div className="border-t border-text-muted/10 pt-6">
+              <p className="text-text-muted text-xs md:text-sm text-center">
+                {stats.total_users.toLocaleString()} users • {stats.total_questions_answered.toLocaleString()} questions answered across all certifications
+              </p>
             </div>
           )}
 
           {/* Empty state */}
-          {!stats && !error && (
+          {!clfStats && !error && (
             <div className="bg-bg-card rounded-lg p-8 text-center shadow-card">
               <p className="text-text-muted">
                 Statistics will appear here as the community grows.
