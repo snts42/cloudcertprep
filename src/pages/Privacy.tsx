@@ -164,9 +164,15 @@ export function Privacy() {
             </section>
 
             <section>
-              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Analytics</h2>
+              <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Analytics and Cookies</h2>
+              <p className="text-text-muted text-sm leading-relaxed mb-3">
+                We use Google Analytics 4 (GA4) to understand how people use the app — which pages are visited and how exam and practice sessions are used. GA4 sets cookies (such as <code className="text-xs bg-bg-dark px-1 py-0.5 rounded">_ga</code> and <code className="text-xs bg-bg-dark px-1 py-0.5 rounded">_ga_*</code>) to track anonymous usage patterns.
+              </p>
+              <p className="text-text-muted text-sm leading-relaxed mb-3">
+                <strong className="text-text-primary">We ask for your consent before loading GA4.</strong> When you first visit the site, you'll see a cookie consent banner. GA4 only loads if you click "Accept". No personally identifiable information is sent to Google, and we do not link analytics data to your account.
+              </p>
               <p className="text-text-muted text-sm leading-relaxed">
-                We use Google Analytics 4 (GA4) to understand how people use the app — which pages are visited and how exam and practice sessions are used. GA4 collects anonymised data and uses cookies. No personally identifiable information is sent to Google, and we do not link analytics data to your account. You can opt out using the{' '}
+                You can withdraw consent by clearing your browser's local storage, or use the{' '}
                 <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Google Analytics Opt-out Add-on</a>.
               </p>
             </section>

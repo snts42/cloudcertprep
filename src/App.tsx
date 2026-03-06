@@ -6,6 +6,7 @@ import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { DonateButton } from './components/DonateButton'
 import { LoadingSpinner } from './components/LoadingSpinner'
+import { CookieConsent } from './components/CookieConsent'
 import { trackPageView } from './lib/analytics'
 
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })))
@@ -76,6 +77,7 @@ function AppContent() {
       </main>
       {!hideFooter && <Footer />}
       <DonateButton />
+      <CookieConsent />
     </div>
   )
 }

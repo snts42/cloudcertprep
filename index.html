@@ -63,9 +63,33 @@
     }
     </script>
 
-    <!-- Google Analytics (deferred until page is interactive) -->
+    <!-- Google Analytics (deferred until page is interactive, requires consent) -->
     <script>
-      (function(){var id='%VITE_GA_MEASUREMENT_ID%';if(!id||id.charAt(0)==='%')return;function load(){window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());window.gtag('config',id);var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);}if('requestIdleCallback'in window){requestIdleCallback(load)}else{setTimeout(load,1)}})();
+      (function(){
+        var id='%VITE_GA_MEASUREMENT_ID%';
+        if(!id||id.charAt(0)==='%')return;
+        
+        // Check for cookie consent
+        var consent=localStorage.getItem('cloudcertprep_cookie_consent');
+        if(consent!=='accepted')return;
+        
+        function load(){
+          window.dataLayer=window.dataLayer||[];
+          window.gtag=function(){dataLayer.push(arguments);};
+          window.gtag('js',new Date());
+          window.gtag('config',id);
+          var s=document.createElement('script');
+          s.async=true;
+          s.src='https://www.googletagmanager.com/gtag/js?id='+id;
+          document.head.appendChild(s);
+        }
+        
+        if('requestIdleCallback'in window){
+          requestIdleCallback(load)
+        }else{
+          setTimeout(load,1)
+        }
+      })();
     </script>
   </head>
   <body>
