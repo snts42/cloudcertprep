@@ -6542,5 +6542,791 @@
     "explanation": "AWS DMS supports continuous data replication (CDC - Change Data Capture) for disaster recovery and data synchronization. Backup creates point-in-time snapshots, RDS Multi-AZ provides high availability within AWS, and CloudFormation manages infrastructure as code.",
     "source": "ai-generated",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q168",
+    "domainId": 3,
+    "question": "A company wants to migrate its applications to a VPC on AWS. These applications will need to access on-premises resources. What combination of actions will enable the company to accomplish this goal? (Select TWO)",
+    "options": {
+      "A": "Use the AWS Service Catalog to identify a list of on-premises resources that can be migrated",
+      "B": "Build a VPN connection between an on-premises device and a virtual private gateway in the new VPC",
+      "C": "Use Amazon Athena to query data from the on-premises database servers",
+      "D": "Connect the company’s on-premises data center to AWS using AWS Direct Connect",
+      "E": "Leverage Amazon CloudFront to restrict access to static web content provided through the company’s on-premises web servers"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "A site-to-site VPN through a virtual private gateway provides an encrypted tunnel over the internet between on-premises and the VPC, and AWS Direct Connect provides a dedicated private network link, both extending the on-premises network into AWS.\nAWS Service Catalog is a tool for managing and provisioning approved IT service portfolios within an organisation, and has no capability to identify or connect on-premises resources to a VPC. Amazon Athena is a serverless query service that analyses data stored in Amazon S3, and cannot query data directly from on-premises database servers. Amazon CloudFront is a content delivery network that caches and distributes content globally, and is not a mechanism for restricting or routing access between on-premises servers and a VPC.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q185",
+    "domainId": 3,
+    "question": "Which AWS services provide a way to extend an on-premises architecture to the AWS Cloud? (Select TWO)",
+    "options": {
+      "A": "Amazon EBS.",
+      "B": "AWS Direct Connect.",
+      "C": "Amazon CloudFront.",
+      "D": "AWS Storage Gateway.",
+      "E": "Amazon Connect."
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "AWS Direct Connect provides a dedicated private network connection between on-premises infrastructure and AWS, and AWS Storage Gateway integrates on-premises storage environments with cloud storage, both directly extending an on-premises architecture into the AWS Cloud.\nAmazon EBS is a block storage service for EC2 instances that operates entirely within AWS and has no on-premises connectivity function. Amazon CloudFront is a content delivery network that caches and distributes content globally but does not connect or extend on-premises networks to AWS. Amazon Connect is a cloud-based contact centre service for managing customer communications and is unrelated to hybrid network or storage connectivity.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q188",
+    "domainId": 3,
+    "question": "Which of the following services could be used to deploy an application to servers running on-premises? (Select TWO)",
+    "options": {
+      "A": "AWS Elastic Beanstalk.",
+      "B": "AWS OpsWorks.",
+      "C": "AWS CodeDeploy.",
+      "D": "AWS Batch.",
+      "E": "AWS X-Ray."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "AWS OpsWorks uses Chef and Puppet to manage configuration and application deployments on both AWS and on-premises servers, and AWS CodeDeploy can deploy application code directly to on-premises servers as well as EC2 instances.\nAWS Elastic Beanstalk is a platform-as-a-service that provisions and manages AWS infrastructure automatically, but it is limited to AWS environments and cannot deploy to on-premises servers. AWS Batch is a service for running large-scale batch computing jobs on AWS-managed compute resources, and has no capability to target on-premises servers. AWS X-Ray is an application tracing and debugging service that analyzes requests as they travel through distributed applications, and performs no deployment function.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q202",
+    "domainId": 3,
+    "question": "You work as an on-premises MySQL DBA. The work of database configuration, backups, patching, and DR can be time-consuming and repetitive. Your company has decided to migrate to the AWS Cloud. Which of the following can help save time on database maintenance so you can focus on data architecture and performance?",
+    "options": {
+      "A": "Amazon RDS.",
+      "B": "Amazon Redshift.",
+      "C": "Amazon DynamoDB.",
+      "D": "Amazon CloudWatch."
+    },
+    "answer": "A",
+    "explanation": "Amazon RDS is a fully managed relational database service where AWS handles configuration, backups, patching, and failover, freeing the DBA to focus on data architecture and performance.\nAmazon Redshift is a data warehousing service designed for analytics, not transactional relational database workloads. Amazon DynamoDB is a NoSQL key-value database and would not be a like-for-like replacement for a MySQL relational workload. Amazon CloudWatch is a monitoring and observability service, not a database service.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q224",
+    "domainId": 3,
+    "question": "In your on-premises environment, you can create as many virtual servers as you need from a single template. What can you use to perform the same in AWS?",
+    "options": {
+      "A": "IAM.",
+      "B": "An internet gateway.",
+      "C": "EBS Snapshot.",
+      "D": "AMI."
+    },
+    "answer": "D",
+    "explanation": "An Amazon Machine Image is a template containing the operating system, application software, and configuration needed to launch an EC2 instance, directly equivalent to the on-premises practice of spinning up multiple virtual servers from a single template.\nIAM is an identity and access management service that controls permissions and user access within AWS, and has no role in creating or launching virtual server instances. An internet gateway is a VPC component that enables communication between resources inside a VPC and the public internet, and is unrelated to server provisioning or templating. An EBS snapshot is a point-in-time backup of a storage volume used for data recovery purposes, not a template for launching new instances with a defined operating system and configuration.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q238",
+    "domainId": 3,
+    "question": "Using Amazon RDS falls under the shared responsibility model. Which of the following are customer responsibilities? (Choose TWO)",
+    "options": {
+      "A": "Building the relational database schema.",
+      "B": "Performing backups.",
+      "C": "Managing the database settings.",
+      "D": "Patching the database software.",
+      "E": "Installing the database software."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Under the Shared Responsibility Model for Amazon RDS, the customer is responsible for designing the database schema and managing database-level settings such as parameters and user permissions.\nPerforming backups is managed by AWS for RDS, which automates backup retention and point-in-time recovery without requiring the customer to manually initiate or manage backup processes. Patching the database software is entirely AWS's responsibility for RDS, as AWS handles all engine-level patching and maintenance windows as part of the managed service. Installing the database software is entirely AWS's responsibility for RDS, as AWS provisions, installs, and maintains the underlying database engine on the customer's behalf.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q239",
+    "domainId": 3,
+    "question": "A company has a large amount of structured data stored in their on-premises data center. They are planning to migrate all the data to AWS, what is the most appropriate AWS database option?",
+    "options": {
+      "A": "Amazon DynamoDB.",
+      "B": "Amazon SNS.",
+      "C": "Amazon RDS.",
+      "D": "Amazon ElastiCache."
+    },
+    "answer": "C",
+    "explanation": "Amazon RDS is the appropriate service for migrating structured relational data, supporting multiple SQL engines including MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB in a managed environment that mirrors on-premises relational database setups.\nAmazon DynamoDB is a NoSQL key-value and document database designed for unstructured or semi-structured data, making it unsuitable for migrating structured relational workloads. Amazon SNS is a managed messaging and notification service used for pub/sub communication between applications, and has no database capability. Amazon ElastiCache is an in-memory caching service used to accelerate application performance, not a relational database for storing and migrating structured data.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q249",
+    "domainId": 3,
+    "question": "Which of the following AWS services is designed with native Multi-AZ fault tolerance in mind? (Choose TWO)",
+    "options": {
+      "A": "Amazon Redshift.",
+      "B": "AWS Snowball.",
+      "C": "Amazon Simple Storage Service.",
+      "D": "Amazon EBS.",
+      "E": "Amazon DynamoDB."
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "Amazon S3 stores data redundantly across multiple facilities within a Region by default, providing native Multi-AZ durability without any customer configuration. Amazon DynamoDB automatically replicates data across multiple Availability Zones within a Region, making Multi-AZ fault tolerance a built-in characteristic of the service.\nAmazon Redshift is a data warehouse service that deploys into a single AZ by default and requires additional configuration such as Multi-AZ deployment or snapshot restore to achieve cross-AZ resilience. AWS Snowball is a physical data transfer device used to move large amounts of data into or out of AWS and has no relevance to Multi-AZ fault tolerance as a cloud service. Amazon EBS volumes are confined to a single Availability Zone by default and must be explicitly snapshotted and restored or replicated to achieve availability across AZs.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q251",
+    "domainId": 3,
+    "question": "Sarah has deployed an application in the Northern California (us-west-1) region. After examining the application’s traffic, she notices that about 30% of the traffic is coming from Asia. What can she do to reduce latency for the users in Asia?",
+    "options": {
+      "A": "Replicate the current resources across multiple Availability Zones within the same region.",
+      "B": "Migrate the application to a hosting provider in Asia.",
+      "C": "Recreate the website content.",
+      "D": "Create a CDN using CloudFront, so that content is cached at Edge Locations close to and in Asia."
+    },
+    "answer": "D",
+    "explanation": "Creating a CloudFront distribution caches content at edge locations near Asian users, dramatically reducing round-trip latency without needing to move or replicate the origin infrastructure.\nReplicating resources across multiple Availability Zones within the same Region improves availability but does not reduce geographic latency for users in Asia. Migrating to a hosting provider in Asia would reduce latency but introduces significant operational complexity and is not an AWS solution. Recreating the website content has no effect on network latency and does not address the geographic distance between the origin and end users.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q278",
+    "domainId": 3,
+    "question": "What is the connectivity option that uses Internet Protocol Security (IPSec) to establish encrypted connectivity between an on-premises network and the AWS Cloud?",
+    "options": {
+      "A": "Internet Gateway.",
+      "B": "AWS IQ.",
+      "C": "AWS Direct Connect.",
+      "D": "AWS Site-to-Site VPN."
+    },
+    "answer": "D",
+    "explanation": "AWS Site-to-Site VPN uses IPSec to create an encrypted tunnel between an on-premises network and an AWS VPC over the public internet, providing secure connectivity without dedicated physical infrastructure.\nInternet Gateway connects a VPC to the public internet for inbound and outbound traffic, but does not establish encrypted tunnels to on-premises networks. AWS IQ is a marketplace for connecting customers with AWS-certified experts for professional services, unrelated to network connectivity. AWS Direct Connect provides a dedicated private circuit between on-premises infrastructure and AWS, but does not use IPSec and does not travel over the public internet.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q282",
+    "domainId": 3,
+    "question": "Which AWS service provides the current status of all AWS services in all AWS Regions?",
+    "options": {
+      "A": "AWS Service Health Dashboard",
+      "B": "AWS Management Console",
+      "C": "Amazon CloudWatch",
+      "D": "AWS Health Dashboard"
+    },
+    "answer": "A",
+    "explanation": "The AWS Service Health Dashboard provides a real-time public view of the operational status of all AWS services across all Regions, accessible without an AWS account at status.aws.amazon.com.\nThe AWS Management Console is the web-based administrative interface for managing AWS resources and accounts, and does not display the operational status of AWS services globally. Amazon CloudWatch monitors application and infrastructure metrics within a customer's own AWS environment, and does not provide a public view of AWS service health across Regions. The AWS Health Dashboard shows personalised alerts and notifications about events affecting the specific resources in a customer's own account, rather than a global public view of all AWS services.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q287",
+    "domainId": 3,
+    "question": "A company has hundreds of VPCs in multiple AWS Regions worldwide. What service does AWS offer to simplify the connection management among the VPCs?",
+    "options": {
+      "A": "VPC Peering.",
+      "B": "AWS Transit Gateway.",
+      "C": "Amazon Connect.",
+      "D": "Security Groups."
+    },
+    "answer": "B",
+    "explanation": "AWS Transit Gateway acts as a central network hub that connects hundreds or thousands of VPCs across multiple Regions through a single managed gateway, eliminating the complexity of managing individual point-to-point connections.\nVPC Peering creates individual one-to-one connections between VPC pairs, which becomes unmanageable at scale with hundreds of VPCs. Amazon Connect is a cloud-based contact centre service for managing customer communications and has nothing to do with network connectivity. Security Groups are instance-level firewalls that control inbound and outbound traffic rules and do not manage connections between VPCs.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q297",
+    "domainId": 3,
+    "question": "A company needs to migrate their website from on-premises to AWS. Security is a major concern for them, so they need to host their website on hardware that is NOT shared with other AWS customers. Which of the following EC2 instance options meets this requirement?",
+    "options": {
+      "A": "On-demand instances.",
+      "B": "Spot instances.",
+      "C": "Dedicated instances.",
+      "D": "Reserved instances."
+    },
+    "answer": "C",
+    "explanation": "EC2 Dedicated Instances run on hardware that is physically isolated at the host level and is not shared with any other AWS customer account, meeting the physical isolation requirement.\nOn-demand instances run on shared hardware and are billed by the second with no upfront commitment, but do not provide any physical isolation from other AWS customers. Spot instances run on shared spare AWS capacity at discounted rates and offer no hardware isolation or tenancy guarantees. Reserved Instances are a billing and pricing model that offers discounted rates in exchange for a usage commitment, not a tenancy type, and do not guarantee dedicated hardware.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q365",
+    "domainId": 3,
+    "question": "Which AWS Service helps enterprises extend their on-premises storage to AWS in a cost-effective manner?",
+    "options": {
+      "A": "AWS Data Pipeline.",
+      "B": "AWS Storage Gateway.",
+      "C": "Amazon Aurora.",
+      "D": "Amazon EFS."
+    },
+    "answer": "B",
+    "explanation": "AWS Storage Gateway connects on-premises environments to AWS cloud storage, providing seamless integration that lets enterprises extend their existing storage infrastructure to S3, EBS, or Glacier cost-effectively.\nAWS Data Pipeline is an orchestration service for automating the movement and transformation of data between AWS services and on-premises sources, and does not provide hybrid storage integration. Amazon Aurora is a fully managed relational database engine compatible with MySQL and PostgreSQL, and has no capability to extend on-premises storage to the cloud. Amazon EFS is a managed elastic file system for use with AWS compute services, and while it can be accessed from on-premises via Direct Connect or VPN, it is not purpose-built for extending existing on-premises storage infrastructure to AWS.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q383",
+    "domainId": 3,
+    "question": "An organization has a legacy application designed using monolithic-based architecture. Which AWS Service can be used to decouple the components of the application?",
+    "options": {
+      "A": "Amazon SQS.",
+      "B": "Virtual Private Gateway.",
+      "C": "AWS Artifact.",
+      "D": "Amazon CloudFront."
+    },
+    "answer": "A",
+    "explanation": "Amazon SQS is a fully managed message queuing service that decouples application components by allowing them to communicate asynchronously through messages rather than direct calls.\nVirtual Private Gateway is a networking component used to connect a VPC to an on-premises network via VPN, unrelated to application decoupling. AWS Artifact is a compliance and audit documentation portal, not an application integration service. Amazon CloudFront is a content delivery network for caching and distributing content globally, not for decoupling application components.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q404",
+    "domainId": 3,
+    "question": "You need to migrate a large number of on-premises workloads to AWS. Which AWS service is the most appropriate?",
+    "options": {
+      "A": "AWS File Transfer Acceleration",
+      "B": "AWS Application Migration Service",
+      "C": "AWS Database Migration Service",
+      "D": "AWS Application Discovery Service"
+    },
+    "answer": "B",
+    "explanation": "AWS Application Migration Service automates the migration of on-premises server workloads to AWS by continuously replicating source servers and allowing cutover with minimal downtime, making it the recommended service for large-scale server migrations.\nAWS File Transfer Acceleration is not a real AWS service and does not exist in the AWS service catalogue. AWS Database Migration Service is purpose-built for migrating databases rather than entire server workloads, making it too narrow for general on-premises workload migration. AWS Application Discovery Service gathers information about on-premises environments to help plan migrations but does not perform the migration itself.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q407",
+    "domainId": 3,
+    "question": "A company is hosting business critical workloads in an AWS Region. To protect against data loss and ensure business continuity, a mirror image of the current AWS environment should be created in another AWS Region. Company policy requires that the standby environment must be available in minutes in case of an outage in the primary AWS Region. Which AWS service can be used to meet these requirements?",
+    "options": {
+      "A": "AWS Elastic Disaster Recovery",
+      "B": "CloudEndure Migration",
+      "C": "AWS Backup",
+      "D": "AWS Glue"
+    },
+    "answer": "A",
+    "explanation": "AWS Elastic Disaster Recovery continuously replicates machines into a staging area in another AWS Region and can launch fully provisioned instances within minutes during an outage, providing fast cross-Region failover.\nCloudEndure Migration is a server migration tool designed to move workloads to AWS, not to maintain a live standby environment for disaster recovery purposes. AWS Backup is a centralised backup service that automates data protection across AWS services, but does not maintain a continuously replicated standby environment that can be activated within minutes. AWS Glue is a serverless data integration service used for ETL workloads and data cataloguing, and has no disaster recovery or replication capability.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q426",
+    "domainId": 3,
+    "question": "An organization uses a hybrid cloud architecture to run their business. Which AWS service enables them to deploy their applications to any AWS or on-premises server?",
+    "options": {
+      "A": "Amazon Kinesis.",
+      "B": "Amazon QuickSight.",
+      "C": "AWS CodeDeploy.",
+      "D": "Amazon Athena."
+    },
+    "answer": "C",
+    "explanation": "AWS CodeDeploy automates application deployments to EC2 instances, on-premises servers, Lambda functions, and ECS services, making it the service that supports hybrid cloud deployment workflows.\nAmazon Kinesis is a service for ingesting and processing real-time streaming data, and has no application deployment capability. Amazon QuickSight is a business intelligence and data visualization service used for building dashboards and reports, not for deploying applications to servers. Amazon Athena is an interactive query service that analyzes data stored in S3 using SQL, and plays no role in application deployment.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q431",
+    "domainId": 3,
+    "question": "A developer wants to quickly deploy and manage his application in the AWS Cloud, but he doesn’t have any experience with cloud computing. Which of the following AWS services would help the developer achieve his goal?",
+    "options": {
+      "A": "AWS Fargate.",
+      "B": "AWS Batch.",
+      "C": "Amazon Personalize.",
+      "D": "AWS Elastic Beanstalk."
+    },
+    "answer": "D",
+    "explanation": "AWS Elastic Beanstalk handles deployment, capacity provisioning, load balancing, auto-scaling, and health monitoring automatically, letting developers deploy applications without needing deep cloud infrastructure experience.\nAWS Fargate is a serverless compute engine for running containers, not a general application deployment platform for beginners. AWS Batch is designed for running large-scale batch computing jobs, not for deploying and managing web applications. Amazon Personalize is a machine learning service for building recommendation systems, unrelated to application deployment.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q441",
+    "domainId": 3,
+    "question": "You want to transfer 200 Terabytes of data from on-premises locations to the AWS Cloud. Which of the following can do the job in a cost-effective way?",
+    "options": {
+      "A": "AWS Snowmobile",
+      "B": "AWS Direct Connect",
+      "C": "AWS DMS",
+      "D": "AWS Snowball"
+    },
+    "answer": "D",
+    "explanation": "AWS Snowball is a physical data transfer device that moves up to 80 TB per device, making it cost-effective for transferring 200 TB of data without relying on slow or expensive network transfers.\nAWS Snowmobile is designed for migrations at exabyte scale, typically 10 PB or more, making it far more than necessary and not cost-effective for a 200 TB transfer. AWS Direct Connect provides a dedicated private network link between on-premises infrastructure and AWS, but transferring 200 TB over a network connection would be slow and costly compared to physical data transport. AWS DMS is purpose-built for migrating databases rather than transferring large volumes of unstructured data between on-premises locations and AWS.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q461",
+    "domainId": 3,
+    "question": "Which of the following AWS services would help you migrate on-premise databases to AWS?",
+    "options": {
+      "A": "AWS DMS.",
+      "B": "Amazon S3 Transfer Acceleration.",
+      "C": "AWS Directory Service.",
+      "D": "AWS Transit Gateway."
+    },
+    "answer": "A",
+    "explanation": "AWS Database Migration Service migrates databases from on-premises to AWS with minimal downtime, supporting both homogeneous migrations such as MySQL to MySQL and heterogeneous migrations such as Oracle to Aurora, while keeping the source database operational throughout.\nAmazon S3 Transfer Acceleration speeds up file uploads to S3 buckets by routing traffic through CloudFront edge locations and has no database migration capability. AWS Directory Service provides managed Microsoft Active Directory in the cloud for identity and access management and is unrelated to database migration. AWS Transit Gateway is a network hub that connects VPCs and on-premises networks through a central gateway and does not perform any data or database migration function.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q466",
+    "domainId": 3,
+    "question": "A company has infrastructure hosted in an on-premises data center. They currently have an operations team that takes care of identity management. If they decide to migrate to the AWS cloud, which of the following services would help them perform the same role in AWS?",
+    "options": {
+      "A": "AWS IAM.",
+      "B": "AWS Outposts.",
+      "C": "AWS Federation.",
+      "D": "Amazon Redshift."
+    },
+    "answer": "A",
+    "explanation": "AWS IAM provides centralised control over authentication and authorisation for AWS resources, serving the same identity management role as an on-premises operations team.\nAWS Outposts is a fully managed service that extends AWS infrastructure and services to on-premises locations, and has no identity management capability. AWS Directory Service provides managed Microsoft Active Directory in the cloud for connecting AWS resources with existing on-premises directories, but does not replace a general identity management function across AWS resources the way IAM does. Amazon Redshift is a fully managed cloud data warehouse service used for analytics workloads, and is entirely unrelated to identity management.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q471",
+    "domainId": 3,
+    "question": "For some services, AWS automatically replicates data across multiple Availability Zones to provide fault tolerance in the event of a server failure or Availability Zone outage. Select TWO services that automatically replicate data across Availability Zones.",
+    "options": {
+      "A": "Instance Store.",
+      "B": "S3.",
+      "C": "DynamoDB.",
+      "D": "Amazon Route 53.",
+      "E": "AWS VPN."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "Amazon S3 automatically replicates objects across a minimum of three Availability Zones within a Region, and DynamoDB replicates data across multiple AZs by default, both providing built-in fault tolerance.\nInstance Store is temporary block storage attached directly to the host EC2 instance. It is not replicated and data is lost if the instance stops or fails. Amazon Route 53 is a DNS and traffic routing service and does not replicate data across AZs in the same way. AWS VPN is a network connectivity service for securely connecting on-premises networks to AWS, unrelated to data replication.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q486",
+    "domainId": 3,
+    "question": "Which AWS service can be used to route end users to the nearest AWS Region to reduce latency?",
+    "options": {
+      "A": "Amazon Cognito.",
+      "B": "AWS Systems Manager.",
+      "C": "AWS Cloud9.",
+      "D": "Amazon Route 53."
+    },
+    "answer": "D",
+    "explanation": "Amazon Route 53 supports latency-based routing, directing users to the AWS Region with the lowest network latency for their location, reducing response times for global applications.\nAmazon Cognito is a user authentication and identity management service, unrelated to traffic routing or latency. AWS Systems Manager is an operations management service for managing and automating tasks across AWS resources. AWS Cloud9 is a cloud-based integrated development environment for writing and debugging code.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q521",
+    "domainId": 3,
+    "question": "What is the benefit of Amazon EBS volumes being automatically replicated within the same availability zone?",
+    "options": {
+      "A": "Elasticity.",
+      "B": "Durability.",
+      "C": "Traceability.",
+      "D": "Accessibility."
+    },
+    "answer": "B",
+    "explanation": "Amazon EBS volumes are automatically replicated within their Availability Zone to protect against hardware failures, providing durability by ensuring that data survives individual component failures.\nElasticity refers to the ability to dynamically scale compute or storage capacity up and down in response to demand, which is unrelated to data replication within an Availability Zone. Traceability refers to the ability to track and log actions and changes within a system for auditing and monitoring purposes, which has nothing to do with hardware failure protection. Accessibility refers to the ability to access resources or data, which is not the benefit that replication within an Availability Zone specifically provides.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q527",
+    "domainId": 3,
+    "question": "The elasticity of the AWS Cloud enables customers to save costs when compared to traditional hosting providers. What can AWS customers do to benefit from the elasticity of the AWS Cloud? (Choose TWO)",
+    "options": {
+      "A": "Deploy your resources across multiple Availability Zones.",
+      "B": "Use Amazon EC2 Auto Scaling.",
+      "C": "Deploy your resources in another region.",
+      "D": "Use Elastic Load Balancing.",
+      "E": "Use Serverless Computing whenever possible."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "EC2 Auto Scaling automatically adjusts the number of instances based on demand, ensuring customers pay only for what they use, and serverless computing charges only for actual execution time with no idle capacity costs, both directly leveraging cloud elasticity to reduce costs.\nDeploying across multiple Availability Zones improves availability and fault tolerance but does not dynamically adjust resource capacity in response to demand. Deploying resources in another Region improves geographic reach and disaster recovery but is not a mechanism for elastic cost savings. Elastic Load Balancing distributes incoming traffic across existing instances but does not scale the number of instances up or down based on demand.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q548",
+    "domainId": 3,
+    "question": "Which AWS service allows companies to connect an Amazon VPC to an on-premises data center? (Select TWO)",
+    "options": {
+      "A": "AWS VPN.",
+      "B": "Amazon Redshift.",
+      "C": "API Gateway.",
+      "D": "Amazon Direct Connect."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS VPN creates an encrypted connection over the public internet, and AWS Direct Connect provides a dedicated private network connection, both enabling secure connectivity between an Amazon VPC and an on-premises data center.\nAmazon Redshift is a managed data warehousing service for analytics workloads and has no role in network connectivity between a VPC and on-premises infrastructure. API Gateway is a service for creating and managing APIs that expose backend services over HTTP, not a networking service for connecting private networks.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q588",
+    "domainId": 3,
+    "question": "Which AWS services are defined as global instead of regional? (Select TWO)",
+    "options": {
+      "A": "Amazon Route 53.",
+      "B": "Amazon EC2.",
+      "C": "Amazon S3.",
+      "D": "Amazon CloudFront.",
+      "E": "Amazon DynamoDB."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Amazon Route 53 is a global DNS service not tied to any specific Region, and Amazon CloudFront is a global CDN that operates from edge locations worldwide, making both global services.\nAmazon EC2 is a regional service where instances are launched into a specific Region and Availability Zone, making it region-scoped rather than global. Amazon S3 has a global namespace for bucket names but buckets are created and stored in a specific Region, so it is a regional service from an infrastructure standpoint. Amazon DynamoDB is a regional service where tables are created within a specific Region, though global tables can be configured as an optional feature requiring explicit setup.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q625",
+    "domainId": 3,
+    "question": "Which AWS services are defined as global instead of regional? (Select TWO.)",
+    "options": {
+      "A": "Amazon Route 53",
+      "B": "Amazon EC2",
+      "C": "Amazon S3",
+      "D": "Amazon CloudFront",
+      "E": "Amazon DynamoDB"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Amazon Route 53 is a global DNS service that operates across all Regions without being tied to any single one, and Amazon CloudFront is a global content delivery network that distributes content from edge locations worldwide rather than from a specific Region.\nAmazon EC2 is a regional service where instances are launched into a specific Region and Availability Zone. Amazon S3 buckets are created in a specific Region, even though the S3 console appears global and data can be replicated across Regions. Amazon DynamoDB is a regional service where tables are created and stored within a specific Region, with global tables being an optional add-on rather than the default behaviour.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q650",
+    "domainId": 3,
+    "question": "A company is designing an application hosted in a single AWS Region serving end-users spread across the world. The company wants to provide the end-users low latency access to the application data. Which of the following services will help fulfill this requirement?",
+    "options": {
+      "A": "Amazon CloudFront",
+      "B": "AWS Direct Connect",
+      "C": "Amazon Route 53 global DNS",
+      "D": "Amazon Simple Storage Service (Amazon S3) transfer acceleration"
+    },
+    "answer": "A",
+    "explanation": "Amazon CloudFront caches application data at edge locations worldwide, serving content to end users from the nearest edge location to minimise latency, even when the application is hosted in a single Region.\nAWS Direct Connect provides a dedicated private network connection between on-premises infrastructure and AWS, not a solution for reducing latency for global end users. Amazon Route 53 global DNS routes users to endpoints but does not cache or serve application data from nearby locations. Amazon S3 transfer acceleration speeds up uploads to S3 buckets using edge locations, not the delivery of application data to end users.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q653",
+    "domainId": 3,
+    "question": "What feature of Amazon RDS helps to create globally redundant databases?",
+    "options": {
+      "A": "Snapshots",
+      "B": "Automatic patching and updating",
+      "C": "Cross-Region read replicas",
+      "D": "Provisioned IOPS"
+    },
+    "answer": "C",
+    "explanation": "Amazon RDS Cross-Region read replicas create copies of a database in other AWS Regions, providing globally redundant database access for disaster recovery and low-latency reads for international users.\nSnapshots are point-in-time backups stored within a Region used for data recovery, not for creating globally distributed database copies. Automatic patching and updating is a managed maintenance feature that keeps the database engine up to date, which is unrelated to geographic redundancy. Provisioned IOPS is a storage option that guarantees consistent I/O throughput for performance-sensitive workloads, and has no bearing on global redundancy.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q658",
+    "domainId": 3,
+    "question": "Which feature adds elasticity to Amazon EC2 instances to handle the changing demand for workloads?",
+    "options": {
+      "A": "Resource groups",
+      "B": "Lifecycle policies",
+      "C": "Application Load Balancer",
+      "D": "Amazon EC2 Auto Scaling"
+    },
+    "answer": "D",
+    "explanation": "Amazon EC2 Auto Scaling automatically adjusts the number of EC2 instances based on demand conditions you define, adding elasticity by scaling out during peaks and scaling in during lulls.\nResource groups are a management tool that organises AWS resources by project, environment, or other criteria for easier viewing and action, and have no capacity scaling capability. Lifecycle policies automate the transition or expiration of objects in S3 or snapshots in EBS based on age or rules, and are unrelated to compute scaling. Application Load Balancer distributes incoming traffic across multiple EC2 instances to improve availability, but does not add or remove instances in response to changing demand.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q682",
+    "domainId": 3,
+    "question": "Which solution provides the FASTEST application response times to frequently accessed data to users in multiple AWS Regions?",
+    "options": {
+      "A": "AWS CloudTrail across multiple Availability Zones",
+      "B": "Amazon CloudFront to edge locations",
+      "C": "AWS CloudFormation in multiple regions",
+      "D": "A virtual private gateway over AWS Direct Connect"
+    },
+    "answer": "B",
+    "explanation": "Amazon CloudFront caches content at edge locations worldwide, delivering frequently accessed data from the location nearest to users for the fastest possible response times across multiple Regions.\nAWS CloudTrail is a logging and auditing service that records API activity across an AWS account, and has no content delivery or latency optimisation capability. AWS CloudFormation is an infrastructure-as-code service used to provision and manage AWS resources through templates, and does not affect application response times or content delivery. A virtual private gateway over AWS Direct Connect establishes a dedicated private network link between on-premises infrastructure and AWS, which improves connectivity for hybrid workloads but does not cache content at edge locations to reduce latency for global users.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q712",
+    "domainId": 3,
+    "question": "Which services use AWS edge locations? (Choose two.)",
+    "options": {
+      "A": "Amazon CloudFront",
+      "B": "AWS Shield",
+      "C": "Amazon EC2",
+      "D": "Amazon RDS",
+      "E": "Amazon ElastiCache"
+    },
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Amazon CloudFront delivers content from edge locations worldwide, and AWS Shield provides DDoS protection at the edge. Both services rely on the AWS global edge location network.\nAmazon EC2 runs in Availability Zones within Regions, not at edge locations. Amazon RDS is a managed relational database service that runs within Regions and AZs, not at edge locations. Amazon ElastiCache is an in-memory caching service that runs within a VPC in a Region, not at edge locations.",
+    "source": "practice-exam-17.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q769",
+    "domainId": 3,
+    "question": "Which Amazon RDS feature can be used to achieve high availability?",
+    "options": {
+      "A": "Multiple Availability Zones",
+      "B": "Amazon Reserved Instances",
+      "C": "Provisioned IOPS storage",
+      "D": "Enhanced monitoring"
+    },
+    "answer": "A",
+    "explanation": "Amazon RDS Multi-AZ deployment maintains a synchronous standby replica in a different Availability Zone, providing automatic failover if the primary instance fails.\nAmazon Reserved Instances is a billing and pricing option for reducing compute costs, not a feature related to availability or failover. Provisioned IOPS storage improves database read and write performance, but does not provide redundancy or failover capability. Enhanced monitoring provides detailed operating system metrics for RDS instances, which is an observability feature and does not contribute to high availability.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q774",
+    "domainId": 3,
+    "question": "Which AWS service would simplify migration of a database to AWS?",
+    "options": {
+      "A": "AWS Storage Gateway",
+      "B": "AWS Database Migration Service (AWS DMS)",
+      "C": "Amazon Elastic Compute Cloud (Amazon EC2)",
+      "D": "Amazon AppStream 2.0"
+    },
+    "answer": "B",
+    "explanation": "AWS Database Migration Service simplifies database migration by continuously replicating data from the source to the target with minimal downtime, supporting both homogeneous and heterogeneous migrations.\nAWS Storage Gateway is a hybrid storage service that connects on-premises environments to cloud storage, and has no database migration capability. Amazon EC2 provides virtual compute instances and would require customers to manually install, configure, and manage their own migration tooling rather than simplifying the process. Amazon AppStream 2.0 is an application streaming service that delivers desktop applications to users through a browser, and is entirely unrelated to database migration.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q784",
+    "domainId": 3,
+    "question": "When designing a typical three-tier web application, which AWS services and/or features improve availability and reduce the impact of failures? (Choose two.)",
+    "options": {
+      "A": "AWS Auto Scaling for Amazon EC2 instances",
+      "B": "Amazon VPC subnet ACLs to check the health of a service",
+      "C": "Distributed resources across multiple Availability Zones",
+      "D": "Amazon CloudWatch alarms to notify when an EC2 instance enters an unhealthy state",
+      "E": "Distributed resources across multiple AWS points of presence"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "AWS Auto Scaling automatically replaces unhealthy instances and adjusts capacity, and distributing resources across multiple Availability Zones provides redundancy, both improving availability and reducing the impact of failures.\nVPC subnet ACLs are stateless network access control rules that filter traffic at the subnet level, and do not perform health checks or contribute to application availability. CloudWatch alarms send notifications when a metric crosses a threshold but do not automatically remediate failures or restore availability on their own. Points of presence are CloudFront edge locations used for content delivery and caching, not for hosting application tiers or providing redundancy for a three-tier web application.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q794",
+    "domainId": 3,
+    "question": "A company is planning to launch an ecommerce site in a single AWS Region to a worldwide user base. Which AWS services will allow the company to reach users and provide low latency and high transfer speeds? (Choose two.)",
+    "options": {
+      "A": "Application Load Balancer",
+      "B": "AWS Global Accelerator",
+      "C": "AWS Direct Connect",
+      "D": "Amazon CloudFront",
+      "E": "AWS Lambda"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "AWS Global Accelerator routes traffic over the AWS global network to optimal endpoints, and Amazon CloudFront caches content at edge locations worldwide, both providing low latency and high transfer speeds for global users.\nApplication Load Balancer distributes incoming traffic across targets within a Region and is not designed to improve performance or reduce latency for geographically dispersed users. AWS Direct Connect establishes a dedicated private network link between on-premises infrastructure and AWS, which improves connectivity for hybrid workloads but does not serve worldwide public users of an ecommerce site. AWS Lambda is a serverless compute service that runs code in response to events, and has no built-in capability to reduce latency or improve transfer speeds for global users.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q814",
+    "domainId": 3,
+    "question": "What is a characteristic of Amazon S3 cross-region replication?",
+    "options": {
+      "A": "Both source and destination S3 buckets must have versioning disabled",
+      "B": "The source and destination S3 buckets cannot be in different AWS Regions",
+      "C": "S3 buckets configured for cross-region replication can be owned by a single AWS account or by different accounts",
+      "D": "The source S3 bucket owner must have the source and destination AWS Regions disabled for their account"
+    },
+    "answer": "C",
+    "explanation": "S3 cross-region replication supports buckets owned by a single AWS account or by different accounts, enabling cross-account replication scenarios for data sharing and compliance.\nCross-region replication requires versioning to be enabled on both the source and destination buckets, not disabled, making this option factually incorrect. Cross-region replication is specifically designed to replicate objects between buckets in different AWS Regions, so source and destination buckets must be in different Regions by definition. AWS Regions do not need to be disabled for either account involved in a cross-region replication configuration, as replication works across any enabled Regions without any such restriction.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q826",
+    "domainId": 3,
+    "question": "A company wants to use an AWS service to monitor the health of application endpoints, with the ability to route traffic to healthy regional endpoints to improve application availability. Which service will support these requirements?",
+    "options": {
+      "A": "Amazon Inspector",
+      "B": "Amazon CloudWatch",
+      "C": "AWS Global Accelerator",
+      "D": "Amazon CloudFront"
+    },
+    "answer": "C",
+    "explanation": "AWS Global Accelerator monitors the health of application endpoints and automatically routes incoming traffic to the nearest healthy regional endpoint, improving availability and performance.\nAmazon Inspector is a vulnerability assessment service that scans EC2 instances and container images for security findings, not a service for health-based traffic routing. Amazon CloudWatch collects metrics, logs, and events to monitor AWS resources and applications, but does not route or redirect traffic based on endpoint health. Amazon CloudFront is a content delivery network that caches content at edge locations to reduce latency for end users, but does not perform health-aware regional traffic failover.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q865",
+    "domainId": 3,
+    "question": "Using AWS Config to record, audit, and evaluate changes to AWS resources to enable traceability is an example of which AWS Well-Architected Framework pillar?",
+    "options": {
+      "A": "Security",
+      "B": "Operational excellence",
+      "C": "Performance efficiency",
+      "D": "Cost optimization"
+    },
+    "answer": "A",
+    "explanation": "AWS Config records, audits, and evaluates changes to resources, which is an example of the Security pillar's design principle of enabling traceability through detective controls. Operational Excellence focuses on running and improving operations, such as automating runbooks and responding to events. Performance Efficiency focuses on using resources efficiently to meet system requirements. Cost Optimization focuses on eliminating unnecessary spend and selecting the right resource types.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q881",
+    "domainId": 3,
+    "question": "What is the most efficient way to establish network connectivity from on-premises to multiple VPCs in different AWS Regions?",
+    "options": {
+      "A": "Use AWS Direct Connect",
+      "B": "Use AWS VPN",
+      "C": "Use AWS Client VPN",
+      "D": "Use an AWS Transit Gateway"
+    },
+    "answer": "D",
+    "explanation": "AWS Transit Gateway acts as a central hub that connects multiple VPCs across different Regions and on-premises networks, providing the most efficient way to manage complex network connectivity at scale.\nAWS Direct Connect establishes a dedicated private link between on-premises infrastructure and AWS, but does not itself manage connectivity between multiple VPCs across different Regions. AWS VPN creates an encrypted tunnel between on-premises networks and a single VPC, and does not efficiently scale to connect multiple VPCs across multiple Regions from a single connection. AWS Client VPN is an endpoint-based service that enables individual devices to securely access AWS resources remotely, and is not designed for site-to-site or multi-VPC connectivity.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q888",
+    "domainId": 3,
+    "question": "Which AWS service enables users to create copies of resources across AWS Regions?",
+    "options": {
+      "A": "Amazon ElastiCache",
+      "B": "AWS CloudFormation",
+      "C": "AWS CloudTrail",
+      "D": "AWS Systems Manager"
+    },
+    "answer": "B",
+    "explanation": "AWS CloudFormation templates can be deployed across multiple Regions, creating copies of an entire infrastructure stack in different geographic locations for redundancy and disaster recovery.\nAmazon ElastiCache is an in-memory caching service used to improve application performance, and has no capability for replicating infrastructure resources across Regions. AWS CloudTrail is a logging and auditing service that records API activity across an AWS account, and is unrelated to creating or copying resources. AWS Systems Manager provides operational tools for managing and automating tasks on AWS resources, but does not enable cross-Region replication of infrastructure stacks.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q909",
+    "domainId": 3,
+    "question": "A company must ensure that its endpoint for a database instance remains the same after a single Availability Zone service interruption. The application needs to resume database operations without the need for manual administrative intervention. How can these requirements be met?",
+    "options": {
+      "A": "Use multiple Amazon Route 53 routes to the standby database instance endpoint hosted on AWS Storage Gateway.",
+      "B": "Configure Amazon RDS Multi-Availability Zone deployments with automatic failover to the standby.",
+      "C": "Add multiple Application Load Balancers and deploy the database instance with AWS Elastic Beanstalk.",
+      "D": "Deploy a single Network Load Balancer to distribute incoming traffic across multiple Amazon CloudFront origins."
+    },
+    "answer": "B",
+    "explanation": "Amazon RDS Multi-AZ maintains a synchronous standby replica in a separate Availability Zone with the same endpoint, automatically failing over without manual intervention or endpoint changes if the primary instance goes down.\nRoute 53 is a DNS routing service and AWS Storage Gateway is a hybrid storage service; combining them does not provide automatic database failover. Application Load Balancers distribute web traffic across application targets and Elastic Beanstalk is an application deployment service, neither of which addresses database instance failover. A Network Load Balancer routes TCP traffic and CloudFront is a content delivery network; neither is designed to manage database endpoint continuity across AZ failures.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q918",
+    "domainId": 3,
+    "question": "Which AWS service or feature allows the user to manage cross-region application traffic?",
+    "options": {
+      "A": "Amazon AppStream 2.0",
+      "B": "Amazon VPC",
+      "C": "Elastic Load Balancer",
+      "D": "Amazon Route 53"
+    },
+    "answer": "D",
+    "explanation": "Amazon Route 53 supports routing policies including latency-based, geolocation, and failover routing, directing users to the optimal regional endpoint for cross-region traffic management.\nAmazon AppStream 2.0 is an application streaming service for delivering desktop applications to browsers, unrelated to traffic routing. Amazon VPC is a private network environment within a single Region and does not manage traffic across Regions. Elastic Load Balancer distributes traffic across targets within a Region but does not route traffic between Regions.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q921",
+    "domainId": 3,
+    "question": "A company must store critical business data in Amazon S3 with a backup to another AWS Region. How can this be achieved?",
+    "options": {
+      "A": "Use an Amazon CloudFront Content Delivery Network (CDN) to cache data globally",
+      "B": "Set up Amazon S3 cross-region replication to another AWS Region",
+      "C": "Configure the AWS Backup service to back up to the data to another AWS Region",
+      "D": "Take Amazon S3 bucket snapshots and copy that data to another AWS Region"
+    },
+    "answer": "B",
+    "explanation": "Amazon S3 cross-region replication automatically copies objects from a source bucket in one Region to a destination bucket in another Region, providing geographic redundancy for critical business data.\nAmazon CloudFront caches content at edge locations to reduce latency for end users, but does not replicate or back up data to another Region. AWS Backup can back up certain AWS services across Regions, but S3 cross-region replication is the native and purpose-built solution for automatically replicating S3 objects to another Region. Amazon S3 does not use snapshots as a backup mechanism, and there is no native snapshot feature for S3 buckets, making this option factually incorrect.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q968",
+    "domainId": 3,
+    "question": "A company has a MySQL database running on a single Amazon EC2 instance. The company now requires higher availability in the event of an outage. Which set of tasks would meet this requirement?",
+    "options": {
+      "A": "Add an Application Load Balancer in front of the EC2 instance",
+      "B": "Configure EC2 Auto Recovery to move the instance to another Availability Zone",
+      "C": "Migrate to Amazon RDS and enable Multi-AZ",
+      "D": "Enable termination protection for the EC2 instance to avoid outages"
+    },
+    "answer": "C",
+    "explanation": "Migrating to Amazon RDS with Multi-AZ enabled provides automatic failover to a standby instance in another Availability Zone, delivering higher availability than a single EC2 instance without manual intervention.\nAdding an Application Load Balancer in front of a single EC2 instance distributes incoming traffic but does not eliminate the single point of failure if the underlying database instance goes down. EC2 Auto Recovery restarts a failed instance on the same or different hardware within the same Availability Zone, but does not provide a synchronous standby replica or automatic failover to another AZ. Termination protection prevents an instance from being accidentally terminated via the console or API, but does not protect against hardware failures, operating system crashes, or any other cause of unplanned outage.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1005",
+    "domainId": 3,
+    "question": "A company is building an application that needs to deliver images and videos globally with minimal latency. Which approach can the company use to accomplish this in a cost effective manner?",
+    "options": {
+      "A": "Deliver the content through Amazon CloudFront.",
+      "B": "Store the content on Amazon S3 and enable S3 cross-region replication.",
+      "C": "Implement a VPN across multiple AWS Regions.",
+      "D": "Deliver the content through AWS PrivateLink."
+    },
+    "answer": "A",
+    "explanation": "Amazon CloudFront delivers images and videos globally with minimal latency by caching content at edge locations worldwide, making it the purpose-built and cost-effective solution for global content delivery.\nStoring content on S3 with cross-region replication copies data across Regions but does not cache it at edge locations close to users, so it does not minimise latency for global delivery in the same way a CDN does. Implementing a VPN across multiple Regions creates encrypted network connectivity between locations but is not designed for content delivery or latency optimisation. AWS PrivateLink provides private connectivity between VPCs and AWS services over the AWS network, and is unrelated to delivering public-facing media content to global users.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1008",
+    "domainId": 3,
+    "question": "A pharmaceutical company operates its infrastructure in a single AWS Region. The company has thousands of VPCs in a various AWS accounts that it wants to interconnect. Which AWS service or feature should the company use to help simplify management and reduce operational costs?",
+    "options": {
+      "A": "VPC endpoint",
+      "B": "AWS Direct Connect",
+      "C": "AWS Transit Gateway",
+      "D": "VPC peering"
+    },
+    "answer": "C",
+    "explanation": "AWS Transit Gateway acts as a central network hub that connects thousands of VPCs across multiple AWS accounts through a single managed gateway, eliminating the need to manage individual point-to-point connections and significantly reducing operational complexity and cost at scale.\nVPC endpoints provide private connectivity between a VPC and supported AWS services without traversing the public internet, but do not connect VPCs to each other. AWS Direct Connect establishes a dedicated private network link between on-premises infrastructure and AWS, making it irrelevant when the goal is interconnecting VPCs that are already within AWS. VPC peering creates individual one-to-one connections between VPC pairs, which becomes unmanageable and costly at scale when thousands of VPCs need to communicate.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
   }
 ]

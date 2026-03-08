@@ -49,7 +49,7 @@ export function DomainPractice() {
   const [results, setResults] = useState<boolean[]>([])
   const [questionResults, setQuestionResults] = useState<QuestionResult[]>([])
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0)
-  const { selectQuestions } = useSpacedRepetition(user?.id ?? null, selectedDomain)
+  const { selectQuestions, refreshMastery } = useSpacedRepetition(user?.id ?? null, selectedDomain)
 
   function selectDomain(domainId: number) {
     setSelectedDomain(domainId)
@@ -58,6 +58,8 @@ export function DomainPractice() {
 
   async function startPractice() {
     if (!cert) return
+    // Re-fetch mastery data so back-to-back sessions use fresh weights
+    await refreshMastery()
     // Load only the selected domain's questions (separate chunk)
     const allDomainQuestions = await loadDomainQuestions(cert.code, selectedDomain!)
 
@@ -477,7 +479,11 @@ export function DomainPractice() {
                       </span>
                     )}
                     <p className="text-text-muted text-xs md:text-sm font-medium mb-1">Explanation:</p>
-                    <p className="text-text-muted text-xs md:text-sm">{currentQuestion.explanation}</p>
+                    <div className="text-text-muted text-xs md:text-sm space-y-2">
+                      {currentQuestion.explanation.split('\n').filter(Boolean).map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

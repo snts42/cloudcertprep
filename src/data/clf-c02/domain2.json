@@ -3534,5 +3534,20 @@
     "explanation": "AWS WAF can be configured with SQL injection match conditions that inspect incoming requests and block those containing SQL injection patterns, protecting web applications from this common attack vector.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q793",
+    "domainId": 2,
+    "question": "Which situation should be reported to the AWS Abuse team?",
+    "options": {
+      "A": "In Availability Zone has a service disruption",
+      "B": "An intrusion attempt is made from an AWS IP address",
+      "C": "A user has trouble accessing an Amazon S3 bucket from an AWS IP address",
+      "D": "A user needs to change payment methods due to a compromise"
+    },
+    "answer": "B",
+    "explanation": "Intrusion attempts originating from AWS IP addresses are abuse scenarios that should be reported to the AWS Abuse team, which investigates misuse of AWS resources for malicious activities such as hacking, phishing, and spam.\nAn Availability Zone service disruption is an infrastructure issue that should be monitored through the AWS Service Health Dashboard and reported via a support case, not to the Abuse team. Trouble accessing an Amazon S3 bucket from an AWS IP address is a permissions or connectivity issue that should be investigated through IAM policies and bucket configurations or escalated through a support case, not reported as abuse. Changing payment methods due to a compromise is an account billing issue that should be handled through AWS account settings and escalated to AWS billing support, not the Abuse team.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
   }
 ]

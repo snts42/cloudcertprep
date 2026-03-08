@@ -95,7 +95,11 @@ export function QuestionReviewCard({
             </span>
           )}
           <h4 className="text-xs font-semibold text-text-primary mb-1">Explanation:</h4>
-          <p className="text-xs md:text-sm text-text-muted">{question.explanation}</p>
+          <div className="text-xs md:text-sm text-text-muted space-y-2">
+            {question.explanation.split('\n').filter(Boolean).map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
         </div>
       )}
 

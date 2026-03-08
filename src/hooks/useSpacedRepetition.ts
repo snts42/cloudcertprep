@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
 import type { Question } from '../types'
 import { fisherYatesShuffle } from '../lib/utils'
+
+const UNSEEN_QUOTA = 0.2 // Reserve 20% of each session for unseen questions (if available)
 
 interface MasteryRow {
   question_id: string
@@ -40,42 +42,36 @@ export function useSpacedRepetition(
 ) {
   const [masteryMap, setMasteryMap] = useState<Map<string, MasteryRow>>(new Map())
 
-  useEffect(() => {
+  const refreshMastery = useCallback(async () => {
     if (!userId || !domainId) {
       setMasteryMap(new Map())
       return
     }
 
-    let cancelled = false
+    try {
+      const { data, error: fetchError } = await supabase
+        .from('question_mastery')
+        .select('question_id, correct_streak, last_was_wrong, last_seen_at, is_mastered, in_exclusion_window, weight')
+        .eq('user_id', userId)
+        .eq('domain_id', domainId)
 
-    async function fetchMastery() {
-      try {
-        const { data, error: fetchError } = await supabase
-          .from('question_mastery')
-          .select('question_id, correct_streak, last_was_wrong, last_seen_at, is_mastered, in_exclusion_window, weight')
-          .eq('user_id', userId)
-          .eq('domain_id', domainId)
+      if (fetchError) throw fetchError
 
-        if (fetchError) throw fetchError
-        if (cancelled) return
-
-        const map = new Map<string, MasteryRow>()
-        if (data) {
-          for (const row of data as MasteryRow[]) {
-            map.set(row.question_id, row)
-          }
-        }
-        setMasteryMap(map)
-      } catch (err) {
-        if (!cancelled) {
-          console.error('Failed to load mastery data:', err)
+      const map = new Map<string, MasteryRow>()
+      if (data) {
+        for (const row of data as MasteryRow[]) {
+          map.set(row.question_id, row)
         }
       }
+      setMasteryMap(map)
+    } catch (err) {
+      console.error('Failed to load mastery data:', err)
     }
-
-    fetchMastery()
-    return () => { cancelled = true }
   }, [userId, domainId])
+
+  useEffect(() => {
+    refreshMastery()
+  }, [refreshMastery])
 
   function selectQuestions(allDomainQuestions: Question[], count: number): Question[] {
     // Guest: random shuffle
@@ -83,6 +79,7 @@ export function useSpacedRepetition(
       return fisherYatesShuffle(allDomainQuestions).slice(0, count)
     }
 
+    const unseenPool: Question[] = []
     const activePool: Array<{ question: Question; weight: number }> = []
     const backfillPool: Array<{ question: Question; lastSeenAt: string }> = []
 
@@ -90,8 +87,8 @@ export function useSpacedRepetition(
       const row = masteryMap.get(question.id)
 
       if (!row) {
-        // Never seen — weight 5
-        activePool.push({ question, weight: 5 })
+        // Never seen — separate pool for quota guarantee
+        unseenPool.push(question)
         continue
       }
 
@@ -104,8 +101,25 @@ export function useSpacedRepetition(
       activePool.push({ question, weight: row.weight })
     }
 
-    // Weighted draw from active pool
-    let selected = weightedDraw(activePool, count)
+    // Reserve 20% of session for unseen questions (if available)
+    const unseenQuota = Math.min(
+      Math.ceil(count * UNSEEN_QUOTA),
+      unseenPool.length
+    )
+    const guaranteedUnseen = fisherYatesShuffle(unseenPool).slice(0, unseenQuota)
+    const remainingUnseen = unseenPool.filter(q => !guaranteedUnseen.includes(q))
+
+    // Add remaining unseen back to active pool with weight 5
+    for (const question of remainingUnseen) {
+      activePool.push({ question, weight: 5 })
+    }
+
+    // Weighted draw from active pool for remaining slots
+    const remainingSlots = count - guaranteedUnseen.length
+    let selected = weightedDraw(activePool, remainingSlots)
+
+    // Combine guaranteed unseen + weighted draw
+    selected = [...guaranteedUnseen, ...selected]
 
     // Backfill if not enough
     if (selected.length < count) {
@@ -117,9 +131,9 @@ export function useSpacedRepetition(
       selected = [...selected, ...backfillQuestions]
     }
 
-    // Final shuffle so backfill questions aren't always last
+    // Final shuffle so unseen/backfill questions aren't always first/last
     return fisherYatesShuffle(selected)
   }
 
-  return { selectQuestions }
+  return { selectQuestions, refreshMastery }
 }

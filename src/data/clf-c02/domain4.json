@@ -3626,5 +3626,118 @@
     "explanation": "AWS Cost Categories allows you to create custom groupings of your cost and usage data by mapping your costs into meaningful categories based on your organizational needs. Cost Explorer visualizes costs, Cost Allocation Tags are metadata on resources, and Budgets sets spending alerts.",
     "source": "ai-generated",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q328",
+    "domainId": 4,
+    "question": "TYMO Cloud Corp is looking forward to migrating their entire on-premises data center to AWS. What tool can they use to perform a cost-benefit analysis of moving to the AWS Cloud?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Migration Evaluator",
+      "C": "AWS Budgets",
+      "D": "AWS Pricing Calculator"
+    },
+    "answer": "B",
+    "explanation": "AWS Migration Evaluator helps organizations compare the cost of running workloads on-premises versus on AWS, factoring in infrastructure, labor, and operational expenses to support a migration business case.\nAWS Cost Explorer is used to visualise and analyse spending on existing AWS usage, not to compare on-premises costs against AWS before migration. AWS Budgets is used to set spending thresholds and receive alerts on existing AWS accounts, not to evaluate migration cost savings. The AWS Pricing Calculator estimates monthly costs for a planned AWS architecture but does not compare those costs against on-premises infrastructure to produce a cost-benefit analysis.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q423",
+    "domainId": 4,
+    "question": "Which tool can a non-AWS customer use to compare the cost of on-premises environment resources to AWS?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Pricing Calculator",
+      "C": "AWS Budgets",
+      "D": "AWS Migration Evaluator"
+    },
+    "answer": "D",
+    "explanation": "AWS Migration Evaluator is designed specifically for organisations comparing on-premises costs to AWS, providing a detailed cost-benefit analysis even before they have an AWS account.\nAWS Cost Explorer is used to visualise and analyse spending patterns on existing AWS accounts, and requires an active AWS account to use. AWS Pricing Calculator estimates monthly costs for a planned AWS architecture but does not compare those costs against on-premises infrastructure. AWS Budgets is used to set spending thresholds and receive alerts on an existing AWS account, and has no capability to evaluate migration cost savings.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q593",
+    "domainId": 4,
+    "question": "What AWS team assists customers with accelerating cloud adoption through paid engagements in any of several specialty practice area ?",
+    "options": {
+      "A": "AWS Enterprise Support",
+      "B": "AWS Solutions Architects",
+      "C": "AWS Professional Services",
+      "D": "AWS Account Managers"
+    },
+    "answer": "C",
+    "explanation": "AWS Professional Services is a team of experts that assists customers through paid engagements in specialty areas like migration, cloud adoption strategy, and architecture optimization.\nAWS Enterprise Support is a paid support plan that provides access to a Technical Account Manager and 24/7 technical assistance, but it is a reactive support tier rather than a proactive professional services engagement. AWS Solutions Architects are technical advisors who help customers design cloud architectures, but they operate in a pre-sales advisory capacity rather than through paid specialty practice engagements. AWS Account Managers are commercial relationship contacts who help customers manage their AWS accounts and spending, and do not deliver hands-on technical engagements in specialty practice areas.",
+    "source": "practice-exam-13.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q787",
+    "domainId": 4,
+    "question": "A company is migrating from on-premises data centers to the AWS Cloud and is looking for hands-on help with the project. How can the company get this support? (Choose two.)",
+    "options": {
+      "A": "Ask for a quote from the AWS Marketplace team to perform a migration into the company's AWS account.",
+      "B": "Contact AWS Support and open a case for assistance",
+      "C": "Use AWS Professional Services to provide guidance and to set up an AWS Landing Zone in the company's AWS account",
+      "D": "Select a partner from the AWS Partner Network (APN) to assist with the migration",
+      "E": "Use Amazon Connect to create a new request for proposal (RFP) for expert assistance in migrating to the AWS Cloud."
+    },
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "AWS Professional Services provides hands-on migration guidance and Landing Zone setup, and AWS Partner Network partners offer specialised migration consulting and implementation support, both providing the direct hands-on assistance the company needs.\nThe AWS Marketplace team provides a platform for discovering and purchasing third-party software and services, and does not perform migrations directly into customer accounts. AWS Support cases are used to resolve technical issues and service-related problems, not to engage hands-on project delivery teams for migration work. Amazon Connect is a cloud-based contact centre service for managing customer communications, and has no function related to submitting proposals or engaging migration expertise.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q810",
+    "domainId": 4,
+    "question": "What can assist in evaluating an application for migration to the cloud? (Choose two.)",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Professional Services",
+      "C": "AWS Systems Manager",
+      "D": "AWS Partner Network (APN)",
+      "E": "AWS Secrets Manager"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "AWS Professional Services provides expert guidance for cloud migration assessments, and AWS Partner Network partners offer specialised third-party migration evaluation services. Both help assess applications for cloud readiness.\nAWS Trusted Advisor analyses your existing AWS environment against best practice checks, but does not evaluate on-premises applications for migration readiness. AWS Systems Manager is an operations management tool for managing resources already running on AWS, not a migration assessment service. AWS Secrets Manager is a service for storing and rotating credentials and secrets, unrelated to migration evaluation.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q949",
+    "domainId": 4,
+    "question": "What is a characteristic of Convertible Reserved Instances (RIs)?",
+    "options": {
+      "A": "Users can exchange Convertible RIs for other Convertible RIs from a different instance family with an equal or higher value than the Convertible Reserved Instances that you are exchanging.",
+      "B": "Users can exchange Convertible RIs for other Convertible RIs in different AWS Regions.",
+      "C": "Users can sell and buy Convertible RIs on the AWS Marketplace.",
+      "D": "Users can shorten the term of their Convertible RIs by merging them with other Convertible RIs."
+    },
+    "answer": "A",
+    "explanation": "Convertible Reserved Instances can be exchanged for other Convertible RIs from a different instance family, as long as the new RI has an equal or higher value, providing flexibility to adapt to changing needs.\nConvertible RIs are Region-specific and cannot be exchanged for RIs in a different AWS Region. Only Standard Reserved Instances can be listed on the AWS Reserved Instance Marketplace, not Convertible RIs. Merging Convertible RIs to shorten their term is not a supported feature, as RI terms are fixed at one or three years and cannot be modified by combining reservations.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q950",
+    "domainId": 4,
+    "question": "An architecture design includes Amazon EC2, an Elastic Load Balancer, and Amazon RDS. What is the BEST way to get a monthly cost estimation for this architecture?",
+    "options": {
+      "A": "Open an AWS Support case, provide the architecture proposal, and ask for a monthly cost estimation.",
+      "B": "Collect the published prices of the AWS services and calculate the monthly estimate.",
+      "C": "Use the AWS Pricing Calculator to estimate the monthly cost.",
+      "D": "Use the AWS Total Cost of Ownership (TCO) Calculator to estimate the monthly cost."
+    },
+    "answer": "C",
+    "explanation": "The AWS Pricing Calculator is designed to estimate monthly costs by configuring specific AWS services with expected usage parameters, making it the most accurate and purpose-built tool for this scenario.\nOpening a support case to request a cost estimate is not a standard AWS process and support cases are intended for technical issues, not pricing calculations. Manually collecting published prices and calculating estimates is time-consuming and error-prone compared to using the purpose-built Pricing Calculator. The TCO Calculator is designed to compare the cost of on-premises infrastructure against AWS, not to estimate monthly costs for a cloud architecture already built on AWS.",
+    "source": "practice-exam-22.md",
+    "isMultiAnswer": false
   }
 ]
