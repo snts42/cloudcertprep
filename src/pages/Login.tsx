@@ -110,7 +110,7 @@ export function Login() {
                     <BookOpen className="w-5 h-5 text-aws-orange" />
                   </div>
                   <div>
-                    <h3 className="text-text-primary font-semibold mb-1">1,053 Practice Questions</h3>
+                    <h3 className="text-text-primary font-semibold mb-1">987 Practice Questions</h3>
                     <p className="text-text-muted text-sm">Comprehensive coverage of all CLF-C02 exam domains</p>
                   </div>
                 </div>

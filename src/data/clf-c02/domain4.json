@@ -719,25 +719,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q191",
-    "domainId": 4,
-    "question": "Which of the following are advantages of AWS consolidated billing? (Choose two)",
-    "options": {
-      "A": "The ability to receive one bill for multiple accounts.",
-      "B": "Service limits increasing by default in all accounts.",
-      "C": "A fixed discount on the monthly bill.",
-      "D": "Potential volume discounts, as usage in all accounts is combined.",
-      "E": "The automatic extension of the master account’s AWS support plan to all accounts."
-    },
-    "answer": [
-      "A",
-      "D"
-    ],
-    "explanation": "Consolidated billing generates a single invoice for all accounts in an AWS Organization, and it combines usage across all accounts to qualify for volume pricing tiers. It does not automatically increase service limits, provide fixed discounts, or extend support plans to member accounts.",
-    "source": "practice-exam-12.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q192",
     "domainId": 4,
     "question": "A company is considering using AWS for a self-hosted database that requires a nightly shutdown for maintenance and cost-saving purposes. Which service should the company use?",
@@ -1830,40 +1811,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q560",
-    "domainId": 4,
-    "question": "Which AWS feature will reduce the customer’s total cost of ownership (TCO)?",
-    "options": {
-      "A": "Shared responsibility security model.",
-      "B": "Single tenancy.",
-      "C": "Elastic computing.",
-      "D": "Encryption."
-    },
-    "answer": "C",
-    "explanation": "Elastic computing allows customers to scale resources up or down based on actual demand, eliminating the need to invest in peak-capacity hardware that sits idle most of the time, directly reducing TCO.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q562",
-    "domainId": 4,
-    "question": "Which of the following are categories of AWS Trusted Advisor? (Select TWO)",
-    "options": {
-      "A": "Fault Tolerance.",
-      "B": "Instance Usage.",
-      "C": "Infrastructure.",
-      "D": "Performance.",
-      "E": "Storage Capacity."
-    },
-    "answer": [
-      "A",
-      "D"
-    ],
-    "explanation": "AWS Trusted Advisor provides recommendations across five categories: Cost Optimization, Performance, Security, Fault Tolerance, and Service Limits. Fault Tolerance and Performance are two of them.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q566",
     "domainId": 4,
     "question": "Which AWS service is used to pay AWS bills, and monitor usage and budget costs?",
@@ -1941,94 +1888,6 @@
     "explanation": "AWS Organizations with consolidated billing combines usage across all member accounts, allowing the organization to qualify for volume discounts based on aggregate consumption across services like S3 and EC2.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
-  },
-  {
-    "id": "q594",
-    "domainId": 4,
-    "question": "Which of the following inspects AWS environments to find opportunities that can save money for users and also improve system performance ?",
-    "options": {
-      "A": "AWS Cost Explorer",
-      "B": "AWS Trusted Advisor",
-      "C": "Consolidated billing",
-      "D": "Detailed billing"
-    },
-    "answer": "B",
-    "explanation": "AWS Trusted Advisor inspects your AWS environment and provides actionable recommendations to save money, improve performance, close security gaps, and improve fault tolerance.",
-    "source": "practice-exam-13.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q595",
-    "domainId": 4,
-    "question": "Which of the following Amazon EC2 pricing models allow customers to use existing server-bound software license ?",
-    "options": {
-      "A": "Spot Instances",
-      "B": "Reserved Instances",
-      "C": "Dedicated Hosts",
-      "D": "On-Demand Instances"
-    },
-    "answer": "C",
-    "explanation": "EC2 Dedicated Hosts provide physical servers dedicated to your use, allowing you to use your existing server-bound software licenses (like Windows Server or SQL Server) that require per-socket or per-core licensing.",
-    "source": "practice-exam-13.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q598",
-    "domainId": 4,
-    "question": "Which AWS tools assist with estimating costs? (Select three.)",
-    "options": {
-      "A": "Detailed billing report",
-      "B": "Cost allocation tags",
-      "C": "AWS Simple Monthly Calculator",
-      "D": "AWS Total Cost of Ownership (TCO) Calculator",
-      "E": "Cost Eliminator"
-    },
-    "answer": [
-      "B",
-      "C",
-      "D"
-    ],
-    "explanation": "Cost allocation tags categorize and track AWS spending; the AWS Simple Monthly Calculator (now AWS Pricing Calculator) estimates monthly costs for planned workloads; and the AWS TCO Calculator compares on-premises vs. cloud costs. All three assist with estimating or understanding costs.",
-    "source": "practice-exam-13.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q599",
-    "domainId": 4,
-    "question": "Which of the following are advantages of AWS consolidated billing? (Select TWO.)",
-    "options": {
-      "A": "The ability to receive one bill for multiple accounts",
-      "B": "Service limits increasing by default in all accounts",
-      "C": "A fixed discount on the monthly bill",
-      "D": "Potential volume discounts, as usage in all accounts is combined",
-      "E": "The automatic extension of the master account's AWS support plan to all accounts"
-    },
-    "answer": [
-      "A",
-      "D"
-    ],
-    "explanation": "Consolidated billing provides a single bill for all accounts in an AWS Organization, simplifying financial management, and aggregates usage across accounts to unlock potential volume discounts.",
-    "source": "practice-exam-13.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q627",
-    "domainId": 4,
-    "question": "The financial benefits of using AWS are: (Select TWO.)",
-    "options": {
-      "A": "reduced Total Cost of Ownership (TCO).",
-      "B": "increased capital expenditure (capex).",
-      "C": "reduced operational expenditure (opex).",
-      "D": "deferred payment plans for startups.",
-      "E": "business credit lines for stratups."
-    },
-    "answer": [
-      "A",
-      "C"
-    ],
-    "explanation": "AWS reduces Total Cost of Ownership by eliminating capital expenditure on hardware and facilities, and lowers operational expenditure through pay-as-you-go pricing and managed services that reduce staffing needs.",
-    "source": "practice-exam-15.md",
-    "isMultiAnswer": true
   },
   {
     "id": "q643",
@@ -2215,25 +2074,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q679",
-    "domainId": 4,
-    "question": "Which of the following BEST describe the AWS pricing model? (Choose two.)",
-    "options": {
-      "A": "Fixed-term",
-      "B": "Pay-as-you-go",
-      "C": "Colocation",
-      "D": "Planned",
-      "E": "Variable cost"
-    },
-    "answer": [
-      "B",
-      "E"
-    ],
-    "explanation": "AWS uses a pay-as-you-go model where you pay only for what you consume, resulting in variable costs that scale with usage. There are no fixed-term commitments required for most services.",
-    "source": "practice-exam-16.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q685",
     "domainId": 4,
     "question": "What exclusive benefit is provided to users with Enterprise Support?",
@@ -2309,21 +2149,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q696",
-    "domainId": 4,
-    "question": "Which Amazon EC2 pricing model offers the MOST significant discount when compared to On-Demand Instances?",
-    "options": {
-      "A": "Partial Upfront Reserved Instances for a 1-year term",
-      "B": "All Upfront Reserved Instances for a 1-year term",
-      "C": "All Upfront Reserved Instances for a 3-year term",
-      "D": "No Upfront Reserved Instances for a 3-year term"
-    },
-    "answer": "C",
-    "explanation": "All Upfront Reserved Instances for a 3-year term offer the deepest discount compared to On-Demand, because the longest commitment with full upfront payment gives AWS the most pricing certainty.",
-    "source": "practice-exam-17.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q706",
     "domainId": 4,
     "question": "What are the advantages of Reserved Instances? (Choose two.)",
@@ -2390,21 +2215,6 @@
     "explanation": "AWS Marketplace offers flexible hourly or monthly licensing for third-party software, and enables 1-Click deployment that eliminates manual installation and configuration steps.",
     "source": "practice-exam-17.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q724",
-    "domainId": 4,
-    "question": "What AWS service would be used to centrally manage AWS access policies across multiple accounts?",
-    "options": {
-      "A": "AWS Service Catalog",
-      "B": "AWS Config",
-      "C": "AWS Trusted Advisor",
-      "D": "AWS Organizations"
-    },
-    "answer": "D",
-    "explanation": "AWS Organizations provides centralized management of access policies across multiple AWS accounts through Service Control Policies (SCPs), enabling consistent governance at scale.",
-    "source": "practice-exam-17.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q725",
@@ -2636,25 +2446,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q801",
-    "domainId": 4,
-    "question": "How does AWS Trusted Advisor provide guidance to users of the AWS Cloud? (Choose two.)",
-    "options": {
-      "A": "It identifies software vulnerabilities in applications running on AWS",
-      "B": "It provides a list of cost optimization recommendations based on current AWS usage",
-      "C": "It detects potential security vulnerabilities caused by permissions settings on account resources",
-      "D": "It automatically corrects potential security issues caused by permissions settings on account resources",
-      "E": "It provides proactive alerting whenever an Amazon EC2 instance has been compromised"
-    },
-    "answer": [
-      "B",
-      "C"
-    ],
-    "explanation": "Trusted Advisor provides cost optimization recommendations based on current usage patterns, and detects potential security vulnerabilities caused by overly permissive IAM and resource permissions settings.",
-    "source": "practice-exam-19.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q807",
     "domainId": 4,
     "question": "A company wants to migrate a MySQL database to AWS but does not have the budget for Database Administrators to handle routine tasks including provisioning, patching, and performing backups. Which AWS service will support this use case?",
@@ -2666,21 +2457,6 @@
     },
     "answer": "A",
     "explanation": "Amazon RDS is a managed MySQL-compatible database service that handles routine tasks like provisioning, patching, backups, and recovery, eliminating the need for dedicated Database Administrators.",
-    "source": "practice-exam-19.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q809",
-    "domainId": 4,
-    "question": "A company is planning to migrate from on-premises to the AWS Cloud. Which AWS tool or service provides detailed reports on estimated cost savings after migration?",
-    "options": {
-      "A": "AWS Total Cost of Ownership (TCO) Calculator",
-      "B": "Cost Explorer",
-      "C": "AWS Budgets",
-      "D": "AWS Migration Hub"
-    },
-    "answer": "A",
-    "explanation": "The AWS TCO Calculator provides detailed reports comparing on-premises infrastructure costs against AWS costs, showing estimated savings from migration across compute, storage, and operational categories.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
@@ -3658,21 +3434,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q593",
-    "domainId": 4,
-    "question": "What AWS team assists customers with accelerating cloud adoption through paid engagements in any of several specialty practice area ?",
-    "options": {
-      "A": "AWS Enterprise Support",
-      "B": "AWS Solutions Architects",
-      "C": "AWS Professional Services",
-      "D": "AWS Account Managers"
-    },
-    "answer": "C",
-    "explanation": "AWS Professional Services is a team of experts that assists customers through paid engagements in specialty areas like migration, cloud adoption strategy, and architecture optimization.\nAWS Enterprise Support is a paid support plan that provides access to a Technical Account Manager and 24/7 technical assistance, but it is a reactive support tier rather than a proactive professional services engagement. AWS Solutions Architects are technical advisors who help customers design cloud architectures, but they operate in a pre-sales advisory capacity rather than through paid specialty practice engagements. AWS Account Managers are commercial relationship contacts who help customers manage their AWS accounts and spending, and do not deliver hands-on technical engagements in specialty practice areas.",
-    "source": "practice-exam-13.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q787",
     "domainId": 4,
     "question": "A company is migrating from on-premises data centers to the AWS Cloud and is looking for hands-on help with the project. How can the company get this support? (Choose two.)",
@@ -3688,25 +3449,6 @@
       "D"
     ],
     "explanation": "AWS Professional Services provides hands-on migration guidance and Landing Zone setup, and AWS Partner Network partners offer specialised migration consulting and implementation support, both providing the direct hands-on assistance the company needs.\nThe AWS Marketplace team provides a platform for discovering and purchasing third-party software and services, and does not perform migrations directly into customer accounts. AWS Support cases are used to resolve technical issues and service-related problems, not to engage hands-on project delivery teams for migration work. Amazon Connect is a cloud-based contact centre service for managing customer communications, and has no function related to submitting proposals or engaging migration expertise.",
-    "source": "practice-exam-19.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q810",
-    "domainId": 4,
-    "question": "What can assist in evaluating an application for migration to the cloud? (Choose two.)",
-    "options": {
-      "A": "AWS Trusted Advisor",
-      "B": "AWS Professional Services",
-      "C": "AWS Systems Manager",
-      "D": "AWS Partner Network (APN)",
-      "E": "AWS Secrets Manager"
-    },
-    "answer": [
-      "B",
-      "D"
-    ],
-    "explanation": "AWS Professional Services provides expert guidance for cloud migration assessments, and AWS Partner Network partners offer specialised third-party migration evaluation services. Both help assess applications for cloud readiness.\nAWS Trusted Advisor analyses your existing AWS environment against best practice checks, but does not evaluate on-premises applications for migration readiness. AWS Systems Manager is an operations management tool for managing resources already running on AWS, not a migration assessment service. AWS Secrets Manager is a service for storing and rotating credentials and secrets, unrelated to migration evaluation.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": true
   },
@@ -3730,14 +3472,342 @@
     "domainId": 4,
     "question": "An architecture design includes Amazon EC2, an Elastic Load Balancer, and Amazon RDS. What is the BEST way to get a monthly cost estimation for this architecture?",
     "options": {
-      "A": "Open an AWS Support case, provide the architecture proposal, and ask for a monthly cost estimation.",
-      "B": "Collect the published prices of the AWS services and calculate the monthly estimate.",
-      "C": "Use the AWS Pricing Calculator to estimate the monthly cost.",
-      "D": "Use the AWS Total Cost of Ownership (TCO) Calculator to estimate the monthly cost."
+      "A": "Open an AWS Support case, provide the architecture proposal, and ask for a monthly cost estimation",
+      "B": "Collect the published prices of the AWS services and calculate the monthly estimate",
+      "C": "Use the AWS Pricing Calculator to estimate the monthly cost",
+      "D": "Use the AWS Total Cost of Ownership (TCO) Calculator to estimate the monthly cost"
     },
     "answer": "C",
     "explanation": "The AWS Pricing Calculator is designed to estimate monthly costs by configuring specific AWS services with expected usage parameters, making it the most accurate and purpose-built tool for this scenario.\nOpening a support case to request a cost estimate is not a standard AWS process and support cases are intended for technical issues, not pricing calculations. Manually collecting published prices and calculating estimates is time-consuming and error-prone compared to using the purpose-built Pricing Calculator. The TCO Calculator is designed to compare the cost of on-premises infrastructure against AWS, not to estimate monthly costs for a cloud architecture already built on AWS.",
     "source": "practice-exam-22.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q049",
+    "domainId": 4,
+    "question": "What does AWS provide to deploy popular technologies such as IBM MQ on AWS with the least amount of effort and time?",
+    "options": {
+      "A": "Amazon Aurora.",
+      "B": "Amazon CloudWatch.",
+      "C": "AWS Quick Start reference deployments.",
+      "D": "AWS OpsWorks."
+    },
+    "answer": "C",
+    "explanation": "AWS Quick Start reference deployments are pre-built templates and architecture guides that let you deploy popular third-party technologies on AWS quickly with minimal manual setup.\nAmazon Aurora is a fully managed relational database compatible with MySQL and PostgreSQL, and is a database service with no capability to deploy or provision third-party technologies or solutions. Amazon CloudWatch collects metrics, logs, and event data from AWS services and resources to provide operational monitoring and alerting, and is a monitoring service with no deployment or provisioning capability. AWS OpsWorks was a configuration management service that used Chef and Puppet to automate server configuration, and while it could automate some infrastructure tasks, it is not a pre-built deployment resource for rapidly deploying popular third-party technologies with minimal effort. Note: AWS OpsWorks was deprecated in 2024.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q083",
+    "domainId": 4,
+    "question": "Which of the following inspects AWS environments to find opportunities that can save money for users and also improve system performance?",
+    "options": {
+      "A": "AWS Cost Explorer.",
+      "B": "AWS Trusted Advisor.",
+      "C": "Consolidated billing.",
+      "D": "Detailed billing."
+    },
+    "answer": "B",
+    "explanation": "AWS Trusted Advisor scans your AWS environment and provides recommendations across cost optimization, performance, security, fault tolerance, and service limits, helping save money and improve architecture.\nAWS Cost Explorer is a tool for visualising and analysing historical and forecasted AWS spending patterns, but it does not inspect environments for performance improvement opportunities or architectural recommendations. Consolidated billing is a feature of AWS Organizations that combines charges from multiple accounts into a single bill for simplified payment, and has no environment inspection or recommendation capability. Detailed billing provides granular line-item reports of AWS usage and charges for cost analysis purposes, and does not identify opportunities to save money or improve system performance.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q102",
+    "domainId": 4,
+    "question": "Which options does AWS make available for customers who want to learn about security in the cloud in an instructor-led setting? (Select TWO)",
+    "options": {
+      "A": "AWS Trusted Advisor.",
+      "B": "AWS Online Tech Talks.",
+      "C": "AWS Blog.",
+      "D": "AWS Forums.",
+      "E": "AWS Classroom Training."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "AWS Online Tech Talks are live and on-demand webinars that include interactive Q&A sessions, and AWS Classroom Training offers instructor-led courses delivered by certified trainers, both providing structured learning in an instructor-led or live setting.\nAWS Trusted Advisor is an automated tool that provides real-time recommendations across cost, security, performance, and fault tolerance, not a learning or training resource. AWS Blog is a self-service publishing channel for news and technical content that customers read independently, not an instructor-led format. AWS Forums is a community-driven discussion platform where customers help each other with questions, not a structured instructor-led learning environment.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q112",
+    "domainId": 4,
+    "question": "What AWS team assists customers with accelerating cloud adoption through paid engagements in any of several specialty practice areas?",
+    "options": {
+      "A": "AWS Enterprise Support.",
+      "B": "AWS Solutions Architects.",
+      "C": "AWS Professional Services.",
+      "D": "AWS Account Managers."
+    },
+    "answer": "C",
+    "explanation": "AWS Professional Services is a global team of experts that helps customers achieve their desired business outcomes on AWS through paid engagements across specialty practice areas including migration, security, and data analytics.\nAWS Enterprise Support is a paid support plan that provides access to a Technical Account Manager and 24/7 access to senior cloud support engineers, but it is a support tier rather than a consulting engagement team that works on specialty practice projects. AWS Solutions Architects advise customers on designing well-architected solutions and are available through various AWS programs, but they provide architectural guidance rather than leading paid consulting engagements across specialty practice areas. AWS Account Managers manage the overall commercial relationship between AWS and a customer, but they handle account and sales activities rather than delivering hands-on technical consulting engagements.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q153",
+    "domainId": 4,
+    "question": "What can assist in evaluating an application for migration to the cloud? (Select TWO)",
+    "options": {
+      "A": "AWS Trusted Advisor.",
+      "B": "AWS Professional Services.",
+      "C": "AWS Systems Manager.",
+      "D": "AWS Partner Network (APN).",
+      "E": "AWS Secrets Manager."
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "AWS Professional Services provides expert consulting engagements to help evaluate and plan migrations, and AWS Partner Network partners offer specialised migration expertise through certified consulting and technology firms.\nAWS Trusted Advisor scans existing AWS environments for best practice recommendations across cost, performance, security, and fault tolerance, but does not evaluate whether an application is suitable for migration to the cloud. AWS Systems Manager is an operational management service for configuring, patching, and managing AWS resources at scale, and is not a migration advisory or evaluation service. AWS Secrets Manager is a service for storing and rotating application secrets such as database credentials and API keys, and has no role in evaluating applications for cloud migration.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q165",
+    "domainId": 4,
+    "question": "Question Where should a company go to search software listings from independent software vendors to find, test, buy, and deploy software that runs on AWS?",
+    "options": {
+      "A": "AWS Marketplace",
+      "B": "AWS Service Catalog",
+      "C": "AWS Artifact",
+      "D": "Amazon CloudSearch"
+    },
+    "answer": "A",
+    "explanation": "AWS Marketplace is the curated digital catalogue where independent software vendors list their products, allowing customers to find, test, buy, and deploy software that runs on AWS.\nAWS Service Catalog allows organisations to create and manage approved portfolios of IT products for internal deployment, but does not host third-party software listings from independent vendors. AWS Artifact is a self-service portal for accessing AWS compliance reports and security certifications, not a software discovery or procurement platform. Amazon CloudSearch is a managed search service for adding search functionality to applications and has no role in software vendor listings or procurement.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q240",
+    "domainId": 4,
+    "question": "A company has created a solution that helps AWS customers improve their architectures on AWS. Which AWS program may support this company?",
+    "options": {
+      "A": "APN Consulting Partners.",
+      "B": "AWS TAM.",
+      "C": "APN Technology Partners.",
+      "D": "AWS Professional Services."
+    },
+    "answer": "A",
+    "explanation": "APN Consulting Partners are professional services firms certified by AWS to design, build, and manage customer workloads on AWS, including solutions that help other customers improve their architectures.\nAWS TAM is a Technical Account Manager, which is a direct AWS resource assigned to enterprise support customers rather than an independent partner program a company can join to offer consulting services. APN Technology Partners are companies that provide software products and solutions that run on or integrate with AWS, rather than consulting or professional services that help customers improve their architectures. AWS Professional Services is a global team of AWS experts that works directly with customers on their own projects, and is not a program that external companies can join to deliver services to other customers.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q264",
+    "domainId": 4,
+    "question": "Which statement is correct with regards to AWS service limits? (Choose TWO)",
+    "options": {
+      "A": "You can contact AWS support to increase the service limits.",
+      "B": "Each IAM user has the same service limit.",
+      "C": "There are no service limits on AWS.",
+      "D": "You can use the AWS Trusted Advisor to monitor your service limits.",
+      "E": "The Amazon Simple Email Service is responsible for sending email notifications when usage approaches a service limit."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS service limits (quotas) apply at the account level and can be increased by submitting a support request to AWS. AWS Trusted Advisor monitors current usage against service limits and alerts you when you approach them.\nService limits apply to the entire AWS account rather than to individual IAM users, so each IAM user does not have their own separate service limit. AWS does impose service limits on all accounts by default, so the claim that there are no service limits is factually incorrect. Amazon Simple Email Service is an email sending service for transactional and marketing communications, and is not responsible for monitoring or sending notifications about service limit usage.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q282",
+    "domainId": 4,
+    "question": "Which AWS service provides the current status of all AWS services in all AWS Regions?",
+    "options": {
+      "A": "AWS Service Health Dashboard",
+      "B": "AWS Management Console",
+      "C": "Amazon CloudWatch",
+      "D": "AWS Health Dashboard"
+    },
+    "answer": "A",
+    "explanation": "The AWS Service Health Dashboard provides a real-time public view of the operational status of all AWS services across all Regions, accessible without an AWS account at status.aws.amazon.com.\nThe AWS Management Console is the web-based administrative interface for managing AWS resources and accounts, and does not display the operational status of AWS services globally. Amazon CloudWatch monitors application and infrastructure metrics within a customer's own AWS environment, and does not provide a public view of AWS service health across Regions. The AWS Health Dashboard shows personalised alerts and notifications about events affecting the specific resources in a customer's own account, rather than a global public view of all AWS services.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q333",
+    "domainId": 4,
+    "question": "As part of the AWS Migration Acceleration Program (MAP), what does AWS provide to accelerate Enterprise adoption of AWS? (Choose TWO)",
+    "options": {
+      "A": "AWS Partners.",
+      "B": "AWS Artifact.",
+      "C": "AWS Professional Services.",
+      "D": "Amazon Athena.",
+      "E": "Amazon PinPoint."
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "The AWS Migration Acceleration Program provides AWS Partners who deliver hands-on migration expertise and AWS Professional Services who provide strategic guidance and planning, both working together to accelerate enterprise cloud adoption.\nAWS Artifact is a self-service portal for accessing AWS compliance reports and security certifications, and has no role in migration programs or enterprise adoption acceleration. Amazon Athena is a serverless interactive query service for analysing data in Amazon S3 using SQL, and is an analytics tool unrelated to migration programs or enterprise support. AWS Managed Services provides ongoing operational management of AWS infrastructure on behalf of customers but is a separate managed operations offering rather than a component of the Migration Acceleration Program.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q347",
+    "domainId": 4,
+    "question": "What is the AWS Support feature that allows customers to manage support cases programmatically?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Operations Support",
+      "C": "AWS Support API",
+      "D": "AWS Health Dashboard"
+    },
+    "answer": "C",
+    "explanation": "The AWS Support API allows customers to create, update, and resolve support cases programmatically, enabling integration with internal ticketing systems and automated incident workflows.\nAWS Trusted Advisor inspects your AWS environment and provides automated recommendations across security, cost, performance, and fault tolerance, and is an advisory tool rather than a feature for managing support cases programmatically. AWS Operations Support is not a recognised AWS service or support feature name. AWS Health Dashboard provides a personalised view of AWS service events affecting your resources along with remediation guidance, and is an observability tool rather than a programmatic interface for managing support cases.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q430",
+    "domainId": 4,
+    "question": "Your CTO has asked you to contact AWS support using the chat feature to ask for guidance related to EBS. However, when you open the AWS support center you can't see a way to contact support via Chat. What should you do?",
+    "options": {
+      "A": "There is no chat feature in AWS support.",
+      "B": "The chat feature is available for all plans for an additional fee, but you have to request it first.",
+      "C": "At a minimum, upgrade to Business support plan.",
+      "D": "Upgrade from the Basic Support plan to Developer Support."
+    },
+    "answer": "C",
+    "explanation": "Chat support is available starting from the Business Support plan, so upgrading to at least Business tier is the minimum requirement to access the chat feature in the AWS Support Center.\nAWS support does have a chat feature, but it is only available on Business and Enterprise plans, making this option factually incorrect. The chat feature is not available as an add-on for an additional fee on lower-tier plans, as it is an included feature of the Business and Enterprise support tiers only. The Developer Support plan provides access to AWS Support engineers via email only, and upgrading from Basic to Developer does not unlock the chat feature.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q484",
+    "domainId": 4,
+    "question": "What AWS service allows you to buy third-party software solutions and services that run on AWS resources?",
+    "options": {
+      "A": "AWS Application Discovery Service",
+      "B": "AWS Cost Explorer",
+      "C": "AWS Marketplace",
+      "D": "AWS Resource Groups"
+    },
+    "answer": "C",
+    "explanation": "AWS Marketplace is a digital catalog where customers can find, buy, and deploy third-party software solutions that run on AWS, including AMIs, SaaS applications, and data products.\nAWS Application Discovery Service collects information about on-premises servers and workloads to help plan cloud migrations, and is a migration planning tool with no capability to purchase or deploy third-party software. AWS Cost Explorer provides visualisation and analysis of AWS spending and usage patterns over time, and is a cost management tool rather than a software procurement platform. AWS Resource Groups organises AWS resources into logical groups based on tags or CloudFormation stacks for easier management, and has no role in discovering or purchasing third-party software solutions.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q495",
+    "domainId": 4,
+    "question": "You have multiple standalone AWS accounts and you want to decrease your AWS monthly charges. What should you do?",
+    "options": {
+      "A": "Try to remove unnecessary AWS accounts.",
+      "B": "Add the accounts to an AWS Organization and use Consolidated Billing.",
+      "C": "Track the AWS charges that are incurred by the member accounts.",
+      "D": "Enable AWS tiered-pricing before provisioning resources."
+    },
+    "answer": "B",
+    "explanation": "Adding standalone accounts to an AWS Organization with Consolidated Billing aggregates usage across all accounts, enabling volume discounts through combined usage tiers and simplifying payment through a single bill.\nRemoving unnecessary AWS accounts may reduce spend but does not unlock volume discounts or address the structural billing inefficiency of running separate accounts. Tracking AWS charges incurred by member accounts is a cost visibility activity and does not reduce charges on its own. AWS tiered pricing is applied automatically based on usage volume and cannot be manually enabled before provisioning resources.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q520",
+    "domainId": 4,
+    "question": "What are the benefits of the AWS Marketplace service? (Choose TWO)",
+    "options": {
+      "A": "Protects customers by performing periodic security checks on listed products.",
+      "B": "Per-second billing.",
+      "C": "Provides cheaper options for purchasing Amazon EC2 on-demand instances.",
+      "D": "Provides flexible pricing options that suit most customer needs.",
+      "E": "Provides software solutions that run on AWS or any other Cloud vendor."
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "AWS Marketplace offers flexible pricing options including hourly, monthly, annual, and bring-your-own-license models, and provides software solutions that can run on AWS or other cloud platforms, giving customers broad choice and cost flexibility.\nAWS Marketplace does not perform periodic security checks on listed products. Responsibility for product security remains with the independent software vendors who list their products. Per-second billing is an EC2 pricing feature, not a benefit of AWS Marketplace. Providing cheaper options for purchasing EC2 on-demand instances is not a function of AWS Marketplace, which is a catalogue for third-party software, not a mechanism for discounting AWS compute pricing.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q543",
+    "domainId": 4,
+    "question": "An administrator needs to rapidly deploy a popular IT solution and start using it immediately. Where can the administrator find assistance?",
+    "options": {
+      "A": "AWS Well-Architected Framework documentation.",
+      "B": "Amazon CloudFront.",
+      "C": "AWS CodeCommit.",
+      "D": "AWS Quick Start reference deployments."
+    },
+    "answer": "D",
+    "explanation": "AWS Quick Start reference deployments provide automated gold-standard templates that deploy popular IT solutions on AWS in minutes, giving administrators a fast path to production-ready environments built on AWS best practices.\nAWS Well-Architected Framework documentation provides architectural guidance and best practices for designing cloud workloads across five pillars, but is a reference document rather than a deployment tool that can provision a solution immediately. Amazon CloudFront is a content delivery network that caches and distributes content to users at edge locations worldwide, and has no capability to deploy or provision IT solutions. AWS CodeCommit is a managed Git-based source control service for storing and versioning code repositories, and is a developer tool with no rapid deployment or solution provisioning capability.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q629",
+    "domainId": 4,
+    "question": "Which AWS service provides personalised alerts when an AWS event may impact a company's AWS resources?",
+    "options": {
+      "A": "AWS Health Dashboard",
+      "B": "AWS Service Health Dashboard",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS Infrastructure Event Management"
+    },
+    "answer": "A",
+    "explanation": "AWS Health Dashboard sends proactive personalised alerts when AWS events may impact your specific resources, providing remediation guidance tailored to your account rather than showing general service status.\nAWS Service Health Dashboard shows the general health status of all AWS services publicly but does not provide personalised alerts specific to your account or resources. AWS Trusted Advisor analyses your environment against best practice checks across cost, performance, security, and fault tolerance, but does not send alerts about AWS service events. AWS Infrastructure Event Management is a paid support programme for planning large-scale events such as product launches, not an alerting service for AWS health events.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q630",
+    "domainId": 4,
+    "question": "Which of the following are categories of AWS Trusted Advisor? (Select TWO.)",
+    "options": {
+      "A": "Fault Tolerance",
+      "B": "Instance Usage",
+      "C": "Infrastructure",
+      "D": "Performance",
+      "E": "Storage Capacity"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "AWS Trusted Advisor provides recommendations across five categories: Cost Optimization, Performance, Security, Fault Tolerance, and Service Limits. Fault Tolerance and Performance are both official categories.\nInstance Usage is not a Trusted Advisor category. Usage-related recommendations fall under Cost Optimization rather than a dedicated instance usage category. Infrastructure is not a Trusted Advisor category and does not correspond to any of the five defined recommendation areas. Storage Capacity is not a Trusted Advisor category. Storage-related checks appear within Cost Optimization or Fault Tolerance depending on the nature of the recommendation.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q762",
+    "domainId": 4,
+    "question": "What does AWS Marketplace allow users to do? (Choose two.)",
+    "options": {
+      "A": "Sell unused Amazon EC2 Spot Instances.",
+      "B": "Sell solutions to other AWS users.",
+      "C": "Buy third-party software that runs on AWS.",
+      "D": "Purchase AWS security and compliance documents.",
+      "E": "Order AWS Snowball."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "AWS Marketplace allows vendors to sell their software solutions to other AWS users, and allows buyers to purchase and deploy third-party software that runs on AWS infrastructure. Both are core functions of the platform.\nSelling unused Amazon EC2 Spot Instances is not a function of AWS Marketplace. Spot Instance capacity is made available by AWS itself through the EC2 console based on unused compute capacity, and individual customers cannot list or sell their own Spot Instances. Purchasing AWS security and compliance documents describes AWS Artifact, which provides on-demand access to AWS compliance reports and security agreements, and is not a function of AWS Marketplace. Ordering AWS Snowball is done directly through the AWS console as part of the Snow Family service request process, and is not a procurement action available through AWS Marketplace.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q820",
+    "domainId": 4,
+    "question": "A company wants to try a third-party ecommerce solution before deciding to use it long term. Which AWS service or tool will support this effort?",
+    "options": {
+      "A": "AWS Marketplace",
+      "B": "AWS Partner Network (APN)",
+      "C": "AWS Managed Services",
+      "D": "AWS Service Catalog"
+    },
+    "answer": "A",
+    "explanation": "AWS Marketplace offers free trials and flexible pay-as-you-go pricing for third-party software solutions, allowing companies to evaluate an ecommerce platform before committing to long-term use.\nAWS Partner Network is a program for consulting and technology partners who build and sell AWS-based solutions, not a platform for trialling third-party software. AWS Managed Services provides operational management of AWS infrastructure on behalf of customers and does not offer third-party software trials. AWS Service Catalog allows organisations to create and manage approved catalogues of IT services for internal use, not for discovering or trialling third-party commercial software.",
+    "source": "practice-exam-20.md",
     "isMultiAnswer": false
   }
 ]

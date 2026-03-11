@@ -89,11 +89,6 @@ export function QuestionReviewCard({
       {/* Explanation */}
       {question.explanation && (
         <div className="bg-bg-dark rounded-lg p-3 border-l-4 border-aws-orange">
-          {question.source === 'ai-generated' && (
-            <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 mb-2">
-              <span>✦</span> AI Generated
-            </span>
-          )}
           <h4 className="text-xs font-semibold text-text-primary mb-1">Explanation:</h4>
           <div className="text-xs md:text-sm text-text-muted space-y-2">
             {question.explanation.split('\n').filter(Boolean).map((para, i) => (

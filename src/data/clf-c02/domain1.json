@@ -1141,40 +1141,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q607",
-    "domainId": 1,
-    "question": "A customer is deploying a new application and needs to choose an AWS Region. Which of the following factors could influence the customer's decision? (Select TWO.)",
-    "options": {
-      "A": "Reduced latency to users",
-      "B": "The application's presentation in the local language",
-      "C": "Data sovereignty compliance",
-      "D": "Cooling costs in hotter climates",
-      "E": "Proximity to the customer's office for on-site visits"
-    },
-    "answer": [
-      "A",
-      "C"
-    ],
-    "explanation": "Choosing a Region close to end users reduces network latency, and data sovereignty compliance requirements may legally mandate that data stays within specific geographic boundaries. Both are standard Region selection criteria.\nThe application's presentation in the local language is handled at the application layer and has no bearing on which AWS Region is selected. Cooling costs in hotter climates are an infrastructure concern managed entirely by AWS, not a factor customers consider when choosing a Region. Proximity to the customer's office for on-site visits is irrelevant because AWS data centres are not customer-accessible facilities.",
-    "source": "practice-exam-13.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q610",
-    "domainId": 1,
-    "question": "The AWS Cloud's multiple Regions are an example of:",
-    "options": {
-      "A": "agility.",
-      "B": "global infrastructure.",
-      "C": "elasticity.",
-      "D": "pay-as-you-go pricing."
-    },
-    "answer": "B",
-    "explanation": "AWS Regions distributed across the globe are a core component of AWS global infrastructure, providing geographic diversity for deploying workloads close to users and meeting data residency requirements.\nAgility refers to the speed at which customers can provision and experiment with resources, which is a cloud adoption benefit rather than a characteristic of physical infrastructure placement. Elasticity refers to dynamically scaling resources up or down in response to demand, which is unrelated to the geographic distribution of Regions. Pay-as-you-go pricing is a billing model where customers pay only for what they consume, which is a commercial benefit rather than an infrastructure concept.",
-    "source": "practice-exam-14.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q614",
     "domainId": 1,
     "question": "Which design principles for cloud architecture are recommended when re-architecting a large monolithic application? (Select TWO.)",
@@ -1207,25 +1173,6 @@
     "explanation": "AWS passes its operational efficiencies and massive purchasing power to customers through periodic price reductions, lowering the cost of cloud services as AWS's scale grows.\nNew EC2 instance types providing the latest hardware is a product development activity, not a direct financial benefit passed to customers from economies of scale. The ability to scale up and down when needed describes elasticity, which is a separate cloud benefit unrelated to economies of scale. Increased reliability in the underlying hardware describes AWS infrastructure quality, not a cost or efficiency benefit derived from operating at massive scale.",
     "source": "practice-exam-15.md",
     "isMultiAnswer": false
-  },
-  {
-    "id": "q624",
-    "domainId": 1,
-    "question": "What can AWS edge locations be used for? (Select TWO.)",
-    "options": {
-      "A": "Hosting applications",
-      "B": "Delivering content closer to users",
-      "C": "Running NoSQL database caching services",
-      "D": "Reducing traffic on the server by caching responses",
-      "E": "Sending notification messages to end users"
-    },
-    "answer": [
-      "B",
-      "D"
-    ],
-    "explanation": "AWS edge locations deliver cached content closer to end users via CloudFront, reducing latency, and reduce load on origin servers by serving cached responses directly from the edge.\nEdge locations are points of presence used for content delivery and caching, not for hosting full applications, which require compute resources running in AWS Regions. Running NoSQL database caching services describes a function of Amazon ElastiCache or DynamoDB Accelerator, which operate within Regions rather than at edge locations. Sending notification messages to end users describes a function of services like Amazon SNS, which is unrelated to the content delivery and caching purpose of edge locations.",
-    "source": "practice-exam-15.md",
-    "isMultiAnswer": true
   },
   {
     "id": "q634",
@@ -1526,25 +1473,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q745",
-    "domainId": 1,
-    "question": "What are the benefits of developing and running a new application in the AWS Cloud compared to on-premises? (Choose two.)",
-    "options": {
-      "A": "AWS automatically distributes the data globally for higher durability.",
-      "B": "AWS will take care of operating the application.",
-      "C": "AWS makes it easy to architect for high availability.",
-      "D": "AWS can easily accommodate application demand changes.",
-      "E": "AWS takes care application security patching."
-    },
-    "answer": [
-      "C",
-      "D"
-    ],
-    "explanation": "AWS makes it easy to architect for high availability through multi-AZ deployments and managed services, and can easily accommodate application demand changes through elasticity and auto-scaling, both being advantages that are difficult or costly to replicate in an on-premises environment.\nAWS does not automatically distribute all data globally for higher durability by default, as data residency and replication are configuration choices the customer makes depending on the services and settings they select. AWS does not take care of operating the application, as customers remain responsible for deploying, managing, and maintaining their own application code and runtime environments regardless of the underlying infrastructure. AWS does not take care of application security patching, as patching the application layer is the customer's responsibility under the Shared Responsibility Model, with AWS only responsible for patching the underlying infrastructure and managed service components.",
-    "source": "practice-exam-18.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q750",
     "domainId": 1,
     "question": "What are the immediate benefits of using the AWS Cloud? (Choose two.)",
@@ -1752,21 +1680,6 @@
     },
     "answer": "B",
     "explanation": "Deploying across multiple Availability Zones ensures the database can withstand an AZ failure and recover automatically, which directly maps to the Reliability pillar's focus on workload recovery and availability.\nPerformance Efficiency focuses on using compute resources efficiently to meet performance requirements, not on redundancy across failure domains. Cost Optimization focuses on eliminating unnecessary spend and choosing the right resource types, not on fault tolerance. Security focuses on protecting data and systems through access controls and detective mechanisms, not on availability architecture.",
-    "source": "practice-exam-19.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q805",
-    "domainId": 1,
-    "question": "Which element of the AWS global infrastructure consists of one or more discrete data centers, each with redundant power, networking, and connectivity, which are housed in separate facilities?",
-    "options": {
-      "A": "AWS Regions",
-      "B": "Availability Zones",
-      "C": "Edge locations",
-      "D": "Amazon CloudFront"
-    },
-    "answer": "B",
-    "explanation": "An Availability Zone consists of one or more discrete data centers with redundant power, networking, and connectivity, housed in separate facilities within a Region to provide isolation from failures.\nAWS Regions are the broader geographic areas that contain multiple Availability Zones, not the individual data center clusters themselves. Edge locations are points of presence distributed globally for content delivery and caching, not data center groupings with redundant infrastructure. Amazon CloudFront is a content delivery network service that uses edge locations, not a component of the AWS global infrastructure hierarchy.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
@@ -2211,6 +2124,803 @@
     "answer": "A",
     "explanation": "The Cost Optimization pillar focuses on avoiding unnecessary costs, selecting the most appropriate resource types, and scaling without overspending.\nSustainability focuses on reducing environmental impact of cloud workloads, such as minimising energy consumption. Operational Excellence focuses on running and monitoring systems to deliver business value and improving processes. Performance Efficiency focuses on using compute resources efficiently to meet performance requirements.",
     "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q004",
+    "domainId": 1,
+    "question": "Which of the below options are related to the reliability of AWS? (Choose TWO)",
+    "options": {
+      "A": "Applying the principle of least privilege to all AWS resources.",
+      "B": "Automatically provisioning new resources to meet demand.",
+      "C": "All AWS services are considered Global Services, and this design helps customers serve their international users.",
+      "D": "Providing compensation to customers if issues occur.",
+      "E": "Ability to recover quickly from failures."
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "Automatically provisioning new resources to meet demand and the ability to recover quickly from failures are both core reliability principles, ensuring the system continues operating correctly under varying conditions and after failure events.\nApplying the principle of least privilege is a security practice related to access control, not a reliability principle. All AWS services being considered global services is false, as many services are regional, and global reach is a separate concept from reliability. Providing compensation to customers if issues occur describes an SLA remediation mechanism and is not a design principle that contributes to system reliability.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q007",
+    "domainId": 1,
+    "question": "A company has developed an eCommerce web application on AWS. What should they do to ensure that the application has the highest level of availability?",
+    "options": {
+      "A": "Deploy the application across multiple Availability Zones and edge locations",
+      "B": "Deploy the application across multiple Availability Zones and subnets",
+      "C": "Deploy the application across multiple Regions and Availability Zones",
+      "D": "Deploy the application across multiple VPCs and subnets"
+    },
+    "answer": "C",
+    "explanation": "Deploying across multiple Regions and Availability Zones provides the highest level of availability by protecting against both Availability Zone-level failures and Region-level failures simultaneously.\nDeploying across multiple Availability Zones and edge locations adds content delivery reach through CloudFront but does not protect application infrastructure against a Regional failure. Deploying across multiple Availability Zones and subnets improves resilience against isolated failures within a Region, but a Regional outage would still affect the entire deployment. Deploying across multiple VPCs and subnets creates network segmentation within a Region but provides no geographic redundancy against Availability Zone or Regional failures.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q014",
+    "domainId": 1,
+    "question": "What are the benefits of having infrastructure hosted in AWS? (Choose TWO)",
+    "options": {
+      "A": "Increasing speed and agility",
+      "B": "Gaining unlimited free storage for all data",
+      "C": "Gaining complete control over the physical infrastructure",
+      "D": "Operating applications on behalf of customers",
+      "E": "All of the physical security and most of the data and network security are taken care of for you"
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "AWS increases speed and agility by allowing customers to provision resources in minutes rather than weeks, and handles physical security along with most data and network security so customers can focus on building applications rather than managing infrastructure.\nUnlimited free storage is not an AWS benefit, as storage services such as Amazon S3 and EBS are billed based on the amount of data stored and retrieved. Complete control over physical infrastructure is not available to AWS customers, as AWS owns and manages all physical hardware, data centres, and networking equipment on the customer's behalf. Operating applications on behalf of customers is not an AWS benefit, as customers remain responsible for building, deploying, and managing their own applications under the shared responsibility model.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q015",
+    "domainId": 1,
+    "question": "What is the advantage of the AWS-recommended practice of \"decoupling\" applications?",
+    "options": {
+      "A": "Allows treating an application as a single, cohesive unit.",
+      "B": "Reduces inter-dependencies so that failures do not impact other components of the application.",
+      "C": "Allows updates of any monolithic application quickly and easily.",
+      "D": "Allows tracking of any API call made to any AWS service."
+    },
+    "answer": "B",
+    "explanation": "Decoupling means designing components to operate independently so that a failure in one part does not cascade into failures across the rest of the application, improving overall resilience.\nTreating an application as a single cohesive unit describes a monolithic architecture, which is the opposite of decoupling and creates tightly coupled dependencies between components. Allowing quick updates to a monolithic application describes an advantage of a well-structured monolith, not of decoupling, and updating a monolith typically requires deploying the entire application as a unit. Tracking API calls made to AWS services describes the function of AWS CloudTrail, which is an auditing and logging service unrelated to application architecture design.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q065",
+    "domainId": 1,
+    "question": "According to best practices, how should an application be designed to run in the AWS Cloud?",
+    "options": {
+      "A": "Use tightly coupled components.",
+      "B": "Use loosely coupled components.",
+      "C": "Use infrequently coupled components.",
+      "D": "Use frequently coupled components."
+    },
+    "answer": "B",
+    "explanation": "Using loosely coupled components means each part of an application can scale, fail, and be updated independently without cascading failures to other components, which is the foundational AWS best practice for building resilient and scalable architectures.\nUsing tightly coupled components creates direct dependencies between parts of an application so that a failure or change in one component directly affects others, increasing the risk of cascading failures and making the system harder to scale and maintain independently. Infrequently coupled components is not a recognised architectural pattern or AWS design principle, and does not describe a meaningful approach to structuring application components. Frequently coupled components is similarly not a recognised architectural concept, and conflating coupling frequency with coupling tightness does not reflect any established AWS or cloud architecture best practice.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q077",
+    "domainId": 1,
+    "question": "How does AWS shorten the time to provision IT resources?",
+    "options": {
+      "A": "It supplies an online IT ticketing platform for resource requests.",
+      "B": "It supports automatic code validation services.",
+      "C": "It provides the ability to programmatically provision existing resources.",
+      "D": "It automates the resource request process from a company’s IT vendor list."
+    },
+    "answer": "C",
+    "explanation": "AWS allows resources to be provisioned programmatically through APIs, CloudFormation templates, and SDKs, drastically reducing the time to deploy infrastructure compared to traditional procurement and physical setup.\nAWS does not operate an IT ticketing platform for resource requests. Resources are provisioned on demand through self-service APIs and consoles without requiring formal request and approval workflows. AWS does not shorten provisioning time through code validation services, which are a software quality tool unrelated to how quickly infrastructure can be deployed. AWS does not automate requests from a company's existing IT vendor list, as it replaces traditional vendor procurement entirely by providing infrastructure directly through its own platform.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q085",
+    "domainId": 1,
+    "question": "What technology enables compute capacity to adjust as loads change?",
+    "options": {
+      "A": "Load balancing.",
+      "B": "Automatic failover.",
+      "C": "Round robin.",
+      "D": "Auto Scaling."
+    },
+    "answer": "D",
+    "explanation": "Auto Scaling monitors load and automatically adjusts the number of compute instances to match demand, ensuring capacity scales up during peak periods and scales back down when demand drops, without any manual intervention.\nLoad balancing distributes incoming traffic across existing compute instances to prevent any single instance from being overwhelmed, but does not add or remove capacity in response to changing load. Automatic failover redirects traffic to a healthy instance or resource when a failure is detected, which addresses availability rather than capacity adjustment. Round robin is a traffic distribution method that cycles requests evenly across a set of servers, and like load balancing, manages traffic distribution rather than adjusting the number of available compute instances.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q088",
+    "domainId": 1,
+    "question": "What approach to transcoding a large number of individual video files adheres to AWS architecture principles?",
+    "options": {
+      "A": "Using many instances in parallel.",
+      "B": "Using a single large instance during off-peak hours.",
+      "C": "Using dedicated hardware.",
+      "D": "Using a large GPU instance type."
+    },
+    "answer": "A",
+    "explanation": "Using many instances in parallel applies horizontal scaling, a core AWS architecture principle that distributes workloads across multiple instances simultaneously for greater speed and cost efficiency than sequential processing.\nUsing a single large instance during off-peak hours applies vertical scaling and sequential processing, which contradicts AWS architecture principles favouring parallelism and does not reduce total processing time. Using dedicated hardware provides physical server isolation for compliance or licensing requirements but does not improve throughput for large-scale parallel workloads. Using a large GPU instance type optimises for graphics processing performance on a single instance rather than distributing the workload across multiple parallel instances.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q091",
+    "domainId": 1,
+    "question": "The user is fully responsible for which action when running workloads on AWS?",
+    "options": {
+      "A": "Patching the infrastructure components.",
+      "B": "Maintaining the underlying infrastructure components.",
+      "C": "Maintaining physical and environmental controls.",
+      "D": "Implementing controls to route application traffic."
+    },
+    "answer": "D",
+    "explanation": "Customers are fully responsible for implementing application-level controls such as routing traffic within their own systems, as these decisions sit entirely within the customer's layer of the Shared Responsibility Model.\nPatching the infrastructure components is AWS's responsibility, covering the physical servers, networking equipment, and hypervisor layer beneath the customer's workloads. Maintaining the underlying infrastructure components is AWS's responsibility, as customers have no access to or control over the physical hardware running their workloads. Maintaining physical and environmental controls is AWS's responsibility exclusively, covering data centre facilities, power, cooling, and physical security.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q121",
+    "domainId": 1,
+    "question": "Which of the following is a shared control between the customer and AWS?",
+    "options": {
+      "A": "Providing a key for Amazon S3 client-side encryption.",
+      "B": "Configuration of an Amazon EC2 instance.",
+      "C": "Environmental controls of physical AWS data centers.",
+      "D": "Awareness."
+    },
+    "answer": "D",
+    "explanation": "Awareness and training is a shared control because both AWS and the customer must independently ensure their own staff understand their respective security responsibilities, regardless of what the other party does.\nProviding a key for Amazon S3 client-side encryption is solely the customer's responsibility, as AWS has no involvement in client-side key generation or management. Configuration of an Amazon EC2 instance is solely the customer's responsibility, as customers control the guest OS and everything installed on it. Environmental controls of physical AWS data centres are solely AWS's responsibility, as customers have no access to or involvement in physical facility management.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q130",
+    "domainId": 1,
+    "question": "Which of the following is an AWS Cloud architecture design principle?",
+    "options": {
+      "A": "Implement single points of failure.",
+      "B": "Implement loose coupling.",
+      "C": "Implement monolithic design.",
+      "D": "Implement vertical scaling."
+    },
+    "answer": "B",
+    "explanation": "Loose coupling is a core AWS cloud architecture principle where components interact through well-defined interfaces, allowing each to scale, update, or fail independently without cascading effects on other parts of the system.\nImplementing single points of failure is an anti-pattern that directly contradicts cloud architecture best practices, as the goal is to eliminate dependencies that could bring down an entire system. Monolithic design tightly couples all application components into a single unit, making it harder to scale, update, or recover individual parts independently. Vertical scaling increases the capacity of a single instance rather than distributing workloads, which limits scalability and creates potential single points of failure.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q156",
+    "domainId": 1,
+    "question": "What is a value proposition of the AWS Cloud?",
+    "options": {
+      "A": "AWS is responsible for security in the AWS Cloud.",
+      "B": "No long-term contract is required.",
+      "C": "Provision new servers in days.",
+      "D": "AWS manages user applications in the AWS Cloud."
+    },
+    "answer": "B",
+    "explanation": "No long-term contract is required because AWS uses a pay-as-you-go model, allowing customers to use services on demand and stop at any time without upfront commitments or termination penalties.\nAWS is responsible for security in the cloud is a partial truth that misrepresents the Shared Responsibility Model. Security is shared, with AWS responsible for the infrastructure and customers responsible for their data and configurations. Provision new servers in days is inaccurate. One of AWS's key advantages is provisioning resources in minutes, not days, which is the reality that distinguishes cloud from traditional procurement. AWS manages user applications in the AWS Cloud is false. Application management remains the customer's responsibility under the Shared Responsibility Model.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q173",
+    "domainId": 1,
+    "question": "A solution that is able to support growth in users, traffic, or data size with no drop in performance aligns with which cloud architecture principle?",
+    "options": {
+      "A": "Think parallel.",
+      "B": "Implement elasticity.",
+      "C": "Decouple your components.",
+      "D": "Design for failure."
+    },
+    "answer": "B",
+    "explanation": "Elasticity is the ability to scale resources up or down automatically to handle increases in users, traffic, or data size without any degradation in performance, making it the principle that directly addresses growth support.\nThink parallel refers to the principle of designing systems to handle tasks simultaneously across multiple resources to improve throughput and speed, not specifically to handle growth in users or data size without performance loss. Decouple your components refers to reducing dependencies between application components so failures do not cascade, which improves resilience rather than addressing performance under growth. Design for failure refers to building systems that anticipate and recover from component failures automatically, which addresses resilience and availability rather than scaling to support growth.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q174",
+    "domainId": 1,
+    "question": "Which AWS Cloud benefit eliminates the need for users to try estimating future infrastructure usage?",
+    "options": {
+      "A": "Easy and fast deployment of applications in multiple Regions around the world.",
+      "B": "Security of the AWS Cloud.",
+      "C": "Elasticity of the AWS Cloud.",
+      "D": "Lower variable costs due to massive economies of scale."
+    },
+    "answer": "C",
+    "explanation": "Cloud elasticity allows resources to scale up or down on demand, eliminating the need to predict and provision for peak future capacity in advance.\nEasy and fast deployment of applications in multiple Regions is a benefit of AWS's global infrastructure, enabling speed and reach, but does not remove the need to estimate future infrastructure usage. Security of the AWS Cloud refers to the protections AWS provides for its infrastructure under the shared responsibility model, which is unrelated to capacity planning or infrastructure estimation. Lower variable costs due to massive economies of scale means AWS can offer reduced pricing as its customer base grows, but lower costs do not eliminate the underlying need to estimate how much infrastructure will be required.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q203",
+    "domainId": 1,
+    "question": "Which of the below is a best-practice when designing solutions on AWS?",
+    "options": {
+      "A": "Invest heavily in architecting your environment, as it is not easy to change your design later.",
+      "B": "Use AWS reservations to reduce costs when testing your production environment.",
+      "C": "Automate wherever possible to make architectural (© ) experimentation easier.",
+      "D": "Provision a large compute capacity to handle any spikes in load"
+    },
+    "answer": "C",
+    "explanation": "AWS best practice is to automate infrastructure and deployment wherever possible, which makes architectural experimentation faster and reduces human error.\nInvesting heavily in upfront architectural design contradicts the cloud principle that infrastructure should be treated as flexible and changeable, with automation enabling rapid iteration rather than requiring heavy planning before deployment. Using AWS reservations to reduce costs when testing production environments misapplies Reserved Instances, which are a billing commitment for predictable steady-state workloads rather than a cost reduction tool for testing environments. Provisioning large compute capacity to handle any spikes in load describes over-provisioning, which is an on-premises anti-pattern that cloud best practices replace with elastic scaling that dynamically matches capacity to actual demand.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q206",
+    "domainId": 1,
+    "question": "The principle “design for failure and nothing will fail” is very important when designing your AWS Cloud architecture. Which of the following would help adhere to this principle? (Choose TWO)",
+    "options": {
+      "A": "Multi-factor authentication.",
+      "B": "Availability Zones.",
+      "C": "Elastic Load Balancing.",
+      "D": "Penetration testing.",
+      "E": "Vertical Scaling."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "Deploying across multiple Availability Zones provides physical redundancy so that if one zone experiences a failure, instances in the remaining zones continue serving traffic without interruption. Elastic Load Balancing automatically detects unhealthy targets and routes traffic only to healthy ones, preventing a single failed instance from bringing down the entire application. Both directly implement the design-for-failure principle.\nMulti-factor authentication adds a second layer of security to account and user sign-in, and is an access security control with no bearing on fault tolerance or application resilience. Penetration testing simulates attacks against an application to identify security vulnerabilities, and is a security assessment practice rather than an architectural design approach for surviving component failures. Vertical scaling increases the capacity of a single instance by adding more CPU or memory, which creates a larger single point of failure rather than distributing risk, and is the opposite of the redundancy that design-for-failure requires.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q216",
+    "domainId": 1,
+    "question": "Which of the following are important design principles you should adopt when designing systems on AWS? (Choose TWO)",
+    "options": {
+      "A": "Always use Global Services in your architecture rather than Regional Services.",
+      "B": "Always choose to pay as you go.",
+      "C": "Treat servers as fixed resources.",
+      "D": "Automate wherever possible.",
+      "E": "Remove single points of failure."
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Automating wherever possible reduces manual errors and speeds recovery, and removing single points of failure through redundancy ensures continued operation if one component fails, both being core AWS design principles.\nAlways using Global Services rather than Regional Services is not a recognised design principle, as the choice between global and regional services depends on the specific workload requirements and is not a blanket architectural rule. Always choosing to pay as you go is a billing model characteristic rather than a system design principle, and pricing decisions are made based on cost optimisation goals rather than architectural patterns. Treating servers as fixed resources contradicts the cloud design principle of elasticity, which calls for treating infrastructure as disposable and dynamically scalable rather than permanent and static.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q227",
+    "domainId": 1,
+    "question": "Which statement best describes the operational excellence pillar of the AWS Well-Architected Framework?",
+    "options": {
+      "A": "The ability of a system to recover gracefully from failure.",
+      "B": "The efficient use of computing resources to meet requirements.",
+      "C": "The ability to monitor systems and improve supporting processes and procedures.",
+      "D": "The ability to manage datacenter operations more efficiently."
+    },
+    "answer": "C",
+    "explanation": "The Operational Excellence pillar of the AWS Well-Architected Framework focuses on running and monitoring workloads effectively, continuously improving processes, and automating operations to deliver business value.\nThe ability of a system to recover gracefully from failure describes the Reliability pillar, which focuses on workload availability and the ability to recover from disruptions. The efficient use of computing resources to meet requirements describes the Performance Efficiency pillar, which focuses on using the right resource types and sizes to match workload demands. Managing datacenter operations more efficiently does not correspond to any Well-Architected pillar, as AWS manages all physical datacenter infrastructure on behalf of customers and this is not a customer concern in the cloud.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q242",
+    "domainId": 1,
+    "question": "Jessica is managing an e-commerce web application in AWS. The application is hosted on six EC2 instances. One day, three of the instances crashed; but none of her customers were affected. What has Jessica done correctly in this scenario?",
+    "options": {
+      "A": "She has properly built an elastic system.",
+      "B": "She has properly built a fault tolerant system.",
+      "C": "She has properly built an encrypted system.",
+      "D": "She has properly built a scalable system."
+    },
+    "answer": "B",
+    "explanation": "A fault-tolerant system is designed to continue operating correctly even when some of its components fail, which is exactly what the scenario describes � three of six instances crashed but no customers were affected.\nAn elastic system automatically scales capacity up or down in response to changes in demand, but elasticity does not address continued operation during component failure. An encrypted system protects data from unauthorised access through cryptographic controls, which is a security property unrelated to maintaining availability when instances crash. A scalable system is designed to handle growth in workload or users by adding resources, but scalability does not ensure the application keeps running when existing instances fail.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q254",
+    "domainId": 1,
+    "question": "Which of the below is a best-practice when building applications on AWS?",
+    "options": {
+      "A": "Strengthen physical security by applying the principle of least privilege.",
+      "B": "Ensure that the application runs on hardware from trusted vendors.",
+      "C": "Use IAM policies to maintain performance.",
+      "D": "Decouple the components of the application so that they run independently."
+    },
+    "answer": "D",
+    "explanation": "Decoupling application components so they communicate through well-defined interfaces such as APIs or queues rather than direct dependencies means each component can scale, fail, and be updated independently without causing cascading failures throughout the application.\nApplying the principle of least privilege is a security best practice for controlling access permissions, and while important, it relates to identity and access management rather than application architecture design. Ensuring that applications run on hardware from trusted vendors is not a customer concern on AWS, as AWS manages all underlying physical infrastructure and hardware selection on behalf of the customer. IAM policies are used to define access permissions for users and roles, and are an identity and access management tool rather than a mechanism for maintaining application performance.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q261",
+    "domainId": 1,
+    "question": "Your application has recently experienced significant global growth, and international users are complaining of high latency. What is the AWS characteristic that can help improve your international users’ experience?",
+    "options": {
+      "A": "Elasticity.",
+      "B": "Global reach.",
+      "C": "Data durability.",
+      "D": "High availability."
+    },
+    "answer": "B",
+    "explanation": "AWS global reach, through its worldwide network of Regions and edge locations, enables applications to be deployed closer to international users, reducing the network distance that data must travel and lowering latency for a global audience.\nElasticity is the ability to automatically scale resources up or down in response to changing demand, and addresses capacity flexibility rather than the geographic proximity that causes latency for international users. Data durability refers to the long-term integrity and redundancy of stored data to prevent loss, and is a storage protection characteristic with no bearing on network latency or geographic reach. High availability refers to the ability of a system to remain operational and accessible with minimal downtime, and addresses uptime and fault tolerance rather than reducing latency for geographically distributed users.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q263",
+    "domainId": 1,
+    "question": "A company has business critical workloads hosted on AWS and they are unwilling to accept any downtime. Which of the following is a recommended best practice to protect their workloads in the event of an unexpected natural disaster?",
+    "options": {
+      "A": "Replicate data across multiple Edge Locations worldwide and use Amazon CloudFront to perform automatic failover in the event of an outage.",
+      "B": "Deploy AWS resources across multiple Availability Zones within the same AWS Region.",
+      "C": "Create point-in-time backups in another subnet and recover this data when a disaster occurs.",
+      "D": "Deploy AWS resources to another AWS Region and implement an Active-Active disaster recovery strategy."
+    },
+    "answer": "D",
+    "explanation": "Deploying AWS resources to a second AWS Region and running an Active-Active disaster recovery strategy means both Regions serve live production traffic simultaneously, so if a natural disaster eliminates one Region entirely, the other continues serving users without any downtime.\nAmazon CloudFront distributes and caches content at edge locations to reduce latency for end users, but it is a content delivery service and does not replicate workloads or perform automatic failover of application infrastructure in the event of a regional disaster. Deploying resources across multiple Availability Zones within a single Region improves resilience against isolated failures, but a large-scale natural disaster can affect an entire Region simultaneously, making Multi-AZ alone insufficient when zero downtime is required. Creating point-in-time backups in another subnet stores recovery data within the same Region and requires manual restoration time, which directly conflicts with the requirement to accept no downtime. Subnets are also intra-Region constructs that offer no geographic separation.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q303",
+    "domainId": 1,
+    "question": "What are the benefits of using an AWS-managed service? (Choose TWO)",
+    "options": {
+      "A": "Provides complete control over the virtual infrastructure.",
+      "B": "Allows customers to deliver new solutions faster.",
+      "C": "Lowers operational complexity.",
+      "D": "Eliminates the need to encrypt data.",
+      "E": "Allows developers to control all patching related activities."
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "AWS managed services handle infrastructure provisioning, patching, and maintenance, which lowers operational complexity for customers and lets them deliver new solutions faster by focusing on application logic instead of infrastructure management.\nProviding complete control over the virtual infrastructure is a characteristic of IaaS services such as EC2, not managed services, which deliberately abstract away infrastructure management in exchange for reduced operational burden. Using a managed service does not eliminate the need to encrypt data, as data protection responsibilities including encryption at rest and in transit remain with the customer under the Shared Responsibility Model. Managed services remove patching responsibilities from the customer rather than giving developers control over them, as AWS handles all underlying patching and maintenance on the customer's behalf.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q307",
+    "domainId": 1,
+    "question": "What is the benefit of using an API to access AWS Services?",
+    "options": {
+      "A": "It improves the performance of AWS resources.",
+      "B": "It reduces the time needed to provision AWS resources.",
+      "C": "It reduces the number of developers necessary.",
+      "D": "It allows for programmatic management of AWS resources."
+    },
+    "answer": "D",
+    "explanation": "AWS APIs enable programmatic management of AWS resources, allowing developers to automate provisioning, configuration, and monitoring through code rather than manual console interactions.\nUsing an API to access AWS services does not inherently improve the performance of the underlying resources, as API access is a management interface rather than a performance enhancement mechanism. While automation through APIs can speed up workflows, the primary benefit is programmatic control rather than a reduction in provisioning time specifically. APIs enable developers to interact with AWS services through code, but they do not reduce the number of developers needed to manage an environment and may in fact require additional development skills.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q318",
+    "domainId": 1,
+    "question": "What are the benefits of implementing a tagging strategy for AWS resources? (Choose TWO)",
+    "options": {
+      "A": "Quickly identify resources that belong to a specific project.",
+      "B": "Quickly identify software solutions on AWS.",
+      "C": "Track API calls in your AWS account.",
+      "D": "Quickly identify deleted resources and their metadata.",
+      "E": "Track AWS spending across multiple resources."
+    },
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Tags are key-value metadata pairs that let you quickly identify which resources belong to specific projects and track AWS spending across those resources for cost allocation and organisational clarity.\nQuickly identifying software solutions on AWS describes browsing AWS Marketplace, which is unrelated to tagging resources within an account. Tracking API calls in an AWS account describes the function of AWS CloudTrail, which logs account activity rather than organising resources by metadata. Quickly identifying deleted resources and their metadata is not a function of tagging, as tags are attached to existing resources and are removed when resources are deleted.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q319",
+    "domainId": 1,
+    "question": "What are AWS shared controls?",
+    "options": {
+      "A": "Controls that are solely the responsibility of the customer based on the application they are deploying within AWS services.",
+      "B": "Controls that a customer inherits from AWS.",
+      "C": "Controls that apply to both the infrastructure layer and customer layers.",
+      "D": "Controls that the customer and AWS collaborate together upon to secure the infrastructure."
+    },
+    "answer": "D",
+    "explanation": "Shared controls are responsibilities where both AWS and the customer independently apply controls in their own respective domains, such as AWS patching its infrastructure while the customer patches their guest operating system.\nControls solely the responsibility of the customer describes customer-specific controls, not shared controls, as these apply only to the customer's side of the model. Controls that a customer inherits from AWS describes inherited controls, where compliance certifications and physical security measures are passed down from AWS to the customer, which is a separate category from shared controls. Controls that apply to both the infrastructure and customer layers is a misleading description because shared controls do not mean the same single control applies at both layers, but rather that each party manages their own version of the same type of control independently.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q320",
+    "domainId": 1,
+    "question": "Which design principles relate to performance efficiency in AWS? (Choose TWO)",
+    "options": {
+      "A": "Build multi-region architectures to better serve global customers.",
+      "B": "Apply security at all layers.",
+      "C": "Implement strong Identity and Access controls.",
+      "D": "Use serverless architectures.",
+      "E": "Enable audit logging."
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Multi-region architectures serve global customers with lower latency, and serverless architectures automatically scale to match demand without capacity planning, both being key design principles of the Performance Efficiency pillar.\nApplying security at all layers is a design principle of the Security pillar of the AWS Well-Architected Framework, not the Performance Efficiency pillar. Implementing strong identity and access controls is also a Security pillar principle focused on protecting resources through least privilege and access management, and is unrelated to performance efficiency. Enabling audit logging is a Security and Operational Excellence pillar practice used for compliance and incident investigation, and is not a Performance Efficiency design principle.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q329",
+    "domainId": 1,
+    "question": "Which of the following activities supports the Operational Excellence pillar of the AWS Well-Architected Framework?",
+    "options": {
+      "A": "Using AWS Trusted Advisor to find underutilized resources.",
+      "B": "Using AWS CloudTrail to record user activities.",
+      "C": "Using AWS CloudFormation to manage infrastructure as code.",
+      "D": "Deploying an application in multiple Availability Zones."
+    },
+    "answer": "C",
+    "explanation": "Using AWS CloudFormation to manage infrastructure as code supports the Operational Excellence pillar by enabling repeatable deployments, version-controlled changes, and automated rollbacks that improve and refine operational processes over time.\nUsing AWS Trusted Advisor to find underutilised resources is an activity that supports the Cost Optimization pillar by identifying opportunities to reduce unnecessary spending, rather than improving operational processes and procedures. Using AWS CloudTrail to record user activities supports the Security pillar by maintaining an audit trail of API calls and account activity for compliance and investigation purposes, rather than improving operational excellence. Deploying an application in multiple Availability Zones supports the Reliability pillar by ensuring workloads can withstand failures in a single location, rather than optimising operational processes.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q343",
+    "domainId": 1,
+    "question": "A company is using EC2 Instances to run their e-commerce site on the AWS platform. If the site becomes unavailable, the company will lose a significant amount of money for each minute the site is unavailable. Which design principle should the company use to minimize the risk of an outage?",
+    "options": {
+      "A": "Least Privilege.",
+      "B": "Pilot Light.",
+      "C": "Fault Tolerance.",
+      "D": "Multi-threading."
+    },
+    "answer": "C",
+    "explanation": "Fault tolerance is the ability of a system to continue operating without interruption when one or more components fail, achieved through redundancy across Availability Zones and automatic failover, directly minimising the risk of costly outages.\nLeast privilege is a security principle that restricts user and service permissions to the minimum required to perform their function, and has no bearing on system availability or outage prevention. Pilot light is a disaster recovery strategy that keeps a minimal version of the environment running in a secondary Region, which addresses recovery after an outage rather than preventing one through redundancy. Multi-threading is a software programming technique that allows concurrent execution of multiple tasks within a single application, and is unrelated to cloud architecture design for availability.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q354",
+    "domainId": 1,
+    "question": "Which of the following approaches will help you eliminate human error and automate the process of creating and updating your AWS environment?",
+    "options": {
+      "A": "Use Software test automation tools.",
+      "B": "Use AWS CodeDeploy to build and automate your AWS environment.",
+      "C": "Use code to provision and operate your AWS infrastructure.",
+      "D": "Migrate all of your applications to a dedicated host."
+    },
+    "answer": "C",
+    "explanation": "Using code to provision and operate your AWS infrastructure, commonly known as infrastructure as code, eliminates manual steps and the human errors that come with them, allowing environments to be created and updated consistently and repeatably.\nSoftware test automation tools verify application behaviour and quality but do not provision or manage cloud infrastructure. AWS CodeDeploy automates application deployments to compute services but is not a tool for provisioning or managing the broader AWS environment. Migrating applications to a dedicated host changes the underlying hardware allocation but does not automate environment creation or eliminate human error from infrastructure management.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q371",
+    "domainId": 1,
+    "question": "Which of the following is a best practice for making your application on AWS highly available?",
+    "options": {
+      "A": "Deploy the application to at least two Availability Zones",
+      "B": "Deploy the application across multiple AWS Regions",
+      "C": "Deploy the application code on at least two servers in the same Availability Zone",
+      "D": "Rewrite the application code to handle all incoming requests"
+    },
+    "answer": "A",
+    "explanation": "Deploying an application across at least two Availability Zones ensures that if one AZ experiences an outage, the application continues running in the other, providing high availability.\nDeploying across multiple AWS Regions provides geographic redundancy for disaster recovery but introduces significant complexity and cost, and is not the standard best practice for achieving high availability within a single application deployment. Deploying on multiple servers within the same Availability Zone improves redundancy at the server level but does not protect against an AZ-wide outage, leaving the application vulnerable to a single point of failure. Rewriting application code to handle all incoming requests on a single deployment does not address infrastructure failure and cannot provide high availability if the underlying infrastructure becomes unavailable.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q409",
+    "domainId": 1,
+    "question": "You want to create a backup of your data in another geographical location. Where should you create this backup?",
+    "options": {
+      "A": "In another Edge location.",
+      "B": "In another Region.",
+      "C": "In another VPC.",
+      "D": "In another Availability Zone."
+    },
+    "answer": "B",
+    "explanation": "Storing backups in another AWS Region places your data in a completely separate geographic location, protecting against Region-level disasters such as natural catastrophes or widespread outages.\nEdge locations are points of presence used by services such as Amazon CloudFront to cache and deliver content to users with low latency, and are not storage locations where backups can be created or maintained. A VPC is a logically isolated virtual network within a single AWS Region, and storing data in another VPC does not place it in a different geographical location. An Availability Zone is a physically separate data center within a single AWS Region, and while storing backups in another AZ improves resilience against localised failures, it does not satisfy the requirement for a different geographical location as multiple AZs share the same Region.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q420",
+    "domainId": 1,
+    "question": "What does the term “Economies of scale” mean?",
+    "options": {
+      "A": "It means that you save more when you consume more.",
+      "B": "It means as more time passes using AWS, you pay more for its services.",
+      "C": "It means that AWS will continuously lower costs as it grows.",
+      "D": "It means that you have the ability to pay as you go."
+    },
+    "answer": "C",
+    "explanation": "Economies of scale means that as AWS grows and aggregates more customer usage, it achieves lower per-unit costs and continuously passes those savings on to customers through regular price reductions.\nSaving more when you consume more describes volume-based discounts such as Reserved Instances or tiered pricing, which is a separate pricing concept rather than the definition of economies of scale. Paying more over time as usage increases describes the opposite of what economies of scale delivers, as AWS prices have consistently decreased over time rather than increased. The ability to pay as you go describes the pay-as-you-go billing model, which is a separate cloud adoption benefit unrelated to the cost reductions driven by aggregated purchasing power.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q439",
+    "domainId": 1,
+    "question": "Why are Serverless Architectures more economical than Server-based Architectures?",
+    "options": {
+      "A": "Serverless Architectures eliminate all networking costs associated with running applications",
+      "B": "With Server-based Architectures, compute resources continue to run all the time, but with Serverless Architectures, compute resources are only used when code is being executed",
+      "C": "When you reserve serverless capacity, you will get large discounts compared to server reservation",
+      "D": "With Serverless Architectures you have the ability to scale automatically up or down as demand changes"
+    },
+    "answer": "B",
+    "explanation": "Serverless architectures are more economical because compute resources are allocated only when code is executing. Server-based architectures require instances to run continuously, incurring charges even during idle periods.\nServerless architectures do not eliminate networking costs, as data transfer and API call charges still apply depending on the services used. Serverless services such as AWS Lambda do not offer reserved capacity pricing in the same way EC2 does, so there are no comparable reservation discounts. Auto-scaling is also available with server-based architectures through services like EC2 Auto Scaling, so the ability to scale automatically is not unique to serverless and does not explain its cost advantage.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q459",
+    "domainId": 1,
+    "question": "The owner of an E-Commerce application notices that the compute capacity requirements vary heavily from time to time. What makes AWS more economical than traditional data centers for this type of application?",
+    "options": {
+      "A": "AWS allows customers to launch powerful EC2 instances to handle spikes in load.",
+      "B": "AWS allows customers to pay upfront to get bigger discounts.",
+      "C": "AWS allows customers to launch and terminate EC2 instances based on demand.",
+      "D": "AWS allows customers to choose cheaper types of EC2 instances that best fit their needs."
+    },
+    "answer": "C",
+    "explanation": "AWS allows customers to launch and terminate EC2 instances based on real-time demand, so during low-traffic periods they stop paying for unused capacity, unlike traditional data centers where hardware sits idle regardless of utilization.\nLaunching powerful instances to handle spikes in load describes vertical scaling, which still results in over-provisioned and idle capacity during low-traffic periods and does not address the core economic inefficiency of traditional data centers. Paying upfront to get bigger discounts describes Reserved Instance pricing, which is a commitment-based model that reduces per-unit cost but does not eliminate the problem of paying for capacity during periods of low demand. Choosing cheaper instance types reduces the unit cost of compute but does not eliminate idle capacity costs, as the instances would still run and incur charges regardless of whether they are actively being used.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q467",
+    "domainId": 1,
+    "question": "Which of the following are AWS cloud design principles? (Choose TWO)",
+    "options": {
+      "A": "Reserved capacity instead of on demand",
+      "B": "Loose coupling over tight coupling",
+      "C": "Servers instead of managed services",
+      "D": "Disposable resources instead of fixed servers",
+      "E": "Multi-AZ deployments instead of multi-region deployments"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Loose coupling minimises dependencies between components so that failures do not cascade, and treating resources as disposable means designing for failure by replacing instances rather than fixing them, enabling rapid recovery.\nReserved capacity instead of on demand is the opposite of a cloud design principle, as cloud encourages provisioning resources dynamically based on actual need. Servers instead of managed services contradicts the cloud principle of offloading operational burden to AWS wherever possible. Multi-AZ versus multi-region is not a recognised AWS design principle and presents a false trade-off, as both are valid availability strategies depending on the use case.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q514",
+    "domainId": 1,
+    "question": "How can you increase your application’s fault-tolerance while it is being hosted in AWS?",
+    "options": {
+      "A": "Deploy your application across multiple EC2 instances.",
+      "B": "Deploy your application across multiple Availability Zones.",
+      "C": "Host your application on one powerful EC2 instance type instead of multiple smaller instances.",
+      "D": "Deploy the underlying application resources across multiple subnets."
+    },
+    "answer": "B",
+    "explanation": "Deploying across multiple Availability Zones ensures that if one AZ experiences a failure, the application continues running in another, providing fault tolerance through physical redundancy within a Region.\nDeploying across multiple EC2 instances improves capacity and availability within a single location but does not protect against an AZ-level failure if all instances are in the same zone. Hosting on one powerful EC2 instance consolidates the application onto a single point of failure, which reduces fault tolerance rather than increasing it. Deploying across multiple subnets improves network segmentation but does not provide fault tolerance unless those subnets span multiple Availability Zones.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q517",
+    "domainId": 1,
+    "question": "Which of the following is a benefit of the \"Loose Coupling\" architecture principle?",
+    "options": {
+      "A": "It eliminates the need for change management.",
+      "B": "It allows for Cross-Region Replication.",
+      "C": "It helps AWS customers reduce Privileged Access to AWS resources.",
+      "D": "It allows individual application components or services to be modified without affecting other components."
+    },
+    "answer": "D",
+    "explanation": "Loose coupling allows individual components to be modified, updated, or replaced independently without affecting other parts of the system, enabling faster development cycles and more resilient architectures.\nEliminating the need for change management is incorrect because change management remains necessary in any architecture. Loose coupling makes changes safer and less disruptive, but does not remove the need to manage them. Cross-Region Replication is a data redundancy and disaster recovery strategy that is unrelated to the architectural principle of reducing dependencies between components. Reducing Privileged Access to AWS resources is a security practice related to the principle of least privilege, not a benefit of loose coupling.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q533",
+    "domainId": 1,
+    "question": "Which pillar of the AWS Well-Architected Framework provides recommendations to help customers select the right compute resources based on workload requirements?",
+    "options": {
+      "A": "Operational Excellence.",
+      "B": "Security.",
+      "C": "Performance Efficiency.",
+      "D": "Reliability."
+    },
+    "answer": "C",
+    "explanation": "The Performance Efficiency pillar of the Well-Architected Framework focuses on selecting the right resource types and sizes based on workload requirements to use computing resources efficiently.\nOperational Excellence focuses on running and monitoring systems to deliver business value and continually improving processes and procedures, and does not specifically address compute resource selection based on workload requirements. Security focuses on protecting information and systems through risk assessment, access management, and controls, and is not concerned with matching compute resources to workload performance needs. Reliability focuses on ensuring a workload can recover from failures and dynamically acquire resources to meet demand, but its emphasis is on resilience and recovery rather than on selecting the right compute resource types for efficiency.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q541",
+    "domainId": 1,
+    "question": "Which is a recommended pattern for designing a highly available architecture on AWS?",
+    "options": {
+      "A": "Ensure that components have low-latency network connectivity.",
+      "B": "Run enough Amazon EC2 instances to operate at peak load.",
+      "C": "Ensure that the application is designed to accommodate failure of any single component.",
+      "D": "Use a monolithic application that handles all operations."
+    },
+    "answer": "C",
+    "explanation": "Designing an application to accommodate the failure of any single component, through redundancy, health checks, and automatic failover, is the core principle of designing for failure and is the recommended pattern for achieving high availability on AWS.\nEnsuring low-latency network connectivity is a performance optimisation consideration that improves user experience, but low latency alone does not protect an application from component failures or maintain availability during an outage. Running enough EC2 instances to handle peak load addresses capacity planning but does not build in redundancy or fault tolerance, meaning a single component failure could still bring down the application. A monolithic application that handles all operations consolidates functionality into a single unit, which creates a single point of failure and is the opposite of a highly available architecture that can survive individual component failures.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q546",
+    "domainId": 1,
+    "question": "A user is planning to launch two additional Amazon EC2 instances to increase availability. Which action should the user take?",
+    "options": {
+      "A": "Launch the instances across multiple Availability Zones in a single AWS Region.",
+      "B": "Launch the instances as EC2 Reserved Instances in the same AWS Region and the same Availability Zone.",
+      "C": "Launch the instances in multiple AWS Regions but in the same Availability Zone.",
+      "D": "Launch the instances as EC2 Spot Instances in the same AWS Region but in different Availability Zones."
+    },
+    "answer": "A",
+    "explanation": "Launching instances across multiple Availability Zones within a single Region provides high availability by ensuring that if one Availability Zone experiences a failure, the instances in the remaining zones continue serving traffic without interruption.\nLaunching Reserved Instances in the same Region and Availability Zone secures a capacity reservation and reduces cost through a billing commitment, but concentrating both instances in a single Availability Zone creates a single point of failure with no availability benefit. Launching instances in multiple Regions but in the same Availability Zone type introduces geographic separation at the Regional level but does not protect against failures within a Region since Availability Zones within each Region remain independent failure domains. Launching Spot Instances in different Availability Zones uses spare EC2 capacity at reduced cost, but Spot Instances can be interrupted by AWS at any time, making them unsuitable as a reliability mechanism for increasing availability.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q557",
+    "domainId": 1,
+    "question": "When architecting cloud applications, which of the following are a key design principle?",
+    "options": {
+      "A": "Use the largest instance possible.",
+      "B": "Provision capacity for peak load.",
+      "C": "Use the Scrum development process.",
+      "D": "Implement elasticity."
+    },
+    "answer": "D",
+    "explanation": "Elasticity is a key cloud design principle that means automatically scaling compute resources up or down based on actual demand, avoiding over-provisioning and reducing costs compared to traditional fixed-capacity infrastructure.\nUsing the largest instance possible is the opposite of good cloud design, as it leads to over-provisioning and unnecessary cost rather than matching capacity to actual demand. Provisioning capacity for peak load is a traditional on-premises approach that results in idle resources during normal periods, which cloud elasticity is specifically designed to replace. Using the Scrum development process is a software delivery methodology unrelated to cloud architecture design principles.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q561",
+    "domainId": 1,
+    "question": "Which of the following is a benefit of using the AWS Cloud?",
+    "options": {
+      "A": "Permissive security removes the administrative burden.",
+      "B": "Ability to focus on revenue-generating activities.",
+      "C": "Control over cloud network hardware.",
+      "D": "Choice of specific cloud hardware vendors."
+    },
+    "answer": "B",
+    "explanation": "AWS offloads infrastructure management to its own teams, freeing customers from data centre operations so they can redirect time and resources toward product development, customer engagement, and other revenue-generating activities.\nPermissive security is not an AWS benefit and directly contradicts AWS's security model, which is built on the principle of least privilege and layered access controls. Control over cloud network hardware is not available to customers, as AWS manages all physical networking infrastructure on their behalf. Choice of specific cloud hardware vendors is not offered to customers, as AWS selects and manages its own hardware independently of customer preferences.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q574",
+    "domainId": 1,
+    "question": "Which of the following is a cloud architectural design principle?",
+    "options": {
+      "A": "Scale up not out.",
+      "B": "Loosely couple components.",
+      "C": "Build monolithic systems.",
+      "D": "Use commercial database software."
+    },
+    "answer": "B",
+    "explanation": "Loosely coupling components means designing them to interact through well-defined interfaces such as queues or APIs, so that changes or failures in one component do not directly impact others.\nScaling up not out describes vertical scaling, which is an on-premises approach that cloud best practices discourage in favour of horizontal scaling through adding more instances. Building monolithic systems consolidates all application components into a single tightly coupled unit, which is the opposite of the cloud design principle of breaking applications into loosely coupled, independently deployable components. Using commercial database software is a technology procurement decision rather than an architectural design principle, and cloud best practices favour managed and purpose-built database services over proprietary commercial software where appropriate.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q590",
+    "domainId": 1,
+    "question": "Which of the following is an important architectural design principle when designing cloud applications?",
+    "options": {
+      "A": "Use multiple Availability Zones.",
+      "B": "Use tightly coupled components.",
+      "C": "Use open source software.",
+      "D": "Provision extra capacity."
+    },
+    "answer": "A",
+    "explanation": "Using multiple Availability Zones ensures high availability by distributing your application across physically isolated data centres, so that a failure in any single zone does not take the entire application offline.\nUsing tightly coupled components is an anti-pattern in cloud architecture, as tight dependencies between components mean a failure in one can cascade and bring down others. Using open source software is a development and licensing choice that has no bearing on cloud architectural design principles for availability or resilience. Provisioning extra capacity contradicts the cloud principle of elasticity, which favours scaling dynamically based on actual demand rather than guessing and over-provisioning upfront.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q651",
+    "domainId": 1,
+    "question": "Which of the following deployment models enables customers to fully trade their capital IT expenses for operational expenses?",
+    "options": {
+      "A": "On-premises",
+      "B": "Hybrid",
+      "C": "Cloud",
+      "D": "Platform as a service"
+    },
+    "answer": "C",
+    "explanation": "The cloud deployment model fully replaces upfront capital expenditure on hardware and facilities with variable operational expenses based on actual usage, eliminating the need to own or maintain physical infrastructure.\nAn on-premises deployment requires the organisation to purchase, own, and maintain all physical hardware and facilities, which preserves rather than eliminates capital expenditure and offers no conversion to operational expenses. A hybrid deployment combines on-premises infrastructure with cloud resources, meaning capital expenditure on owned hardware is retained alongside operational cloud costs rather than being fully traded for operational expenses. Platform as a service is a cloud service delivery model in which a provider manages a platform for building and running applications, and is not a deployment model describing where infrastructure is hosted.",
+    "source": "practice-exam-16.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q763",
+    "domainId": 1,
+    "question": "What does it mean if a user deploys a hybrid cloud architecture on AWS?",
+    "options": {
+      "A": "All resources run using on-premises infrastructure.",
+      "B": "Some resources run on-premises and some run in a colocation center.",
+      "C": "All resources run in the AWS Cloud.",
+      "D": "Some resources run on-premises and some run in the AWS Cloud."
+    },
+    "answer": "D",
+    "explanation": "A hybrid cloud architecture means some resources run on-premises in existing data centres while other resources run in the AWS Cloud, connected through services such as AWS VPN or AWS Direct Connect.\nRunning all resources using on-premises infrastructure describes a fully on-premises deployment with no cloud involvement, which is the opposite of a cloud architecture. Running some resources on-premises and some in a colocation centre describes a split between owned and rented physical data centre space, but does not involve any cloud provider and therefore does not constitute a hybrid cloud architecture. Running all resources in the AWS Cloud describes a fully cloud-native deployment, which is a public cloud architecture rather than a hybrid one.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q831",
+    "domainId": 1,
+    "question": "A batch workload takes 5 hours to finish on an Amazon EC2 instance. The amount of data to be processed doubles monthly and the processing time is proportional. What is the best cloud architecture to address this consistently growing demand?",
+    "options": {
+      "A": "Run the application on a bigger EC2 instance size.",
+      "B": "Switch to an EC2 instance family that better matches batch requirements.",
+      "C": "Distribute the application across multiple EC2 instances and run the workload in parallel.",
+      "D": "Run the application on a bare metal EC2 instance."
+    },
+    "answer": "C",
+    "explanation": "Distributing the workload across multiple EC2 instances and running in parallel applies horizontal scaling, which handles consistently growing demand by adding more machines rather than relying on a single larger instance that will eventually hit capacity limits.\nRunning the application on a bigger EC2 instance applies vertical scaling, which has an upper size limit and creates a single point of failure, making it unsuitable for consistently doubling workloads over time. Switching to a different EC2 instance family optimises for workload characteristics such as compute or memory intensity, but does not address the problem of consistently growing processing volume. Running on a bare metal EC2 instance provides direct access to physical hardware without a hypervisor layer, which can improve performance for certain workloads but does not scale to handle doubling data volumes.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q861",
+    "domainId": 1,
+    "question": "What is one of the core principles to follow when designing a highly available application in the AWS Cloud?",
+    "options": {
+      "A": "Design using a serverless architecture",
+      "B": "Assume that all components within an application can fail",
+      "C": "Design AWS Auto Scaling into every application",
+      "D": "Design all components using open-source code"
+    },
+    "answer": "B",
+    "explanation": "Assuming that all components can fail is a core principle of high availability design, as it drives architects to build redundancy, health checks, and automatic failover into every layer of an application rather than relying on any single component remaining available.\nDesigning using a serverless architecture is a valid approach for some workloads but is not a universal principle for high availability, as server-based architectures can also achieve high availability through redundancy and failover. Designing Auto Scaling into every application is a good practice for scalability but is not a universal requirement for high availability, as some applications achieve availability through redundancy rather than scaling. Using open-source code is a software development choice that has no bearing on whether an application is designed to remain available when components fail.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q865",
+    "domainId": 1,
+    "question": "Using AWS Config to record, audit, and evaluate changes to AWS resources to enable traceability is an example of which AWS Well-Architected Framework pillar?",
+    "options": {
+      "A": "Security",
+      "B": "Operational excellence",
+      "C": "Performance efficiency",
+      "D": "Cost optimization"
+    },
+    "answer": "A",
+    "explanation": "Using AWS Config to record, audit, and evaluate changes to resources is an example of enabling traceability, which is a core design principle of the Security pillar focused on monitoring and detective controls.\nOperational Excellence focuses on running and improving operations through automation and responding to events, not on detective monitoring of resource changes for traceability. Performance Efficiency focuses on using computing resources efficiently to meet workload requirements as demand changes over time. Cost Optimization focuses on eliminating unnecessary spend and selecting the right resource types to reduce overall costs.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q897",
+    "domainId": 1,
+    "question": "A company has distributed its workload on both the AWS Cloud and some on-premises servers. What type of architecture is this?",
+    "options": {
+      "A": "Virtual private network",
+      "B": "Virtual private cloud",
+      "C": "Hybrid cloud",
+      "D": "Private cloud"
+    },
+    "answer": "C",
+    "explanation": "A hybrid cloud architecture distributes workloads between on-premises servers and the AWS Cloud, combining existing data center infrastructure with cloud resources connected via VPN or Direct Connect.\nA virtual private network is a connectivity technology that creates encrypted tunnels between networks, and is not itself an architecture type describing how workloads are distributed between cloud and on-premises environments. A virtual private cloud is a logically isolated network environment within AWS, and describes a networking construct rather than a deployment model that spans both cloud and on-premises infrastructure. A private cloud is a deployment model where all infrastructure is dedicated to a single organisation and hosted either on-premises or by a third party, with no shared public cloud component.",
+    "source": "practice-exam-21.md",
     "isMultiAnswer": false
   }
 ]
