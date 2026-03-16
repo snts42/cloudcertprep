@@ -257,11 +257,6 @@ export function DomainPractice() {
               <p className="text-sm text-text-muted">
                 <span className="text-aws-orange font-semibold">Smart Practice:</span> Questions you've gotten wrong will appear more frequently. Questions you consistently get right will appear less often.
               </p>
-              {!user && (
-                <p className="text-sm text-text-muted mt-2">
-                  <span className="text-warning font-medium">Sign in</span> to unlock spaced repetition and track your progress. Guest sessions use random question selection.
-                </p>
-              )}
             </div>
 
             <div className="flex gap-4">
@@ -478,6 +473,11 @@ export function DomainPractice() {
                 
                 {currentQuestion.explanation && (
                   <div className="border-t border-text-muted/20 pt-2 mt-2">
+                    {currentQuestion.source === 'ai-generated' && (
+                      <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 mb-2">
+                        <span>✦</span> AI Generated
+                      </span>
+                    )}
                     <p className="text-text-muted text-xs md:text-sm font-medium mb-1">Explanation:</p>
                     <div className="text-text-muted text-xs md:text-sm space-y-2">
                       {currentQuestion.explanation.split('\n').filter(Boolean).map((para, i) => (
