@@ -116,10 +116,10 @@
       "A": "AWS Identity and Access Management (IAM) user",
       "B": "Infrastructure Event Management (IEM) engineer",
       "C": "AWS Consulting Partners",
-      "D": "Technical Account Manager (TAM)"
+      "D": "AWS Technical Account Manager (TAM)"
     },
     "answer": "D",
-    "explanation": "The Technical Account Manager is included in the Enterprise Support plan as the primary dedicated contact who provides proactive guidance and coordinates AWS support across your account.\nAn AWS IAM user is an identity within an AWS account used to authenticate and authorise access to AWS services, and is not a support contact or a role within the AWS Support organisation. An Infrastructure Event Management engineer provides architectural guidance and real-time support during specific planned events under the Enterprise Support plan, but is engaged for specific events rather than serving as the ongoing primary support contact. AWS Consulting Partners are professional services firms in the AWS Partner Network that help customers design and build on AWS, and are external organisations rather than AWS Support personnel assigned to an account.",
+    "explanation": "The AWS Technical Account Manager is included in the Enterprise Support plan as the primary dedicated contact who provides proactive guidance and coordinates AWS support across your account.\nAn AWS IAM user is an identity within an AWS account used to authenticate and authorise access to AWS services, and is not a support contact or a role within the AWS Support organisation. An Infrastructure Event Management engineer provides architectural guidance and real-time support during specific planned events under the Enterprise Support plan, but is engaged for specific events rather than serving as the ongoing primary support contact. AWS Consulting Partners are professional services firms in the AWS Partner Network that help customers design and build on AWS, and are external organisations rather than AWS Support personnel assigned to an account.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
   },
@@ -149,7 +149,7 @@
       "D": "AWS OpsWorks"
     },
     "answer": "C",
-    "explanation": "AWS Quick Start reference deployments provide automated gold-standard templates that deploy popular IT solutions on AWS in minutes, giving administrators a fast path to production-ready environments built on AWS best practices.\nAmazon Aurora is a fully managed relational database compatible with MySQL and PostgreSQL, and is a database service with no capability to deploy or provision third-party technologies or solutions. Amazon CloudWatch collects metrics, logs, and event data from AWS services and resources to provide operational monitoring and alerting, and is a monitoring service with no deployment or provisioning capability. AWS OpsWorks was a configuration management service that used Chef and Puppet to automate server configuration, and while it could automate some infrastructure tasks it is not a pre-built deployment resource for rapidly deploying popular third-party technologies with minimal effort. Note: AWS OpsWorks was deprecated in 2024.",
+    "explanation": "AWS Quick Start reference deployments provide automated gold-standard templates that deploy popular IT solutions on AWS in minutes, giving administrators a fast path to production-ready environments built on AWS best practices.\nAmazon Aurora is a fully managed relational database compatible with MySQL and PostgreSQL, and is a database service with no capability to deploy or provision third-party technologies or solutions. Amazon CloudWatch collects metrics, logs, and event data from AWS services and resources to provide operational monitoring and alerting, and is a monitoring service with no deployment or provisioning capability. AWS OpsWorks (deprecated) was a configuration management service that used Chef and Puppet to automate server configuration, and while it could automate some infrastructure tasks it is not a pre-built deployment resource for rapidly deploying popular third-party technologies with minimal effort. Note: AWS OpsWorks was deprecated in 2024.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
   },
@@ -690,7 +690,7 @@
   {
     "id": "q165",
     "domainId": 4,
-    "question": "Question Where should a company go to search software listings from independent software vendors to find, test, buy, and deploy software that runs on AWS?",
+    "question": "Where should a company go to search software listings from independent software vendors to find, test, buy, and deploy software that runs on AWS?",
     "options": {
       "A": "AWS Marketplace",
       "B": "AWS Service Catalog",
@@ -828,7 +828,7 @@
     "question": "A company has created a solution that helps AWS customers improve their architectures on AWS. Which AWS program may support this company?",
     "options": {
       "A": "APN Consulting Partners",
-      "B": "AWS TAM",
+      "B": "AWS Technical Account Manager",
       "C": "APN Technology Partners",
       "D": "AWS Professional Services"
     },
@@ -972,7 +972,7 @@
   {
     "id": "q279",
     "domainId": 4,
-    "question": "What is the minimum level of AWS support that provides 24x7 access to technical support engineers via phone and chat?",
+    "question": "What is the minimum level of AWS support that provides 24/7 access to technical support engineers via phone and chat?",
     "options": {
       "A": "Enterprise Support",
       "B": "Developer Support",
@@ -1361,10 +1361,10 @@
     "domainId": 4,
     "question": "Which features are included in the AWS Business Support Plan?",
     "options": {
-      "A": "24x7 access to customer service",
+      "A": "24/7 access to customer service",
       "B": "Access to Cloud Support Engineers via email only during business hours",
       "C": "Access to the Infrastructure Event Management (IEM) feature for additional fee",
-      "D": "24x7 access to the TAM feature",
+      "D": "24/7 access to the Technical Account Manager feature",
       "E": "Partial access to the core Trusted Advisor checks"
     },
     "answer": [
@@ -1695,7 +1695,7 @@
       "D": "AWS Security Hub"
     },
     "answer": "C",
-    "explanation": "The AWS Health Dashboard at status.aws.amazon.com provides real-time and historical information about the availability and operational health of all AWS services across all Regions.\nThe AWS Billing Dashboard is accessed through the AWS Management Console and displays cost and usage summaries for your account, and is not accessible at the status.aws.amazon.com URL. AWS Cost Explorer is a cost management tool for visualising and analysing AWS spending patterns over time, and is accessed through the billing section of the AWS Management Console rather than the public status URL. AWS Security Hub provides a centralised view of security alerts and compliance status across an AWS environment, and is a security posture management tool accessed through the AWS Management Console rather than the public status URL.\nWhy this question was updated Option C used the outdated name AWS Service Health Dashboard which has been updated to AWS Health Dashboard. Options B and D used fabricated service names and have been replaced with AWS Cost Explorer and AWS Security Hub. Domain reassigned to Billing, Pricing, and Support as the exam guide lists AWS Health Dashboard under Task Statement 4.3.",
+    "explanation": "The AWS Health Dashboard at status.aws.amazon.com provides real-time and historical information about the availability and operational health of all AWS services across all Regions.\nThe AWS Billing Dashboard is accessed through the AWS Management Console and displays cost and usage summaries for your account, and is not accessible at the status.aws.amazon.com URL. AWS Cost Explorer is a cost management tool for visualising and analysing AWS spending patterns over time, and is accessed through the billing section of the AWS Management Console rather than the public status URL. AWS Security Hub provides a centralised view of security alerts and compliance status across an AWS environment, and is a security posture management tool accessed through the AWS Management Console rather than the public status URL.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -2414,7 +2414,7 @@
       "D": "Use Amazon CloudWatch to monitor the use of services"
     },
     "answer": "B",
-    "explanation": "Using separate AWS accounts for production and non-production workloads naturally isolates costs, making it easy to track and attribute expenses to each environment independently.",
+    "explanation": "Using separate AWS accounts for production and non-production workloads isolates costs at the account level, allowing billing to naturally reflect each environment's consumption and making it straightforward to attribute and review costs independently.\nCreating IAM roles for production and non-production workloads controls who can access each environment's resources but does not isolate or separately track the costs incurred by each environment, as IAM roles are access control constructs rather than billing boundaries.\nUsing Amazon EC2 for non-production and other services for production workloads segments the infrastructure by service type rather than by environment boundary, which does not provide clean cost isolation and makes cost tracking more complex rather than simpler.\nUsing Amazon CloudWatch to monitor service usage provides operational visibility into resource consumption and can trigger cost-related alerts, but monitoring usage is not the same as isolating costs between environments; CloudWatch does not create billing boundaries between production and non-production workloads.",
     "source": "practice-exam-18.md",
     "isMultiAnswer": false
   },
@@ -2477,12 +2477,12 @@
     "question": "Which AWS offering enables customers to find, buy, and immediately start using software solutions in their AWS environment?",
     "options": {
       "A": "AWS Config",
-      "B": "AWS OpsWorks",
-      "C": "AWS SDK",
+      "B": "AWS Service Catalog",
+      "C": "AWS Partner Network (APN)",
       "D": "AWS Marketplace"
     },
     "answer": "D",
-    "explanation": "AWS Marketplace is a digital catalog where customers can find, buy, and immediately deploy software solutions on AWS, with flexible pricing and one-click launch capabilities.",
+    "explanation": "AWS Marketplace is a digital catalogue of thousands of software products from independent software vendors that customers can find, subscribe to, and immediately deploy into their AWS environment, often with flexible licensing models including pay-as-you-go and BYOL.\nAWS Config is a service that continuously monitors and records resource configurations and evaluates them against compliance rules, providing governance and change management capabilities rather than a software procurement catalogue.\nAWS Service Catalog allows organisations to create and manage approved portfolios of IT services for internal use, enabling governance and self-service deployment of pre-approved resources, but it is an internal governance tool rather than an external marketplace where customers can find and purchase third-party software solutions.\nAWS Partner Network is the global partner programme for companies that build with or sell AWS, providing training, certification, and co-selling benefits, and is a partner ecosystem programme rather than a place for customers to purchase and deploy software solutions.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
@@ -2580,7 +2580,7 @@
       "A",
       "C"
     ],
-    "explanation": "AWS Trusted Advisor checks S3 bucket permissions to identify those with overly permissive public access that could expose data, and verifies that MFA is enabled on the root user account, both falling under its Security checks category.\nAWS service outages are tracked by the AWS Health Dashboard, which provides real-time and historical status information about AWS services across all Regions, and are not a category of checks performed by Trusted Advisor. Available software patches for EC2 instance operating systems are identified by Amazon Inspector and AWS Systems Manager Patch Manager, and are not a category of recommendations provided by Trusted Advisor. The number of users in the account is visible through the IAM console and IAM credential reports, and is not a recommendation category in Trusted Advisor, which focuses on security, cost, performance, fault tolerance, and service limits.\nWhy this question was updated Domain reassigned to Billing, Pricing, and Support as Trusted Advisor is explicitly listed under Task Statement 4.2.",
+    "explanation": "AWS Trusted Advisor checks S3 bucket permissions to identify those with overly permissive public access that could expose data, and verifies that MFA is enabled on the root user account, both falling under its Security checks category.\nAWS service outages are tracked by the AWS Health Dashboard, which provides real-time and historical status information about AWS services across all Regions, and are not a category of checks performed by Trusted Advisor. Available software patches for EC2 instance operating systems are identified by Amazon Inspector and AWS Systems Manager Patch Manager, and are not a category of recommendations provided by Trusted Advisor. The number of users in the account is visible through the IAM console and IAM credential reports, and is not a recommendation category in Trusted Advisor, which focuses on security, cost, performance, fault tolerance, and service limits.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": true
   },
@@ -3262,7 +3262,7 @@
     "domainId": 4,
     "question": "AnyCompany recently purchased Example Corp. Both companies use AWS resources, and AnyCompany wants a single aggregated bill. Which option allows AnyCompany to receive a single bill?",
     "options": {
-      "A": "Example Corp. must submit a request to its AWS solutions architect or AWS technical account manager to link the accounts and consolidate billing",
+      "A": "Example Corp. must submit a request to its AWS Solutions Architect or AWS Technical Account Manager to link the accounts and consolidate billing",
       "B": "AnyCompany must create a new support case in the AWS Support Center requesting that both bills be combined",
       "C": "Send an invitation to join the organization from AnyCompany's AWS Organizations master account to Example Corp",
       "D": "Migrate the Example Corp. VPCs, Amazon EC2 instances, and other resources into the AnyCompany AWS account"

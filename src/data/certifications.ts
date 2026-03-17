@@ -33,9 +33,9 @@ export const CERTIFICATIONS: Record<string, Certification> = {
     examTimeSeconds: 90 * 60,
     passingScore: 700,
     domains: [
-      { id: 1, name: 'Cloud Concepts', questionCount: 180, examProportion: 0.24 },
-      { id: 2, name: 'Security & Compliance', questionCount: 231, examProportion: 0.30 },
-      { id: 3, name: 'Cloud Technology & Services', questionCount: 350, examProportion: 0.34 },
+      { id: 1, name: 'Cloud Concepts', questionCount: 143, examProportion: 0.24 },
+      { id: 2, name: 'Security & Compliance', questionCount: 248, examProportion: 0.30 },
+      { id: 3, name: 'Cloud Technology & Services', questionCount: 367, examProportion: 0.34 },
       { id: 4, name: 'Billing, Pricing & Support', questionCount: 224, examProportion: 0.12 },
     ],
     status: 'active',

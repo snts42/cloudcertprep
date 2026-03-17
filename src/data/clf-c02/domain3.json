@@ -1,5 +1,20 @@
 [
   {
+    "id": "q002",
+    "domainId": 3,
+    "question": "Which of the following is an example of horizontal scaling in the AWS Cloud?",
+    "options": {
+      "A": "Replacing an existing EC2 instance with a larger, more powerful one",
+      "B": "Increasing the compute capacity of a single EC2 instance to address the growing demands of an application",
+      "C": "Adding more RAM capacity to an EC2 instance",
+      "D": "Adding more EC2 instances of the same size to handle an increase in traffic"
+    },
+    "answer": "D",
+    "explanation": "Horizontal scaling means adding more instances of the same size to distribute load, while vertical scaling means increasing the capacity of a single instance.\nReplacing an existing instance with a larger one is vertical scaling, not horizontal. Increasing the compute capacity of a single instance describes vertical scaling, which is the opposite of horizontal scaling. Adding more RAM to a single instance is another form of vertical scaling, as it increases the power of one instance rather than adding more instances.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q007",
     "domainId": 3,
     "question": "A company has developed an eCommerce web application on AWS. What should they do to ensure that the application has the highest level of availability?",
@@ -44,7 +59,7 @@
       "D": "AWS Application Discovery Service"
     },
     "answer": "B",
-    "explanation": "AWS Database Migration Service is purpose-built for migrating databases to AWS with minimal downtime, keeping the source database fully operational throughout the migration process.\nAWS OpsWorks is a configuration management service using Chef and Puppet for automating server configuration and has no capability for database migration. AWS Server Migration Service is designed for migrating virtual machines from on-premises environments to AWS, not for migrating databases. AWS Application Discovery Service helps plan migrations by collecting data about on-premises servers and dependencies, but does not perform the actual migration of databases or any other workloads.",
+    "explanation": "AWS Database Migration Service is purpose-built for migrating databases to AWS with minimal downtime, keeping the source database fully operational throughout the migration process.\nAWS OpsWorks (deprecated) is a configuration management service using Chef and Puppet for automating server configuration and has no capability for database migration. AWS Server Migration Service is designed for migrating virtual machines from on-premises environments to AWS, not for migrating databases. AWS Application Discovery Service helps plan migrations by collecting data about on-premises servers and dependencies, but does not perform the actual migration of databases or any other workloads.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
   },
@@ -123,7 +138,7 @@
       "D": "Amazon ElastiCache"
     },
     "answer": "D",
-    "explanation": "Amazon ElastiCache is an in-memory caching service that provides sub-millisecond response times for frequently accessed data, making it the purpose-built solution for optimising application response time in a two-tier web architecture.\nAWS OpsWorks is a configuration management service that automates server setup and maintenance using Chef and Puppet, and has no capability to store data or improve application response times through caching. AWS Storage Gateway connects on-premises environments to AWS cloud storage for hybrid storage integration, and is a storage bridging service rather than a low-latency caching layer for web application data. Amazon EBS provides persistent block storage volumes that attach directly to EC2 instances for low-latency disk access, and while it offers faster access than object storage, it does not provide the sub-millisecond in-memory performance that ElastiCache delivers for frequently accessed data.",
+    "explanation": "Amazon ElastiCache is an in-memory caching service that provides sub-millisecond response times for frequently accessed data, making it the purpose-built solution for optimising application response time in a two-tier web architecture.\nAWS OpsWorks (deprecated) is a configuration management service that automates server setup and maintenance using Chef and Puppet, and has no capability to store data or improve application response times through caching. AWS Storage Gateway connects on-premises environments to AWS cloud storage for hybrid storage integration, and is a storage bridging service rather than a low-latency caching layer for web application data. Amazon EBS provides persistent block storage volumes that attach directly to EC2 instances for low-latency disk access, and while it offers faster access than object storage, it does not provide the sub-millisecond in-memory performance that ElastiCache delivers for frequently accessed data.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
   },
@@ -252,21 +267,6 @@
     },
     "answer": "C",
     "explanation": "Amazon CloudWatch collects and monitors metrics, logs, and events from EC2 instances, enabling you to set alarms and visualise performance data to diagnose availability and performance issues affecting your application.\nAWS Lambda is a serverless compute service that runs code in response to events and has no capability for monitoring the performance or availability of EC2 instances. AWS Config records and evaluates configuration changes to AWS resources for compliance and auditing purposes, but does not collect performance metrics or help troubleshoot availability issues. AWS CloudTrail records API calls and user activity across your AWS account for auditing and governance purposes, but does not monitor instance performance metrics or application availability.",
-    "source": "practice-exam-1.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q046",
-    "domainId": 3,
-    "question": "Your company is developing a critical web application in AWS, and the security of the application is a top priority. Which of the following AWS services will provide infrastructure security optimization recommendations?",
-    "options": {
-      "A": "AWS Shield",
-      "B": "AWS Management Console",
-      "C": "AWS Secrets Manager",
-      "D": "AWS Trusted Advisor"
-    },
-    "answer": "D",
-    "explanation": "AWS Trusted Advisor inspects your AWS environment and provides real-time recommendations across five categories including security, cost optimisation, performance, fault tolerance, and service limits, helping you follow AWS best practices.\nAWS Shield is a managed DDoS protection service that defends against distributed denial of service attacks, and does not provide broad infrastructure security recommendations. AWS Management Console is the web-based interface for accessing and managing AWS services, and does not analyse or make recommendations about your environment. AWS Secrets Manager is a service for storing, rotating, and managing access to secrets such as database credentials and API keys, and does not provide infrastructure optimisation recommendations.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
   },
@@ -416,25 +416,6 @@
     "explanation": "Amazon Athena lets you run standard SQL queries directly against data stored in S3 without loading it into a database first, making it the purpose-built service for querying datasets directly from S3.\nAWS Glue is a serverless ETL service for discovering, preparing, and transforming data for analytics pipelines, not for running ad hoc SQL queries directly against S3. Amazon EMR provides managed clusters for processing large datasets using frameworks like Spark and Hadoop, but requires provisioning infrastructure rather than querying S3 directly with standard SQL. Amazon CloudSearch is a managed search service for adding full-text search functionality to applications and has no capability for SQL-based data querying.",
     "source": "practice-exam-10.md",
     "isMultiAnswer": false
-  },
-  {
-    "id": "q078",
-    "domainId": 3,
-    "question": "Which AWS services can be used to gather information about AWS account activity?",
-    "options": {
-      "A": "Amazon CloudFront",
-      "B": "AWS Cloud9",
-      "C": "AWS CloudTrail",
-      "D": "AWS CloudHSM",
-      "E": "Amazon CloudWatch"
-    },
-    "answer": [
-      "C",
-      "E"
-    ],
-    "explanation": "AWS CloudTrail logs all API calls and account activity across an AWS account, providing a complete audit trail of who did what and when. Amazon CloudWatch collects metrics, logs, and event data from AWS services and resources, providing operational visibility into account activity and performance.\nAmazon CloudFront is a content delivery network that caches and distributes content to users at edge locations worldwide, and does not gather information about account activity. AWS Cloud9 is a cloud-based integrated development environment for writing, running, and debugging code, and has no account monitoring or activity logging capability. AWS CloudHSM is a hardware security module service that manages and stores cryptographic keys in dedicated hardware, and is not a tool for monitoring or gathering information about account activity.",
-    "source": "practice-exam-10.md",
-    "isMultiAnswer": true
   },
   {
     "id": "q081",
@@ -606,6 +587,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q108",
+    "domainId": 3,
+    "question": "A company wants to expand from one AWS Region into a second AWS Region. What does the company need to do to start supporting the new Region?",
+    "options": {
+      "A": "Contact an AWS Account Manager to sign a new contract",
+      "B": "Move an Availability Zone to the new Region",
+      "C": "Begin deploying resources in the second Region",
+      "D": "Download the AWS Management Console for the new Region"
+    },
+    "answer": "C",
+    "explanation": "AWS Regions are available globally and customers can begin provisioning resources in any Region at any time through the console, CLI, or API without any additional agreements or setup required.\nContacting an AWS Account Manager to sign a new contract is not required because AWS uses a self-service, pay-as-you-go model with no per-Region contracts. Availability Zones are fixed infrastructure components within a Region and cannot be moved or reassigned. The AWS Management Console is a web-based interface accessed through a browser and does not require a separate download for each Region.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q109",
     "domainId": 3,
     "question": "Why is it beneficial to use Elastic Load Balancers with applications?",
@@ -616,7 +612,7 @@
       "D": "They are provided at no charge to users"
     },
     "answer": "B",
-    "explanation": "Elastic Load Balancers automatically distribute incoming traffic across multiple targets and adapt to changing traffic patterns without manual intervention, ensuring no single target is overwhelmed. ELB is not free, and it does not convert between load balancer types.",
+    "explanation": "Elastic Load Balancers automatically distribute incoming traffic across multiple registered targets and adapt to constantly changing network traffic patterns without requiring manual intervention, ensuring no single target becomes a bottleneck.\nElastic Load Balancers do not convert between Application Load Balancers and Classic Load Balancers; these are distinct load balancer types that cannot be converted to one another, and migration requires deploying a new load balancer rather than in-place conversion.\nELB does not itself adjust the number of compute instances; that is the responsibility of Auto Scaling groups working in conjunction with a load balancer.\nElastic Load Balancing is not provided at no charge; there are per-hour charges for each load balancer plus data processing charges, making cost a factor when designing load-balanced architectures.",
     "source": "practice-exam-11.md",
     "isMultiAnswer": false
   },
@@ -646,7 +642,7 @@
       "D": "Amazon RDS"
     },
     "answer": "D",
-    "explanation": "Amazon RDS is a fully managed relational database service that supports multiple database engines including MySQL, PostgreSQL, Oracle, and SQL Server, handling provisioning, patching, backups, and high availability automatically.\nAWS Batch is a fully managed service for running large-scale batch computing jobs across dynamically provisioned compute resources, and has no database hosting capability. AWS Artifact is a self-service portal that provides on-demand access to AWS compliance reports and security documentation, and is entirely unrelated to database hosting. AWS Data Pipeline is an orchestration service for scheduling and automating the movement and transformation of data between AWS services and on-premises sources, and is not a service for hosting or managing databases.",
+    "explanation": "Amazon RDS is a fully managed relational database service that supports multiple database engines including MySQL, PostgreSQL, Oracle, and SQL Server, handling provisioning, patching, backups, and high availability automatically.\nAWS Batch is a fully managed service for running large-scale batch computing jobs across dynamically provisioned compute resources, and has no database hosting capability. AWS Artifact is a self-service portal that provides on-demand access to AWS compliance reports and security documentation, and is entirely unrelated to database hosting. AWS Data Pipeline (deprecated) is an orchestration service for scheduling and automating the movement and transformation of data between AWS services and on-premises sources, and is not a service for hosting or managing databases.",
     "source": "practice-exam-11.md",
     "isMultiAnswer": false
   },
@@ -656,12 +652,12 @@
     "question": "Which AWS service provides a simple and scalable shared file storage solution for use with Linux-based AWS and on-premises servers?",
     "options": {
       "A": "Amazon S3",
-      "B": "Amazon Glacier",
+      "B": "Amazon S3 Glacier",
       "C": "Amazon EBS",
       "D": "Amazon EFS"
     },
     "answer": "D",
-    "explanation": "Amazon Elastic File System (EFS) is a managed NFS file system that can be mounted simultaneously by multiple Linux EC2 instances and accessed from on-premises servers, providing simple, scalable shared file storage.\nAmazon S3 is an object storage service designed for storing and retrieving files via HTTP APIs, and does not provide a mountable shared file system for Linux servers. Amazon Glacier is an archival storage class within Amazon S3 designed for long-term data retention with infrequent access, and has no shared file system capability. Amazon Elastic Block Store (EBS) provides block-level storage volumes that attach to a single EC2 instance at a time, and cannot be shared across multiple servers simultaneously.",
+    "explanation": "Amazon Elastic File System (EFS) is a managed NFS file system that can be mounted simultaneously by multiple Linux EC2 instances and accessed from on-premises servers, providing simple, scalable shared file storage.\nAmazon S3 is an object storage service designed for storing and retrieving files via HTTP APIs, and does not provide a mountable shared file system for Linux servers. Amazon S3 Glacier is an archival storage class within Amazon S3 designed for long-term data retention with infrequent access, and has no shared file system capability. Amazon Elastic Block Store (EBS) provides block-level storage volumes that attach to a single EC2 instance at a time, and cannot be shared across multiple servers simultaneously.",
     "source": "practice-exam-11.md",
     "isMultiAnswer": false
   },
@@ -775,6 +771,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q151",
+    "domainId": 3,
+    "question": "Which of the following components of the AWS Global Infrastructure consists of one or more discrete data centers interconnected through low latency links?",
+    "options": {
+      "A": "Availability Zone",
+      "B": "Edge location",
+      "C": "Region",
+      "D": "Private networking"
+    },
+    "answer": "A",
+    "explanation": "An Availability Zone consists of one or more discrete data centres with independent power and networking, interconnected to other AZs within the same Region via low-latency links.\nEdge locations are separate points of presence used for content delivery and caching, not data centre clusters with redundant infrastructure. A Region is the broader geographic area that contains multiple Availability Zones, not the data centre cluster itself. Private networking is not a component of the AWS global infrastructure hierarchy.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q154",
     "domainId": 3,
     "question": "A characteristic of edge locations is that they:",
@@ -809,13 +820,28 @@
     "domainId": 3,
     "question": "Which service provides a hybrid storage service that enables on-premises applications to seamlessly use cloud storage?",
     "options": {
-      "A": "Amazon Glacier",
+      "A": "Amazon S3 Glacier",
       "B": "AWS Snowball",
       "C": "AWS Storage Gateway",
       "D": "Amazon Elastic Block Storage (Amazon EBS)"
     },
     "answer": "C",
-    "explanation": "AWS Storage Gateway is a hybrid storage service that integrates on-premises environments with AWS cloud storage, presenting cloud storage as local file shares, volumes, or tape to on-premises applications.\nAmazon Glacier is an archival storage class within Amazon S3 designed for long-term data retention with infrequent access, and does not provide a hybrid storage integration layer for on-premises applications. AWS Snowball is a physical data transfer device used to move large volumes of data into or out of AWS, and is a migration tool rather than an ongoing hybrid storage service. Amazon Elastic Block Store (EBS) provides block-level storage volumes that attach to EC2 instances within AWS, and cannot be accessed directly by on-premises applications as a seamless cloud storage extension.",
+    "explanation": "AWS Storage Gateway is a hybrid storage service that integrates on-premises environments with AWS cloud storage, presenting cloud storage as local file shares, volumes, or tape to on-premises applications.\nAmazon S3 Glacier is an archival storage class within Amazon S3 designed for long-term data retention with infrequent access, and does not provide a hybrid storage integration layer for on-premises applications. AWS Snowball is a physical data transfer device used to move large volumes of data into or out of AWS, and is a migration tool rather than an ongoing hybrid storage service. Amazon Elastic Block Store (EBS) provides block-level storage volumes that attach to EC2 instances within AWS, and cannot be accessed directly by on-premises applications as a seamless cloud storage extension.",
+    "source": "practice-exam-12.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q166",
+    "domainId": 3,
+    "question": "Which of the following is a component of the AWS Global Infrastructure?",
+    "options": {
+      "A": "Amazon Alexa",
+      "B": "AWS Regions",
+      "C": "Amazon Lightsail",
+      "D": "AWS Organizations"
+    },
+    "answer": "B",
+    "explanation": "AWS Regions are the physical, geographically distributed components of the AWS Global Infrastructure, each containing multiple Availability Zones that provide redundancy and fault isolation.\nAmazon Alexa is a voice assistant service that enables conversational interactions with applications, and is not a component of the physical infrastructure that underpins AWS. Amazon Lightsail is a simplified compute service designed for developers who need an easy way to launch virtual servers and applications, and is not an infrastructure component. AWS Organizations is an account management service that enables centralised governance and billing across multiple AWS accounts, and is not part of the AWS Global Infrastructure.",
     "source": "practice-exam-12.md",
     "isMultiAnswer": false
   },
@@ -1082,7 +1108,7 @@
       "D": "Amazon Route 53"
     },
     "answer": "A",
-    "explanation": "AWS Direct Connect establishes a dedicated, private physical network connection between your on-premises datacenter and AWS, bypassing the public internet for more consistent bandwidth and lower latency. CloudFront is a CDN; Snowball is for data transfer via physical appliance; Route 53 is a DNS service.",
+    "explanation": "AWS Direct Connect provides a dedicated, private physical network connection from your on-premises data centre to AWS, bypassing the public internet to deliver more consistent bandwidth, lower latency, and increased reliability for hybrid cloud workloads.\nAmazon CloudFront is a content delivery network that caches and distributes web content to end users from edge locations worldwide, and is a content delivery service rather than a private network connectivity solution for data centres.\nAWS Snowball is a physical data transfer device used to move large volumes of data into or out of AWS by shipping the device, designed for one-time or periodic bulk data transfers rather than ongoing private network connectivity.\nAmazon Route 53 is a scalable DNS service that translates domain names to IP addresses and supports routing policies, and is a DNS management service with no capability to establish dedicated network links between on-premises infrastructure and AWS.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -1142,7 +1168,7 @@
       "D": "AMI"
     },
     "answer": "D",
-    "explanation": "An Amazon Machine Image is a template containing the operating system, application software, and configuration needed to launch an EC2 instance, directly equivalent to the on-premises practice of spinning up multiple virtual servers from a single template.",
+    "explanation": "An Amazon Machine Image is a pre-configured template containing the operating system, application software, and required configuration that can be used to launch any number of identical EC2 instances, serving the same purpose as an on-premises virtual machine template.\nIAM is the identity and access management service used to create and manage users, roles, and permissions for controlling access to AWS resources, and has no role in provisioning or templating virtual machine configurations.\nAn internet gateway is a horizontally scaled, redundant VPC component that allows communication between instances in a VPC and the internet, and is a networking construct rather than a server provisioning template.\nAn EBS Snapshot is a point-in-time backup of an EBS volume used for data recovery and volume duplication, and while it can serve as a source for creating new volumes, it is not a template for launching complete configured EC2 instances.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -1169,10 +1195,10 @@
       "A": "Amazon ECS",
       "B": "AWS Data Pipeline",
       "C": "AWS Cloud9",
-      "D": "AWS Personal Health Dashboard"
+      "D": "AWS Health Dashboard"
     },
     "answer": "A",
-    "explanation": "Amazon ECS is a fully managed container orchestration service that allows you to run and manage Docker containers on a cluster of EC2 instances or using AWS Fargate for serverless compute.\nAWS Data Pipeline is a service for orchestrating and automating the movement and transformation of data between AWS services, not for running containerised applications. AWS Cloud9 is a cloud-based integrated development environment for writing and debugging code, unrelated to container orchestration. AWS Personal Health Dashboard provides alerts and guidance when AWS service events may affect your resources, not a compute or container service.",
+    "explanation": "Amazon ECS is a fully managed container orchestration service that allows you to run and manage Docker containers on a cluster of EC2 instances or using AWS Fargate for serverless compute.\nAWS Data Pipeline (deprecated) is a service for orchestrating and automating the movement and transformation of data between AWS services, not for running containerised applications. AWS Cloud9 is a cloud-based integrated development environment for writing and debugging code, unrelated to container orchestration. AWS Health Dashboard provides alerts and guidance when AWS service events may affect your resources, not a compute or container service.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -1221,7 +1247,7 @@
       "D": "AWS Snowball"
     },
     "answer": "A",
-    "explanation": "S3 Transfer Acceleration uses CloudFront's globally distributed edge locations as entry points for uploads to S3, routing data over AWS's optimised backbone network to reach the target S3 bucket faster than a standard upload.",
+    "explanation": "S3 Transfer Acceleration leverages CloudFront's globally distributed edge locations as optimised entry points for S3 uploads, routing data over the AWS backbone network rather than the public internet, resulting in significantly higher upload speeds for geographically distant users.\nAWS WAF is a web application firewall that inspects and filters HTTP and HTTPS traffic based on defined rules to protect against web exploits, and has no involvement in accelerating file transfers to S3.\nAWS Snowmobile is an exabyte-scale data transfer service using a 45-foot shipping container for physically transporting massive datasets to AWS, designed for one-time transfers of petabytes or exabytes rather than standard upload acceleration.\nAWS Snowball is a petabyte-scale physical data transfer device for moving large datasets into or out of AWS by shipping the appliance, not an upload acceleration service using edge locations.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -1241,25 +1267,6 @@
       "E"
     ],
     "explanation": "AWS Global Accelerator improves global application performance by routing user traffic through the AWS private backbone network to the nearest healthy endpoint, reducing internet latency, and Amazon CloudFront caches and serves content from edge locations worldwide, bringing content closer to users and reducing latency for global audiences.\nAWS KMS is an encryption key management service for creating and controlling cryptographic keys used to protect data, and has no capability to improve application performance or reduce latency. AWS Direct Connect establishes a dedicated private network connection between on-premises infrastructure and AWS, and is designed for hybrid connectivity rather than improving performance for global end users. AWS Glue is a managed ETL service for discovering, preparing, and transforming data for analytics workloads, and is a data integration service with no application performance or latency capability.",
-    "source": "practice-exam-2.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q238",
-    "domainId": 3,
-    "question": "Using Amazon RDS falls under the shared responsibility model. Which of the following are customer responsibilities?",
-    "options": {
-      "A": "Building the relational database schema",
-      "B": "Performing backups",
-      "C": "Managing the database settings",
-      "D": "Patching the database software",
-      "E": "Installing the database software"
-    },
-    "answer": [
-      "A",
-      "C"
-    ],
-    "explanation": "Under the Shared Responsibility Model for Amazon RDS, the customer is responsible for designing the database schema and managing database-level settings such as parameters and user permissions.\nPerforming backups is managed by AWS for RDS, which automates backup retention and point-in-time recovery without requiring the customer to manually initiate or manage backup processes. Patching the database software is entirely AWS's responsibility for RDS, as AWS handles all engine-level patching and maintenance windows as part of the managed service. Installing the database software is entirely AWS's responsibility for RDS, as AWS provisions, installs, and maintains the underlying database engine on the customer's behalf.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": true
   },
@@ -1308,7 +1315,7 @@
       "A",
       "C"
     ],
-    "explanation": "Amazon Elastic File System (EFS) is a managed NFS file storage service accessible by multiple EC2 instances simultaneously, and Amazon Elastic Block Store (EBS) provides block-level storage volumes that can be attached to EC2 instances for persistent file storage, making both valid options for storing files in AWS.",
+    "explanation": "Amazon EFS is a fully managed, scalable NFS file system that can be mounted by multiple EC2 instances simultaneously, and Amazon EBS provides block storage volumes that attach to individual EC2 instances. Both are storage services where files can be stored in AWS.\nAmazon SNS is a fully managed publish/subscribe messaging service used to send notifications to subscribers such as Lambda functions, HTTP endpoints, and email addresses, and is a messaging service rather than a file storage service.\nAmazon ECS is a fully managed container orchestration service for running containerised applications using Docker containers, and is a compute service for running application workloads rather than a storage service.\nAmazon EMR is a managed big data platform for processing large-scale datasets using frameworks such as Apache Spark and Hadoop, and is a data processing service rather than a storage destination for files.",
     "source": "practice-exam-3.md",
     "isMultiAnswer": true
   },
@@ -1332,13 +1339,13 @@
     "domainId": 3,
     "question": "What is the primary storage service used by Amazon RDS database instances?",
     "options": {
-      "A": "Amazon Glacier",
+      "A": "Amazon S3 Glacier",
       "B": "Amazon EBS",
       "C": "Amazon EFS",
       "D": "Amazon S3"
     },
     "answer": "B",
-    "explanation": "Amazon RDS database instances use Amazon EBS volumes as their primary storage layer, providing persistent block-level storage that persists independently of the database instance lifecycle.\nAmazon Glacier is an archival storage service designed for long-term data retention at low cost and is not used as active storage for running database instances. Amazon EFS is a shared file system service mountable across multiple EC2 instances and is not the primary storage layer for RDS. Amazon S3 is an object storage service accessed via API and is not used as block-level storage for database instances.",
+    "explanation": "Amazon RDS database instances use Amazon EBS volumes as their primary storage layer, providing persistent block-level storage that persists independently of the database instance lifecycle.\nAmazon S3 Glacier is an archival storage service designed for long-term data retention at low cost and is not used as active storage for running database instances. Amazon EFS is a shared file system service mountable across multiple EC2 instances and is not the primary storage layer for RDS. Amazon S3 is an object storage service accessed via API and is not used as block-level storage for database instances.",
     "source": "practice-exam-3.md",
     "isMultiAnswer": false
   },
@@ -1413,7 +1420,7 @@
   {
     "id": "q256",
     "domainId": 3,
-    "question": "Amazon Glacier is an Amazon S3 storage class that is suitable for storing which types of data?",
+    "question": "Amazon S3 Glacier is an Amazon S3 storage class that is suitable for storing which types of data?",
     "options": {
       "A": "Active archives",
       "B": "Dynamic website assets",
@@ -1440,7 +1447,7 @@
       "D": "A NoSQL database service"
     },
     "answer": "A",
-    "explanation": "AWS Elastic Beanstalk is a PaaS offering that automatically handles deployment, capacity provisioning, load balancing, auto-scaling, and application health monitoring, allowing developers to upload their code and let Beanstalk manage the rest.",
+    "explanation": "AWS Elastic Beanstalk is a Platform as a Service offering that automatically handles deployment, capacity provisioning, load balancing, auto-scaling, and application health monitoring, allowing developers to upload their application code and have the platform manage the infrastructure.\nAmazon ECS is the container orchestration service that runs Docker containers and is the compute engine for containerised workloads, but it is not an abstraction that automatically manages deployment and infrastructure for general applications in the way Beanstalk does.\nA scalable file storage solution describes Amazon EFS, which provides shared NFS storage for EC2 instances; Elastic Beanstalk is a deployment and management platform, not a storage service.\nA NoSQL database service describes Amazon DynamoDB, which provides fully managed key-value and document storage; Elastic Beanstalk is a deployment platform rather than a database.",
     "source": "practice-exam-3.md",
     "isMultiAnswer": false
   },
@@ -1455,7 +1462,7 @@
       "D": "AWS CLI"
     },
     "answer": "D",
-    "explanation": "The AWS CLI is a unified tool that enables customers to manage AWS services and automate tasks via scripts and command-line commands, providing programmatic access to the full range of AWS functionality.\nThe AWS Console is a web-based graphical interface for managing AWS services through a browser, and does not support script-based automation or command-line interaction. AWS Service Catalog is a tool for creating and managing approved portfolios of IT products within an organisation, and is not used for scripting or direct resource management. AWS OpsWorks is a configuration management service that uses Chef and Puppet to automate server configuration and deployment, and is not a general-purpose scripting tool for managing all AWS services.",
+    "explanation": "The AWS CLI is a unified tool that enables customers to manage AWS services and automate tasks via scripts and command-line commands, providing programmatic access to the full range of AWS functionality.\nThe AWS Console is a web-based graphical interface for managing AWS services through a browser, and does not support script-based automation or command-line interaction. AWS Service Catalog is a tool for creating and managing approved portfolios of IT products within an organisation, and is not used for scripting or direct resource management. AWS OpsWorks (deprecated) is a configuration management service that uses Chef and Puppet to automate server configuration and deployment, and is not a general-purpose scripting tool for managing all AWS services.",
     "source": "practice-exam-3.md",
     "isMultiAnswer": false
   },
@@ -1652,6 +1659,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q289",
+    "domainId": 3,
+    "question": "Why does every AWS Region contain multiple Availability Zones?",
+    "options": {
+      "A": "Multiple Availability Zones allows you to build resilient and highly available architectures",
+      "B": "Multiple Availability Zones results in lower total cost compared to deploying in a single Availability Zone",
+      "C": "Multiple Availability Zones allows for data replication and global reach",
+      "D": "Multiple Availability Zones within a region increases the storage capacity available in that region"
+    },
+    "answer": "A",
+    "explanation": "Multiple Availability Zones within a Region are geographically separated, each with independent power, cooling, and networking, so a failure in one AZ does not affect others, allowing customers to build resilient and highly available architectures.\nDeploying across multiple Availability Zones does not lower total cost, as running resources in multiple AZs typically increases cost compared to a single AZ deployment. Multiple Availability Zones provide redundancy within a Region but do not provide global reach, which requires deploying across multiple Regions or using a content delivery network. The number of Availability Zones in a Region does not increase the storage capacity available, as storage capacity is determined by the services and configurations a customer selects rather than the AZ count.",
+    "source": "practice-exam-3.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q294",
     "domainId": 3,
     "question": "Which of the following AWS services scale automatically without your intervention?",
@@ -1731,21 +1753,6 @@
     },
     "answer": "A",
     "explanation": "Amazon S3 Glacier provides low-cost archival storage with retrieval options including Expedited (1 to 5 minutes), Standard (3 to 5 hours), and Bulk (5 to 12 hours). For a five-hour retrieval requirement, S3 Glacier Standard retrieval meets the SLA at the lowest cost.\nAmazon EFS is a managed shared network file system that provides concurrent file access from multiple instances, and is designed for active file workloads rather than long-term archival storage where cost is the primary concern. Amazon S3 Standard provides durable, highly available object storage with immediate millisecond retrieval, and while it meets the retrieval requirement it is significantly more expensive per gigabyte than S3 Glacier for storing five years of infrequently accessed archival data. Amazon EBS provides persistent block storage volumes attached directly to EC2 instances for low-latency disk access, and is a compute-attached storage service not designed for long-term archival or for storing data independently of a running instance.",
-    "source": "practice-exam-4.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q302",
-    "domainId": 3,
-    "question": "A company needs to track resource changes using the API call history. Which AWS service can help the company achieve this goal?",
-    "options": {
-      "A": "AWS Config",
-      "B": "Amazon CloudWatch",
-      "C": "AWS CloudTrail",
-      "D": "AWS CloudFormation"
-    },
-    "answer": "C",
-    "explanation": "AWS CloudTrail records every API call made in your AWS account, including the identity of the caller, timestamp, and parameters, making it the primary service for tracking resource changes via API history.\nAWS Config tracks the configuration state of AWS resources over time and evaluates them against compliance rules, but it records configuration changes rather than the underlying API calls that caused them. Amazon CloudWatch is a monitoring and observability service that collects metrics, logs, and alarms from AWS resources, and does not record API call history or track who made changes to resources. AWS CloudFormation is an infrastructure-as-code service that provisions and manages AWS resources through templates, and does not record or track API call history across an account.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": false
   },
@@ -1844,6 +1851,21 @@
     },
     "answer": "B",
     "explanation": "AWS Application Discovery Service collects information about on-premises servers, including configuration, usage, and dependencies, to help plan and prioritise migration to the AWS Cloud.\nAWS Snowball is a physical device used to transfer large volumes of data into AWS and is a data transfer tool rather than a migration planning service. AWS Database Migration Service migrates databases to AWS with minimal downtime, but handles the execution of database migrations rather than the discovery and planning phase. AWS Migration Hub provides a central location to track the progress of migrations across multiple AWS and partner tools, but it monitors migration status rather than collecting the server data needed to plan a migration.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q315",
+    "domainId": 3,
+    "question": "Which statement best describes the concept of an AWS region?",
+    "options": {
+      "A": "An AWS Region is a geographical location with a collection of Edge locations",
+      "B": "An AWS Region is a virtual network dedicated only to a single AWS customer",
+      "C": "An AWS Region is a geographical location with a collection of Availability Zones",
+      "D": "An AWS Region represents the country where the AWS infrastructure exist"
+    },
+    "answer": "C",
+    "explanation": "An AWS Region is a physical geographic location that contains a collection of Availability Zones, each consisting of one or more discrete data centres with redundant power, networking, and connectivity.\nA geographical location with a collection of edge locations confuses Regions with the CloudFront edge network, which is a separate layer of infrastructure distributed independently of Regions. A virtual network dedicated only to a single AWS customer describes an Amazon VPC, not a Region, as Regions are shared physical infrastructure used by all AWS customers. A country where AWS infrastructure exists is too broad and inaccurate, as multiple Regions can exist within the same country and a Region is a specific defined geographic area, not a national boundary.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": false
   },
@@ -2020,9 +2042,28 @@
       "D": "Migrate all of your applications to a dedicated host"
     },
     "answer": "C",
-    "explanation": "Using code to provision and operate AWS infrastructure, known as infrastructure as code, eliminates manual steps and the human errors that come with them by making environment creation and updates repeatable and automated.",
+    "explanation": "Infrastructure as code uses tools such as AWS CloudFormation to define and provision AWS resources programmatically through templates, eliminating manual console steps and making environment creation repeatable, consistent, and automated.\nSoftware test automation tools are used to automate testing of application code, such as running unit tests or integration tests, and do not address the provisioning and configuration of AWS infrastructure.\nAWS CodeDeploy is a deployment service that automates application deployments to EC2 instances, Lambda functions, or on-premises servers; it handles application code deployment but does not provision or configure the underlying AWS infrastructure environment.\nMigrating applications to a dedicated host changes the underlying physical server isolation model for compliance or licensing purposes, but does not automate or codify the process of creating and updating the AWS environment.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q357",
+    "domainId": 3,
+    "question": "Which of the following factors should be considered when determining the region in which AWS Resources will be deployed?",
+    "options": {
+      "A": "The AWS Region’s security level",
+      "B": "Data sovereignty",
+      "C": "Cost",
+      "D": "The planned number of VPCs",
+      "E": "Geographic proximity to the company's location"
+    },
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation": "Data sovereignty requirements dictate that data must stay in specific geographic locations for legal or regulatory reasons, and pricing varies between Regions, making both critical factors when choosing where to deploy AWS resources.\nAll AWS Regions are built to the same security standards, so the security level of a Region is not a differentiating factor when selecting where to deploy. The planned number of VPCs is an architectural decision made after Region selection and has no bearing on which Region to choose. Geographic proximity to the company's location is not a primary selection factor, as latency considerations relate to where end users are located rather than where the company itself is based.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": true
   },
   {
     "id": "q358",
@@ -2080,7 +2121,7 @@
       "D": "Amazon EFS"
     },
     "answer": "B",
-    "explanation": "AWS Storage Gateway connects on-premises environments to AWS cloud storage, providing seamless integration that lets enterprises extend their existing storage infrastructure to S3, EBS, or Glacier cost-effectively.",
+    "explanation": "AWS Storage Gateway connects on-premises environments to AWS cloud storage, providing a hybrid storage solution that allows organisations to extend their existing on-premises storage infrastructure to AWS in a cost-effective way by tiering infrequently accessed data to the cloud.\nAWS Transfer Family provides managed file transfer workflows using SFTP, FTPS, and FTP protocols to move files directly into and out of Amazon S3 or EFS, and is a data transfer service rather than a hybrid storage extension solution for on-premises environments.\nAmazon Aurora is a fully managed, high-performance relational database engine compatible with MySQL and PostgreSQL, and is a database service rather than a storage extension solution for on-premises data.\nAmazon EFS is a managed, scalable NFS file system accessible by multiple EC2 instances in the cloud, and while it provides file storage, it is a cloud-native service rather than a gateway for extending on-premises storage capacity to AWS.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": false
   },
@@ -2174,7 +2215,7 @@
       "D": "AWS Step Functions"
     },
     "answer": "A",
-    "explanation": "Amazon SQS is a fully managed message queuing service that decouples application components by allowing them to communicate asynchronously through messages rather than direct calls.",
+    "explanation": "Amazon SQS is a fully managed message queuing service that decouples application components by allowing each component to send and receive messages independently, enabling a monolithic application to be broken into loosely coupled parts that communicate asynchronously.\nAmazon SNS is a publish/subscribe messaging service that broadcasts messages to multiple subscribers simultaneously, which is useful for fan-out notification patterns but is not the primary service for decoupling monolithic application components through asynchronous message queuing.\nAmazon EventBridge is a serverless event bus that routes events between AWS services, SaaS applications, and custom applications based on event patterns; while it supports decoupled architectures, it is event-driven routing rather than a message queue for decoupling component dependencies in a monolithic application.\nAWS Step Functions is a serverless workflow orchestration service that coordinates multiple AWS services into structured workflows, which handles workflow state management rather than providing the message queuing mechanism needed to decouple monolithic application components.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": false
   },
@@ -2224,6 +2265,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q390",
+    "domainId": 3,
+    "question": "Availability Zones within a Region are connected over low-latency links. Which of the following is a benefit of these links?",
+    "options": {
+      "A": "Create private connection to your data center",
+      "B": "Achieve global high availability",
+      "C": "Automate the process of provisioning new compute resources",
+      "D": "Make synchronous replication of your data possible"
+    },
+    "answer": "D",
+    "explanation": "Low-latency links between Availability Zones within a Region enable synchronous data replication, meaning data written in one AZ is immediately confirmed as written in another before the operation completes, supporting high availability within a Region.\nCreating a private connection to a data center describes AWS Direct Connect, which is a separate networking service and has nothing to do with the internal links between Availability Zones. Achieving global high availability requires deploying across multiple Regions rather than relying on AZ links within a single Region, which only provides availability at a regional level. Automating the provisioning of compute resources describes services like EC2 Auto Scaling and is unrelated to the low-latency connectivity that exists between Availability Zones.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q391",
     "domainId": 3,
     "question": "Which of the following are true regarding the languages that are supported on AWS Lambda?",
@@ -2260,6 +2316,21 @@
     "explanation": "AWS X-Ray traces user requests as they travel through your application, helping you identify performance bottlenecks and errors, and providing the visibility needed to improve overall application performance.\nAutomatically decoupling application components describes a design architecture pattern, not a capability of any single AWS service. AWS X-Ray observes and analyses existing application behaviour but does not modify application architecture. Deploying applications to Amazon EC2 instances describes AWS CodeDeploy, which automates application deployments to compute services including EC2. Deploying applications to on-premises servers also describes AWS CodeDeploy, which supports deployment targets beyond AWS including on-premises servers, making it unrelated to application tracing or performance analysis.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": true
+  },
+  {
+    "id": "q393",
+    "domainId": 3,
+    "question": "Which of the following is true regarding the AWS availability zones and edge locations?",
+    "options": {
+      "A": "Edge locations are located in separate Availability Zones worldwide to serve global customers",
+      "B": "An availability zone exists within an edge location to distribute content globally with low latency",
+      "C": "An Availability Zone is a geographic location where AWS provides multiple, physically separated and isolated edge locations",
+      "D": "An AWS Availability Zone is an isolated location within an AWS Region, however edge locations are located in multiple cities worldwide"
+    },
+    "answer": "D",
+    "explanation": "An Availability Zone is an isolated data center location within an AWS Region with independent power, cooling, and networking, while edge locations are separate infrastructure points distributed across hundreds of cities worldwide to serve content closer to end users.\nEdge locations are located in separate Availability Zones worldwide to serve global customers edge locations are an independent layer of infrastructure and are not located within or associated with Availability Zones. An availability zone exists within an edge location to distribute content globally with low latency the relationship is inverted here, and Availability Zones are part of Regions, not contained within edge locations. An Availability Zone is a geographic location where AWS provides multiple, physically separated and isolated edge locations this confuses the definition of an Availability Zone with that of a Region, and edge locations are not nested inside Availability Zones.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
   },
   {
     "id": "q396",
@@ -2384,12 +2455,12 @@
     "question": "A company is hosting business critical workloads in an AWS Region. To protect against data loss and ensure business continuity, a mirror image of the current AWS environment should be created in another AWS Region. Company policy requires that the standby environment must be available in minutes in case of an outage in the primary AWS Region. Which AWS service can be used to meet these requirements?",
     "options": {
       "A": "AWS Elastic Disaster Recovery",
-      "B": "CloudEndure Migration",
+      "B": "AWS Application Migration Service",
       "C": "AWS Backup",
       "D": "AWS Glue"
     },
     "answer": "A",
-    "explanation": "AWS Elastic Disaster Recovery continuously replicates machines into a staging area in another AWS Region and can launch fully provisioned instances within minutes during an outage, providing fast cross-Region failover.\nCloudEndure Migration is a server migration tool designed to move workloads to AWS, not to maintain a live standby environment for disaster recovery purposes. AWS Backup is a centralised backup service that automates data protection across AWS services, but does not maintain a continuously replicated standby environment that can be activated within minutes. AWS Glue is a serverless data integration service used for ETL workloads and data cataloguing, and has no disaster recovery or replication capability.",
+    "explanation": "AWS Elastic Disaster Recovery continuously replicates machines into a staging area in another AWS Region and can launch fully provisioned instances within minutes during an outage, providing fast cross-Region failover.\nAWS Application Migration Service is a server migration tool designed to move workloads to AWS, not to maintain a live standby environment for disaster recovery purposes. AWS Backup is a centralised backup service that automates data protection across AWS services, but does not maintain a continuously replicated standby environment that can be activated within minutes. AWS Glue is a serverless data integration service used for ETL workloads and data cataloguing, and has no disaster recovery or replication capability.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -2405,6 +2476,21 @@
     },
     "answer": "D",
     "explanation": "S3 Standard is designed for frequently accessed data with low latency and high throughput, making it the most appropriate storage class for static assets on a popular e-commerce site with consistent, stable access patterns.\nS3 Standard-IA is designed for data that is accessed infrequently but requires rapid access when needed, and carries a per-retrieval charge that makes it more expensive than S3 Standard for assets that are accessed consistently and frequently. S3 Intelligent-Tiering automatically moves objects between access tiers based on changing access patterns, making it better suited for data with unpredictable or unknown access frequency rather than assets with stable, predictable demand. S3 Glacier Deep Archive is the lowest-cost storage class designed for long-term archival of data that is rarely if ever accessed, and is entirely unsuitable for serving live website assets that require immediate low-latency retrieval.",
+    "source": "practice-exam-6.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q409",
+    "domainId": 3,
+    "question": "You want to create a backup of your data in another geographical location. Where should you create this backup?",
+    "options": {
+      "A": "In another Edge location",
+      "B": "In another Region",
+      "C": "In another VPC",
+      "D": "In another Availability Zone"
+    },
+    "answer": "B",
+    "explanation": "Storing backups in another AWS Region places your data in a completely separate geographic location, protecting against Region-level disasters such as natural catastrophes or widespread outages.\nEdge locations are points of presence used by services such as Amazon CloudFront to cache and deliver content to users with low latency, and are not storage locations where backups can be created or maintained. A VPC is a logically isolated virtual network within a single AWS Region, and storing data in another VPC does not place it in a different geographical location. An Availability Zone is a physically separate data center within a single AWS Region, and while storing backups in another AZ improves resilience against localised failures, it does not satisfy the requirement for a different geographical location as multiple AZs share the same Region.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -2464,7 +2550,7 @@
       "D": "AWS CloudTrail"
     },
     "answer": "C",
-    "explanation": "AWS Systems Manager provides a suite of tools to automate the configuration, maintenance, and management of EC2 instances at scale, including applying configuration policies, running commands across fleets, and maintaining desired state without manual intervention.\nAWS OpsWorks was a configuration management service using Puppet and Chef that has been discontinued by AWS as of May 2024 and is no longer available. AWS CloudFormation automates the provisioning of AWS infrastructure using templates, but operates at the infrastructure level rather than managing the ongoing configuration of running instances. AWS CloudTrail records API calls and account activity for auditing and compliance purposes, and has no server configuration or automation capability.",
+    "explanation": "AWS Systems Manager provides a suite of tools to automate the configuration, maintenance, and management of EC2 instances at scale, including applying configuration policies, running commands across fleets, and maintaining desired state without manual intervention.\nAWS OpsWorks (deprecated) was a configuration management service using Puppet and Chef that has been discontinued by AWS as of May 2024 and is no longer available. AWS CloudFormation automates the provisioning of AWS infrastructure using templates, but operates at the infrastructure level rather than managing the ongoing configuration of running instances. AWS CloudTrail records API calls and account activity for auditing and compliance purposes, and has no server configuration or automation capability.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -2532,7 +2618,7 @@
       "D": "AWS Elastic Beanstalk"
     },
     "answer": "D",
-    "explanation": "AWS Elastic Beanstalk handles deployment, capacity provisioning, load balancing, auto-scaling, and health monitoring automatically, letting developers deploy applications without needing deep cloud infrastructure experience.",
+    "explanation": "AWS Elastic Beanstalk automatically handles the deployment details of capacity provisioning, load balancing, auto-scaling, and application health monitoring, allowing developers without cloud infrastructure experience to deploy and manage applications without needing to understand the underlying infrastructure.\nAWS Fargate is a serverless compute engine for containers that removes the need to manage servers for containerised workloads, but it requires knowledge of container concepts and configuration, making it more complex to adopt for developers without cloud experience compared to the abstraction Beanstalk provides.\nAWS Batch manages the infrastructure required to run batch computing jobs at scale, and is designed for processing large numbers of batch workloads rather than helping developers quickly deploy and manage general-purpose applications.\nAmazon Personalize is a fully managed machine learning service that builds real-time personalisation and recommendation systems, and is an AI/ML service for a specific use case rather than a general application deployment and management platform.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -2611,7 +2697,7 @@
       "D": "Amazon S3 Transfer Acceleration"
     },
     "answer": "A",
-    "explanation": "AWS Global Accelerator uses the AWS global network to route user traffic to the optimal healthy endpoint based on performance, geography, and health checks, improving application performance and availability for global users.\nAWS Data Pipeline is a service for orchestrating and automating the movement and transformation of data between AWS services, unrelated to traffic routing or application performance. Amazon DynamoDB Accelerator is an in-memory cache specifically for DynamoDB that reduces read latency for database queries, not a service for routing application traffic to optimal endpoints. Amazon S3 Transfer Acceleration speeds up uploads to S3 buckets by routing traffic through CloudFront edge locations, which is specific to S3 data transfer and not a general application traffic routing solution.",
+    "explanation": "AWS Global Accelerator uses the AWS global network to route user traffic to the optimal healthy endpoint based on performance, geography, and health checks, improving application performance and availability for global users.\nAWS Data Pipeline (deprecated) is a service for orchestrating and automating the movement and transformation of data between AWS services, unrelated to traffic routing or application performance. Amazon DynamoDB Accelerator is an in-memory cache specifically for DynamoDB that reduces read latency for database queries, not a service for routing application traffic to optimal endpoints. Amazon S3 Transfer Acceleration speeds up uploads to S3 buckets by routing traffic through CloudFront edge locations, which is specific to S3 data transfer and not a general application traffic routing solution.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -2684,7 +2770,7 @@
     "domainId": 3,
     "question": "What does the Amazon CloudFront service provide?",
     "options": {
-      "A": "Tracks user activity and APl usage",
+      "A": "Tracks user activity and API usage",
       "B": "Increases application availability by caching at the edge",
       "C": "Enables faster disaster recovery",
       "D": "Stores archived data at very low costs",
@@ -2818,7 +2904,7 @@
       "D": "AWS Transit Gateway"
     },
     "answer": "A",
-    "explanation": "AWS Database Migration Service migrates databases from on-premises to AWS with minimal downtime, supporting both homogeneous migrations such as MySQL to MySQL and heterogeneous migrations such as Oracle to Aurora, while keeping the source database operational throughout.",
+    "explanation": "AWS Database Migration Service is purpose-built for migrating databases from on-premises to AWS, supporting both homogeneous migrations such as MySQL to MySQL and heterogeneous migrations between different database engines, with minimal downtime during the migration.\nAmazon S3 Transfer Acceleration uses CloudFront edge locations to speed up uploads of data to S3 and is a file transfer acceleration feature rather than a database migration service.\nAWS Directory Service provides managed Microsoft Active Directory integration for enterprise identity management and has no capability to migrate or replicate relational or NoSQL database data.\nAWS Transit Gateway connects multiple VPCs and on-premises networks through a central hub for network routing and connectivity, and is a networking service that facilitates traffic routing rather than a database migration tool.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -2870,7 +2956,7 @@
   {
     "id": "q471",
     "domainId": 3,
-    "question": "For some services, AWS automatically replicates data across multiple Availability Zones to provide fault tolerance in the event of a server failure or Availability Zone outage. Select TWO services that automatically replicate data across Availability Zones.",
+    "question": "For some services, AWS automatically replicates data across multiple Availability Zones to provide fault tolerance in the event of a server failure or Availability Zone outage. Which services automatically replicate data across Availability Zones?",
     "options": {
       "A": "Instance Store",
       "B": "S3",
@@ -2912,7 +2998,7 @@
       "D": "AWS Lambda can be called directly from any mobile app"
     },
     "answer": "D",
-    "explanation": "AWS Lambda cannot be invoked directly from a mobile app without going through an intermediary such as Amazon API Gateway, making this the option that does not describe a genuine Lambda benefit.",
+    "explanation": "AWS Lambda functions cannot be invoked directly from a mobile app without using an intermediary API layer such as Amazon API Gateway or AWS AppSync; direct invocation from arbitrary external code is not supported, making this statement false rather than a genuine benefit.\nLambda running code without provisioning or managing servers is a genuine benefit; it eliminates the need to select, patch, or maintain underlying compute infrastructure.\nLambda does provide resizable compute capacity, automatically scaling from a few requests per day to thousands per second based on the incoming trigger volume.\nThere is genuinely no charge when Lambda code is not running; billing is based on the number of requests and the duration of execution, making it cost-free during idle periods.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -2972,7 +3058,7 @@
       "D": "Amazon Route 53"
     },
     "answer": "D",
-    "explanation": "Amazon Route 53 supports latency-based routing, directing users to the AWS Region with the lowest network latency for their location, reducing response times for global applications.",
+    "explanation": "Amazon Route 53 supports latency-based routing, which directs user requests to the AWS Region that provides the lowest latency for the end user, routing traffic to the endpoint that will respond fastest based on measured network conditions.\nAmazon CloudFront is a content delivery network that caches content at edge locations to reduce latency for end users, but it caches static and dynamic content rather than routing application traffic to the nearest Region based on latency measurements.\nAWS Global Accelerator improves global application availability and performance by routing traffic over the AWS global network to the nearest healthy endpoint, and while it also reduces latency, the question specifically asks about routing end users to the nearest AWS Region.\nAWS Direct Connect provides a dedicated private network connection between an on-premises data centre and AWS, reducing latency on hybrid workloads, but it does not route end users to the nearest AWS Region for cloud-hosted applications.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -3160,7 +3246,7 @@
       "D": "Accessibility"
     },
     "answer": "B",
-    "explanation": "Amazon EBS volumes are automatically replicated within their Availability Zone to protect against hardware failures, providing durability by ensuring that data survives individual component failures.",
+    "explanation": "Amazon EBS volumes are automatically replicated within their Availability Zone to protect against hardware component failures, ensuring that the data remains durable even if an individual physical drive fails within the underlying infrastructure.\nElasticity refers to the ability to dynamically scale compute resources up or down based on demand, which is a capacity management concept unrelated to the automatic replication of EBS volume data within an AZ.\nTraceability refers to the ability to audit and log changes to resources and actions performed in an AWS environment, which is a governance and compliance concept rather than a storage characteristic related to data replication.\nAccessibility refers to the ability to reach or connect to resources, which describes network and permission connectivity rather than the durability protection that replication within an AZ provides for stored data.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": false
   },
@@ -3203,6 +3289,21 @@
     "isMultiAnswer": true
   },
   {
+    "id": "q529",
+    "domainId": 3,
+    "question": "Each AWS Region is composed of multiple Availability Zones. Which of the following best describes what an Availability Zone is?",
+    "options": {
+      "A": "It is a data center designed to be completely isolated from other data centers in the same region",
+      "B": "It is a collection of data centers distributed in multiple countries",
+      "C": "It is a logically isolated network of the AWS Cloud",
+      "D": "It is a distinct location within a region that is insulated from « failures in other Availability Zones"
+    },
+    "answer": "D",
+    "explanation": "An Availability Zone is a distinct location within a Region consisting of one or more data centres, designed to be isolated from failures in other AZs through independent power, cooling, and networking.\nA single data center completely isolated from other data centers in the same Region is inaccurate, as an AZ can contain multiple data centres and is isolated from failures, not from all connectivity. A collection of data centers distributed across multiple countries describes an AWS Region or the global infrastructure as a whole, not an individual AZ. A logically isolated network of the AWS Cloud describes an Amazon VPC, not an Availability Zone.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q532",
     "domainId": 3,
     "question": "What is the maximum amount of data that can be stored in S3 in a single AWS account?",
@@ -3213,7 +3314,7 @@
       "D": "10 exabytes"
     },
     "answer": "B",
-    "explanation": "Amazon S3 provides virtually unlimited storage capacity with no maximum limit on the total amount of data that can be stored in a single account, though individual objects are limited to 5 TB each.",
+    "explanation": "Amazon S3 is designed to provide virtually unlimited storage capacity. There is no fixed maximum on the total amount of data an account can store, and S3 automatically scales to accommodate any volume of objects.\n100 petabytes is a fixed storage limit that does not apply to Amazon S3; individual objects have a maximum size of 5 terabytes, but this is a per-object limit rather than a total account storage cap.\n5 terabytes is the maximum size of a single S3 object, not the total storage limit for an account; the total amount of data stored across all objects in an account is not capped.\n10 exabytes is a fixed storage limit that does not apply to Amazon S3; the service scales automatically to any volume without a declared maximum.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": false
   },
@@ -3229,6 +3330,51 @@
     },
     "answer": "C",
     "explanation": "Amazon CloudFront is a global content delivery network that delivers data, videos, applications, and APIs to users worldwide with low latency and high transfer speeds through a network of edge locations.\nAmazon Route 53 is a DNS and domain routing service that directs users to application endpoints based on routing policies, but it routes traffic rather than caching and delivering content at edge locations. Amazon Connect is a cloud contact center service for managing customer communications via voice and chat, and has no role in content delivery or global data transfer. Amazon EC2 provides virtual servers for running applications and workloads, but requires manual configuration to serve content globally and does not natively deliver it with low latency to users worldwide through edge locations.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q537",
+    "domainId": 3,
+    "question": "Which element of the AWS global infrastructure consists of one or more discrete data centers each with redundant power networking and connectivity which are housed in separate facilities?",
+    "options": {
+      "A": "AWS Regions",
+      "B": "Availability Zones",
+      "C": "Edge locations",
+      "D": "Amazon CloudFront"
+    },
+    "answer": "B",
+    "explanation": "An Availability Zone consists of one or more discrete data centres, each with redundant power, networking, and connectivity, housed in separate facilities within a Region.\nAWS Regions are geographic areas that contain multiple Availability Zones, not individual data centre clusters. Edge locations are points of presence used for content delivery and caching, not data centre groupings with redundant infrastructure. Amazon CloudFront is a content delivery network service that uses edge locations, not a global infrastructure component in its own right.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q538",
+    "domainId": 3,
+    "question": "How many Availability Zones should compute resources be provisioned across to achieve high availability?",
+    "options": {
+      "A": "A minimum of one",
+      "B": "A minimum of two",
+      "C": "A minimum of three",
+      "D": "A minimum of four or more"
+    },
+    "answer": "B",
+    "explanation": "A minimum of two Availability Zones is required for high availability. If one AZ fails, the application continues operating from the other with minimal disruption.\nA minimum of one provides no redundancy. A single AZ failure would take the entire application down. A minimum of three or four or more exceeds the baseline requirement. While deploying across more AZs can increase resilience further, two is the recognised minimum for high availability in AWS architecture.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q539",
+    "domainId": 3,
+    "question": "The AWS Cloud’s multiple Regions are an example of:",
+    "options": {
+      "A": "Agility",
+      "B": "Global infrastructure",
+      "C": "Elasticity",
+      "D": "Pay-as-you-go pricing"
+    },
+    "answer": "B",
+    "explanation": "AWS Regions spread across the globe are part of the AWS global infrastructure, which includes Regions, Availability Zones, and edge locations designed to deliver services worldwide.\nAgility refers to the speed at which customers can provision resources and iterate on new functionality, which is a cloud adoption benefit rather than a characteristic of physical infrastructure placement. Elasticity refers to dynamically scaling resources up or down in response to demand, which is a compute and capacity concept unrelated to the geographic distribution of Regions. Pay-as-you-go pricing is a billing model where customers pay only for what they consume, which is a commercial benefit rather than an infrastructure concept.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": false
   },
@@ -3278,6 +3424,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q546",
+    "domainId": 3,
+    "question": "A user is planning to launch two additional Amazon EC2 instances to increase availability. Which action should the user take?",
+    "options": {
+      "A": "Launch the instances across multiple Availability Zones in a single AWS Region",
+      "B": "Launch the instances as EC2 Reserved Instances in the same AWS Region and the same Availability Zone",
+      "C": "Launch the instances in multiple AWS Regions but in the same Availability Zone",
+      "D": "Launch the instances as EC2 Spot Instances in the same AWS Region but in different Availability Zones"
+    },
+    "answer": "A",
+    "explanation": "Launching instances across multiple Availability Zones within a single Region provides high availability by ensuring that if one Availability Zone experiences a failure, the instances in the remaining zones continue serving traffic without interruption.\nLaunching Reserved Instances in the same Region and Availability Zone secures a capacity reservation and reduces cost through a billing commitment, but concentrating both instances in a single Availability Zone creates a single point of failure with no availability benefit. Launching instances in multiple Regions but in the same Availability Zone type introduces geographic separation at the Regional level but does not protect against failures within a Region since Availability Zones within each Region remain independent failure domains. Launching Spot Instances in different Availability Zones uses spare EC2 capacity at reduced cost, but Spot Instances can be interrupted by AWS at any time, making them unsuitable as a reliability mechanism for increasing availability.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q548",
     "domainId": 3,
     "question": "Which AWS services allow companies to connect an Amazon VPC to an on-premises data center?",
@@ -3291,7 +3452,7 @@
       "A",
       "D"
     ],
-    "explanation": "AWS VPN creates an encrypted connection over the public internet, and AWS Direct Connect provides a dedicated private network connection, both enabling secure connectivity between an Amazon VPC and an on-premises data center.",
+    "explanation": "AWS VPN creates an encrypted connection over the public internet to connect on-premises networks to a VPC, and AWS Direct Connect establishes a dedicated private physical network connection from an on-premises data centre to AWS. Both are services that provide hybrid connectivity between on-premises infrastructure and the AWS Cloud.\nAmazon Redshift is a fully managed cloud data warehousing service designed for running analytical SQL queries on large datasets, and is a database service with no capability to connect on-premises networks to AWS.\nAmazon API Gateway is a fully managed service for creating, publishing, and managing REST, HTTP, and WebSocket APIs, and is an API management service rather than a network connectivity solution for linking on-premises data centres to VPCs.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": true
   },
@@ -3351,7 +3512,7 @@
       "D": "AWS Config"
     },
     "answer": "A",
-    "explanation": "The AWS Software Development Kit provides language-specific APIs that allow developers to interact with AWS services directly from their application code in languages such as Python, Java, Node.js, and .NET.",
+    "explanation": "The AWS Software Development Kit provides language-specific libraries and APIs in languages including Python, Java, JavaScript, and Go, allowing developers to integrate AWS service calls directly into application code through programmatic interfaces.\nThe AWS Management Console is a web-based graphical interface for interacting with AWS services through a browser, not a mechanism that developers embed in application code for programmatic service access.\nAWS CodePipeline is a continuous delivery service that automates build, test, and deploy stages of a release pipeline, and is a CI/CD tool for application deployment rather than a means for application code to interact with AWS services.\nAWS Config continuously tracks and records resource configuration changes and evaluates them against compliance rules, and is a governance and compliance service rather than a development tool for enabling application code to call AWS services.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
   },
@@ -3399,6 +3560,25 @@
     "explanation": "Amazon S3 can serve static websites by hosting HTML, CSS, JavaScript, and image files, delivering them directly via HTTP without needing to run a web server.\nAmazon Route 53 is a DNS and domain registration service that routes traffic to endpoints, but does not host or serve website content itself. Amazon QuickSight is a business intelligence and data visualisation service for building dashboards and reports, and has no web hosting capability. AWS X-Ray is an application tracing and debugging service that helps analyse performance of distributed applications, and is entirely unrelated to hosting or serving website content.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q580",
+    "domainId": 3,
+    "question": "Which of the following are main components of the AWS global infrastructure?",
+    "options": {
+      "A": "Resource groups",
+      "B": "Availability Zones",
+      "C": "Security groups",
+      "D": "Regions",
+      "E": "Amazon Machine Images (AMIS)"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Regions and Availability Zones are the two main building blocks of AWS global infrastructure, with Regions being geographic areas and each Region containing multiple isolated Availability Zones.\nResource groups are a management tool used to organise and tag AWS resources within an account, and are not a component of the physical global infrastructure. Security groups are virtual firewalls that control inbound and outbound traffic for AWS resources, and are a networking feature rather than an infrastructure component. Amazon Machine Images are templates used to launch EC2 instances containing the operating system and configuration, and are a compute feature rather than part of the global infrastructure hierarchy.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": true
   },
   {
     "id": "q584",
@@ -3467,7 +3647,7 @@
   {
     "id": "q596",
     "domainId": 3,
-    "question": "Which of the following are characteristics of Amazon S3? (Select TWO.)",
+    "question": "Which of the following are characteristics of Amazon S3?",
     "options": {
       "A": "A global file system",
       "B": "An object store",
@@ -3486,7 +3666,7 @@
   {
     "id": "q609",
     "domainId": 3,
-    "question": "Which of the following are valid ways for a customer to interact with AWS services? (Select TWO.)",
+    "question": "Which of the following are valid ways for a customer to interact with AWS services?",
     "options": {
       "A": "Command line interface",
       "B": "On-premises",
@@ -3505,7 +3685,7 @@
   {
     "id": "q611",
     "domainId": 3,
-    "question": "Which of the following AWS services can be used to serve large amounts of online video content with the lowest possible latency? (Select TWO.)",
+    "question": "Which of the following AWS services can be used to serve large amounts of online video content with the lowest possible latency?",
     "options": {
       "A": "AWS Storage Gateway",
       "B": "Amazon S3",
@@ -3518,25 +3698,6 @@
       "E"
     ],
     "explanation": "Amazon S3 stores video content with high durability and scalability, and Amazon CloudFront caches and delivers that content from edge locations worldwide with low latency, making them the purpose-built combination for serving large-scale online video efficiently.\nAWS Storage Gateway connects on-premises environments to AWS cloud storage for hybrid storage integration, and is not designed for serving or distributing online video content to end users. Amazon Elastic File System is a managed shared network file system for use with AWS compute services, and is not optimised for delivering large volumes of video content at low latency to a distributed audience. Amazon S3 Glacier is an archival storage service designed for data that is rarely accessed and can tolerate retrieval times of minutes to hours, making it entirely unsuitable for serving online video content that requires immediate low-latency delivery.",
-    "source": "practice-exam-14.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q613",
-    "domainId": 3,
-    "question": "Which of the following services could be used to deploy an application to servers running on-premises? (Select TWO.)",
-    "options": {
-      "A": "AWS Elastic Beanstalk",
-      "B": "AWS OpsWorks",
-      "C": "AWS CodeDeploy",
-      "D": "AWS Batch",
-      "E": "AWS X-Ray"
-    },
-    "answer": [
-      "B",
-      "C"
-    ],
-    "explanation": "AWS OpsWorks supports deploying and managing applications on on-premises servers using Chef or Puppet configuration management, and AWS CodeDeploy automates application deployments to both EC2 instances and on-premises servers through a unified deployment agent.\nAWS Elastic Beanstalk is a platform-as-a-service for deploying web applications to AWS-managed infrastructure and does not support deployment to on-premises servers. AWS Batch is a managed service for running batch computing workloads on AWS infrastructure and has no capability to deploy applications to on-premises environments. AWS X-Ray is an application tracing and debugging service for analysing requests as they travel through distributed applications, unrelated to deployment.",
     "source": "practice-exam-14.md",
     "isMultiAnswer": true
   },
@@ -3558,7 +3719,7 @@
   {
     "id": "q616",
     "domainId": 3,
-    "question": "Which of the following can an AWS customer use to launch a new Amazon Relational Database Service (Amazon RDS) cluster? (Select TWO.)",
+    "question": "Which of the following can an AWS customer use to launch a new Amazon Relational Database Service (Amazon RDS) cluster?",
     "options": {
       "A": "AWS Concierge",
       "B": "AWS CloudFormation",
@@ -3577,7 +3738,7 @@
   {
     "id": "q620",
     "domainId": 3,
-    "question": "Which of the following features can be configured through the Amazon Virtual Private Cloud (Amazon VPC) Dashboard? (Select TWO.)",
+    "question": "Which of the following features can be configured through the Amazon Virtual Private Cloud (Amazon VPC) Dashboard?",
     "options": {
       "A": "Amazon CloudFront distributions",
       "B": "Amazon Route 53",
@@ -3596,7 +3757,7 @@
   {
     "id": "q625",
     "domainId": 3,
-    "question": "Which AWS services are defined as global instead of regional? (Select TWO.)",
+    "question": "Which AWS services are defined as global instead of regional?",
     "options": {
       "A": "Amazon Route 53",
       "B": "Amazon EC2",
@@ -3608,9 +3769,24 @@
       "A",
       "D"
     ],
-    "explanation": "Amazon Route 53 is a global DNS service that operates across all Regions without being tied to any single one, and Amazon CloudFront is a global content delivery network that distributes content from edge locations worldwide rather than from a specific Region.",
+    "explanation": "Amazon Route 53 is a global DNS service that operates without being tied to any single AWS Region, and Amazon CloudFront is a global content delivery network whose edge locations span the globe independently of regional deployments. Both are global services rather than regional.\nAmazon EC2 is a regional service; instances are launched in specific Availability Zones within specific Regions, and each EC2 deployment is bound to its Region.\nAmazon S3 is generally considered a regional service because buckets are created in a specific Region and data resides there by default, even though bucket names are globally unique.\nAmazon DynamoDB is a regional service where tables are created and data is stored in a specific Region, though Global Tables can replicate across Regions as an additional feature.",
     "source": "practice-exam-15.md",
     "isMultiAnswer": true
+  },
+  {
+    "id": "q636",
+    "domainId": 3,
+    "question": "What are the multiple, isolated locations within an AWS Region that are connected by low-latency networks called?",
+    "options": {
+      "A": "AWS Direct Connects",
+      "B": "Amazon VPCs",
+      "C": "Edge locations",
+      "D": "Availability Zones"
+    },
+    "answer": "D",
+    "explanation": "Availability Zones are multiple, isolated locations within an AWS Region, each with independent power, cooling, and networking, connected to each other by low-latency links for high availability.\nAWS Direct Connect is a dedicated private network connection service for linking an on-premises data center to AWS, not an infrastructure component within a Region. Amazon VPCs are virtual private networks that customers configure within a Region to isolate their resources, not physical infrastructure locations. Edge locations are points of presence outside of Regions used for content delivery and caching, not isolated locations within a Region connected by low-latency links.",
+    "source": "practice-exam-15.md",
+    "isMultiAnswer": false
   },
   {
     "id": "q650",
@@ -3623,7 +3799,7 @@
       "D": "Amazon Simple Storage Service (Amazon S3) transfer acceleration"
     },
     "answer": "A",
-    "explanation": "Amazon CloudFront caches application data at edge locations worldwide, serving content to end users from the nearest edge location to minimise latency, even when the application is hosted in a single Region.",
+    "explanation": "Amazon CloudFront serves content from edge locations closest to each end user, dramatically reducing round-trip latency by caching application data at over 400 points of presence worldwide, so users receive responses from a nearby location rather than the origin in a single Region.\nAWS Direct Connect provides a dedicated private network connection from an on-premises data centre to AWS, reducing latency on hybrid workloads, but it does not serve application content to end users distributed across the world from a global edge network.\nAmazon Route 53 with latency-based routing directs users to the nearest AWS Region, which reduces latency compared to serving all users from a single Region, but once the connection reaches the Region it does not cache content at edge locations the way CloudFront does.\nAmazon S3 Transfer Acceleration uses CloudFront's edge locations to speed up data uploads to S3, but it is an upload acceleration feature rather than a content delivery mechanism that serves application data to end users with low latency.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -3638,7 +3814,7 @@
       "D": "Provisioned IOPS"
     },
     "answer": "C",
-    "explanation": "Amazon RDS Cross-Region read replicas create copies of a database in other AWS Regions, providing globally redundant database access for disaster recovery and low-latency reads for international users.",
+    "explanation": "Amazon RDS Cross-Region read replicas create asynchronously replicated copies of a database in a separate AWS Region, providing globally redundant data that can be promoted to a standalone primary in the event of a regional failure.\nSnapshots are point-in-time backups stored in S3 that can be copied to another Region for disaster recovery purposes, but they require manual restoration and do not provide a continuously synchronised replica that can be quickly promoted, making them less suitable for global redundancy.\nAutomatic patching and updating is a managed maintenance feature that keeps the database engine and operating system up to date, but it does not replicate data across Regions or contribute to global redundancy.\nProvisioned IOPS is a storage option that delivers predictable high I/O performance for latency-sensitive workloads, and is a performance configuration rather than a replication or redundancy feature.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -3653,7 +3829,7 @@
       "D": "Amazon EC2 Auto Scaling"
     },
     "answer": "D",
-    "explanation": "Amazon EC2 Auto Scaling automatically adjusts the number of EC2 instances based on demand conditions you define, adding elasticity by scaling out during peaks and scaling in during lulls.",
+    "explanation": "Amazon EC2 Auto Scaling monitors defined metrics and automatically adjusts the number of EC2 instances up or down based on demand conditions, adding elasticity to the application by ensuring it has the right capacity to handle current workloads.\nResource groups organise AWS resources by tags or CloudFormation stacks to make them easier to manage, automate, and monitor collectively, but they do not add compute capacity or enable dynamic scaling of EC2 instances.\nLifecycle policies in the context of Amazon S3 automatically transition objects to different storage classes or expire them after a specified period, and are a storage management feature rather than a compute elasticity mechanism.\nApplication Load Balancer distributes incoming traffic across registered EC2 instances to prevent any single instance from being overwhelmed, but it does not adjust the number of running instances; that capacity change is the role of Auto Scaling.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -3698,7 +3874,7 @@
       "D": "AWS Web Application Firewall (AWS WAF)"
     },
     "answer": "B",
-    "explanation": "AWS Direct Connect establishes a dedicated, private network connection between on-premises data centres and AWS, bypassing the public internet to provide consistent performance, lower latency, and enhanced security for hybrid cloud connectivity.\nAmazon VPC NAT Gateway allows instances in private subnets to initiate outbound connections to the internet while preventing unsolicited inbound connections, and is an outbound internet access mechanism for private resources rather than a service that facilitates private hybrid connectivity between on-premises and AWS. Amazon S3 Transfer Acceleration speeds up data transfers to and from S3 buckets by routing traffic through AWS CloudFront edge locations, and is a data transfer performance optimisation rather than a private hybrid connectivity solution. AWS WAF is a web application firewall that filters HTTP and HTTPS traffic based on defined rules, and is a traffic filtering security service rather than a network connectivity solution for hybrid cloud architecture.\nWhy this question was updated Domain reassigned to Cloud Technology and Services as Direct Connect is a networking service covered under Task Statement 3.5.",
+    "explanation": "AWS Direct Connect establishes a dedicated, private network connection between on-premises data centres and AWS, bypassing the public internet to provide consistent performance, lower latency, and enhanced security for hybrid cloud connectivity.\nAmazon VPC NAT Gateway allows instances in private subnets to initiate outbound connections to the internet while preventing unsolicited inbound connections, and is an outbound internet access mechanism for private resources rather than a service that facilitates private hybrid connectivity between on-premises and AWS. Amazon S3 Transfer Acceleration speeds up data transfers to and from S3 buckets by routing traffic through AWS CloudFront edge locations, and is a data transfer performance optimisation rather than a private hybrid connectivity solution. AWS WAF is a web application firewall that filters HTTP and HTTPS traffic based on defined rules, and is a traffic filtering security service rather than a network connectivity solution for hybrid cloud architecture.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -3777,7 +3953,7 @@
       "D": "A virtual private gateway over AWS Direct Connect"
     },
     "answer": "B",
-    "explanation": "Amazon CloudFront caches content at edge locations worldwide, delivering frequently accessed data from the location nearest to users for the fastest possible response times across multiple Regions.",
+    "explanation": "Amazon CloudFront caches frequently accessed content at edge locations worldwide, serving responses from the location nearest to the requesting user, which provides the fastest response times for globally distributed users compared to fetching from a single origin Region each time.\nAWS CloudTrail records API calls and management events for auditing and compliance across Availability Zones but is not involved in serving application content or reducing response latency for users.\nAWS CloudFormation provisions and manages infrastructure through code templates and can be deployed across multiple Regions for consistency, but it is an infrastructure provisioning service rather than a content acceleration solution that reduces response times for end users.\nA virtual private gateway over AWS Direct Connect provides a dedicated private network link between an on-premises environment and an AWS Region, reducing latency on that specific path but not serving application content to globally distributed users at the lowest possible latency.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -3875,7 +4051,7 @@
       "D": "AWS Glue"
     },
     "answer": "B",
-    "explanation": "AWS CloudFormation enables infrastructure as code by letting you define AWS resources in JSON or YAML templates, automating the provisioning and management of an entire infrastructure stack in a repeatable and consistent way.\nAmazon GameLift is a managed service for deploying, operating, and scaling cloud-based game servers, entirely unrelated to infrastructure provisioning. AWS Data Pipeline is a service for orchestrating and automating the movement and transformation of data between AWS services, not for provisioning infrastructure resources. AWS Glue is a managed extract, transform, and load service for preparing and moving data for analytics workloads, unrelated to infrastructure as code.",
+    "explanation": "AWS CloudFormation enables infrastructure as code by letting you define AWS resources in JSON or YAML templates, automating the provisioning and management of an entire infrastructure stack in a repeatable and consistent way.\nAmazon GameLift is a managed service for deploying, operating, and scaling cloud-based game servers, entirely unrelated to infrastructure provisioning. AWS Data Pipeline (deprecated) is a service for orchestrating and automating the movement and transformation of data between AWS services, not for provisioning infrastructure resources. AWS Glue is a managed extract, transform, and load service for preparing and moving data for analytics workloads, unrelated to infrastructure as code.",
     "source": "practice-exam-17.md",
     "isMultiAnswer": false
   },
@@ -3909,7 +4085,7 @@
       "A",
       "B"
     ],
-    "explanation": "Amazon CloudFront delivers content from edge locations worldwide, and AWS Shield provides DDoS protection at the edge. Both services rely on the AWS global edge location network.",
+    "explanation": "Amazon CloudFront uses edge locations to cache and deliver content to users from the nearest point of presence, and AWS Shield provides DDoS protection at the edge by inspecting and mitigating attack traffic before it reaches the origin infrastructure.\nAmazon EC2 instances are deployed in Availability Zones within AWS Regions, not at edge locations; EC2 is a regional compute service whose instances run in data centres rather than in the edge Points of Presence used by CloudFront and Shield.\nAmazon RDS is a fully managed relational database service that runs in specific AWS Regions and Availability Zones, not at edge locations, and is a regional service without an edge presence.\nAmazon ElastiCache provides in-memory caching within AWS Regions to reduce database load, and while it improves latency for applications within a Region, it does not operate at edge locations and is not a globally distributed edge service.",
     "source": "practice-exam-17.md",
     "isMultiAnswer": true
   },
@@ -4044,7 +4220,41 @@
       "D": "AWS Data Pipeline"
     },
     "answer": "A",
-    "explanation": "AWS Direct Connect provides a consistent dedicated private network connection between on-premises systems and AWS, delivering predictable performance and lower latency than internet-based connections.\nAWS VPN creates an encrypted tunnel between on-premises infrastructure and AWS but routes traffic over the public internet, meaning performance can vary and it does not provide the dedicated physical connection the question requires. Amazon Connect is a cloud contact centre service for managing customer communications via voice and chat, and is entirely unrelated to network connectivity between on-premises systems and AWS. AWS Data Pipeline is a workflow orchestration service for automating the movement and transformation of data between AWS services and on-premises sources, and is a data processing tool with no network connectivity capability.",
+    "explanation": "AWS Direct Connect provides a consistent dedicated private network connection between on-premises systems and AWS, delivering predictable performance and lower latency than internet-based connections.\nAWS VPN creates an encrypted tunnel between on-premises infrastructure and AWS but routes traffic over the public internet, meaning performance can vary and it does not provide the dedicated physical connection the question requires. Amazon Connect is a cloud contact centre service for managing customer communications via voice and chat, and is entirely unrelated to network connectivity between on-premises systems and AWS. AWS Data Pipeline (deprecated) is a workflow orchestration service for automating the movement and transformation of data between AWS services and on-premises sources, and is a data processing tool with no network connectivity capability.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": false
+  },
+    {
+    "id": "q759",
+    "domainId": 3,
+    "question": "Which of the following describes the relationships among AWS Regions, Availability Zones, and edge locations?",
+    "options": {
+      "A": "There are more AWS Regions than Availability Zones",
+      "B": "There are more edge locations than AWS Regions",
+      "C": "An edge location is an Availability Zone",
+      "D": "There are more AWS Regions than edge locations",
+      "E": "There are more Availability Zones than AWS Regions"
+    },
+    "answer": [
+      "B",
+      "E"
+    ],
+    "explanation": "There are hundreds of edge locations worldwide compared to dozens of Regions, and each Region contains multiple Availability Zones, making both counts greater than the number of Regions.\nThere are more AWS Regions than Availability Zones is false. Every Region contains at least two or three AZs, so AZs always outnumber Regions. An edge location is an Availability Zone is false. Edge locations are separate points of presence used for content delivery and are not part of the AZ infrastructure. There are more AWS Regions than edge locations is false. Edge locations number in the hundreds, far exceeding the number of Regions.",
+    "source": "practice-exam-18.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q767",
+    "domainId": 3,
+    "question": "What helps a company provide a lower latency experience to its users globally?",
+    "options": {
+      "A": "Using an AWS Region that is central to all users",
+      "B": "Using a second Availability Zone in the AWS Region that is being used",
+      "C": "Enabling caching in the AWS Region that is being used",
+      "D": "Using edge locations to put content closer to all users"
+    },
+    "answer": "D",
+    "explanation": "Edge locations place cached content closer to users globally through Amazon CloudFront, providing the lowest possible latency regardless of where the origin server is located.\nUsing a single central Region still requires users in distant locations to route traffic across long network distances, and no single Region can be geographically central to all users worldwide. Adding a second Availability Zone improves availability and fault tolerance within a Region but does not reduce the physical distance between the application and global users. Enabling caching within a single Region keeps cached content in one geographic location, which only benefits users close to that Region rather than reducing latency for users globally.",
     "source": "practice-exam-18.md",
     "isMultiAnswer": false
   },
@@ -4059,7 +4269,7 @@
       "D": "Enhanced monitoring"
     },
     "answer": "A",
-    "explanation": "Amazon RDS Multi-AZ deployment maintains a synchronous standby replica in a different Availability Zone, providing automatic failover if the primary instance fails.",
+    "explanation": "Amazon RDS Multi-AZ deployment maintains a synchronous standby replica in a different Availability Zone and performs automatic failover to the standby with no manual intervention if the primary instance becomes unavailable, providing high availability for database workloads.\nAmazon Reserved Instances are a billing model that offers significant discounts in exchange for a one-year or three-year commitment, and are a cost optimisation tool rather than a high-availability feature for database instances.\nProvisioned IOPS storage delivers consistent, low-latency I/O performance for demanding workloads by allocating dedicated I/O capacity, and is a performance optimisation option rather than a mechanism for achieving high availability across Availability Zones.\nEnhanced Monitoring provides granular real-time metrics on the operating system of an RDS instance at intervals as short as one second, enabling detailed performance visibility, but is a monitoring feature rather than a high-availability configuration.",
     "source": "practice-exam-18.md",
     "isMultiAnswer": false
   },
@@ -4074,7 +4284,7 @@
       "D": "Amazon AppStream 2.0"
     },
     "answer": "B",
-    "explanation": "AWS Database Migration Service simplifies database migration by continuously replicating data from the source to the target with minimal downtime, supporting both homogeneous and heterogeneous migrations.",
+    "explanation": "AWS Database Migration Service simplifies database migration by managing the data replication from the source to the target with minimal downtime, supporting homogeneous migrations such as Oracle to Oracle and heterogeneous migrations between different database engines.\nAWS Storage Gateway connects on-premises environments to AWS cloud storage for hybrid storage use cases, and while it handles data movement, it is a storage integration service for files and block data rather than a service designed to migrate relational databases.\nAmazon EC2 can host a custom database migration process, but it requires customers to set up, configure, and manage all migration tooling manually, making it far less straightforward than using the purpose-built DMS service.\nAmazon AppStream 2.0 is a fully managed application streaming service that streams desktop applications from AWS to a user's browser, and is a virtual desktop and application delivery service with no relationship to database migration.",
     "source": "practice-exam-18.md",
     "isMultiAnswer": false
   },
@@ -4094,6 +4304,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q778",
+    "domainId": 3,
+    "question": "Which component of AWS global infrastructure does Amazon CloudFront use to ensure low-latency delivery?",
+    "options": {
+      "A": "AWS Regions",
+      "B": "AWS edge locations",
+      "C": "AWS Availability Zones",
+      "D": "Amazon Virtual Private Cloud (Amazon VPC)"
+    },
+    "answer": "B",
+    "explanation": "Amazon CloudFront uses AWS edge locations, distributed across hundreds of cities worldwide, to cache and deliver content from the location nearest to each user for low-latency delivery.\nAWS Regions are geographic areas containing multiple AZs, used for deploying and running workloads, not for edge caching and content delivery. AWS Availability Zones are isolated data centre clusters within a Region, used for high availability and redundancy, not content delivery. Amazon VPC is a private virtual network within a Region, used for isolating and controlling network traffic, not for delivering content globally.",
+    "source": "practice-exam-19.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q781",
     "domainId": 3,
     "question": "Which service would you use to send alerts based on Amazon CloudWatch alarms?",
@@ -4104,7 +4329,7 @@
       "D": "Amazon Route 53"
     },
     "answer": "A",
-    "explanation": "Amazon Simple Notification Service delivers alert notifications triggered by CloudWatch alarms, sending messages via email, SMS, HTTP endpoints, or Lambda functions.",
+    "explanation": "Amazon SNS delivers notifications triggered by CloudWatch alarms by sending messages to subscribed endpoints such as email addresses, SMS, Lambda functions, SQS queues, and HTTP endpoints, making it the integration point for alarm-based alerting.\nAWS CloudTrail records API calls and management events in an AWS account for auditing and compliance, and does not send alerts based on CloudWatch alarms; it is a logging service rather than a notification delivery mechanism.\nAWS Trusted Advisor inspects your AWS environment against best practice checks across security, cost, performance, and fault tolerance, and while it generates recommendations, it does not integrate with CloudWatch alarms to send triggered alerts.\nAmazon Route 53 is a scalable DNS service supporting domain registration, routing, and health checks, and while it has its own health check alerting, it does not serve as the notification delivery service for general CloudWatch alarms.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
@@ -4142,7 +4367,7 @@
       "B",
       "D"
     ],
-    "explanation": "AWS Global Accelerator routes traffic over the AWS global network to optimal endpoints, and Amazon CloudFront caches content at edge locations worldwide, both providing low latency and high transfer speeds for global users.",
+    "explanation": "AWS Global Accelerator routes traffic over the AWS global network to the optimal endpoint based on health, geography, and routing policies, and Amazon CloudFront caches content at edge locations worldwide. Together they provide low latency and high transfer speeds for a global user base.\nApplication Load Balancer distributes traffic across targets within an AWS Region, improving availability and performance for applications within a Region, but does not extend reach to global users across multiple geographic locations.\nAWS Lambda is a serverless compute service that runs code in response to events without managing servers, and is a compute service rather than a global content delivery or traffic acceleration solution.\nAWS Direct Connect provides a dedicated private network connection from an on-premises data centre to AWS for hybrid workloads, and is not a solution for reducing latency for internet-based end users distributed worldwide.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": true
   },
@@ -4176,7 +4401,7 @@
       "A",
       "D"
     ],
-    "explanation": "AWS VPN creates an encrypted tunnel over the public internet to connect on-premises networks to the AWS Cloud, and AWS Direct Connect establishes a dedicated private physical connection between an on-premises data centre and AWS. Both services provide hybrid connectivity between the AWS Cloud and on-premises resources.",
+    "explanation": "AWS VPN creates an encrypted tunnel over the public internet between an on-premises network and an AWS VPC, and AWS Direct Connect establishes a dedicated private physical network connection from an on-premises data centre to AWS. Both provide connectivity between on-premises resources and the AWS Cloud.\nAmazon Connect is a cloud-based contact centre service that enables customer service operations through voice and chat channels, and is a business communications tool rather than a network connectivity solution for linking on-premises infrastructure to AWS.\nAmazon Cognito provides user identity and authentication services for web and mobile applications, managing user sign-up, sign-in, and access control, and is an identity service rather than a network connectivity solution.\nAWS Managed Services provides ongoing management of AWS infrastructure to reduce operational overhead, and is an operational management offering rather than a network connectivity service between on-premises environments and the AWS Cloud.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": true
   },
@@ -4266,7 +4491,7 @@
       "D": "Amazon CloudFront"
     },
     "answer": "C",
-    "explanation": "AWS Global Accelerator monitors the health of application endpoints and automatically routes incoming traffic to the nearest healthy regional endpoint, improving availability and performance.",
+    "explanation": "AWS Global Accelerator continuously monitors the health of application endpoints and automatically routes incoming user traffic to the nearest healthy endpoint over the AWS global network, improving availability and enabling cross-Region failover without DNS changes.\nAmazon Inspector is an automated security assessment service that scans EC2 instances and container images for software vulnerabilities and unintended network exposure, and does not monitor endpoint health or route application traffic.\nAmazon CloudWatch collects and monitors metrics, logs, and events from AWS services and applications, and while it can detect and alert on endpoint health issues, it does not itself route application traffic to healthy endpoints.\nAmazon CloudFront is a content delivery network that caches content at edge locations and improves performance for static and dynamic content delivery, but it does not perform application-level endpoint health monitoring and traffic routing across Regions in the way Global Accelerator does.",
     "source": "practice-exam-20.md",
     "isMultiAnswer": false
   },
@@ -4418,6 +4643,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q864",
+    "domainId": 3,
+    "question": "Which of the AWS global infrastructure is used to cache copies of content for faster delivery to users across the globe?",
+    "options": {
+      "A": "AWS Regions",
+      "B": "Availability Zones",
+      "C": "Edge locations",
+      "D": "Data centers"
+    },
+    "answer": "C",
+    "explanation": "Edge locations are points of presence in the AWS global infrastructure used by CloudFront and other services to cache copies of content close to end users for faster delivery worldwide.\nAWS Regions are geographic areas containing multiple Availability Zones where customers deploy their workloads, and are not designed for content caching or low-latency delivery to end users. Availability Zones are isolated data center clusters within a Region used for redundancy and high availability, not for caching content at the edge. Data centers are the physical facilities that house AWS infrastructure and are not a distinct infrastructure tier that customers interact with directly for content delivery purposes.",
+    "source": "practice-exam-20.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q866",
     "domainId": 3,
     "question": "A user needs to quickly deploy a non-relational database on AWS. The user does not want to manage the underlying hardware or the database software. Which AWS service can be used to accomplish this?",
@@ -4429,21 +4669,6 @@
     },
     "answer": "B",
     "explanation": "Amazon DynamoDB is a fully managed non-relational NoSQL database that requires no hardware provisioning, software installation, or database management, and scales automatically to handle any workload.\nAmazon RDS is a fully managed relational database service supporting engines such as MySQL, PostgreSQL, and SQL Server, and does not support non-relational data models. Amazon Aurora is a fully managed relational database compatible with MySQL and PostgreSQL, and is also a relational rather than a non-relational database service. Amazon Redshift is a managed data warehouse service optimised for running analytical SQL queries across large datasets, and is a relational service with no non-relational capability.",
-    "source": "practice-exam-21.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q869",
-    "domainId": 3,
-    "question": "Which AWS service is used to automate configuration management using Chef and Puppet?",
-    "options": {
-      "A": "AWS Config",
-      "B": "AWS OpsWorks",
-      "C": "AWS CloudFormation",
-      "D": "AWS Systems Manager"
-    },
-    "answer": "B",
-    "explanation": "AWS OpsWorks provides managed Chef and Puppet instances that automate configuration management, enabling you to define server configurations as code and apply them consistently across your infrastructure.\nAWS Config continuously tracks and records the configuration state of AWS resources to assess compliance and detect configuration changes, and is a resource configuration auditing tool rather than a service for automating server configuration management using Chef or Puppet. AWS CloudFormation automates infrastructure provisioning through templates, enabling repeatable and version-controlled deployment of AWS resources, and is an infrastructure-as-code tool rather than a configuration management service built around Chef and Puppet. AWS Systems Manager provides operational tools for managing and automating tasks across AWS resources, including patching, parameter storage, and run commands, and while it overlaps with some configuration management use cases it does not use Chef or Puppet as its automation framework.\nNote: AWS OpsWorks was deprecated in 2024 and is no longer available to new customers.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -4462,9 +4687,24 @@
       "B",
       "D"
     ],
-    "explanation": "AWS Direct Connect provides a dedicated private physical connection between an on-premises network and a VPC, and AWS VPN creates an encrypted tunnel over the public internet between an on-premises network and a VPC. Both are purpose-built network connectivity solutions.\nAmazon Route 53 is a DNS and traffic routing service that translates domain names to IP addresses and manages traffic flow, and does not establish network connectivity between on-premises infrastructure and a VPC. AWS Data Pipeline is a workflow orchestration service for automating the movement and transformation of data between AWS services and on-premises sources, and is a data processing tool with no network connectivity capability. Amazon Connect is a cloud contact centre service for managing customer communications via voice and chat, and is entirely unrelated to network connectivity.",
+    "explanation": "AWS Direct Connect provides a dedicated private physical connection between an on-premises network and a VPC, and AWS VPN creates an encrypted tunnel over the public internet between an on-premises network and a VPC. Both are purpose-built network connectivity solutions.\nAmazon Route 53 is a DNS and traffic routing service that translates domain names to IP addresses and manages traffic flow, and does not establish network connectivity between on-premises infrastructure and a VPC. AWS Data Pipeline (deprecated) is a workflow orchestration service for automating the movement and transformation of data between AWS services and on-premises sources, and is a data processing tool with no network connectivity capability. Amazon Connect is a cloud contact centre service for managing customer communications via voice and chat, and is entirely unrelated to network connectivity.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": true
+  },
+  {
+    "id": "q876",
+    "domainId": 3,
+    "question": "A company has an application with users in both Australia and Brazil. All the company infrastructure is currently provisioned in the Asia Pacific (Sydney) Region in Australia, and Brazilian users are experiencing high latency. What should the company do to reduce latency?",
+    "options": {
+      "A": "Implement AWS Direct Connect for users in Brazil",
+      "B": "Provision resources in the South America (São Paulo) Region in Brazil",
+      "C": "Use AWS Transit Gateway to quickly route users from Brazil to the application",
+      "D": "Launch additional Amazon EC2 instances in Sydney to handle the demand"
+    },
+    "answer": "B",
+    "explanation": "Provisioning resources in the South America (S�o Paulo) Region places infrastructure geographically close to Brazilian users, directly reducing the network distance and latency compared to routing all traffic to Sydney.\nAWS Direct Connect provides a dedicated private network link between on-premises infrastructure and AWS, but does not reduce latency for end users accessing a cloud-hosted application over the internet. AWS Transit Gateway connects VPCs and on-premises networks through a central hub, and is not designed to reduce geographic latency for end users accessing applications from distant locations. Launching additional EC2 instances in Sydney increases capacity in Australia but does not reduce the physical distance between the application and Brazilian users, so latency would remain unchanged.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
   },
   {
     "id": "q879",
@@ -4492,7 +4732,7 @@
       "D": "Use an AWS Transit Gateway"
     },
     "answer": "D",
-    "explanation": "AWS Transit Gateway acts as a central hub that connects multiple VPCs across different Regions and on-premises networks, providing the most efficient way to manage complex network connectivity at scale.",
+    "explanation": "AWS Transit Gateway acts as a central hub that connects multiple VPCs across different AWS Regions and on-premises networks through a single gateway, dramatically simplifying network management compared to maintaining individual point-to-point connections between each VPC and the on-premises environment.\nAWS Direct Connect provides a dedicated private physical network connection from an on-premises data centre to a single AWS Region; while it can be combined with Transit Gateway for multi-Region connectivity, Direct Connect alone does not solve the complexity of connecting to multiple VPCs in different Regions through a single architecture.\nAWS VPN creates encrypted connections over the public internet from on-premises to AWS, and while individual VPN connections can be established to each Region, managing multiple VPN connections to multiple VPCs across Regions is complex and less efficient than using Transit Gateway as a central hub.\nAWS Client VPN is an end-user VPN service that enables individual remote users to securely access AWS resources and the corporate network from their devices, and is designed for user-based remote access rather than site-to-site connectivity between data centres and multiple VPCs.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -4512,25 +4752,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q887",
-    "domainId": 3,
-    "question": "Which AWS services can be used as infrastructure automation tools?",
-    "options": {
-      "A": "AWS CloudFormation",
-      "B": "Amazon CloudFront",
-      "C": "AWS Batch",
-      "D": "AWS OpsWorks",
-      "E": "Amazon QuickSight"
-    },
-    "answer": [
-      "A",
-      "D"
-    ],
-    "explanation": "AWS CloudFormation automates infrastructure provisioning through templates, enabling repeatable and version-controlled deployment of AWS resources, and AWS OpsWorks automates server configuration and management using Chef and Puppet. Both are infrastructure automation tools.\nAmazon CloudFront is a content delivery network that caches and distributes content at edge locations worldwide, and is a content delivery service with no infrastructure provisioning or automation capability. AWS Batch is a managed service for running batch computing workloads at scale, and is a job scheduling and compute service rather than an infrastructure automation tool. Amazon QuickSight is a serverless business intelligence service for creating dashboards and visualisations, and has no infrastructure automation capability of any kind.\nNote: AWS OpsWorks was deprecated in 2024. If this question is updated in future, AWS Elastic Beanstalk is the recommended in-scope replacement as it automates application deployment and underlying infrastructure management and serves a comparable infrastructure automation purpose.",
-    "source": "practice-exam-21.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q888",
     "domainId": 3,
     "question": "Which AWS service enables users to create copies of resources across AWS Regions?",
@@ -4541,14 +4762,14 @@
       "D": "AWS Systems Manager"
     },
     "answer": "B",
-    "explanation": "AWS CloudFormation templates can be deployed across multiple Regions, creating copies of an entire infrastructure stack in different geographic locations for redundancy and disaster recovery.",
+    "explanation": "AWS CloudFormation uses template files to define infrastructure as code, and these templates can be deployed into multiple AWS Regions, creating identical copies of an entire infrastructure stack including all its resources and configurations in each target Region.\nAmazon ElastiCache provides in-memory caching for improving application performance by reducing database load, and is a caching service rather than a service for replicating or copying infrastructure resources across Regions.\nAWS CloudTrail records API calls and management events for auditing and compliance purposes, and while it can be configured to deliver logs to multiple Regions, it does not enable users to create copies of AWS infrastructure resources in other Regions.\nAWS Systems Manager provides operational management capabilities for AWS resources including patch management, parameter storage, and automation, but does not provide a mechanism for replicating or deploying complete sets of AWS resources across multiple Regions.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
   {
     "id": "q891",
     "domainId": 3,
-    "question": "Which of the following are AWS compute services? (Select two.)",
+    "question": "Which of the following are AWS compute services?",
     "options": {
       "A": "Amazon Lightsail",
       "B": "AWS Systems Manager",
@@ -4620,7 +4841,7 @@
       "D": "Deploy a single Network Load Balancer to distribute incoming traffic across multiple Amazon CloudFront origins"
     },
     "answer": "B",
-    "explanation": "Amazon RDS Multi-AZ maintains a synchronous standby replica in a separate Availability Zone with the same endpoint, automatically failing over without manual intervention or endpoint changes if the primary instance goes down.",
+    "explanation": "Amazon RDS Multi-AZ maintains a synchronous standby replica with the same DNS endpoint in a different Availability Zone, so when a failure occurs the endpoint automatically resolves to the standby without any change to the application connection string or manual intervention.\nUsing multiple Route 53 routes to a standby database hosted on AWS Storage Gateway is not a viable approach; Storage Gateway is a hybrid storage service rather than a database hosting solution, and this configuration would not maintain the same endpoint or provide automated failover.\nAdding multiple Application Load Balancers and deploying the database with Elastic Beanstalk would not address database high availability; Beanstalk manages application deployment and ALBs route web traffic, but neither provides the database-level failover with endpoint persistence that the requirement specifies.\nDeploying a Network Load Balancer across CloudFront origins would not meet this requirement; NLB distributes network traffic to targets, and CloudFront serves web content from edge locations, neither of which applies to maintaining a consistent database instance endpoint with automatic AZ failover.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -4665,7 +4886,7 @@
       "D": "Amazon Route 53"
     },
     "answer": "D",
-    "explanation": "Amazon Route 53 supports routing policies including latency-based, geolocation, and failover routing, directing users to the optimal regional endpoint for cross-region traffic management.",
+    "explanation": "Amazon Route 53 supports multiple routing policies including latency-based routing, geolocation routing, and failover routing that direct application traffic across multiple AWS Regions, enabling global traffic management with health checks and automatic failover.\nAmazon AppStream 2.0 is a managed application and desktop streaming service that delivers desktop applications securely through a browser, and is an end-user computing service rather than a networking or traffic management tool for cross-Region application traffic.\nAmazon VPC provides isolated networking within an AWS Region, including subnets, route tables, security groups, and gateways, but VPC is a regional construct and does not manage application traffic routing between multiple Regions.\nElastic Load Balancer distributes incoming traffic across multiple targets within a single AWS Region, and while it supports multi-AZ distribution within a Region, it does not route traffic across multiple different AWS Regions.",
     "source": "practice-exam-22.md",
     "isMultiAnswer": false
   },
@@ -4680,7 +4901,7 @@
       "D": "Take Amazon S3 bucket snapshots and copy that data to another AWS Region"
     },
     "answer": "B",
-    "explanation": "Amazon S3 cross-region replication automatically copies objects from a source bucket in one Region to a destination bucket in another Region, providing geographic redundancy for critical business data.",
+    "explanation": "Amazon S3 cross-region replication automatically copies objects uploaded to a source bucket in one Region to a destination bucket in another Region, ensuring that a backup of the critical data exists in a geographically separate location.\nUsing Amazon CloudFront to cache data globally distributes content to edge locations for faster access by end users, but CDN caching is not a durable backup mechanism; cached content is temporary and can be evicted, and CloudFront is not designed for storing permanent backup copies of S3 data.\nAWS Backup can back up data from various AWS services including S3, but for continuous cross-region replication of S3 objects the native S3 cross-region replication feature is the direct, purpose-built solution.\nTaking Amazon S3 bucket snapshots is not a native S3 feature; S3 does not have a native snapshot capability like EBS, and the correct approach for S3 backup to another Region is cross-region replication rather than snapshots.",
     "source": "practice-exam-22.md",
     "isMultiAnswer": false
   },
@@ -4925,7 +5146,7 @@
       "D": "Enable termination protection for the EC2 instance to avoid outages"
     },
     "answer": "C",
-    "explanation": "Migrating to Amazon RDS with Multi-AZ enabled provides automatic failover to a standby instance in another Availability Zone, delivering higher availability than a single EC2 instance without manual intervention.",
+    "explanation": "Amazon RDS with Multi-AZ enabled maintains a synchronous standby in a separate Availability Zone and performs automatic failover with no manual intervention, providing high availability that a single EC2-hosted MySQL instance cannot match.\nAdding an Application Load Balancer in front of a single EC2 database instance would distribute traffic but there would still be only one database instance, meaning a failure of that instance would take down the database regardless of the load balancer; ALBs distribute traffic across multiple targets and do not themselves provide database high availability.\nConfiguring EC2 Auto Recovery moves a failed instance to new underlying hardware within the same Availability Zone if the underlying hardware fails, but this does not protect against AZ-level failures and involves downtime during recovery rather than the near-instantaneous failover that Multi-AZ RDS provides.\nEnabling termination protection prevents accidental termination of an EC2 instance through the console or API, but it does not prevent the instance from failing due to software issues, storage problems, or AZ-level events, and does not provide redundancy or automatic recovery.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
   },
@@ -4940,7 +5161,7 @@
       "D": "Amazon Simple Queue Service (Amazon SQS)"
     },
     "answer": "D",
-    "explanation": "Amazon SQS supports FIFO queues that guarantee messages are processed exactly once in the order they are sent, making it ideal for applications requiring strict message ordering between components.",
+    "explanation": "Amazon SQS supports FIFO queues that guarantee messages are processed exactly once in the exact order they are received, making it the correct service for applications that require strict first-in, first-out message ordering with deduplication.\nAWS Step Functions is a workflow orchestration service that coordinates distributed application components through visual workflows and state machines, and while it sequences steps in a defined order, it is not a message queuing service for decoupling application components that need to exchange messages in FIFO order.\nAmazon SNS is a fully managed pub/sub notification service that broadcasts messages to multiple subscribed endpoints simultaneously, and it does not support FIFO guarantees for ordered message delivery between specific senders and receivers.\nAmazon Kinesis Data Streams is a real-time data streaming service designed for processing large volumes of streaming data from multiple producers, and while it preserves order within a shard, it is designed for high-throughput analytics pipelines rather than application-to-application message queuing with FIFO guarantees.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
   },
@@ -4955,7 +5176,7 @@
       "D": "AWS OpsWorks"
     },
     "answer": "B",
-    "explanation": "AWS Elastic Beanstalk automatically handles deployment, scaling, load balancing, and monitoring for supported platforms including Node.js, allowing users with limited AWS knowledge to get a scalable application running quickly without configuring the underlying infrastructure.\nAWS CloudFormation is an infrastructure as code service for provisioning AWS resources using templates, which requires significant AWS knowledge to use effectively and is not designed for quick application deployment. Amazon EC2 provides raw virtual servers that require manual configuration of the operating system, runtime, networking, and scaling, making it unsuitable for users with limited AWS experience who need a quick deployment. AWS OpsWorks is a configuration management service using Chef and Puppet that requires expertise in those tools to manage application deployments, adding complexity rather than simplifying it.",
+    "explanation": "AWS Elastic Beanstalk automatically handles deployment, scaling, load balancing, and monitoring for supported platforms including Node.js, allowing users with limited AWS knowledge to get a scalable application running quickly without configuring the underlying infrastructure.\nAWS CloudFormation is an infrastructure as code service for provisioning AWS resources using templates, which requires significant AWS knowledge to use effectively and is not designed for quick application deployment. Amazon EC2 provides raw virtual servers that require manual configuration of the operating system, runtime, networking, and scaling, making it unsuitable for users with limited AWS experience who need a quick deployment. AWS OpsWorks (deprecated) is a configuration management service using Chef and Puppet that requires expertise in those tools to manage application deployments, adding complexity rather than simplifying it.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
   },
@@ -5001,10 +5222,25 @@
       "A": "AWS CodeBuild",
       "B": "AWS CodeCommit",
       "C": "AWS CodePipeline",
-      "D": "AWS CodeStar"
+      "D": "AWS X-Ray"
     },
     "answer": "B",
-    "explanation": "AWS CodeCommit is a fully managed source control service that hosts private Git repositories, providing secure storage and version management for source code.\nAWS CodeBuild is a fully managed build service that compiles source code, runs tests, and produces deployment-ready packages, but does not store or manage source code repositories. AWS CodePipeline is a continuous delivery service that automates the stages of a release pipeline, orchestrating build, test, and deploy steps rather than storing or versioning source code. AWS CodeStar is a unified interface for managing software development projects that brings together multiple developer tools, but is a project management layer rather than a dedicated source code repository service.",
+    "explanation": "AWS CodeCommit is a fully managed source control service that hosts private Git repositories, providing secure storage and version management for source code.\nAWS CodeBuild is a fully managed build service that compiles source code, runs tests, and produces deployment-ready packages, but does not store or manage source code repositories. AWS CodePipeline is a continuous delivery service that automates the stages of a release pipeline, orchestrating build, test, and deploy steps rather than storing or versioning source code. AWS X-Ray is a unified interface for managing software development projects that brings together multiple developer tools, but is a project management layer rather than a dedicated source code repository service.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q993",
+    "domainId": 3,
+    "question": "A company wants to ensure its infrastructure is designed for fault tolerance and business continuity in the event of an environmental disruption. Which AWS infrastructure component should the company replicate across?",
+    "options": {
+      "A": "Edge locations",
+      "B": "Availability Zones",
+      "C": "Regions",
+      "D": "Amazon Route 53"
+    },
+    "answer": "B",
+    "explanation": "Replicating infrastructure across multiple Availability Zones within a Region provides fault tolerance and business continuity, ensuring operations continue even if one AZ is disrupted by an environmental event.\nEdge locations are points of presence used by CloudFront to cache content close to end users, and are not infrastructure components that customers replicate their workloads across for fault tolerance. Regions are the broadest geographic groupings in AWS infrastructure, and while deploying across multiple Regions provides disaster recovery, replicating across Availability Zones within a Region is the standard approach for fault tolerance against environmental disruptions. Amazon Route 53 is a DNS service that routes traffic between endpoints, and is not an infrastructure component that workloads are replicated across.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
   },
@@ -5039,6 +5275,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q999",
+    "domainId": 3,
+    "question": "How should a web application be deployed to ensure high availability in the AWS Cloud?",
+    "options": {
+      "A": "Deploy multiple instances of the application in multiple Availability Zones",
+      "B": "Deploy multiple instances of the application in a single Availability Zone",
+      "C": "Deploy the application to a compute-optimized Amazon EC2 instance in a single Availability Zone",
+      "D": "Deploy the application in one Amazon EC2 instance in an Auto Scaling group"
+    },
+    "answer": "A",
+    "explanation": "Deploying multiple instances across multiple Availability Zones ensures high availability by providing redundancy, so if one AZ fails, instances in other AZs continue serving traffic without interruption.\nDeploying multiple instances in a single Availability Zone improves capacity and performance but provides no protection against an AZ-level failure, leaving the application vulnerable to a single point of failure. Deploying to a compute-optimised EC2 instance in a single Availability Zone addresses performance for compute-intensive workloads but offers no redundancy or fault tolerance. Deploying one EC2 instance in an Auto Scaling group allows the group to replace a failed instance but still leaves a gap in availability while the replacement is provisioned, and does not protect against an AZ failure.",
+    "source": "practice-exam-23.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q1005",
     "domainId": 3,
     "question": "A company is building an application that needs to deliver images and videos globally with minimal latency. Which approach can the company use to accomplish this in a cost effective manner?",
@@ -5049,7 +5300,7 @@
       "D": "Deliver the content through AWS PrivateLink"
     },
     "answer": "A",
-    "explanation": "Amazon CloudFront delivers images and videos globally with minimal latency by caching content at edge locations worldwide, making it the purpose-built and cost-effective solution for global content delivery.",
+    "explanation": "Amazon CloudFront caches images and videos at hundreds of edge locations worldwide, serving content to users from the nearest edge location rather than the origin, which minimises latency and maximises transfer speeds in a cost-effective manner for globally distributed audiences.\nStoring content on Amazon S3 and enabling cross-region replication copies objects to S3 buckets in other Regions, which improves data availability and durability, but users still retrieve content directly from S3 in a specific Region rather than from a globally distributed edge network, resulting in higher latency than CloudFront provides.\nImplementing a VPN across multiple AWS Regions creates encrypted network connectivity between Regions or between on-premises environments and AWS, but a VPN is not a mechanism for delivering content to end users with low latency and does not provide edge caching capabilities.\nDelivering content through AWS PrivateLink provides private connectivity between VPCs and AWS services without traffic traversing the public internet, and is designed for secure service-to-service communication within AWS rather than for delivering content to external users worldwide with low latency.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
   },
@@ -5454,7 +5705,7 @@
       "D": "AWS Data Pipeline"
     },
     "answer": "B",
-    "explanation": "AWS Glue is a fully managed serverless ETL service that crawls data sources, creates a metadata catalog, and prepares and transforms data for analytics workloads.\nAmazon Kinesis is a real-time data streaming service designed for ingesting and processing continuous data streams, and is not an ETL service for preparing and transforming data for analytics. Amazon EMR is a big data processing service that runs open-source frameworks such as Apache Hadoop and Spark, and while it can perform transformations it requires significant configuration and cluster management rather than being a fully managed ETL service. AWS Data Pipeline is an orchestration service that automates the movement and transformation of data between AWS services and on-premises sources on a scheduled basis, but it is a workflow orchestration tool rather than a fully managed ETL service purpose-built for analytics preparation.",
+    "explanation": "AWS Glue is a fully managed serverless ETL service that crawls data sources, creates a metadata catalog, and prepares and transforms data for analytics workloads.\nAmazon Kinesis is a real-time data streaming service designed for ingesting and processing continuous data streams, and is not an ETL service for preparing and transforming data for analytics. Amazon EMR is a big data processing service that runs open-source frameworks such as Apache Hadoop and Spark, and while it can perform transformations it requires significant configuration and cluster management rather than being a fully managed ETL service. AWS Data Pipeline (deprecated) is an orchestration service that automates the movement and transformation of data between AWS services and on-premises sources on a scheduled basis, but it is a workflow orchestration tool rather than a fully managed ETL service purpose-built for analytics preparation.",
     "source": "ai-generated",
     "isMultiAnswer": false
   },
@@ -5499,7 +5750,7 @@
       "D": "AWS Data Pipeline"
     },
     "answer": "A",
-    "explanation": "Amazon Kinesis Data Streams continuously captures and processes large volumes of streaming data in real time from sources such as website clickstreams, financial transactions, and social media feeds.\nAmazon Simple Queue Service (SQS) is a managed message queuing service used to decouple application components by passing messages between them, and is not designed for high-throughput real-time data stream ingestion at scale. Amazon Redshift is a cloud data warehouse service optimised for running analytical queries across large datasets, and does not ingest or process continuous real-time data streams. AWS Data Pipeline is an orchestration service for scheduling and automating the movement and transformation of data between AWS services and on-premises sources on a batch basis, and is not suited for real-time streaming ingestion.",
+    "explanation": "Amazon Kinesis Data Streams continuously captures and processes large volumes of streaming data in real time from sources such as website clickstreams, financial transactions, and social media feeds.\nAmazon Simple Queue Service (SQS) is a managed message queuing service used to decouple application components by passing messages between them, and is not designed for high-throughput real-time data stream ingestion at scale. Amazon Redshift is a cloud data warehouse service optimised for running analytical queries across large datasets, and does not ingest or process continuous real-time data streams. AWS Data Pipeline (deprecated) is an orchestration service for scheduling and automating the movement and transformation of data between AWS services and on-premises sources on a batch basis, and is not suited for real-time streaming ingestion.",
     "source": "ai-generated",
     "isMultiAnswer": false
   },

@@ -153,9 +153,28 @@
       "D": "Contact the AWS Security team"
     },
     "answer": "B",
-    "explanation": "The AWS Abuse Team handles reports of AWS infrastructure being used for malicious activity such as hacking, spam, or unauthorised use, and this channel is available to all customers regardless of their support tier.\nThe AWS Customer Service team handles general account and billing enquiries, and is not the designated contact for reporting malicious use of AWS infrastructure. The AWS Concierge team is a dedicated support resource available exclusively to Enterprise support plan customers for billing and account assistance, and does not handle abuse or malicious activity reports. The AWS Security team manages AWS's own internal security posture and vulnerability disclosure programme, and is not the correct channel for customers to report malicious use of AWS resources within their own accounts.\nWhy this question was updated The question stem was truncated and has been restored to its full text.",
+    "explanation": "The AWS Abuse Team handles reports of AWS infrastructure being used for malicious activity such as hacking, spam, or unauthorised use, and this channel is available to all customers regardless of their support tier.\nThe AWS Customer Service team handles general account and billing enquiries, and is not the designated contact for reporting malicious use of AWS infrastructure. The AWS Concierge team is a dedicated support resource available exclusively to Enterprise support plan customers for billing and account assistance, and does not handle abuse or malicious activity reports. The AWS Security team manages AWS's own internal security posture and vulnerability disclosure programme, and is not the correct channel for customers to report malicious use of AWS resources within their own accounts.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q038",
+    "domainId": 2,
+    "question": "Which of the following are examples of AWS shared controls?",
+    "options": {
+      "A": "Patch Management",
+      "B": "IAM Management",
+      "C": "VPC Management",
+      "D": "Configuration Management",
+      "E": "Data Center operations"
+    },
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation": "Patch Management and Configuration Management are both shared controls where AWS and the customer each manage their own layer independently, with AWS responsible for the infrastructure and customers responsible for their own operating systems and applications.\nIAM Management is a customer responsibility, as customers exclusively control their own users, roles, and permissions within their AWS account. VPC Management is a customer responsibility, as customers define and configure their own virtual network settings including subnets, route tables, and security groups. Data Center operations are exclusively AWS's responsibility, covering all physical infrastructure management.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": true
   },
   {
     "id": "q043",
@@ -170,6 +189,55 @@
     "answer": "B",
     "explanation": "Configuring infrastructure devices such as networking hardware and physical servers is entirely AWS's responsibility, as customers have no access to or control over the underlying physical infrastructure.\nClient-side encryption is the customer's responsibility, as customers choose whether and how to encrypt data before sending it to AWS. Server-side encryption is also the customer's responsibility, as customers decide whether to enable encryption at rest for their data stored in AWS services. Filtering traffic with Security Groups is the customer's responsibility, as customers define and manage their own Security Group rules within their AWS environment.",
     "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q046",
+    "domainId": 2,
+    "question": "Your company is developing a critical web application in AWS, and the security of the application is a top priority. Which of the following AWS services will provide infrastructure security optimization recommendations?",
+    "options": {
+      "A": "AWS Shield",
+      "B": "AWS Management Console",
+      "C": "AWS Secrets Manager",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "D",
+    "explanation": "AWS Trusted Advisor inspects your AWS environment and provides real-time recommendations across five categories including security, cost optimisation, performance, fault tolerance, and service limits, helping you follow AWS best practices.\nAWS Shield is a managed DDoS protection service that defends against distributed denial of service attacks, and does not provide broad infrastructure security recommendations. AWS Management Console is the web-based interface for accessing and managing AWS services, and does not analyse or make recommendations about your environment. AWS Secrets Manager is a service for storing, rotating, and managing access to secrets such as database credentials and API keys, and does not provide infrastructure optimisation recommendations.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q048",
+    "domainId": 2,
+    "question": "In the AWS Shared responsibility Model, which of the following are the responsibility of the customer?",
+    "options": {
+      "A": "Disk disposal",
+      "B": "Controlling physical access to compute resources",
+      "C": "Patching the Network infrastructure",
+      "D": "Setting password complexity rules",
+      "E": "Configuring network access rules"
+    },
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Setting password complexity rules and configuring network access rules such as security groups and NACLs are both customer responsibilities, as customers control their own identity policies and network configuration within their AWS environment.\nDisk disposal is AWS's responsibility, as AWS manages the secure decommissioning and destruction of physical storage hardware. Controlling physical access to compute resources is AWS's responsibility, as customers have no access to the underlying physical infrastructure. Patching the network infrastructure is AWS's responsibility, covering the managed networking layer beneath the customer's virtual network.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q056",
+    "domainId": 2,
+    "question": "Which of the following is the customer’s responsibility under the AWS shared responsibility model?",
+    "options": {
+      "A": "Patching underlying infrastructure",
+      "B": "Physical security",
+      "C": "Patching Amazon EC2 instances",
+      "D": "Patching network infrastructure"
+    },
+    "answer": "C",
+    "explanation": "Customers are responsible for patching the operating system and software on EC2 instances they launch, as the guest OS and everything running on it falls within the customer's side of the Shared Responsibility Model.\nPatching underlying infrastructure is AWS's responsibility, covering the hypervisor and physical hardware beneath the customer's instances. Physical security is AWS's responsibility exclusively, as customers have no access to or control over AWS data centres. Patching network infrastructure is AWS's responsibility, covering the managed networking layer that underpins all customer virtual networks.",
+    "source": "practice-exam-10.md",
     "isMultiAnswer": false
   },
   {
@@ -203,6 +271,25 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q060",
+    "domainId": 2,
+    "question": "Under the shared responsibility model, which of the following tasks are the responsibility of the AWS customer?",
+    "options": {
+      "A": "Ensuring that application data is encrypted at rest",
+      "B": "Ensuring that AWS NTP servers are set to the correct time",
+      "C": "Ensuring that users have received security training in the use of AWS services",
+      "D": "Ensuring that access to data centers is restricted",
+      "E": "Ensuring that hardware is disposed of properly"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Customers are responsible for encrypting their application data at rest and for training their users on proper security practices when using AWS services, both sitting on the customer side of the model.\nEnsuring that AWS NTP servers are set to the correct time is entirely AWS's responsibility, as customers have no access to or control over the underlying infrastructure components that provide time synchronisation. Ensuring that access to data centers is restricted is entirely AWS's responsibility, covering physical access controls, surveillance, and protection of the facilities that house AWS infrastructure. Ensuring that hardware is disposed of properly is entirely AWS's responsibility, as customers never take possession of physical hardware and AWS manages all end-of-life processes for its own equipment.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": true
+  },
+  {
     "id": "q064",
     "domainId": 2,
     "question": "Which AWS service allows users to identify the changes made to a resource over time?",
@@ -231,6 +318,25 @@
     "explanation": "IAM access keys, consisting of an access key ID and a secret access key, are the credentials used to authenticate programmatic calls to AWS APIs via the CLI, SDKs, or direct HTTP requests, allowing applications and scripts to interact with AWS services without using the console.\nLogging in to the AWS Management Console requires a user name and password combination, not access keys, which are reserved for programmatic and CLI access rather than browser-based console authentication. Logging in to Amazon EC2 instances uses SSH key pairs on Linux instances or a password retrieved via the console for Windows instances, and is separate from the IAM access keys used for API authentication. Authenticating to AWS CodeCommit repositories uses Git credentials or SSH keys configured separately from IAM access keys, though access keys can be used with the AWS CLI to interact with CodeCommit programmatically.",
     "source": "practice-exam-10.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q078",
+    "domainId": 2,
+    "question": "Which AWS services can be used to gather information about AWS account activity?",
+    "options": {
+      "A": "Amazon CloudFront",
+      "B": "AWS Cloud9",
+      "C": "AWS CloudTrail",
+      "D": "AWS CloudHSM",
+      "E": "Amazon CloudWatch"
+    },
+    "answer": [
+      "C",
+      "E"
+    ],
+    "explanation": "AWS CloudTrail logs all API calls and account activity across an AWS account, providing a complete audit trail of who did what and when. Amazon CloudWatch collects metrics, logs, and event data from AWS services and resources, providing operational visibility into account activity and performance.\nAmazon CloudFront is a content delivery network that caches and distributes content to users at edge locations worldwide, and does not gather information about account activity. AWS Cloud9 is a cloud-based integrated development environment for writing, running, and debugging code, and has no account monitoring or activity logging capability. AWS CloudHSM is a hardware security module service that manages and stores cryptographic keys in dedicated hardware, and is not a tool for monitoring or gathering information about account activity.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": true
   },
   {
     "id": "q090",
@@ -277,7 +383,7 @@
       "C",
       "E"
     ],
-    "explanation": "MFA adds a second authentication factor beyond a password to protect console logins, and password policies enforce complexity and rotation requirements. Both directly enhance the security of access to the AWS Management Console.\nAWS Secrets Manager stores, rotates, and manages access to secrets such as database credentials and API keys, and is a credentials management service rather than a mechanism for enhancing the authentication security of the AWS Management Console itself. AWS Certificate Manager provisions and manages SSL/TLS certificates for encrypting data in transit between applications and users, and has no role in controlling or securing console login access. Security groups act as virtual firewalls that control inbound and outbound network traffic at the EC2 instance level, and operate at the network layer rather than the console authentication layer.\nWhy this question was updated The question stem contained a stray apostrophe before the question mark which has been removed. The em dash in the explanation has also been removed.",
+    "explanation": "MFA adds a second authentication factor beyond a password to protect console logins, and password policies enforce complexity and rotation requirements. Both directly enhance the security of access to the AWS Management Console.\nAWS Secrets Manager stores, rotates, and manages access to secrets such as database credentials and API keys, and is a credentials management service rather than a mechanism for enhancing the authentication security of the AWS Management Console itself. AWS Certificate Manager provisions and manages SSL/TLS certificates for encrypting data in transit between applications and users, and has no role in controlling or securing console login access. Security groups act as virtual firewalls that control inbound and outbound network traffic at the EC2 instance level, and operate at the network layer rather than the console authentication layer.",
     "source": "practice-exam-11.md",
     "isMultiAnswer": true
   },
@@ -414,6 +520,21 @@
     "isMultiAnswer": true
   },
   {
+    "id": "q144",
+    "domainId": 2,
+    "question": "Which activity is a customer responsibility in the AWS Cloud according to the AWS shared responsibility model?",
+    "options": {
+      "A": "Ensuring network connectivity from AWS to the internet",
+      "B": "Patching and fixing flaws within the AWS Cloud infrastructure",
+      "C": "Ensuring the physical security of cloud data centers",
+      "D": "Ensuring Amazon EBS volumes are backed up"
+    },
+    "answer": "D",
+    "explanation": "Under the Shared Responsibility Model, backing up EBS volumes through snapshots is the customer's responsibility, as AWS does not automatically back up EBS volumes on the customer's behalf.\nEnsuring network connectivity from AWS to the internet is entirely AWS's responsibility, as AWS manages and maintains the underlying network infrastructure that connects its services to the public internet. Patching and fixing flaws within the AWS Cloud infrastructure is entirely AWS's responsibility, as customers have no access to the underlying hardware, hypervisors, or physical networking components. Ensuring the physical security of cloud data centers is entirely AWS's responsibility, covering access controls, surveillance, and protection of the facilities that house AWS infrastructure.",
+    "source": "practice-exam-11.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q150",
     "domainId": 2,
     "question": "How can a customer increase security to AWS account logons?",
@@ -496,7 +617,7 @@
       "B",
       "C"
     ],
-    "explanation": "AWS Trusted Advisor includes security checks that flag vulnerabilities such as open security groups, and AWS provides data encryption capabilities through services like KMS and native encryption across storage and database services. Both are genuine AWS security-related offerings.\nMulti-factor authentication physical tokens are hardware MFA devices that customers purchase independently rather than a service provided by AWS; customers configure them with their accounts but AWS does not supply or manufacture the hardware tokens. Automated penetration testing is not an AWS service offering; AWS permits customers to conduct their own penetration testing on permitted services, but AWS does not perform automated penetration testing on customer workloads as a service. Amazon S3 copyrighted content detection is not an AWS service; Amazon Macie detects sensitive data categories such as PII in S3, but copyright detection is not within the scope of available AWS security services.\nWhy this question was updated The em dash in the explanation has been removed.",
+    "explanation": "AWS Trusted Advisor includes security checks that flag vulnerabilities such as open security groups, and AWS provides data encryption capabilities through services like KMS and native encryption across storage and database services. Both are genuine AWS security-related offerings.\nMulti-factor authentication physical tokens are hardware MFA devices that customers purchase independently rather than a service provided by AWS; customers configure them with their accounts but AWS does not supply or manufacture the hardware tokens. Automated penetration testing is not an AWS service offering; AWS permits customers to conduct their own penetration testing on permitted services, but AWS does not perform automated penetration testing on customer workloads as a service. Amazon S3 copyrighted content detection is not an AWS service; Amazon Macie detects sensitive data categories such as PII in S3, but copyright detection is not within the scope of available AWS security services.",
     "source": "practice-exam-12.md",
     "isMultiAnswer": true
   },
@@ -677,7 +798,7 @@
       "B",
       "E"
     ],
-    "explanation": "Customers are responsible for protecting data in transit to and from S3 using HTTPS/TLS, and for patching operating systems and applications installed on EC2 instances. Managing environmental events of AWS data centers is AWS's responsibility. Physical facilities and environmental controls are entirely managed by AWS. Controlling physical access to AWS Regions is AWS's responsibility. Customers have no access to or control over physical infrastructure. Ensuring that the underlying EC2 host is configured properly is AWS's responsibility. Customers manage the guest OS and above, but not the underlying host hardware or hypervisor.",
+    "explanation": "Customers are responsible for protecting the confidentiality of data in transit using encryption such as HTTPS/TLS on connections to Amazon S3, and for patching operating systems and applications installed on Amazon EC2 instances as part of managing their guest environment.\nManaging environmental events at AWS data centres, including power, cooling, fire suppression, and natural disaster response, is entirely AWS's responsibility as part of securing the physical infrastructure that customers never interact with.\nControlling physical access to AWS Regions and data centre facilities is AWS's responsibility; customers have no access to physical infrastructure and rely on AWS to implement badge-based entry, biometric controls, and security staff.\nEnsuring that the underlying EC2 host is configured properly falls under AWS's responsibility; customers manage the guest operating system and above, while AWS is responsible for the hypervisor, host hardware, and underlying virtualisation layer.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": true
   },
@@ -692,7 +813,7 @@
       "D": "MFA"
     },
     "answer": "C",
-    "explanation": "AWS Access Keys, consisting of an access key ID and a secret access key, are the credentials used to authenticate programmatic API calls, functioning like a username and password for AWS SDKs and CLI.\nAn instance password refers to the Windows administrator password generated for EC2 Windows instances to enable RDP access, which is a server login credential rather than an API authentication mechanism equivalent to a username and password. Key pairs are RSA public/private key combinations used to authenticate SSH connections to Linux EC2 instances, and while they serve an authentication purpose, they are for instance-level SSH access rather than AWS API and service authentication. MFA is an additional authentication factor added on top of primary credentials such as a username and password, requiring a one-time code from a device, and is a supplementary mechanism rather than a standalone credential pair equivalent to a username and password.\nWhy this question was updated The em dash in the explanation has been removed.",
+    "explanation": "AWS Access Keys, consisting of an access key ID and a secret access key, are the credentials used to authenticate programmatic API calls, functioning like a username and password for AWS SDKs and CLI.\nAn instance password refers to the Windows administrator password generated for EC2 Windows instances to enable RDP access, which is a server login credential rather than an API authentication mechanism equivalent to a username and password. Key pairs are RSA public/private key combinations used to authenticate SSH connections to Linux EC2 instances, and while they serve an authentication purpose, they are for instance-level SSH access rather than AWS API and service authentication. MFA is an additional authentication factor added on top of primary credentials such as a username and password, requiring a one-time code from a device, and is a supplementary mechanism rather than a standalone credential pair equivalent to a username and password.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -809,7 +930,7 @@
       "D": "AWS CloudTrail"
     },
     "answer": "D",
-    "explanation": "AWS CloudTrail logs all API activity and account events, creating a complete audit trail that helps organisations demonstrate compliance with regulatory requirements and investigate security incidents.\nAmazon CloudFront is a global content delivery network that caches and distributes web content to users at low latency through edge locations, and is a performance and distribution service with no capability to record audit logs or help with regulatory compliance. AWS Migration Hub provides a central dashboard for tracking the progress of application migrations to AWS, and is a migration management tool rather than a compliance or audit service. Amazon CloudWatch monitors operational metrics, logs, and events for AWS resources and applications, providing visibility into performance and operational health, but it does not create the comprehensive API audit trail needed for regulatory compliance.\nWhy this question was updated Option B used the retired service name CloudEndure Migration which has been replaced with AWS Migration Hub.",
+    "explanation": "AWS CloudTrail logs all API activity and account events, creating a complete audit trail that helps organisations demonstrate compliance with regulatory requirements and investigate security incidents.\nAmazon CloudFront is a global content delivery network that caches and distributes web content to users at low latency through edge locations, and is a performance and distribution service with no capability to record audit logs or help with regulatory compliance. AWS Migration Hub provides a central dashboard for tracking the progress of application migrations to AWS, and is a migration management tool rather than a compliance or audit service. Amazon CloudWatch monitors operational metrics, logs, and events for AWS resources and applications, providing visibility into performance and operational health, but it does not create the comprehensive API audit trail needed for regulatory compliance.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -827,6 +948,25 @@
     "explanation": "Security groups act as a stateful virtual firewall directly associated with EC2 instances, evaluating and filtering inbound and outbound traffic based on protocol, port, and source or destination rules defined by the customer.\nAWS X-Ray is an application tracing and debugging service that analyses requests as they flow through distributed applications to identify performance bottlenecks and errors, and has no capability to filter or control network traffic to EC2 instances. Network ACLs are stateless firewalls that operate at the subnet level rather than the EC2 instance level, applying rules to all traffic entering or leaving a subnet without tracking connection state, and are not directly associated with individual instances. VPC Flow Logs capture metadata about the IP traffic flowing to and from network interfaces within a VPC, providing visibility for analysis and troubleshooting, but they record traffic information rather than filter or block incoming requests.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q238",
+    "domainId": 2,
+    "question": "Using Amazon RDS falls under the shared responsibility model. Which of the following are customer responsibilities?",
+    "options": {
+      "A": "Building the relational database schema",
+      "B": "Performing backups",
+      "C": "Managing the database settings",
+      "D": "Patching the database software",
+      "E": "Installing the database software"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Under the Shared Responsibility Model for Amazon RDS, the customer is responsible for designing the database schema and managing database-level settings such as parameters and user permissions.\nPerforming backups is managed by AWS for RDS, which automates backup retention and point-in-time recovery without requiring the customer to manually initiate or manage backup processes. Patching the database software is entirely AWS's responsibility for RDS, as AWS handles all engine-level patching and maintenance windows as part of the managed service. Installing the database software is entirely AWS's responsibility for RDS, as AWS provisions, installs, and maintains the underlying database engine on the customer's behalf.",
+    "source": "practice-exam-2.md",
+    "isMultiAnswer": true
   },
   {
     "id": "q252",
@@ -945,7 +1085,7 @@
       "A",
       "B"
     ],
-    "explanation": "AWS Certificate Manager provisions and manages SSL/TLS certificates for use with AWS services including Elastic Load Balancers and CloudFront distributions, and Amazon Route 53 can host and manage the DNS records needed for domain validation during certificate issuance. Both can be used to deploy SSL server certificates.\nAWS Directory Service provides managed Microsoft Active Directory in the cloud for identity management and domain joining, and is not used to provision or deploy SSL/TLS certificates for HTTPS web applications. AWS Identity and Access Management manages user identities and permissions for accessing AWS services, and while IAM can store server certificates for use with legacy services, it is not the recommended method for deploying new SSL certificates and does not provision them. AWS Config continuously monitors and records AWS resource configurations for compliance evaluation and auditing, and is a governance tool rather than a service for provisioning or deploying SSL/TLS certificates.\nWhy this question was updated Option E used the deprecated service AWS Data Pipeline which has been replaced with AWS Config.",
+    "explanation": "AWS Certificate Manager provisions and manages SSL/TLS certificates for use with AWS services including Elastic Load Balancers and CloudFront distributions, and Amazon Route 53 can host and manage the DNS records needed for domain validation during certificate issuance. Both can be used to deploy SSL server certificates.\nAWS Directory Service provides managed Microsoft Active Directory in the cloud for identity management and domain joining, and is not used to provision or deploy SSL/TLS certificates for HTTPS web applications. AWS Identity and Access Management manages user identities and permissions for accessing AWS services, and while IAM can store server certificates for use with legacy services, it is not the recommended method for deploying new SSL certificates and does not provision them. AWS Config continuously monitors and records AWS resource configurations for compliance evaluation and auditing, and is a governance tool rather than a service for provisioning or deploying SSL/TLS certificates.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": true
   },
@@ -960,7 +1100,22 @@
       "D": "AWS Support"
     },
     "answer": "C",
-    "explanation": "AWS Identity and Access Management allows administrators to create users, groups, roles, and policies that control who can access which AWS services and resources, making it the primary service for managing user permissions in AWS.\nAWS Key Management Service creates and manages cryptographic keys for encrypting and decrypting data, and is a data protection service rather than an access permission management tool for controlling which users can access AWS resources. AWS CloudTrail records all API calls and management events for auditing and compliance purposes, providing visibility into who did what and when, but it records activity rather than managing or enforcing user permissions. Amazon CloudWatch monitors operational metrics and events for AWS resources and applications, providing observability into performance and operational health, but has no capability to manage user access permissions to AWS services.\nWhy this question was updated The em dash in the explanation has been removed.",
+    "explanation": "AWS Identity and Access Management allows administrators to create users, groups, roles, and policies that control who can access which AWS services and resources, making it the primary service for managing user permissions in AWS.\nAWS Key Management Service creates and manages cryptographic keys for encrypting and decrypting data, and is a data protection service rather than an access permission management tool for controlling which users can access AWS resources. AWS CloudTrail records all API calls and management events for auditing and compliance purposes, providing visibility into who did what and when, but it records activity rather than managing or enforcing user permissions. Amazon CloudWatch monitors operational metrics and events for AWS resources and applications, providing observability into performance and operational health, but has no capability to manage user access permissions to AWS services.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q302",
+    "domainId": 2,
+    "question": "A company needs to track resource changes using the API call history. Which AWS service can help the company achieve this goal?",
+    "options": {
+      "A": "AWS Config",
+      "B": "Amazon CloudWatch",
+      "C": "AWS CloudTrail",
+      "D": "AWS CloudFormation"
+    },
+    "answer": "C",
+    "explanation": "AWS CloudTrail records every API call made in your AWS account, including the identity of the caller, timestamp, and parameters, making it the primary service for tracking resource changes via API history.\nAWS Config tracks the configuration state of AWS resources over time and evaluates them against compliance rules, but it records configuration changes rather than the underlying API calls that caused them. Amazon CloudWatch is a monitoring and observability service that collects metrics, logs, and alarms from AWS resources, and does not record API call history or track who made changes to resources. AWS CloudFormation is an infrastructure-as-code service that provisions and manages AWS resources through templates, and does not record or track API call history across an account.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": false
   },
@@ -1005,7 +1160,22 @@
       "D": "CloudTrail logs"
     },
     "answer": "D",
-    "explanation": "AWS CloudTrail records all API calls and management events in an AWS account including S3 bucket deletion events, capturing who performed the action, the source IP address, and the timestamp, making it the correct service for identifying who deleted the buckets.\nSNS logs is not a recognised AWS service or log type; Amazon SNS is a messaging service for sending notifications and does not produce logs of S3 API activity or deletion events. SQS logs is not a recognised AWS service or log type; Amazon SQS is a managed message queue service for decoupling application components and does not produce logs of S3 management activity. CloudWatch Logs collects and stores log data from AWS services and applications for monitoring and analysis, but S3 bucket deletion events are management events captured by CloudTrail rather than CloudWatch, making CloudWatch Logs the wrong place to identify who deleted S3 buckets.\nWhy this question was updated The question stem was truncated and has been restored to its full text.",
+    "explanation": "AWS CloudTrail records all API calls and management events in an AWS account including S3 bucket deletion events, capturing who performed the action, the source IP address, and the timestamp, making it the correct service for identifying who deleted the buckets.\nSNS logs is not a recognised AWS service or log type; Amazon SNS is a messaging service for sending notifications and does not produce logs of S3 API activity or deletion events. SQS logs is not a recognised AWS service or log type; Amazon SQS is a managed message queue service for decoupling application components and does not produce logs of S3 management activity. CloudWatch Logs collects and stores log data from AWS services and applications for monitoring and analysis, but S3 bucket deletion events are management events captured by CloudTrail rather than CloudWatch, making CloudWatch Logs the wrong place to identify who deleted S3 buckets.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q319",
+    "domainId": 2,
+    "question": "What are AWS shared controls?",
+    "options": {
+      "A": "Controls that are solely the responsibility of the customer based on the application they are deploying within AWS services",
+      "B": "Controls that a customer inherits from AWS",
+      "C": "Controls that apply to both the infrastructure layer and customer layers",
+      "D": "Controls that the customer and AWS collaborate together upon to secure the infrastructure"
+    },
+    "answer": "D",
+    "explanation": "Shared controls are responsibilities where both AWS and the customer independently apply controls in their own respective domains, such as AWS patching its infrastructure while the customer patches their guest operating system.\nControls solely the responsibility of the customer describes customer-specific controls, not shared controls, as these apply only to the customer's side of the model. Controls that a customer inherits from AWS describes inherited controls, where compliance certifications and physical security measures are passed down from AWS to the customer, which is a separate category from shared controls. Controls that apply to both the infrastructure and customer layers is a misleading description because shared controls do not mean the same single control applies at both layers, but rather that each party manages their own version of the same type of control independently.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": false
   },
@@ -1582,7 +1752,7 @@
       "D": "Amazon Redshift"
     },
     "answer": "A",
-    "explanation": "AWS IAM provides centralised control over authentication and authorisation for AWS resources, serving the same identity management role as an on-premises operations team.",
+    "explanation": "AWS Identity and Access Management is the service that provides centralised control over authentication and authorisation for AWS resources, fulfilling the same identity management role in the cloud that an on-premises operations team performs in a traditional data centre.\nAWS Outposts extends AWS infrastructure and services to on-premises locations and is a compute and storage solution rather than an identity management service.\nAWS Directory Service provides managed Microsoft Active Directory integration for enterprise identity, which can complement IAM but is a specialised service for organisations needing AD integration rather than the core AWS identity management service.\nAmazon Redshift is a fully managed cloud data warehousing service designed for analytical queries on large datasets and has no capability to manage user identities or control access to AWS services.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -1637,8 +1807,8 @@
     "question": "Which of the following security resources are available to any user for free?",
     "options": {
       "A": "AWS Bulletins",
-      "B": "AWS TAM",
-      "C": "AWS Support APl",
+      "B": "AWS Technical Account Manager",
+      "C": "AWS Support API",
       "D": "AWS Security Blog",
       "E": "AWS Classroom Training"
     },
@@ -1651,6 +1821,21 @@
     "isMultiAnswer": true
   },
   {
+    "id": "q476",
+    "domainId": 2,
+    "question": "Which of the following is the responsibility of AWS according to the AWS Shared Responsibility Model?",
+    "options": {
+      "A": "Securing regions and edge locations",
+      "B": "Performing auditing tasks",
+      "C": "Monitoring AWS resources usage",
+      "D": "Securing access to AWS resources"
+    },
+    "answer": "A",
+    "explanation": "Under the Shared Responsibility Model, AWS is responsible for securing the physical infrastructure, including Regions, Availability Zones, and edge locations that make up the AWS global network.\nPerforming auditing tasks is the customer's responsibility. Customers are responsible for auditing their own resource usage, access logs, and compliance activities. Monitoring AWS resources usage is the customer's responsibility. Tools like CloudWatch are available but it is the customer who configures and acts on monitoring. Securing access to AWS resources is the customer's responsibility. Managing IAM users, roles, and permissions falls under security in the cloud, not security of the cloud.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q479",
     "domainId": 2,
     "question": "Which of the following services enables you to generate and use your own encryption keys on dedicated hardware in the AWS Cloud?",
@@ -1661,7 +1846,7 @@
       "D": "AWS KMS"
     },
     "answer": "C",
-    "explanation": "AWS CloudHSM provides dedicated, single-tenant hardware security modules within the AWS Cloud, giving customers full control over key generation and management on physical HSM hardware that only they can access, satisfying strict regulatory requirements for hardware-based key custody.\nAWS Secrets Manager stores, rotates, and manages access to secrets such as database credentials, API keys, and OAuth tokens, and is a secrets management service rather than a service for generating customer-controlled encryption keys on dedicated hardware. AWS Certificate Manager provisions and manages SSL/TLS certificates for use with AWS services to encrypt data in transit, and is a certificate management service that does not provide customer-controlled encryption keys on dedicated hardware. AWS KMS is a managed service that generates and manages encryption keys using a software-based service backed by hardware that AWS manages and shares across multiple customers, and does not provide the dedicated single-tenant hardware access that CloudHSM offers.\nWhy this question was updated The options were incorrectly populated with compliance-related statements rather than AWS service names and have been replaced with the correct options.",
+    "explanation": "AWS CloudHSM provides dedicated, single-tenant hardware security modules within the AWS Cloud, giving customers full control over key generation and management on physical HSM hardware that only they can access, satisfying strict regulatory requirements for hardware-based key custody.\nAWS Secrets Manager stores, rotates, and manages access to secrets such as database credentials, API keys, and OAuth tokens, and is a secrets management service rather than a service for generating customer-controlled encryption keys on dedicated hardware. AWS Certificate Manager provisions and manages SSL/TLS certificates for use with AWS services to encrypt data in transit, and is a certificate management service that does not provide customer-controlled encryption keys on dedicated hardware. AWS KMS is a managed service that generates and manages encryption keys using a software-based service backed by hardware that AWS manages and shares across multiple customers, and does not provide the dedicated single-tenant hardware access that CloudHSM offers.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -1694,6 +1879,25 @@
     "explanation": "AWS Directory Service integrates with Microsoft Active Directory to enable federation and single sign-on, allowing users to sign in to the AWS Management Console using their existing corporate credentials without creating separate IAM users.\nAmazon Connect is a cloud-based contact centre service for handling customer service interactions through voice and chat, and has no capability to enable corporate credential federation or single sign-on to the AWS Management Console. Amazon Pinpoint is a marketing communications service for sending targeted messages via email, SMS, and push notifications to application users, and is an outbound messaging service with no connection to SSO or corporate identity federation. Amazon Rekognition is a machine learning service for analysing images and videos to detect objects, faces, and text, and is a visual analysis service with no role in enabling corporate SSO to the AWS Management Console.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q488",
+    "domainId": 2,
+    "question": "According to the AWS shared responsibility model, what are the controls that customers fully inherit from AWS?",
+    "options": {
+      "A": "Awareness and Training",
+      "B": "Communications controls",
+      "C": "Data center security controls",
+      "D": "Environmental controls",
+      "E": "Resource Configuration Management"
+    },
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "Data center security controls and environmental controls are fully inherited from AWS because customers have no physical access to AWS facilities and take on zero responsibility for managing them.\nAwareness and Training this is a shared control where both AWS and the customer independently maintain their own training programs for their respective workforces, so customers do not fully inherit it from AWS. Communications controls this is also a shared control, with each party responsible for securing and managing communications within their own environment. Resource Configuration Management customers are responsible for configuring the AWS resources they deploy, such as security groups, IAM policies, and application settings, making this a customer-managed control rather than an inherited one.",
+    "source": "practice-exam-7.md",
+    "isMultiAnswer": true
   },
   {
     "id": "q491",
@@ -1804,7 +2008,7 @@
       "D": "Checks security groups for rules that allow unrestricted access to AWS resources"
     },
     "answer": "B",
-    "explanation": "Amazon GuardDuty is a threat detection service that continuously monitors AWS accounts and workloads using machine learning and threat intelligence to identify suspicious activity such as attacker reconnaissance, compromised instances, or unusual API calls.\nNotifying customers about abuse events once they are reported is the function of the AWS Abuse Team, which handles reports of AWS resources being used for malicious activity and communicates with affected account holders, rather than a capability of GuardDuty. Helping customers identify the root cause of potential security issues describes Amazon Detective, which analyses and visualises security data from GuardDuty and CloudTrail to trace the origin and scope of suspicious activity rather than detecting threats in real time. Checking security groups for rules that allow unrestricted access to AWS resources is a function of AWS Trusted Advisor, which performs security checks including identification of overly permissive security group configurations, not GuardDuty.\nWhy this question was updated Option D contained a misplaced period between AWS and resources which has been corrected.",
+    "explanation": "Amazon GuardDuty is a threat detection service that continuously monitors AWS accounts and workloads using machine learning and threat intelligence to identify suspicious activity such as attacker reconnaissance, compromised instances, or unusual API calls.\nNotifying customers about abuse events once they are reported is the function of the AWS Abuse Team, which handles reports of AWS resources being used for malicious activity and communicates with affected account holders, rather than a capability of GuardDuty. Helping customers identify the root cause of potential security issues describes Amazon Detective, which analyses and visualises security data from GuardDuty and CloudTrail to trace the origin and scope of suspicious activity rather than detecting threats in real time. Checking security groups for rules that allow unrestricted access to AWS resources is a function of AWS Trusted Advisor, which performs security checks including identification of overly permissive security group configurations, not GuardDuty.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": false
   },
@@ -1838,7 +2042,7 @@
       "B",
       "D"
     ],
-    "explanation": "IAM users and the AWS account root user are both identities that can be issued long-lived access key IDs and secret access keys for programmatic access to AWS resources via the CLI or SDKs.\nAn IAM group is a collection of IAM users used to manage shared permissions collectively, and is not an identity that can authenticate or be issued access keys of any kind. An IAM role uses temporary security credentials that are automatically issued and rotated when the role is assumed, and does not support long-lived access keys. An AWS Technical Account Manager is an AWS support professional assigned to Enterprise support plan customers, and is a person rather than an IAM identity construct that can hold or be issued access keys.\nWhy this question was updated Option E used the informal abbreviation TAM which has been expanded to AWS Technical Account Manager.",
+    "explanation": "IAM users and the AWS account root user are both identities that can be issued long-lived access key IDs and secret access keys for programmatic access to AWS resources via the CLI or SDKs.\nAn IAM group is a collection of IAM users used to manage shared permissions collectively, and is not an identity that can authenticate or be issued access keys of any kind. An IAM role uses temporary security credentials that are automatically issued and rotated when the role is assumed, and does not support long-lived access keys. An AWS Technical Account Manager is an AWS support professional assigned to Enterprise support plan customers, and is a person rather than an IAM identity construct that can hold or be issued access keys.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": true
   },
@@ -1926,6 +2130,36 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q550",
+    "domainId": 2,
+    "question": "Which task is AWS responsible for in the shared responsibility model for security and compliance?",
+    "options": {
+      "A": "Granting access to individuals and services",
+      "B": "Encrypting data in transit",
+      "C": "Updating Amazon EC2 host firmware",
+      "D": "Updating operating systems"
+    },
+    "answer": "C",
+    "explanation": "Updating the host firmware on EC2 physical servers is AWS's responsibility, as customers have no access to or control over the underlying hardware beneath their instances.\nGranting access to individuals and services is the customer's responsibility, as customers manage their own IAM users, roles, and permissions within their AWS account. Encrypting data in transit is the customer's responsibility, as customers decide whether and how to implement encryption for their own data using HTTPS, TLS, or other mechanisms. Updating operating systems is the customer's responsibility on services like EC2, where customers control the guest OS and are accountable for keeping it patched and up to date.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q553",
+    "domainId": 2,
+    "question": "According to the AWS shared responsibility model what is the sole responsibility of AWS?",
+    "options": {
+      "A": "Application security",
+      "B": "Edge location management",
+      "C": "Patch management",
+      "D": "Client-side data"
+    },
+    "answer": "B",
+    "explanation": "Managing edge locations, the physical infrastructure used by CloudFront and other services, is solely AWS's responsibility as part of its obligation to operate and maintain the global infrastructure underpinning its services.\nApplication security is the customer's responsibility under the Shared Responsibility Model, as customers are accountable for securing the code, configurations, and access controls within their own applications. Patch management is a shared control where AWS patches the underlying infrastructure and managed services, while customers retain responsibility for patching their own operating systems and applications. Client-side data is the customer's responsibility, as customers control how their data is classified, encrypted, and managed on the client side regardless of which AWS services they use.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q555",
     "domainId": 2,
     "question": "Which AWS service identifies security groups that allow unrestricted access to a user’s AWS resources?",
@@ -1952,6 +2186,40 @@
     },
     "answer": "C",
     "explanation": "Amazon CloudWatch is a monitoring service that acts as a metrics repository, collecting performance and operational data from AWS resources and allowing you to set customisable notification thresholds and alarm channels.\nAWS CloudTrail records all API calls and account activity across an AWS environment and produces audit logs for governance and compliance purposes, but does not collect resource performance metrics or send operational alarms. AWS X-Ray traces requests as they travel through distributed application components to identify performance bottlenecks and errors, but is an application debugging tool rather than an infrastructure-wide metrics and alerting service. Amazon Kinesis captures and processes real-time data streams from applications and infrastructure at scale, but is a data streaming and ingestion service rather than a monitoring and observability platform.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q564",
+    "domainId": 2,
+    "question": "Under the AWS shared responsibility model, which of the following activities are the customer’s responsibility?",
+    "options": {
+      "A": "Patching operating system components for Amazon Relational Database Server (Amazon RDS)",
+      "B": "Encrypting data on the client-side",
+      "C": "Training the data center staff",
+      "D": "Configuring Network Access Control Lists (ACL)",
+      "E": "Maintaining environmental controls within a data center"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "Customers are responsible for encrypting data on the client side before sending it to AWS, and for configuring Network ACLs to control inbound and outbound traffic at the subnet level in their VPC.\nPatching operating system components for Amazon RDS is entirely AWS's responsibility, as RDS is a managed service where AWS handles all underlying OS and database engine patching on the customer's behalf. Training data center staff is entirely AWS's responsibility, as customers have no access to or involvement in the physical facilities and operations teams that run AWS infrastructure. Maintaining environmental controls within a data center such as power, cooling, and fire suppression is entirely AWS's responsibility and is fully inherited by customers under the model.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q565",
+    "domainId": 2,
+    "question": "Under the shared responsibility model, which of the following is a shared control between a customer and AWS?",
+    "options": {
+      "A": "Physical controls",
+      "B": "Patch management",
+      "C": "Zone security",
+      "D": "Data center auditing"
+    },
+    "answer": "B",
+    "explanation": "Patch management is a shared control. AWS patches the underlying infrastructure and managed service platforms, while customers are responsible for patching their own guest operating systems and applications.\nPhysical controls are AWS's responsibility exclusively, covering physical security of data centres and hardware. Zone security is also AWS's responsibility, covering the physical and network isolation between Availability Zones. Data center auditing is AWS's responsibility, though customers can request compliance reports via AWS Artifact.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
   },
@@ -2001,6 +2269,21 @@
     },
     "answer": "A",
     "explanation": "AWS Artifact is the self-service portal where customers can download AWS compliance and certification reports including SOC, PCI, ISO, and HIPAA eligibility documentation without needing to contact AWS directly.\nAWS Concierge is a dedicated support resource for Enterprise support plan customers that assists with billing and account management, and is not a portal for downloading compliance reports or technical certification documents. AWS Certificate Manager provisions and manages SSL/TLS certificates for encrypting data in transit between applications and users, and is a certificate provisioning service rather than a repository of AWS compliance and audit reports. AWS Trusted Advisor provides automated recommendations across security, cost, performance, and fault tolerance categories, and while it includes security checks, it does not provide downloadable AWS compliance certification reports.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q581",
+    "domainId": 2,
+    "question": "What is the AWS customer responsible for according to the AWS shared responsibility model?",
+    "options": {
+      "A": "Physical access controls",
+      "B": "Data encryption",
+      "C": "Secure disposal of storage devices",
+      "D": "Environmental risk management"
+    },
+    "answer": "B",
+    "explanation": "Data encryption is the customer's responsibility under the shared responsibility model. AWS provides the tools and services to enable encryption, such as AWS KMS and native encryption options across storage services, but the customer decides whether to enable encryption and manages the keys and access policies.\nPhysical access controls at AWS data centres are entirely AWS's responsibility; customers have no access to the physical facilities and rely on AWS to implement and enforce physical security measures.\nSecure disposal of storage devices is AWS's responsibility, as customers never have physical possession of AWS hardware and AWS follows industry standards for decommissioning and disposing of storage media.\nEnvironmental risk management for the AWS infrastructure, including temperature control, humidity, and fire suppression in data centres, is entirely AWS's responsibility as part of securing the underlying physical infrastructure.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
   },
@@ -2959,7 +3242,7 @@
       "D": "AWS Support"
     },
     "answer": "A",
-    "explanation": "Patching the guest operating system for Amazon RDS is AWS's responsibility, as RDS is a fully managed database service where AWS handles all underlying infrastructure maintenance including OS patches and database engine updates.\nThe customer is not responsible for patching the guest OS in Amazon RDS because RDS abstracts the infrastructure layer completely; unlike EC2 where customers manage the operating system, RDS instances have their OS managed and patched by AWS as part of the managed service model. The AWS compliance team does not patch RDS operating systems; patching is performed by the RDS service engineering team as part of routine managed service maintenance, not by a compliance function within AWS. AWS Trusted Advisor provides recommendations and best practice checks across security, cost, performance, and fault tolerance, but does not perform operational tasks such as patching database instance operating systems.\nWhy this question was updated The em dash in the explanation has been removed.",
+    "explanation": "Patching the guest operating system for Amazon RDS is AWS's responsibility, as RDS is a fully managed database service where AWS handles all underlying infrastructure maintenance including OS patches and database engine updates.\nThe customer is not responsible for patching the guest OS in Amazon RDS because RDS abstracts the infrastructure layer completely; unlike EC2 where customers manage the operating system, RDS instances have their OS managed and patched by AWS as part of the managed service model. The AWS compliance team does not patch RDS operating systems; patching is performed by the RDS service engineering team as part of routine managed service maintenance, not by a compliance function within AWS. AWS Trusted Advisor provides recommendations and best practice checks across security, cost, performance, and fault tolerance, but does not perform operational tasks such as patching database instance operating systems.",
     "source": "practice-exam-20.md",
     "isMultiAnswer": false
   },
@@ -3049,7 +3332,7 @@
       "D": "Cost optimization"
     },
     "answer": "A",
-    "explanation": "AWS Config records, audits, and evaluates changes to resources, which is an example of the Security pillar's design principle of enabling traceability through detective controls. Operational Excellence focuses on running and improving operations, such as automating runbooks and responding to events. Performance Efficiency focuses on using resources efficiently to meet system requirements. Cost Optimization focuses on eliminating unnecessary spend and selecting the right resource types.",
+    "explanation": "Enabling audit trails through AWS Config to record and evaluate changes to AWS resources supports the Security pillar of the Well-Architected Framework, which emphasises traceability, logging, and detecting changes to protect the integrity of systems.\nOperational Excellence focuses on running and monitoring systems to deliver business value and continuously improving processes and procedures; while Config supports operations, its primary use case of traceability and compliance evaluation aligns with the Security pillar.\nPerformance Efficiency focuses on using computing resources effectively to meet requirements and maintaining efficiency as demand changes, which is concerned with resource selection and scaling rather than audit trails and access control.\nCost Optimization focuses on avoiding unnecessary costs and using the most cost-effective resources, which relates to pricing models, right-sizing, and eliminating waste rather than tracking configuration changes for security compliance.",
     "source": "practice-exam-20.md",
     "isMultiAnswer": false
   },
@@ -3297,7 +3580,7 @@
     "options": {
       "A": "Open a support case",
       "B": "Fill out the Penetration Testing Request Form",
-      "C": "Request a penetration test from your technical account manager",
+      "C": "Request a penetration test from your AWS Technical Account Manager",
       "D": "Contact your AWS sales representative"
     },
     "answer": "B",
@@ -3331,7 +3614,7 @@
       "D": "Amazon Inspector"
     },
     "answer": "C",
-    "explanation": "AWS Security Bulletins provide timely notifications about newly discovered security vulnerabilities and recommended remediation actions for AWS services, making them the most effective resource for staying up to date on AWS security announcements.\nThe AWS Health Dashboard provides personalised alerts about events that may affect a customer's specific AWS resources and service availability, and while it includes health events for security issues, the dedicated source for proactive AWS security announcements and vulnerability disclosures is the AWS Security Bulletins page. AWS Secrets Manager stores, rotates, and manages access to secrets such as database credentials and API keys, and is a credentials management service with no connection to security announcements or vulnerability notifications. Amazon Inspector is an automated vulnerability assessment service that scans EC2 instances and container images for software vulnerabilities, and generates findings about the customer's own resources rather than providing AWS-level security announcements.\nWhy this question was updated Option A used the outdated name AWS Personal Health Dashboard which has been updated to AWS Health Dashboard.",
+    "explanation": "AWS Security Bulletins provide timely notifications about newly discovered security vulnerabilities and recommended remediation actions for AWS services, making them the most effective resource for staying up to date on AWS security announcements.\nThe AWS Health Dashboard provides personalised alerts about events that may affect a customer's specific AWS resources and service availability, and while it includes health events for security issues, the dedicated source for proactive AWS security announcements and vulnerability disclosures is the AWS Security Bulletins page. AWS Secrets Manager stores, rotates, and manages access to secrets such as database credentials and API keys, and is a credentials management service with no connection to security announcements or vulnerability notifications. Amazon Inspector is an automated vulnerability assessment service that scans EC2 instances and container images for software vulnerabilities, and generates findings about the customer's own resources rather than providing AWS-level security announcements.",
     "source": "practice-exam-22.md",
     "isMultiAnswer": false
   },
@@ -3361,7 +3644,7 @@
       "D": "Amazon S3"
     },
     "answer": "C",
-    "explanation": "AWS Artifact provides on-demand access to AWS compliance reports and certifications such as SOC 2 documents, allowing auditors and customers to download them directly from the console without requesting them through AWS Support.\nAWS Trusted Advisor provides automated recommendations across security, cost, performance, and fault tolerance categories for improving an AWS environment, and is an advisory tool rather than a compliance documentation repository. AWS Config continuously monitors and records resource configurations against compliance rules, and is a resource configuration compliance evaluation service rather than a portal for downloading AWS-level compliance certifications. Amazon S3 is an object storage service for storing and retrieving data, and while AWS Artifact downloads documents stored in S3 on the backend, S3 itself is not the portal customers use to find and download compliance documentation.\nWhy this question was updated The question stem was truncated and has been restored. Option A used the outdated name AWS Personal Health Dashboard which has been updated to AWS Artifact being the correct answer in the updated option structure.",
+    "explanation": "AWS Artifact provides on-demand access to AWS compliance reports and certifications such as SOC 2 documents, allowing auditors and customers to download them directly from the console without requesting them through AWS Support.\nAWS Trusted Advisor provides automated recommendations across security, cost, performance, and fault tolerance categories for improving an AWS environment, and is an advisory tool rather than a compliance documentation repository. AWS Config continuously monitors and records resource configurations against compliance rules, and is a resource configuration compliance evaluation service rather than a portal for downloading AWS-level compliance certifications. Amazon S3 is an object storage service for storing and retrieving data, and while AWS Artifact downloads documents stored in S3 on the backend, S3 itself is not the portal customers use to find and download compliance documentation.",
     "source": "practice-exam-22.md",
     "isMultiAnswer": false
   },
@@ -3504,7 +3787,7 @@
       "A",
       "C"
     ],
-    "explanation": "AWS Shield provides automatic DDoS mitigation at the network and transport layers, and Amazon CloudFront absorbs and distributes traffic at edge locations, reducing the impact of volumetric attacks before they reach the application origin. Both help protect against DDoS attacks.\nAWS CloudTrail records API calls and management events for auditing purposes, and while it logs account activity, it has no capability to detect or mitigate active DDoS attacks against a web application. AWS Support Center is a portal for submitting and managing support cases, and is not a technical service that provides protection against or mitigation of DDoS attacks. The AWS Health Dashboard provides real-time and historical status information about AWS services and personalised event alerts, and is a monitoring and notification tool rather than a service that actively protects applications from DDoS attacks.\nWhy this question was updated Option E used the outdated name AWS Service Health Dashboard which has been updated to AWS Health Dashboard.",
+    "explanation": "AWS Shield provides automatic DDoS mitigation at the network and transport layers, and Amazon CloudFront absorbs and distributes traffic at edge locations, reducing the impact of volumetric attacks before they reach the application origin. Both help protect against DDoS attacks.\nAWS CloudTrail records API calls and management events for auditing purposes, and while it logs account activity, it has no capability to detect or mitigate active DDoS attacks against a web application. AWS Support Center is a portal for submitting and managing support cases, and is not a technical service that provides protection against or mitigation of DDoS attacks. The AWS Health Dashboard provides real-time and historical status information about AWS services and personalised event alerts, and is a monitoring and notification tool rather than a service that actively protects applications from DDoS attacks.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": true
   },
@@ -3583,7 +3866,7 @@
       "D": "Code encryption"
     },
     "answer": "B",
-    "explanation": "When using AWS Lambda, the customer is responsible for writing and maintaining the function code and selecting the appropriate runtime and memory configuration, as the function logic and execution requirements are entirely determined by the customer.\nPatching the underlying runtime environment for Lambda functions is AWS's responsibility; AWS manages and updates the runtime environments for supported languages such as Python, Node.js, and Java, so customers do not need to patch the execution environment their Lambda functions run in. Provisioning and managing the server infrastructure that executes Lambda functions is AWS's responsibility; Lambda is a serverless service where AWS handles all server provisioning, scaling, and maintenance automatically so customers never interact with the underlying compute infrastructure. Ensuring the availability and fault tolerance of the Lambda service infrastructure is AWS's responsibility; customers benefit from Lambda's built-in high availability across Availability Zones without needing to configure or manage redundancy in the service itself.\nWhy this question was updated The em dash in the explanation has been removed.",
+    "explanation": "When using AWS Lambda, the customer is responsible for writing and maintaining the function code and selecting the appropriate runtime and memory configuration, as the function logic and execution requirements are entirely determined by the customer.\nPatching the underlying runtime environment for Lambda functions is AWS's responsibility; AWS manages and updates the runtime environments for supported languages such as Python, Node.js, and Java, so customers do not need to patch the execution environment their Lambda functions run in. Provisioning and managing the server infrastructure that executes Lambda functions is AWS's responsibility; Lambda is a serverless service where AWS handles all server provisioning, scaling, and maintenance automatically so customers never interact with the underlying compute infrastructure. Ensuring the availability and fault tolerance of the Lambda service infrastructure is AWS's responsibility; customers benefit from Lambda's built-in high availability across Availability Zones without needing to configure or manage redundancy in the service itself.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
   },

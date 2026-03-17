@@ -1,20 +1,5 @@
 [
   {
-    "id": "q002",
-    "domainId": 1,
-    "question": "Which of the following is an example of horizontal scaling in the AWS Cloud?",
-    "options": {
-      "A": "Replacing an existing EC2 instance with a larger, more powerful one",
-      "B": "Increasing the compute capacity of a single EC2 instance to address the growing demands of an application",
-      "C": "Adding more RAM capacity to an EC2 instance",
-      "D": "Adding more EC2 instances of the same size to handle an increase in traffic"
-    },
-    "answer": "D",
-    "explanation": "Horizontal scaling means adding more instances of the same size to distribute load, while vertical scaling means increasing the capacity of a single instance.\nReplacing an existing instance with a larger one is vertical scaling, not horizontal. Increasing the compute capacity of a single instance describes vertical scaling, which is the opposite of horizontal scaling. Adding more RAM to a single instance is another form of vertical scaling, as it increases the power of one instance rather than adding more instances.",
-    "source": "practice-exam-1.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q004",
     "domainId": 1,
     "question": "Which of the below options are related to the reliability of AWS?",
@@ -108,7 +93,7 @@
       "D": "By automatically provisioning the required AWS resources based on changes in demand"
     },
     "answer": "D",
-    "explanation": "Elasticity means AWS automatically provisions and de-provisions resources in response to real-time changes in demand, so you only use and pay for what you need. By automatically scaling your on-premises resources is incorrect. Elasticity applies to cloud resources, not on-premises infrastructure. By automatically scaling your AWS resources using an Elastic Load Balancer is incorrect. ELB distributes traffic across existing instances but does not provision or remove resources. By reducing interdependencies between application components describes loose coupling, not elasticity.",
+    "explanation": "Elasticity in AWS means the platform automatically provisions and de-provisions resources in response to real-time changes in demand, so workloads consume only what they need and scale back when demand drops.\nAutomatically scaling on-premises resources is not what elasticity describes in the AWS context; elasticity is a cloud characteristic that removes the need to invest in on-premises hardware at all, as the cloud provider dynamically adjusts compute capacity.\nAn Elastic Load Balancer distributes incoming traffic across existing instances to prevent any single instance from being overwhelmed, but it does not add or remove instances in response to demand; that capacity adjustment is performed by Auto Scaling.\nReducing interdependencies between application components describes the design principle of loose coupling, which improves resilience and maintainability, but is a separate architectural concept from elasticity.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
   },
@@ -126,78 +111,6 @@
     "explanation": "The three recognised AWS cloud computing service models are IaaS, PaaS, and SaaS. Networking as a Service is not one of them and does not exist as a defined cloud computing model in the AWS framework.\nPlatform as a Service is one of the three recognised cloud computing models, providing customers with a managed platform for developing and deploying applications without managing the underlying infrastructure. Infrastructure as a Service is one of the three recognised cloud computing models, giving customers virtualised compute, storage, and networking resources they manage themselves. Software as a Service is one of the three recognised cloud computing models, delivering fully managed applications to end users over the internet without any infrastructure or platform management required.",
     "source": "practice-exam-1.md",
     "isMultiAnswer": false
-  },
-  {
-    "id": "q038",
-    "domainId": 1,
-    "question": "Select TWO examples of the AWS shared controls.",
-    "options": {
-      "A": "Patch Management",
-      "B": "IAM Management",
-      "C": "VPC Management",
-      "D": "Configuration Management",
-      "E": "Data Center operations"
-    },
-    "answer": [
-      "A",
-      "D"
-    ],
-    "explanation": "Patch Management and Configuration Management are both shared controls where AWS and the customer each manage their own layer independently, with AWS responsible for the infrastructure and customers responsible for their own operating systems and applications.\nIAM Management is a customer responsibility, as customers exclusively control their own users, roles, and permissions within their AWS account. VPC Management is a customer responsibility, as customers define and configure their own virtual network settings including subnets, route tables, and security groups. Data Center operations are exclusively AWS's responsibility, covering all physical infrastructure management.",
-    "source": "practice-exam-1.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q048",
-    "domainId": 1,
-    "question": "In the AWS Shared responsibility Model, which of the following are the responsibility of the customer?",
-    "options": {
-      "A": "Disk disposal",
-      "B": "Controlling physical access to compute resources",
-      "C": "Patching the Network infrastructure",
-      "D": "Setting password complexity rules",
-      "E": "Configuring network access rules"
-    },
-    "answer": [
-      "D",
-      "E"
-    ],
-    "explanation": "Setting password complexity rules and configuring network access rules such as security groups and NACLs are both customer responsibilities, as customers control their own identity policies and network configuration within their AWS environment.\nDisk disposal is AWS's responsibility, as AWS manages the secure decommissioning and destruction of physical storage hardware. Controlling physical access to compute resources is AWS's responsibility, as customers have no access to the underlying physical infrastructure. Patching the network infrastructure is AWS's responsibility, covering the managed networking layer beneath the customer's virtual network.",
-    "source": "practice-exam-1.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q056",
-    "domainId": 1,
-    "question": "Which of the following is the customer’s responsibility under the AWS shared responsibility model?",
-    "options": {
-      "A": "Patching underlying infrastructure",
-      "B": "Physical security",
-      "C": "Patching Amazon EC2 instances",
-      "D": "Patching network infrastructure"
-    },
-    "answer": "C",
-    "explanation": "Customers are responsible for patching the operating system and software on EC2 instances they launch, as the guest OS and everything running on it falls within the customer's side of the Shared Responsibility Model.\nPatching underlying infrastructure is AWS's responsibility, covering the hypervisor and physical hardware beneath the customer's instances. Physical security is AWS's responsibility exclusively, as customers have no access to or control over AWS data centres. Patching network infrastructure is AWS's responsibility, covering the managed networking layer that underpins all customer virtual networks.",
-    "source": "practice-exam-10.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q060",
-    "domainId": 1,
-    "question": "Under the shared responsibility model, which of the following tasks are the responsibility of the AWS customer?",
-    "options": {
-      "A": "Ensuring that application data is encrypted at rest",
-      "B": "Ensuring that AWS NTP servers are set to the correct time",
-      "C": "Ensuring that users have received security training in the use of AWS services",
-      "D": "Ensuring that access to data centers is restricted",
-      "E": "Ensuring that hardware is disposed of properly"
-    },
-    "answer": [
-      "A",
-      "C"
-    ],
-    "explanation": "Customers are responsible for encrypting their application data at rest and for training their users on proper security practices when using AWS services, both sitting on the customer side of the model.\nEnsuring that AWS NTP servers are set to the correct time is entirely AWS's responsibility, as customers have no access to or control over the underlying infrastructure components that provide time synchronisation. Ensuring that access to data centers is restricted is entirely AWS's responsibility, covering physical access controls, surveillance, and protection of the facilities that house AWS infrastructure. Ensuring that hardware is disposed of properly is entirely AWS's responsibility, as customers never take possession of physical hardware and AWS manages all end-of-life processes for its own equipment.",
-    "source": "practice-exam-10.md",
-    "isMultiAnswer": true
   },
   {
     "id": "q065",
@@ -260,21 +173,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q108",
-    "domainId": 1,
-    "question": "A company wants to expand from one AWS Region into a second AWS Region. What does the company need to do to start supporting the new Region?",
-    "options": {
-      "A": "Contact an AWS Account Manager to sign a new contract",
-      "B": "Move an Availability Zone to the new Region",
-      "C": "Begin deploying resources in the second Region",
-      "D": "Download the AWS Management Console for the new Region"
-    },
-    "answer": "C",
-    "explanation": "AWS Regions are available globally and customers can begin provisioning resources in any Region at any time through the console, CLI, or API without any additional agreements or setup required.\nContacting an AWS Account Manager to sign a new contract is not required because AWS uses a self-service, pay-as-you-go model with no per-Region contracts. Availability Zones are fixed infrastructure components within a Region and cannot be moved or reassigned. The AWS Management Console is a web-based interface accessed through a browser and does not require a separate download for each Region.",
-    "source": "practice-exam-11.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q128",
     "domainId": 1,
     "question": "What is an advantage of deploying an application across multiple Availability Zones?",
@@ -309,10 +207,10 @@
     "domainId": 1,
     "question": "A company will be moving from an on-premises data center to the AWS Cloud. What would be one financial difference after the move?",
     "options": {
-      "A": "Moving from variable operational expense ( opex ) to upfront capital expense (capex)",
+      "A": "Moving from variable operational expense (opex) to upfront capital expense (capex)",
       "B": "Moving from upfront capital expense (capex) to variable capital expense (capex)",
-      "C": "Moving from upfront capital expense (capex) to variable operational expense ( opex )",
-      "D": "Elimination of upfront capital expense (capex) and elimination of variable operational expense ( opex )"
+      "C": "Moving from upfront capital expense (capex) to variable operational expense (opex)",
+      "D": "Elimination of upfront capital expense (capex) and elimination of variable operational expense (opex)"
     },
     "answer": "C",
     "explanation": "On-premises infrastructure requires large upfront capital expenditures for hardware and facilities, while AWS converts that spending to variable operational expense where you pay only for what you consume with no hardware purchases required.\nMoving from variable operational expense (opex) to upfront capital expense (capex) this reverses the actual direction of the shift, and on-premises environments are characterized by capex, not opex, as the starting point. Moving from upfront capital expense (capex) to variable capital expense (capex) AWS usage is billed as operational expense, not capital expense, so the destination category in this option is incorrect. Elimination of upfront capital expense (capex) and elimination of variable operational expense (opex) moving to AWS eliminates capex but introduces opex rather than eliminating it, as ongoing usage costs are paid as operational expense.",
@@ -350,21 +248,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q144",
-    "domainId": 1,
-    "question": "Which activity is a customer responsibility in the AWS Cloud according to the AWS shared responsibility model?",
-    "options": {
-      "A": "Ensuring network connectivity from AWS to the internet",
-      "B": "Patching and fixing flaws within the AWS Cloud infrastructure",
-      "C": "Ensuring the physical security of cloud data centers",
-      "D": "Ensuring Amazon EBS volumes are backed up"
-    },
-    "answer": "D",
-    "explanation": "Under the Shared Responsibility Model, backing up EBS volumes through snapshots is the customer's responsibility, as AWS does not automatically back up EBS volumes on the customer's behalf.\nEnsuring network connectivity from AWS to the internet is entirely AWS's responsibility, as AWS manages and maintains the underlying network infrastructure that connects its services to the public internet. Patching and fixing flaws within the AWS Cloud infrastructure is entirely AWS's responsibility, as customers have no access to the underlying hardware, hypervisors, or physical networking components. Ensuring the physical security of cloud data centers is entirely AWS's responsibility, covering access controls, surveillance, and protection of the facilities that house AWS infrastructure.",
-    "source": "practice-exam-11.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q146",
     "domainId": 1,
     "question": "A customer is deploying a new application and needs to choose an AWS Region. Which of the following factors could influence the customer’s decision?",
@@ -396,21 +279,6 @@
     "answer": "D",
     "explanation": "Multi-site active-active runs fully redundant live copies of your application across multiple sites simultaneously, so if one site fails the other immediately serves all traffic with essentially zero downtime.\nBackup and restore has the highest recovery time of all DR strategies. Data is restored from backups after a failure, meaning significant downtime is expected. Pilot light keeps a minimal version of the environment running and scales up during a disaster, resulting in a short but non-zero recovery time. Warm standby runs a scaled-down but fully functional version of the environment, which requires scaling up before handling full traffic load.",
     "source": "practice-exam-11.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q151",
-    "domainId": 1,
-    "question": "Which of the following components of the AWS Global Infrastructure consists of one or more discrete data centers interconnected through low latency links?",
-    "options": {
-      "A": "Availability Zone",
-      "B": "Edge location",
-      "C": "Region",
-      "D": "Private networking"
-    },
-    "answer": "A",
-    "explanation": "An Availability Zone consists of one or more discrete data centres with independent power and networking, interconnected to other AZs within the same Region via low-latency links.\nEdge locations are separate points of presence used for content delivery and caching, not data centre clusters with redundant infrastructure. A Region is the broader geographic area that contains multiple Availability Zones, not the data centre cluster itself. Private networking is not a component of the AWS global infrastructure hierarchy.",
-    "source": "practice-exam-12.md",
     "isMultiAnswer": false
   },
   {
@@ -465,21 +333,6 @@
     "explanation": "AWS makes it easy to architect for high availability using multi-AZ deployments, load balancers, and managed services, and the cloud's elasticity allows applications to scale up or down to match demand changes quickly.\nAWS does not automatically distribute all data globally by default, as data residency and replication are configuration choices the customer makes depending on the services and settings they select. AWS does not take care of operating the application, as customers remain responsible for deploying, managing, and maintaining their own application code and runtime environments. AWS does not take care of application security patching, as patching the application layer is the customer's responsibility under the Shared Responsibility Model.",
     "source": "practice-exam-12.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q166",
-    "domainId": 1,
-    "question": "Which of the following is a component of the AWS Global Infrastructure?",
-    "options": {
-      "A": "Amazon Alexa",
-      "B": "AWS Regions",
-      "C": "Amazon Lightsail",
-      "D": "AWS Organizations"
-    },
-    "answer": "B",
-    "explanation": "AWS Regions are the physical, geographically distributed components of the AWS Global Infrastructure, each containing multiple Availability Zones that provide redundancy and fault isolation.\nAmazon Alexa is a voice assistant service that enables conversational interactions with applications, and is not a component of the physical infrastructure that underpins AWS. Amazon Lightsail is a simplified compute service designed for developers who need an easy way to launch virtual servers and applications, and is not an infrastructure component. AWS Organizations is an account management service that enables centralised governance and billing across multiple AWS accounts, and is not part of the AWS Global Infrastructure.",
-    "source": "practice-exam-12.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q173",
@@ -749,21 +602,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q289",
-    "domainId": 1,
-    "question": "Why does every AWS Region contain multiple Availability Zones?",
-    "options": {
-      "A": "Multiple Availability Zones allows you to build resilient and highly available architectures",
-      "B": "Multiple Availability Zones results in lower total cost compared to deploying in a single Availability Zone",
-      "C": "Multiple Availability Zones allows for data replication and global reach",
-      "D": "Multiple Availability Zones within a region increases the storage capacity available in that region"
-    },
-    "answer": "A",
-    "explanation": "Multiple Availability Zones within a Region are geographically separated, each with independent power, cooling, and networking, so a failure in one AZ does not affect others, allowing customers to build resilient and highly available architectures.\nDeploying across multiple Availability Zones does not lower total cost, as running resources in multiple AZs typically increases cost compared to a single AZ deployment. Multiple Availability Zones provide redundancy within a Region but do not provide global reach, which requires deploying across multiple Regions or using a content delivery network. The number of Availability Zones in a Region does not increase the storage capacity available, as storage capacity is determined by the services and configurations a customer selects rather than the AZ count.",
-    "source": "practice-exam-3.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q291",
     "domainId": 1,
     "question": "Which of the following is a benefit of running an application in multiple Availability Zones?",
@@ -809,36 +647,6 @@
     },
     "answer": "D",
     "explanation": "AWS APIs enable programmatic management of AWS resources, allowing developers to automate provisioning, configuration, and monitoring through code rather than manual console interactions.\nUsing an API to access AWS services does not inherently improve the performance of the underlying resources, as API access is a management interface rather than a performance enhancement mechanism. While automation through APIs can speed up workflows, the primary benefit is programmatic control rather than a reduction in provisioning time specifically. APIs enable developers to interact with AWS services through code, but they do not reduce the number of developers needed to manage an environment and may in fact require additional development skills.",
-    "source": "practice-exam-4.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q315",
-    "domainId": 1,
-    "question": "Which statement best describes the concept of an AWS region?",
-    "options": {
-      "A": "An AWS Region is a geographical location with a collection of Edge locations",
-      "B": "An AWS Region is a virtual network dedicated only to a single AWS customer",
-      "C": "An AWS Region is a geographical location with a collection of Availability Zones",
-      "D": "An AWS Region represents the country where the AWS infrastructure exist"
-    },
-    "answer": "C",
-    "explanation": "An AWS Region is a physical geographic location that contains a collection of Availability Zones, each consisting of one or more discrete data centres with redundant power, networking, and connectivity.\nA geographical location with a collection of edge locations confuses Regions with the CloudFront edge network, which is a separate layer of infrastructure distributed independently of Regions. A virtual network dedicated only to a single AWS customer describes an Amazon VPC, not a Region, as Regions are shared physical infrastructure used by all AWS customers. A country where AWS infrastructure exists is too broad and inaccurate, as multiple Regions can exist within the same country and a Region is a specific defined geographic area, not a national boundary.",
-    "source": "practice-exam-4.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q319",
-    "domainId": 1,
-    "question": "What are AWS shared controls?",
-    "options": {
-      "A": "Controls that are solely the responsibility of the customer based on the application they are deploying within AWS services",
-      "B": "Controls that a customer inherits from AWS",
-      "C": "Controls that apply to both the infrastructure layer and customer layers",
-      "D": "Controls that the customer and AWS collaborate together upon to secure the infrastructure"
-    },
-    "answer": "D",
-    "explanation": "Shared controls are responsibilities where both AWS and the customer independently apply controls in their own respective domains, such as AWS patching its infrastructure while the customer patches their guest operating system.\nControls solely the responsibility of the customer describes customer-specific controls, not shared controls, as these apply only to the customer's side of the model. Controls that a customer inherits from AWS describes inherited controls, where compliance certifications and physical security measures are passed down from AWS to the customer, which is a separate category from shared controls. Controls that apply to both the infrastructure and customer layers is a misleading description because shared controls do not mean the same single control applies at both layers, but rather that each party manages their own version of the same type of control independently.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": false
   },
@@ -964,25 +772,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q357",
-    "domainId": 1,
-    "question": "Which of the following factors should be considered when determining the region in which AWS Resources will be deployed?",
-    "options": {
-      "A": "The AWS Region’s security level",
-      "B": "Data sovereignty",
-      "C": "Cost",
-      "D": "The planned number of VPCs",
-      "E": "Geographic proximity to the company's location"
-    },
-    "answer": [
-      "B",
-      "C"
-    ],
-    "explanation": "Data sovereignty requirements dictate that data must stay in specific geographic locations for legal or regulatory reasons, and pricing varies between Regions, making both critical factors when choosing where to deploy AWS resources.\nAll AWS Regions are built to the same security standards, so the security level of a Region is not a differentiating factor when selecting where to deploy. The planned number of VPCs is an architectural decision made after Region selection and has no bearing on which Region to choose. Geographic proximity to the company's location is not a primary selection factor, as latency considerations relate to where end users are located rather than where the company itself is based.",
-    "source": "practice-exam-5.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q371",
     "domainId": 1,
     "question": "Which of the following is a best practice for making your application on AWS highly available?",
@@ -1015,36 +804,6 @@
     "explanation": "A TCO analysis compares on-premises costs including labor, IT staff, cooling, and power consumption against AWS costs, where these physical infrastructure expenses are eliminated.\nAmazon EBS computing power is an AWS service cost rather than an on-premises infrastructure expense, so it does not belong in a TCO comparison of what customers stop paying for when they migrate. Software architecture refers to how an application is designed and structured, which is a technical consideration rather than an infrastructure cost factored into a TCO analysis. Software compatibility refers to whether applications can run in a new environment, which is a migration planning concern rather than a cost category included in a TCO comparison.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q390",
-    "domainId": 1,
-    "question": "Availability Zones within a Region are connected over low-latency links. Which of the following is a benefit of these links?",
-    "options": {
-      "A": "Create private connection to your data center",
-      "B": "Achieve global high availability",
-      "C": "Automate the process of provisioning new compute resources",
-      "D": "Make synchronous replication of your data possible"
-    },
-    "answer": "D",
-    "explanation": "Low-latency links between Availability Zones within a Region enable synchronous data replication, meaning data written in one AZ is immediately confirmed as written in another before the operation completes, supporting high availability within a Region.\nCreating a private connection to a data center describes AWS Direct Connect, which is a separate networking service and has nothing to do with the internal links between Availability Zones. Achieving global high availability requires deploying across multiple Regions rather than relying on AZ links within a single Region, which only provides availability at a regional level. Automating the provisioning of compute resources describes services like EC2 Auto Scaling and is unrelated to the low-latency connectivity that exists between Availability Zones.",
-    "source": "practice-exam-5.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q393",
-    "domainId": 1,
-    "question": "Which of the following is true regarding the AWS availability zones and edge locations?",
-    "options": {
-      "A": "Edge locations are located in separate Availability Zones worldwide to serve global customers",
-      "B": "An availability zone exists within an edge location to distribute content globally with low latency",
-      "C": "An Availability Zone is a geographic location where AWS provides multiple, physically separated and isolated edge locations",
-      "D": "An AWS Availability Zone is an isolated location within an AWS Region, however edge locations are located in multiple cities worldwide"
-    },
-    "answer": "D",
-    "explanation": "An Availability Zone is an isolated data center location within an AWS Region with independent power, cooling, and networking, while edge locations are separate infrastructure points distributed across hundreds of cities worldwide to serve content closer to end users.\nEdge locations are located in separate Availability Zones worldwide to serve global customers edge locations are an independent layer of infrastructure and are not located within or associated with Availability Zones. An availability zone exists within an edge location to distribute content globally with low latency the relationship is inverted here, and Availability Zones are part of Regions, not contained within edge locations. An Availability Zone is a geographic location where AWS provides multiple, physically separated and isolated edge locations this confuses the definition of an Availability Zone with that of a Region, and edge locations are not nested inside Availability Zones.",
-    "source": "practice-exam-6.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q397",
@@ -1081,21 +840,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q409",
-    "domainId": 1,
-    "question": "You want to create a backup of your data in another geographical location. Where should you create this backup?",
-    "options": {
-      "A": "In another Edge location",
-      "B": "In another Region",
-      "C": "In another VPC",
-      "D": "In another Availability Zone"
-    },
-    "answer": "B",
-    "explanation": "Storing backups in another AWS Region places your data in a completely separate geographic location, protecting against Region-level disasters such as natural catastrophes or widespread outages.\nEdge locations are points of presence used by services such as Amazon CloudFront to cache and deliver content to users with low latency, and are not storage locations where backups can be created or maintained. A VPC is a logically isolated virtual network within a single AWS Region, and storing data in another VPC does not place it in a different geographical location. An Availability Zone is a physically separate data center within a single AWS Region, and while storing backups in another AZ improves resilience against localised failures, it does not satisfy the requirement for a different geographical location as multiple AZs share the same Region.",
-    "source": "practice-exam-6.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q420",
     "domainId": 1,
     "question": "What does the term “Economies of scale” mean?",
@@ -1121,7 +865,7 @@
       "D": "With Serverless Architectures you have the ability to scale automatically up or down as demand changes"
     },
     "answer": "B",
-    "explanation": "Serverless architectures are more economical because compute resources are allocated only when code is executing, whereas server-based architectures require instances to run continuously and incur charges even during idle periods.",
+    "explanation": "Serverless architectures are more economical because compute resources are only allocated during actual code execution, meaning there are no charges for idle capacity, unlike server-based architectures where instances run continuously and incur costs even when no requests are being processed.\nServerless architectures do not eliminate networking costs; data transfer and API call costs still apply and are billed separately based on usage.\nReserved capacity discounts do not apply to serverless compute in the same way they apply to EC2 instances; serverless pricing is based entirely on the number of requests and duration of execution rather than reserved capacity commitments.\nThe ability to scale automatically is also available on server-based architectures using Auto Scaling groups, so this is not a characteristic unique to serverless; the key economic advantage is the elimination of costs during idle periods.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -1175,40 +919,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q476",
-    "domainId": 1,
-    "question": "Which of the following is the responsibility of AWS according to the AWS Shared Responsibility Model?",
-    "options": {
-      "A": "Securing regions and edge locations",
-      "B": "Performing auditing tasks",
-      "C": "Monitoring AWS resources usage",
-      "D": "Securing access to AWS resources"
-    },
-    "answer": "A",
-    "explanation": "Under the Shared Responsibility Model, AWS is responsible for securing the physical infrastructure, including Regions, Availability Zones, and edge locations that make up the AWS global network.\nPerforming auditing tasks is the customer's responsibility. Customers are responsible for auditing their own resource usage, access logs, and compliance activities. Monitoring AWS resources usage is the customer's responsibility. Tools like CloudWatch are available but it is the customer who configures and acts on monitoring. Securing access to AWS resources is the customer's responsibility. Managing IAM users, roles, and permissions falls under security in the cloud, not security of the cloud.",
-    "source": "practice-exam-7.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q488",
-    "domainId": 1,
-    "question": "According to the AWS shared responsibility model, what are the controls that customers fully inherit from AWS?",
-    "options": {
-      "A": "Awareness and Training",
-      "B": "Communications controls",
-      "C": "Data center security controls",
-      "D": "Environmental controls",
-      "E": "Resource Configuration Management"
-    },
-    "answer": [
-      "C",
-      "D"
-    ],
-    "explanation": "Data center security controls and environmental controls are fully inherited from AWS because customers have no physical access to AWS facilities and take on zero responsibility for managing them.\nAwareness and Training this is a shared control where both AWS and the customer independently maintain their own training programs for their respective workforces, so customers do not fully inherit it from AWS. Communications controls this is also a shared control, with each party responsible for securing and managing communications within their own environment. Resource Configuration Management customers are responsible for configuring the AWS resources they deploy, such as security groups, IAM policies, and application settings, making this a customer-managed control rather than an inherited one.",
-    "source": "practice-exam-7.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q514",
     "domainId": 1,
     "question": "How can you increase your application’s fault-tolerance while it is being hosted in AWS?",
@@ -1254,21 +964,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q529",
-    "domainId": 1,
-    "question": "Each AWS Region is composed of multiple Availability Zones. Which of the following best describes what an Availability Zone is?",
-    "options": {
-      "A": "It is a data center designed to be completely isolated from other data centers in the same region",
-      "B": "It is a collection of data centers distributed in multiple countries",
-      "C": "It is a logically isolated network of the AWS Cloud",
-      "D": "It is a distinct location within a region that is insulated from « failures in other Availability Zones"
-    },
-    "answer": "D",
-    "explanation": "An Availability Zone is a distinct location within a Region consisting of one or more data centres, designed to be isolated from failures in other AZs through independent power, cooling, and networking.\nA single data center completely isolated from other data centers in the same Region is inaccurate, as an AZ can contain multiple data centres and is isolated from failures, not from all connectivity. A collection of data centers distributed across multiple countries describes an AWS Region or the global infrastructure as a whole, not an individual AZ. A logically isolated network of the AWS Cloud describes an Amazon VPC, not an Availability Zone.",
-    "source": "practice-exam-8.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q530",
     "domainId": 1,
     "question": "AWS provides disaster recovery capability by allowing customers to deploy infrastructure into multiple [...].",
@@ -1295,51 +990,6 @@
     },
     "answer": "C",
     "explanation": "The Performance Efficiency pillar of the Well-Architected Framework focuses on selecting the right resource types and sizes based on workload requirements to use computing resources efficiently.\nOperational Excellence focuses on running and monitoring systems to deliver business value and continually improving processes and procedures, and does not specifically address compute resource selection based on workload requirements. Security focuses on protecting information and systems through risk assessment, access management, and controls, and is not concerned with matching compute resources to workload performance needs. Reliability focuses on ensuring a workload can recover from failures and dynamically acquire resources to meet demand, but its emphasis is on resilience and recovery rather than on selecting the right compute resource types for efficiency.",
-    "source": "practice-exam-8.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q537",
-    "domainId": 1,
-    "question": "Which element of the AWS global infrastructure consists of one or more discrete data centers each with redundant power networking and connectivity which are housed in separate facilities?",
-    "options": {
-      "A": "AWS Regions",
-      "B": "Availability Zones",
-      "C": "Edge locations",
-      "D": "Amazon CloudFront"
-    },
-    "answer": "B",
-    "explanation": "An Availability Zone consists of one or more discrete data centres, each with redundant power, networking, and connectivity, housed in separate facilities within a Region.\nAWS Regions are geographic areas that contain multiple Availability Zones, not individual data centre clusters. Edge locations are points of presence used for content delivery and caching, not data centre groupings with redundant infrastructure. Amazon CloudFront is a content delivery network service that uses edge locations, not a global infrastructure component in its own right.",
-    "source": "practice-exam-8.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q538",
-    "domainId": 1,
-    "question": "How many Availability Zones should compute resources be provisioned across to achieve high availability?",
-    "options": {
-      "A": "A minimum of one",
-      "B": "A minimum of two",
-      "C": "A minimum of three",
-      "D": "A minimum of four or more"
-    },
-    "answer": "B",
-    "explanation": "A minimum of two Availability Zones is required for high availability. If one AZ fails, the application continues operating from the other with minimal disruption.\nA minimum of one provides no redundancy. A single AZ failure would take the entire application down. A minimum of three or four or more exceeds the baseline requirement. While deploying across more AZs can increase resilience further, two is the recognised minimum for high availability in AWS architecture.",
-    "source": "practice-exam-8.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q539",
-    "domainId": 1,
-    "question": "The AWS Cloud’s multiple Regions are an example of:",
-    "options": {
-      "A": "Agility",
-      "B": "Global infrastructure",
-      "C": "Elasticity",
-      "D": "Pay-as-you-go pricing"
-    },
-    "answer": "B",
-    "explanation": "AWS Regions spread across the globe are part of the AWS global infrastructure, which includes Regions, Availability Zones, and edge locations designed to deliver services worldwide.\nAgility refers to the speed at which customers can provision resources and iterate on new functionality, which is a cloud adoption benefit rather than a characteristic of physical infrastructure placement. Elasticity refers to dynamically scaling resources up or down in response to demand, which is a compute and capacity concept unrelated to the geographic distribution of Regions. Pay-as-you-go pricing is a billing model where customers pay only for what they consume, which is a commercial benefit rather than an infrastructure concept.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": false
   },
@@ -1378,51 +1028,6 @@
     "isMultiAnswer": true
   },
   {
-    "id": "q546",
-    "domainId": 1,
-    "question": "A user is planning to launch two additional Amazon EC2 instances to increase availability. Which action should the user take?",
-    "options": {
-      "A": "Launch the instances across multiple Availability Zones in a single AWS Region",
-      "B": "Launch the instances as EC2 Reserved Instances in the same AWS Region and the same Availability Zone",
-      "C": "Launch the instances in multiple AWS Regions but in the same Availability Zone",
-      "D": "Launch the instances as EC2 Spot Instances in the same AWS Region but in different Availability Zones"
-    },
-    "answer": "A",
-    "explanation": "Launching instances across multiple Availability Zones within a single Region provides high availability by ensuring that if one Availability Zone experiences a failure, the instances in the remaining zones continue serving traffic without interruption.\nLaunching Reserved Instances in the same Region and Availability Zone secures a capacity reservation and reduces cost through a billing commitment, but concentrating both instances in a single Availability Zone creates a single point of failure with no availability benefit. Launching instances in multiple Regions but in the same Availability Zone type introduces geographic separation at the Regional level but does not protect against failures within a Region since Availability Zones within each Region remain independent failure domains. Launching Spot Instances in different Availability Zones uses spare EC2 capacity at reduced cost, but Spot Instances can be interrupted by AWS at any time, making them unsuitable as a reliability mechanism for increasing availability.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q550",
-    "domainId": 1,
-    "question": "Which task is AWS responsible for in the shared responsibility model for security and compliance?",
-    "options": {
-      "A": "Granting access to individuals and services",
-      "B": "Encrypting data in transit",
-      "C": "Updating Amazon EC2 host firmware",
-      "D": "Updating operating systems"
-    },
-    "answer": "C",
-    "explanation": "Updating the host firmware on EC2 physical servers is AWS's responsibility, as customers have no access to or control over the underlying hardware beneath their instances.\nGranting access to individuals and services is the customer's responsibility, as customers manage their own IAM users, roles, and permissions within their AWS account. Encrypting data in transit is the customer's responsibility, as customers decide whether and how to implement encryption for their own data using HTTPS, TLS, or other mechanisms. Updating operating systems is the customer's responsibility on services like EC2, where customers control the guest OS and are accountable for keeping it patched and up to date.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q553",
-    "domainId": 1,
-    "question": "According to the AWS shared responsibility model what is the sole responsibility of AWS?",
-    "options": {
-      "A": "Application security",
-      "B": "Edge location management",
-      "C": "Patch management",
-      "D": "Client-side data"
-    },
-    "answer": "B",
-    "explanation": "Managing edge locations, the physical infrastructure used by CloudFront and other services, is solely AWS's responsibility as part of its obligation to operate and maintain the global infrastructure underpinning its services.\nApplication security is the customer's responsibility under the Shared Responsibility Model, as customers are accountable for securing the code, configurations, and access controls within their own applications. Patch management is a shared control where AWS patches the underlying infrastructure and managed services, while customers retain responsibility for patching their own operating systems and applications. Client-side data is the customer's responsibility, as customers control how their data is classified, encrypted, and managed on the client side regardless of which AWS services they use.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q557",
     "domainId": 1,
     "question": "When architecting cloud applications, which of the following are a key design principle?",
@@ -1449,40 +1054,6 @@
     },
     "answer": "B",
     "explanation": "AWS offloads infrastructure management to its own teams, freeing customers from data centre operations so they can redirect time and resources toward product development, customer engagement, and other revenue-generating activities.\nPermissive security is not an AWS benefit and directly contradicts AWS's security model, which is built on the principle of least privilege and layered access controls. Control over cloud network hardware is not available to customers, as AWS manages all physical networking infrastructure on their behalf. Choice of specific cloud hardware vendors is not offered to customers, as AWS selects and manages its own hardware independently of customer preferences.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q564",
-    "domainId": 1,
-    "question": "Under the AWS shared responsibility model, which of the following activities are the customer’s responsibility?",
-    "options": {
-      "A": "Patching operating system components for Amazon Relational Database Server (Amazon RDS)",
-      "B": "Encrypting data on the client-side",
-      "C": "Training the data center staff",
-      "D": "Configuring Network Access Control Lists (ACL)",
-      "E": "Maintaining environmental controls within a data center"
-    },
-    "answer": [
-      "B",
-      "D"
-    ],
-    "explanation": "Customers are responsible for encrypting data on the client side before sending it to AWS, and for configuring Network ACLs to control inbound and outbound traffic at the subnet level in their VPC.\nPatching operating system components for Amazon RDS is entirely AWS's responsibility, as RDS is a managed service where AWS handles all underlying OS and database engine patching on the customer's behalf. Training data center staff is entirely AWS's responsibility, as customers have no access to or involvement in the physical facilities and operations teams that run AWS infrastructure. Maintaining environmental controls within a data center such as power, cooling, and fire suppression is entirely AWS's responsibility and is fully inherited by customers under the model.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q565",
-    "domainId": 1,
-    "question": "Under the shared responsibility model, which of the following is a shared control between a customer and AWS?",
-    "options": {
-      "A": "Physical controls",
-      "B": "Patch management",
-      "C": "Zone security",
-      "D": "Data center auditing"
-    },
-    "answer": "B",
-    "explanation": "Patch management is a shared control. AWS patches the underlying infrastructure and managed service platforms, while customers are responsible for patching their own guest operating systems and applications.\nPhysical controls are AWS's responsibility exclusively, covering physical security of data centres and hardware. Zone security is also AWS's responsibility, covering the physical and network isolation between Availability Zones. Data center auditing is AWS's responsibility, though customers can request compliance reports via AWS Artifact.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
   },
@@ -1523,7 +1094,7 @@
     "options": {
       "A": "Reduced Total Cost of Ownership (TCO)",
       "B": "Increased capital expenditure (capex)",
-      "C": "Reduced operational expenditure ( opex )",
+      "C": "Reduced operational expenditure (opex)",
       "D": "Deferred payment plans for startups",
       "E": "Business credit lines for startups"
     },
@@ -1534,40 +1105,6 @@
     "explanation": "AWS reduces Total Cost of Ownership by eliminating data centre capital expenses, and reduces operational expenditure through pay-as-you-go pricing and managed services that lower staffing and maintenance costs.\nIncreased capital expenditure describes the opposite of an AWS financial benefit. Moving to AWS replaces large upfront hardware investments with variable operational costs, reducing rather than increasing capital expenditure. Deferred payment plans for startups is not a standard AWS financial benefit. AWS charges are billed monthly based on actual usage, and there are no deferred payment arrangements offered as a general benefit to startup customers. Business credit lines for startups are not provided by AWS as a standard financial benefit. AWS does have programmes such as AWS Activate that provide credits to startups, but these are promotional credits rather than credit lines or financing arrangements.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q580",
-    "domainId": 1,
-    "question": "Which of the following are main components of the AWS global infrastructure?",
-    "options": {
-      "A": "Resource groups",
-      "B": "Availability Zones",
-      "C": "Security groups",
-      "D": "Regions",
-      "E": "Amazon Machine Images (AMIS)"
-    },
-    "answer": [
-      "B",
-      "D"
-    ],
-    "explanation": "Regions and Availability Zones are the two main building blocks of AWS global infrastructure, with Regions being geographic areas and each Region containing multiple isolated Availability Zones.\nResource groups are a management tool used to organise and tag AWS resources within an account, and are not a component of the physical global infrastructure. Security groups are virtual firewalls that control inbound and outbound traffic for AWS resources, and are a networking feature rather than an infrastructure component. Amazon Machine Images are templates used to launch EC2 instances containing the operating system and configuration, and are a compute feature rather than part of the global infrastructure hierarchy.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": true
-  },
-  {
-    "id": "q581",
-    "domainId": 1,
-    "question": "What is the AWS customer responsible for according to the AWS shared responsibility model?",
-    "options": {
-      "A": "Physical access controls",
-      "B": "Data encryption",
-      "C": "Secure disposal of storage devices",
-      "D": "Environmental risk management"
-    },
-    "answer": "B",
-    "explanation": "Data encryption is the customer's responsibility under the Shared Responsibility Model. Customers decide how and whether to encrypt their data at rest and in transit, using AWS-provided tools like KMS or their own encryption mechanisms. Physical access controls are AWS's responsibility. AWS manages and secures all physical infrastructure including data centres, hardware, and facilities. Secure disposal of storage devices is also AWS's responsibility. AWS handles the decommissioning and destruction of physical storage hardware. Environmental risk management such as fire suppression, climate control, and power redundancy at data centres is managed entirely by AWS.",
-    "source": "practice-exam-9.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q583",
@@ -1632,7 +1169,7 @@
   {
     "id": "q614",
     "domainId": 1,
-    "question": "Which design principles for cloud architecture are recommended when re-architecting a large monolithic application? (Select TWO.)",
+    "question": "Which design principles for cloud architecture are recommended when re-architecting a large monolithic application?",
     "options": {
       "A": "Use manual monitoring",
       "B": "Use fixed servers",
@@ -1681,21 +1218,6 @@
     "explanation": "Elasticity allows resources to automatically scale up and down based on demand, and agility enables rapid provisioning and experimentation without long procurement cycles. Both are core advantages of the AWS Cloud over traditional infrastructure.\nUnlimited uptime is not a guaranteed or marketed AWS benefit, as AWS services are subject to availability SLAs but not unconditional uptime. Colocation refers to housing your own physical servers in a third-party data centre, which is a traditional infrastructure model rather than a cloud benefit. Capital expenses are a cost of traditional on-premises infrastructure that AWS replaces with variable operational expenditure, making them a disadvantage of the old model, not a benefit of the cloud.",
     "source": "practice-exam-15.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q636",
-    "domainId": 1,
-    "question": "What are the multiple, isolated locations within an AWS Region that are connected by low-latency networks called?",
-    "options": {
-      "A": "AWS Direct Connects",
-      "B": "Amazon VPCs",
-      "C": "Edge locations",
-      "D": "Availability Zones"
-    },
-    "answer": "D",
-    "explanation": "Availability Zones are multiple, isolated locations within an AWS Region, each with independent power, cooling, and networking, connected to each other by low-latency links for high availability.\nAWS Direct Connect is a dedicated private network connection service for linking an on-premises data center to AWS, not an infrastructure component within a Region. Amazon VPCs are virtual private networks that customers configure within a Region to isolate their resources, not physical infrastructure locations. Edge locations are points of presence outside of Regions used for content delivery and caching, not isolated locations within a Region connected by low-latency links.",
-    "source": "practice-exam-15.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q640",
@@ -1825,7 +1347,7 @@
       "D": "Users can avoid audits by using reports from AWS"
     },
     "answer": "A",
-    "explanation": "AWS eliminates the need to guess future capacity needs by providing on-demand scaling, allowing organisations to provision exactly what they need and adjust in minutes rather than committing to fixed hardware infrastructure months or years in advance.\nUtilising existing hardware contracts for purchases is a characteristic of traditional on-premises procurement rather than an advantage of AWS; on the cloud, customers avoid hardware contracts entirely by paying only for what they consume. Fixing costs regardless of traffic is not an advantage of AWS; cloud costs scale with usage, and AWS offers variable pricing that adjusts to actual demand rather than fixed costs, which is one of its financial advantages over traditional fixed-capacity infrastructure. Avoiding audits using AWS reports is not a valid advantage; while AWS Artifact provides compliance reports that support customer audits, customers remain subject to their own regulatory audit requirements and cannot avoid audits by virtue of using AWS.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests knowledge of cloud advantages covered under Task Statement 1.1.",
+    "explanation": "AWS eliminates the need to guess future capacity needs by providing on-demand scaling, allowing organisations to provision exactly what they need and adjust in minutes rather than committing to fixed hardware infrastructure months or years in advance.\nUtilising existing hardware contracts for purchases is a characteristic of traditional on-premises procurement rather than an advantage of AWS; on the cloud, customers avoid hardware contracts entirely by paying only for what they consume. Fixing costs regardless of traffic is not an advantage of AWS; cloud costs scale with usage, and AWS offers variable pricing that adjusts to actual demand rather than fixed costs, which is one of its financial advantages over traditional fixed-capacity infrastructure. Avoiding audits using AWS reports is not a valid advantage; while AWS Artifact provides compliance reports that support customer audits, customers remain subject to their own regulatory audit requirements and cannot avoid audits by virtue of using AWS.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -1840,7 +1362,7 @@
       "D": "AWS has no limits on the number of resources that can be created"
     },
     "answer": "B",
-    "explanation": "AWS lets companies avoid upfront capital investment, scale as needed, and only pay for what they use. AWS provides users with full control over the underlying resources is false. AWS manages the physical infrastructure under the Shared Responsibility Model. AWS offers edge locations in every country is inaccurate. Edge locations exist in many but not all countries. AWS has no limits on the number of resources that can be created is false. AWS applies default service quotas to all accounts.",
+    "explanation": "AWS offers a pay-as-you-go pricing model with no long-term contracts required for most services, allowing companies to avoid large upfront capital expenditure and pay only for the resources they actually consume.\nAWS does not provide users with full control over the underlying physical resources; AWS manages the hardware, hypervisor, and physical infrastructure, while customers manage their workloads and data.\nAWS does not have edge locations in every country; AWS has edge locations in many countries for services like CloudFront, but coverage is not universal across every nation, and this is not a core reason to choose AWS over a traditional data centre.\nWhile AWS has very high service limits, there are limits on the number of resources that can be created per account per Region; customers can request limit increases, but resources are not truly unlimited, making this statement inaccurate.",
     "source": "practice-exam-16.md",
     "isMultiAnswer": false
   },
@@ -1900,7 +1422,7 @@
       "D": "AWS manages compliance needs"
     },
     "answer": "C",
-    "explanation": "AWS eliminates the need to guess capacity needs by providing on-demand scaling, so organisations can provision exactly what they need and adjust in minutes rather than purchasing hardware based on peak capacity forecasts.\nAWS does not audit user data; AWS has strict policies and controls against accessing customer data without authorisation, and the customer remains responsible for the privacy and governance of data stored in their AWS environment. Data stored in AWS is not automatically secure; customers must actively configure encryption, access controls, and security settings for their own data, as the shared responsibility model requires customers to protect the data they put in the cloud. AWS does not manage the compliance needs of individual customers; while AWS provides compliance certifications for its infrastructure and tools through Artifact to support customer compliance efforts, each customer is responsible for applying those frameworks to their own workloads and meeting their specific regulatory requirements.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests knowledge of cloud advantages covered under Task Statement 1.1.",
+    "explanation": "AWS eliminates the need to guess capacity needs by providing on-demand scaling, so organisations can provision exactly what they need and adjust in minutes rather than purchasing hardware based on peak capacity forecasts.\nAWS does not audit user data; AWS has strict policies and controls against accessing customer data without authorisation, and the customer remains responsible for the privacy and governance of data stored in their AWS environment. Data stored in AWS is not automatically secure; customers must actively configure encryption, access controls, and security settings for their own data, as the shared responsibility model requires customers to protect the data they put in the cloud. AWS does not manage the compliance needs of individual customers; while AWS provides compliance certifications for its infrastructure and tools through Artifact to support customer compliance efforts, each customer is responsible for applying those frameworks to their own workloads and meeting their specific regulatory requirements.",
     "source": "practice-exam-17.md",
     "isMultiAnswer": false
   },
@@ -1968,7 +1490,7 @@
       "A",
       "C"
     ],
-    "explanation": "AWS requires no upfront hardware commitments, allowing organisations to pay only for what they consume, and resources can be provisioned on demand in minutes allowing businesses to scale quickly without waiting for hardware procurement and installation.\nAWS does not manage all security in the cloud; under the shared responsibility model, AWS secures the underlying infrastructure while customers are responsible for securing their applications, data, and configurations that run on top of that infrastructure. Users do not have access to free and unlimited storage on AWS; storage services such as S3 and EBS are priced based on usage, and while there are free tier limits for new accounts, storage is not free or unlimited in general. Users do not have control over the physical infrastructure; one of the trade-offs of moving to the cloud is that customers give up physical access to and control of the underlying hardware, trusting AWS to manage it securely and reliably.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests knowledge of cloud benefits covered under Task Statement 1.1.",
+    "explanation": "AWS requires no upfront hardware commitments, allowing organisations to pay only for what they consume, and resources can be provisioned on demand in minutes allowing businesses to scale quickly without waiting for hardware procurement and installation.\nAWS does not manage all security in the cloud; under the shared responsibility model, AWS secures the underlying infrastructure while customers are responsible for securing their applications, data, and configurations that run on top of that infrastructure. Users do not have access to free and unlimited storage on AWS; storage services such as S3 and EBS are priced based on usage, and while there are free tier limits for new accounts, storage is not free or unlimited in general. Users do not have control over the physical infrastructure; one of the trade-offs of moving to the cloud is that customers give up physical access to and control of the underlying hardware, trusting AWS to manage it securely and reliably.",
     "source": "practice-exam-17.md",
     "isMultiAnswer": true
   },
@@ -2090,25 +1612,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q759",
-    "domainId": 1,
-    "question": "Which of the following describes the relationships among AWS Regions, Availability Zones, and edge locations?",
-    "options": {
-      "A": "There are more AWS Regions than Availability Zones",
-      "B": "There are more edge locations than AWS Regions",
-      "C": "An edge location is an Availability Zone",
-      "D": "There are more AWS Regions than edge locations",
-      "E": "There are more Availability Zones than AWS Regions"
-    },
-    "answer": [
-      "B",
-      "E"
-    ],
-    "explanation": "There are hundreds of edge locations worldwide compared to dozens of Regions, and each Region contains multiple Availability Zones, making both counts greater than the number of Regions.\nThere are more AWS Regions than Availability Zones is false. Every Region contains at least two or three AZs, so AZs always outnumber Regions. An edge location is an Availability Zone is false. Edge locations are separate points of presence used for content delivery and are not part of the AZ infrastructure. There are more AWS Regions than edge locations is false. Edge locations number in the hundreds, far exceeding the number of Regions.",
-    "source": "practice-exam-18.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q761",
     "domainId": 1,
     "question": "A company wants to build its new application workloads in the AWS Cloud instead of using on-premises resources. What expense can be reduced using the AWS Cloud?",
@@ -2119,7 +1622,7 @@
       "D": "Writing specific test cases for third-party applications"
     },
     "answer": "C",
-    "explanation": "Moving workloads to AWS eliminates the capital expenditure required to purchase, install, rack, and cable physical servers and networking equipment for new applications, replacing it with pay-as-you-go consumption pricing.\nThe cost of writing custom application code in languages such as Java or Node.js remains unchanged when moving to the cloud, as software development is a people and process cost that is independent of whether the infrastructure is on-premises or hosted on AWS. Penetration testing costs for security remain with the application team whether on-premises or in the cloud, as the need to test application and infrastructure security exists regardless of where the workload runs, and AWS provides guidance for testing its own components separately. Writing test cases for third-party applications is a development and quality assurance task that remains consistent regardless of infrastructure location, as it is determined by the third-party software requirements rather than by the hosting environment.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests cloud economics knowledge covered under Task Statement 1.4.",
+    "explanation": "Moving workloads to AWS eliminates the capital expenditure required to purchase, install, rack, and cable physical servers and networking equipment for new applications, replacing it with pay-as-you-go consumption pricing.\nThe cost of writing custom application code in languages such as Java or Node.js remains unchanged when moving to the cloud, as software development is a people and process cost that is independent of whether the infrastructure is on-premises or hosted on AWS. Penetration testing costs for security remain with the application team whether on-premises or in the cloud, as the need to test application and infrastructure security exists regardless of where the workload runs, and AWS provides guidance for testing its own components separately. Writing test cases for third-party applications is a development and quality assurance task that remains consistent regardless of infrastructure location, as it is determined by the third-party software requirements rather than by the hosting environment.",
     "source": "practice-exam-18.md",
     "isMultiAnswer": false
   },
@@ -2172,24 +1675,9 @@
       "B",
       "C"
     ],
-    "explanation": "The cost of purchasing and installing physical server hardware on-premises, and the ongoing administrative cost of managing infrastructure including OS installations, patching, backups, and failure recovery, are both direct costs of maintaining on-premises infrastructure that disappear when migrating to AWS and should be included in a TCO comparison.\nCredit card processing fees for application transactions are a business operational cost that exists regardless of whether the infrastructure is on-premises or in the cloud, as they are determined by the payment processor rather than the hosting environment and are therefore not relevant to a cloud versus on-premises TCO comparison. Third-party penetration testing costs may apply in both on-premises and cloud environments depending on the organisation's security requirements, and are not a distinguishing cost factor that differentiates on-premises TCO from cloud architecture costs. Advertising costs for enterprise-wide campaigns are a marketing expense entirely unrelated to the infrastructure hosting model, and have no connection to the cost comparison between on-premises data centre infrastructure and cloud architecture.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests cloud economics and TCO knowledge covered under Task Statement 1.4.",
+    "explanation": "The cost of purchasing and installing physical server hardware on-premises, and the ongoing administrative cost of managing infrastructure including OS installations, patching, backups, and failure recovery, are both direct costs of maintaining on-premises infrastructure that disappear when migrating to AWS and should be included in a TCO comparison.\nCredit card processing fees for application transactions are a business operational cost that exists regardless of whether the infrastructure is on-premises or in the cloud, as they are determined by the payment processor rather than the hosting environment and are therefore not relevant to a cloud versus on-premises TCO comparison. Third-party penetration testing costs may apply in both on-premises and cloud environments depending on the organisation's security requirements, and are not a distinguishing cost factor that differentiates on-premises TCO from cloud architecture costs. Advertising costs for enterprise-wide campaigns are a marketing expense entirely unrelated to the infrastructure hosting model, and have no connection to the cost comparison between on-premises data centre infrastructure and cloud architecture.",
     "source": "practice-exam-18.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q767",
-    "domainId": 1,
-    "question": "What helps a company provide a lower latency experience to its users globally?",
-    "options": {
-      "A": "Using an AWS Region that is central to all users",
-      "B": "Using a second Availability Zone in the AWS Region that is being used",
-      "C": "Enabling caching in the AWS Region that is being used",
-      "D": "Using edge locations to put content closer to all users"
-    },
-    "answer": "D",
-    "explanation": "Edge locations place cached content closer to users globally through Amazon CloudFront, providing the lowest possible latency regardless of where the origin server is located.\nUsing a single central Region still requires users in distant locations to route traffic across long network distances, and no single Region can be geographically central to all users worldwide. Adding a second Availability Zone improves availability and fault tolerance within a Region but does not reduce the physical distance between the application and global users. Enabling caching within a single Region keeps cached content in one geographic location, which only benefits users close to that Region rather than reducing latency for users globally.",
-    "source": "practice-exam-18.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q772",
@@ -2219,21 +1707,6 @@
     "answer": "C",
     "explanation": "EC2 instances can be launched on demand when needed and terminated when no longer required, so you only pay for compute during actual usage rather than maintaining hardware sized for peak capacity at all times.\nAmazon EC2 costs are not billed on a monthly basis. Linux-based EC2 instances are billed per second with a one-minute minimum, meaning you pay only for the exact compute time consumed rather than a fixed monthly charge. Customers retaining full administrative access to their EC2 instances is a capability that gives customers control over their environment, but administrative access is not itself a reason why AWS is more economical than traditional data centres. Permanently running enough instances to handle peak workloads describes the traditional data centre approach of over-provisioning for maximum anticipated load, which is exactly the model that makes traditional infrastructure less economical than the elastic, on-demand AWS model.",
     "source": "practice-exam-18.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q778",
-    "domainId": 1,
-    "question": "Which component of AWS global infrastructure does Amazon CloudFront use to ensure low-latency delivery?",
-    "options": {
-      "A": "AWS Regions",
-      "B": "AWS edge locations",
-      "C": "AWS Availability Zones",
-      "D": "Amazon Virtual Private Cloud (Amazon VPC)"
-    },
-    "answer": "B",
-    "explanation": "Amazon CloudFront uses AWS edge locations, distributed across hundreds of cities worldwide, to cache and deliver content from the location nearest to each user for low-latency delivery.\nAWS Regions are geographic areas containing multiple AZs, used for deploying and running workloads, not for edge caching and content delivery. AWS Availability Zones are isolated data centre clusters within a Region, used for high availability and redundancy, not content delivery. Amazon VPC is a private virtual network within a Region, used for isolating and controlling network traffic, not for delivering content globally.",
-    "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
   {
@@ -2292,7 +1765,7 @@
       "D": "Placement groups"
     },
     "answer": "B",
-    "explanation": "Spreading EC2 instances across at least two Availability Zones within the same Region provides high availability and redundancy while keeping all instances within a single geographic area to satisfy data residency requirements. AWS Regions span different geographic areas, which would violate the regulatory requirement to stay within a single geographic location. Subnets are network partitions within an AZ, not a mechanism for achieving high availability across failure domains. Placement groups control how instances are placed on underlying hardware within an AZ, not across failure zones.",
+    "explanation": "Availability Zones are isolated data centre locations within a single AWS Region connected by low-latency links. Deploying EC2 instances across at least two AZs in the same Region provides high availability and meets the geographic restriction requirement.\nAWS Regions are separate geographic areas, each containing multiple AZs. Deploying across multiple Regions would violate the requirement that all instances remain in a single geographic area, making this option non-compliant.\nSubnets are subdivisions of a VPC and can exist within a single AZ; spreading instances across subnets within the same AZ does not provide protection against an AZ-level failure.\nPlacement groups control how instances are physically placed within an AZ for low latency or spread placement, but they do not provide cross-AZ fault isolation and are not a high-availability mechanism for surviving AZ outages.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
@@ -2360,7 +1833,7 @@
       "A",
       "C"
     ],
-    "explanation": "Using AWS Config to generate an inventory of AWS resources provides visibility into what resources exist and how they are configured, supporting reliability by enabling change tracking, and using AWS CloudTrail to record AWS API calls creates an auditable log of all changes made, enabling root cause analysis when failures occur. Both are change management steps that support reliability in the AWS Cloud.\nUsing service limits to prevent users from creating or making changes to AWS resources would block necessary scaling and operational changes, contradicting the reliability goal of being able to adapt to changing demand and recover from failures quickly. Using AWS Certificate Manager to whitelist approved resources and services is not an accurate description of what Certificate Manager does; it provisions SSL/TLS certificates and does not provide a resource whitelisting capability for change management. Using Amazon GuardDuty to validate configuration changes is not what GuardDuty does; it detects threats and malicious activity rather than validating whether resource configurations comply with desired states, which is the function of AWS Config.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests Well-Architected Framework knowledge covered under Task Statement 1.2.",
+    "explanation": "Using AWS Config to generate an inventory of AWS resources provides visibility into what resources exist and how they are configured, supporting reliability by enabling change tracking, and using AWS CloudTrail to record AWS API calls creates an auditable log of all changes made, enabling root cause analysis when failures occur. Both are change management steps that support reliability in the AWS Cloud.\nUsing service limits to prevent users from creating or making changes to AWS resources would block necessary scaling and operational changes, contradicting the reliability goal of being able to adapt to changing demand and recover from failures quickly. Using AWS Certificate Manager to whitelist approved resources and services is not an accurate description of what Certificate Manager does; it provisions SSL/TLS certificates and does not provide a resource whitelisting capability for change management. Using Amazon GuardDuty to validate configuration changes is not what GuardDuty does; it detects threats and malicious activity rather than validating whether resource configurations comply with desired states, which is the function of AWS Config.",
     "source": "practice-exam-20.md",
     "isMultiAnswer": true
   },
@@ -2375,7 +1848,7 @@
       "D": "Implement the least permissive rules for security groups"
     },
     "answer": "C",
-    "explanation": "Designing loosely coupled components means systems are built so that individual components can fail or be replaced without causing cascading failures, which is a core AWS Well-Architected design principle for building resilient, maintainable cloud architectures.\nThinking of servers as non-disposable resources is the opposite of an AWS design principle; the cloud encourages treating infrastructure as disposable and automating replacements, allowing failed instances to be terminated and new ones launched automatically rather than being manually repaired. Using synchronous integration of services increases tight coupling and means a failure in one service blocks others waiting for a response; AWS design principles favour asynchronous and event-driven patterns where components can operate independently without waiting for each other. Implementing the least permissive rules for security groups is a security best practice for network access control but is not a cloud architecture design principle; it relates to security hardening rather than the broader system architecture pattern described by the Well-Architected Framework.\nWhy this question was updated Domain reassigned to Cloud Concepts as this tests Well-Architected design principles covered under Task Statement 1.2.",
+    "explanation": "Designing loosely coupled components means systems are built so that individual components can fail or be replaced without causing cascading failures, which is a core AWS Well-Architected design principle for building resilient, maintainable cloud architectures.\nThinking of servers as non-disposable resources is the opposite of an AWS design principle; the cloud encourages treating infrastructure as disposable and automating replacements, allowing failed instances to be terminated and new ones launched automatically rather than being manually repaired. Using synchronous integration of services increases tight coupling and means a failure in one service blocks others waiting for a response; AWS design principles favour asynchronous and event-driven patterns where components can operate independently without waiting for each other. Implementing the least permissive rules for security groups is a security best practice for network access control but is not a cloud architecture design principle; it relates to security hardening rather than the broader system architecture pattern described by the Well-Architected Framework.",
     "source": "practice-exam-20.md",
     "isMultiAnswer": false
   },
@@ -2500,21 +1973,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q864",
-    "domainId": 1,
-    "question": "Which of the AWS global infrastructure is used to cache copies of content for faster delivery to users across the globe?",
-    "options": {
-      "A": "AWS Regions",
-      "B": "Availability Zones",
-      "C": "Edge locations",
-      "D": "Data centers"
-    },
-    "answer": "C",
-    "explanation": "Edge locations are points of presence in the AWS global infrastructure used by CloudFront and other services to cache copies of content close to end users for faster delivery worldwide.\nAWS Regions are geographic areas containing multiple Availability Zones where customers deploy their workloads, and are not designed for content caching or low-latency delivery to end users. Availability Zones are isolated data center clusters within a Region used for redundancy and high availability, not for caching content at the edge. Data centers are the physical facilities that house AWS infrastructure and are not a distinct infrastructure tier that customers interact with directly for content delivery purposes.",
-    "source": "practice-exam-20.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q867",
     "domainId": 1,
     "question": "A Cloud Practitioner is developing a disaster recovery plan and intends to replicate data between multiple geographic areas. Which of the following meets these requirements?",
@@ -2545,21 +2003,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q876",
-    "domainId": 1,
-    "question": "A company has an application with users in both Australia and Brazil. All the company infrastructure is currently provisioned in the Asia Pacific (Sydney) Region in Australia, and Brazilian users are experiencing high latency. What should the company do to reduce latency?",
-    "options": {
-      "A": "Implement AWS Direct Connect for users in Brazil",
-      "B": "Provision resources in the South America (São Paulo) Region in Brazil",
-      "C": "Use AWS Transit Gateway to quickly route users from Brazil to the application",
-      "D": "Launch additional Amazon EC2 instances in Sydney to handle the demand"
-    },
-    "answer": "B",
-    "explanation": "Provisioning resources in the South America (S�o Paulo) Region places infrastructure geographically close to Brazilian users, directly reducing the network distance and latency compared to routing all traffic to Sydney.\nAWS Direct Connect provides a dedicated private network link between on-premises infrastructure and AWS, but does not reduce latency for end users accessing a cloud-hosted application over the internet. AWS Transit Gateway connects VPCs and on-premises networks through a central hub, and is not designed to reduce geographic latency for end users accessing applications from distant locations. Launching additional EC2 instances in Sydney increases capacity in Australia but does not reduce the physical distance between the application and Brazilian users, so latency would remain unchanged.",
-    "source": "practice-exam-21.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q886",
     "domainId": 1,
     "question": "What is an Availability Zone in AWS?",
@@ -2570,7 +2013,7 @@
       "D": "A data center location with a single source of power and networking"
     },
     "answer": "A",
-    "explanation": "An Availability Zone consists of one or more physical data centres with redundant power, networking, and connectivity, designed to be isolated from failures in other AZs within the same Region. A completely isolated geographic location describes an AWS Region, not an Availability Zone. Each Region contains multiple AZs and is separated by significant geographic distance. One or more edge locations based around the world describes the AWS CloudFront network, which is used for content delivery and caching, not compute or storage infrastructure. A data center location with a single source of power and networking is the opposite of what an AZ provides. AZs are specifically designed with redundant power, networking, and connectivity to avoid single points of failure.",
+    "explanation": "An Availability Zone consists of one or more physical data centres, each with independent power, cooling, and networking, designed so that a failure in one AZ does not affect others in the same Region.\nA completely isolated geographic location describes an AWS Region, not an Availability Zone; Regions are the large geographic areas, and AZs are the isolated facilities within a Region.\nEdge locations are Points of Presence used by services such as CloudFront to cache content close to users; they are not Availability Zones and have no hosting relationship with EC2 instances or core AWS services.\nA description of a single source of power and networking is the opposite of what an AZ provides; AZs are specifically designed with redundant power and networking to protect against single points of failure.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -2714,21 +2157,6 @@
     "isMultiAnswer": true
   },
   {
-    "id": "q993",
-    "domainId": 1,
-    "question": "A company wants to ensure its infrastructure is designed for fault tolerance and business continuity in the event of an environmental disruption. Which AWS infrastructure component should the company replicate across?",
-    "options": {
-      "A": "Edge locations",
-      "B": "Availability Zones",
-      "C": "Regions",
-      "D": "Amazon Route 53"
-    },
-    "answer": "B",
-    "explanation": "Replicating infrastructure across multiple Availability Zones within a Region provides fault tolerance and business continuity, ensuring operations continue even if one AZ is disrupted by an environmental event.\nEdge locations are points of presence used by CloudFront to cache content close to end users, and are not infrastructure components that customers replicate their workloads across for fault tolerance. Regions are the broadest geographic groupings in AWS infrastructure, and while deploying across multiple Regions provides disaster recovery, replicating across Availability Zones within a Region is the standard approach for fault tolerance against environmental disruptions. Amazon Route 53 is a DNS service that routes traffic between endpoints, and is not an infrastructure component that workloads are replicated across.",
-    "source": "practice-exam-23.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q995",
     "domainId": 1,
     "question": "Which AWS Cloud design principles can help increase reliability?",
@@ -2746,21 +2174,6 @@
     "explanation": "Testing recovery procedures validates that disaster recovery plans work correctly, and automatically recovering from failure using health checks and auto-scaling ensures systems self-heal without manual intervention, both being core Reliability pillar design principles.\nMonolithic architecture tightly couples all application components together, meaning a failure in one part can bring down the entire system, which reduces rather than increases reliability. Measuring overall efficiency is a design principle associated with the Performance Efficiency pillar, not the Reliability pillar. Adopting a consumption model is a cost management principle associated with the Cost Optimization pillar, focused on paying only for what is used rather than on system resilience.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q999",
-    "domainId": 1,
-    "question": "How should a web application be deployed to ensure high availability in the AWS Cloud?",
-    "options": {
-      "A": "Deploy multiple instances of the application in multiple Availability Zones",
-      "B": "Deploy multiple instances of the application in a single Availability Zone",
-      "C": "Deploy the application to a compute-optimized Amazon EC2 instance in a single Availability Zone",
-      "D": "Deploy the application in one Amazon EC2 instance in an Auto Scaling group"
-    },
-    "answer": "A",
-    "explanation": "Deploying multiple instances across multiple Availability Zones ensures high availability by providing redundancy, so if one AZ fails, instances in other AZs continue serving traffic without interruption.\nDeploying multiple instances in a single Availability Zone improves capacity and performance but provides no protection against an AZ-level failure, leaving the application vulnerable to a single point of failure. Deploying to a compute-optimised EC2 instance in a single Availability Zone addresses performance for compute-intensive workloads but offers no redundancy or fault tolerance. Deploying one EC2 instance in an Auto Scaling group allows the group to replace a failed instance but still leaves a gap in availability while the replacement is provisioned, and does not protect against an AZ failure.",
-    "source": "practice-exam-23.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q1007",
