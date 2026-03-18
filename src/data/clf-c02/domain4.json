@@ -391,6 +391,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q100",
+    "domainId": 4,
+    "question": "Which service should a customer use to consolidate and centrally manage multiple AWS accounts?",
+    "options": {
+      "A": "AWS IAM",
+      "B": "AWS Organizations",
+      "C": "AWS Schema Conversion Tool",
+      "D": "AWS Config"
+    },
+    "answer": "B",
+    "explanation": "AWS Organizations allows you to create a hierarchy of AWS accounts, consolidate billing across accounts, and apply governance policies through Service Control Policies centrally from a management account.\nAWS IAM manages users, roles, and permissions within a single account and cannot manage or consolidate multiple accounts. AWS Schema Conversion Tool is a database migration tool for converting database schemas between different engines, unrelated to account management. AWS Config tracks and records configuration changes to resources within an account, but does not provide multi-account consolidation or governance.",
+    "source": "practice-exam-10.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q101",
     "domainId": 4,
     "question": "How can a company reduce its Total Cost of Ownership (TCO) using AWS?",
@@ -1143,6 +1158,21 @@
     "isMultiAnswer": false
   },
   {
+    "id": "q334",
+    "domainId": 4,
+    "question": "AWS recommends some practices to help organisations avoid unexpected charges on their bill. Which of the following is NOT one of these practices?",
+    "options": {
+      "A": "Deleting unused EBS volumes after terminating an EC2 instance",
+      "B": "Deleting unused Auto Scaling launch configurations",
+      "C": "Deleting unused Elastic Load Balancers",
+      "D": "Releasing unused Elastic IPs after terminating an EC2 instance"
+    },
+    "answer": "B",
+    "explanation": "Deleting unused Auto Scaling launch configurations does not generate AWS charges, so it is not a cost-saving practice. In contrast, unused EBS volumes, Elastic Load Balancers, and Elastic IPs all incur ongoing charges that should be cleaned up.\nDeleting unused EBS volumes after terminating an EC2 instance is a recommended cost-saving practice because EBS volumes continue to incur storage charges even when no instance is attached to them. Deleting unused Elastic Load Balancers is a recommended cost-saving practice because load balancers incur an hourly charge regardless of whether they are serving traffic. Releasing unused Elastic IP addresses after terminating an EC2 instance is a recommended cost-saving practice because AWS charges for Elastic IPs that are allocated but not associated with a running instance.",
+    "source": "practice-exam-4.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q335",
     "domainId": 4,
     "question": "What is the AWS tool that can help a company visualize their AWS spending in the last few months?",
@@ -1804,6 +1834,21 @@
     "explanation": "Deleting unnecessary EBS snapshots removes the storage costs for backups you no longer need, and changing to a more cost-effective volume type such as moving from gp2 to gp3 reduces the per-gigabyte cost for the same capacity.\nDeleting unused buckets is an Amazon S3 action that reduces S3 storage costs, but S3 buckets are entirely separate from EBS volumes and deleting them has no effect on EBS pricing. Using reservations is not a pricing mechanism available for EBS volumes. EBS pricing is based on provisioned storage and snapshot data rather than commitment-based reservations. Distributing requests to multiple volumes may improve performance by reducing I/O contention, but spreading data across more volumes increases total provisioned storage and therefore increases rather than reduces EBS costs.",
     "source": "practice-exam-8.md",
     "isMultiAnswer": true
+  },
+  {
+    "id": "q511",
+    "domainId": 4,
+    "question": "Which of the following makes it easier for you to categorize, manage and filter your resources?",
+    "options": {
+      "A": "Amazon CloudWatch",
+      "B": "AWS Service Catalog",
+      "C": "AWS Directory Service",
+      "D": "AWS Tagging"
+    },
+    "answer": "D",
+    "explanation": "AWS tags are key-value metadata pairs attached to resources, making it easy to categorise, filter, search, and manage resources by project, environment, owner, or any other custom criteria.\nAmazon CloudWatch is a monitoring and observability service for collecting metrics, logs, and alarms on AWS resources, not a resource categorisation or filtering tool. AWS Service Catalog allows organisations to create and manage approved catalogues of IT services for internal deployment, not for tagging or filtering existing resources. AWS Directory Service provides managed Microsoft Active Directory for user authentication and access management, unrelated to resource categorisation or metadata management.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
   },
   {
     "id": "q515",
@@ -2560,8 +2605,8 @@
       "C": "Set resource limits in AWS accounts to prevent overspending",
       "D": "Split an AWS bill across multiple forms of payment"
     },
-    "answer": "C",
-    "explanation": "AWS Budgets allows you to set custom cost and usage limits for your AWS accounts, sending alerts and optionally taking automated actions when spending or usage approaches or exceeds the limits you define.\nAWS Budgets does not prevent a given user from creating a resource. Access control and resource creation restrictions are managed through IAM policies and Service Control Policies rather than through budgeting tools. Sending an alert when Reserved Instance utilisation drops below a certain percentage is a function of AWS Budgets RI utilisation budgets, which is one specific budget type, but the broader purpose of AWS Budgets described in the correct answer more accurately captures what it does. Splitting an AWS bill across multiple forms of payment is a billing configuration option managed through the AWS Billing and Cost Management console's payment methods settings, and is not a function of AWS Budgets.",
+    "answer": "B",
+    "explanation": "AWS Budgets supports Reserved Instance utilization budgets that send alerts when the utilization of Reserved Instances drops below a defined percentage threshold, helping customers ensure they are getting value from their RI commitments.\nPreventing a given user from creating a resource is an access control function achieved through IAM policies or Service Control Policies in AWS Organizations, not through AWS Budgets. AWS Budgets is an alerting and monitoring tool and cannot enforce hard limits or prevent resource creation, making setting resource limits to prevent overspending an incorrect description of its capabilities. Splitting an AWS bill across multiple forms of payment is a billing and payment method configuration handled through the AWS Billing Console, and is not a feature of AWS Budgets.",
     "source": "practice-exam-19.md",
     "isMultiAnswer": false
   },
@@ -3223,7 +3268,7 @@
       "C",
       "D"
     ],
-    "explanation": "AWS Trusted Advisor provides automated checks across multiple categories including security, cost, performance, fault tolerance, and service limits to identify opportunities for improvement, and saves time by providing continuous automated monitoring rather than requiring manual infrastructure reviews.\nAWS Trusted Advisor does not provide direct access to AWS technical support engineers; technical support is provided through AWS Support plans, and Trusted Advisor is a self-service tool that provides automated recommendations without human support engineer involvement. Trusted Advisor does not track compliance with regulatory requirements like GDPR or HIPAA; compliance evaluation is performed by AWS Config rules and AWS Artifact provides the compliance documentation, while Trusted Advisor focuses on AWS best practice recommendations. Trusted Advisor does not make automatic changes to AWS resources to remediate findings; it surfaces recommendations that customers must then act on themselves, and automated remediation requires separate configuration through AWS Config or custom automation.",
+    "explanation": "AWS Trusted Advisor detects underutilised resources such as idle EC2 instances and unused load balancers to help reduce costs, and proactively monitors the AWS environment for security vulnerabilities and misconfigurations, making both cost optimisation and security improvement core benefits of the service.\nProviding high-performance container orchestration describes Amazon ECS or Amazon EKS, which are compute services for running containerised workloads, and is entirely unrelated to Trusted Advisor. Creating and rotating encryption keys describes AWS Key Management Service, which manages cryptographic keys for data protection, and is not a function of Trusted Advisor. Implementing enforced tagging across AWS resources describes a governance capability achieved through AWS Organizations Service Control Policies or AWS Config rules, and is not something Trusted Advisor can enforce.",
     "source": "practice-exam-22.md",
     "isMultiAnswer": true
   },
@@ -3528,6 +3573,51 @@
     },
     "answer": "B",
     "explanation": "AWS Cost Categories allows you to create custom groupings of your cost and usage data by mapping costs into meaningful categories aligned with your business structure, enabling chargeback and showback reporting for internal departments.\nAWS Cost Explorer provides interactive visualisations and analysis of spending patterns with filtering capabilities, and while it can display costs by tag it does not provide a dedicated mechanism for creating custom named cost categories for chargeback mapping. AWS Cost Allocation Tags enable you to label individual resources with department metadata so their costs appear separately in billing reports, but tags operate at the resource level and require consistent application rather than providing a higher-level category mapping framework. AWS Budgets lets you set custom cost and usage thresholds and receive alerts when those thresholds are exceeded, and is a cost governance and alerting tool rather than a service for creating custom cost category structures for chargeback purposes.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1089",
+    "domainId": 4,
+    "question": "A company has the AWS Business Support plan and opens a support case because its production workload is experiencing degraded performance but has not completely stopped. What is the target initial response time for this case?",
+    "options": {
+      "A": "Less than 24 hours",
+      "B": "Less than 12 hours",
+      "C": "Less than 4 hours",
+      "D": "Less than 1 hour"
+    },
+    "answer": "C",
+    "explanation": "Under the AWS Business Support plan, a production system impaired case, where the workload is experiencing degraded performance but has not completely stopped, has a target initial response time of less than 4 hours, reflecting the elevated urgency of an affected production environment that has not yet reached the highest severity level.\nLess than 24 hours is the target response time for general guidance cases under the Business Support plan, which apply to questions and requests that do not involve any impact to a running production system and represent the lowest priority level. Less than 12 hours is the target response time for a system impaired case under the AWS Developer Support plan, and is not the correct SLA for production system impaired cases under the Business Support plan, which provides faster response times than Developer Support for production-affecting issues. Less than 1 hour is the target response time for a production system down case under the Business Support plan, which applies when a production workload has completely stopped functioning and represents a higher severity level than production system impaired.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1090",
+    "domainId": 4,
+    "question": "Which of the following is a key difference between the AWS Developer Support plan and the AWS Business Support plan?",
+    "options": {
+      "A": "Developer Support includes a Technical Account Manager; Business Support does not",
+      "B": "Business Support provides 24/7 access to Cloud Support Engineers via phone, email, and chat; Developer Support does not",
+      "C": "Developer Support provides access to the full set of AWS Trusted Advisor checks; Business Support provides access to only the seven core checks",
+      "D": "Business Support is only available to members of the AWS Partner Network"
+    },
+    "answer": "B",
+    "explanation": "AWS Business Support provides 24/7 access to Cloud Support Engineers through phone, email, and chat channels, while AWS Developer Support provides access to Cloud Support Associates only during business hours and only via email, making round-the-clock multi-channel technical support a key differentiator of the Business plan.\nA Technical Account Manager (TAM) is exclusively available to customers on the AWS Enterprise Support and Enterprise On-Ramp plans and is not included in either Developer or Business Support, so this does not describe a difference between these two plans. Access to the full set of AWS Trusted Advisor checks is a feature of Business, Enterprise On-Ramp, and Enterprise Support plans; Developer Support provides access to only the seven core Trusted Advisor checks, meaning Business Support offers broader Trusted Advisor coverage than Developer Support, not narrower. AWS Business Support is available to any AWS customer who chooses to purchase it regardless of AWS Partner status, and is not restricted to members of the AWS Partner Network.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1091",
+    "domainId": 4,
+    "question": "A company runs a business-critical application on AWS and requires a support plan that guarantees a response within 15 minutes when the application is completely unavailable. Which AWS Support plan meets this requirement?",
+    "options": {
+      "A": "AWS Developer Support",
+      "B": "AWS Business Support",
+      "C": "AWS Enterprise On-Ramp Support",
+      "D": "AWS Enterprise Support"
+    },
+    "answer": "D",
+    "explanation": "AWS Enterprise Support is the only plan that provides a target response time of less than 15 minutes for business-critical system down cases, where a production system supporting critical business operations has become completely unavailable, reflecting the highest urgency level in the AWS support tier structure.\nAWS Developer Support targets a response time of less than 12 hours for system impaired cases and does not offer a production or business-critical system down severity category, making it insufficient for any workload requiring guaranteed sub-hour response times. AWS Business Support targets a response time of less than 1 hour for production system down cases, which is faster than Developer Support but does not meet the sub-15-minute guarantee that only the most premium support tiers provide. AWS Enterprise On-Ramp Support targets a response time of less than 30 minutes for business-critical system down cases, which is faster than Business Support but still does not achieve the sub-15-minute response guarantee that only the full AWS Enterprise Support plan provides.",
     "source": "ai-generated",
     "isMultiAnswer": false
   }

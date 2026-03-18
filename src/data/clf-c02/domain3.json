@@ -1,5 +1,20 @@
 [
   {
+    "id": "q001",
+    "domainId": 3,
+    "question": "AWS allows users to manage their resources using a web based user interface. What is the name of this interface?",
+    "options": {
+      "A": "AWS CLI",
+      "B": "AWS API",
+      "C": "AWS SDK",
+      "D": "AWS Management Console"
+    },
+    "answer": "D",
+    "explanation": "The AWS Management Console is the web-based graphical interface used to manage and interact with AWS resources directly from a browser.\nThe AWS CLI is a command-line tool that allows users to interact with AWS services through typed commands in a terminal, not through a web-based graphical interface. The AWS API provides programmatic access to AWS services through HTTP requests made directly by applications or scripts, and has no graphical user interface. The AWS SDK provides libraries and tools for interacting with AWS services through application code in languages such as Python, Java, and JavaScript, and is not a user-facing interface for managing resources.",
+    "source": "practice-exam-1.md",
+    "isMultiAnswer": false
+  },
+  {
     "id": "q002",
     "domainId": 3,
     "question": "Which of the following is an example of horizontal scaling in the AWS Cloud?",
@@ -572,21 +587,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q100",
-    "domainId": 3,
-    "question": "Which service should a customer use to consolidate and centrally manage multiple AWS accounts?",
-    "options": {
-      "A": "AWS IAM",
-      "B": "AWS Organizations",
-      "C": "AWS Schema Conversion Tool",
-      "D": "AWS Config"
-    },
-    "answer": "B",
-    "explanation": "AWS Organizations allows you to create a hierarchy of AWS accounts, consolidate billing across accounts, and apply governance policies through Service Control Policies centrally from a management account.\nAWS IAM manages users, roles, and permissions within a single account and cannot manage or consolidate multiple accounts. AWS Schema Conversion Tool is a database migration tool for converting database schemas between different engines, unrelated to account management. AWS Config tracks and records configuration changes to resources within an account, but does not provide multi-account consolidation or governance.",
-    "source": "practice-exam-10.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q108",
     "domainId": 3,
     "question": "A company wants to expand from one AWS Region into a second AWS Region. What does the company need to do to start supporting the new Region?",
@@ -801,21 +801,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q162",
-    "domainId": 3,
-    "question": "Which of the following services falls under the responsibility of the customer to maintain operating system configuration, security patching, and networking?",
-    "options": {
-      "A": "Amazon RDS",
-      "B": "Amazon EC2",
-      "C": "Amazon ElastiCache",
-      "D": "AWS Fargate"
-    },
-    "answer": "B",
-    "explanation": "With Amazon EC2, the customer is responsible for the guest operating system including configuration, security patching, and networking setup, as AWS only manages the underlying physical infrastructure.\nAmazon RDS is a fully managed relational database service where AWS handles operating system patching, database engine updates, and infrastructure maintenance on the customer's behalf. Amazon ElastiCache is a fully managed in-memory caching service where AWS manages the underlying operating system and infrastructure, removing those responsibilities from the customer entirely. AWS Fargate is a serverless compute engine for containers where AWS manages the underlying infrastructure and operating system, meaning the customer only needs to manage their container images and application code.",
-    "source": "practice-exam-12.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q164",
     "domainId": 3,
     "question": "Which service provides a hybrid storage service that enables on-premises applications to seamlessly use cloud storage?",
@@ -886,7 +871,7 @@
     "options": {
       "A": "They automatically add more instances across multiple AWS Regions based on global demand of the application",
       "B": "They automatically add or replace instances across multiple Availability Zones when the application needs it",
-      "C": "They enable the application’s stalk: content to reside closer to end users",
+      "C": "They enable the application’s static content to reside closer to end users",
       "D": "They are able to distribute incoming requests across a tier of web server instances"
     },
     "answer": "B",
@@ -1168,7 +1153,7 @@
       "D": "AMI"
     },
     "answer": "D",
-    "explanation": "An Amazon Machine Image is a pre-configured template containing the operating system, application software, and required configuration that can be used to launch any number of identical EC2 instances, serving the same purpose as an on-premises virtual machine template.\nIAM is the identity and access management service used to create and manage users, roles, and permissions for controlling access to AWS resources, and has no role in provisioning or templating virtual machine configurations.\nAn internet gateway is a horizontally scaled, redundant VPC component that allows communication between instances in a VPC and the internet, and is a networking construct rather than a server provisioning template.\nAn EBS Snapshot is a point-in-time backup of an EBS volume used for data recovery and volume duplication, and while it can serve as a source for creating new volumes, it is not a template for launching complete configured EC2 instances.",
+    "explanation": "An Amazon Machine Image is a template containing the operating system, application software, and configuration needed to launch an EC2 instance, directly equivalent to the on-premises practice of spinning up multiple virtual servers from a single template.\nIAM is an identity and access management service that controls permissions and user access within AWS, and has no role in creating or launching virtual server instances. An internet gateway is a VPC component that enables communication between resources inside a VPC and the public internet, and is unrelated to server provisioning or templating. An EBS snapshot is a point-in-time backup of a storage volume used for data recovery purposes, not a template for launching new instances with a defined operating system and configuration.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -1247,7 +1232,7 @@
       "D": "AWS Snowball"
     },
     "answer": "A",
-    "explanation": "S3 Transfer Acceleration leverages CloudFront's globally distributed edge locations as optimised entry points for S3 uploads, routing data over the AWS backbone network rather than the public internet, resulting in significantly higher upload speeds for geographically distant users.\nAWS WAF is a web application firewall that inspects and filters HTTP and HTTPS traffic based on defined rules to protect against web exploits, and has no involvement in accelerating file transfers to S3.\nAWS Snowmobile is an exabyte-scale data transfer service using a 45-foot shipping container for physically transporting massive datasets to AWS, designed for one-time transfers of petabytes or exabytes rather than standard upload acceleration.\nAWS Snowball is a petabyte-scale physical data transfer device for moving large datasets into or out of AWS by shipping the appliance, not an upload acceleration service using edge locations.",
+    "explanation": "S3 Transfer Acceleration uses CloudFront's globally distributed edge locations as entry points for uploads to S3, routing data over AWS's optimised backbone network to reach the target S3 bucket faster than a standard upload.\nAWS WAF is a web application firewall that filters and monitors HTTP traffic to protect web applications from common exploits, and has no file transfer or upload acceleration capability. AWS Snowmobile is a physical data transport service using a shipping container-sized device designed for exabyte-scale migrations, not for accelerating online uploads to S3. AWS Snowball is a physical data transfer appliance used for large-scale offline data migrations, and does not leverage edge locations or accelerate internet-based uploads.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -1693,25 +1678,6 @@
     "isMultiAnswer": true
   },
   {
-    "id": "q295",
-    "domainId": 3,
-    "question": "A company is planning to migrate an application from Amazon EC2 to AWS Lambda to use a serverless architecture. Which of the following will be the responsibility of AWS after migration?",
-    "options": {
-      "A": "Application management",
-      "B": "Capacity management",
-      "C": "Access control",
-      "D": "Operating system maintenance",
-      "E": "Data management"
-    },
-    "answer": [
-      "B",
-      "D"
-    ],
-    "explanation": "After migrating to AWS Lambda, AWS takes full responsibility for capacity management by automatically scaling functions based on demand, and for operating system maintenance as Lambda runs entirely on AWS-managed infrastructure with no customer access to the underlying OS.\nApplication management remains the customer's responsibility after migration, as customers are always accountable for the code they write, deploy, and maintain within their Lambda functions. Access control remains the customer's responsibility, as customers must configure IAM roles, permissions, and resource policies to control who and what can invoke their Lambda functions. Data management remains the customer's responsibility, as customers control what data their functions process, where it is stored, and how it is handled throughout its lifecycle.",
-    "source": "practice-exam-4.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q296",
     "domainId": 3,
     "question": "How do ELBs improve the reliability of your application?",
@@ -1819,25 +1785,6 @@
     "explanation": "AWS Service Catalog allows organisations to create and manage approved catalogs of IT services, enabling standardised governance and self-service deployment of commonly used resources across the organisation.\nProviding descriptions and use cases for AWS services describes the function of the AWS documentation and the AWS console service pages, not AWS Service Catalog, which is a governance and deployment tool rather than an informational reference resource. Enabling customers to explore different catalogs of AWS services describes the AWS Marketplace, where customers can find and purchase third-party software and services, rather than AWS Service Catalog, which manages internally approved IT products. Allowing developers to deploy infrastructure using familiar programming languages describes the AWS Cloud Development Kit, which lets developers define cloud infrastructure in languages such as Python, TypeScript, and Java, and is a developer tooling service rather than a catalog management and governance platform.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": false
-  },
-  {
-    "id": "q312",
-    "domainId": 3,
-    "question": "For managed services like Amazon DynamoDB, which of the below is AWS responsible for?",
-    "options": {
-      "A": "Protecting credentials",
-      "B": "Logging access activity",
-      "C": "Patching the database software",
-      "D": "Operating system maintenance",
-      "E": "Creating access policies"
-    },
-    "answer": [
-      "C",
-      "D"
-    ],
-    "explanation": "For fully managed services like Amazon DynamoDB, AWS is responsible for patching the database software and maintaining the underlying operating system, as customers have no access to the infrastructure layer beneath the service.\nProtecting credentials is the customer's responsibility, as customers manage their own IAM users, access keys, and authentication mechanisms. Logging access activity is the customer's responsibility, as customers must enable and configure AWS CloudTrail and DynamoDB Streams if they want to capture access logs. Creating access policies is the customer's responsibility, as customers define and manage the IAM policies that control who can access their DynamoDB tables and what actions they can perform.",
-    "source": "practice-exam-4.md",
-    "isMultiAnswer": true
   },
   {
     "id": "q313",
@@ -1951,21 +1898,6 @@
     "explanation": "Amazon DynamoDB automatically scales throughput capacity to handle traffic fluctuations and delivers consistent single-digit millisecond latency at any scale, making it ideal for high-performance applications.\nProviding resizable instances describes the EC2 model of vertical scaling, whereas DynamoDB is serverless and has no concept of instances that customers provision or resize. DynamoDB is a NoSQL database service that supports key-value and document data models only, and does not support relational data models. DynamoDB is a proprietary AWS NoSQL service and does not support or run third-party database engines such as CouchDB or MongoDB.",
     "source": "practice-exam-4.md",
     "isMultiAnswer": true
-  },
-  {
-    "id": "q334",
-    "domainId": 3,
-    "question": "AWS recommends some practices to help organisations avoid unexpected charges on their bill. Which of the following is NOT one of these practices?",
-    "options": {
-      "A": "Deleting unused EBS volumes after terminating an EC2 instance",
-      "B": "Deleting unused Auto Scaling launch configurations",
-      "C": "Deleting unused Elastic Load Balancers",
-      "D": "Releasing unused Elastic IPs after terminating an EC2 instance"
-    },
-    "answer": "B",
-    "explanation": "Deleting unused Auto Scaling launch configurations does not generate AWS charges, so it is not a cost-saving practice. In contrast, unused EBS volumes, Elastic Load Balancers, and Elastic IPs all incur ongoing charges that should be cleaned up.\nDeleting unused EBS volumes after terminating an EC2 instance is a recommended cost-saving practice because EBS volumes continue to incur storage charges even when no instance is attached to them. Deleting unused Elastic Load Balancers is a recommended cost-saving practice because load balancers incur an hourly charge regardless of whether they are serving traffic. Releasing unused Elastic IP addresses after terminating an EC2 instance is a recommended cost-saving practice because AWS charges for Elastic IPs that are allocated but not associated with a running instance.",
-    "source": "practice-exam-4.md",
-    "isMultiAnswer": false
   },
   {
     "id": "q337",
@@ -2231,21 +2163,6 @@
     },
     "answer": "D",
     "explanation": "Running multiple EC2 instances in parallel distributes the processing of large binary files across many machines simultaneously, completing the work faster than scaling a single instance vertically.\nVertically scaling EC2 instances increases the power of a single machine, which has practical limits and does not distribute the workload across multiple processors simultaneously, making it less efficient for large parallel processing tasks. Running RDS instances in parallel is not applicable to processing binary files, as RDS is a relational database service designed for structured data storage and querying rather than file processing workloads. Vertically scaling RDS instances increases database capacity and performance, which is also irrelevant to processing binary files as RDS serves no role in compute-based file processing tasks.",
-    "source": "practice-exam-5.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q388",
-    "domainId": 3,
-    "question": "A key practice when designing solutions on AWS is to minimize dependencies between components so that the failure of a single component does not impact other components. What is this practice called?",
-    "options": {
-      "A": "Elastic coupling",
-      "B": "Loosely coupling",
-      "C": "Scalable coupling",
-      "D": "Tightly coupling"
-    },
-    "answer": "B",
-    "explanation": "Loose coupling is the design practice of minimizing dependencies between application components so that a failure in one component does not cascade to others, improving overall system resilience.\nElastic coupling is not a recognised cloud design principle or architectural term, and may cause confusion with Amazon EC2 Auto Scaling or Elastic Load Balancing, which are services rather than coupling patterns. Scalable coupling is not a recognised architectural concept, and scalability is a separate design goal achieved through practices such as horizontal scaling rather than a type of component coupling. Tight coupling is the opposite of the correct answer, describing an architecture where components are highly dependent on each other, meaning a failure in one component is more likely to cascade and impact others.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": false
   },
@@ -2551,21 +2468,6 @@
     },
     "answer": "C",
     "explanation": "AWS Systems Manager provides a suite of tools to automate the configuration, maintenance, and management of EC2 instances at scale, including applying configuration policies, running commands across fleets, and maintaining desired state without manual intervention.\nAWS OpsWorks (deprecated) was a configuration management service using Puppet and Chef that has been discontinued by AWS as of May 2024 and is no longer available. AWS CloudFormation automates the provisioning of AWS infrastructure using templates, but operates at the infrastructure level rather than managing the ongoing configuration of running instances. AWS CloudTrail records API calls and account activity for auditing and compliance purposes, and has no server configuration or automation capability.",
-    "source": "practice-exam-6.md",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q426",
-    "domainId": 3,
-    "question": "An organization uses a hybrid cloud architecture to run their business. Which AWS service enables them to deploy their applications to any AWS or on-premises server?",
-    "options": {
-      "A": "Amazon Kinesis",
-      "B": "Amazon QuickSight",
-      "C": "AWS CodeDeploy",
-      "D": "Amazon Athena"
-    },
-    "answer": "C",
-    "explanation": "AWS CodeDeploy automates application deployments to EC2 instances, on-premises servers, Lambda functions, and ECS services, making it the service that supports hybrid cloud deployment workflows.\nAmazon Kinesis is a service for ingesting and processing real-time streaming data, and has no application deployment capability. Amazon QuickSight is a business intelligence and data visualization service used for building dashboards and reports, not for deploying applications to servers. Amazon Athena is an interactive query service that analyzes data stored in S3 using SQL, and plays no role in application deployment.",
     "source": "practice-exam-6.md",
     "isMultiAnswer": false
   },
@@ -3003,21 +2905,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q481",
-    "domainId": 3,
-    "question": "You are working as a web app developer. You are currently facing issues in media playback for mobile devices because your media format is not supported. Which of the following AWS services can help you convert your media into another format?",
-    "options": {
-      "A": "Amazon Elastic Transcoder",
-      "B": "Amazon Pinpoint",
-      "C": "Amazon S3",
-      "D": "Amazon Rekognition"
-    },
-    "answer": "A",
-    "explanation": "Amazon Elastic Transcoder is a cloud-based media transcoding service that converts media files from their source format into versions optimised for playback on specific devices such as smartphones, tablets, and PCs.\nAmazon Pinpoint is a customer engagement service for sending targeted marketing messages across channels such as email, SMS, and push notifications, unrelated to media file conversion. Amazon S3 is an object storage service for storing and retrieving files, and while it can store media files it has no capability to convert or transcode them. Amazon Rekognition is a machine learning service for analysing images and videos to detect objects, faces, and text, not a media format conversion tool.",
-    "source": "practice-exam-7.md",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q483",
     "domainId": 3,
     "question": "Which AWS service allows you to build a data warehouse in the cloud?",
@@ -3043,7 +2930,7 @@
       "D": "Amazon Inspector"
     },
     "answer": "B",
-    "explanation": "AWS CodeCommit is a fully managed source control service that hosts private Git repositories, providing secure storage, versioning, and collaboration features for application code.\nAWS CodePipeline automates the steps of a continuous delivery pipeline for releasing application code, including building, testing, and deploying, and is a CI/CD orchestration tool rather than a repository management service for storing and versioning code. AWS X-Ray provides distributed tracing for applications to visualise request paths and diagnose latency and performance issues, and has no source control or repository management capability. Amazon Inspector is an automated security assessment service that scans for software vulnerabilities and unintended network exposure, and is a security tool entirely unrelated to code storage or versioning.\nNote: AWS CodeCommit was discontinued in July 2024 and is no longer available to new customers. The question is retained as the service name clearly signals its Git repository purpose and remains a useful learning reference.",
+    "explanation": "AWS CodeCommit is a fully managed source control service that hosts private Git repositories, providing secure storage, versioning, and collaboration features for application code.\nAWS CodePipeline automates the steps of a continuous delivery pipeline for releasing application code, including building, testing, and deploying, and is a CI/CD orchestration tool rather than a repository management service for storing and versioning code. AWS X-Ray provides distributed tracing for applications to visualise request paths and diagnose latency and performance issues, and has no source control or repository management capability. Amazon Inspector is an automated security assessment service that scans for software vulnerabilities and unintended network exposure, and is a security tool entirely unrelated to code storage or versioning.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": false
   },
@@ -3080,6 +2967,21 @@
     "explanation": "Storing media assets in the Region closest to end users reduces the physical distance data must travel, and using Amazon CloudFront with S3 caches content at edge locations worldwide, both directly reducing retrieval latency for end users.\nAdding an EBS volume and increasing server capacity addresses storage and compute performance but does not reduce the network distance between the origin and end users. Replicating assets across multiple Availability Zones improves availability and fault tolerance within a Region but does not reduce latency for geographically distant users. Amazon Elastic Transcoder converts media files into different formats for playback on various devices and has no effect on the latency of content delivery to end users.",
     "source": "practice-exam-7.md",
     "isMultiAnswer": true
+  },
+  {
+    "id": "q494",
+    "domainId": 3,
+    "question": "A company wants to use Amazon Elastic Container Service (Amazon ECS) to run its containerized applications. For compliance reasons, the company wants to retain complete visibility and control over the underlying server cluster. Which Amazon ECS launch type will satisfy these requirements?",
+    "options": {
+      "A": "EC2 launch type",
+      "B": "Fargate launch type",
+      "C": "Lightsail launch type",
+      "D": "Lambda launch type"
+    },
+    "answer": "A",
+    "explanation": "The EC2 launch type runs containers on EC2 instances that you provision and manage, giving you full visibility and control over the underlying server cluster including instance types, operating system, and cluster configuration.\nThe Fargate launch type is a serverless compute engine for containers where AWS manages the underlying infrastructure completely, abstracting away the server cluster so customers have no visibility or control over the underlying servers, which is the opposite of what the compliance requirement demands. Lightsail launch type is not a valid ECS launch type; Amazon Lightsail is a simplified compute and hosting service for straightforward workloads and is not an ECS launch option. Lambda launch type is not a valid ECS launch type; AWS Lambda runs serverless functions in response to events and is not a launch mechanism for ECS containerised applications.",
+    "source": "practice-exam-8.md",
+    "isMultiAnswer": false
   },
   {
     "id": "q498",
@@ -3513,6 +3415,21 @@
     },
     "answer": "A",
     "explanation": "The AWS Software Development Kit provides language-specific libraries and APIs in languages including Python, Java, JavaScript, and Go, allowing developers to integrate AWS service calls directly into application code through programmatic interfaces.\nThe AWS Management Console is a web-based graphical interface for interacting with AWS services through a browser, not a mechanism that developers embed in application code for programmatic service access.\nAWS CodePipeline is a continuous delivery service that automates build, test, and deploy stages of a release pipeline, and is a CI/CD tool for application deployment rather than a means for application code to interact with AWS services.\nAWS Config continuously tracks and records resource configuration changes and evaluates them against compliance rules, and is a governance and compliance service rather than a development tool for enabling application code to call AWS services.",
+    "source": "practice-exam-9.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q563",
+    "domainId": 3,
+    "question": "What is Amazon CloudWatch?",
+    "options": {
+      "A": "A service that records API calls and account activity across an AWS environment for auditing purposes",
+      "B": "A service that monitors application performance by tracing requests as they travel through application components",
+      "C": "A service that collects metrics and operational data from AWS resources with customisable alarms and notification channels",
+      "D": "A service that captures and processes real-time data streams from applications and infrastructure"
+    },
+    "answer": "C",
+    "explanation": "Amazon CloudWatch is a monitoring service that acts as a metrics repository, collecting performance and operational data from AWS resources and allowing you to set customisable notification thresholds and alarm channels.\nAWS CloudTrail records all API calls and account activity across an AWS environment and produces audit logs for governance and compliance purposes, but does not collect resource performance metrics or send operational alarms. AWS X-Ray traces requests as they travel through distributed application components to identify performance bottlenecks and errors, but is an application debugging tool rather than an infrastructure-wide metrics and alerting service. Amazon Kinesis captures and processes real-time data streams from applications and infrastructure at scale, but is a data streaming and ingestion service rather than a monitoring and observability platform.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
   },
@@ -4702,7 +4619,7 @@
       "D": "Launch additional Amazon EC2 instances in Sydney to handle the demand"
     },
     "answer": "B",
-    "explanation": "Provisioning resources in the South America (S�o Paulo) Region places infrastructure geographically close to Brazilian users, directly reducing the network distance and latency compared to routing all traffic to Sydney.\nAWS Direct Connect provides a dedicated private network link between on-premises infrastructure and AWS, but does not reduce latency for end users accessing a cloud-hosted application over the internet. AWS Transit Gateway connects VPCs and on-premises networks through a central hub, and is not designed to reduce geographic latency for end users accessing applications from distant locations. Launching additional EC2 instances in Sydney increases capacity in Australia but does not reduce the physical distance between the application and Brazilian users, so latency would remain unchanged.",
+    "explanation": "Provisioning resources in the South America (São Paulo) Region places infrastructure geographically close to Brazilian users, directly reducing the network distance and latency compared to routing all traffic to Sydney.\nAWS Direct Connect provides a dedicated private network link between on-premises infrastructure and AWS, but does not reduce latency for end users accessing a cloud-hosted application over the internet. AWS Transit Gateway connects VPCs and on-premises networks through a central hub, and is not designed to reduce geographic latency for end users accessing applications from distant locations. Launching additional EC2 instances in Sydney increases capacity in Australia but does not reduce the physical distance between the application and Brazilian users, so latency would remain unchanged.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -4732,7 +4649,7 @@
       "D": "Use an AWS Transit Gateway"
     },
     "answer": "D",
-    "explanation": "AWS Transit Gateway acts as a central hub that connects multiple VPCs across different AWS Regions and on-premises networks through a single gateway, dramatically simplifying network management compared to maintaining individual point-to-point connections between each VPC and the on-premises environment.\nAWS Direct Connect provides a dedicated private physical network connection from an on-premises data centre to a single AWS Region; while it can be combined with Transit Gateway for multi-Region connectivity, Direct Connect alone does not solve the complexity of connecting to multiple VPCs in different Regions through a single architecture.\nAWS VPN creates encrypted connections over the public internet from on-premises to AWS, and while individual VPN connections can be established to each Region, managing multiple VPN connections to multiple VPCs across Regions is complex and less efficient than using Transit Gateway as a central hub.\nAWS Client VPN is an end-user VPN service that enables individual remote users to securely access AWS resources and the corporate network from their devices, and is designed for user-based remote access rather than site-to-site connectivity between data centres and multiple VPCs.",
+    "explanation": "AWS Transit Gateway acts as a central hub that connects multiple VPCs across different Regions and on-premises networks, providing the most efficient way to manage complex network connectivity at scale.\nAWS Direct Connect establishes a dedicated private link between on-premises infrastructure and AWS, but does not itself manage connectivity between multiple VPCs across different Regions. AWS VPN creates an encrypted tunnel between on-premises networks and a single VPC, and does not efficiently scale to connect multiple VPCs across multiple Regions from a single connection. AWS Client VPN is an endpoint-based service that enables individual devices to securely access AWS resources remotely, and is not designed for site-to-site or multi-VPC connectivity.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -4797,6 +4714,21 @@
     },
     "answer": "B",
     "explanation": "AWS Transit Gateway acts as a central hub that connects thousands of VPCs and on-premises networks through a single gateway, scaling connectivity far more efficiently than managing individual connections between each network.\nVPC peering creates a direct connection between two VPCs but does not scale to thousands of VPCs, as each pair requires its own peering connection and peering is non-transitive. AWS Direct Connect provides a dedicated private circuit between an on-premises data centre and AWS but does not connect VPCs to each other. AWS Global Accelerator improves the availability and performance of applications for global users by routing traffic through the AWS global network, but does not provide connectivity between VPCs.",
+    "source": "practice-exam-21.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q899",
+    "domainId": 3,
+    "question": "What can be used to automate and manage secure, well-architected, multi-account AWS environments?",
+    "options": {
+      "A": "AWS shared responsibility model",
+      "B": "AWS Control Tower",
+      "C": "AWS Security Hub",
+      "D": "AWS Well-Architected Tool"
+    },
+    "answer": "B",
+    "explanation": "AWS Control Tower automates the setup of a secure, multi-account AWS environment using landing zones and guardrails that enforce governance policies, making it the service for automating and managing secure, well-architected multi-account environments.\nAWS Config monitors and records resource configurations against compliance rules within accounts, and while it supports governance, it is a per-account compliance evaluation service rather than a service that automates the provisioning and management of entire multi-account environments. AWS Artifact provides on-demand access to AWS compliance reports and certifications, and is a documentation portal rather than a service that automates the creation or management of multi-account AWS environments. AWS CloudFormation is an infrastructure as code service for provisioning AWS resources through templates, and while it can be used to set up environments, it requires custom template development and does not provide the out-of-the-box multi-account governance and guardrails that Control Tower delivers.",
     "source": "practice-exam-21.md",
     "isMultiAnswer": false
   },
@@ -5087,25 +5019,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q963",
-    "domainId": 3,
-    "question": "Which services can be used to deploy applications on AWS?",
-    "options": {
-      "A": "AWS Elastic Beanstalk",
-      "B": "AWS Config",
-      "C": "AWS CodeDeploy",
-      "D": "AWS Application Discovery Service",
-      "E": "Amazon Kinesis"
-    },
-    "answer": [
-      "A",
-      "C"
-    ],
-    "explanation": "AWS Elastic Beanstalk automatically deploys and manages applications by provisioning the underlying infrastructure, handling capacity, load balancing, and scaling automatically. AWS CodeDeploy automates the deployment of application code to EC2 instances, Lambda functions, and on-premises servers, enabling consistent and repeatable deployments.\nAWS Config continuously records configuration changes to AWS resources and evaluates compliance against desired rules, and is a governance service rather than an application deployment tool. AWS Application Discovery Service collects data about on-premises servers to help plan cloud migrations, and does not deploy applications. Amazon Kinesis is a real-time data streaming and processing service, not an application deployment service.",
-    "source": "practice-exam-23.md",
-    "isMultiAnswer": true
-  },
-  {
     "id": "q964",
     "domainId": 3,
     "question": "Which AWS service can be used to provide an on-demand, cloud-based contact center?",
@@ -5376,21 +5289,6 @@
     },
     "answer": "D",
     "explanation": "AWS Outposts extends native AWS infrastructure, services, and operating models to on-premises locations, data centers, and co-location spaces, providing a truly consistent hybrid experience with the same AWS APIs and tools used in the cloud.\nAWS Direct Connect provides a dedicated private network link between on-premises infrastructure and AWS, but does not bring AWS infrastructure physically on-premises. AWS VPN creates encrypted network connections between on-premises environments and AWS over the public internet, and is a connectivity service rather than an infrastructure extension. AWS Storage Gateway connects on-premises storage environments to AWS cloud storage, but only bridges storage and does not extend the full range of native AWS services and infrastructure to on-premises locations.",
-    "source": "ai-generated",
-    "isMultiAnswer": false
-  },
-  {
-    "id": "q1015",
-    "domainId": 3,
-    "question": "A company is building an application that requires ultra-low latency for mobile users on 5G networks. Which AWS service should they use to deploy their application at the edge of the 5G network?",
-    "options": {
-      "A": "AWS Local Zones",
-      "B": "Amazon CloudFront",
-      "C": "AWS Wavelength",
-      "D": "AWS Outposts"
-    },
-    "answer": "C",
-    "explanation": "AWS Wavelength is the specialized solution for 5G environments. It embeds AWS compute and storage services directly within telecommunications providers' data centers at the edge of the 5G network, allowing traffic from 5G devices to reach application servers without leaving the mobile carrier's network.\nAWS Local Zones are designed to bring AWS services close to large population or industrial centers (metro areas) to provide single-digit millisecond latency, but they are not integrated into the mobile carrier's 5G infrastructure. Amazon CloudFront is a Content Delivery Network (CDN) that caches content at edge locations worldwide to reduce latency for web traffic, but it does not provide the specialized 5G network integration required for mobile application backends. AWS Outposts is a hybrid cloud service that brings AWS infrastructure and services to a customer's own on-premises data center or co-location space rather than the mobile edge.",
     "source": "ai-generated",
     "isMultiAnswer": false
   },
@@ -5796,6 +5694,216 @@
     },
     "answer": "B",
     "explanation": "AWS DMS supports continuous data replication using Change Data Capture, streaming ongoing changes from an on-premises database to an AWS database in near real-time, making it suitable for disaster recovery and data synchronisation scenarios.\nAWS Backup creates point-in-time snapshots of AWS resources on a scheduled basis, which provides recovery points but does not continuously replicate live database changes. Amazon RDS Multi-AZ maintains a synchronous standby replica within AWS for high availability and automatic failover, but does not replicate data from on-premises sources. AWS CloudFormation provisions and manages AWS infrastructure using code-based templates, and has no database replication capability.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1067",
+    "domainId": 3,
+    "question": "A company wants to enable employees to search across thousands of internal documents, SharePoint sites, and wikis using plain English questions and receive precise answers rather than a list of links. Which AWS service provides this intelligent enterprise search capability?",
+    "options": {
+      "A": "Amazon Comprehend",
+      "B": "Amazon OpenSearch Service",
+      "C": "Amazon Kendra",
+      "D": "Amazon Lex"
+    },
+    "answer": "C",
+    "explanation": "Amazon Kendra is an intelligent enterprise search service powered by machine learning that allows users to ask questions in natural language and receive precise answers drawn from across multiple data sources such as documents, SharePoint sites, and databases, rather than returning a simple ranked list of matching links.\nAmazon Comprehend is a natural language processing service that extracts insights such as sentiment, entities, and key phrases from already-digitised text, but it does not provide a search interface or retrieve answers from a document corpus in response to natural language user queries. Amazon OpenSearch Service is a managed search and analytics engine suited for log analytics, full-text search, and operational monitoring, and returns ranked document matches based on keyword relevance rather than providing the intelligent question-answering and precise answer extraction that Kendra offers through machine learning. Amazon Lex is a service for building conversational chatbots and voice interfaces using automatic speech recognition and natural language understanding, and is designed for managing multi-turn dialogues rather than indexing and searching across enterprise document repositories.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1068",
+    "domainId": 3,
+    "question": "Which AWS service uses machine learning to index content from enterprise data sources and enable users to ask natural language questions to find specific answers within that content?",
+    "options": {
+      "A": "Amazon Transcribe",
+      "B": "Amazon Kendra",
+      "C": "Amazon Polly",
+      "D": "Amazon Translate"
+    },
+    "answer": "B",
+    "explanation": "Amazon Kendra uses machine learning to index content from a wide range of enterprise data sources and enables users to search that content by asking natural language questions, with the service intelligently identifying and surfacing the most relevant answers rather than returning a list of documents.\nAmazon Transcribe is a speech-to-text service that converts audio recordings and spoken language into written text transcripts, and is an audio processing service with no capability to index enterprise documents or respond to natural language search queries. Amazon Polly is a text-to-speech service that converts written text into lifelike spoken audio output, and is an audio synthesis service rather than a search or document information retrieval service. Amazon Translate is a neural machine translation service for converting text between different languages, and is a language conversion service with no capability to index documents or respond to natural language search queries.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1070",
+    "domainId": 3,
+    "question": "A company is building a recommendation engine that needs to store and query complex relationships between users, products, categories, and purchase history to surface personalised suggestions. Which AWS database service is purpose-built for storing and traversing highly connected data?",
+    "options": {
+      "A": "Amazon RDS",
+      "B": "Amazon Redshift",
+      "C": "Amazon DynamoDB",
+      "D": "Amazon Neptune"
+    },
+    "answer": "D",
+    "explanation": "Amazon Neptune is a fully managed graph database service designed specifically for storing and navigating highly connected datasets where the relationships between data points are as important as the data itself, making it the purpose-built choice for use cases such as recommendation engines, social networks, fraud detection, and knowledge graphs.\nAmazon RDS is a managed relational database service that uses tables with rows and columns connected through SQL joins to represent relationships, and while it can model connected data, it does not provide the native graph traversal efficiency and flexibility of a dedicated graph database for complex multi-hop relationship queries. Amazon Redshift is a fully managed cloud data warehouse optimised for running analytical queries on large historical datasets for business intelligence and reporting, and is not designed for real-time traversal of highly connected relationship graphs. Amazon DynamoDB is a fully managed NoSQL key-value and document database optimised for high-throughput access to items by primary key, and is not purpose-built for efficiently storing or querying the dense relationship structures characteristic of graph database workloads.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1071",
+    "domainId": 3,
+    "question": "A developer needs to build a serverless order processing workflow that involves calling multiple AWS Lambda functions in sequence, handling errors at each step, automatically retrying failed steps, and branching based on order type. Which AWS service is designed for this purpose?",
+    "options": {
+      "A": "Amazon SQS",
+      "B": "Amazon EventBridge",
+      "C": "AWS Step Functions",
+      "D": "Amazon SNS"
+    },
+    "answer": "C",
+    "explanation": "AWS Step Functions is a serverless orchestration service that coordinates multiple AWS services into visual workflows, supporting sequential and parallel execution, error handling, automatic retries, and conditional branching, making it the purpose-built service for building complex multi-step workflows such as order processing pipelines.\nAmazon SQS is a managed message queuing service that decouples application components by buffering messages between them, but does not provide workflow orchestration, branching logic, built-in retry handling, or the ability to coordinate a sequence of steps across multiple services in a stateful workflow. Amazon EventBridge is a serverless event bus that routes events between AWS services and applications based on rules, and is designed for event-driven integration and routing rather than for orchestrating complex stateful multi-step workflows with conditional branching and error handling. Amazon SNS is a managed publish/subscribe messaging service that delivers notifications simultaneously to multiple subscribers, and is an event fan-out service rather than an orchestration service capable of managing state, sequencing steps, and handling errors across a multi-step workflow.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1072",
+    "domainId": 3,
+    "question": "A company wants to securely connect millions of industrial sensors to AWS so that device data can be routed to Amazon Kinesis for real-time processing and to Amazon S3 for storage. Which AWS service manages the device connectivity, authentication, and message routing?",
+    "options": {
+      "A": "AWS IoT Greengrass",
+      "B": "Amazon Kinesis Data Streams",
+      "C": "AWS IoT Core",
+      "D": "AWS Direct Connect"
+    },
+    "answer": "C",
+    "explanation": "AWS IoT Core is a managed cloud service that allows connected devices to interact securely with cloud applications and other devices at scale, handling device authentication, connection management, and message routing to AWS services such as Kinesis and S3 through configurable rules, making it the foundation for connecting IoT devices to the AWS Cloud.\nAWS IoT Greengrass is the edge component of the AWS IoT platform that extends cloud capabilities to devices for local processing and offline operation, and works alongside IoT Core rather than replacing it as the primary cloud-side service for managing device connectivity and message routing to AWS. Amazon Kinesis Data Streams is a real-time data streaming service for ingesting and processing high-throughput data, and while it can receive data routed from IoT Core, it is a data processing service rather than a device connectivity and authentication platform. AWS Direct Connect provides a dedicated private network connection between on-premises data centres and AWS, and is a network connectivity service for enterprise infrastructure rather than a platform for managing IoT device connections, authentication, and message routing at scale.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1074",
+    "domainId": 3,
+    "question": "A software company wants to deliver its desktop application to customers through a web browser without requiring customers to download or install anything locally. The application should run on AWS infrastructure and stream its interface to the browser. Which AWS service should the company use?",
+    "options": {
+      "A": "Amazon WorkSpaces",
+      "B": "Amazon WorkSpaces Web",
+      "C": "Amazon AppStream 2.0",
+      "D": "AWS Amplify"
+    },
+    "answer": "C",
+    "explanation": "Amazon AppStream 2.0 is a fully managed application streaming service that runs desktop applications on AWS infrastructure and streams the application interface to users' web browsers, allowing customers to use the software without downloading, installing, or managing it on their local devices.\nAmazon WorkSpaces is a fully managed virtual desktop service that provides each user with a complete persistent cloud desktop environment, which is more infrastructure than required to deliver a single application through a browser and involves per-user desktop provisioning rather than application-level streaming. Amazon WorkSpaces Web is a low-cost managed service for providing browser-based access to internal websites and SaaS applications from unmanaged devices, and is designed for web content access rather than for streaming full desktop applications running on AWS compute. AWS Amplify is a development framework and hosting service for building and deploying full-stack web and mobile applications, and is a developer toolset rather than an application streaming or virtual desktop delivery service.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1075",
+    "domainId": 3,
+    "question": "A company wants to replace its physical desktop computers with cloud-hosted virtual desktops that employees can access from any device anywhere, with each employee having their own persistent personalised desktop environment. Which AWS service provides this capability?",
+    "options": {
+      "A": "Amazon AppStream 2.0",
+      "B": "Amazon WorkSpaces",
+      "C": "Amazon WorkSpaces Web",
+      "D": "Amazon EC2"
+    },
+    "answer": "B",
+    "explanation": "Amazon WorkSpaces is a fully managed, secure virtual desktop infrastructure service that provides each user with a persistent cloud desktop accessible from any supported device, allowing companies to replace physical desktop hardware while giving employees a consistent personalised computing environment that follows them wherever they work.\nAmazon AppStream 2.0 streams specific desktop applications to a browser without providing a persistent full desktop environment; users cannot install their own applications or maintain personal desktop settings across sessions, making it suited for delivering specific software rather than replacing complete personal computers. Amazon WorkSpaces Web provides browser-based access to internal websites and SaaS applications from unmanaged devices, and is a restricted access solution for web content rather than a complete persistent virtual desktop that replaces a personal computer. Amazon EC2 can run Windows or Linux virtual machines that technically function as desktops, but customers must provision, patch, and manage the instances themselves and build their own desktop management infrastructure rather than using a fully managed desktop service.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1076",
+    "domainId": 3,
+    "question": "A company wants to allow employees to use personal unmanaged devices to access internal web applications and approved SaaS tools securely, while ensuring that no corporate data can be downloaded or copied to those personal devices. Which AWS service is designed for this use case?",
+    "options": {
+      "A": "Amazon WorkSpaces",
+      "B": "AWS Client VPN",
+      "C": "Amazon AppStream 2.0",
+      "D": "Amazon WorkSpaces Web"
+    },
+    "answer": "D",
+    "explanation": "Amazon WorkSpaces Web is a low-cost, fully managed service that provides secure browser-based access to internal websites and approved SaaS applications from unmanaged personal devices, with built-in controls that prevent users from downloading, printing, or copying corporate data to their local devices.\nAmazon WorkSpaces provides full persistent virtual desktops, which is significantly more capability and cost than required for the sole purpose of providing managed web access, and does not specifically target the use case of restricting data exfiltration from unmanaged personal devices accessing web applications. AWS Client VPN extends full encrypted network access to AWS resources and on-premises systems from user devices, giving the device direct network connectivity rather than providing a controlled browser environment that prevents data from reaching the local device. Amazon AppStream 2.0 streams full desktop applications to a browser and is suited for delivering installed software rather than providing managed, restricted access to internal websites and SaaS applications from unmanaged devices.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1077",
+    "domainId": 3,
+    "question": "A frontend developer wants to build and deploy a full-stack web application on AWS that includes user authentication, a data API, and static hosting, without configuring or managing any underlying cloud infrastructure. Which AWS service provides an integrated development and deployment platform for this use case?",
+    "options": {
+      "A": "AWS Elastic Beanstalk",
+      "B": "AWS Amplify",
+      "C": "Amazon Lightsail",
+      "D": "AWS AppSync"
+    },
+    "answer": "B",
+    "explanation": "AWS Amplify provides a complete set of tools and services for frontend web and mobile developers to build full-stack applications on AWS, offering client libraries for authentication, data APIs, and storage along with a managed continuous deployment hosting service, without requiring developers to configure or manage the underlying cloud infrastructure.\nAWS Elastic Beanstalk is a platform as a service that handles deployment and capacity provisioning for backend web applications, but is focused on backend server hosting rather than providing the frontend development libraries, mobile SDKs, and integrated CI/CD hosting pipeline that Amplify delivers for building modern full-stack applications. Amazon Lightsail is a simplified cloud platform for deploying virtual servers, containers, and databases for straightforward workloads, and while it simplifies infrastructure management it does not provide the integrated development framework, authentication library, or automated deployment workflows that Amplify offers. AWS AppSync is a managed GraphQL API service that can serve as the data layer for applications, and while it integrates with Amplify, it is a standalone API service rather than the full-stack development and hosting platform that Amplify provides.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1080",
+    "domainId": 3,
+    "question": "A small development team wants to quickly set up a complete software development toolchain on AWS including source control, a build pipeline, and deployment automation, all accessible through a single unified project dashboard. Which AWS developer tool provides this integrated project environment?",
+    "options": {
+      "A": "AWS CodePipeline",
+      "B": "AWS CodeBuild",
+      "C": "AWS CodeStar",
+      "D": "AWS CodeCommit"
+    },
+    "answer": "C",
+    "explanation": "AWS CodeStar provides a unified interface for managing all software development activities in one place, with project templates that automatically configure a complete toolchain including AWS CodeCommit, CodeBuild, and CodeDeploy through a single project dashboard that tracks commits, builds, and deployments, reducing the time to set up a working CI/CD environment.\nAWS CodePipeline is a continuous delivery service that automates the build, test, and deploy phases of application releases, but requires manual configuration of each stage and does not provide the complete project dashboard, pre-configured toolchain templates, or unified development environment that CodeStar delivers. AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs unit tests, and produces deployment artefacts, and is a single component of a CI/CD pipeline rather than an integrated project management and toolchain setup service. AWS CodeCommit is a fully managed source control service for hosting secure Git repositories, and is a version control service rather than a unified project environment that sets up and manages an entire development workflow across multiple services.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1082",
+    "domainId": 3,
+    "question": "A company's e-commerce application needs to automatically send order confirmation emails, shipping notification emails, and password reset emails to customers at high volume directly from application code. Which AWS service is designed for this use case?",
+    "options": {
+      "A": "Amazon SNS",
+      "B": "Amazon SES",
+      "C": "Amazon Connect",
+      "D": "Amazon Pinpoint"
+    },
+    "answer": "B",
+    "explanation": "Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service designed for high-volume transactional and application-triggered email delivery, providing the infrastructure, deliverability management, and sending metrics needed to reliably deliver order confirmations, shipping notifications, and password reset messages to customers at scale.\nAmazon SNS is a fully managed publish/subscribe messaging service primarily used for sending notifications to application endpoints, Lambda functions, SQS queues, and mobile devices, and while it can deliver email to subscribed addresses, it is not optimised for high-volume transactional email delivery with the deliverability management, bounce handling, and per-message statistics that SES provides. Amazon Connect is a cloud-based contact centre service for handling customer service interactions through voice and chat channels, and is a real-time agent communication platform rather than an automated email delivery service for application-triggered messages. Amazon Pinpoint is a customer engagement service for sending targeted messages across multiple channels including email, SMS, and push notifications, and while it supports email, it is oriented toward segmented marketing campaigns rather than high-volume transactional email delivery triggered by individual application events.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1083",
+    "domainId": 3,
+    "question": "Which AWS service allows a company to send both application-triggered transactional emails such as order receipts and bulk marketing emails such as promotional newsletters through a single high-deliverability email platform?",
+    "options": {
+      "A": "Amazon SNS",
+      "B": "Amazon Connect",
+      "C": "Amazon SES",
+      "D": "Amazon Comprehend"
+    },
+    "answer": "C",
+    "explanation": "Amazon Simple Email Service (Amazon SES) is a scalable, cost-effective email platform that supports both transactional email sending for automated application-triggered messages and bulk email sending for marketing campaigns and newsletters, providing deliverability tools, sending statistics, and reputation management through a unified service.\nAmazon SNS is a publish/subscribe messaging service used to deliver notifications to multiple endpoints such as Lambda, SQS, and HTTP, and while it can send email to subscribed addresses as part of a notification workflow, it is not a purpose-built email platform with the bulk sending capabilities, unsubscribe management, and marketing email features that SES provides. Amazon Connect is a cloud-based contact centre service for managing voice and chat customer interactions, and is a customer service communication platform rather than an email sending service for either transactional or marketing purposes. Amazon Comprehend is a natural language processing service that extracts insights such as sentiment, entities, and key phrases from text data, and is an analytics service with no capability to send or deliver email messages.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1084",
+    "domainId": 3,
+    "question": "A company receives thousands of scanned paper forms each day and needs to automatically extract text, tables, and specific field values from these documents without writing custom code or training machine learning models. Which AWS service should the company use?",
+    "options": {
+      "A": "Amazon Comprehend",
+      "B": "Amazon Rekognition",
+      "C": "Amazon Transcribe",
+      "D": "Amazon Textract"
+    },
+    "answer": "D",
+    "explanation": "Amazon Textract is a machine learning service that automatically extracts printed text, handwriting, structured tables, and form field data from scanned documents and images, going beyond simple character recognition to understand document structure and the relationships between fields, without requiring custom code or model training.\nAmazon Comprehend is a natural language processing service that analyses already-digitised text to extract entities, sentiment, and key phrases, but does not extract text or structured data from scanned images or PDF documents; it processes text that has already been extracted rather than performing the extraction itself. Amazon Rekognition is a machine learning service for analysing images and videos to detect objects, scenes, activities, and faces, and while it can detect text in images as a capability, it does not extract structured tables or form fields from scanned business documents the way Textract does. Amazon Transcribe is a speech-to-text service that converts audio and video recordings into written text transcripts, and is designed for processing spoken language in audio files rather than for extracting text and structured data from scanned document images.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1085",
+    "domainId": 3,
+    "question": "A development team is building a collaborative mobile application where multiple users need to see real-time updates to shared data. The team wants to use GraphQL and have the backend automatically push data changes to all connected clients. Which AWS service provides managed GraphQL APIs with built-in real-time data synchronisation?",
+    "options": {
+      "A": "Amazon API Gateway",
+      "B": "Amazon Kinesis",
+      "C": "AWS AppSync",
+      "D": "AWS Amplify"
+    },
+    "answer": "C",
+    "explanation": "AWS AppSync is a fully managed GraphQL service that simplifies building APIs for web and mobile applications, with built-in support for real-time data updates through GraphQL subscriptions that automatically push changes to all connected clients whenever underlying data is modified, making it ideal for collaborative and live-updating applications.\nAmazon API Gateway is a fully managed service for creating RESTful, HTTP, and WebSocket APIs, and while WebSocket APIs support two-way communication, API Gateway does not natively provide GraphQL schema management, resolver configuration, or the subscription-based real-time data push model that AppSync delivers for building collaborative applications. Amazon Kinesis is a real-time data streaming service for ingesting and processing high-throughput data streams, and is designed for building data pipelines and analytics rather than for providing a GraphQL API layer with subscription-based real-time updates to application clients. AWS Amplify is a full-stack development framework that provides client-side libraries for connecting applications to AppSync APIs, but Amplify is the frontend tooling layer rather than the managed GraphQL service that hosts the API, manages data sources, and delivers real-time subscriptions to clients.",
     "source": "ai-generated",
     "isMultiAnswer": false
   }

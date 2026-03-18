@@ -23,7 +23,7 @@
     "domainId": 1,
     "question": "A Japanese company hosts their applications on Amazon EC2 instances in the Tokyo Region. The company has opened new branches in the United States, and the US users are complaining of high latency. What can the company do to reduce latency for the users in the US while minimizing costs?",
     "options": {
-      "A": "Applying the Amazon Connect latency-based routing policy",
+      "A": "Applying the Route 53 latency-based routing policy",
       "B": "Registering a new US domain name to serve the users in the US",
       "C": "Building a new data center in the US and implementing a hybrid model",
       "D": "Deploying new Amazon EC2 instances in a Region located in the US"
@@ -179,7 +179,7 @@
     "options": {
       "A": "There is a lower risk of service failure if a natural disaster causes a service disruption in a given AWS Region",
       "B": "The application will have higher availability because it can withstand a service disruption in one Availability Zone",
-      "C": "There will be better coverage as Availability Zones are geographical^ distant and can serve a wider area",
+      "C": "There will be better coverage as Availability Zones are geographically distant and can serve a wider area",
       "D": "There will be decreased application latency that will improve the user experience"
     },
     "answer": "B",
@@ -401,7 +401,7 @@
     "options": {
       "A": "Invest heavily in architecting your environment, as it is not easy to change your design later",
       "B": "Use AWS reservations to reduce costs when testing your production environment",
-      "C": "Automate wherever possible to make architectural (© ) experimentation easier",
+      "C": "Automate wherever possible to make architectural experimentation easier",
       "D": "Provision a large compute capacity to handle any spikes in load"
     },
     "answer": "C",
@@ -507,7 +507,7 @@
       "D": "She has properly built a scalable system"
     },
     "answer": "B",
-    "explanation": "A fault-tolerant system is designed to continue operating correctly even when some of its components fail, which is exactly what the scenario describes � three of six instances crashed but no customers were affected.\nAn elastic system automatically scales capacity up or down in response to changes in demand, but elasticity does not address continued operation during component failure. An encrypted system protects data from unauthorised access through cryptographic controls, which is a security property unrelated to maintaining availability when instances crash. A scalable system is designed to handle growth in workload or users by adding resources, but scalability does not ensure the application keeps running when existing instances fail.",
+    "explanation": "A fault-tolerant system is designed to continue operating correctly even when some of its components fail, which is exactly what the scenario describes: three of six instances crashed but no customers were affected.\nAn elastic system automatically scales capacity up or down in response to changes in demand, but elasticity does not address continued operation during component failure. An encrypted system protects data from unauthorised access through cryptographic controls, which is a security property unrelated to maintaining availability when instances crash. A scalable system is designed to handle growth in workload or users by adding resources, but scalability does not ensure the application keeps running when existing instances fail.",
     "source": "practice-exam-2.md",
     "isMultiAnswer": false
   },
@@ -516,7 +516,7 @@
     "domainId": 1,
     "question": "Using Amazon EC2 falls under which of the following cloud computing models?",
     "options": {
-      "A": "Iaas & SaaS",
+      "A": "IaaS & SaaS",
       "B": "IaaS",
       "C": "SaaS",
       "D": "PaaS"
@@ -804,6 +804,21 @@
     "explanation": "A TCO analysis compares on-premises costs including labor, IT staff, cooling, and power consumption against AWS costs, where these physical infrastructure expenses are eliminated.\nAmazon EBS computing power is an AWS service cost rather than an on-premises infrastructure expense, so it does not belong in a TCO comparison of what customers stop paying for when they migrate. Software architecture refers to how an application is designed and structured, which is a technical consideration rather than an infrastructure cost factored into a TCO analysis. Software compatibility refers to whether applications can run in a new environment, which is a migration planning concern rather than a cost category included in a TCO comparison.",
     "source": "practice-exam-5.md",
     "isMultiAnswer": true
+  },
+  {
+    "id": "q388",
+    "domainId": 1,
+    "question": "A key practice when designing solutions on AWS is to minimize dependencies between components so that the failure of a single component does not impact other components. What is this practice called?",
+    "options": {
+      "A": "Elastic coupling",
+      "B": "Loosely coupling",
+      "C": "Scalable coupling",
+      "D": "Tightly coupling"
+    },
+    "answer": "B",
+    "explanation": "Loose coupling is the design practice of minimizing dependencies between application components so that a failure in one component does not cascade to others, improving overall system resilience.\nElastic coupling is not a recognised cloud design principle or architectural term, and may cause confusion with Amazon EC2 Auto Scaling or Elastic Load Balancing, which are services rather than coupling patterns. Scalable coupling is not a recognised architectural concept, and scalability is a separate design goal achieved through practices such as horizontal scaling rather than a type of component coupling. Tight coupling is the opposite of the correct answer, describing an architecture where components are highly dependent on each other, meaning a failure in one component is more likely to cascade and impact others.",
+    "source": "practice-exam-5.md",
+    "isMultiAnswer": false
   },
   {
     "id": "q397",
@@ -2277,6 +2292,113 @@
     },
     "answer": "A",
     "explanation": "The Cost Optimization pillar focuses on avoiding unnecessary costs, selecting the most appropriate resource types, and scaling without overspending.\nSustainability focuses on reducing environmental impact of cloud workloads, such as minimising energy consumption. Operational Excellence focuses on running and monitoring systems to deliver business value and improving processes. Performance Efficiency focuses on using compute resources efficiently to meet performance requirements.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1060",
+    "domainId": 1,
+    "question": "Which TWO of the following are perspectives of the AWS Cloud Adoption Framework (AWS CAF)?",
+    "options": {
+      "A": "Governance",
+      "B": "Financial",
+      "C": "People",
+      "D": "Infrastructure",
+      "E": "Agility"
+    },
+    "answer": ["A", "C"],
+    "explanation": "The AWS CAF organises guidance into six perspectives: Business, People, Governance, Platform, Security, and Operations. Governance focuses on orchestrating cloud initiatives while maximising organisational benefits and minimising transformation-related risks, and People focuses on developing an organisation-wide change management strategy and building cloud skills across the workforce.\nFinancial is not one of the six AWS CAF perspectives; financial and cost-related guidance falls within the Business perspective, which addresses how cloud adoption drives business value and return on investment rather than existing as its own separate financial perspective. Infrastructure is not one of the six AWS CAF perspectives; guidance on building and provisioning the technology foundation for cloud workloads falls under the Platform perspective rather than a perspective named Infrastructure. Agility is a benefit and characteristic of cloud computing but is not one of the six CAF perspectives; it does not appear in the CAF framework structure alongside Business, People, Governance, Platform, Security, and Operations.",
+    "source": "ai-generated",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1061",
+    "domainId": 1,
+    "question": "According to the AWS Cloud Adoption Framework (AWS CAF), which TWO of the following are benefits that organisations can achieve through successful cloud adoption?",
+    "options": {
+      "A": "Reduced business risk",
+      "B": "Elimination of all operational expenditure",
+      "C": "Improved environmental, social, and governance (ESG) performance",
+      "D": "Immediate compliance with all regulatory requirements",
+      "E": "Guaranteed elimination of all security vulnerabilities"
+    },
+    "answer": ["A", "C"],
+    "explanation": "The AWS CAF identifies four key benefits of cloud adoption: reduced business risk through improved reliability, increased performance, and enhanced security posture; improved ESG performance through reduced carbon footprint and greater energy efficiency enabled by cloud infrastructure; increased revenue through the ability to develop and deliver new products faster; and increased operational efficiency through optimised cost structures and workforce productivity.\nElimination of all operational expenditure is not an AWS CAF benefit; moving to the cloud converts large upfront capital expenditure to variable operational expenditure rather than eliminating ongoing costs, as customers continue to pay for cloud services based on actual consumption and operational costs such as staffing and tooling remain. Immediate compliance with all regulatory requirements is not a benefit the CAF promises; while AWS provides compliance certifications and tools to support customers' compliance programmes, each customer is still responsible for applying the appropriate controls to their own workloads and meeting their specific regulatory obligations. Guaranteed elimination of all security vulnerabilities is not a CAF-defined benefit; while cloud adoption can improve the security posture of an organisation through shared responsibility and access to advanced security services, the CAF does not promise that cloud migration eliminates all security risk.",
+    "source": "ai-generated",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1062",
+    "domainId": 1,
+    "question": "A company needs a disaster recovery strategy where a scaled-down but fully functional version of its environment runs continuously in a secondary AWS Region, enabling rapid failover by scaling up to full capacity when a disaster occurs. Which disaster recovery strategy does this describe?",
+    "options": {
+      "A": "Backup and restore",
+      "B": "Pilot light",
+      "C": "Warm standby",
+      "D": "Multi-site active-active"
+    },
+    "answer": "C",
+    "explanation": "Warm standby is a disaster recovery strategy where a scaled-down but fully operational version of the application environment runs continuously in a secondary Region, allowing the company to fail over quickly by scaling the standby environment up to full production capacity when a disaster occurs, providing a balance between recovery speed and ongoing cost.\nBackup and restore involves storing regular data backups and restoring them to a newly provisioned environment after a disaster, resulting in the longest recovery time of all DR strategies as infrastructure must be built from scratch during recovery rather than already being available. Pilot light keeps only the minimal core components of the environment running in the secondary Region, such as a replicated database, with other infrastructure shut down and requiring provisioning during failover, resulting in faster recovery than backup and restore but slower than warm standby since more infrastructure must be brought online. Multi-site active-active runs full production copies of the environment across multiple sites simultaneously, providing the fastest possible failover with essentially zero downtime, but at the highest ongoing cost since all sites must maintain full production capacity at all times.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1063",
+    "domainId": 1,
+    "question": "Which disaster recovery strategy has the longest recovery time and the lowest cost because no standby infrastructure is kept running in the secondary location?",
+    "options": {
+      "A": "Multi-site active-active",
+      "B": "Warm standby",
+      "C": "Pilot light",
+      "D": "Backup and restore"
+    },
+    "answer": "D",
+    "explanation": "Backup and restore has the longest recovery time objective of all disaster recovery strategies because after a failure the entire infrastructure must be provisioned from scratch and data must be restored from backups before the application can resume serving traffic, but it has the lowest ongoing cost because no secondary infrastructure is running during normal operations.\nMulti-site active-active runs full production capacity at multiple sites simultaneously, providing the fastest failover with essentially zero downtime, but requires the highest ongoing investment as full infrastructure costs are incurred at every site continuously. Warm standby maintains a scaled-down but functional version of the environment running continuously, resulting in faster recovery than backup and restore but at a higher ongoing cost since resources are always running in the secondary location. Pilot light keeps only critical core components such as a replicated database running continuously with other infrastructure shut down, resulting in faster recovery than backup and restore but slower than warm standby, at an ongoing cost between the two.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1064",
+    "domainId": 1,
+    "question": "A company wants to move an existing on-premises application to AWS as quickly as possible without making any changes to the application code or architecture. Which migration strategy should the company use?",
+    "options": {
+      "A": "Replatform",
+      "B": "Refactor",
+      "C": "Rehost",
+      "D": "Repurchase"
+    },
+    "answer": "C",
+    "explanation": "Rehosting, commonly referred to as lift-and-shift, involves moving an application to the cloud without making any changes to the application code or architecture, making it the fastest migration approach that allows organisations to realise cloud benefits quickly with minimal upfront migration effort.\nReplatforming involves making targeted optimisations during migration, such as moving from a self-managed database to a managed service, to gain cloud benefits while leaving the core application architecture unchanged; this requires some changes and therefore more effort than a pure rehost. Refactoring involves re-architecting the application to fully leverage cloud-native capabilities such as microservices and serverless computing, providing the greatest long-term benefits but requiring the most time and development investment of any migration strategy. Repurchasing involves replacing the existing application entirely with a different product, typically a SaaS solution, which requires learning a new platform and migrating data rather than simply moving the existing application to new infrastructure.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1065",
+    "domainId": 1,
+    "question": "A company is migrating an application to AWS and decides to move its self-managed MySQL database running on a virtual machine to Amazon RDS, without changing the core application logic or rewriting any code. Which migration strategy does this represent?",
+    "options": {
+      "A": "Rehost",
+      "B": "Repurchase",
+      "C": "Replatform",
+      "D": "Refactor"
+    },
+    "answer": "C",
+    "explanation": "Replatforming, also known as lift-tinker-and-shift, involves making targeted optimisations during migration to take advantage of cloud-managed capabilities, such as moving from a self-managed database to Amazon RDS to gain automated backups, patching, and scaling, without re-architecting the core application or changing its code.\nRehosting moves an application to the cloud with no changes to architecture or code, making it a pure lift-and-shift; switching from a self-managed database to Amazon RDS represents a change to managed infrastructure and therefore goes beyond a simple rehost. Repurchasing replaces an existing application with a fundamentally different product, such as moving to a third-party SaaS database; moving to Amazon RDS uses the same MySQL engine in managed form rather than replacing the application with a different product from a different vendor. Refactoring involves re-architecting the application to use cloud-native services and patterns such as serverless functions or microservices, which represents a far more significant change to the application design than simply migrating the database to a managed service.",
+    "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1066",
+    "domainId": 1,
+    "question": "During migration planning, a company discovers that 30% of its on-premises applications have not been used in over two years and provide no current business value. Which migration strategy should be applied to these applications?",
+    "options": {
+      "A": "Retain",
+      "B": "Rehost",
+      "C": "Retire",
+      "D": "Replatform"
+    },
+    "answer": "C",
+    "explanation": "Retiring involves decommissioning applications that are no longer needed or that provide no business value, which reduces the scope and cost of migration by eliminating unnecessary workloads rather than spending effort and money moving them to the cloud where they would continue to consume resources.\nRetaining involves keeping certain applications running in their current on-premises environment, typically because they are not yet ready to migrate due to technical or compliance constraints, but this strategy still incurs ongoing maintenance costs rather than eliminating the burden of applications with no business purpose. Rehosting moves applications to the cloud with no changes, which would still consume cloud resources and generate ongoing costs for applications that have no business value; decommissioning is the correct choice when there is no reason to preserve the application at all. Replatforming involves optimising applications during migration by moving to managed services, which requires migration effort and ongoing cloud resource costs that would be wasted entirely on applications that serve no business purpose.",
     "source": "ai-generated",
     "isMultiAnswer": false
   }
