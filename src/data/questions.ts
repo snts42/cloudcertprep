@@ -3,6 +3,12 @@ import type { Question } from '../types'
 type DomainLoader = () => Promise<unknown>
 
 /**
+ * In-memory cache to avoid re-mapping domainId on repeat calls.
+ * Key format: "cert-code:domain-id" (e.g., "clf-c02:1")
+ */
+const questionCache = new Map<string, Question[]>()
+
+/**
  * Static import map for each certification's domain files.
  * Vite requires static strings for dynamic imports to chunk correctly.
  * To add a cert: add an entry here and in certifications.ts.
@@ -25,8 +31,16 @@ const CERT_LOADERS: Record<string, Record<number, DomainLoader>> = {
 /**
  * Load questions for a single domain of a specific certification.
  * Each domain is a separate chunk — only the requested domain is downloaded.
+ * Results are cached in memory to avoid re-mapping domainId on repeat calls.
  */
 export async function loadDomainQuestions(certCode: string, domainId: number): Promise<Question[]> {
+  const cacheKey = `${certCode}:${domainId}`
+  
+  // Return cached questions if available
+  if (questionCache.has(cacheKey)) {
+    return questionCache.get(cacheKey)!
+  }
+  
   const certLoaders = CERT_LOADERS[certCode]
   if (!certLoaders) {
     throw new Error(`Unknown certification: ${certCode}`)
@@ -35,8 +49,14 @@ export async function loadDomainQuestions(certCode: string, domainId: number): P
   if (!loader) {
     throw new Error(`Invalid domain ID ${domainId} for certification ${certCode}`)
   }
+  
   const mod = await loader() as { default: Omit<Question, 'domainId'>[] }
-  return mod.default.map(q => ({ ...q, domainId: domainId as Question['domainId'] }))
+  const questions = mod.default.map(q => ({ ...q, domainId: domainId as Question['domainId'] }))
+  
+  // Cache for future calls
+  questionCache.set(cacheKey, questions)
+  
+  return questions
 }
 
 /**

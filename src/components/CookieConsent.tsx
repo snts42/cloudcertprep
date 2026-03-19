@@ -19,8 +19,22 @@ export function CookieConsent() {
   const handleAccept = () => {
     localStorage.setItem(CONSENT_KEY, 'accepted')
     setIsVisible(false)
-    // Reload to initialize GA4
-    window.location.reload()
+    
+    // Dynamically load GA4 without page reload
+    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID
+    if (measurementId && !measurementId.startsWith('%')) {
+      const script = document.createElement('script')
+      script.async = true
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`
+      document.head.appendChild(script)
+      
+      // Initialize GA4 dataLayer
+      const w = window as typeof window & { dataLayer: unknown[] }
+      w.dataLayer = w.dataLayer || []
+      w.gtag = function() { w.dataLayer.push(arguments) }
+      w.gtag('js', new Date())
+      w.gtag('config', measurementId)
+    }
   }
 
   const handleReject = () => {

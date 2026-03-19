@@ -369,14 +369,23 @@ export function MockExam() {
 
           <button
             onClick={startExam}
-            className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-bold py-3 md:py-4 rounded-lg transition-colors text-base md:text-lg"
+            disabled={loading}
+            className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-bold py-3 md:py-4 rounded-lg transition-colors text-base md:text-lg disabled:opacity-75 disabled:cursor-not-allowed"
           >
-            Start Exam
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <LoadingSpinner size="sm" />
+                <span>Loading questions...</span>
+              </span>
+            ) : (
+              'Start Exam'
+            )}
           </button>
 
           <button
             onClick={() => navigate('/')}
-            className="w-full mt-3 md:mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
+            disabled={loading}
+            className="w-full mt-3 md:mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
           >
             ← Back to Dashboard
           </button>

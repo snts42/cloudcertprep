@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { usePageTitle } from '../hooks/usePageTitle'
@@ -7,6 +7,7 @@ import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { ProgressBar } from '../components/ProgressBar'
 import { QuestionReviewCard } from '../components/QuestionReviewCard'
+import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAIN_COLOR } from '../types'
@@ -51,6 +52,7 @@ export function DomainPractice() {
   const [questionResults, setQuestionResults] = useState<QuestionResult[]>([])
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0)
   const [optionKeyMaps, setOptionKeyMaps] = useState<Map<string, OptionKeyMap>>(new Map())
+  const [loading, setLoading] = useState(false)
   const { selectQuestions, refreshMastery } = useSpacedRepetition(user?.id ?? null, selectedDomain)
 
   function selectDomain(domainId: number) {
@@ -58,33 +60,48 @@ export function DomainPractice() {
     setScreen('config')
   }
 
+  // Preload questions when domain is selected (before user clicks Start)
+  // This hides network latency - chunk will be cached by the time they start
+  useEffect(() => {
+    if (selectedDomain && cert) {
+      loadDomainQuestions(cert.code, selectedDomain).catch(() => {
+        // Silently fail - startPractice will retry if preload failed
+      })
+    }
+  }, [selectedDomain, cert])
+
   async function startPractice() {
     if (!cert) return
-    // Re-fetch mastery data so back-to-back sessions use fresh weights
-    await refreshMastery()
-    // Load only the selected domain's questions (separate chunk)
-    const allDomainQuestions = await loadDomainQuestions(cert.code, selectedDomain!)
+    setLoading(true)
+    try {
+      // Re-fetch mastery data so back-to-back sessions use fresh weights
+      await refreshMastery()
+      // Load only the selected domain's questions (separate chunk)
+      const allDomainQuestions = await loadDomainQuestions(cert.code, selectedDomain!)
 
-    // Use spaced repetition for authenticated users, random shuffle for guests
-    const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
+      // Use spaced repetition for authenticated users, random shuffle for guests
+      const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
 
-    // Shuffle answer options for each question
-    const maps = new Map<string, OptionKeyMap>()
-    const shuffledQuestions = selectedQuestions.map(q => {
-      const { question: shuffled, keyMap } = shuffleQuestionOptions(q)
-      maps.set(q.id, keyMap)
-      return shuffled
-    })
-    
-    setQuestions(shuffledQuestions)
-    setOptionKeyMaps(maps)
-    setCurrentIndex(0)
-    setUserAnswer(null)
-    setShowFeedback(false)
-    setResults([])
-    setQuestionResults([])
-    setScreen('practice')
-    trackEvent('practice_started', { domain_id: selectedDomain, question_count: questionCount })
+      // Shuffle answer options for each question
+      const maps = new Map<string, OptionKeyMap>()
+      const shuffledQuestions = selectedQuestions.map(q => {
+        const { question: shuffled, keyMap } = shuffleQuestionOptions(q)
+        maps.set(q.id, keyMap)
+        return shuffled
+      })
+      
+      setQuestions(shuffledQuestions)
+      setOptionKeyMaps(maps)
+      setCurrentIndex(0)
+      setUserAnswer(null)
+      setShowFeedback(false)
+      setResults([])
+      setQuestionResults([])
+      setScreen('practice')
+      trackEvent('practice_started', { domain_id: selectedDomain, question_count: questionCount })
+    } finally {
+      setLoading(false)
+    }
   }
 
   function handleAnswer(answer: string) {
@@ -283,15 +300,24 @@ export function DomainPractice() {
             <div className="flex gap-4">
               <button
                 onClick={() => setScreen('selection')}
-                className="flex-1 px-6 py-3 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium rounded-lg transition-colors"
+                disabled={loading}
+                className="flex-1 px-6 py-3 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ← Back
               </button>
               <button
                 onClick={startPractice}
-                className="flex-1 px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors"
+                disabled={loading}
+                className="flex-1 px-6 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors disabled:opacity-75 disabled:cursor-not-allowed"
               >
-                Start Practice
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <LoadingSpinner size="sm" />
+                    <span>Loading questions...</span>
+                  </span>
+                ) : (
+                  'Start Practice'
+                )}
               </button>
             </div>
           </div>
