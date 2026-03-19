@@ -20,6 +20,7 @@ export function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [acceptedTerms, setAcceptedTerms] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
@@ -46,6 +47,9 @@ export function Login() {
         const { error } = await supabase.auth.signUp({
           email,
           password,
+          options: {
+            data: { accepted_terms_at: new Date().toISOString() }
+          }
         })
 
         if (error) throw error
@@ -223,6 +227,7 @@ export function Login() {
               </div>
 
               {isSignUp && (
+                <>
                 <div>
                   <label htmlFor="confirmPassword" className="block text-sm font-medium text-text-primary mb-2">
                     Confirm Password
@@ -238,6 +243,22 @@ export function Login() {
                     autoComplete="new-password"
                   />
                 </div>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={acceptedTerms}
+                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                    className="mt-1 w-4 h-4 rounded border-text-muted/30 accent-aws-orange flex-shrink-0"
+                  />
+                  <span className="text-text-muted text-sm leading-relaxed">
+                    I agree to the{' '}
+                    <Link to="/terms" className="text-aws-orange hover:underline" target="_blank">Terms of Service</Link>
+                    {' '}and{' '}
+                    <Link to="/privacy" className="text-aws-orange hover:underline" target="_blank">Privacy Policy</Link>
+                  </span>
+                </label>
+                </>
               )}
             </>
           )}
@@ -256,7 +277,7 @@ export function Login() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || (isSignUp && !acceptedTerms)}
             className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Loading...' : isForgotPassword ? 'Send Reset Link' : isSignUp ? 'Sign Up' : 'Sign In'}
@@ -289,6 +310,7 @@ export function Login() {
               setError('')
               setSuccess('')
               setConfirmPassword('')
+              setAcceptedTerms(false)
             }}
             className="text-text-muted hover:text-aws-orange transition-colors text-sm"
           >
@@ -315,12 +337,6 @@ export function Login() {
                 Continue as Guest
               </button>
 
-              <p className="mt-4 text-xs text-text-muted">
-                By signing up, you agree to our{' '}
-                <Link to="/terms" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Terms of Service</Link>
-                {' '}and{' '}
-                <Link to="/privacy" className="text-aws-orange hover:text-aws-orange/80 hover:underline transition-colors">Privacy Policy</Link>.
-              </p>
             </>
           )}
         </div>

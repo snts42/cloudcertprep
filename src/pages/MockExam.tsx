@@ -17,6 +17,7 @@ import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAIN_COLOR } from '../types'
 import type { Question, OptionKey } from '../types'
 import { loadAllQuestions } from '../data/questions'
+import { shuffleQuestionOptions, type OptionKeyMap } from '../lib/utils'
 import { trackEvent } from '../lib/analytics'
 import { MIN_VALID_EXAM_SECONDS, MAX_MULTI_ANSWER, TIMER_PULSE_THRESHOLD } from '../lib/constants'
 
@@ -111,6 +112,7 @@ export function MockExam() {
   const [reviewFilter, setReviewFilter] = useState<'all' | 'incorrect' | 'flagged'>('all')
   const [reviewDomainFilter, setReviewDomainFilter] = useState<number | null>(null)
   const [reviewQuestionIndex, setReviewQuestionIndex] = useState(0)
+  const [optionKeyMaps, setOptionKeyMaps] = useState<Map<string, OptionKeyMap>>(new Map())
 
   const timer = useTimer({
     initialSeconds: cert.examTimeSeconds,
@@ -154,7 +156,14 @@ export function MockExam() {
     setLoading(true)
     const allQuestions = await loadAllQuestions(cert.code)
     const selectedQuestions = selectExamQuestions(allQuestions, cert)
-    setQuestions(selectedQuestions)
+    const maps = new Map<string, OptionKeyMap>()
+    const shuffledQuestions = selectedQuestions.map(q => {
+      const { question: shuffled, keyMap } = shuffleQuestionOptions(q)
+      maps.set(q.id, keyMap)
+      return shuffled
+    })
+    setQuestions(shuffledQuestions)
+    setOptionKeyMaps(maps)
     setAnswers(new Map())
     setCurrentIndex(0)
     setScreen('exam')
@@ -219,11 +228,23 @@ export function MockExam() {
       const userAnswer = state?.userAnswer || (q.isMultiAnswer ? [] : '')
       const correct = isAnswerCorrect(userAnswer, q.answer, q.isMultiAnswer)
       
+      // Convert display keys back to original keys for DB storage
+      const keyMap = optionKeyMaps.get(q.id) || {}
+      const toOriginal = (key: string) => keyMap[key] || key
+      const originalUserAnswer = Array.isArray(userAnswer)
+        ? userAnswer.map(toOriginal)
+        : (userAnswer ? toOriginal(userAnswer) : '')
+      const originalCorrectAnswer = Array.isArray(q.answer)
+        ? q.answer.map(toOriginal)
+        : toOriginal(q.answer)
+
       return {
         questionId: q.id,
         domainId: q.domainId,
         userAnswer,
         correctAnswer: q.answer,
+        originalUserAnswer,
+        originalCorrectAnswer,
         isCorrect: correct,
         wasFlagged: state?.flagged || false,
       }
@@ -268,8 +289,8 @@ export function MockExam() {
         attempt_id: attemptData.id,
         user_id: user?.id,
         question_id: r.questionId,
-        user_answer: Array.isArray(r.userAnswer) ? r.userAnswer.join(',') : r.userAnswer,
-        correct_answer: Array.isArray(r.correctAnswer) ? r.correctAnswer.join(',') : r.correctAnswer,
+        user_answer: Array.isArray(r.originalUserAnswer) ? r.originalUserAnswer.join(',') : r.originalUserAnswer,
+        correct_answer: Array.isArray(r.originalCorrectAnswer) ? r.originalCorrectAnswer.join(',') : r.originalCorrectAnswer,
         is_correct: r.isCorrect,
         was_flagged: r.wasFlagged,
         domain_id: r.domainId,

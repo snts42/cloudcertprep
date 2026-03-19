@@ -35,8 +35,8 @@ export async function loadDomainQuestions(certCode: string, domainId: number): P
   if (!loader) {
     throw new Error(`Invalid domain ID ${domainId} for certification ${certCode}`)
   }
-  const mod = await loader() as { default: Question[] }
-  return mod.default
+  const mod = await loader() as { default: Omit<Question, 'domainId'>[] }
+  return mod.default.map(q => ({ ...q, domainId: domainId as Question['domainId'] }))
 }
 
 /**

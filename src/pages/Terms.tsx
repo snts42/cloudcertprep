@@ -45,7 +45,7 @@ export function Terms() {
             <section>
               <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3">Question content</h2>
               <p className="text-text-muted text-sm leading-relaxed">
-                Practice questions are sourced from MIT-licensed open source material and AI-generated content. Questions are clearly labelled where AI-generated. While we aim for accuracy, questions may contain errors or become outdated as AWS updates its services. Always cross-reference with official AWS documentation and training materials.
+                Practice questions are sourced from MIT-licensed open source material and AI-generated content. While we aim for accuracy, questions may contain errors or become outdated as AWS updates its services. Always cross-reference with official AWS documentation and training materials.
               </p>
             </section>
 

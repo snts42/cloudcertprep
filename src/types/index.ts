@@ -5,7 +5,6 @@ export interface Question {
   options: Record<OptionKey, string> & { E?: string }
   answer: string | string[]
   explanation: string
-  source: string
   isMultiAnswer: boolean
 }
 

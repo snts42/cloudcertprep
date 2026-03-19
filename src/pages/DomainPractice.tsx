@@ -15,6 +15,7 @@ import { loadDomainQuestions } from '../data/questions'
 import { isAnswerCorrect } from '../lib/scoring'
 import { trackEvent } from '../lib/analytics'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
+import { shuffleQuestionOptions, type OptionKeyMap } from '../lib/utils'
 import { MAX_MULTI_ANSWER, ANSWER_FEEDBACK_DELAY_MS, GITHUB_ISSUES_URL } from '../lib/constants'
 import { Check, X } from 'lucide-react'
 
@@ -49,6 +50,7 @@ export function DomainPractice() {
   const [results, setResults] = useState<boolean[]>([])
   const [questionResults, setQuestionResults] = useState<QuestionResult[]>([])
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0)
+  const [optionKeyMaps, setOptionKeyMaps] = useState<Map<string, OptionKeyMap>>(new Map())
   const { selectQuestions, refreshMastery } = useSpacedRepetition(user?.id ?? null, selectedDomain)
 
   function selectDomain(domainId: number) {
@@ -65,8 +67,17 @@ export function DomainPractice() {
 
     // Use spaced repetition for authenticated users, random shuffle for guests
     const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
+
+    // Shuffle answer options for each question
+    const maps = new Map<string, OptionKeyMap>()
+    const shuffledQuestions = selectedQuestions.map(q => {
+      const { question: shuffled, keyMap } = shuffleQuestionOptions(q)
+      maps.set(q.id, keyMap)
+      return shuffled
+    })
     
-    setQuestions(selectedQuestions)
+    setQuestions(shuffledQuestions)
+    setOptionKeyMaps(maps)
     setCurrentIndex(0)
     setUserAnswer(null)
     setShowFeedback(false)
@@ -134,18 +145,28 @@ export function DomainPractice() {
     if (user) {
       try {
         // Save each question result to attempt_questions table (without attempt_id for practice mode)
-        const questionRecords = questions.map((q, idx) => ({
-          attempt_id: null, // Practice mode doesn't have an exam attempt
-          user_id: user.id,
-          question_id: q.id,
-          user_answer: Array.isArray(questionResults[idx]?.userAnswer) 
-            ? questionResults[idx].userAnswer.join(',') 
-            : questionResults[idx]?.userAnswer || '',
-          correct_answer: Array.isArray(q.answer) ? q.answer.join(',') : q.answer,
-          is_correct: results[idx] || false,
-          was_flagged: false,
-          domain_id: selectedDomain,
-        }))
+        const questionRecords = questions.map((q, idx) => {
+          const keyMap = optionKeyMaps.get(q.id) || {}
+          const toOriginal = (key: string) => keyMap[key] || key
+          const ua = questionResults[idx]?.userAnswer
+          const originalUserAnswer = Array.isArray(ua)
+            ? ua.map(toOriginal)
+            : (ua ? toOriginal(ua) : '')
+          const originalCorrectAnswer = Array.isArray(q.answer)
+            ? q.answer.map(toOriginal)
+            : toOriginal(q.answer)
+
+          return {
+            attempt_id: null, // Practice mode doesn't have an exam attempt
+            user_id: user.id,
+            question_id: q.id,
+            user_answer: Array.isArray(originalUserAnswer) ? originalUserAnswer.join(',') : originalUserAnswer,
+            correct_answer: Array.isArray(originalCorrectAnswer) ? originalCorrectAnswer.join(',') : originalCorrectAnswer,
+            is_correct: results[idx] || false,
+            was_flagged: false,
+            domain_id: selectedDomain,
+          }
+        })
 
         // Insert practice question results
         const { error: questionsError } = await supabase
@@ -473,11 +494,6 @@ export function DomainPractice() {
                 
                 {currentQuestion.explanation && (
                   <div className="border-t border-text-muted/20 pt-2 mt-2">
-                    {currentQuestion.source === 'ai-generated' && (
-                      <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 mb-2">
-                        <span>✦</span> AI Generated
-                      </span>
-                    )}
                     <p className="text-text-muted text-xs md:text-sm font-medium mb-1">Explanation:</p>
                     <div className="text-text-muted text-xs md:text-sm space-y-2">
                       {currentQuestion.explanation.split('\n').filter(Boolean).map((para, i) => (

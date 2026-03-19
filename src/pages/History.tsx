@@ -252,7 +252,6 @@ export function History() {
         .from('attempt_questions')
         .select('question_id, user_answer, correct_answer, is_correct, was_flagged, domain_id')
         .eq('attempt_id', attemptId)
-        .order('domain_id', { ascending: true })
 
       if (error) throw error
 
