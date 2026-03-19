@@ -1948,7 +1948,7 @@
       "D": "AWS Quick Start reference deployments"
     },
     "answer": "D",
-    "explanation": "AWS Quick Start reference deployments provide automated gold-standard templates that deploy popular IT solutions on AWS in minutes, giving administrators a fast path to production-ready environments built on AWS best practices.\nAWS Well-Architected Framework documentation provides architectural guidance and best practices for designing cloud workloads across five pillars, but is a reference document rather than a deployment tool that can provision a solution immediately. Amazon CloudFront is a content delivery network that caches and distributes content to users at edge locations worldwide, and has no capability to deploy or provision IT solutions. AWS CodeCommit is a managed Git-based source control service for storing and versioning code repositories, and is a developer tool with no rapid deployment or solution provisioning capability.",
+    "explanation": "AWS Quick Start reference deployments provide automated gold-standard templates that deploy popular IT solutions on AWS in minutes, giving administrators a fast path to production-ready environments built on AWS best practices.\nAWS Well-Architected Framework documentation provides architectural guidance and best practices for designing cloud workloads across six pillars, but is a reference document rather than a deployment tool that can provision a solution immediately. Amazon CloudFront is a content delivery network that caches and distributes content to users at edge locations worldwide, and has no capability to deploy or provision IT solutions. AWS CodeCommit is a managed Git-based source control service for storing and versioning code repositories, and is a developer tool with no rapid deployment or solution provisioning capability.",
     "source": "practice-exam-9.md",
     "isMultiAnswer": false
   },
@@ -3619,6 +3619,36 @@
     "answer": "D",
     "explanation": "AWS Enterprise Support is the only plan that provides a target response time of less than 15 minutes for business-critical system down cases, where a production system supporting critical business operations has become completely unavailable, reflecting the highest urgency level in the AWS support tier structure.\nAWS Developer Support targets a response time of less than 12 hours for system impaired cases and does not offer a production or business-critical system down severity category, making it insufficient for any workload requiring guaranteed sub-hour response times. AWS Business Support targets a response time of less than 1 hour for production system down cases, which is faster than Developer Support but does not meet the sub-15-minute guarantee that only the most premium support tiers provide. AWS Enterprise On-Ramp Support targets a response time of less than 30 minutes for business-critical system down cases, which is faster than Business Support but still does not achieve the sub-15-minute response guarantee that only the full AWS Enterprise Support plan provides.",
     "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1115",
+    "domainId": 4,
+    "question": "Which AWS service provides a central location to view and manage the default limits on AWS resources for an account and request increases when needed?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Organizations",
+      "C": "Service Quotas",
+      "D": "AWS Config"
+    },
+    "answer": "C",
+    "explanation": "Service Quotas is a centralised service that allows customers to view their current service limits across AWS services, track utilisation against those limits, and request quota increases directly from the console, providing a single place to manage all resource limits.\nAWS Trusted Advisor includes a service limits check that flags when usage approaches certain default limits, but it only monitors a subset of limits and does not provide the ability to view all quotas or submit increase requests directly. AWS Organizations is an account management service for governing multiple AWS accounts through policies and consolidated billing, and does not provide visibility into or management of individual service resource limits. AWS Config records and evaluates the configuration of AWS resources against compliance rules, and monitors resource settings rather than tracking or managing service-level resource limits.",
+    "source": "new-service-quotas-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1116",
+    "domainId": 4,
+    "question": "A company is approaching the maximum number of Amazon VPCs allowed in a Region and needs to request an increase. Which AWS service should they use?",
+    "options": {
+      "A": "AWS Support",
+      "B": "Service Quotas",
+      "C": "AWS Config",
+      "D": "AWS Budgets"
+    },
+    "answer": "B",
+    "explanation": "Service Quotas allows customers to view their current quota values for AWS services, monitor usage against those quotas, and submit requests to increase specific limits such as the maximum number of VPCs per Region, all from a single console.\nAWS Support can be used to submit a support case to request limit increases, but Service Quotas provides a more direct and self-service approach specifically designed for viewing and managing resource limits without needing to create a support case. AWS Config tracks the configuration state of AWS resources and evaluates compliance against rules, but it does not monitor or manage service quota limits or provide the ability to request increases. AWS Budgets is a cost management tool for setting spending and usage thresholds and receiving alerts when those thresholds are approached, and has no capability to view or manage service resource limits.",
+    "source": "new-service-quotas-questions.md",
     "isMultiAnswer": false
   }
 ]

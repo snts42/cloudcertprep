@@ -2306,7 +2306,10 @@
       "D": "Infrastructure",
       "E": "Agility"
     },
-    "answer": ["A", "C"],
+    "answer": [
+      "A",
+      "C"
+    ],
     "explanation": "The AWS CAF organises guidance into six perspectives: Business, People, Governance, Platform, Security, and Operations. Governance focuses on orchestrating cloud initiatives while maximising organisational benefits and minimising transformation-related risks, and People focuses on developing an organisation-wide change management strategy and building cloud skills across the workforce.\nFinancial is not one of the six AWS CAF perspectives; financial and cost-related guidance falls within the Business perspective, which addresses how cloud adoption drives business value and return on investment rather than existing as its own separate financial perspective. Infrastructure is not one of the six AWS CAF perspectives; guidance on building and provisioning the technology foundation for cloud workloads falls under the Platform perspective rather than a perspective named Infrastructure. Agility is a benefit and characteristic of cloud computing but is not one of the six CAF perspectives; it does not appear in the CAF framework structure alongside Business, People, Governance, Platform, Security, and Operations.",
     "source": "ai-generated",
     "isMultiAnswer": true
@@ -2322,7 +2325,10 @@
       "D": "Immediate compliance with all regulatory requirements",
       "E": "Guaranteed elimination of all security vulnerabilities"
     },
-    "answer": ["A", "C"],
+    "answer": [
+      "A",
+      "C"
+    ],
     "explanation": "The AWS CAF identifies four key benefits of cloud adoption: reduced business risk through improved reliability, increased performance, and enhanced security posture; improved ESG performance through reduced carbon footprint and greater energy efficiency enabled by cloud infrastructure; increased revenue through the ability to develop and deliver new products faster; and increased operational efficiency through optimised cost structures and workforce productivity.\nElimination of all operational expenditure is not an AWS CAF benefit; moving to the cloud converts large upfront capital expenditure to variable operational expenditure rather than eliminating ongoing costs, as customers continue to pay for cloud services based on actual consumption and operational costs such as staffing and tooling remain. Immediate compliance with all regulatory requirements is not a benefit the CAF promises; while AWS provides compliance certifications and tools to support customers' compliance programmes, each customer is still responsible for applying the appropriate controls to their own workloads and meeting their specific regulatory obligations. Guaranteed elimination of all security vulnerabilities is not a CAF-defined benefit; while cloud adoption can improve the security posture of an organisation through shared responsibility and access to advanced security services, the CAF does not promise that cloud migration eliminates all security risk.",
     "source": "ai-generated",
     "isMultiAnswer": true
@@ -2400,6 +2406,567 @@
     "answer": "C",
     "explanation": "Retiring involves decommissioning applications that are no longer needed or that provide no business value, which reduces the scope and cost of migration by eliminating unnecessary workloads rather than spending effort and money moving them to the cloud where they would continue to consume resources.\nRetaining involves keeping certain applications running in their current on-premises environment, typically because they are not yet ready to migrate due to technical or compliance constraints, but this strategy still incurs ongoing maintenance costs rather than eliminating the burden of applications with no business purpose. Rehosting moves applications to the cloud with no changes, which would still consume cloud resources and generate ongoing costs for applications that have no business value; decommissioning is the correct choice when there is no reason to preserve the application at all. Replatforming involves optimising applications during migration by moving to managed services, which requires migration effort and ongoing cloud resource costs that would be wasted entirely on applications that serve no business purpose.",
     "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1092",
+    "domainId": 1,
+    "question": "Which AWS framework provides guidance organized into six perspectives to help organizations identify and prioritize cloud transformation opportunities?",
+    "options": {
+      "A": "AWS Well-Architected Framework",
+      "B": "AWS Cloud Adoption Framework (AWS CAF)",
+      "C": "AWS Migration Acceleration Program",
+      "D": "AWS Shared Responsibility Model"
+    },
+    "answer": "B",
+    "explanation": "The AWS Cloud Adoption Framework organizes guidance into six perspectives, Business, People, Governance, Platform, Security, and Operations, to help organizations identify skill gaps, process improvements, and technical requirements for successful cloud transformation.\nThe AWS Well-Architected Framework provides best practices for designing and operating workloads in the cloud across six pillars, but it is focused on workload architecture rather than organizational cloud adoption planning. The AWS Migration Acceleration Program is a consulting and technology engagement programme that helps customers accelerate their migration to AWS, but it is not a framework of perspectives for cloud transformation planning. The AWS Shared Responsibility Model defines the division of security responsibilities between AWS and the customer, and is a security governance concept rather than a cloud adoption planning framework.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1093",
+    "domainId": 1,
+    "question": "A company is planning a cloud migration and needs to assess the readiness of its workforce and identify skill gaps. Which AWS Cloud Adoption Framework (AWS CAF) perspective addresses this need?",
+    "options": {
+      "A": "Business",
+      "B": "People",
+      "C": "Operations",
+      "D": "Platform"
+    },
+    "answer": "B",
+    "explanation": "The People perspective of the AWS CAF focuses on evaluating organizational structures, roles, and skills to ensure the workforce is ready for cloud adoption, including training, change management, and career development.\nThe Business perspective focuses on ensuring that cloud investments are aligned with business outcomes and that stakeholders can articulate the business case for cloud adoption, rather than workforce readiness. The Operations perspective focuses on defining how day-to-day cloud operations will be managed, monitored, and improved, rather than workforce skills assessment. The Platform perspective focuses on building a scalable cloud platform architecture including networking, compute, and storage design, rather than people and organisational readiness.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1094",
+    "domainId": 1,
+    "question": "Which perspectives of the AWS Cloud Adoption Framework (AWS CAF) are categorized as technical capabilities? (Select TWO)",
+    "options": {
+      "A": "Business",
+      "B": "Platform",
+      "C": "People",
+      "D": "Operations",
+      "E": "Governance"
+    },
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "The AWS CAF groups its six perspectives into two categories: business capabilities (Business, People, Governance) and technical capabilities (Platform, Security, Operations). Platform and Operations both fall under technical capabilities.\nBusiness is a business capability perspective focused on aligning cloud investments with business outcomes, not a technical capability. People is a business capability perspective focused on organisational readiness, culture, and workforce skills. Governance is a business capability perspective focused on orchestrating cloud initiatives, maximising benefits, and minimising transformation risks.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1095",
+    "domainId": 1,
+    "question": "A company wants to ensure its cloud adoption minimizes transformation-related risks and aligns with regulatory requirements. Which AWS Cloud Adoption Framework (AWS CAF) perspective is MOST relevant?",
+    "options": {
+      "A": "Security",
+      "B": "Business",
+      "C": "Governance",
+      "D": "Operations"
+    },
+    "answer": "C",
+    "explanation": "The Governance perspective of the AWS CAF focuses on orchestrating cloud initiatives while maximising organisational benefits and minimising transformation-related risks, including aligning cloud strategy with regulatory and compliance requirements.\nThe Security perspective focuses on achieving the confidentiality, integrity, and availability of data and cloud workloads through security controls, rather than broader transformation risk management and regulatory alignment. The Business perspective focuses on ensuring cloud investments deliver measurable business outcomes, rather than risk management and regulatory compliance. The Operations perspective focuses on ensuring cloud services are delivered at a level that meets the needs of the business on a day-to-day basis, rather than strategic risk and compliance alignment.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1096",
+    "domainId": 1,
+    "question": "Which AWS Cloud Adoption Framework (AWS CAF) perspective helps ensure that cloud workloads achieve the confidentiality, integrity, and availability of data?",
+    "options": {
+      "A": "Governance",
+      "B": "Operations",
+      "C": "Platform",
+      "D": "Security"
+    },
+    "answer": "D",
+    "explanation": "The Security perspective of the AWS CAF focuses on achieving the confidentiality, integrity, and availability of data and cloud workloads, including identity management, threat detection, infrastructure protection, and incident response.\nThe Governance perspective focuses on orchestrating cloud initiatives, aligning cloud strategy with business goals, and managing transformation risks, rather than the technical security posture of workloads. The Operations perspective focuses on delivering cloud services to meet business needs through monitoring, incident management, and continuous improvement of operational processes. The Platform perspective focuses on designing and building a scalable, enterprise-grade cloud environment including infrastructure, networking, and provisioning, rather than data protection and security controls.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1117",
+    "domainId": 1,
+    "question": "A company wants to use the AWS Cloud Adoption Framework (AWS CAF) to build a business case for cloud migration. Which CAF perspective should they focus on?",
+    "options": {
+      "A": "People",
+      "B": "Business",
+      "C": "Platform",
+      "D": "Governance"
+    },
+    "answer": "B",
+    "explanation": "The Business perspective of the AWS CAF helps stakeholders understand how cloud adoption can accelerate business outcomes, articulate a compelling business case, and ensure that cloud investments are tied to measurable business value.\nThe People perspective focuses on organisational readiness, skills development, and change management rather than building a financial or strategic business case for migration. The Platform perspective focuses on designing the cloud infrastructure architecture including compute, networking, and storage, which is a technical concern rather than a business justification activity. The Governance perspective focuses on managing risks and aligning cloud initiatives with compliance requirements, which supports the business case but is not the perspective directly responsible for articulating it.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1118",
+    "domainId": 1,
+    "question": "Which AWS Cloud Adoption Framework (AWS CAF) perspective focuses on designing and implementing new cloud environments with enterprise-grade scalability?",
+    "options": {
+      "A": "Operations",
+      "B": "Security",
+      "C": "Platform",
+      "D": "People"
+    },
+    "answer": "C",
+    "explanation": "The Platform perspective focuses on building an enterprise-grade, scalable cloud platform by designing the target architecture for networking, compute, storage, and database services, and establishing patterns for provisioning and managing cloud resources.\nThe Operations perspective focuses on delivering and managing cloud services to meet day-to-day business needs through monitoring, incident management, and process improvement, not on designing the underlying platform architecture. The Security perspective focuses on protecting data and workloads through identity management, threat detection, and security controls, rather than designing the cloud infrastructure platform. The People perspective focuses on workforce readiness, organisational change, and skills development, which is unrelated to technical platform architecture.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1119",
+    "domainId": 1,
+    "question": "A company needs to define how it will manage and monitor cloud workloads on a day-to-day basis after migration. Which AWS Cloud Adoption Framework (AWS CAF) perspective addresses this?",
+    "options": {
+      "A": "Platform",
+      "B": "Governance",
+      "C": "Operations",
+      "D": "Business"
+    },
+    "answer": "C",
+    "explanation": "The Operations perspective of the AWS CAF focuses on ensuring that cloud services are delivered and managed to meet ongoing business needs, covering areas such as monitoring, incident management, event management, and continuous improvement of operational processes.\nThe Platform perspective focuses on designing and building the cloud environment architecture, which is a one-time design activity rather than ongoing day-to-day management. The Governance perspective focuses on strategic alignment, risk management, and compliance, which are higher-level concerns than daily operational monitoring and incident management. The Business perspective focuses on aligning cloud investments with business outcomes and measuring return on investment, rather than operational management of workloads.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1120",
+    "domainId": 1,
+    "question": "How many perspectives does the AWS Cloud Adoption Framework (AWS CAF) define?",
+    "options": {
+      "A": "Four",
+      "B": "Five",
+      "C": "Six",
+      "D": "Seven"
+    },
+    "answer": "C",
+    "explanation": "The AWS CAF defines six perspectives: Business, People, and Governance (business capabilities), and Platform, Security, and Operations (technical capabilities), providing comprehensive guidance for cloud transformation.\nFour perspectives would be incomplete, as the CAF explicitly defines six distinct areas of focus to cover both business and technical dimensions of cloud adoption. Five perspectives would be missing one of the six defined areas, and does not match the actual CAF structure. Seven perspectives exceeds the actual number defined by the framework, which groups its guidance into exactly six perspectives.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1121",
+    "domainId": 1,
+    "question": "Which AWS Cloud Adoption Framework (AWS CAF) perspectives are categorized as business capabilities? (Select THREE)",
+    "options": {
+      "A": "Business",
+      "B": "Platform",
+      "C": "People",
+      "D": "Security",
+      "E": "Governance"
+    },
+    "answer": [
+      "A",
+      "C",
+      "E"
+    ],
+    "explanation": "The AWS CAF categorises Business, People, and Governance as business capability perspectives, which focus on strategic alignment, organisational readiness, workforce skills, change management, risk governance, and ensuring cloud investments deliver business value.\nPlatform is a technical capability perspective that focuses on designing and building the cloud environment architecture, not on business alignment or organisational readiness. Security is a technical capability perspective that focuses on protecting data confidentiality, integrity, and availability through technical security controls, not on business-level planning or governance.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1122",
+    "domainId": 1,
+    "question": "A company is evaluating its cloud readiness and discovers that its IT staff lacks experience with AWS services. According to the AWS Cloud Adoption Framework (AWS CAF), which action should the company take?",
+    "options": {
+      "A": "Delay migration until all staff are fully trained",
+      "B": "Invest in training and upskilling programmes aligned with the People perspective",
+      "C": "Outsource all cloud operations to a third party permanently",
+      "D": "Proceed with migration without any training to save time"
+    },
+    "answer": "B",
+    "explanation": "The People perspective of the AWS CAF recommends investing in training, upskilling, and organisational change management to close skill gaps and prepare the workforce for cloud adoption, ensuring sustainable internal capability rather than dependency on external resources.\nDelaying migration indefinitely until all staff are fully trained is impractical and unnecessary, as the CAF recommends iterative learning alongside migration rather than waiting for complete readiness. Outsourcing all operations permanently does not build internal capability and creates long-term dependency, which contradicts the People perspective's goal of developing organisational cloud skills. Proceeding without training risks operational failures, security incidents, and inefficient resource usage, and ignores the People perspective's emphasis on workforce readiness.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1123",
+    "domainId": 1,
+    "question": "Which of the following is a key focus area of the Governance perspective in the AWS Cloud Adoption Framework (AWS CAF)?",
+    "options": {
+      "A": "Designing the target cloud architecture",
+      "B": "Managing benefits, risks, and compliance during cloud transformation",
+      "C": "Monitoring application performance after deployment",
+      "D": "Configuring identity and access management controls"
+    },
+    "answer": "B",
+    "explanation": "The Governance perspective focuses on orchestrating cloud initiatives to maximise organisational benefits while minimising transformation risks, including budget management, portfolio management, compliance alignment, and risk mitigation strategies.\nDesigning the target cloud architecture is a focus of the Platform perspective, which handles infrastructure, networking, and compute design decisions. Monitoring application performance after deployment is a focus of the Operations perspective, which manages day-to-day service delivery, observability, and incident management. Configuring identity and access management controls is a focus of the Security perspective, which handles identity management, permissions, and threat detection.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1124",
+    "domainId": 1,
+    "question": "The AWS Cloud Adoption Framework (AWS CAF) identifies four transformation domains. Which of the following is one of those domains?",
+    "options": {
+      "A": "Technology",
+      "B": "Networking",
+      "C": "Database",
+      "D": "Compute"
+    },
+    "answer": "A",
+    "explanation": "The AWS CAF identifies four transformation domains: Technology, Process, Organisation, and Product. The Technology domain covers migration and modernisation of infrastructure, applications, and data platforms to leverage cloud capabilities.\nNetworking is a component within the Platform perspective and Technology transformation domain, but it is not itself one of the four transformation domains defined by the CAF. Database is a specific service category within cloud technology, not one of the four transformation domains that the CAF uses to structure cloud adoption activities. Compute is a specific resource type within cloud infrastructure, not one of the four high-level transformation domains defined by the CAF.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1125",
+    "domainId": 1,
+    "question": "Which transformation domains are defined by the AWS Cloud Adoption Framework (AWS CAF)? (Select TWO)",
+    "options": {
+      "A": "Product",
+      "B": "Security",
+      "C": "Process",
+      "D": "Infrastructure",
+      "E": "Compliance"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "The AWS CAF defines four transformation domains: Technology, Process, Organisation, and Product. Process focuses on digitising, automating, and optimising business operations, while Product focuses on reimagining the business model using new capabilities enabled by cloud.\nSecurity is one of the six CAF perspectives, not one of the four transformation domains, and it provides guidance on protecting data and workloads rather than defining a transformation pathway. Infrastructure is a component within the Technology transformation domain and the Platform perspective, but it is not itself one of the four transformation domains. Compliance is an area addressed by the Governance perspective, but it is not one of the four transformation domains defined by the CAF.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1126",
+    "domainId": 1,
+    "question": "A company wants to use the AWS Cloud Adoption Framework (AWS CAF) to assess which of its applications are ready to move to AWS. Which CAF activity does this describe?",
+    "options": {
+      "A": "Envision phase",
+      "B": "Align phase",
+      "C": "Launch phase",
+      "D": "Scale phase"
+    },
+    "answer": "B",
+    "explanation": "The Align phase of the AWS CAF focuses on identifying capability gaps, evaluating cross-organisational dependencies, and assessing application readiness to create a detailed action plan for cloud adoption, making it the phase where migration readiness is determined.\nThe Envision phase focuses on identifying how cloud can accelerate business outcomes and creating a shared vision for transformation, which happens before readiness assessment. The Launch phase focuses on delivering pilot initiatives and demonstrating incremental business value through initial cloud deployments, which occurs after readiness has been assessed. The Scale phase focuses on expanding cloud adoption across the organisation and optimising operating models for long-term scale, which comes after initial launches have been proven successful.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1127",
+    "domainId": 1,
+    "question": "What is the correct order of the AWS Cloud Adoption Framework (AWS CAF) phases for cloud transformation?",
+    "options": {
+      "A": "Align, Envision, Launch, Scale",
+      "B": "Envision, Align, Launch, Scale",
+      "C": "Launch, Envision, Scale, Align",
+      "D": "Envision, Launch, Align, Scale"
+    },
+    "answer": "B",
+    "explanation": "The AWS CAF defines the cloud transformation journey in four phases: Envision (identify how cloud accelerates business outcomes), Align (identify capability gaps and create an action plan), Launch (deliver pilot initiatives), and Scale (expand adoption across the organisation).\nStarting with Align before Envision skips the critical first step of establishing a shared vision for why the organisation is adopting cloud, which is needed to guide the alignment activities. Starting with Launch before Align means deploying to the cloud without first assessing readiness or creating an action plan, which risks uncoordinated and unsuccessful migrations. Placing Align after Launch means assessing readiness after already deploying workloads, which reverses the logical order of planning before execution.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1128",
+    "domainId": 1,
+    "question": "A company is using the AWS Cloud Adoption Framework (AWS CAF) and wants to establish a Cloud Centre of Excellence (CCoE). Which phase of the CAF transformation journey typically involves this activity?",
+    "options": {
+      "A": "Envision",
+      "B": "Align",
+      "C": "Launch",
+      "D": "Scale"
+    },
+    "answer": "C",
+    "explanation": "The Launch phase of the AWS CAF involves delivering pilot initiatives, building a Cloud Centre of Excellence to provide guidance and best practices, and demonstrating incremental business value through initial cloud deployments that establish the foundation for broader adoption.\nThe Envision phase focuses on creating a shared transformation vision and identifying how cloud can drive business outcomes, which occurs before establishing operational structures like a CCoE. The Align phase focuses on assessing readiness, identifying gaps, and creating an action plan, which is planning work that precedes the hands-on launch activities. The Scale phase focuses on expanding adoption across the entire organisation after the CCoE and initial patterns have already been established during the Launch phase.",
+    "source": "new-caf-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1097",
+    "domainId": 1,
+    "question": "A company wants to move its on-premises application to AWS as quickly as possible with minimal changes to the existing code. Which migration strategy does this describe?",
+    "options": {
+      "A": "Replatform",
+      "B": "Refactor",
+      "C": "Rehost",
+      "D": "Repurchase"
+    },
+    "answer": "C",
+    "explanation": "Rehosting, also known as lift and shift, involves moving an application to the cloud without making any changes to the application code or architecture, making it the fastest migration strategy for getting workloads into AWS.\nReplatforming involves making targeted optimisations during migration, such as moving a database to a managed service like Amazon RDS, which requires some changes beyond a simple lift and shift. Refactoring involves redesigning the application to take advantage of cloud-native features such as serverless computing or microservices, which requires significant development effort and is not a minimal-change approach. Repurchasing involves replacing the existing application with a different product, typically a SaaS solution, which is not a strategy for moving existing code to AWS.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1098",
+    "domainId": 1,
+    "question": "During a cloud migration assessment, a company identifies several legacy applications that are no longer in use. Which migration strategy should they apply to these applications?",
+    "options": {
+      "A": "Retain",
+      "B": "Retire",
+      "C": "Rehost",
+      "D": "Relocate"
+    },
+    "answer": "B",
+    "explanation": "Retiring means decommissioning applications that are no longer needed, which reduces the overall migration scope and eliminates the cost and effort of maintaining unused software.\nRetaining means keeping applications in their current on-premises environment because they are not ready to migrate, which is appropriate for applications still in active use rather than those that are no longer needed. Rehosting means moving an application to AWS without changes, which would waste resources on an application that provides no business value. Relocating means moving infrastructure to AWS with minimal changes, such as using VMware Cloud on AWS, which is also not appropriate for applications that should be decommissioned.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1099",
+    "domainId": 1,
+    "question": "A company is migrating its on-premises email system and decides to replace it with Amazon WorkMail, a cloud-based SaaS email solution. Which migration strategy does this describe?",
+    "options": {
+      "A": "Replatform",
+      "B": "Repurchase",
+      "C": "Refactor",
+      "D": "Rehost"
+    },
+    "answer": "B",
+    "explanation": "Repurchasing involves moving to a different product, typically replacing an existing application with a cloud-based SaaS alternative, which is exactly what switching from an on-premises email system to Amazon WorkMail represents.\nReplatforming involves making targeted optimisations to an existing application during migration, such as moving a self-managed database to Amazon RDS, rather than replacing the entire application with a different product. Refactoring involves redesigning the existing application architecture to leverage cloud-native features, not replacing the application with a completely different product. Rehosting involves moving the existing application as-is to the cloud, which would mean running the same on-premises email system on EC2 rather than switching to a SaaS replacement.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1100",
+    "domainId": 1,
+    "question": "A company wants to migrate its on-premises MySQL database to Amazon RDS for MySQL to take advantage of managed patching and backups, without changing the application code. Which migration strategy does this describe?",
+    "options": {
+      "A": "Rehost",
+      "B": "Replatform",
+      "C": "Refactor",
+      "D": "Retain"
+    },
+    "answer": "B",
+    "explanation": "Replatforming, also known as lift, tinker, and shift, involves making targeted optimisations during migration without changing the core application architecture, such as moving a self-managed database to a managed service like Amazon RDS to benefit from automated patching and backups.\nRehosting would mean moving the MySQL database to an EC2 instance and continuing to manage it manually, which does not take advantage of managed database features. Refactoring would involve redesigning the application to use a fundamentally different database approach, such as migrating from a relational database to a NoSQL service like DynamoDB, which goes beyond targeted optimisation. Retaining means keeping the workload in its current on-premises environment, which does not involve any migration to AWS.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1101",
+    "domainId": 1,
+    "question": "Which migration strategy involves redesigning an application to take full advantage of cloud-native features such as serverless computing and microservices?",
+    "options": {
+      "A": "Rehost",
+      "B": "Replatform",
+      "C": "Repurchase",
+      "D": "Refactor"
+    },
+    "answer": "D",
+    "explanation": "Refactoring, also known as re-architecting, involves fundamentally redesigning an application to leverage cloud-native capabilities such as AWS Lambda for serverless computing, Amazon SQS for decoupled messaging, and containerised microservices, typically delivering the greatest long-term cloud benefits at the highest initial effort.\nRehosting moves an application to the cloud without any architectural changes, preserving the existing design rather than adopting cloud-native patterns. Replatforming makes targeted optimisations during migration, such as switching to managed services, but does not involve a full architectural redesign. Repurchasing replaces the existing application with a different product, typically a SaaS solution, rather than redesigning the existing application architecture.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1102",
+    "domainId": 1,
+    "question": "A company has applications that cannot be migrated to the cloud due to unresolved compliance dependencies. Which migration strategy should they apply to these applications?",
+    "options": {
+      "A": "Retire",
+      "B": "Retain",
+      "C": "Relocate",
+      "D": "Repurchase"
+    },
+    "answer": "B",
+    "explanation": "Retaining means keeping applications in their current on-premises environment, which is the appropriate strategy for workloads that are not yet ready to migrate due to compliance constraints, technical dependencies, or other unresolved requirements.\nRetiring means decommissioning applications that are no longer needed, which is not appropriate for applications that are still in active use and have unresolved dependencies. Relocating means moving infrastructure to AWS with minimal changes, such as using VMware Cloud on AWS, which does not address the underlying compliance dependencies preventing migration. Repurchasing means replacing the application with a SaaS alternative, which also does not resolve the compliance constraints that are blocking the migration.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1103",
+    "domainId": 1,
+    "question": "Which of the following are valid migration strategies defined in the AWS Cloud Adoption Framework (AWS CAF)? (Select TWO)",
+    "options": {
+      "A": "Rehost",
+      "B": "Revalidate",
+      "C": "Repurchase",
+      "D": "Redistribute",
+      "E": "Reconfigure"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Rehost and Repurchase are two of the seven migration strategies (7 Rs) defined in the AWS Cloud Adoption Framework: Rehost, Replatform, Refactor, Repurchase, Retire, Retain, and Relocate.\nRevalidate is not a recognised migration strategy in the AWS CAF or any standard AWS migration framework. Redistribute is not a recognised migration strategy in the AWS CAF and does not correspond to any defined cloud migration approach. Reconfigure is not a recognised migration strategy in the AWS CAF; the closest strategy involving changes is Replatform, which makes targeted optimisations during migration.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1129",
+    "domainId": 1,
+    "question": "A company currently runs VMware-based virtual machines on-premises and wants to move them to AWS with minimal changes to the existing VMware environment. Which migration strategy does this describe?",
+    "options": {
+      "A": "Rehost",
+      "B": "Replatform",
+      "C": "Relocate",
+      "D": "Refactor"
+    },
+    "answer": "C",
+    "explanation": "Relocating involves moving infrastructure to AWS without purchasing new hardware, rewriting applications, or modifying existing operations, such as migrating VMware-based workloads to VMware Cloud on AWS where the existing VMware environment continues to function with minimal changes.\nRehosting involves moving individual applications to AWS infrastructure such as EC2 instances, which requires converting virtual machines rather than preserving the existing VMware management layer. Replatforming involves making targeted optimisations during migration such as switching to managed services, which goes beyond simply moving the existing VMware environment as-is. Refactoring involves redesigning the application architecture to use cloud-native services, which is the opposite of preserving the existing VMware-based infrastructure.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1130",
+    "domainId": 1,
+    "question": "How many migration strategies (Rs) are defined in the AWS Cloud Adoption Framework (AWS CAF)?",
+    "options": {
+      "A": "Five",
+      "B": "Six",
+      "C": "Seven",
+      "D": "Eight"
+    },
+    "answer": "C",
+    "explanation": "The AWS CAF defines seven migration strategies known as the 7 Rs: Rehost, Replatform, Refactor (Re-architect), Repurchase, Retire, Retain, and Relocate, each representing a different approach to handling workloads during a cloud migration.\nFive Rs was an earlier version of the migration strategies that did not include Relocate and Retain, and does not reflect the current AWS CAF guidance. Six Rs is another historical version that predates the addition of the Relocate strategy, and is no longer the complete set defined by the current AWS CAF. Eight Rs exceeds the number of strategies defined by the AWS CAF, which recognises exactly seven distinct migration approaches.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1131",
+    "domainId": 1,
+    "question": "A company wants to migrate a large on-premises Oracle database to Amazon DynamoDB to improve scalability and reduce licensing costs. Which migration strategy does this describe?",
+    "options": {
+      "A": "Replatform",
+      "B": "Rehost",
+      "C": "Refactor",
+      "D": "Repurchase"
+    },
+    "answer": "C",
+    "explanation": "Migrating from a relational Oracle database to a NoSQL service like Amazon DynamoDB requires fundamentally redesigning the data model and application logic, which is a refactoring or re-architecting strategy that leverages cloud-native capabilities for improved scalability and cost.\nReplatforming would involve moving Oracle to Amazon RDS for Oracle or a compatible managed relational database, making targeted optimisations without changing the fundamental database paradigm. Rehosting would mean running Oracle on an EC2 instance exactly as it ran on-premises, with no changes to the database engine or architecture. Repurchasing would mean replacing the application with a completely different commercial product or SaaS solution, not redesigning the database layer to use a different AWS-native service.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1132",
+    "domainId": 1,
+    "question": "Which AWS service helps automate the lift-and-shift migration of servers from on-premises or other clouds to AWS?",
+    "options": {
+      "A": "AWS Database Migration Service",
+      "B": "AWS Application Migration Service",
+      "C": "AWS Migration Hub",
+      "D": "AWS Snow Family"
+    },
+    "answer": "B",
+    "explanation": "AWS Application Migration Service (AWS MGN) automates the lift-and-shift rehosting process by continuously replicating source servers to AWS, performing automated machine conversion, and launching fully provisioned instances on AWS with minimal downtime.\nAWS Database Migration Service migrates databases to AWS, supporting both homogeneous and heterogeneous migrations, but it handles database workloads specifically rather than full server migrations. AWS Migration Hub provides a central location to track the progress of migrations across multiple AWS tools, but it is a tracking and visibility service rather than a tool that performs the actual server migration. AWS Snow Family provides physical devices for transferring large volumes of data to AWS offline, but does not automate the conversion and launching of servers in the cloud.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1133",
+    "domainId": 1,
+    "question": "Which AWS service provides a central location to track the progress of application migrations across multiple AWS migration tools?",
+    "options": {
+      "A": "AWS Application Migration Service",
+      "B": "AWS CloudTrail",
+      "C": "AWS Migration Hub",
+      "D": "AWS Config"
+    },
+    "answer": "C",
+    "explanation": "AWS Migration Hub provides a single dashboard to discover existing servers, plan migrations, and track the status of application migrations across AWS migration tools such as Application Migration Service, Database Migration Service, and partner solutions.\nAWS Application Migration Service performs the actual server replication and migration to AWS, but it handles the migration execution rather than providing a centralised tracking dashboard across multiple tools. AWS CloudTrail records API calls and management events for auditing purposes, and is an activity logging service rather than a migration progress tracking tool. AWS Config records and evaluates resource configurations for compliance, and monitors the state of AWS resources rather than tracking migration progress.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1134",
+    "domainId": 1,
+    "question": "A company needs to migrate a 100 TB on-premises database to AWS but has limited network bandwidth. Which AWS service is MOST appropriate for this data transfer?",
+    "options": {
+      "A": "AWS DataSync",
+      "B": "AWS Direct Connect",
+      "C": "AWS Snowball Edge",
+      "D": "Amazon S3 Transfer Acceleration"
+    },
+    "answer": "C",
+    "explanation": "AWS Snowball Edge is a physical data transfer device that can hold up to 80 TB per device, allowing large-scale data transfers to AWS by shipping the device rather than transferring over the network, making it ideal when network bandwidth is limited and transfer times over the internet would be impractical.\nAWS DataSync automates data transfers between on-premises storage and AWS over the network, but with limited bandwidth a 100 TB transfer would take an unacceptably long time. AWS Direct Connect establishes a dedicated private network connection to AWS which improves bandwidth and consistency, but provisioning a Direct Connect link takes weeks and still may not provide sufficient bandwidth for a timely 100 TB transfer. Amazon S3 Transfer Acceleration speeds up uploads to S3 using CloudFront edge locations, but it still relies on the internet and would be constrained by the company's limited network bandwidth.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1135",
+    "domainId": 1,
+    "question": "Which migration strategy provides the GREATEST long-term benefit from cloud-native features but requires the MOST development effort?",
+    "options": {
+      "A": "Rehost",
+      "B": "Replatform",
+      "C": "Refactor",
+      "D": "Relocate"
+    },
+    "answer": "C",
+    "explanation": "Refactoring or re-architecting an application to use cloud-native services such as serverless computing, managed databases, and event-driven architectures delivers the greatest long-term benefits in scalability, performance, and cost efficiency, but requires the most significant investment in development time and effort.\nRehosting provides the fastest migration path with minimal effort but does not take advantage of cloud-native features, meaning long-term benefits are limited to infrastructure-level improvements only. Replatforming provides moderate cloud benefits with moderate effort by making targeted optimisations, but does not achieve the full potential of cloud-native architecture. Relocating preserves the existing infrastructure environment and provides the least cloud-native benefit, as workloads continue to run in their original configuration.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1136",
+    "domainId": 1,
+    "question": "A company is migrating to AWS and wants to assess its on-premises infrastructure to understand server dependencies and utilisation. Which AWS service should they use?",
+    "options": {
+      "A": "AWS Migration Hub",
+      "B": "AWS Application Discovery Service",
+      "C": "AWS Application Migration Service",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "B",
+    "explanation": "AWS Application Discovery Service collects detailed information about on-premises servers including configuration, utilisation, and network dependencies, helping companies plan their migration by understanding what they have and how applications are interconnected.\nAWS Migration Hub provides a central dashboard for tracking migration progress across multiple tools, but it relies on discovery tools like Application Discovery Service to gather the underlying infrastructure data. AWS Application Migration Service performs the actual server migration by replicating and launching instances on AWS, but it does not discover or assess on-premises infrastructure. AWS Trusted Advisor provides best-practice recommendations for existing AWS environments across security, cost, and performance, but it does not discover or assess on-premises infrastructure.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1137",
+    "domainId": 1,
+    "question": "Which AWS service is designed specifically to migrate databases from on-premises to AWS, supporting both same-engine and cross-engine migrations?",
+    "options": {
+      "A": "AWS Application Migration Service",
+      "B": "AWS Schema Conversion Tool",
+      "C": "AWS Database Migration Service (AWS DMS)",
+      "D": "AWS DataSync"
+    },
+    "answer": "C",
+    "explanation": "AWS Database Migration Service supports continuous data replication from on-premises databases to AWS with minimal downtime, handling both homogeneous migrations where the source and target engines are the same and heterogeneous migrations where the engines differ.\nAWS Application Migration Service migrates entire servers including the operating system and applications to AWS, but it is not designed for database-specific migrations that require data replication and schema handling. AWS Schema Conversion Tool converts database schemas and stored procedures from one engine to another to support heterogeneous migrations, but it handles schema conversion rather than the actual data migration itself. AWS DataSync automates data transfers between on-premises storage systems and AWS storage services such as S3 and EFS, but it is a file-based data movement service not designed for database migration.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1138",
+    "domainId": 1,
+    "question": "A company is migrating a monolithic application to AWS and decides to break it into microservices using AWS Lambda and Amazon API Gateway. Which migration strategy does this represent?",
+    "options": {
+      "A": "Rehost",
+      "B": "Replatform",
+      "C": "Repurchase",
+      "D": "Refactor"
+    },
+    "answer": "D",
+    "explanation": "Breaking a monolithic application into microservices using cloud-native services like AWS Lambda and Amazon API Gateway is a refactoring or re-architecting strategy that fundamentally changes the application design to leverage cloud capabilities.\nRehosting would move the monolithic application to EC2 as-is without changing its architecture, preserving the monolith rather than decomposing it into microservices. Replatforming would make targeted improvements such as moving the database to a managed service, but would not involve a fundamental architectural change like decomposing a monolith into microservices. Repurchasing would replace the application with a different commercial or SaaS product, not redesign the existing application into a microservices architecture.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1139",
+    "domainId": 1,
+    "question": "A company has 500 on-premises servers to migrate. After assessment, 200 are identified as candidates for lift-and-shift, 100 need database engine changes, 50 will be replaced with SaaS, and 150 are no longer needed. Which combination of migration strategies applies? (Select TWO)",
+    "options": {
+      "A": "Rehost for the 200 servers",
+      "B": "Replatform for the 100 database servers",
+      "C": "Retire for the 150 unused servers",
+      "D": "Retain for the 50 SaaS replacements",
+      "E": "Relocate for the 200 servers"
+    },
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Rehost applies to the 200 servers being moved as-is through lift-and-shift migration, and Retire applies to the 150 servers that are no longer needed and should be decommissioned, reducing the overall migration scope and cost.\nReplatform is incorrect for the 100 database servers because changing the database engine entirely, such as from Oracle to PostgreSQL, constitutes refactoring rather than replatforming, which would be moving Oracle to RDS for Oracle. Retain means keeping workloads on-premises, which does not describe the 50 applications being replaced with SaaS solutions, that would be Repurchase. Relocate means moving VMware-based infrastructure to VMware Cloud on AWS, which is a specific strategy for preserving VMware environments and does not describe a general lift-and-shift migration.",
+    "source": "new-migration-questions.md",
+    "isMultiAnswer": true
+  },
+  {
+    "id": "q1140",
+    "domainId": 1,
+    "question": "Which of the following BEST describes the difference between rehosting and replatforming as migration strategies?",
+    "options": {
+      "A": "Rehosting changes the application code while replatforming does not",
+      "B": "Rehosting moves the application as-is while replatforming makes targeted optimisations",
+      "C": "Rehosting replaces the application with SaaS while replatforming keeps the original",
+      "D": "Rehosting is slower than replatforming because it requires more testing"
+    },
+    "answer": "B",
+    "explanation": "Rehosting, or lift and shift, moves the application to AWS without any changes to the code or architecture, while replatforming, or lift, tinker, and shift, makes targeted optimisations during migration such as switching to a managed database or changing the caching layer, without fundamentally redesigning the application.\nRehosting does not change any application code, and replatforming makes only targeted changes, so the first option reverses the relationship between the two strategies. Rehosting moves the existing application to the cloud rather than replacing it with SaaS, which would be the repurchase strategy. Rehosting is generally faster than replatforming because it requires fewer changes and less testing, not slower, since the application is moved without modification.",
+    "source": "new-migration-questions.md",
     "isMultiAnswer": false
   }
 ]

@@ -4141,7 +4141,7 @@
     "source": "practice-exam-18.md",
     "isMultiAnswer": false
   },
-    {
+  {
     "id": "q759",
     "domainId": 3,
     "question": "Which of the following describes the relationships among AWS Regions, Availability Zones, and edge locations?",
@@ -5833,21 +5833,6 @@
     "isMultiAnswer": false
   },
   {
-    "id": "q1080",
-    "domainId": 3,
-    "question": "A small development team wants to quickly set up a complete software development toolchain on AWS including source control, a build pipeline, and deployment automation, all accessible through a single unified project dashboard. Which AWS developer tool provides this integrated project environment?",
-    "options": {
-      "A": "AWS CodePipeline",
-      "B": "AWS CodeBuild",
-      "C": "AWS CodeStar",
-      "D": "AWS CodeCommit"
-    },
-    "answer": "C",
-    "explanation": "AWS CodeStar provides a unified interface for managing all software development activities in one place, with project templates that automatically configure a complete toolchain including AWS CodeCommit, CodeBuild, and CodeDeploy through a single project dashboard that tracks commits, builds, and deployments, reducing the time to set up a working CI/CD environment.\nAWS CodePipeline is a continuous delivery service that automates the build, test, and deploy phases of application releases, but requires manual configuration of each stage and does not provide the complete project dashboard, pre-configured toolchain templates, or unified development environment that CodeStar delivers. AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs unit tests, and produces deployment artefacts, and is a single component of a CI/CD pipeline rather than an integrated project management and toolchain setup service. AWS CodeCommit is a fully managed source control service for hosting secure Git repositories, and is a version control service rather than a unified project environment that sets up and manages an entire development workflow across multiple services.",
-    "source": "ai-generated",
-    "isMultiAnswer": false
-  },
-  {
     "id": "q1082",
     "domainId": 3,
     "question": "A company's e-commerce application needs to automatically send order confirmation emails, shipping notification emails, and password reset emails to customers at high volume directly from application code. Which AWS service is designed for this use case?",
@@ -5905,6 +5890,156 @@
     "answer": "C",
     "explanation": "AWS AppSync is a fully managed GraphQL service that simplifies building APIs for web and mobile applications, with built-in support for real-time data updates through GraphQL subscriptions that automatically push changes to all connected clients whenever underlying data is modified, making it ideal for collaborative and live-updating applications.\nAmazon API Gateway is a fully managed service for creating RESTful, HTTP, and WebSocket APIs, and while WebSocket APIs support two-way communication, API Gateway does not natively provide GraphQL schema management, resolver configuration, or the subscription-based real-time data push model that AppSync delivers for building collaborative applications. Amazon Kinesis is a real-time data streaming service for ingesting and processing high-throughput data streams, and is designed for building data pipelines and analytics rather than for providing a GraphQL API layer with subscription-based real-time updates to application clients. AWS Amplify is a full-stack development framework that provides client-side libraries for connecting applications to AppSync APIs, but Amplify is the frontend tooling layer rather than the managed GraphQL service that hosts the API, manages data sources, and delivers real-time subscriptions to clients.",
     "source": "ai-generated",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1106",
+    "domainId": 3,
+    "question": "A company needs a fully managed file system that is compatible with the Windows Server Message Block (SMB) protocol for migrating Windows-based workloads to AWS. Which AWS service should they use?",
+    "options": {
+      "A": "Amazon EFS",
+      "B": "Amazon FSx for Windows File Server",
+      "C": "Amazon S3",
+      "D": "AWS Storage Gateway"
+    },
+    "answer": "B",
+    "explanation": "Amazon FSx for Windows File Server provides a fully managed Windows-native file system built on Windows Server with full SMB protocol support, Active Directory integration, and NTFS, making it the purpose-built service for migrating Windows-based file workloads to AWS.\nAmazon EFS is a fully managed NFS file system designed for Linux-based workloads and does not support the SMB protocol required by Windows applications. Amazon S3 is an object storage service accessed via HTTP APIs and is not a file system that supports SMB protocol access for Windows workloads. AWS Storage Gateway provides hybrid cloud storage that connects on-premises environments to AWS storage services, but it is a gateway appliance rather than a fully managed cloud-native file system.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1107",
+    "domainId": 3,
+    "question": "Which AWS service provides fully managed third-party file systems optimized for workloads such as high-performance computing, machine learning, and Windows-based applications?",
+    "options": {
+      "A": "Amazon EBS",
+      "B": "Amazon S3",
+      "C": "Amazon FSx",
+      "D": "Amazon EFS"
+    },
+    "answer": "C",
+    "explanation": "Amazon FSx provides fully managed file systems built on popular third-party and open-source technologies including Lustre for high-performance computing, NetApp ONTAP for enterprise workloads, OpenZFS, and Windows File Server, each optimised for specific workload requirements.\nAmazon EBS provides block-level storage volumes attached to individual EC2 instances and is a block storage service rather than a managed file system supporting multiple file system technologies. Amazon S3 is an object storage service designed for storing and retrieving any amount of data via HTTP APIs, and does not provide file system access through protocols like NFS, SMB, or Lustre. Amazon EFS is a managed NFS file system for Linux workloads and supports only the NFS protocol, unlike FSx which offers multiple file system types for different workload requirements.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1108",
+    "domainId": 3,
+    "question": "A company wants to allow employees to securely access internal web applications from personal unmanaged devices without installing any software on those devices. Which AWS service meets this requirement?",
+    "options": {
+      "A": "Amazon WorkSpaces",
+      "B": "Amazon WorkSpaces Web",
+      "C": "Amazon AppStream 2.0",
+      "D": "AWS Client VPN"
+    },
+    "answer": "B",
+    "explanation": "Amazon WorkSpaces Web provides a fully managed, browser-based service that allows users to securely access internal web applications and SaaS applications from any device with a web browser, without requiring software installation or a full virtual desktop environment.\nAmazon WorkSpaces provides fully managed persistent virtual desktops in the cloud, which is a heavier solution than needed for simple web application access and requires a client application to be installed on the device. Amazon AppStream 2.0 streams desktop applications to users through a web browser, but it is designed for streaming full desktop applications rather than providing lightweight secure browser access to web applications. AWS Client VPN provides secure remote access to an AWS network from individual devices, but it requires VPN client software to be installed and configured on each device.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1109",
+    "domainId": 3,
+    "question": "Which AWS service provides a fully managed browser-based solution for accessing web applications without provisioning a full virtual desktop?",
+    "options": {
+      "A": "Amazon AppStream 2.0",
+      "B": "Amazon WorkSpaces",
+      "C": "Amazon WorkSpaces Web",
+      "D": "AWS Direct Connect"
+    },
+    "answer": "C",
+    "explanation": "Amazon WorkSpaces Web is a low-cost, fully managed browser-based service specifically designed for securely accessing web applications and websites without the overhead of provisioning and managing full virtual desktop infrastructure.\nAmazon AppStream 2.0 is an application streaming service that delivers desktop applications to users through a web browser, and is designed for streaming resource-intensive applications rather than providing lightweight web-only browser access. Amazon WorkSpaces provisions full persistent virtual desktops with a complete operating system environment, which is more than what is needed for web-only application access and carries higher cost and management overhead. AWS Direct Connect establishes a dedicated private network connection between on-premises infrastructure and AWS, and is a networking service with no capability to provide browser-based application access.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1110",
+    "domainId": 3,
+    "question": "A company needs to track and manage its Microsoft and Oracle software licenses as it migrates workloads to AWS. Which AWS service helps manage software license compliance?",
+    "options": {
+      "A": "AWS Systems Manager",
+      "B": "AWS License Manager",
+      "C": "AWS Config",
+      "D": "AWS Service Catalog"
+    },
+    "answer": "B",
+    "explanation": "AWS License Manager helps customers manage software license entitlements from vendors such as Microsoft, Oracle, and SAP across AWS and on-premises environments, providing centralised tracking and enforcement of licensing rules to prevent compliance violations.\nAWS Systems Manager provides operational tools for managing EC2 instances and on-premises servers including patching, automation, and parameter storage, but does not track or enforce software licensing rules. AWS Config records and evaluates the configuration of AWS resources against compliance rules, but it monitors resource configurations rather than tracking software license entitlements and usage. AWS Service Catalog allows organisations to create and manage approved catalogues of IT services for deployment on AWS, but it governs which products can be deployed rather than tracking software license compliance.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1111",
+    "domainId": 3,
+    "question": "Which AWS service provides a centralised way to manage software license entitlements and set licensing rules to prevent exceeding license limits?",
+    "options": {
+      "A": "AWS Marketplace",
+      "B": "AWS Organizations",
+      "C": "AWS License Manager",
+      "D": "AWS Trusted Advisor"
+    },
+    "answer": "C",
+    "explanation": "AWS License Manager enables customers to define licensing rules based on their agreements with software vendors, track license usage across AWS and on-premises environments, and enforce limits to prevent exceeding entitlements, reducing the risk of non-compliance and unexpected licensing costs.\nAWS Marketplace is a digital catalogue for finding, buying, and deploying third-party software that runs on AWS, and while it handles procurement of new licenses, it does not manage existing license entitlements or enforce usage limits across environments. AWS Organizations is an account management service for centrally governing multiple AWS accounts through policies and consolidated billing, and does not provide software license tracking or enforcement. AWS Trusted Advisor provides automated recommendations for improving security, cost, performance, and fault tolerance of an AWS environment, but does not track or manage software licensing compliance.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1112",
+    "domainId": 3,
+    "question": "A company runs containerised applications on Amazon ECS and needs a fully managed registry to store, manage, and deploy Docker container images. Which AWS service should they use?",
+    "options": {
+      "A": "Amazon S3",
+      "B": "AWS CodeCommit",
+      "C": "Amazon Elastic Container Registry (Amazon ECR)",
+      "D": "AWS CodeArtifact"
+    },
+    "answer": "C",
+    "explanation": "Amazon Elastic Container Registry is a fully managed Docker container registry that integrates natively with Amazon ECS and Amazon EKS, providing secure, scalable storage for container images with built-in vulnerability scanning and lifecycle policies.\nAmazon S3 is an object storage service that can store any type of file, but it is not a container registry and does not provide the Docker registry API, image layer management, or native container service integration that ECR offers. AWS CodeCommit is a managed Git repository service for storing and versioning source code, not container images, and does not provide Docker registry functionality. AWS CodeArtifact is a managed artifact repository for storing and sharing software packages such as npm, Maven, and Python packages, but it does not support Docker container images.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1113",
+    "domainId": 3,
+    "question": "A company wants to set up a low-cost disaster recovery solution that can automatically recover on-premises servers on AWS in the event of a site failure. Which AWS service should they use?",
+    "options": {
+      "A": "AWS Backup",
+      "B": "AWS Elastic Disaster Recovery",
+      "C": "Amazon S3 Cross-Region Replication",
+      "D": "AWS DataSync"
+    },
+    "answer": "B",
+    "explanation": "AWS Elastic Disaster Recovery continuously replicates source servers to AWS using lightweight agents, maintaining a low-cost staging area, and can quickly launch fully provisioned recovery instances in minutes when a disaster occurs, providing an automated and cost-effective disaster recovery solution.\nAWS Backup is a centralised backup service that automates and manages backups across AWS services, but it creates point-in-time backups for data recovery rather than providing continuous replication and rapid server recovery for disaster recovery scenarios. Amazon S3 Cross-Region Replication automatically copies S3 objects to a bucket in a different Region for data durability, but it only replicates S3 data and cannot recover full server environments including operating systems and applications. AWS DataSync automates data transfer between on-premises storage and AWS storage services, but it is a data movement tool rather than a disaster recovery service that can launch recovery instances.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1114",
+    "domainId": 3,
+    "question": "A company with multiple AWS accounts within an organization wants to share VPC subnets and AWS Transit Gateways across accounts without duplicating resources. Which AWS service enables this?",
+    "options": {
+      "A": "AWS Organizations",
+      "B": "VPC Peering",
+      "C": "AWS Resource Access Manager (AWS RAM)",
+      "D": "AWS Control Tower"
+    },
+    "answer": "C",
+    "explanation": "AWS Resource Access Manager enables customers to securely share AWS resources such as VPC subnets, Transit Gateways, and Route 53 Resolver rules across AWS accounts within an organisation, eliminating the need to create duplicate resources in each account.\nAWS Organizations provides centralised management and governance of multiple AWS accounts through service control policies and consolidated billing, but it does not itself provide the mechanism to share specific resources like subnets or Transit Gateways between accounts. VPC Peering creates a networking connection between two VPCs that allows traffic to flow between them, but it is a point-to-point connection and does not share resources like subnets or Transit Gateways across accounts. AWS Control Tower automates the setup and governance of a secure multi-account AWS environment based on best practices, but it is an account governance service that does not provide resource sharing capabilities.",
+    "source": "new-d3-services-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1141",
+    "domainId": 3,
+    "question": "A company wants to provide employees with a generative AI-powered assistant that can answer questions about company data, generate content, and automate tasks using enterprise knowledge sources. Which AWS service should they use?",
+    "options": {
+      "A": "Amazon SageMaker AI",
+      "B": "Amazon Q",
+      "C": "Amazon Lex",
+      "D": "Amazon Kendra"
+    },
+    "answer": "B",
+    "explanation": "Amazon Q is a generative AI-powered assistant designed for businesses that can be customised with enterprise data to answer questions, generate content, take actions, and automate workflows, providing a ready-to-use AI assistant without requiring machine learning expertise.\nAmazon SageMaker AI is a fully managed platform for building, training, and deploying custom machine learning models, which requires data science expertise and is designed for custom ML development rather than a ready-to-use conversational AI assistant. Amazon Lex is a service for building conversational chatbots using voice and text interfaces, but it requires developers to define intents and conversation flows rather than providing a pre-built generative AI assistant that works with enterprise knowledge. Amazon Kendra is an intelligent enterprise search service that indexes documents and returns relevant answers to search queries, but it is a search engine rather than a generative AI assistant that can create content and automate tasks.",
+    "source": "new-d3-services-questions.md",
     "isMultiAnswer": false
   }
 ]

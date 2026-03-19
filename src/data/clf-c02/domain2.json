@@ -3937,5 +3937,35 @@
     "explanation": "AWS WAF is a web application firewall that inspects HTTP and HTTPS traffic and can be configured with rules to detect and block SQL injection attempts before they reach the application.\nAmazon VPC provides network isolation and security controls at the infrastructure level through security groups and network ACLs, but does not inspect application-layer HTTP traffic content for SQL injection patterns the way WAF does. AWS Shield provides managed DDoS protection at the network and transport layers to defend against volumetric attacks, and is not designed to inspect or block application-layer exploits such as SQL injection. AWS CloudTrail records API calls and management events for auditing purposes, and while it logs activity in the AWS environment, it does not inspect web application traffic or block SQL injection attacks.",
     "source": "practice-exam-23.md",
     "isMultiAnswer": false
+  },
+  {
+    "id": "q1104",
+    "domainId": 2,
+    "question": "A company needs to continuously assess its AWS environment against compliance frameworks such as PCI DSS and GDPR and automatically collect evidence for audits. Which AWS service should they use?",
+    "options": {
+      "A": "AWS Artifact",
+      "B": "AWS Config",
+      "C": "AWS Audit Manager",
+      "D": "Amazon Inspector"
+    },
+    "answer": "C",
+    "explanation": "AWS Audit Manager continuously collects evidence from AWS services, maps it to compliance framework controls such as PCI DSS and GDPR, and organises it into audit-ready reports, automating much of the manual effort involved in compliance assessments.\nAWS Artifact provides on-demand access to AWS compliance reports and certifications such as SOC and ISO documents, but it does not assess a customer's own environment or collect evidence for customer-specific compliance audits. AWS Config records and evaluates resource configurations against compliance rules, and while it contributes evidence that Audit Manager can consume, it does not itself organise findings into structured audit reports mapped to compliance frameworks. Amazon Inspector scans EC2 instances and container images for software vulnerabilities and unintended network exposure, and is a vulnerability scanning tool rather than a compliance audit evidence collection service.",
+    "source": "new-audit-manager-questions.md",
+    "isMultiAnswer": false
+  },
+  {
+    "id": "q1105",
+    "domainId": 2,
+    "question": "Which AWS service helps simplify audit preparation by automatically collecting and organizing evidence from AWS usage and activity into assessment reports?",
+    "options": {
+      "A": "AWS CloudTrail",
+      "B": "AWS Audit Manager",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS Security Hub"
+    },
+    "answer": "B",
+    "explanation": "AWS Audit Manager automates evidence collection from multiple AWS sources including CloudTrail logs, Config evaluations, and Security Hub findings, and organises this evidence into assessment reports that map directly to compliance framework requirements, significantly reducing audit preparation effort.\nAWS CloudTrail records API calls and management events across an AWS account for auditing and forensic analysis, but it captures raw activity logs rather than organising them into structured compliance assessment reports. AWS Trusted Advisor provides automated best-practice checks across security, cost, performance, and fault tolerance categories, but delivers advisory recommendations rather than structured audit evidence mapped to compliance frameworks. AWS Security Hub aggregates and prioritises security findings from multiple AWS services into a centralised dashboard, but it is a security posture management tool rather than a compliance audit preparation and evidence collection service.",
+    "source": "new-audit-manager-questions.md",
+    "isMultiAnswer": false
   }
 ]
