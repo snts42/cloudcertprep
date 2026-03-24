@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#FF9900" />
     
     <!-- Preconnect to external origins (improves LCP) -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://gvxkbwgqhqbdnkzqvdvt.supabase.co" />
+    <link rel="dns-prefetch" href="https://gvxkbwgqhqbdnkzqvdvt.supabase.co" />
     
     <!-- Primary Meta Tags -->
     <title>CloudCertPrep | Free AWS Certification Practice Exams</title>
@@ -62,6 +64,72 @@
       }
     }
     </script>
+    
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is CloudCertPrep really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100% free. No hidden fees, no premium tiers, no paywalls, and no ads. All 1,050+ practice questions, mock exams, and progress tracking features are completely free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many practice questions are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Over 1,050 practice questions for AWS Cloud Practitioner (CLF-C02), with more certifications coming soon. Questions are up to date with the 2026 exam guide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the format of the mock exams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mock exams follow the same format as the real AWS exam: 65 questions in 90 minutes. You need a scaled score of 700/1000 to pass, just like the actual certification exam."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to create an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No account is required to practice. However, creating a free account allows you to save your progress, track exam history, and monitor your domain mastery over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does domain practice work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Domain practice lets you focus on one exam domain at a time with instant feedback. You can practice specific areas where you need improvement and track your mastery percentage for each domain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this an AWS exam simulator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, CloudCertPrep is a full AWS exam simulator with timed mock exams that replicate the real certification experience. Practice with 65-question exams, 90-minute timers, and scaled scoring (700/1000 to pass) just like the actual AWS Cloud Practitioner exam."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What certifications does CloudCertPrep support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently supports AWS Cloud Practitioner (CLF-C02) with 1,050 practice questions. AWS Solutions Architect Associate (SAA-C03) is coming soon. All content is updated for the 2026 exam guides."
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Google Analytics (deferred until page is interactive, requires consent) -->
     <script>
@@ -97,6 +165,14 @@
       (function(){var t=localStorage.getItem('cloudcertprep_theme');if(t==='dark'){document.documentElement.classList.add('dark')}})();
     </script>
     <div id="root"></div>
+    <noscript>
+      <div style="text-align: center; padding: 2rem; font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #FF9900; margin-bottom: 1rem;">CloudCertPrep - Free AWS Certification Practice Exams</h1>
+        <p style="margin-bottom: 1rem; color: #666;">This application requires JavaScript to run.</p>
+        <p style="margin-bottom: 1rem; color: #666;">Please enable JavaScript in your browser to access 1,050+ practice questions, mock exams, and progress tracking for AWS certifications.</p>
+        <p><a href="https://www.cloudcertprep.io" style="color: #FF9900; text-decoration: none;">Visit CloudCertPrep</a></p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

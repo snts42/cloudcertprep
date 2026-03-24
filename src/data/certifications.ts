@@ -59,9 +59,6 @@ export const CERTIFICATIONS: Record<string, Certification> = {
 
 export const DEFAULT_CERT_ID = 'clf-c02'
 
-/** All cert codes in display order */
-export const CERT_CODES = Object.keys(CERTIFICATIONS)
-
 /** All certifications as an array */
 export const CERTIFICATION_LIST = Object.values(CERTIFICATIONS)
 
