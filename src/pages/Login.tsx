@@ -124,7 +124,7 @@ export function Login() {
                     <FileText className="w-5 h-5 text-aws-orange" />
                   </div>
                   <div>
-                    <h3 className="text-text-primary font-semibold mb-1">Full Mock Exams</h3>
+                    <h3 className="text-text-primary font-semibold mb-1">Full-Length Practice Exams</h3>
                     <p className="text-text-muted text-sm">65 questions, 90 minutes - same format as the real exam</p>
                   </div>
                 </div>

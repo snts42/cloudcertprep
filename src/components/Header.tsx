@@ -26,9 +26,9 @@ export function Header({ showNav = false }: HeaderProps) {
               <Check className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white absolute" strokeWidth={3} />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+              <span className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight block">
                 CloudCertPrep
-              </h1>
+              </span>
               <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
                 AWS Certification Exam Prep
               </p>

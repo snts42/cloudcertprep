@@ -125,14 +125,16 @@ export function Dashboard() {
 
             {/* Practice Modes */}
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">{cert.shortName} Practice Modes</h2>
+              <h1 className="text-xl md:text-2xl font-semibold text-text-primary mb-4">
+                {user ? `${cert.shortName} Practice Modes` : `Free ${cert.shortName} Practice Exams`}
+              </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <Link
                   to="/mock-exam"
                   className="bg-bg-card hover:bg-bg-card-hover p-4 md:p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all"
                 >
                   <FileText className="w-8 h-8 md:w-10 md:h-10 text-aws-orange mb-2" />
-                  <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Mock Exam</h3>
+                  <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Practice Exam</h3>
                   <p className="text-text-muted text-xs md:text-sm">{cert.examQuestionCount} questions • {examMinutes} minutes • Pass at {cert.passingScore}/1000</p>
                 </Link>
                 
@@ -207,7 +209,7 @@ export function Dashboard() {
                       <div className="flex items-start gap-3">
                         <FileText className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-text-primary font-medium text-sm md:text-base">Full Mock Exams</p>
+                          <p className="text-text-primary font-medium text-sm md:text-base">Full-Length Practice Exams</p>
                           <p className="text-text-muted text-xs md:text-sm">Over 10¹⁰⁰ possible combinations - you won't see the same exam twice</p>
                         </div>
                       </div>

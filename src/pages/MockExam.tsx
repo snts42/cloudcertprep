@@ -338,7 +338,7 @@ export function MockExam() {
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
-          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">{cert.shortName} Mock Exam</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">{cert.shortName} Practice Exam</h1>
           <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">{cert.examQuestionCount} questions — {Math.round(cert.examTimeSeconds / 60)} minutes — No answer feedback during exam</p>
           
           <div className="bg-bg-dark rounded-lg p-4 md:p-6 mb-6 md:mb-8">
@@ -500,7 +500,7 @@ export function MockExam() {
                   <Check className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white absolute" strokeWidth={3} />
                 </div>
                 <div>
-                  <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">CloudCertPrep</h1>
+                  <span className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight block">CloudCertPrep</span>
                   <p className="text-xs md:text-sm text-white/90 font-medium hidden lg:block">
                     {cert.name} Exam Prep
                   </p>

@@ -2,7 +2,7 @@
 // Cert-specific values (question count, time, pass score) live in data/certifications.ts.
 
 export const APP_NAME = 'CloudCertPrep'
-export const DEFAULT_PAGE_TITLE = `${APP_NAME} | Free AWS Certification Practice Exams`
+export const DEFAULT_PAGE_TITLE = `${APP_NAME} | Free AWS Practice Exams (CLF-C02, SAA-C03)`
 
 export const MIN_VALID_EXAM_SECONDS = 60
 export const MAX_MULTI_ANSWER = 2
