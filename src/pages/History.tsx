@@ -267,18 +267,21 @@ export function History() {
         .from('attempt_questions')
         .delete()
         .eq('user_id', user.id)
+        .eq('cert_code', cert.code)
       if (e1) throw e1
 
       const { error: e2 } = await supabase
         .from('exam_attempts')
         .delete()
         .eq('user_id', user.id)
+        .eq('cert_code', cert.code)
       if (e2) throw e2
 
       const { error: e3 } = await supabase
         .from('domain_progress')
         .delete()
         .eq('user_id', user.id)
+        .eq('cert_code', cert.code)
       if (e3) throw e3
 
       setAttempts([])
