@@ -115,7 +115,7 @@ export function Login() {
                   </div>
                   <div>
                     <h3 className="text-text-primary font-semibold mb-1">{getCertTotalQuestions(cert.code).toLocaleString()} Practice Questions</h3>
-                    <p className="text-text-muted text-sm">Comprehensive coverage of all {cert.shortName} exam domains</p>
+                    <p className="text-text-muted text-sm">Up to date with the 2026 exam guide, across all {cert.shortName} domains</p>
                   </div>
                 </div>
 
@@ -125,7 +125,7 @@ export function Login() {
                   </div>
                   <div>
                     <h3 className="text-text-primary font-semibold mb-1">Full Mock Exams</h3>
-                    <p className="text-text-muted text-sm">65 questions, 90 minutes - authentic exam simulation</p>
+                    <p className="text-text-muted text-sm">65 questions, 90 minutes - same format as the real exam</p>
                   </div>
                 </div>
 
@@ -135,7 +135,7 @@ export function Login() {
                   </div>
                   <div>
                     <h3 className="text-text-primary font-semibold mb-1">Domain Practice</h3>
-                    <p className="text-text-muted text-sm">Focus on specific areas with instant feedback</p>
+                    <p className="text-text-muted text-sm">Practice one domain at a time with instant feedback</p>
                   </div>
                 </div>
 
@@ -145,7 +145,7 @@ export function Login() {
                   </div>
                   <div>
                     <h3 className="text-text-primary font-semibold mb-1">Progress Tracking</h3>
-                    <p className="text-text-muted text-sm">Monitor your mastery across all domains over time</p>
+                    <p className="text-text-muted text-sm">Monitor your scores across all domains and review past attempts</p>
                   </div>
                 </div>
 
@@ -155,7 +155,7 @@ export function Login() {
                   </div>
                   <div>
                     <h3 className="text-text-primary font-semibold mb-1">100% Free</h3>
-                    <p className="text-text-muted text-sm">No hidden fees, no premium tiers, no paywalls</p>
+                    <p className="text-text-muted text-sm">No hidden fees, no premium tiers, no paywalls, no ads</p>
                   </div>
                 </div>
               </div>

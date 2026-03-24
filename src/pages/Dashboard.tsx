@@ -133,7 +133,7 @@ export function Dashboard() {
                 >
                   <FileText className="w-8 h-8 md:w-10 md:h-10 text-aws-orange mb-2" />
                   <h3 className="text-base md:text-lg font-semibold text-text-primary mb-1 md:mb-2">Mock Exam</h3>
-                  <p className="text-text-muted text-xs md:text-sm">{cert.examQuestionCount} questions • {examMinutes} minutes</p>
+                  <p className="text-text-muted text-xs md:text-sm">{cert.examQuestionCount} questions • {examMinutes} minutes • Pass at {cert.passingScore}/1000</p>
                 </Link>
                 
                 <Link
@@ -201,28 +201,28 @@ export function Dashboard() {
                         <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
                         <div>
                           <p className="text-text-primary font-medium text-sm md:text-base">{getCertTotalQuestions(cert.code).toLocaleString()} Practice Questions</p>
-                          <p className="text-text-muted text-xs md:text-sm">{cert.name} ({cert.shortName}) exam coverage</p>
+                          <p className="text-text-muted text-xs md:text-sm">Up to date with the 2026 exam guide - more questions than most paid platforms</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <FileText className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
                         <div>
                           <p className="text-text-primary font-medium text-sm md:text-base">Full Mock Exams</p>
-                          <p className="text-text-muted text-xs md:text-sm">{cert.examQuestionCount} questions, {examMinutes} minutes, pass at {cert.passingScore}/1000</p>
+                          <p className="text-text-muted text-xs md:text-sm">Over 10¹⁰⁰ possible combinations - you won't see the same exam twice</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
                         <div>
                           <p className="text-text-primary font-medium text-sm md:text-base">{cert.domains.length} Exam Domains</p>
-                          <p className="text-text-muted text-xs md:text-sm">Practice each domain individually with instant feedback</p>
+                          <p className="text-text-muted text-xs md:text-sm">Practice each domain individually with instant feedback and detailed explanations</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-aws-orange flex-shrink-0 mt-0.5" />
                         <div>
                           <p className="text-text-primary font-medium text-sm md:text-base">Progress Tracking</p>
-                          <p className="text-text-muted text-xs md:text-sm">Monitor your mastery across all domains</p>
+                          <p className="text-text-muted text-xs md:text-sm">Monitor your scores across all domains and review your exam history</p>
                         </div>
                       </div>
                     </div>
