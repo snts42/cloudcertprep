@@ -5,9 +5,12 @@ import { validatePassword } from '../lib/validation'
 import { Header } from '../components/Header'
 import { trackEvent } from '../lib/analytics'
 import { usePageTitle } from '../hooks/usePageTitle'
+import { useCert } from '../hooks/useCert'
+import { getCertTotalQuestions } from '../data/certifications'
 import { BookOpen, FileText, Target, TrendingUp, CheckCircle, Mail } from 'lucide-react'
 
 export function Login() {
+  const cert = useCert()
   const [isSignUp, setIsSignUp] = useState(false)
   const [isForgotPassword, setIsForgotPassword] = useState(false)
   const [signUpSuccess, setSignUpSuccess] = useState(false)
@@ -111,8 +114,8 @@ export function Login() {
                     <BookOpen className="w-5 h-5 text-aws-orange" />
                   </div>
                   <div>
-                    <h3 className="text-text-primary font-semibold mb-1">985 Practice Questions</h3>
-                    <p className="text-text-muted text-sm">Comprehensive coverage of all CLF-C02 exam domains</p>
+                    <h3 className="text-text-primary font-semibold mb-1">{getCertTotalQuestions(cert.code).toLocaleString()} Practice Questions</h3>
+                    <p className="text-text-muted text-sm">Comprehensive coverage of all {cert.shortName} exam domains</p>
                   </div>
                 </div>
 
@@ -250,9 +253,9 @@ export function Login() {
                   />
                   <span className="text-text-muted text-sm leading-relaxed">
                     I agree to the{' '}
-                    <Link to="/terms" className="text-aws-orange hover:underline" target="_blank">Terms of Service</Link>
+                    <Link to="/terms" className="text-aws-orange hover:underline" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
                     {' '}and{' '}
-                    <Link to="/privacy" className="text-aws-orange hover:underline" target="_blank">Privacy Policy</Link>
+                    <Link to="/privacy" className="text-aws-orange hover:underline" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
                   </span>
                 </label>
                 </>

@@ -31,7 +31,7 @@ export function CookieConsent() {
       // Initialize GA4 dataLayer
       const w = window as typeof window & { dataLayer: unknown[] }
       w.dataLayer = w.dataLayer || []
-      w.gtag = function() { w.dataLayer.push(arguments) }
+      w.gtag = function(...args: unknown[]) { w.dataLayer.push(args) }
       w.gtag('js', new Date())
       w.gtag('config', measurementId)
     }

@@ -7,6 +7,7 @@ import { Footer } from './components/Footer'
 import { DonateButton } from './components/DonateButton'
 import { LoadingSpinner } from './components/LoadingSpinner'
 import { CookieConsent } from './components/CookieConsent'
+import { ScrollToTop } from './components/ScrollToTop'
 import { trackPageView } from './lib/analytics'
 
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })))
@@ -72,6 +73,7 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollToTop />
       <main className="flex-1">
         <AppRoutes />
       </main>

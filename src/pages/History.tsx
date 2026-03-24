@@ -189,17 +189,6 @@ export function History() {
   const [reviewDomainFilter, setReviewDomainFilter] = useState<number | null>(null)
   const [reviewQuestionIndex, setReviewQuestionIndex] = useState(0)
 
-  useEffect(() => {
-    if (!authLoading) {
-      loadHistory()
-    }
-  }, [user, authLoading, cert.code])
-
-  // Reset to page 1 when filter or items per page changes
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [filter, itemsPerPage])
-
   async function loadHistory() {
     try {
       if (!user?.id) {
@@ -223,6 +212,12 @@ export function History() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (!authLoading) {
+      loadHistory()
+    }
+  }, [user, authLoading, cert.code])
 
   async function handleExpandAttempt(attemptId: string) {
     // Toggle collapse

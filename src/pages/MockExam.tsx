@@ -155,18 +155,22 @@ export function MockExam() {
 
   async function startExam() {
     setLoading(true)
-    const allQuestions = await loadAllQuestions(cert.code)
-    const selectedQuestions = selectExamQuestions(allQuestions, cert)
-    const { questions: shuffled, keyMaps } = shuffleAndMapQuestions(selectedQuestions)
-    setQuestions(shuffled)
-    setOptionKeyMaps(keyMaps)
-    setAnswers(new Map())
-    setCurrentIndex(0)
-    setScreen('exam')
-    setStartTime(Date.now())
-    timer.start()
-    trackEvent('exam_started')
-    setLoading(false)
+    try {
+      const allQuestions = await loadAllQuestions(cert.code)
+      const selectedQuestions = selectExamQuestions(allQuestions, cert)
+      const { questions: shuffled, keyMaps } = shuffleAndMapQuestions(selectedQuestions)
+      setQuestions(shuffled)
+      setOptionKeyMaps(keyMaps)
+      setAnswers(new Map())
+      setCurrentIndex(0)
+      setScreen('exam')
+      setStartTime(Date.now())
+      timer.start()
+      trackEvent('exam_started')
+      window.scrollTo(0, 0)
+    } finally {
+      setLoading(false)
+    }
   }
 
   function handleAnswer(answer: string) {
@@ -316,6 +320,7 @@ export function MockExam() {
     })
 
     setScreen('results')
+    window.scrollTo(0, 0)
     trackEvent('exam_completed', { passed, scaled_score: scaledScore, score_percent: Math.round(percentScore) })
     setLoading(false)
   }
@@ -449,6 +454,7 @@ export function MockExam() {
                 setReviewFilter('all')
                 setReviewDomainFilter(null)
                 setReviewQuestionIndex(0)
+                window.scrollTo(0, 0)
                 setScreen('review')
               }}
               className="w-full bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold py-3 rounded-lg transition-colors"

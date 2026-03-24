@@ -36,12 +36,6 @@ export function Dashboard() {
   const [domainProgress, setDomainProgress] = useState<DomainProgress[]>([])
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([])
 
-  useEffect(() => {
-    if (!authLoading && user) {
-      loadDashboardData()
-    }
-  }, [user, authLoading, cert.code])
-
   async function loadDashboardData() {
     try {
       const [progressRes, attemptsRes] = await Promise.all([
@@ -77,6 +71,12 @@ export function Dashboard() {
       logError('Dashboard.loadDashboardData', error)
     }
   }
+
+  useEffect(() => {
+    if (!authLoading && user) {
+      loadDashboardData()
+    }
+  }, [user, authLoading, cert.code])
 
   if (authLoading) {
     return (

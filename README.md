@@ -2,7 +2,7 @@
 
 Free AWS certification practice exams — [cloudcertprep.io](https://www.cloudcertprep.io)
 
-985 practice questions · Timed mock exams · Spaced repetition · Progress tracking
+1,050 practice questions · Timed mock exams · Spaced repetition · Progress tracking
 
 ---
 
@@ -26,7 +26,7 @@ Free AWS certification practice exams — [cloudcertprep.io](https://www.cloudce
 │   ┌─────────┐ ┌─────────┐ ┌──────────┐ ┌─────────┐               │
 │   │ D1      │ │ D2      │ │ D3       │ │ D4      │               │
 │   │ 53 KB gz│ │ 74 KB gz│ │ 107 KB gz│ │ 68 KB gz│               │
-│   │ 180 Qs  │ │ 231 Qs  │ │ 350 Qs   │ │ 224 Qs  │               │
+│   │ 187 Qs  │ │ 247 Qs  │ │ 384 Qs   │ │ 232 Qs  │               │
 │   └─────────┘ └─────────┘ └──────────┘ └─────────┘               │
 │                                                                     │
 └─────────────────────────────────┬───────────────────────────────────┘

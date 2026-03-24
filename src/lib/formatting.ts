@@ -16,8 +16,6 @@ export function formatRelativeDate(dateString: string): string {
     return diffMinutes === 1 ? '1 minute ago' : `${diffMinutes} minutes ago`
   } else if (diffHours < 24) {
     return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`
-  } else if (diffDays === 0) {
-    return 'Today'
   } else if (diffDays === 1) {
     return 'Yesterday'
   } else if (diffDays < 7) {

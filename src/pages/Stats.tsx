@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase'
 import { formatRelativeDate } from '../lib/formatting'
 import { formatTime } from '../lib/scoring'
 import { usePageTitle } from '../hooks/usePageTitle'
-import { CERTIFICATIONS } from '../data/certifications'
+import { CERTIFICATIONS, getCertTotalQuestions } from '../data/certifications'
 import { Trophy, TrendingUp, Clock } from 'lucide-react'
 import { logError } from '../lib/logger'
 
@@ -249,7 +249,7 @@ export function Stats() {
               <TrendingUp className="w-5 h-5 text-aws-orange flex-shrink-0 mt-0.5" />
               <div>
                 <p className="text-text-primary text-sm md:text-base mb-1">
-                  {CERTIFICATIONS['saa-c03'].domains.reduce((sum, d) => sum + d.questionCount, 0)} practice questions available
+                  {getCertTotalQuestions('saa-c03').toLocaleString()} practice questions available
                 </p>
                 <p className="text-text-muted text-xs md:text-sm">
                   Full launch expected in 1-2 weeks. Community stats will appear here once users start taking exams.

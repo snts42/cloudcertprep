@@ -93,6 +93,7 @@ export function DomainPractice() {
       setResults([])
       setQuestionResults([])
       setScreen('practice')
+      window.scrollTo(0, 0)
       trackEvent('practice_started', { domain_id: selectedDomain, question_count: questionCount })
     } finally {
       setLoading(false)
@@ -182,6 +183,7 @@ export function DomainPractice() {
 
     trackEvent('practice_completed', { domain_id: selectedDomain, correct: results.filter(r => r).length, total: questions.length })
     setScreen('results')
+    window.scrollTo(0, 0)
   }
 
   const currentQuestion = questions[currentIndex]
