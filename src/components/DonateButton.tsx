@@ -1,12 +1,13 @@
 import { Heart } from 'lucide-react'
-import { useLocation } from 'react-router-dom'
 import { KOFI_URL } from '../lib/constants'
 
-export function DonateButton() {
-  const location = useLocation()
-  
-  // Hide on mock exam page
-  if (location.pathname === '/mock-exam') {
+interface DonateButtonProps {
+  isExamActive: boolean
+}
+
+export function DonateButton({ isExamActive }: DonateButtonProps) {
+  // Hide only during timed exam
+  if (isExamActive) {
     return null
   }
 

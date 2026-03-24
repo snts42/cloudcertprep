@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider } from './hooks/useAuth'
 import { ThemeProvider } from './hooks/useTheme'
@@ -68,8 +68,24 @@ function App() {
 }
 
 function AppContent() {
-  const location = useLocation()
-  const hideFooter = location.pathname === '/mock-exam'
+  const [isExamActive, setIsExamActive] = useState(false)
+
+  useEffect(() => {
+    // Check initial state
+    setIsExamActive(document.body.dataset.examActive === 'true')
+
+    // Watch for changes to data-exam-active attribute
+    const observer = new MutationObserver(() => {
+      setIsExamActive(document.body.dataset.examActive === 'true')
+    })
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['data-exam-active']
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -77,8 +93,8 @@ function AppContent() {
       <main className="flex-1">
         <AppRoutes />
       </main>
-      {!hideFooter && <Footer />}
-      <DonateButton />
+      {!isExamActive && <Footer />}
+      <DonateButton isExamActive={isExamActive} />
       <CookieConsent />
     </div>
   )

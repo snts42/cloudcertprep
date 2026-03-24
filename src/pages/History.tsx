@@ -173,7 +173,7 @@ export function History() {
   const [loading, setLoading] = useState(true)
   const [attempts, setAttempts] = useState<ExamAttempt[]>([])
 
-  usePageTitle('My Exam History | CloudCertPrep')
+  usePageTitle(`${cert.shortName} Exam History | CloudCertPrep`)
   const [filter, setFilter] = useState<'all' | 'passed' | 'failed'>('all')
   const [expandedAttempt, setExpandedAttempt] = useState<string | null>(null)
   const [itemsPerPage, setItemsPerPage] = useState(3)
@@ -324,7 +324,7 @@ export function History() {
       <div className="p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-4 md:mb-6">
-            <h1 className="text-xl md:text-2xl font-semibold text-text-primary">Mock Exam History</h1>
+            <h1 className="text-xl md:text-2xl font-semibold text-text-primary">{cert.shortName} Exam History</h1>
             {user && attempts.length > 0 && (
               <button
                 onClick={() => setShowResetModal(true)}
@@ -498,7 +498,7 @@ export function History() {
                 </div>
 
                 {/* View Details Button */}
-                <div className="mt-3 pt-3 border-t border-bg-dark">
+                <div className="mt-3 pt-3 border-t border-text-muted/20">
                   <button
                     onClick={() => handleExpandAttempt(attempt.id)}
                     className="w-full px-4 py-2 bg-bg-dark hover:bg-bg-dark/70 text-aws-orange font-medium rounded-lg transition-colors flex items-center justify-center gap-2 text-sm"

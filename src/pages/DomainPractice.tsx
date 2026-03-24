@@ -41,9 +41,9 @@ export function DomainPractice() {
 
   // Set dynamic page title based on screen and domain
   const pageTitle = screen === 'practice' && selectedDomain !== null
-    ? `${domains[selectedDomain] ?? ''} Practice | CloudCertPrep`
-    : screen === 'results' ? 'Practice Results | CloudCertPrep'
-    : 'Domain Practice | CloudCertPrep'
+    ? `${cert.shortName} - ${domains[selectedDomain] ?? ''} Practice | CloudCertPrep`
+    : screen === 'results' ? `${cert.shortName} Practice Results | CloudCertPrep`
+    : `${cert.shortName} Domain Practice | CloudCertPrep`
   usePageTitle(pageTitle)
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -196,7 +196,7 @@ export function DomainPractice() {
         <Header showNav={true} />
         <div className="p-4 md:p-8">
           <div className="max-w-2xl mx-auto bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
-          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">Domain Practice</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">{cert.shortName} Domain Practice</h1>
           <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Practice questions from a specific domain</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
@@ -230,7 +230,7 @@ export function DomainPractice() {
             onClick={() => navigate('/')}
             className="w-full bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base"
           >
-            ← Back to Dashboard
+            ← Back to Home
           </button>
           </div>
         </div>
@@ -246,7 +246,7 @@ export function DomainPractice() {
           <div className="max-w-2xl mx-auto">
           <div className="bg-bg-card rounded-lg p-4 md:p-6 lg:p-8 shadow-card">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-text-primary mb-2">
-              {domains[selectedDomain!]}
+              {cert.shortName} - {domains[selectedDomain!]}
             </h1>
             <p className="text-sm md:text-base text-text-muted mb-6 md:mb-8">Configure your practice session</p>
 
@@ -371,7 +371,7 @@ export function DomainPractice() {
                 onClick={() => navigate('/')}
                 className="flex-1 px-6 py-3 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold rounded-lg transition-colors"
               >
-                Back to Dashboard
+                ← Back to Home
               </button>
               <button
                 onClick={() => selectDomain(selectedDomain!)}

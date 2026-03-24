@@ -1,3 +1,5 @@
+import { Check, X } from 'lucide-react'
+
 interface PassFailBannerProps {
   passed: boolean
   scaledScore: number
@@ -15,13 +17,9 @@ export function PassFailBanner({ passed, scaledScore, percent }: PassFailBannerP
         <div className="flex items-center gap-3 md:gap-4">
           <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0">
             {passed ? (
-              <svg className="w-7 h-7 md:w-10 md:h-10 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-              </svg>
+              <Check className="w-7 h-7 md:w-10 md:h-10 text-success" strokeWidth={3} />
             ) : (
-              <svg className="w-7 h-7 md:w-10 md:h-10 text-danger" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <X className="w-7 h-7 md:w-10 md:h-10 text-danger" strokeWidth={3} />
             )}
           </div>
           <div>

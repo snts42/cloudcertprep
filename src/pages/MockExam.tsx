@@ -166,6 +166,7 @@ export function MockExam() {
       setScreen('exam')
       setStartTime(Date.now())
       timer.start()
+      document.body.dataset.examActive = 'true'
       trackEvent('exam_started')
       window.scrollTo(0, 0)
     } finally {
@@ -320,6 +321,7 @@ export function MockExam() {
     })
 
     setScreen('results')
+    delete document.body.dataset.examActive
     window.scrollTo(0, 0)
     trackEvent('exam_completed', { passed, scaled_score: scaledScore, score_percent: Math.round(percentScore) })
     setLoading(false)
@@ -378,7 +380,7 @@ export function MockExam() {
             disabled={loading}
             className="w-full mt-3 md:mt-4 bg-bg-dark hover:bg-bg-card-hover text-text-primary font-medium py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            ← Back to Dashboard
+            ← Back to Home
           </button>
         </div>
       </div>
@@ -466,7 +468,7 @@ export function MockExam() {
                 onClick={() => navigate('/')}
                 className="flex-1 bg-bg-card hover:bg-bg-card-hover text-text-primary font-semibold py-3 rounded-lg transition-colors"
               >
-                ← Back to Dashboard
+                ← Back to Home
               </button>
               <button
                 onClick={() => {
