@@ -7,6 +7,7 @@ import { formatTime } from '../lib/scoring'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { CERTIFICATIONS } from '../data/certifications'
 import { Trophy, TrendingUp, Clock } from 'lucide-react'
+import { logError } from '../lib/logger'
 
 interface PlatformStats {
   total_users: number
@@ -64,7 +65,7 @@ export function Stats() {
         .single()
 
       if (statsError && statsError.code !== 'PGRST116') {
-        console.error('Error loading platform stats:', statsError)
+        logError('Stats.loadStats.platformStats', statsError)
       }
 
       if (statsData) {
@@ -77,7 +78,7 @@ export function Stats() {
         .rpc('get_public_exam_stats')
 
       if (examStatsError) {
-        console.error('Error loading exam stats:', examStatsError)
+        logError('Stats.loadStats.examStats', examStatsError)
       }
 
       if (examStats?.cert_stats) {
@@ -88,8 +89,8 @@ export function Stats() {
         setCertStats(certStatsMap)
       }
 
-    } catch (err) {
-      console.error('Error loading stats:', err)
+    } catch (err: unknown) {
+      logError('Stats.loadStats', err)
       setError('Failed to load statistics')
     } finally {
       setLoading(false)

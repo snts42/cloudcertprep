@@ -59,3 +59,54 @@ export function shuffleQuestionOptions(question: Question): { question: Question
     keyMap: displayToOriginal,
   }
 }
+
+/**
+ * Convert shuffled answer key(s) back to original key(s) for database storage.
+ * Handles both single-answer (string) and multi-answer (string[]) questions.
+ */
+export function toOriginalAnswer(
+  answer: string | string[],
+  keyMap: OptionKeyMap
+): string | string[] {
+  const toOriginal = (key: string) => keyMap[key] || key
+
+  if (Array.isArray(answer)) {
+    return answer.map(toOriginal)
+  }
+  return answer ? toOriginal(answer) : ''
+}
+
+/**
+ * Shuffle all questions and track their key mappings.
+ * Returns both the shuffled questions and a Map of question ID → keyMap.
+ */
+export function shuffleAndMapQuestions(questions: Question[]): {
+  questions: Question[]
+  keyMaps: Map<string, OptionKeyMap>
+} {
+  const keyMaps = new Map<string, OptionKeyMap>()
+  const shuffled = questions.map(q => {
+    const { question: shuffledQ, keyMap } = shuffleQuestionOptions(q)
+    keyMaps.set(q.id, keyMap)
+    return shuffledQ
+  })
+  return { questions: shuffled, keyMaps }
+}
+
+/**
+ * Toggle a multi-answer selection (add if not present, remove if present).
+ * Enforces maximum selection limit.
+ */
+export function toggleMultiAnswer(
+  current: string[],
+  answer: string,
+  max: number
+): string[] {
+  if (current.includes(answer)) {
+    return current.filter(a => a !== answer)
+  }
+  if (current.length >= max) {
+    return current
+  }
+  return [...current, answer]
+}

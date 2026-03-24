@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { usePageTitle } from '../hooks/usePageTitle'
 import { useCert, setActiveCert } from '../hooks/useCert'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { supabase } from '../lib/supabase'
@@ -12,6 +12,7 @@ import type { DomainProgress } from '../types'
 import { formatDuration } from '../lib/scoring'
 import { CERTIFICATION_LIST, getCertTotalQuestions } from '../data/certifications'
 import { FileText, Target, BookOpen, TrendingUp, Lock, BarChart3 } from 'lucide-react'
+import { logError } from '../lib/logger'
 
 interface RecentAttempt {
   id: string
@@ -59,10 +60,10 @@ export function Dashboard() {
       ])
 
       if (progressRes.error) {
-        console.error('Domain progress query error:', progressRes.error)
+        logError('Dashboard.loadDashboardData.progress', progressRes.error)
       }
       if (attemptsRes.error) {
-        console.error('Exam attempts query error:', attemptsRes.error)
+        logError('Dashboard.loadDashboardData.attempts', attemptsRes.error)
       }
 
       if (progressRes.data) {
@@ -72,8 +73,8 @@ export function Dashboard() {
       if (attemptsRes.data) {
         setRecentAttempts(attemptsRes.data)
       }
-    } catch (error) {
-      console.error('Error loading dashboard:', error)
+    } catch (error: unknown) {
+      logError('Dashboard.loadDashboardData', error)
     }
   }
 

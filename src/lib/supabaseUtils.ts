@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { logError } from './logger'
 import { calculateDomainMastery } from './domainStats'
 import { DEFAULT_CERT_ID } from '../data/certifications'
 
@@ -42,6 +43,6 @@ export async function updateDomainProgress(
   })
 
   if (progressError) {
-    console.error(`Error updating domain ${domainId} progress:`, progressError)
+    logError('supabaseUtils.updateDomainProgress', progressError)
   }
 }

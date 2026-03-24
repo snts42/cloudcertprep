@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import { validatePassword } from '../lib/validation'
 import { Header } from '../components/Header'
 import { usePageTitle } from '../hooks/usePageTitle'
 
@@ -30,13 +31,9 @@ export function ResetPassword() {
     e.preventDefault()
     setError('')
 
-    if (password !== confirmPassword) {
-      setError('Passwords do not match')
-      return
-    }
-
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters')
+    const validationError = validatePassword(password, confirmPassword)
+    if (validationError) {
+      setError(validationError)
       return
     }
 

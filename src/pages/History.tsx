@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { usePageTitle } from '../hooks/usePageTitle'
 import { useCert } from '../hooks/useCert'
+import { usePageTitle } from '../hooks/usePageTitle'
+import { supabase } from '../lib/supabase'
+import { logError } from '../lib/logger'
 import { Header } from '../components/Header'
 import { LoadingSpinner } from '../components/LoadingSpinner'
-import { supabase } from '../lib/supabase'
 import { DOMAIN_COLOR } from '../types'
 import type { Question, ExamAttempt } from '../types'
 import { formatDuration } from '../lib/scoring'
@@ -216,8 +217,8 @@ export function History() {
 
       if (error) throw error
       setAttempts(data || [])
-    } catch (error) {
-      console.error('Error loading history:', error)
+    } catch (error: unknown) {
+      logError('History.loadHistory', error)
     } finally {
       setLoading(false)
     }
@@ -256,8 +257,8 @@ export function History() {
       if (error) throw error
 
       setAttemptQuestions(prev => new Map(prev).set(attemptId, data || []))
-    } catch (error) {
-      console.error('Error loading attempt questions:', error)
+    } catch (error: unknown) {
+      logError('History.loadAttemptQuestions', error)
     } finally {
       setReviewLoading(null)
     }
@@ -289,8 +290,8 @@ export function History() {
       setShowResetModal(false)
       setResetSuccess(true)
       setTimeout(() => setResetSuccess(false), 3000)
-    } catch (error) {
-      console.error('Error resetting progress:', error)
+    } catch (error: unknown) {
+      logError('History.handleResetHistory', error)
     } finally {
       setResetting(false)
     }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
+import { logError } from '../lib/logger'
 import type { Question } from '../types'
 import { fisherYatesShuffle } from '../lib/utils'
 
@@ -64,8 +65,8 @@ export function useSpacedRepetition(
         }
       }
       setMasteryMap(map)
-    } catch (err) {
-      console.error('Failed to load mastery data:', err)
+    } catch (err: unknown) {
+      logError('useSpacedRepetition.loadMastery', err)
     }
   }, [userId, domainId])
 

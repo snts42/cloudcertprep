@@ -37,26 +37,34 @@ export function getDomainScore(
 }
 
 /**
- * Select questions for a mock exam based on the certification's domain proportions.
- * Domain breakdown is derived from cert config — no hardcoded values.
+ * Calculate per-domain question targets for an exam.
+ * Uses remainder algorithm to guarantee exact total (e.g., 65 questions).
+ * Returns a map of domain ID to question count.
  */
-export function selectExamQuestions(allQuestions: Question[], cert: Certification): Question[] {
-  const totalCount = cert.examQuestionCount
+export function getExamDomainTargets(cert: Certification): Record<number, number> {
   const targets: Record<number, number> = {}
-
-  // Calculate per-domain question targets from proportions
   let assigned = 0
+
   cert.domains.forEach((domain, i) => {
     if (i === cert.domains.length - 1) {
       // Last domain gets the remainder to guarantee exact total
-      targets[domain.id] = totalCount - assigned
+      targets[domain.id] = cert.examQuestionCount - assigned
     } else {
-      const count = Math.round(totalCount * domain.examProportion)
+      const count = Math.round(cert.examQuestionCount * domain.examProportion)
       targets[domain.id] = count
       assigned += count
     }
   })
 
+  return targets
+}
+
+/**
+ * Select questions for a mock exam based on the certification's domain proportions.
+ * Domain breakdown is derived from cert config — no hardcoded values.
+ */
+export function selectExamQuestions(allQuestions: Question[], cert: Certification): Question[] {
+  const targets = getExamDomainTargets(cert)
   const selected: Question[] = []
 
   for (const [domainId, count] of Object.entries(targets)) {

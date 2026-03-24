@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { usePageTitle } from '../hooks/usePageTitle'
 import { useCert } from '../hooks/useCert'
+import { usePageTitle } from '../hooks/usePageTitle'
+import { supabase } from '../lib/supabase'
+import { logError } from '../lib/logger'
 import { Header } from '../components/Header'
 import { AnswerButton } from '../components/AnswerButton'
 import { ProgressBar } from '../components/ProgressBar'
 import { QuestionReviewCard } from '../components/QuestionReviewCard'
 import { LoadingSpinner } from '../components/LoadingSpinner'
-import { supabase } from '../lib/supabase'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAIN_COLOR } from '../types'
 import type { Question, OptionKey } from '../types'
@@ -16,7 +17,7 @@ import { loadDomainQuestions } from '../data/questions'
 import { isAnswerCorrect } from '../lib/scoring'
 import { trackEvent } from '../lib/analytics'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
-import { shuffleQuestionOptions, type OptionKeyMap } from '../lib/utils'
+import { shuffleAndMapQuestions, toOriginalAnswer, toggleMultiAnswer, type OptionKeyMap } from '../lib/utils'
 import { MAX_MULTI_ANSWER, ANSWER_FEEDBACK_DELAY_MS, GITHUB_ISSUES_URL } from '../lib/constants'
 import { Check, X } from 'lucide-react'
 
@@ -83,15 +84,9 @@ export function DomainPractice() {
       const selectedQuestions = selectQuestions(allDomainQuestions, questionCount)
 
       // Shuffle answer options for each question
-      const maps = new Map<string, OptionKeyMap>()
-      const shuffledQuestions = selectedQuestions.map(q => {
-        const { question: shuffled, keyMap } = shuffleQuestionOptions(q)
-        maps.set(q.id, keyMap)
-        return shuffled
-      })
-      
-      setQuestions(shuffledQuestions)
-      setOptionKeyMaps(maps)
+      const { questions: shuffled, keyMaps } = shuffleAndMapQuestions(selectedQuestions)
+      setQuestions(shuffled)
+      setOptionKeyMaps(keyMaps)
       setCurrentIndex(0)
       setUserAnswer(null)
       setShowFeedback(false)
@@ -109,15 +104,7 @@ export function DomainPractice() {
     
     if (current.isMultiAnswer) {
       const currentAnswers = Array.isArray(userAnswer) ? userAnswer : []
-      let newAnswers: string[]
-      
-      if (currentAnswers.includes(answer)) {
-        newAnswers = currentAnswers.filter(a => a !== answer)
-      } else {
-        if (currentAnswers.length >= MAX_MULTI_ANSWER) return
-        newAnswers = [...currentAnswers, answer]
-      }
-      
+      const newAnswers = toggleMultiAnswer(currentAnswers, answer, MAX_MULTI_ANSWER)
       setUserAnswer(newAnswers)
     } else {
       setUserAnswer(answer)
@@ -164,14 +151,9 @@ export function DomainPractice() {
         // Save each question result to attempt_questions table (without attempt_id for practice mode)
         const questionRecords = questions.map((q, idx) => {
           const keyMap = optionKeyMaps.get(q.id) || {}
-          const toOriginal = (key: string) => keyMap[key] || key
           const ua = questionResults[idx]?.userAnswer
-          const originalUserAnswer = Array.isArray(ua)
-            ? ua.map(toOriginal)
-            : (ua ? toOriginal(ua) : '')
-          const originalCorrectAnswer = Array.isArray(q.answer)
-            ? q.answer.map(toOriginal)
-            : toOriginal(q.answer)
+          const originalUserAnswer = toOriginalAnswer(ua || '', keyMap)
+          const originalCorrectAnswer = toOriginalAnswer(q.answer, keyMap)
 
           return {
             attempt_id: null, // Practice mode doesn't have an exam attempt
@@ -193,8 +175,8 @@ export function DomainPractice() {
         if (questionsError) throw questionsError
 
         await updateDomainProgress(user.id, selectedDomain!, cert.code)
-      } catch (error) {
-        console.error('Error saving domain progress:', error)
+      } catch (error: unknown) {
+        logError('DomainPractice.finishPractice', error)
       }
     }
 

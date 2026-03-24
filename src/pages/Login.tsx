@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import { validatePassword } from '../lib/validation'
 import { Header } from '../components/Header'
 import { trackEvent } from '../lib/analytics'
 import { usePageTitle } from '../hooks/usePageTitle'
@@ -33,13 +34,9 @@ export function Login() {
 
     try {
       if (isSignUp) {
-        if (password !== confirmPassword) {
-          setError('Passwords do not match')
-          setLoading(false)
-          return
-        }
-        if (password.length < 6) {
-          setError('Password must be at least 6 characters')
+        const validationError = validatePassword(password, confirmPassword)
+        if (validationError) {
+          setError(validationError)
           setLoading(false)
           return
         }

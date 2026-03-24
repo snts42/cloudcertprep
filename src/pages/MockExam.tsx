@@ -11,13 +11,14 @@ import { Modal } from '../components/Modal'
 import { PassFailBanner } from '../components/PassFailBanner'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { QuestionReviewCard } from '../components/QuestionReviewCard'
-import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, formatTime, formatDuration, isAnswerCorrect } from '../lib/scoring'
+import { selectExamQuestions, calculateScaledScore, isPassed, getDomainScore, formatTime, formatDuration, isAnswerCorrect, getExamDomainTargets } from '../lib/scoring'
 import { supabase } from '../lib/supabase'
+import { logError } from '../lib/logger'
 import { updateDomainProgress } from '../lib/supabaseUtils'
 import { DOMAIN_COLOR } from '../types'
 import type { Question, OptionKey } from '../types'
 import { loadAllQuestions } from '../data/questions'
-import { shuffleQuestionOptions, type OptionKeyMap } from '../lib/utils'
+import { shuffleAndMapQuestions, toOriginalAnswer, toggleMultiAnswer, type OptionKeyMap } from '../lib/utils'
 import { trackEvent } from '../lib/analytics'
 import { MIN_VALID_EXAM_SECONDS, MAX_MULTI_ANSWER, TIMER_PULSE_THRESHOLD } from '../lib/constants'
 
@@ -156,14 +157,9 @@ export function MockExam() {
     setLoading(true)
     const allQuestions = await loadAllQuestions(cert.code)
     const selectedQuestions = selectExamQuestions(allQuestions, cert)
-    const maps = new Map<string, OptionKeyMap>()
-    const shuffledQuestions = selectedQuestions.map(q => {
-      const { question: shuffled, keyMap } = shuffleQuestionOptions(q)
-      maps.set(q.id, keyMap)
-      return shuffled
-    })
-    setQuestions(shuffledQuestions)
-    setOptionKeyMaps(maps)
+    const { questions: shuffled, keyMaps } = shuffleAndMapQuestions(selectedQuestions)
+    setQuestions(shuffled)
+    setOptionKeyMaps(keyMaps)
     setAnswers(new Map())
     setCurrentIndex(0)
     setScreen('exam')
@@ -179,15 +175,7 @@ export function MockExam() {
     
     if (current.isMultiAnswer) {
       const currentAnswers = Array.isArray(currentState.userAnswer) ? currentState.userAnswer : []
-      let newAnswers: string[]
-      
-      if (currentAnswers.includes(answer)) {
-        newAnswers = currentAnswers.filter(a => a !== answer)
-      } else {
-        if (currentAnswers.length >= MAX_MULTI_ANSWER) return
-        newAnswers = [...currentAnswers, answer]
-      }
-      
+      const newAnswers = toggleMultiAnswer(currentAnswers, answer, MAX_MULTI_ANSWER)
       setAnswers(prev => new Map(prev).set(currentIndex, { ...currentState, userAnswer: newAnswers }))
     } else {
       setAnswers(prev => new Map(prev).set(currentIndex, { ...currentState, userAnswer: answer }))
@@ -230,13 +218,8 @@ export function MockExam() {
       
       // Convert display keys back to original keys for DB storage
       const keyMap = optionKeyMaps.get(q.id) || {}
-      const toOriginal = (key: string) => keyMap[key] || key
-      const originalUserAnswer = Array.isArray(userAnswer)
-        ? userAnswer.map(toOriginal)
-        : (userAnswer ? toOriginal(userAnswer) : '')
-      const originalCorrectAnswer = Array.isArray(q.answer)
-        ? q.answer.map(toOriginal)
-        : toOriginal(q.answer)
+      const originalUserAnswer = toOriginalAnswer(userAnswer, keyMap)
+      const originalCorrectAnswer = toOriginalAnswer(q.answer, keyMap)
 
       return {
         questionId: q.id,
@@ -312,8 +295,8 @@ export function MockExam() {
         }
       }
     }
-    } catch (error) {
-      console.error('Error saving exam attempt:', error)
+    } catch (error: unknown) {
+      logError('MockExam.submitExam', error)
       setSubmitError('Your results could not be saved. You can still review your answers.')
     }
 
@@ -354,9 +337,12 @@ export function MockExam() {
           <div className="bg-bg-dark rounded-lg p-4 md:p-6 mb-6 md:mb-8">
             <h2 className="text-lg md:text-xl font-semibold text-text-primary mb-3 md:mb-4">Domain Breakdown</h2>
             <div className="space-y-1.5 md:space-y-2 text-sm md:text-base text-text-muted">
-              {cert.domains.map(d => (
-                <p key={d.id}>• {Math.round(cert.examQuestionCount * d.examProportion)} {d.name} ({Math.round(d.examProportion * 100)}%)</p>
-              ))}
+              {(() => {
+                const targets = getExamDomainTargets(cert)
+                return cert.domains.map(d => (
+                  <p key={d.id}>• {targets[d.id]} {d.name} ({Math.round(d.examProportion * 100)}%)</p>
+                ))
+              })()}
             </div>
           </div>
 
