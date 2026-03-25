@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AuthProvider } from './hooks/useAuth'
 import { ThemeProvider } from './hooks/useTheme'
 import { Header } from './components/Header'
@@ -19,6 +19,7 @@ const History = lazy(() => import('./pages/History').then(m => ({ default: m.His
 const Privacy = lazy(() => import('./pages/Privacy').then(m => ({ default: m.Privacy })))
 const Terms = lazy(() => import('./pages/Terms').then(m => ({ default: m.Terms })))
 const Stats = lazy(() => import('./pages/Stats').then(m => ({ default: m.Stats })))
+const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })))
 
 function AppRoutes() {
   const location = useLocation()
@@ -49,7 +50,7 @@ function AppRoutes() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/stats" element={<Stats />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   )
