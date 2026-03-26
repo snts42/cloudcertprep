@@ -1,0 +1,21 @@
+{
+  "name": "CloudCertPrep - Free AWS Practice Exams",
+  "short_name": "CloudCertPrep",
+  "description": "Free AWS Cloud Practitioner practice exams with 1,050+ questions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1923",
+  "theme_color": "#FF9900",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

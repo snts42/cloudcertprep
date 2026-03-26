@@ -122,10 +122,10 @@ export function MockExam() {
 
   // Page title
   const pageTitle = screen === 'exam'
-    ? `Question ${currentIndex + 1} of ${cert.examQuestionCount} | CloudCertPrep Mock Exam`
+    ? `Question ${currentIndex + 1} of ${cert.examQuestionCount} | CloudCertPrep Practice Exam`
     : screen === 'results' ? 'Exam Results | CloudCertPrep'
     : screen === 'review' ? 'Review Exam | CloudCertPrep'
-    : `${cert.shortName} Mock Exam | CloudCertPrep`
+    : `${cert.shortName} Practice Exam | CloudCertPrep`
   usePageTitle(pageTitle)
 
   // Track exam abandonment - fires when user leaves during active exam

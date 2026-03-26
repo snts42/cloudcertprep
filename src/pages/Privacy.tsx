@@ -37,7 +37,7 @@ export function Privacy() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-aws-orange mt-0.5">-</span>
-                  <span><strong className="text-text-primary">Exam attempts</strong> — your scores, timing, and domain breakdowns from mock exams. Used to display your History page.</span>
+                  <span><strong className="text-text-primary">Exam attempts</strong> — your scores, timing, and domain breakdowns from practice exams. Used to display your History page.</span>
                 </li>
               </ul>
             </section>

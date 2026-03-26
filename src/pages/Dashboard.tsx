@@ -13,6 +13,7 @@ import { formatDuration } from '../lib/scoring'
 import { CERTIFICATION_LIST, getCertTotalQuestions } from '../data/certifications'
 import { FileText, Target, BookOpen, TrendingUp, Lock, BarChart3 } from 'lucide-react'
 import { logError } from '../lib/logger'
+import { DEFAULT_PAGE_TITLE } from '../lib/constants'
 
 interface RecentAttempt {
   id: string
@@ -30,7 +31,7 @@ export function Dashboard() {
 
   const pageTitle = user
     ? `${cert.shortName} Practice | CloudCertPrep`
-    : 'CloudCertPrep | Free AWS Certification Practice Exams'
+    : DEFAULT_PAGE_TITLE
   usePageTitle(pageTitle)
 
   const [domainProgress, setDomainProgress] = useState<DomainProgress[]>([])
@@ -130,7 +131,7 @@ export function Dashboard() {
               </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <Link
-                  to="/mock-exam"
+                  to="/practice-exam"
                   className="bg-bg-card hover:bg-bg-card-hover p-4 md:p-6 rounded-lg border-2 border-transparent hover:border-aws-orange transition-all"
                 >
                   <FileText className="w-8 h-8 md:w-10 md:h-10 text-aws-orange mb-2" />
@@ -161,7 +162,7 @@ export function Dashboard() {
                 
                 {recentAttempts.length === 0 ? (
                   <div className="bg-bg-card rounded-lg p-8 text-center shadow-card">
-                    <p className="text-text-muted">No exam attempts yet. Start with a mock exam!</p>
+                    <p className="text-text-muted">No exam attempts yet. Start with a practice exam!</p>
                   </div>
                 ) : (
                   <div className="space-y-3">

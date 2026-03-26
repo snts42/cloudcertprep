@@ -408,7 +408,7 @@ export function History() {
               <p className="text-warning font-semibold">Track Your Progress</p>
             </div>
             <p className="text-text-muted text-sm mb-4">
-              Sign in to track your mock exam history and monitor your progress over time.
+              Sign in to track your practice exam history and monitor your progress over time.
             </p>
             <button
               onClick={() => navigate('/login')}
@@ -431,15 +431,15 @@ export function History() {
           <div className="bg-bg-card rounded-lg p-12 text-center shadow-card">
             <p className="text-text-muted text-lg">
               {filter === 'all' 
-                ? 'No exam attempts yet. Take your first mock exam!' 
+                ? 'No exam attempts yet. Take your first practice exam!' 
                 : `No ${filter} attempts yet.`}
             </p>
             {filter === 'all' && (
               <button
-                onClick={() => navigate('/mock-exam')}
+                onClick={() => navigate('/practice-exam')}
                 className="mt-6 px-8 py-3 bg-aws-orange hover:bg-aws-orange/90 text-white font-semibold rounded-lg transition-colors"
               >
-                Start Mock Exam
+                Start Practice Exam
               </button>
             )}
           </div>

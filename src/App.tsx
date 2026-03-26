@@ -44,7 +44,7 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/" element={<Dashboard />} />
-        <Route path="/mock-exam" element={<MockExam />} />
+        <Route path="/practice-exam" element={<MockExam />} />
         <Route path="/domain-practice" element={<DomainPractice />} />
         <Route path="/history" element={<History />} />
         <Route path="/privacy" element={<Privacy />} />
