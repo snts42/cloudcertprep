@@ -19,6 +19,7 @@ export async function updateDomainProgress(
     .select('question_id, is_correct')
     .eq('user_id', userId)
     .eq('domain_id', domainId)
+    .eq('cert_code', certCode)
 
   // Deduplicate in one pass
   const uniqueQuestionIds = new Set(allQuestions?.map(q => q.question_id) || [])

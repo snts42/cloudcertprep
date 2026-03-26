@@ -282,6 +282,7 @@ export function MockExam() {
         is_correct: r.isCorrect,
         was_flagged: r.wasFlagged,
         domain_id: r.domainId,
+        cert_code: cert.code,
       }))
 
       if (questionRecords.length > 0) {

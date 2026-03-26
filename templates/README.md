@@ -50,7 +50,7 @@ HTML email templates for Supabase transactional emails. Sent from `alex@cloudcer
 - Dark theme matching the app: `#0F1923` background, `#1A2332` card, `#FF9900` orange
 - Table-based layout for maximum email client compatibility (Gmail, Apple Mail, Outlook, iOS, Android)
 - All styles are inline — no external CSS
-- Logo pulls from `https://www.cloudcertprep.io/favicon.svg` (works in all modern clients; ignored in Outlook 2007/2010)
+- Logo pulls from `https://www.cloudcertprep.io/logo-email.png` (works in all modern clients; ignored in Outlook 2007/2010)
 - Font: system font stack matching the app (`-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial`)
 - Max width: 580px
 

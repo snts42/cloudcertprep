@@ -54,7 +54,7 @@ export function DomainPractice() {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0)
   const [optionKeyMaps, setOptionKeyMaps] = useState<Map<string, OptionKeyMap>>(new Map())
   const [loading, setLoading] = useState(false)
-  const { selectQuestions, refreshMastery } = useSpacedRepetition(user?.id ?? null, selectedDomain)
+  const { selectQuestions, refreshMastery } = useSpacedRepetition(user?.id ?? null, selectedDomain, cert.code)
 
   function selectDomain(domainId: number) {
     setSelectedDomain(domainId)
@@ -165,6 +165,7 @@ export function DomainPractice() {
             is_correct: results[idx] || false,
             was_flagged: false,
             domain_id: selectedDomain,
+            cert_code: cert.code,
           }
         })
 

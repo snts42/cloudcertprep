@@ -60,7 +60,7 @@ export function ResetPassword() {
       <Header showNav={true} />
       <div className="flex-1 flex items-center justify-center px-4">
       <div className="bg-bg-card p-8 rounded-lg shadow-card max-w-md w-full">
-        <h2 className="text-xl font-semibold text-text-primary mb-2">Reset Password</h2>
+        <h1 className="text-xl font-semibold text-text-primary mb-2">Reset Password</h1>
         <p className="text-text-muted mb-8">Enter your new password</p>
 
         <form onSubmit={handleResetPassword} className="space-y-4">
